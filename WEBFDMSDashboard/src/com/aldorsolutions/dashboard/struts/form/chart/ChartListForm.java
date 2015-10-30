@@ -1,0 +1,570 @@
+package com.aldorsolutions.dashboard.struts.form.chart;
+
+import java.util.Calendar;
+
+import org.apache.struts.action.ActionForm;
+
+import com.aldorsolutions.dashboard.utils.FDMSChartFX;
+
+public class ChartListForm extends ActionForm {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4136082895143614232L;
+
+	private long localeID;
+	private String fromDate;
+	private String toDate;
+	/**
+	 * @return the localeID
+	 */
+	public long getLocaleID() {
+		return localeID;
+	}
+	/**
+	 * @param localeID the localeID to set
+	 */
+	public void setLocaleID(long localeID) {
+		this.localeID = localeID;
+	}
+	/**
+	 * @return the fromDate
+	 */
+	public String getFromDate() {
+		return fromDate;
+	}
+	/**
+	 * @param fromDate the fromDate to set
+	 */
+	public void setFromDate(String fromDate) {
+		this.fromDate = fromDate;
+	}
+	/**
+	 * @return the toDate
+	 */
+	public String getToDate() {
+		return toDate;
+	}
+	/**
+	 * @param toDate the toDate to set
+	 */
+	public void setToDate(String toDate) {
+		this.toDate = toDate;
+	}
+	
+	
+	
+	
+	/*private String saleType;
+	
+	private String currentYear;
+	private String lastYear;
+	
+	private double[] CBTCallVolume;
+	private double[] CBTRevnueVolume;
+	private double[] CBTAverageVolume;
+	
+	private double[] arCurrentReceivables;
+	private double[] arTotalRevenue;
+
+	private String[] directorName;
+	private double[] arDirectorPayment;
+	private double[] arDirectorRevenue;
+	
+	private String[] directorNameTab4;
+	
+	private double[] directorCurrentYearCalls;
+	private double[] directorLastYearCalls;
+	
+	private double[] directorCurrentYearAvg;
+	private double[] directorlastYearAvg;
+	
+	private double[] mcyAgeCall;
+	private double[] mlyAgeCall;
+	private double[] mcyAgeAvg;
+	private double[] mlyAgeAvg;
+	
+	private double[] mcyGenCall;
+	private double[] mlyGenCall;
+	private double[] mcyGenAvg;
+	private double[] mlyGenAvg;
+	
+	private double[] mcyRaceCall;
+	private double[] mlyRaceCall;
+	private double[] mcyRaceAvg;
+	private double[] mlyRaceAvg;
+	
+	private double[] salesBurial;
+	private double[] salesCrem;
+	private double[] salesTotal;
+	
+	
+	private double[] receivable; 
+	
+	private FDMSChartFX callVolumeChart = new FDMSChartFX();
+	private FDMSChartFX totalRevenuChart = new FDMSChartFX();
+	private FDMSChartFX averageRevenuChart = new FDMSChartFX();
+	
+	private int maxSize;
+	
+
+	*//**
+	 * @return the saleType
+	 *//*
+	public String getSaleType() {
+		return saleType;
+	}
+	*//**
+	 * @param saleType the saleType to set
+	 *//*
+	public void setSaleType(String saleType) {
+		this.saleType = saleType;
+	}
+
+	*//**
+	 * @return the arCurrentReceivables
+	 *//*
+	public double[] getArCurrentReceivables() {
+		return arCurrentReceivables;
+	}
+	*//**
+	 * @param arCurrentReceivables the arCurrentReceivables to set
+	 *//*
+	public void setArCurrentReceivables(double[] arCurrentReceivables) {
+		this.arCurrentReceivables = arCurrentReceivables;
+	}
+	*//**
+	 * @return the arTotalRevenue
+	 *//*
+	public double[] getArTotalRevenue() {
+		return arTotalRevenue;
+	}
+	*//**
+	 * @param arTotalRevenue the arTotalRevenue to set
+	 *//*
+	public void setArTotalRevenue(double[] arTotalRevenue) {
+		this.arTotalRevenue = arTotalRevenue;
+	}
+	*//**
+	 * @return the directorName
+	 *//*
+	public String[] getDirectorName() {
+		return directorName;
+	}
+	*//**
+	 * @param directorName the directorName to set
+	 *//*
+	public void setDirectorName(String[] directorName) {
+		this.directorName = directorName;
+	}
+	*//**
+	 * @return the arDirectorPayment
+	 *//*
+	public double[] getArDirectorPayment() {
+		return arDirectorPayment;
+	}
+	*//**
+	 * @param arDirectorPayment the arDirectorPayment to set
+	 *//*
+	public void setArDirectorPayment(double[] arDirectorPayment) {
+		this.arDirectorPayment = arDirectorPayment;
+	}
+	*//**
+	 * @return the arDirectorRevenue
+	 *//*
+	public double[] getArDirectorRevenue() {
+		return arDirectorRevenue;
+	}
+	*//**
+	 * @param arDirectorRevenue the arDirectorRevenue to set
+	 *//*
+	public void setArDirectorRevenue(double[] arDirectorRevenue) {
+		this.arDirectorRevenue = arDirectorRevenue;
+	}
+	*//**
+	 * @return the receivable
+	 *//*
+	public double[] getReceivable() {
+		return receivable;
+	}
+	*//**
+	 * @param receivable the receivable to set
+	 *//*
+	public void setReceivable(double[] receivable) {
+		this.receivable = receivable;
+	}
+	
+	*//**
+	 * @return the currentYear
+	 *//*
+	public String getCurrentYear() {
+		Calendar cal=Calendar.getInstance();
+		int year=cal.get(Calendar.YEAR);
+		return Integer.toString(year);
+	}
+	*//**
+	 * @param currentYear the currentYear to set
+	 *//*
+	public void setCurrentYear(String currentYear) {
+		this.currentYear = currentYear;
+	}
+	*//**
+	 * @return the lastYear
+	 *//*
+	public String getLastYear() {
+		Calendar cal=Calendar.getInstance();
+		int year=cal.get(Calendar.YEAR)-1;
+		return Integer.toString(year);
+	}
+	*//**
+	 * @param lastYear the lastYear to set
+	 *//*
+	public void setLastYear(String lastYear) {
+		this.lastYear = lastYear;
+	}
+	
+	*//**
+	 * @return the maxSize
+	 *//*
+	public int getMaxSize() {
+		return maxSize;
+	}
+	*//**
+	 * @param maxSize the maxSize to set
+	 *//*
+	public void setMaxSize(int maxSize) {
+		this.maxSize = maxSize;
+	}
+		
+	*//**
+	 * @return the directorNameTab4
+	 *//*
+	public String[] getDirectorNameTab4() {
+		return directorNameTab4;
+	}
+	*//**
+	 * @param directorNameTab4 the directorNameTab4 to set
+	 *//*
+	public void setDirectorNameTab4(String[] directorNameTab4) {
+		this.directorNameTab4 = directorNameTab4;
+	}
+	*//**
+	 * @return the directorCurrentYearCalls
+	 *//*
+	public double[] getDirectorCurrentYearCalls() {
+		return directorCurrentYearCalls;
+	}
+	*//**
+	 * @param directorCurrentYearCalls the directorCurrentYearCalls to set
+	 *//*
+	public void setDirectorCurrentYearCalls(double[] directorCurrentYearCalls) {
+		this.directorCurrentYearCalls = directorCurrentYearCalls;
+	}
+	*//**
+	 * @return the directorLastYearCalls
+	 *//*
+	public double[] getDirectorLastYearCalls() {
+		return directorLastYearCalls;
+	}
+	*//**
+	 * @param directorLastYearCalls the directorLastYearCalls to set
+	 *//*
+	public void setDirectorLastYearCalls(double[] directorLastYearCalls) {
+		this.directorLastYearCalls = directorLastYearCalls;
+	}
+	*//**
+	 * @return the directorCurrentYearAvg
+	 *//*
+	public double[] getDirectorCurrentYearAvg() {
+		return directorCurrentYearAvg;
+	}
+	*//**
+	 * @param directorCurrentYearAvg the directorCurrentYearAvg to set
+	 *//*
+	public void setDirectorCurrentYearAvg(double[] directorCurrentYearAvg) {
+		this.directorCurrentYearAvg = directorCurrentYearAvg;
+	}
+	*//**
+	 * @return the directorlastYearAvg
+	 *//*
+	public double[] getDirectorlastYearAvg() {
+		return directorlastYearAvg;
+	}
+	*//**
+	 * @param directorlastYearAvg the directorlastYearAvg to set
+	 *//*
+	public void setDirectorlastYearAvg(double[] directorlastYearAvg) {
+		this.directorlastYearAvg = directorlastYearAvg;
+	}
+	
+	
+	
+	
+	*//**
+	 * @return the mcyAgeCall
+	 *//*
+	public double[] getMcyAgeCall() {
+		return mcyAgeCall;
+	}
+	*//**
+	 * @param mcyAgeCall the mcyAgeCall to set
+	 *//*
+	public void setMcyAgeCall(double[] mcyAgeCall) {
+		this.mcyAgeCall = mcyAgeCall;
+	}
+	*//**
+	 * @return the mlyAgeCall
+	 *//*
+	public double[] getMlyAgeCall() {
+		return mlyAgeCall;
+	}
+	*//**
+	 * @param mlyAgeCall the mlyAgeCall to set
+	 *//*
+	public void setMlyAgeCall(double[] mlyAgeCall) {
+		this.mlyAgeCall = mlyAgeCall;
+	}
+	*//**
+	 * @return the mcyAgeAvg
+	 *//*
+	public double[] getMcyAgeAvg() {
+		return mcyAgeAvg;
+	}
+	*//**
+	 * @param mcyAgeAvg the mcyAgeAvg to set
+	 *//*
+	public void setMcyAgeAvg(double[] mcyAgeAvg) {
+		this.mcyAgeAvg = mcyAgeAvg;
+	}
+	*//**
+	 * @return the mlyAgeAvg
+	 *//*
+	public double[] getMlyAgeAvg() {
+		return mlyAgeAvg;
+	}
+	*//**
+	 * @param mlyAgeAvg the mlyAgeAvg to set
+	 *//*
+	public void setMlyAgeAvg(double[] mlyAgeAvg) {
+		this.mlyAgeAvg = mlyAgeAvg;
+	}
+	*//**
+	 * @return the mcyGenCall
+	 *//*
+	public double[] getMcyGenCall() {
+		return mcyGenCall;
+	}
+	*//**
+	 * @param mcyGenCall the mcyGenCall to set
+	 *//*
+	public void setMcyGenCall(double[] mcyGenCall) {
+		this.mcyGenCall = mcyGenCall;
+	}
+	*//**
+	 * @return the mlyGenCall
+	 *//*
+	public double[] getMlyGenCall() {
+		return mlyGenCall;
+	}
+	*//**
+	 * @param mlyGenCall the mlyGenCall to set
+	 *//*
+	public void setMlyGenCall(double[] mlyGenCall) {
+		this.mlyGenCall = mlyGenCall;
+	}
+	*//**
+	 * @return the mcyGenAvg
+	 *//*
+	public double[] getMcyGenAvg() {
+		return mcyGenAvg;
+	}
+	*//**
+	 * @param mcyGenAvg the mcyGenAvg to set
+	 *//*
+	public void setMcyGenAvg(double[] mcyGenAvg) {
+		this.mcyGenAvg = mcyGenAvg;
+	}
+	*//**
+	 * @return the mlyGenAvg
+	 *//*
+	public double[] getMlyGenAvg() {
+		return mlyGenAvg;
+	}
+	*//**
+	 * @param mlyGenAvg the mlyGenAvg to set
+	 *//*
+	public void setMlyGenAvg(double[] mlyGenAvg) {
+		this.mlyGenAvg = mlyGenAvg;
+	}
+	*//**
+	 * @return the mcyRaceCall
+	 *//*
+	public double[] getMcyRaceCall() {
+		return mcyRaceCall;
+	}
+	*//**
+	 * @param mcyRaceCall the mcyRaceCall to set
+	 *//*
+	public void setMcyRaceCall(double[] mcyRaceCall) {
+		this.mcyRaceCall = mcyRaceCall;
+	}
+	*//**
+	 * @return the mlyRaceCall
+	 *//*
+	public double[] getMlyRaceCall() {
+		return mlyRaceCall;
+	}
+	*//**
+	 * @param mlyRaceCall the mlyRaceCall to set
+	 *//*
+	public void setMlyRaceCall(double[] mlyRaceCall) {
+		this.mlyRaceCall = mlyRaceCall;
+	}
+	*//**
+	 * @return the mcyRaceAvg
+	 *//*
+	public double[] getMcyRaceAvg() {
+		return mcyRaceAvg;
+	}
+	*//**
+	 * @param mcyRaceAvg the mcyRaceAvg to set
+	 *//*
+	public void setMcyRaceAvg(double[] mcyRaceAvg) {
+		this.mcyRaceAvg = mcyRaceAvg;
+	}
+	*//**
+	 * @return the mlyRaceAvg
+	 *//*
+	public double[] getMlyRaceAvg() {
+		return mlyRaceAvg;
+	}
+	*//**
+	 * @param mlyRaceAvg the mlyRaceAvg to set
+	 *//*
+	public void setMlyRaceAvg(double[] mlyRaceAvg) {
+		this.mlyRaceAvg = mlyRaceAvg;
+	}
+	
+	*//**
+	 * @return the salesBurial
+	 *//*
+	public double[] getSalesBurial() {
+		return salesBurial;
+	}
+	*//**
+	 * @param salesBurial the salesBurial to set
+	 *//*
+	public void setSalesBurial(double[] salesBurial) {
+		this.salesBurial = salesBurial;
+	}
+	*//**
+	 * @return the salesCrem
+	 *//*
+	public double[] getSalesCrem() {
+		return salesCrem;
+	}
+	*//**
+	 * @param salesCrem the salesCrem to set
+	 *//*
+	public void setSalesCrem(double[] salesCrem) {
+		this.salesCrem = salesCrem;
+	}
+	*//**
+	 * @return the salesTotal
+	 *//*
+	public double[] getSalesTotal() {
+		return salesTotal;
+	}
+	*//**
+	 * @param salesTotal the salesTotal to set
+	 *//*
+	public void setSalesTotal(double[] salesTotal) {
+		this.salesTotal = salesTotal;
+	}
+	
+	
+	*//**
+	 * @return the cBTCallVolume
+	 *//*
+	public double[] getCBTCallVolume() {
+		return CBTCallVolume;
+	}
+	*//**
+	 * @param cBTCallVolume the cBTCallVolume to set
+	 *//*
+	public void setCBTCallVolume(double[] cBTCallVolume) {
+		CBTCallVolume = cBTCallVolume;
+	}
+	*//**
+	 * @return the cBTRevnueVolume
+	 *//*
+	public double[] getCBTRevnueVolume() {
+		return CBTRevnueVolume;
+	}
+	*//**
+	 * @param cBTRevnueVolume the cBTRevnueVolume to set
+	 *//*
+	public void setCBTRevnueVolume(double[] cBTRevnueVolume) {
+		CBTRevnueVolume = cBTRevnueVolume;
+	}
+	*//**
+	 * @return the cBTAverageVolume
+	 *//*
+	public double[] getCBTAverageVolume() {
+		return CBTAverageVolume;
+	}
+	*//**
+	 * @param cBTAverageVolume the cBTAverageVolume to set
+	 *//*
+	public void setCBTAverageVolume(double[] cBTAverageVolume) {
+		CBTAverageVolume = cBTAverageVolume;
+	}
+	*//**
+	 * @return the callVolumeChart
+	 *//*
+	public FDMSChartFX getCallVolumeChart() {
+		return callVolumeChart;
+	}
+	*//**
+	 * @param callVolumeChart the callVolumeChart to set
+	 *//*
+	public void setCallVolumeChart(FDMSChartFX callVolumeChart) {
+		this.callVolumeChart = callVolumeChart;
+	}
+	*//**
+	 * @return the totalRevenuChart
+	 *//*
+	public FDMSChartFX getTotalRevenuChart() {
+		return totalRevenuChart;
+	}
+	*//**
+	 * @param totalRevenuChart the totalRevenuChart to set
+	 *//*
+	public void setTotalRevenuChart(FDMSChartFX totalRevenuChart) {
+		this.totalRevenuChart = totalRevenuChart;
+	}
+	*//**
+	 * @return the averageRevenuChart
+	 *//*
+	public FDMSChartFX getAverageRevenuChart() {
+		return averageRevenuChart;
+	}
+	*//**
+	 * @param averageRevenuChart the averageRevenuChart to set
+	 *//*
+	public void setAverageRevenuChart(FDMSChartFX averageRevenuChart) {
+		this.averageRevenuChart = averageRevenuChart;
+	}
+	public double getMaxValue(double currentValue, double raiseBy){
+		double maxValue=0.0;
+		try{
+			maxValue=  currentValue+ currentValue*raiseBy;
+		}catch(Exception ex){
+			return maxValue;
+		}
+		return maxValue;
+	}
+*/		
+	
+}

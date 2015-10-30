@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<component-definitions>
+	<definition name="baseDef" path="/contentLayout.jsp">
+		<put name="pageTitle" value="FDMS Dashboard" />
+		<put name="header" value="/header.jsp" />
+		<put name="footer" value="/footer.jsp" />
+		<put name="sideMenu" value="/menu.jsp" />
+		<put name="tabsMenu" value="/toptabs.jsp" />
+		<put name="topMenu" value="/tops.jsp" />
+	</definition>
+	
+	<definition name="newDef" path="/contentLayoutNew.jsp">
+		<put name="pageTitle" value="FDMS Dashboard New" />
+		<put name="header" value="/topMenu.jsp" />
+		<put name="userMenu" value="/userMenu.jsp" />		
+	</definition>
+	<definition name="chartDef" path="/contentLayoutBlank.jsp">
+	</definition>
+	<definition name="dashboard.home" extends="newDef">
+		<put name="pageTitle" value="FDMS Dashboard - Home" />
+		<put name="body" value="/home.jsp" />
+	</definition>
+	<definition name="dashboard.report" extends="newDef">
+		<put name="pageTitle" value="FDMS Dashboard - Reports" />
+		<put name="body" value="/reports/report.jsp" />
+	</definition>
+	<definition name="dashboard.smartFile" extends="newDef">
+		<put name="pageTitle" value="FDMS Dashboard - SmartFile" />
+		<put name="body" value="/reports/smartFile.jsp" />
+	</definition>
+	<definition name="dashboard.underDevelopment" extends="baseDef">
+		<put name="pageTitle" value="FDMS Dashboard - UnderDevelopment" />
+		<put name="body" value="/reports/underDevelopment.jsp" />
+	</definition>
+	<definition name="dashboard.dashAcctIntfPage" extends="newDef">
+		<put name="pageTitle" value="FDMS Dashboard - Accounting Interface" />
+		<put name="body" value="/reports/dashAcctInterface.jsp" />
+	</definition>
+	<definition name="dashboard.reportScheduling" extends="newDef">
+		<put name="pageTitle" value="FDMS Dashboard - Reports Scheduling" />
+		<put name="body" value="/reports/reportScheduling.jsp" />
+	</definition>
+	<definition name="dashboard.reportPrintedList" extends="newDef">
+		<put name="pageTitle" value="FDMS Dashboard - Reports Printed List" />
+		<put name="body" value="/reports/reportPrintedList.jsp" />
+	</definition>
+	<definition name="dashboard.reportSchedulingList" extends="newDef">
+		<put name="pageTitle" value="FDMS Dashboard - Reports Scheduling List" />
+		<put name="body" value="/reports/reportSchedulingList.jsp" />
+	</definition>
+	<definition name="dashboard.updateRptSche" extends="newDef">
+		<put name="pageTitle" value="FDMS Dashboard - Reports Scheduling List" />
+		<put name="body" value="/reports/updateRptSche.jsp" />
+	</definition>
+	<definition name="dashboard.reports" extends="newDef">
+		<put name="pageTitle" value="FDMS Dashboard - Reports" />
+		<put name="body" value="/reports.jsp" />
+	</definition>
+	<definition name="dashboard.reportsFilter" extends="newDef">
+		<put name="pageTitle" value="FDMS Dashboard - Report Filter" />
+		<put name="body" value="/reports/reportFilter.jsp" />
+	</definition>
+	<definition name="acct.locationEdit" extends="newDef">
+		<put name="pageTitle" value="FDMS Dashboard - Edit Location" />
+		<put name="body" value="/acct/locationEdit.jsp" />
+	</definition>
+	<definition name="acct.locationList" extends="newDef">
+		<put name="pageTitle" value="FDMS Dashboard - Location List" />
+		<put name="body" value="/acct/locationList.jsp" />
+	</definition>
+	<definition name="acct.locationEmail" extends="newDef">
+		<put name="pageTitle" value="FDMS Dashboard - Location Email" />
+		<put name="body" value="/acct/locationEmail.jsp" />
+	</definition>
+	<definition name="acct.checkList" extends="newDef">
+		<put name="pageTitle" value="FDMS Dashboard - Check List" />
+		<put name="body" value="/acct/checkList.jsp" />
+	</definition>
+	<definition name="acct.checkEdit" extends="newDef">
+		<put name="pageTitle" value="FDMS Dashboard - Edit Check" />
+		<put name="body" value="/acct/checkEdit.jsp" />
+	</definition>
+	<definition name="acct.vendorList" extends="newDef">
+		<put name="pageTitle" value="FDMS Dashboard - Vendor List" />
+		<put name="body" value="/acct/acctListVendors.jsp" />
+	</definition>
+	<definition name="acct.vendorListSearch" extends="newDef">
+		<put name="pageTitle" value="FDMS Dashboard - Vendor List" />
+		<put name="body" value="/acct/acctListVendorsSearch.jsp" />
+	</definition>
+	<definition name="acct.vendorEdit" extends="newDef">
+		<put name="pageTitle" value="FDMS Dashboard - Edit Vendor" />
+		<put name="body" value="/acct/acctEditVendors.jsp" />
+	</definition>
+	<definition name="acct.vendorAdd" extends="newDef">
+		<put name="pageTitle" value="FDMS Dashboard - Vendor" />
+		<put name="body" value="/acct/Vendor.jsp" />
+	</definition>
+	<definition name="sms.smsTTVRecipientEdit" extends="newDef">
+		<put name="pageTitle" value="FDMS Dashboard - Edit SMS_TTV Recipient" />
+		<put name="body" value="/sms/SMSTTVRecipient.jsp" />
+	</definition>
+	<definition name="sms.smsTTVList" extends="newDef">
+		<put name="pageTitle" value="FDMS Dashboard - List SMS_TTV Schedule" />
+		<put name="body" value="/sms/SMSTTVList.jsp" />
+	</definition>
+	<definition name="sms.recipientEdit" extends="newDef">
+		<put name="pageTitle" value="FDMS Dashboard - Edit Recipient" />
+		<put name="body" value="/sms/RecipientEdit.jsp" />
+	</definition>
+	<definition name="sms.smsTTVEditJsp" extends="newDef">
+		<put name="pageTitle" value="FDMS Dashboard - Edit SMS_TTV Schedule" />
+		<put name="body" value="/sms/SMSTTVEdit.jsp" />
+	</definition>
+	<definition name="acct.vendorLocEdit" extends="newDef">
+		<put name="pageTitle" value="FDMS Dashboard - Edit Vendor Location" />
+		<put name="body" value="/acct/vendorLocEdit.jsp" />
+	</definition>
+	<definition name="acct.vendorLocRemove" extends="newDef">
+		<put name="pageTitle" value="FDMS Dashboard - Remove Vendor Location" />
+		<put name="body" value="/acct/vendorLocRemove.jsp" />
+	</definition>
+	<definition name="user.myAccount" extends="newDef">
+		<put name="pageTitle" value="FDMS Dashboard - My Account" />
+		<put name="body" value="/user/myAccount.jsp" />
+	</definition>
+	<definition name="sms.sendSMS" extends="newDef">
+		<put name="pageTitle" value="FDMS Dashboard - Send SMS" />
+		<put name="body" value="/sendSMS.jsp" />
+	</definition>
+	<definition name="sms.sendTextToSpeech" extends="newDef">
+		<put name="pageTitle" value="FDMS Dashboard - Send Text To Speech" />
+		<put name="body" value="/sendTextToSpeech.jsp" />
+	</definition>
+	<definition name="user.userList" extends="newDef">
+		<put name="pageTitle" value="FDMS Dashboard - Users" />
+		<put name="body" value="/user/users.jsp" />
+	</definition>
+	<definition name="user.userEdit" extends="newDef">
+		<put name="pageTitle" value="FDMS Dashboard - User Edit" />
+		<put name="body" value="/user/userEdit.jsp" />
+	</definition>
+	<definition name="acct.invoiceList" extends="newDef">
+		<put name="pageTitle" value="FDMS Dashboard - Invoice List" />
+		<put name="body" value="/acct/invoiceList.jsp" />
+	</definition>
+	<definition name="acct.invoiceConfirm" extends="newDef">
+		<put name="pageTitle" value="FDMS Dashboard - Confirm Payments" />
+		<put name="body" value="/acct/invoiceConfirmPayment.jsp" />
+	</definition>
+	<definition name="acct.invoiceEdit" extends="newDef">
+		<put name="pageTitle" value="FDMS Dashboard - Edit Invoice" />
+		<put name="body" value="/acct/invoiceEdit.jsp" />
+	</definition>
+	<definition name="acct.invoiceInvItemEdit" extends="newDef">
+		<put name="pageTitle" value="FDMS Dashboard - Invoice Item" />
+		<put name="body" value="/acct/invoiceInventoryItemEdit.jsp" />
+	</definition>
+	<definition name="acct.invoiceGLItemEdit" extends="newDef">
+		<put name="pageTitle" value="FDMS Dashboard - GL Item" />
+		<put name="body" value="/acct/invoiceGLItemEdit.jsp" />
+	</definition>
+	<definition name="acct.localeLocationEdit" extends="newDef">
+		<put name="pageTitle" value="FDMS Dashboard - Locale Location" />
+		<put name="body" value="/acct/localeLocationEdit.jsp" />
+	</definition>
+	<definition name="chart.chartList" extends="newDef">
+		<put name="pageTitle" value="FDMS Dashboard - Chart List" />
+		<put name="body" value="/chart/chartList.jsp" />
+	</definition>
+	<definition name="chart.callVolumeTab1" extends="chartDef">
+		<put name="body" value="/chart/callVolumeTab1.jsp" />
+	</definition>
+	<definition name="chart.burialCremationTab2" extends="chartDef">
+		<put name="body" value="/chart/burialCremationTab2.jsp" />
+	</definition>
+	<definition name="chart.marketingTab3" extends="chartDef">
+		<put name="body" value="/chart/marketingTab3.jsp" />
+	</definition>
+	<definition name="chart.directorTab4" extends="chartDef">
+		<put name="body" value="/chart/directorTab4.jsp" />
+	</definition>
+	<definition name="chart.localeTab5" extends="chartDef">
+		<put name="body" value="/chart/localeTab5.jsp" />
+	</definition>
+	<definition name="chart.psr1Tab6" extends="chartDef">
+		<put name="body" value="/chart/psr1Tab6.jsp" />
+	</definition>
+	<definition name="chart.radialChart" extends="newDef">
+		<put name="body" value="/chart/chartBurialCremation.jsp" />
+	</definition>
+
+</component-definitions>

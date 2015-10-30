@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="WEBFDMSEAR">
+        <wb-resource deploy-path="/" source-path="/" tag="defaultRootSource"/>
+        <dependent-module archiveName="WEBFDMSWeb.war" deploy-path="/" handle="module:/resource/WEBFDMSWeb/WEBFDMSWeb">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="WEBFDMSDashboard.war" deploy-path="/" handle="module:/resource/WEBFDMSDashboard/WEBFDMSDashboard">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="WEBSERVICESFDMS.war" deploy-path="/" handle="module:/resource/WEBSERVICESFDMS/WEBSERVICESFDMS">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="WEBFDMSEJB.jar" deploy-path="/" handle="module:/resource/WEBFDMSEJB/WEBFDMSEJB">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+    </wb-module>
+</project-modules>

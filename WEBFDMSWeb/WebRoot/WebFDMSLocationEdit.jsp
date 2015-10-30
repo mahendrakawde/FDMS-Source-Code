@@ -1,0 +1,408 @@
+<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="/WEB-INF/struts-form.tld" prefix="form" %>
+<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+<%@ taglib uri="/WEB-INF/struts-template.tld" prefix="template" %>
+<%@ taglib uri="/WEB-INF/form-errors.tld" prefix="formFieldErrors" %>
+<%@ taglib uri="http://www.webfdms.com/taglibs/alert-message" prefix="alert" %>
+<%@ taglib uri="http://www.webfdms.com/taglibs/fdms" prefix="fdms" %>
+<%@ taglib uri="/WEB-INF/companyOptions.tld" prefix="companyOption"%>
+
+<html>
+<link href="css/fdmsnet.css" type="text/css" rel="stylesheet" />
+<head>
+    <title>WebFDMS Location Edit</title>
+    <SCRIPT language="JavaScript" src="webfdmslib.js"></script>
+	<script language="JavaScript" src="jsScripts/fdms.js"></script>
+	<script language="JavaScript" type="text/javascript" src="jsScripts/formSaveWarning.js" ></script>
+	<script language="JavaScript" src="jsScripts/${sessionScope.User.localeCountry}/formatZip.js"></script>
+    <script language="JavaScript">
+        function set(target) {
+        	formConfirmOff();
+	        document.forms[0].submitbutton.value=target;
+        }
+        function calcRefund(fieldval) {
+        //alert("commission="+fieldval.value+":"+document.forms[0].commission.value);
+        // if commission > = 5% then must refund 100%
+        if (fieldval.value > 5){
+        document.forms[0].refund.value="100";
+        }
+        // if commission < 5% and >0 then must refund 95%
+        if (fieldval.value <= 5 && fieldval.value >0){
+        document.forms[0].refund.value="95";
+        }
+        // if no commission then can keep 10%, refund 90%
+        if (fieldval.value ==0) {
+        document.forms[0].refund.value="90";
+        }
+        }
+    </script>
+    <html:base />
+    <formFieldErrors:formErrors form="locationEdit"  />
+</head>
+<BODY BGCOLOR="#ffffff" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onload="formErrors();">
+ 
+<alert:alertMessage messageType="R"/>
+   <html:errors  locale="INTERNATIONAL_LOCALE"/>
+   <div align="center">
+       <html:form scope="session" action="/processLocationEdit" name="locationEdit" type="fdms.ui.struts.form.LocationEditForm">
+           <html:hidden property="submitbutton" value="error" />
+           <html:hidden property="directive" />
+           <html:hidden property="locationID" />
+           <html:hidden property="companyID" />           
+           <table width="98%" BORDER="0" CELLPADDING="0" cellspacing="0">
+           		<tr>
+                   <td align="center">
+                       <table width="100%" border="0" cellpadding="0" cellspacing="0">
+           					<tr>
+                               <td colspan="4" align="center">
+                               <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                                   <tr>
+                                       <td height="30" colspan="2" align="center" nowrap="nowrap" class="pageTitle">Location Edit</td>
+                                   </tr>
+                                   <tr>
+                                       <td align="right" nowrap="nowrap" colspan="2" >
+                                           <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                               <tr>
+                                                   <td>&nbsp;</td>
+                                                   <td width="250" align="right"><fieldset>
+                                                       <legend class="tahoma12bMaroon">Actions</legend>
+                                                       <html:image border="0" property="saveButton" alt="Save" src="images-old/buttonsave.gif" onclick="set('save');" />
+                                                       <html:image border="0" alt="Cancel" src="images-old/buttoncancel.gif" onclick="set('cancel');" />
+                                                       <html:link onclick="formConfirmOff();" forward="help">
+                                                           <html:img alt="Help" src="images-old/buttonhelp.gif" border="0"/>
+                                                       </html:link>
+                                                   </fieldset></td>
+                                               </tr>
+                                           </table>
+                                       </td>
+                                   </tr>
+                                   <tr>
+                                       <td height="40" colspan="2" class="verdana12">* Items are required for
+                                       Abbit On-Line Pre-need.. Other items required for WebFDMS
+                                       At-Need processing.</td>
+                                   </tr>
+                               </table>
+                               </td>
+                           </tr>
+                           <tr align="left">
+                               <td colspan="4" class="verdana12"><fieldset><legend class="tahoma12bBlue">Company-Wide Information</legend>
+                                   <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                       <tr valign="middle">
+                                           <td height="28" align="right" class="verdana12">* Locale:</td>
+                                           <td colspan="3">
+                                           		<html:select size="1" property="localeId" style="font-family: Arial; font-size: 10pt; width:250px" >
+													<html:options collection="locales" property="listValue" labelProperty="listLabel" />
+							                    </html:select>
+							               </td>
+                                       </tr>
+                                   </table>
+                               </fieldset></td>
+                           </tr>
+                           
+                            <tr valign="middle">
+                               <td colspan="4" align="left" class="verdana12"><fieldset><legend class="tahoma12bBlue">Location Specific Information</legend>
+                                   <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                       <tr valign="middle">
+                                           <td height="28" align="right" class="verdana12"><span class="RequiredAbbit">*</span> Location
+                                           Name: </td>
+                                           <td height="24"><html:text styleClass="fieldShadowReq" size="50" maxlength="50" property="funeralHomeName" tabindex="160" /></td>
+                                           <td height="28" align="right" class="verdana12" nowrap="nowrap">Division #: </td>
+                                           <td height="24"><html:text size="4" maxlength="4" property="division" tabindex="170" /></td>
+                                           
+                                       </tr>
+                                       <tr valign="middle">
+                                       	   <td width="180" height="28" align="right" class="verdana12"><span class="RequiredAbbit">*</span>
+                                               Manager Name:
+                                           </td>
+                                           <td>
+                                               <html:text styleClass="fieldShadowReq"size="40" maxlength="150" property="managerName" tabindex="200" />
+                                           </td>
+                                       	   <td height="28" align="right" class="verdana12" nowrap="nowrap">Location #: </td>
+                                           <td height="24"><html:text size="5" maxlength="5" property="locationNumber" tabindex="175" /></td>
+                                       </tr>
+                                        <tr valign="middle">
+                                           <td height="28" align="right" class="verdana12"><span class="RequiredAbbit">*</span>
+                                               Street1:
+                                           </td>
+                                           <td>
+                                               <html:text styleClass="fieldShadowReq"size="40" maxlength="50" property="addr1" tabindex="210" />
+                                           </td>
+                                           <td height="24" align="right" class="verdana12" nowrap="nowrap">
+                                               Standard Service Fee:
+                                           </td>
+                                           <td>
+                                               <html:text size="10" maxlength="10" property="standardServiceFee" tabindex="300" />
+                                           </td>
+                                       </tr>
+                                       <tr valign="middle">
+                                           <td height="28" align="right" class="verdana12"><span class="RequiredAbbit">*</span>
+                                               Street2: 
+                                           </td>
+                                           <td>
+                                               <html:text size="40" maxlength="50" property="addr2" tabindex="220" />
+                                           </td>
+                                           <td height="24" align="right" class="verdana12" nowrap="nowrap">
+                                               Price List Version:
+                                           </td>
+                                           <td>
+                                               <html:select styleClass="areaShadow"size="1" property="priceListVersion" tabindex="310" >
+                                                   <html:options collection="selectList" property="listValue" labelProperty="listLabel" />
+                                                   <html:options collection="priceList" property="listValue" labelProperty="listLabel" />
+                                               </html:select>
+                                           </td>
+                                       </tr>
+                                        <tr valign="middle">
+                                           <td height="28" align="right" class="verdana12"><span class="RequiredAbbit">*</span>
+                                               Street3: 
+                                           </td>
+                                           <td>
+                                               <html:text size="40" maxlength="50" property="addr3" tabindex="230" />
+                                           </td>
+                                           <td height="24" align="right" class="verdana12" nowrap="nowrap">
+                                               Cash Account:
+                                           </td>
+                                           <td>
+                                               <html:text size="15" maxlength="15" property="cashGlAcct" tabindex="320" />
+                                           </td>
+                                       </tr>
+                                        <tr valign="middle">
+                                           <td height="28" align="right" class="verdana12"><span class="RequiredAbbit">*</span>
+                                               City:
+                                           </td>
+                                           <td nowrap="nowrap">
+                                               <html:text styleClass="fieldShadowReq"size="24" maxlength="50" property="city" tabindex="240" />
+                                           </td>
+                                           <td height="24" align="right" class="verdana12" nowrap="nowrap">
+                                               AR Account:
+                                           </td>
+                                           <td>
+                                               <html:text size="15" maxlength="15" property="arGlAcct" tabindex="330" />
+                                           </td>
+                                       </tr>
+                                       <tr valign="middle">
+                                           <td height="28" align="right" class="verdana12"><span class="RequiredAbbit">*</span>
+                                               <bean:message key="app.state" locale="INTERNATIONAL_LOCALE"/>:
+                                           </td>
+                                           <td nowrap="nowrap">
+                                               <html:select styleClass="fieldShadowReq"size="1" property="state" tabindex="250" >
+                                                   <html:options collection="selectList" property="listValue" labelProperty="listLabel" />
+                                                    <html:options collection="stateList" property="listValue" labelProperty="listLabel" />
+                                               </html:select>
+                                           </td>
+                                           <td height="24" align="right" class="verdana12" nowrap="nowrap">
+                                               Undeposited Funds Account:
+                                           </td>
+                                           <td>
+                                               <html:text size="10" maxlength="10" property="undepositedFundsAcct" tabindex="340" />
+                                           </td>
+                                       </tr>
+                                       <tr valign="middle">
+                                           <td height="28" align="right" class="verdana12"><span class="RequiredAbbit">*</span>
+                                               <bean:message key="app.zip" locale="INTERNATIONAL_LOCALE"/>:
+                                           </td>
+                                           <td nowrap="nowrap">
+												<fdms:speedselect property="zipCode" 
+																  category="" 
+																  column="1" 
+																  combo="true" 
+																  size="1" 
+																  textsize="9" 
+																  maxlength="10"
+																  onkeyup="updateZipList(this.id);">
+													<fdms:targetfield column="2" property="city"/>
+													<fdms:targetfield column="4" property="state"/>
+												</fdms:speedselect>
+                                           </td>
+                                           <td height="24" align="right" class="verdana12" nowrap="nowrap">
+                                               Use This for Payments:
+                                           </td>
+                                           <td>
+                                               <html:checkbox property="useUndepositedFundsAcct" tabindex="350" />
+                                           </td>
+                                       </tr>
+                                       <tr valign="middle">
+                                           <td height="28" align="right" class="verdana12">
+                                               County:
+                                           </td>
+                                           <td nowrap="nowrap">
+                                               <html:text size="20" maxlength="30" property="county" tabindex="265" />
+                                           </td>
+                                           <td height="24" align="right" class="verdana12" nowrap="nowrap">
+                                               Finance Charge Account:
+                                           </td>
+                                           <td>
+                                               <html:text size="15" maxlength="15" property="finChrgGlAcct" tabindex="360" />
+                                           </td>
+                                       </tr>
+                                       <tr valign="middle">
+                                           <td height="28" align="right" class="verdana12"><span class="RequiredAbbit">*</span>
+                                               Phone:
+                                           </td>
+                                           <td>
+                                               <html:text styleClass="fieldShadowReq"size="16" maxlength="14" property="phoneNumber" tabindex="270" />
+                                           </td>
+                                           <td height="24" align="right" class="verdana12" nowrap="nowrap">
+                                               AP Account:
+                                           </td>
+                                           <td>
+                                               <html:text size="15" maxlength="15" property="apGlAcct" tabindex="370" />
+                                           </td>
+                                       </tr>
+                                       <tr valign="middle">
+                                           <td height="28" align="right" class="verdana12">
+                                               Other Phone:
+                                           </td>
+                                           <td>
+                                               <html:text size="15" maxlength="14" property="otherPhone" tabindex="280" />
+                                           </td>
+                                           <td height="24" align="right" class="verdana12" nowrap="nowrap">
+                                               AP Discount Account:
+                                           </td>
+                                           <td>
+                                               <html:text size="15" maxlength="15" property="discountGlAcct" tabindex="380" />
+                                           </td>
+                                       </tr>
+                                       <tr valign="middle">
+                                           <td height="28" align="right" class="verdana12">
+                                               Establishment License#
+                                           </td>
+                                           <td>
+                                               <html:text size="10" maxlength="10" property="licenseNumber" tabindex="290" />
+                                           </td>
+                                           <td height="24" align="right" class="verdana12" nowrap="nowrap">
+                                               Next Check Number:
+                                           </td>
+                                           <td>
+                                               <html:text size="10" maxlength="10" property="nextCheckNumber" tabindex="390" />
+                                           </td>
+                                       </tr>
+                                       <tr>
+                                           <td height="28" align="right" class="verdana12">
+                                               Website:
+                                           </td>
+                                           <td>
+                                               <html:text size="40" maxlength="100" property="website" tabindex="290" />
+                                           </td>
+                                           <td height="24" align="right" class="verdana12" nowrap="nowrap">
+                                               Checking Account Balance:
+                                           </td>
+                                           <td>
+                                               <html:text size="10" maxlength="10" property="checkingAcctBalance" tabindex="400" />
+                                           </td>
+                                       </tr>
+                                       <tr>
+                                           <td height="28" align="right" class="verdana12">
+                                               E-Mail Address:
+                                           </td>
+                                           <td>
+                                               <html:text size="40" maxlength="50" property="email" tabindex="290" />
+                                           </td>
+                                           <td height="24" align="right" class="verdana12" nowrap="nowrap">
+                                               Use Generic Vitals:
+                                           </td>
+                                           <td>
+                                               <html:checkbox property="genericVitals" tabindex="410" />
+                                           </td>
+                                       </tr>
+                                       <tr>
+                                           <td height="28" align="right" class="verdana12">
+                                               One Time Vendor Code:
+                                           </td>
+                                           <td>
+                                               <html:text size="15" maxlength="15" property="oneTimeVendorCode"  />
+                                           </td>
+                                           <td height="28" align="right" class="verdana12" nowrap="nowrap">
+                                               Merchandise Id:
+                                           </td>
+                                           <td>
+                                               <html:text size="15" maxlength="15" property="merchandiseId"  />
+                                           </td>
+                                       </tr>
+                                       <tr>
+                                           <td height="28" align="right" class="verdana12">
+                                               Monthly Interest Rate %:
+                                           </td>
+                                           <td>
+                                               <html:text size="10" maxlength="10" property="monthlyInterestRate"  />
+                                           </td>
+                                           <td height="28" align="right" class="verdana12" nowrap="nowrap">
+                                               Apply Finance Charge:
+                                           </td>
+                                           <td>
+                                               <html:checkbox property="turnOnApplyFinanceCharge" tabindex="500" />
+                                           </td>
+                                       </tr>
+                                       <%--  
+                                       	<companyOption:enabled optionValue="<%= String.valueOf(com.aldorassist.webfdms.model.CompanyOptionsDTO.COMPANY_OPTION_TURN_ON_EREGISTERBOOK) %>">
+                                        <tr>
+                                           
+                                          <td height="28" align="right" class="verdana12" nowrap="nowrap">
+                                               E Register Target Page:
+                                           </td>
+                                           <td  >
+                                               <html:text size="40" maxlength="100" property="registerTargetPage"  />
+                                           </td>
+                                           <td height="28" align="right" class="verdana12">
+                                              
+                                           </td>
+                                           <td >
+                                              
+                                           </td>
+                                       </tr>
+                                       </companyOption:enabled>
+                                       --%>
+                                       	<companyOption:enabled optionValue="<%= String.valueOf(com.aldorassist.webfdms.model.CompanyOptionsDTO.COMPANY_OPTION_TURN_ON_FUNERALSYNC) %>">
+                                        <tr>
+                                           <td height="28" align="right" class="verdana12">
+                                               FuneralSync Location ID:
+                                           </td>
+                                           <td colspan="3">
+                                               <html:text size="40" maxlength="36" property="funeralSyncLocationId"  />
+                                           </td>
+                                           
+                                       </tr>
+                                       </companyOption:enabled>
+                           </table></fieldset>
+                               </td>
+                           </tr>
+                           <tr>
+                               <td colspan="4" align="center"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                   <tr>
+                                       <td>&nbsp;</td>
+                                       <td width="250" align="right"><fieldset>
+                                           <legend class="tahoma12bMaroon">Actions</legend>
+                                           <html:image border="0" property="saveButton" alt="Save" src="images-old/buttonsave.gif" onclick="set('save');" />
+                                           <html:image border="0" alt="Cancel" src="images-old/buttoncancel.gif" onclick="set('cancel');" />
+                                           <html:link onclick="formConfirmOff();" forward="help">
+                                               <html:img alt="Help" src="images-old/buttonhelp.gif" border="0"/>
+                                           </html:link>
+                                       </fieldset>
+                                       </td>
+                                   </tr>
+                               </table>
+                               </td>
+                           </tr>
+                       </table>
+                   </td>
+               </tr>
+			   <tr>
+                   <td align="center">
+                       <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                           <tr>
+                               <td colspan="4" align="center">&nbsp;
+                               </td>
+                           </tr>
+                       </table>
+                   </td>
+               </tr>
+
+           </table>
+<script language="JavaScript" type="text/javascript">
+    populateArrays();
+    formConfirmOn();
+</script>	
+       </html:form>
+   </div>
+</body>
+</html>

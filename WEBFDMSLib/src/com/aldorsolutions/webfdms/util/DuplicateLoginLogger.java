@@ -1,0 +1,80 @@
+package com.aldorsolutions.webfdms.util;
+
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+import org.apache.log4j.Logger;
+
+import com.aldorsolutions.webfdms.admin.user.model.ActionClassLogDTO;
+import com.aldorsolutions.webfdms.admin.user.model.DuplicateLoginLogDTO;
+
+
+public final class DuplicateLoginLogger extends DAO {
+    
+    private Logger logger = Logger.getLogger(LoginLogger.class.getName());
+    
+    /** Creates a new instance of LoginLogger */
+    public DuplicateLoginLogger(int userID) {
+    	this.auditDTO.setUserId(userID);
+    }
+    /*
+    public LoginLogger() {
+    	super ( );
+    }
+    */
+    public void logDuplicateLogin(
+        int userID,	
+        String userName,
+        long loginTime
+        ) {
+          
+    	DuplicateLoginLogDTO duplicateLoginLog = new DuplicateLoginLogDTO ();
+    	
+    	duplicateLoginLog.setUserID(userID);
+    	duplicateLoginLog.setUserName(userName);
+    	duplicateLoginLog.setLoginTime(loginTime);
+    	
+    	logDuplicateLogin ( duplicateLoginLog );
+    	
+    }
+    
+
+    public void logDuplicateLogin( DuplicateLoginLogDTO duplicateLoginLog ) {
+            
+        try {
+        	logger.info("In " + this.getClass() + " " + Thread.currentThread().getStackTrace()[1].getMethodName() + " is been called");
+            StringBuffer sql = new StringBuffer();
+            sql.append("INSERT INTO duplicateloginlog (userID, userName, loginTime) ");
+            sql.append("VALUES (?,?,?)");
+            
+            makeConnection(DAO.DB_FDMSUSERS);
+            int col = 0;
+            statement = conn.prepareStatement(sql.toString(), Statement.RETURN_GENERATED_KEYS);
+            statement.setInt(++col, duplicateLoginLog.getUserID());
+            statement.setString(++col, duplicateLoginLog.getUserName());
+            statement.setTimestamp(++col, new java.sql.Timestamp(duplicateLoginLog.getLoginTime()));
+            
+            statement.executeUpdate();
+            
+            //insertAudit(actionClassLog);
+           
+            ResultSet rs = statement.getGeneratedKeys();
+            if (rs.next()) {
+            	duplicateLoginLog.setLogID(rs.getInt(1));
+            }
+     
+        } catch (SQLException e) {
+            logger.error("SQLException in logActionclass() : ", e);
+        } catch (Exception e) {
+            logger.error("Exception in logActionClass() : ", e);
+        } finally {
+            closeConnection();
+        }
+
+    }
+    
+    
+ 
+}

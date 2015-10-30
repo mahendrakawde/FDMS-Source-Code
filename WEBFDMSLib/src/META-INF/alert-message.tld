@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taglib>
+  <tlib-version>1.0</tlib-version>
+  <short-name>alert-message</short-name>
+  <uri>http://www.webfdms.com/taglibs/alert-message</uri>
+
+  <tag>
+    <name>alertMessage</name>
+    <tag-class>fdms.ui.tags.AlertMessage</tag-class>
+    <body-content>JSP</body-content>
+    <attribute>
+      <name>messageType</name>
+      <required>true</required>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <name>backgroundColor</name>
+      <required>false</required>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <name>fontColor</name>
+      <required>false</required>
+      <type>java.lang.String</type>
+    </attribute>
+  </tag>
+  <jsp-version>1.2</jsp-version>
+
+</taglib>

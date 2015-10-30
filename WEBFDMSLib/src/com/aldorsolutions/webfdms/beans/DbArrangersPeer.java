@@ -1,0 +1,150 @@
+package com.aldorsolutions.webfdms.beans;
+
+import java.sql.Statement;
+
+import org.apache.log4j.Logger;
+
+/**
+ * DbArrangersPeer supplies SQL for Persistent Class
+ * Creation date: (12/30/2001 4:13:09 PM)
+ * @author: 
+ */
+public class DbArrangersPeer extends com.aldorsolutions.webfdms.database.DatabasePeer {
+
+    private Logger logger = Logger.getLogger(DbPnChargePeer.class.getName());
+	static public final String IDENTITY					= "Identity";
+	static public final String NAME						= "Name";
+	static public final String LICENSENO				= "LicenseNumber";
+	static public final String ARRANGERNO				= "ArrangerNumber";
+	static public final String SSN						= "SocSecNo";
+	static public final String LOCALE					= "Locale";
+	static public final String DELETECODE				= "DeleteCode";
+	static public final String PNLICENSENUMBER			= "PnLicenseNumber";
+	static public final String BURIALLICENSENUMBER		= "BurialLicenseNumber";
+	static public final String EMBALMERLICENSENUMBER	= "EmbalmerLicenseNumber";
+	static public final String ISCOUNSELOR				= "IsCounselor";
+	static public final String COMMISSIONLEVEL			= "CommissionLevel";
+	static public final String ISMANAGERFORCOMMISSION		= "IsManagerForCommission";
+	static public final String MANAGERCOMMISSIONLEVEL	= "ManagerCommissionLevel";
+	
+	
+	/**
+ * getInsertSql method comment.
+ */
+protected java.sql.PreparedStatement getInsertSql(com.aldorsolutions.webfdms.database.DatabaseTransaction t, com.aldorsolutions.webfdms.database.Persistent p) throws com.aldorsolutions.webfdms.database.PersistenceException {
+		java.sql.Connection connection = null;
+		java.sql.PreparedStatement pstmt = null;
+		try {
+			DbArrangers rec=(DbArrangers)p;
+			connection = t.getConnection();
+			pstmt = connection.prepareStatement(
+			"INSERT INTO arrangers ("+
+				NAME	+","+
+				LICENSENO	+","+
+				ARRANGERNO	+","+
+				SSN	+","+
+				LOCALE	+","+
+				PNLICENSENUMBER +","+
+				BURIALLICENSENUMBER +","+
+				EMBALMERLICENSENUMBER +","+
+				ISCOUNSELOR +","+
+				COMMISSIONLEVEL +","+
+				ISMANAGERFORCOMMISSION +","+
+				MANAGERCOMMISSIONLEVEL +
+				") VALUES (?,?,?,?,?,?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS
+			);		
+			pstmt.setString(1, rec.getName());	
+			pstmt.setString(2, rec.getLicenseNumber());
+			pstmt.setShort (3, rec.getArrangerNumber());
+			pstmt.setString(4, rec.getSocialSecurityNo());
+			pstmt.setInt   (5, rec.getLocale());
+		    pstmt.setString(6, rec.getPnLicenseNumber());
+		    pstmt.setString(7, rec.getBurialLicenseNumber());
+		    pstmt.setString(8, rec.getEmbalmerLicenseNumber());
+		    pstmt.setInt   (9, (rec.getIsCounselor()?1:0));
+		    pstmt.setInt   (10, rec.getCommissionLevel());
+		    pstmt.setInt   (11, (rec.isManagerForCommission()?1:0));
+		    pstmt.setInt   (12, rec.getManagerCommissionLevel());
+		    return pstmt;
+		}
+		catch (java.sql.SQLException e){
+			throw new com.aldorsolutions.webfdms.database.PersistenceException("DbArrangersPeer.Insert:"+e.getMessage(),e);
+		}
+}
+/**
+ * getRemoveSql method comment.
+ */
+protected java.sql.PreparedStatement getRemoveSql(com.aldorsolutions.webfdms.database.DatabaseTransaction t, com.aldorsolutions.webfdms.database.Persistent p) throws com.aldorsolutions.webfdms.database.PersistenceException {
+		java.sql.PreparedStatement pstmt=null;
+		java.sql.Connection connection = null;
+		try {
+			connection = t.getConnection();
+			//pstmt = connection.prepareStatement("DELETE FROM arrangers WHERE Identity=?");
+			//pstmt.setInt(1,p.getId());
+			pstmt = connection.prepareStatement(
+			"UPDATE arrangers SET DeleteCode=? where Identity=?");
+			pstmt.setString(1, "D");	
+			pstmt.setInt(2,p.getId());
+			return pstmt;
+		}
+		catch (java.sql.SQLException e){
+			throw new com.aldorsolutions.webfdms.database.PersistenceException("DbArrangersPeer.Remove",e);
+		}
+}
+/**
+ * getRestoreSql method comment.
+ */
+protected String getRestoreSql(com.aldorsolutions.webfdms.database.Persistent p) {
+		return 
+		"SELECT * FROM arrangers WHERE Identity = "
+		+ p.getId();
+}
+/**
+ * getUpdateSql method comment.
+ */
+protected java.sql.PreparedStatement getUpdateSql(com.aldorsolutions.webfdms.database.DatabaseTransaction t, com.aldorsolutions.webfdms.database.Persistent p) throws com.aldorsolutions.webfdms.database.PersistenceException {
+		java.sql.Connection connection = null;
+		java.sql.PreparedStatement pstmt = null;
+		try {
+			DbArrangers rec=(DbArrangers)p;
+			connection = t.getConnection();
+			pstmt = connection.prepareStatement(
+			"UPDATE arrangers SET "+
+				NAME	+"=?,"+
+				LICENSENO	+"=?,"+
+				ARRANGERNO	+"=?,"+
+				SSN	+"=?,"+
+				LOCALE	+"=?,"+
+				PNLICENSENUMBER +"=?,"+
+				BURIALLICENSENUMBER +"=?,"+
+				EMBALMERLICENSENUMBER +"=?,"+
+				ISCOUNSELOR +"=?,"+
+				DELETECODE +"=?,"+
+				COMMISSIONLEVEL +"=?,"+
+				ISMANAGERFORCOMMISSION +"=?,"+
+				MANAGERCOMMISSIONLEVEL +"=? "+
+				" WHERE "+IDENTITY+" = ?"
+			);		
+			pstmt.setString(1, rec.getName());	
+			pstmt.setString(2, rec.getLicenseNumber());
+			pstmt.setShort (3, rec.getArrangerNumber());
+			pstmt.setString(4, rec.getSocialSecurityNo());
+			pstmt.setInt   (5, rec.getLocale());
+		    pstmt.setString(6, rec.getPnLicenseNumber());
+			pstmt.setString(7, rec.getBurialLicenseNumber());
+		    pstmt.setString(8, rec.getEmbalmerLicenseNumber());
+		    pstmt.setInt   (9, (rec.getIsCounselor()?1:0));
+		    pstmt.setString(10, rec.getDeleteCode());
+		    pstmt.setInt   (11, rec.getCommissionLevel());
+		    pstmt.setInt   (12, (rec.isManagerForCommission()?1:0));
+		    pstmt.setInt   (13, rec.getManagerCommissionLevel());
+		    pstmt.setInt   (14, rec.getId());
+		    
+		    logger.debug(pstmt.toString());
+		    return pstmt;
+		}
+		catch (java.sql.SQLException e){
+			throw new com.aldorsolutions.webfdms.database.PersistenceException("DbArrangersPeer.Update:"+e.getMessage(),e);
+		}
+}
+}

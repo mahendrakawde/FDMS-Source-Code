@@ -1,0 +1,109 @@
+package fdms.ui.struts.action;
+
+import java.sql.Date;
+import java.util.ArrayList;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.log4j.Logger;
+import org.apache.struts.action.Action;
+import org.apache.struts.action.ActionError;
+import org.apache.struts.action.ActionErrors;
+import org.apache.struts.action.ActionForm;
+import org.apache.struts.action.ActionForward;
+import org.apache.struts.action.ActionMapping;
+
+import com.aldorassist.webfdms.model.LocaleDTO;
+import com.aldorsolutions.webfdms.accounting.bean.AccountingInterfaceManagerBean;
+import com.aldorsolutions.webfdms.beans.DbUser;
+import com.aldorsolutions.webfdms.beans.DbUserSession;
+import com.aldorsolutions.webfdms.beans.FdmsDb;
+import com.aldorsolutions.webfdms.common.Constants;
+import com.aldorsolutions.webfdms.util.AccountingInterfaceUtil;
+import com.aldorsolutions.webfdms.util.FormatDate;
+import com.aldorsolutions.webfdms.util.FormatNumber;
+import com.aldorsolutions.webfdms.util.SessionHelpers;
+
+import fdms.ui.struts.form.AcctIntfForm;
+
+
+public class ProcessAcctInterface extends Action {
+
+    private Logger logger = Logger.getLogger(ProcessAcctInterface.class.getName());
+
+    public ActionForward execute(ActionMapping mapping,
+                                        ActionForm actionForm,
+                                        HttpServletRequest request, HttpServletResponse response)
+                                        throws javax.servlet.ServletException, java.io.IOException {
+
+        AcctIntfForm form = (AcctIntfForm) actionForm;
+        ActionErrors errors = new ActionErrors();
+        DbUserSession sessionUser = SessionHelpers.getUserSession(request);
+        LocaleDTO alocale = null;
+
+        String directive = form.getSubmitbutton();
+        // AppLog.trace("ProcessAcctInterface. action:"+directive);
+        try {
+            logger.debug("\n\ndirective is " + form.getSubmitbutton() + "\n\n");
+            
+            if (directive.equalsIgnoreCase("DeleteFile")){
+                // AppLog.trace("ProcessAcctInterface deleting file:"+form.getRemoveline());
+                java.io.File f = new java.io.File(AccountingInterfaceUtil.getFileBaseDir((DbUser)sessionUser)+form.getRemoveline());
+                if (!f.delete()){
+                    // AppLog.error("Unable to delete file: "+f.getAbsolutePath());
+                    errors.add(ActionErrors.GLOBAL_ERROR, new ActionError("error.cannotdelete",f.getAbsolutePath()));
+                }
+            } else if (directive.equalsIgnoreCase("new")){
+            	alocale = FdmsDb.getInstance().getLocale(sessionUser.getDbLookup(),sessionUser.getRegion());
+                // AppLog.trace("ProcessAcctInterface create new interface file. Location:"+form.getLocationSelected());
+                int loc = FormatNumber.parseInteger(form.getLocationSelected());
+                Date dateFrom = parseDate ( form.getDateFrom() );
+                Date dateTo = parseDate ( form.getDateTo() ); 
+                Date dateMonthEnd = parseDate (form.getMonthEndDate());
+                boolean companyWideFile = form.isGenFileForCompany();
+
+                if (alocale.getInterfaceType() == Constants.INTERFACE_PEOPLESOFT_KEYSTONE && dateMonthEnd == null) {
+                	errors.add(ActionErrors.GLOBAL_ERROR, new ActionError("error.date.monthEndDate"));
+                	ArrayList <String> formErrors = new ArrayList <String> ();
+                	formErrors.add("monthEndDate");
+                	request.setAttribute("formErrors", formErrors);
+      		    } else {
+      		      	AccountingInterfaceManagerBean acctInterfaceManagerBean = new AccountingInterfaceManagerBean();
+      		      	acctInterfaceManagerBean.createAccountingInterface(alocale.getInterfaceType(), 
+      		      					(DbUser) sessionUser, loc, errors, dateFrom, dateTo, dateMonthEnd, companyWideFile);
+      		      }
+            } else {
+                logger.error("ProcessAcctInterface unrecognized directive:"+directive);
+            }
+            // clean up
+            //t.save();
+        } catch(Exception pe) {
+            logger.error("Error in doPerform() : ", pe);
+            errors.add(ActionErrors.GLOBAL_ERROR, new ActionError("error.GeneralException",pe.getMessage()));
+        } 
+
+        if( !errors.isEmpty() )  {
+            saveErrors(request, errors );
+        }
+        
+        return mapping.findForward("showAcctInterfaceGlobal");
+    }
+    
+    
+    private Date parseDate ( String dateStr ) {
+    	
+    	Date returnDate = null;
+    	
+    	try {
+    		returnDate = new Date ( FormatDate.convertToDate(dateStr).getTime() );
+    	}
+    	catch ( Exception pe ) {
+    		
+    	}
+    	
+    	return ( returnDate );    	
+    	
+    }
+    
+}

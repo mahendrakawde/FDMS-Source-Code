@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE attributes PUBLIC "-//NetBeans//DTD DefaultAttributes 1.0//EN" "http://www.netbeans.org/dtds/attributes-1_0.dtd">
+<attributes version="1.0">
+    <fileobject name="ComposeObituary.java">
+        <attr name="class_dependency_fdms.ui.struts.action.ComposeObituaryBase" stringvalue="ComposeObituary"/>
+    </fileobject>
+    <fileobject name="ProcessFinancialAddMerchandise.java">
+        <attr name="class_dependency_fdms.ui.struts.action.ProcessFinancialAddMerchandiseBase" stringvalue="ProcessFinancialAddMerchandise"/>
+    </fileobject>
+    <fileobject name="ProcessFirstCallInformation.java">
+        <attr name="class_dependency_fdms.ui.struts.action.ProcessFirstCallInformationBase" stringvalue="ProcessFirstCallInformation"/>
+    </fileobject>
+    <fileobject name="ProcessFormEdit.java">
+        <attr name="class_dependency_fdms.ui.struts.action.ProcessFormEditBase" stringvalue="ProcessFormEdit"/>
+    </fileobject>
+    <fileobject name="ProcessInsertPackage.java">
+        <attr name="class_dependency_fdms.ui.struts.action.ProcessInsertPackageBase" stringvalue="ProcessInsertPackage"/>
+    </fileobject>
+    <fileobject name="ProcessLogon.java">
+        <attr name="class_dependency_fdms.ui.struts.action.ProcessLogonBase" stringvalue="ProcessLogon"/>
+    </fileobject>
+    <fileobject name="ProcessPallBearers.java">
+        <attr name="class_dependency_fdms.ui.struts.action.ProcessPallBearersBase" stringvalue="ProcessPallBearers"/>
+    </fileobject>
+    <fileobject name="ProcessPreNeed.java">
+        <attr name="class_dependency_fdms.ui.struts.action.ProcessPreNeedBase" stringvalue="ProcessPreNeed"/>
+    </fileobject>
+    <fileobject name="ProcessServices.java">
+        <attr name="class_dependency_fdms.ui.struts.action.ProcessServicesBase" stringvalue="ProcessServices"/>
+    </fileobject>
+    <fileobject name="ProcessVABenefits.java">
+        <attr name="class_dependency_fdms.ui.struts.action.ProcessVABenefitsBase" stringvalue="ProcessVABenefits"/>
+    </fileobject>
+    <fileobject name="ProcessVAHeadstone.java">
+        <attr name="class_dependency_fdms.ui.struts.action.ProcessVAHeadstoneBase" stringvalue="ProcessVAHeadstone"/>
+    </fileobject>
+    <fileobject name="ProcessVaFlag.java">
+        <attr name="class_dependency_fdms.ui.struts.action.ProcessVaFlagBase" stringvalue="ProcessVaFlag"/>
+    </fileobject>
+    <fileobject name="ProcessVitals.java">
+        <attr name="class_dependency_fdms.ui.struts.action.ProcessVitalsBase" stringvalue="ProcessVitals"/>
+    </fileobject>
+    <fileobject name="SaveCheckListAction.java">
+        <attr name="class_dependency_fdms.ui.struts.action.SaveCheckListActionBase" stringvalue="SaveCheckListAction"/>
+    </fileobject>
+    <fileobject name="SaveObituary.java">
+        <attr name="class_dependency_fdms.ui.struts.action.SaveObituaryBase" stringvalue="SaveObituary"/>
+    </fileobject>
+    <fileobject name="ShowInventoryCatalog.java">
+        <attr name="class_dependency_fdms.ui.struts.action.ShowInventoryCatalogBase" stringvalue="ShowInventoryCatalog"/>
+    </fileobject>
+    <fileobject name="ShowPayment.java">
+        <attr name="class_dependency_fdms.ui.struts.action.ShowPaymentBase" stringvalue="ShowPayment"/>
+    </fileobject>
+    <fileobject name="ShowVABenefits.java">
+        <attr name="class_dependency_fdms.ui.struts.action.ShowVABenefitsBase" stringvalue="ShowVABenefits"/>
+    </fileobject>
+    <fileobject name="ShowVAFlag.java">
+        <attr name="class_dependency_fdms.ui.struts.action.ShowVAFlagBase" stringvalue="ShowVAFlag"/>
+    </fileobject>
+    <fileobject name="ShowVitals.java">
+        <attr name="class_dependency_fdms.ui.struts.action.ShowVitalsBase" stringvalue="ShowVitals"/>
+    </fileobject>
+</attributes>

@@ -1,0 +1,610 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+	<data-sources />
+	<form-beans>
+		<form-bean name="dashboardLoginForm"
+			type="com.aldorsolutions.dashboard.struts.form.DashboardLoginForm" />
+		<form-bean name="mainForm"
+			type="com.aldorsolutions.dashboard.struts.form.MainForm" />
+		<form-bean name="acctCheckListingForm"
+			type="com.aldorsolutions.dashboard.struts.form.acct.AcctCheckListingForm" />
+		<form-bean name="acctCheckApprovalEditForm"
+			type="com.aldorsolutions.dashboard.struts.form.acct.AcctCheckApprovalEditForm" />
+		<form-bean name="reportsForm"
+			type="com.aldorsolutions.dashboard.struts.form.ReportsForm" />
+		<form-bean name="defaultLocaleLocationForm"
+			type="com.aldorsolutions.dashboard.struts.form.DefaultLocaleLocationForm" />
+		<form-bean name="userEditForm"
+			type="com.aldorsolutions.dashboard.struts.form.users.UserEditForm" />
+		<form-bean name="sendSMSForm"
+			type="com.aldorsolutions.dashboard.struts.form.SendSMSForm" />
+		<form-bean name="sendTextToSpeechForm"
+			type="com.aldorsolutions.dashboard.struts.form.SendTextToSpeechForm" />
+		<form-bean name="userListingForm"
+			type="com.aldorsolutions.dashboard.struts.form.users.UserListingForm" />
+		<form-bean name="acctLocationListForm"
+			type="com.aldorsolutions.dashboard.struts.form.acct.AcctLocationListForm" />
+		<form-bean name="acctLocationEditForm"
+			type="com.aldorsolutions.dashboard.struts.form.acct.AcctLocationEditForm" />
+		<form-bean name="acctLocationEmailForm"
+			type="com.aldorsolutions.dashboard.struts.form.acct.AcctLocationEmailForm" />
+		<form-bean name="lostPasswordForm"
+			type="com.aldorsolutions.dashboard.struts.form.LostPasswordForm" />
+		<form-bean name="acctListVendorsForm"
+			type="com.aldorsolutions.dashboard.struts.form.acct.AcctListVendorsForm" />
+		<form-bean name="acctListVendorsSearchForm"
+			type="com.aldorsolutions.dashboard.struts.form.acct.AcctListVendorsSearchForm" />
+		<form-bean name="reportForm"
+			type="com.aldorsolutions.dashboard.struts.form.report.ReportForm" />
+		<form-bean name="reportSchedulingForm"
+			type="com.aldorsolutions.dashboard.struts.form.report.ReportSchedulingForm" />
+		<form-bean name="reportSchedulingListForm"
+			type="com.aldorsolutions.dashboard.struts.form.report.ReportSchedulingListForm" />
+		<form-bean name="updateRptScheForm"
+			type="com.aldorsolutions.dashboard.struts.form.report.UpdateRptScheForm" />
+		<form-bean name="reportPrintedListForm"
+			type="com.aldorsolutions.dashboard.struts.form.report.ReportPrintedListForm" />
+		<form-bean name="smartFileForm"
+			type="com.aldorsolutions.dashboard.struts.form.report.SmartFileForm" />
+		<form-bean name="dashAcctIntfForm"
+			type="com.aldorsolutions.dashboard.struts.form.report.DashAcctIntfForm" />
+		<form-bean name="underDevelopmentForm"
+			type="com.aldorsolutions.dashboard.struts.form.report.UnderDevelopmentForm" />
+
+		<form-bean name="smsTTVRecipientForm"
+			type="com.aldorsolutions.dashboard.struts.form.sms.SMSTTVRecipientForm" />
+		<form-bean name="smsTTVListForm"
+			type="com.aldorsolutions.dashboard.struts.form.sms.SMSTTVListForm" />
+		<form-bean name="smsTTVEditForm"
+			type="com.aldorsolutions.dashboard.struts.form.sms.SMSTTVEditForm" />
+		<form-bean name="recipientForm"
+			type="com.aldorsolutions.dashboard.struts.form.sms.RecipientForm" />
+
+		<form-bean name="acctEditVendorsForm"
+			type="com.aldorsolutions.dashboard.struts.form.acct.AcctEditVendorsForm" />
+		<form-bean name="vendorLocEditForm"
+			type="com.aldorsolutions.dashboard.struts.form.acct.VendorLocEditForm" />
+		<form-bean name="vendorLocRemoveForm"
+			type="com.aldorsolutions.dashboard.struts.form.acct.VendorLocRemoveForm" />
+		<form-bean name="invoiceListForm"
+			type="com.aldorsolutions.dashboard.struts.form.acct.InvoiceListForm" />
+		<form-bean name="invoiceConfirmPaymentForm"
+			type="com.aldorsolutions.dashboard.struts.form.acct.InvoiceConfirmPaymentForm" />
+		<form-bean name="invoiceEditDisplayForm"
+			type="com.aldorsolutions.dashboard.struts.form.acct.InvoiceEditDisplayForm" />
+		<form-bean name="invoiceInvItemEditForm"
+			type="com.aldorsolutions.dashboard.struts.form.acct.InvoiceInvItemEditForm" />
+		<form-bean name="localeLocationEditForm"
+			type="com.aldorsolutions.dashboard.struts.form.acct.LocaleLocationEditForm" />
+		<form-bean name="vendorForm"
+			type="com.aldorsolutions.dashboard.struts.form.acct.VendorForm" />
+		<form-bean name="chartListForm"
+			type="com.aldorsolutions.dashboard.struts.form.chart.ChartListForm" />
+		<form-bean name="burailCremationChartForm"
+			type="com.aldorsolutions.dashboard.struts.form.chart.BurailCremationChartForm" />
+		<form-bean name="callVolumeTab1From"	
+			type="com.aldorsolutions.dashboard.struts.form.chart.CallVolumeTab1Form" />
+		<form-bean name="burialCremationTab2Form"	
+			type="com.aldorsolutions.dashboard.struts.form.chart.BurialCremationTab2Form" />
+		<form-bean name="marketingTab3Form"	
+			type="com.aldorsolutions.dashboard.struts.form.chart.MarketingTab3Form" />
+		<form-bean name="directorTab4Form"	
+			type="com.aldorsolutions.dashboard.struts.form.chart.DirectorTab4Form" />
+		<form-bean name="localeTab5Form"	
+			type="com.aldorsolutions.dashboard.struts.form.chart.LocaleTab5Form" />
+		<form-bean name="psr1Tab6Form"	
+			type="com.aldorsolutions.dashboard.struts.form.chart.PSR1Tab6Form" />
+				
+	</form-beans>
+
+	<global-exceptions />
+	<global-forwards>
+		<forward name="MainPage" path="/showMain.do" redirect="true" />
+		<forward name="ReportPage" path="/showReport.do" redirect="true" />
+		<forward name="dashboardLogin" path="/login.jsp" />
+		<forward name="showRptSche" path="/showReportScheduling.do"
+			redirect="true" />
+		<forward name="smsTTVEdit" path="/smsTTVEditSchedule.do"
+			redirect="true" />
+	</global-forwards>
+
+	<action-mappings>
+
+		<action attribute="DashboardLogin" input="/login.jsp" name="dashboardLoginForm"
+			path="/dashboardLogin" scope="request" validate="true"
+			type="com.aldorsolutions.dashboard.struts.action.DashboardLoginAction" />
+
+		<action path="/showMain"
+			type="com.aldorsolutions.dashboard.struts.action.ShowMainAction"
+			name="mainForm">
+			<forward name="failed" path="/login.jsp" />
+			<forward name="success" path="dashboard.home" />
+		</action>
+
+		<action path="/showReport"
+			type="com.aldorsolutions.dashboard.struts.action.report.ShowReportAction"
+			name="reportForm" scope="session">
+			<forward name="failed" path="/login.jsp" />
+			<forward name="success" path="dashboard.report" />
+		</action>
+		<action attribute="reportForm" input="dashboard.report" name="reportForm"
+			path="/printReport" scope="session"
+			type="com.aldorsolutions.dashboard.struts.action.report.PrintReportAction">
+			<forward name="localeChange" path="dashboard.report" />
+		</action>
+
+		<action path="/showReportScheduling"
+			type="com.aldorsolutions.dashboard.struts.action.report.ShowReportSchedulingAction"
+			name="reportSchedulingForm" scope="request">
+			<forward name="failed" path="/login.jsp" />
+			<forward name="success" path="dashboard.reportScheduling" />
+		</action>
+		<action attribute="reportSchedulingForm" input="dashboard.reportScheduling"
+			name="reportSchedulingForm" path="/reportSchedulingList" scope="session"
+			type="com.aldorsolutions.dashboard.struts.action.report.ShowReportSchedulingListAction">
+			<forward name="success" path="dashboard.reportSchedulingList" />
+		</action>
+		<action attribute="reportSchedulingListForm" input="dashboard.reportSchedulingList"
+			name="reportSchedulingListForm" path="/deleteRptSche" scope="request"
+			type="com.aldorsolutions.dashboard.struts.action.report.DeleteRptScheAction">
+			<forward name="success" path="/showReportScheduling" />
+		</action>
+		<action attribute="updateRptScheForm" input="dashboard.reportSchedulingList"
+			name="updateRptScheForm" path="/updateRptSche" scope="request"
+			type="com.aldorsolutions.dashboard.struts.action.report.UpdateRptScheAction">
+			<forward name="success" path="dashboard.updateRptSche" />
+		</action>
+		<action attribute="updateRptScheForm" input="dashboard.updateRptSche"
+			name="updateRptScheForm" path="/processUpdateRptSche" scope="request"
+			type="com.aldorsolutions.dashboard.struts.action.report.ProcessUpdateRptScheAction">
+			<forward name="success" path="/reportSchedulingList.do?direction=future" />
+		</action>
+
+		<action attribute="reportPrintedListForm" name="reportPrintedListForm"
+			path="/showReportPrintedList" scope="session"
+			type="com.aldorsolutions.dashboard.struts.action.report.ShowReportPrintedListAction">
+			<forward name="success" path="dashboard.reportPrintedList" />
+		</action>
+
+
+
+		<action attribute="reportsForm" name="reportsForm" path="/reports"
+			scope="request" type="com.aldorsolutions.dashboard.struts.action.ReportsAction">
+			<forward name="reportsJSP" path="dashboard.reports" />
+
+		</action>
+
+		<action attribute="acctCheckListingForm" input="acct.checkList"
+			name="acctCheckListingForm" path="/acctCheckListing"
+			type="com.aldorsolutions.dashboard.struts.action.acct.AcctCheckListingAction">
+			<forward name="failed" path="/MainPage.do" />
+			<forward name="success" path="acct.checkList" />
+		</action>
+		<action attribute="acctCheckApprovalEditForm" input="acct.checkEdit"
+			name="acctCheckApprovalEditForm" path="/acctCheckApprovalEdit" scope="request"
+			type="com.aldorsolutions.dashboard.struts.action.acct.AcctCheckApprovalEditAction">
+			<forward name="failed" path="acct.checkEdit" />
+			<forward name="checkList" path="/acctCheckListing.do" />
+			<forward name="success" path="acct.checkEdit" />
+		</action>
+		<action attribute="acctCheckApprovalEditForm" input="acct.checkEdit"
+			name="acctCheckApprovalEditForm" path="/acctCheckApprovalSave" scope="request"
+			type="com.aldorsolutions.dashboard.struts.action.acct.AcctCheckApprovalSaveAction">
+			<forward name="failed" path="acct.checkEdit" />
+			<forward name="checkList" path="/acctCheckListing.do"
+				redirect="true" />
+
+		</action>
+		<action attribute="userEditForm" input="user.userEdit" name="userEditForm"
+			path="/userEdit" scope="request"
+			type="com.aldorsolutions.dashboard.struts.action.users.UserEditAction">
+			<forward name="failed" path="/userList.do" />
+			<forward name="userList" path="/userList.do" redirect="true" />
+			<forward name="success" path="user.userEdit" />
+		</action>
+
+		<action attribute="userEditForm" input="user.userEdit" name="userEditForm"
+			path="/userSave" scope="request"
+			type="com.aldorsolutions.dashboard.struts.action.users.UserSaveAction">
+			<forward name="failed" path="user.userEdit" />
+			<forward name="userList" path="/userList.do" redirect="true" />
+			<forward name="success" path="/userList.do" redirect="true" />
+		</action>
+
+		<action attribute="userListingForm" input="user.userList" name="userListingForm"
+			path="/userList" scope="request"
+			type="com.aldorsolutions.dashboard.struts.action.users.UserListAction">
+			<forward name="failed" path="user.userList" />
+			<forward name="userEdit" path="/userEdit.do" />
+			<forward name="success" path="user.userList" />
+		</action>
+
+		<action attribute="userEditForm" name="userEditForm" path="/myAccount"
+			scope="session"
+			type="com.aldorsolutions.dashboard.struts.action.users.MyAccountEditAction"
+			validate="false">
+			<forward name="success" path="user.myAccount" />
+		</action>
+
+		<action attribute="sendSMSForm" name="sendSMSForm" path="/sendSMS"
+			scope="request" type="com.aldorsolutions.dashboard.struts.action.SendSMSAction"
+			validate="false">
+			<forward name="success" path="sms.sendSMS" />
+		</action>
+		<action attribute="sendTextToSpeechForm" name="sendTextToSpeechForm"
+			path="/sendTextToSpeech" scope="request"
+			type="com.aldorsolutions.dashboard.struts.action.SendTextToSpeechAction"
+			validate="false">
+			<forward name="success" path="sms.sendTextToSpeech" />
+		</action>
+		<action attribute="sendSMSForm" name="sendSMSForm" path="/startSMSScheduler"
+			scope="request" type="com.aldorsolutions.dashboard.struts.action.StartSMSScheduler"
+			validate="false">
+			<forward name="success" path="/showMain.do" />
+		</action>
+		<action attribute="sendSMSForm" name="sendSMSForm" path="/startTTVScheduler"
+			scope="request" type="com.aldorsolutions.dashboard.struts.action.StartTTVScheduler"
+			validate="false">
+			<forward name="success" path="/showMain.do" />
+		</action>
+		<action attribute="sendSMSForm" input="sms.sendSMS" name="sendSMSForm"
+			path="/processSendSMS" scope="request"
+			type="com.aldorsolutions.dashboard.struts.action.ProcessSendSMSAction">
+			<forward name="success" path="/showMain.do" />
+		</action>
+		<action attribute="sendTextToSpeechForm" input="sms.sendTextToSpeech"
+			name="sendTextToSpeechForm" path="/processSendTextToSpeech" scope="request"
+			type="com.aldorsolutions.dashboard.struts.action.ProcessSendTextToSpeechAction">
+			<forward name="success" path="/showMain.do" />
+		</action>
+		<action attribute="acctLocationListForm" input="acct.locationList"
+			name="acctLocationListForm" path="/acctLocationList"
+			type="com.aldorsolutions.dashboard.struts.action.acct.AcctLocationListAction">
+			<forward name="failed" path="acct.locationList" />
+			<forward name="success" path="acct.locationList" />
+		</action>
+		<action attribute="acctLocationEditForm" name="acctLocationEditForm"
+			path="/acctLocationEdit"
+			type="com.aldorsolutions.dashboard.struts.action.acct.AcctLocationEditAction"
+			validate="false">
+			<forward name="locationList" path="/acctLocationList.do" />
+			<forward name="success" path="acct.locationEdit" />
+		</action>
+		<action attribute="acctLocationEditForm" input="acct.locationEdit"
+			name="acctLocationEditForm" path="/acctLocationSave"
+			type="com.aldorsolutions.dashboard.struts.action.acct.AcctLocationSaveAction">
+			<forward name="success" path="/acctLocationList.do" redirect="true" />
+		</action>
+		<action attribute="acctLocationEmailForm" input="acct.locationEdit"
+			name="acctLocationEmailForm" path="/acctLocationEmail" scope="request"
+			type="com.aldorsolutions.dashboard.struts.action.acct.AcctLocationEmailAction">
+			<forward name="success" path="acct.locationEmail" />
+		</action>
+		<action attribute="acctLocationEmailForm" input="acct.locationEmail"
+			name="acctLocationEmailForm" path="/acctLocationEmailSave" scope="request"
+			type="com.aldorsolutions.dashboard.struts.action.acct.AcctLocationEmailSaveAction">
+			<forward name="success" path="/acctLocationEdit.do" />
+		</action>
+		<action attribute="userEditForm" input="user.myAccount" name="userEditForm"
+			path="/myAccountSave" scope="session"
+			type="com.aldorsolutions.dashboard.struts.action.users.MyAccountSaveAction" />
+		<action path="/userLogout"
+			type="com.aldorsolutions.dashboard.struts.action.UserLogoutAction">
+			<forward name="login" path="/login.jsp" redirect="true" />
+		</action>
+
+		<action attribute="lostPasswordForm" input="/lostPassword.jsp"
+			name="lostPasswordForm" path="/lostPassword" scope="request"
+			type="com.aldorsolutions.dashboard.struts.action.LostPasswordAction" />
+		<action path="/runReports"
+			type="com.aldorsolutions.dashboard.struts.action.RunReportsAction">
+			<forward name="reportFilterJSP" path="dashboard.reportsFilter" />
+		</action>
+
+		<action attribute="acctListVendorsForm" name="acctListVendorsForm"
+			path="/acctListVendors"
+			type="com.aldorsolutions.dashboard.struts.action.acct.AcctVendorsListAction">
+			<forward name="vendorList" path="acct.vendorList" />
+			<forward name="vendorListSearch" path="acct.vendorListSearch" />
+		</action>
+
+
+
+		<action attribute="acctListVendorsSearchForm" name="acctListVendorsSearchForm"
+			path="/acctListVendorsSearch"
+			type="com.aldorsolutions.dashboard.struts.action.acct.AcctVendorsListSearchAction">
+			<forward name="vendorListSearch" path="acct.vendorListSearch" />
+		</action>
+
+		<action attribute="smartFileForm" name="smartFileForm" path="/smartFile"
+			type="com.aldorsolutions.dashboard.struts.action.report.SmartFileAction">
+			<forward name="smartFilePage" path="dashboard.smartFile" />
+		</action>
+
+		<action attribute="dashAcctIntfForm" name="dashAcctIntfForm"
+			path="/dashAcctIntf"
+			type="com.aldorsolutions.dashboard.struts.action.report.DashAcctIntfAction">
+			<forward name="dashAcctIntfPage" path="dashboard.dashAcctIntfPage" />
+			<forward name="home" path="dashboard.home" />
+		</action>
+
+		<action attribute="underDevelopmentForm" name="underDevelopmentForm"
+			path="/underDevelopment"
+			type="com.aldorsolutions.dashboard.struts.action.report.UnderDevelopmentAction">
+			<forward name="underDevelopmentPage" path="dashboard.underDevelopment" />
+		</action>
+
+		<action attribute="acctEditVendorsForm" name="acctEditVendorsForm"
+			path="/acctEditVendors" scope="request"
+			type="com.aldorsolutions.dashboard.struts.action.acct.AcctVendorsEditAction">
+			<forward name="vendorEdit" path="acct.vendorEdit" />
+			<forward name="vendorList" path="acct.vendorList" redirect="true" />
+			<forward name="vendorListSearch" path="acct.vendorListSearch" />
+		</action>
+
+		<action attribute="acctEditVendorsForm" input="acct.vendorEdit"
+			name="acctEditVendorsForm" path="/acctSaveVendors" scope="request"
+			type="com.aldorsolutions.dashboard.struts.action.acct.AcctVendorsSaveAction">
+			<forward name="vendorList" path="/acctListVendors.do"
+				redirect="true" />
+			<forward name="vendorListSearch" path="acct.vendorListSearch" />
+			<forward name="vendorListSearchJsp" path="/acctListVendors.do" />
+			<forward name="showVendorEdit" path="/acctEditVendors.do" />
+		</action>
+
+		<action attribute="smsTTVRecipientForm" name="smsTTVRecipientForm"
+			path="/smsTTVRecipient" scope="request"
+			type="com.aldorsolutions.dashboard.struts.action.sms.SMSTTVRecipientAction">
+			<forward name="smsTTVRecipientEdit" path="sms.smsTTVRecipientEdit" />
+		</action>
+
+		<action attribute="smsTTVRecipientForm" input="sms.smsTTVRecipientEdit"
+			name="smsTTVRecipientForm" path="/smsTTVSaveRecipient" scope="request"
+			type="com.aldorsolutions.dashboard.struts.action.sms.SMSTTVSaveRecipientAction">
+			<forward name="showSMSTTVRecipientEditForSMS" path="/smsTTVRecipient.do?Type=sms" />
+			<forward name="showSMSTTVRecipientEditForTTV" path="/smsTTVRecipient.do?Type=ttv" />
+		</action>
+
+		<action attribute="recipientForm" name="recipientForm" path="/recipientEdit"
+			scope="request"
+			type="com.aldorsolutions.dashboard.struts.action.sms.RecipientEditAction">
+			<forward name="showEdit" path="sms.recipientEdit" />
+		</action>
+		<action attribute="recipientForm" input="sms.recipientEdit"
+			name="recipientForm" path="/recipientEditSave" scope="request"
+			type="com.aldorsolutions.dashboard.struts.action.sms.RecipientEditSaveAction">
+			<forward name="showSMSTTVRecipientEditForSMS" path="/smsTTVRecipient.do?Type=sms" />
+			<forward name="showSMSTTVRecipientEditForTTV" path="/smsTTVRecipient.do?Type=ttv" />
+		</action>
+
+
+		<action attribute="smsTTVListForm" name="smsTTVListForm" path="/smsTTVList"
+			scope="request"
+			type="com.aldorsolutions.dashboard.struts.action.sms.ShowSMSTTVListAction">
+			<forward name="smsTTVList" path="sms.smsTTVList" />
+		</action>
+		<action attribute="smsTTVListForm" input="smsTTVListForm" name="smsTTVListForm"
+			path="/smsTTVManageSchedule" scope="request"
+			type="com.aldorsolutions.dashboard.struts.action.sms.SMSTTVManageScheduleAction">
+			<forward name="showSMSTTVListForSMS" path="/smsTTVList.do?Type=sms" />
+			<forward name="showSMSTTVListForTTV" path="/smsTTVList.do?Type=ttv" />
+			<forward name="smsTTVEdit" path="/showSMSTTVEdit.do" />
+		</action>
+
+		<action attribute="smsTTVEditForm" name="smsTTVEditForm" path="/showSMSTTVEdit"
+			scope="request"
+			type="com.aldorsolutions.dashboard.struts.action.sms.ShowSMSTTVEditAction">
+			<forward name="smsTTVEditJsp" path="sms.smsTTVEditJsp" />
+		</action>
+		<action attribute="smsTTVEditForm" input="sms.smsTTVEditJsp"
+			name="smsTTVEditForm" path="/smsTTVSaveEdit" scope="request"
+			type="com.aldorsolutions.dashboard.struts.action.sms.SMSTTVSaveEditAction">
+			<forward name="ShowSMSTTVEdit" path="/smsTTVList.do" />
+		</action>
+
+		<action attribute="vendorLocEditForm" name="vendorLocEditForm"
+			path="/vendorLocEdit" scope="request"
+			type="com.aldorsolutions.dashboard.struts.action.acct.VendorLocEditAction">
+			<forward name="showLocEdit" path="acct.vendorLocEdit" />
+			<forward name="showVendorEdit" path="/acctEditVendors.do"
+				redirect="true" />
+		</action>
+		<action attribute="vendorLocEditForm" input="/acct/vendorLocEdit.jsp"
+			name="vendorLocEditForm" path="/vendorLocSave" scope="request"
+			type="com.aldorsolutions.dashboard.struts.action.acct.VendorLocSaveAction">
+			<forward name="showLocEdit" path="acct.vendorLocEdit" />
+			<forward name="showVendorEdit" path="/acctEditVendors.do"
+				redirect="true" />
+		</action>
+		<action attribute="vendorLocRemoveForm" name="vendorLocRemoveForm"
+			path="/vendorLocRemove" scope="request"
+			type="com.aldorsolutions.dashboard.struts.action.acct.VendorLocRemoveAction">
+			<forward name="showVendorEdit" path="/acctEditVendors.do"
+				redirect="true" />
+		</action>
+		<action attribute="invoiceListForm" name="invoiceListForm"
+			path="/invoiceList" scope="request"
+			type="com.aldorsolutions.dashboard.struts.action.acct.InvoiceListAction">
+			<forward name="showList" path="acct.invoiceList" />
+			<forward name="invoiceList" path="/invoiceList.do" />
+			<forward name="showConfirmPage" path="/invoiceConfirmPayment.do" />
+			<forward name="addInvoice" path="/invoiceEditDisplay.do?addInvoice=true" />
+			
+			<forward name="search" path="/invoiceList.do?type=search" redirect="true" />
+   			<forward name="deniedList" path="/invoiceList.do?type=denied" redirect="true" /> 
+   			<forward name="submitList" path="/invoiceList.do?type=saved" redirect="true" />
+		</action>
+		<action attribute="invoiceConfirmPaymentForm" input="acct.invoiceConfirm"
+			name="invoiceConfirmPaymentForm" path="/invoiceConfirmPaymentSubmit"
+			scope="session"
+			type="com.aldorsolutions.dashboard.struts.action.acct.InvoiceConfirmPaymentSubmitAction">
+			<forward name="invoiceList" path="/invoiceList.do?type=list" />
+		</action>
+		<action attribute="invoiceConfirmPaymentForm" name="invoiceConfirmPaymentForm"
+			path="/invoiceConfirmPayment" scope="session"
+			type="com.aldorsolutions.dashboard.struts.action.acct.InvoiceConfirmPaymentShowAction">
+			<forward name="showConfirmPage" path="acct.invoiceConfirm" />
+			<forward name="invoiceList" path="/invoiceList.do?type=list" />
+		</action>
+
+		<action attribute="invoiceEditDisplayForm" name="invoiceEditDisplayForm"
+			path="/invoiceEditDisplay" scope="session" input="acct.invoiceList"
+			validate="false"
+			type="com.aldorsolutions.dashboard.struts.action.acct.InvoiceEditDisplayAction">
+			<forward name="showEdit" path="acct.invoiceEdit" />
+			<forward name="showList" path="/invoiceList.do?type=list" />
+		</action>
+
+		<action attribute="invoiceEditDisplayForm" name="invoiceEditDisplayForm"
+			path="/invoiceShowDisplay" scope="session" input="acct.invoiceList"
+			validate="false"
+			type="com.aldorsolutions.dashboard.struts.action.acct.InvoiceShowDisplayAction">
+			<forward name="showEdit" path="acct.invoiceEdit" />
+			<forward name="showList" path="/invoiceList.do?type=list" />
+			<forward name="addInvoice" path="/invoiceEditDisplay.do?addInvoice=true" />
+		</action>
+
+		<action attribute="invoiceEditDisplayForm" input="acct.invoiceEdit"
+			name="invoiceEditDisplayForm" path="/invoiceEditSave" scope="session"
+			type="com.aldorsolutions.dashboard.struts.action.acct.InvoiceEditSaveAction">
+			<forward name="invoiceList" path="/invoiceList.do?type=list"
+				redirect="true" />
+			<forward name="savedList" path="/invoiceList.do?type=saved"
+				redirect="true" />
+			<forward name="submittedList" path="/invoiceList.do?type=submitted"
+				redirect="true" />
+			<forward name="approvedList" path="/invoiceList.do?type=approved"
+				redirect="true" />
+			<forward name="deniedList" path="/invoiceList.do?type=denied"
+				redirect="true" />
+			<forward name="invoiceEdit" path="/invoiceShowDisplay.do"
+				redirect="true" />
+			<forward name="invoiceInvItemEdit" path="/invoiceInvItemEdit.do"
+				redirect="true" />
+			<forward name="invoiceAddVendor" path="/invoiceAddVendor.do"
+				redirect="true" />
+			<forward name="search" path="/invoiceList.do?type=search"
+    			redirect="true" />
+		</action>
+
+		<action attribute="vendorForm" name="vendorForm" path="/invoiceAddVendor"
+			scope="request"
+			type="com.aldorsolutions.dashboard.struts.action.acct.InvoiceAddVendorAction">
+			<forward name="invoiceEdit" path="/invoiceEditSave" />
+			<forward name="vendorEdit" path="acct.vendorAdd" />
+		</action>
+		<action attribute="vendorForm" input="acct.vendorAdd" name="vendorForm"
+			path="/saveVendor" scope="request"
+			type="com.aldorsolutions.dashboard.struts.action.acct.SaveVendorAction">
+			<forward name="invoiceEdit" path="/invoiceShowDisplay.do" />
+		</action>
+
+		<action attribute="invoiceInvItemEditForm" input="acct.invoiceInvItemEdit"
+			name="invoiceInvItemEditForm" path="/invoiceInvItemEdit" scope="request"
+			validate="false"
+			type="com.aldorsolutions.dashboard.struts.action.acct.InvoiceInvItemEditAction">
+			<forward name="invoiceEdit" path="/invoiceShowDisplay.do"
+				redirect="true" />
+			<forward name="invoiceItemEdit" path="acct.invoiceInvItemEdit"
+				redirect="true" />
+			<forward name="invoiceItemSave" path="/invoiceSave.do?type=list" />
+		</action>
+
+		<action attribute="invoiceInvItemEditForm" input="acct.invoiceInvItemEdit"
+			name="invoiceInvItemEditForm" path="/invoiceInvItemSave" scope="request"
+			type="com.aldorsolutions.dashboard.struts.action.acct.InvoiceInvItemSaveAction">
+			<forward name="invoiceEdit" path="/invoiceShowDisplay.do"
+				redirect="true" />
+		</action>
+
+		<action attribute="localeLocationEditForm" name="localeLocationEditForm"
+			path="/localeLocationEdit"
+			type="com.aldorsolutions.dashboard.struts.action.acct.LocaleLocationEditAction">
+			<forward name="localeLocationList" path="acct.localeLocationEdit"
+				redirect="false" />
+		</action>
+
+		<action attribute="localeLocationEditForm" input="acct.localeLocationEdit"
+			name="localeLocationEditForm" path="/localeLocationSave" scope="session"
+			type="com.aldorsolutions.dashboard.struts.action.acct.LocaleLocationSaveAction">
+			<forward name="home" path="/MainPage.do" />
+			<forward name="invoiceList" path="/invoiceList.do" />
+		</action>
+
+		<action input="chart.chartList" 
+				name="chartListForm" path="/chartList" scope="session"
+				type="com.aldorsolutions.dashboard.struts.action.chart.ChartListAction">
+			<forward name="failed"  path="chart.chartList" />
+			<forward name="success" path="chart.chartList" />
+		</action>
+		
+		<action attribute="burailCremationChartForm" input="chart.radialChart" 
+				name="burailCremationChartForm" path="/radialChart" scope="request"
+				type="com.aldorsolutions.dashboard.struts.action.chart.BurailCremationChartAction">
+			<forward name="failed"  path="chart.radialChart" />
+			<forward name="success" path="chart.radialChart" />
+		</action>
+
+		<action attribute="invoiceEditDisplayForm" name="invoiceEditDisplayForm"
+			path="/checkInvoice" scope="session" input="acct.invoiceList"
+			validate="false"
+			type="com.aldorsolutions.dashboard.struts.action.acct.CheckInvoiceNumber">
+			<forward name="showEdit" path="acct.invoiceEdit" />
+		</action>
+		
+		<action attribute="callVolumeTab1From" input="chart.callVolumeTab1" 
+				name="callVolumeTab1From" path="/callVolumeTab1" scope="session"
+				type="com.aldorsolutions.dashboard.struts.action.chart.CallVolumeTab1Action">
+			<forward name="failed"  path="chart.callVolumeTab1" />
+			<forward name="success" path="chart.callVolumeTab1" />
+		</action>
+		
+		<action attribute="burialCremationTab2Form" input="chart.burialCremationTab2" 
+				name="burialCremationTab2Form" path="/burialCremationTab2" scope="session"
+				type="com.aldorsolutions.dashboard.struts.action.chart.BurialCremationTab2Action">
+			<forward name="failed"  path="chart.burialCremationTab2" />
+			<forward name="success" path="chart.burialCremationTab2" />
+		</action>
+		
+		<action attribute="marketingTab3Form" input="chart.marketingTab3" 
+				name="marketingTab3Form" path="/marketingTab3" scope="session"
+				type="com.aldorsolutions.dashboard.struts.action.chart.MarketingTab3Action">
+			<forward name="failed"  path="chart.marketingTab3" />
+			<forward name="success" path="chart.marketingTab3" />
+		</action>
+	
+		<action attribute="directorTab4Form" input="chart.directorTab4" 
+				name="directorTab4Form" path="/directorTab4" scope="session"
+				type="com.aldorsolutions.dashboard.struts.action.chart.DirectorTab4Action">
+			<forward name="failed"  path="chart.directorTab4" />
+			<forward name="success" path="chart.directorTab4" />
+		</action>
+		
+		<action attribute="localeTab5Form" input="chart.localeTab5" 
+				name="localeTab5Form" path="/localeTab5" scope="session"
+				type="com.aldorsolutions.dashboard.struts.action.chart.LocaleTab5Action">
+			<forward name="failed"  path="chart.localeTab5" />
+			<forward name="success" path="chart.localeTab5" />
+		</action>
+		<action attribute="psr1Tab6Form" input="chart.psr1Tab6" 
+				name="psr1Tab6Form" path="/psr1Tab6" scope="session"
+				type="com.aldorsolutions.dashboard.struts.action.chart.PSR1Tab6Action">
+			<forward name="failed"  path="chart.psr1Tab6" />
+			<forward name="success" path="chart.psr1Tab6" />
+		</action>
+		
+	</action-mappings>
+
+	<message-resources
+		parameter="com.aldorsolutions.dashboard.struts.DashboardResources" />
+
+	<plug-in className="org.apache.struts.tiles.TilesPlugin">
+		<set-property property="definitions-config" value="/WEB-INF/tileDefinitions.xml" />
+		<set-property property="definitions-parser-validate"
+			value="true" />
+		<set-property property="moduleAware" value="true" />
+	</plug-in>
+</struts-config>
+

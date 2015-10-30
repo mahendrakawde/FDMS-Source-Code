@@ -1,0 +1,20 @@
+#
+#Tue Apr 17 21:48:32 CDT 2007
+genBasicCompId=true
+sessionFactoryName=com.aldorsolutions.dashboard.utils.HibernateSessionFactory
+profile=
+daoSFId=
+version=3.1
+jndiPath=java\:jdbc/WEBFDMS
+springDaoFile=
+useJavaTypes=true
+keyGenerator=
+libInstallFolder=<no jars/zips in selected libraries>
+addLibs2Project=true
+genVersionTag=true
+sessionFactoryId=
+basePersistenceClass=
+reSettingsFile=/WEBFDMSDashboard/hibernate.reveng.xml
+configFile=/WEBFDMSDashboard/src/hibernate.cfg.xml
+createConfigFile=true
+addLibs2Classpath=true

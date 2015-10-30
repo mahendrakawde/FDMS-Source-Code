@@ -1,0 +1,2 @@
+This file is to prevent the directory from being removed by CVS since it is empty.  
+This folder is where crystal report files are created and then returned to the user.

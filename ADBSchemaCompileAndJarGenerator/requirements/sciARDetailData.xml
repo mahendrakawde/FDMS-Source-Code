@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<this:getDataResponse xmlns:this="http://aldorsolutions.com/webservice/services/fddeservice" xmlns:this1="http://aldorsolutions.com/webservice/xsd/fdde/service" xmlns:this2="http://aldorsolutions.com/webservice/xsd/comm/fdde" xmlns:this3="http://aldorsolutions.com/webservice/xsd/comm" xmlns:this4="http://aldorsolutions.com/webservice/xsd/comm/fdde/sci" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://aldorsolutions.com/webservice/services/fddeservice ../build/FddeService.xsd ">
+  <this1:dataReturned>sciARDetailData</this1:dataReturned>
+  <this1:results>
+  	<this1:sciARDetailData caseId="">
+  		<this4:locCd>6879</this4:locCd>
+  		<this4:deptIdKNA>this4:deptIdKNA</this4:deptIdKNA>
+  		<this4:localeKNA>3</this4:localeKNA>
+  		<this4:locIdKNA>4</this4:locIdKNA>
+  		<this4:sciContractNbr>
+  			this4:sciContractNbr
+  		</this4:sciContractNbr>
+  		<this4:contractNbrKNA>
+  			this4:contractNbrKNA
+  		</this4:contractNbrKNA>
+  		<this4:tranDetail tranId="0">
+  			<this4:comment>this4:comment</this4:comment>
+  			<this4:pymtDate>2001-01-01</this4:pymtDate>
+  			<this4:pymtAmt>this4:pymtAmt</this4:pymtAmt>
+  			<this4:pymtSource>this4:pymtSource</this4:pymtSource>
+  			<this4:pymtType>this4:pymtType</this4:pymtType>
+  			<this4:runReverseCR>true</this4:runReverseCR>
+  			<this4:cashRefNbr>this4:cashRefNbr</this4:cashRefNbr>
+  			<this4:finAdjAmt>this4:finAdjAmt</this4:finAdjAmt>
+  			<this4:finAdjDescr>this4:finAdjDescr</this4:finAdjDescr>
+  			<this4:finAdjRef>this4:finAdjRef</this4:finAdjRef></this4:tranDetail>
+  		<this4:tranDetail tranId="0">
+  			<this4:comment>this4:comment</this4:comment>
+  			<this4:pymtDate>2001-01-01</this4:pymtDate>
+  			<this4:pymtAmt>this4:pymtAmt</this4:pymtAmt>
+  			<this4:pymtSource>this4:pymtSource</this4:pymtSource>
+  			<this4:pymtType>this4:pymtType</this4:pymtType>
+  			<this4:runReverseCR>true</this4:runReverseCR>
+  			<this4:cashRefNbr>this4:cashRefNbr</this4:cashRefNbr>
+  			<this4:finAdjAmt>this4:finAdjAmt</this4:finAdjAmt>
+  			<this4:finAdjDescr>this4:finAdjDescr</this4:finAdjDescr>
+  			<this4:finAdjRef>this4:finAdjRef</this4:finAdjRef></this4:tranDetail>
+  		<this4:tranDetail tranId="0">
+  			<this4:comment>this4:comment</this4:comment>
+  			<this4:pymtDate>2001-01-01</this4:pymtDate>
+  			<this4:pymtAmt>this4:pymtAmt</this4:pymtAmt>
+  			<this4:pymtSource>this4:pymtSource</this4:pymtSource>
+  			<this4:pymtType>this4:pymtType</this4:pymtType>
+  			<this4:runReverseCR>true</this4:runReverseCR>
+  			<this4:cashRefNbr>this4:cashRefNbr</this4:cashRefNbr>
+  			<this4:finAdjAmt>this4:finAdjAmt</this4:finAdjAmt>
+  			<this4:finAdjDescr>this4:finAdjDescr</this4:finAdjDescr>
+  			<this4:finAdjRef>this4:finAdjRef</this4:finAdjRef></this4:tranDetail>
+  	</this1:sciARDetailData>
+  </this1:results>
+</this:getDataResponse>

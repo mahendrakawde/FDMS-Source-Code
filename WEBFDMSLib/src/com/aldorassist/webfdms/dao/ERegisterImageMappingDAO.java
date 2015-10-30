@@ -1,0 +1,743 @@
+package com.aldorassist.webfdms.dao;
+
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
+
+import org.apache.log4j.Logger;
+
+import com.aldorassist.webfdms.model.ERegisterImageMappingDTO;
+import com.aldorsolutions.webfdms.beans.DbUserSession;
+import com.aldorsolutions.webfdms.util.DAO;
+
+/**
+ * 
+ * @author Parth
+ * 
+ * DAO contains methods related to eregister image mapping.
+ *
+ */
+
+public class ERegisterImageMappingDAO extends DAO {
+	
+	private Logger logger = Logger.getLogger(PresentationImageDAO.class
+			.getName());
+
+	/**
+	 * 
+	 * @param usersLookup
+	 */
+	public ERegisterImageMappingDAO(String usersLookup) {
+		super(usersLookup);
+	}
+
+	/**
+	 * 
+	 * @param user
+	 */
+	public ERegisterImageMappingDAO(DbUserSession user) {
+		super(user);
+	}
+
+	/**
+	 * 
+	 * @param companyID
+	 * @param userID
+	 */
+	public ERegisterImageMappingDAO(long companyID, long userID) {
+		super(companyID, userID);
+	}
+
+	private String selectFields() {
+		return ("MappingId, CaseId, CompanyId, ImageId, IsUploadedImage, ImageOrder, ImageBelongsTo");
+	}
+
+	/**
+	 * Returns list of ERegisterImageMappingDTO based on caseId & companyId.
+	 * 
+	 * @param caseId
+	 * @param companyId
+	 * @return
+	 */
+	public List<ERegisterImageMappingDTO> getImagesByCase(long caseId, long companyId) {
+		List<ERegisterImageMappingDTO> images = null;
+
+		try {
+			StringBuffer sql = new StringBuffer();
+
+			sql.append("SELECT ").append(selectFields());
+			sql.append(" FROM eregister_image_mapping WHERE CaseId=? AND CompanyId=?");
+
+			makeConnection(getDbLookup());
+			
+			int col = 0;
+
+			statement = conn.prepareStatement(sql.toString());
+			statement.setLong(++col, caseId);
+			statement.setLong(++col, companyId);
+
+			rs = statement.executeQuery();
+
+			ERegisterImageMappingDTO imageMapping = null;
+
+			int column = 0;
+
+			while (rs.next()) {
+				imageMapping = new ERegisterImageMappingDTO();
+
+				imageMapping.setMappingId(rs.getLong(++column));				
+				imageMapping.setCaseId(rs.getLong(++column));
+				imageMapping.setCompanyId(rs.getLong(++column));
+				imageMapping.setImageId(rs.getLong(++column));
+				imageMapping.setUploadedImageFlag(rs.getBoolean(++column));
+				imageMapping.setImageBelongsTo(rs.getString(++column));
+
+				if (images == null) {
+					images = new ArrayList<ERegisterImageMappingDTO>();
+				}
+
+				images.add(imageMapping);
+				
+				column = 0;
+			}
+		} catch (SQLException e) {
+			logger.error("SQLException in ERegisterImageMappingDAO:getImagesByCase() : ", e);
+		} catch (Exception e) {
+			logger.error("Exception in ERegisterImageMappingDAO:getImagesByCase() : ", e);
+		} finally {
+			closeConnection();
+		}
+
+		return images;
+	}
+	
+	/**
+	 * Returns Lost of ERegisterImageMappingDTO based on caseId, companyId & imageBelongsTo.
+	 * imageBelongs to can have either of three values which are mentioned below.
+	 * <br>
+	 * <b>logo</b> <br>
+	 * <b>descedent</b> <br>
+	 * <b>presentation</b>
+	 * 
+	 * @param caseId
+	 * @param companyId
+	 * @param imageBelongsTo
+	 * @return
+	 */
+	public List<ERegisterImageMappingDTO> getImagesByCaseAndCategory(long caseId, long companyId, String imageBelongsTo) {
+		List<ERegisterImageMappingDTO> images = null;
+
+		try {
+			StringBuffer sql = new StringBuffer();
+
+			sql.append("SELECT ").append(selectFields());
+			sql.append(" FROM eregister_image_mapping WHERE CaseId = ? AND CompanyId = ? AND ImageBelongsTo = ?");
+
+			makeConnection(getDbLookup());
+			
+			int col = 0;
+
+			statement = conn.prepareStatement(sql.toString());
+			statement.setLong(++col, caseId);
+			statement.setLong(++col, companyId);
+			statement.setString(++col, imageBelongsTo);
+
+			rs = statement.executeQuery();
+
+			ERegisterImageMappingDTO imageMapping = null;
+
+			int column = 0;
+
+			while (rs.next()) {
+				imageMapping = new ERegisterImageMappingDTO();
+
+				imageMapping.setMappingId(rs.getLong(++column));
+				imageMapping.setCaseId(rs.getLong(++column));
+				imageMapping.setCompanyId(rs.getLong(++column));
+				imageMapping.setImageId(rs.getLong(++column));
+				imageMapping.setUploadedImageFlag(rs.getBoolean(++column));
+				imageMapping.setImageOrder(rs.getLong(++column));
+				imageMapping.setImageBelongsTo(rs.getString(++column));
+
+				if (images == null) {
+					images = new ArrayList<ERegisterImageMappingDTO>();
+				}
+
+				images.add(imageMapping);
+				
+				column = 0;
+			}
+		} catch (SQLException e) {
+			logger.error("SQLException in ERegisterImageMappingDAO:getImagesByCaseAndCategory() : ", e);
+		} catch (Exception e) {
+			logger.error("Exception in ERegisterImageMappingDAO:getImagesByCaseAndCategory() : ", e);
+		} finally {
+			closeConnection();
+		}
+
+		return images;
+	}
+
+	/**
+	 * Returns list of Long values. These values will be references to access
+	 * images from database table based on the parameters passed. The method
+	 * will return values based on caseId, companyId, imageBelongsTo &
+	 * isUploadedImage, which will be passed as parameter to this method. If
+	 * isUploadedImage flag is false then the values will be of presentation
+	 * images or else the values will be reference to uploaded image table.
+	 * 
+	 * @param caseId
+	 * @param companyId
+	 * @param imageBelongsTo
+	 * @param isUploadedImage
+	 * @return
+	 */
+	public List<Long> getImageIds(long caseId, long companyId, String imageBelongsTo) {
+		List<Long> images = null;
+
+		try {
+			StringBuffer sql = new StringBuffer();
+
+			sql.append("SELECT ImageId ");
+			sql.append(" FROM eregister_image_mapping WHERE CaseId = ? AND CompanyId = ? AND ImageBelongsTo = ?");
+			sql.append(" ORDER BY ImageOrder");
+
+			makeConnection(getDbLookup());
+			
+			int col = 0;
+
+			statement = conn.prepareStatement(sql.toString());
+			statement.setLong(++col, caseId);
+			statement.setLong(++col, companyId);
+			statement.setString(++col, imageBelongsTo);
+
+			rs = statement.executeQuery();
+
+			while (rs.next()) {
+				if (images == null) {
+					images = new ArrayList<Long>();
+				}
+
+				images.add(rs.getLong(1));
+			}
+		} catch (SQLException e) {
+			logger.error("SQLException in ERegisterImageMappingDAO:getImageIds() : ", e);
+		} catch (Exception e) {
+			logger.error("Exception in ERegisterImageMappingDAO:getImageIds() : ", e);
+		} finally {
+			closeConnection();
+		}
+
+		return images;
+	}
+
+	/**
+	 * Returns MappingIds for particular caseId & companyId based on the type of
+	 * image seeking.
+	 * 
+	 * @param caseId
+	 * @param companyId
+	 * @param imageBelongsTo
+	 * @return
+	 */
+	public Map<Long, Long> getImageFileIds(long caseId, long companyId, String imageBelongsTo) {
+		Map<Long, Long> images = null;
+
+		try {
+			StringBuffer sql = new StringBuffer();
+
+			sql.append("SELECT MappingId, ImageId");
+			sql.append(" FROM eregister_image_mapping WHERE CaseId = ? AND CompanyId = ? AND ImageBelongsTo = ?");
+			sql.append(" ORDER BY ImageOrder");
+
+			makeConnection(getDbLookup());
+			
+			int col = 0;
+
+			statement = conn.prepareStatement(sql.toString());
+			statement.setLong(++col, caseId);
+			statement.setLong(++col, companyId);
+			statement.setString(++col, imageBelongsTo);
+
+			rs = statement.executeQuery();
+
+			while (rs.next()) {
+				if (images == null) {
+					images = new TreeMap<Long, Long>();
+				}
+
+				images.put(rs.getLong(2), rs.getLong(1));
+			}
+		} catch (SQLException e) {
+			logger.error("SQLException in ERegisterImageMappingDAO:getImageIds() : ", e);
+		} catch (Exception e) {
+			logger.error("Exception in ERegisterImageMappingDAO:getImageIds() : ", e);
+		} finally {
+			closeConnection();
+		}
+
+		return images;
+	}
+
+	/**
+	 * Adds entry of image mapping for eregister in database table.
+	 * 
+	 * @param data
+	 * @return
+	 */
+	public boolean addImageMapping(ERegisterImageMappingDTO data) {
+		boolean added = false;
+
+		try {
+			logger.info("In " + this.getClass() + " " + Thread.currentThread().getStackTrace()[1].getMethodName() + " is been called");
+			StringBuffer sql = new StringBuffer();
+
+			sql.append("INSERT INTO eregister_image_mapping ");
+			sql.append("(CaseId, CompanyId, ImageId, IsUploadedImage, ImageOrder, ImageBelongsTo) ");
+
+			sql.append("VALUES (?, ?, ?, ?, ?, ?)");
+
+			int column = 0;
+
+			makeConnection(getDbLookup());
+
+			statement = conn.prepareStatement(sql.toString(), Statement.RETURN_GENERATED_KEYS);
+
+			statement.setLong(++column, data.getCaseId());
+			statement.setLong(++column, data.getCompanyId());
+			statement.setLong(++column, data.getImageId());
+			statement.setBoolean(++column, data.isUploadedImageFlag());
+			statement.setLong(++column, data.getImageOrder());
+			statement.setString(++column, data.getImageBelongsTo());
+
+			statement.executeUpdate();
+
+			added = true;
+
+			if (added) {
+				rs = statement.getGeneratedKeys();
+				if (rs.next()) {
+					data.setImageId(rs.getInt(1));
+				}
+			}
+		} catch (SQLException e) {
+			logger.error("SQLException in ERegisterImageMappingDAO:addImageMapping() : ", e);
+		} catch (Exception e) {
+			logger.error("Exception in ERegisterImageMappingDAO:addImageMapping() : ", e);
+		} finally {
+			closeConnection();
+		}
+
+		return added;
+	}
+	
+	public boolean addBulkImageMapping(ERegisterImageMappingDTO data, List<Long> imageIds) {
+		boolean flag = false;
+
+		try {
+			StringBuffer sql = new StringBuffer();
+
+			sql.append("INSERT INTO eregister_image_mapping (CaseId, CompanyId, ImageId, IsUploadedImage, ImageOrder, ImageBelongsTo) ");
+
+			sql.append("VALUES (?, ?, ?, ?, ?, ?)");
+
+			makeConnection(getDbLookup());
+
+			statement = conn.prepareStatement(sql.toString());
+
+			statement.setLong(1, data.getCaseId());
+			statement.setLong(2, data.getCompanyId());
+			statement.setBoolean(4, data.isUploadedImageFlag());
+			statement.setLong(5, data.getImageOrder());
+			statement.setString(6, data.getImageBelongsTo());
+			
+			int index = 0;
+			
+			for(Long image : imageIds) {
+				++index;
+				
+				statement.setLong(3, image);
+				statement.setLong(5, index);
+
+				statement.executeUpdate();
+			}
+
+			flag = true;
+
+		} catch (SQLException e) {
+			logger.error("SQLException in ERegisterImageMappingDAO:addBulkImageMapping() : ", e);
+		} catch (Exception e) {
+			logger.error("Exception in ERegisterImageMappingDAO:addBulkImageMapping() : ", e);
+		} finally {
+			closeConnection();
+		}
+
+		return flag;
+	}
+	
+	/*
+	public boolean updateSingleImageMapping(ImageMappingDTO data) {
+		boolean updated = false;
+
+		try {
+			StringBuffer sql = new StringBuffer();
+			
+			sql.append("UPDATE eregister_image_mapping SET CaseId = ?, CompanyId = ?, PresentationImageId = ?, ImageCategory = ? ");
+			sql.append("WHERE ImageId = ?");
+
+			int col = 0;
+			makeConnection(getDbLookup());
+			statement = conn.prepareStatement(sql.toString());
+
+			statement.setLong(++col, data.getCaseId());
+			statement.setLong(++col, data.getCompanyId());
+			statement.setLong(++col, data.getPresentationImageId());
+			statement.setString(++col, data.getImageCategory());
+			
+			statement.setLong(++col, data.getImageId());
+
+			statement.executeUpdate();
+
+			updated = true;
+		} catch (SQLException e) {
+			logger.error("SQLException in ERegisterImageMapping:updateSingleImageMapping() : ", e);
+		} catch (Exception e) {
+			logger.error("Exception in ERegisterImageMapping:updateSingleImageMapping() : ", e);
+		} finally {
+			closeConnection();
+		}
+
+		return updated;
+	}
+	
+	public boolean updateBulkImageMapping(ImageMappingDTO data, Long[] selectedImages) {
+		boolean updated = false;
+
+		try {
+			if(this.deleteImageMapping(data.getCaseId(), data.getCompanyId(), data.getImageCategory())) {
+				this.addBulkImageMapping(data, selectedImages);
+				
+				updated = true;
+			}
+		} catch (Exception e) {
+			logger.error("Exception in ERegisterImageMapping:updateBulkImageMapping() : ", e);
+		} finally {
+			closeConnection();
+		}
+
+		return updated;
+	}
+	
+	public boolean deleteImageMapping(long caseId, long companyId, String imageCategory) {
+		boolean deleted = false;
+		
+		try {
+			StringBuffer sql = new StringBuffer();
+			
+			sql.append("DELETE FROM eregister_image_mapping WHERE CaseId = ? AND CompanyId = ? AND ImageCategory = ?");
+			
+			makeConnection(getDbLookup());
+			
+			int col = 0;
+			
+			statement = conn.prepareStatement(sql.toString());
+			statement.setLong(++col, caseId);
+			statement.setLong(++col, companyId);
+			statement.setString(++col, imageCategory);
+			
+			statement.executeUpdate();
+		} catch (SQLException e) {
+			logger.error("SQLException in ERegisterImageMapping:deleteImageMapping() : ", e);
+		} catch (Exception e) {
+			logger.error("Exception in ERegisterImageMapping:deleteImageMapping() : ", e);
+		} finally {
+			closeConnection();
+		}
+		
+		return deleted;
+	}*/
+	
+	public List<Object> getImagesForERegisterByCaseAndCategory(long caseId, long companyId, String imageBelongsTo) {
+		List<Object> images = null;
+
+		try {
+			StringBuffer sql = new StringBuffer();
+
+			sql.append("SELECT ImageId, IsUploadedImage");
+			sql.append(" FROM eregister_image_mapping WHERE CaseId = ? AND CompanyId = ? AND ImageBelongsTo = ?");
+			sql.append(" ORDER BY ImageOrder");
+
+			makeConnection(getDbLookup());
+			
+			int col = 0;
+
+			statement = conn.prepareStatement(sql.toString());
+			statement.setLong(++col, caseId);
+			statement.setLong(++col, companyId);
+			statement.setString(++col, imageBelongsTo);
+
+			rs = statement.executeQuery();
+			
+			Object image = null;
+			
+			UploadedFileDAO uploadedFileDao = new UploadedFileDAO(getDbLookup());
+			
+			PresentationImageDAO presentationImageDao = new PresentationImageDAO(DAO.DB_FDMSCOMMON);
+
+			while (rs.next()) {
+//				imageMapping = new ERegisterImageMappingDTO();
+
+//				imageMapping.setMappingId(rs.getLong(++column));
+//				imageMapping.setCaseId(rs.getLong(++column));
+//				imageMapping.setCompanyId(rs.getLong(++column));
+//				imageMapping.setImageId(rs.getLong(1));
+//				imageMapping.setUploadedImageFlag(rs.getBoolean(2));
+//				imageMapping.setImageOrder(rs.getLong(++column));
+//				imageMapping.setImageBelongsTo(rs.getString(++column));
+				
+				if(rs.getBoolean(2)) {
+					image = uploadedFileDao.getFileById(rs.getLong(1));
+				} else {
+					image = presentationImageDao.getPresentationImage(rs.getLong(1));
+				}
+
+				if (images == null) {
+					images = new ArrayList<Object>();
+				}
+
+				images.add(image);
+			}
+		} catch (SQLException e) {
+			logger.error("SQLException in ERegisterImageMappingDAO:getImagesForERegisterByCaseAndCategory() : ", e);
+		} catch (Exception e) {
+			logger.error("Exception in ERegisterImageMappingDAO:getImagesForERegisterByCaseAndCategory() : ", e);
+		} finally {
+			closeConnection();
+		}
+
+		return images;
+	}
+	
+	public boolean updateImageMapping(ERegisterImageMappingDTO data) {
+		boolean updated = false;
+
+		try {
+			StringBuffer sql = new StringBuffer();
+			
+			sql.append("UPDATE eregister_image_mapping ");
+			sql.append("SET CaseId = ?, CompanyId = ?, ImageId = ?, IsUploadedImage = ?, ImageOrder = ?, ImageBelongsTo = ? ");
+			sql.append("WHERE MappingId = ?");
+			
+			makeConnection(getDbLookup());
+			
+			int col = 0;
+			statement = conn.prepareStatement(sql.toString());
+			
+			statement.setLong(++col, data.getCaseId());
+			statement.setLong(++col, data.getCompanyId());
+			statement.setLong(++col, data.getImageId());
+			statement.setBoolean(++col, data.isUploadedImageFlag());
+			statement.setLong(++col, data.getImageOrder());
+			statement.setString(++col, data.getImageBelongsTo());
+			
+			statement.setLong(++col, data.getMappingId());
+			
+			statement.executeUpdate();
+			
+			updated = true;
+		} catch (SQLException e) {
+			logger.error("SQLException in ERegisterImageMappingDAO:updateImageMapping() : ", e);
+		} catch (Exception e) {
+			logger.error("Exception in ERegisterImageMappingDAO:updateImageMapping() : ", e);
+		} finally {
+			closeConnection();
+		}
+
+		return updated;
+	}
+	
+	public boolean deleteMappingsByCaseAndCompany(long caseId, long companyId) {
+		boolean deleted = false;
+		
+		try {
+			StringBuffer sql = new StringBuffer();
+			
+			sql.append("DELETE FROM eregister_image_mapping ");
+			sql.append("WHERE CaseId = ? AND CompanyId = ?");
+			
+			makeConnection(getDbLookup());
+			
+			statement = conn.prepareStatement(sql.toString());
+			
+			statement.setLong(1, caseId);
+			statement.setLong(2, companyId);
+			
+			statement.executeUpdate();
+			
+			deleted = true;
+		} catch (SQLException e) {
+			logger.error("SQLException in ERegisterImageMappingDAO:deleteMappingsByCaseAndCompany() : ", e);
+		} catch (Exception e) {
+			logger.error("Exception in ERegisterImageMappingDAO:deleteMappingsByCaseAndCompany() : ", e);
+		} finally {
+			closeConnection();
+		}
+		
+		return deleted;
+	}
+	
+	public boolean deleteMappingsByCaseAndCompanyAndCategory(long caseId, long companyId, String imageBelongsTo) {
+		boolean deleted = false;
+		
+		try {
+			StringBuffer sql = new StringBuffer();
+			
+			sql.append("DELETE FROM eregister_image_mapping ");
+			sql.append("WHERE CaseId = ? AND CompanyId = ? AND ImageBelongsTo = ?");
+			
+			makeConnection(getDbLookup());
+			
+			statement = conn.prepareStatement(sql.toString());
+			
+			statement.setLong(1, caseId);
+			statement.setLong(2, companyId);
+			statement.setString(3, imageBelongsTo);
+			
+			statement.executeUpdate();
+			
+			deleted = true;
+		} catch (SQLException e) {
+			logger.error("SQLException in ERegisterImageMappingDAO:deleteMappingsByCaseAndCompany() : ", e);
+		} catch (Exception e) {
+			logger.error("Exception in ERegisterImageMappingDAO:deleteMappingsByCaseAndCompany() : ", e);
+		} finally {
+			closeConnection();
+		}
+		
+		return deleted;
+	}
+	
+	public Map<Long, Object> getImageMappingMap(long caseId, long companyId, String imageBelongsTo) {
+		Map<Long, Object> images = null;
+		
+		try {
+			StringBuffer sql = new StringBuffer();
+			
+			sql.append("SELECT MappingId, ImageId, IsUploadedImage ");
+			sql.append("FROM eregister_image_mapping WHERE CaseId = ? AND CompanyId = ? AND ImageBelongsTo = ? ");
+			sql.append("ORDER BY ImageOrder");
+			
+			makeConnection(getDbLookup());
+			
+			int col = 0;
+			
+			statement = conn.prepareStatement(sql.toString());
+			
+			statement.setLong(++col, caseId);
+			statement.setLong(++col, companyId);
+			statement.setString(++col, imageBelongsTo);
+			
+			rs = statement.executeQuery();
+			
+			Object image = null;
+			
+			UploadedFileDAO uploadedFileDao = new UploadedFileDAO(getDbLookup());
+			
+			PresentationImageDAO presentationImageDao = new PresentationImageDAO(DAO.DB_FDMSCOMMON);
+
+			while (rs.next()) {
+				if(rs.getBoolean(3)) {
+					image = uploadedFileDao.getFileById(rs.getLong(2));
+				} else {
+					image = presentationImageDao.getPresentationImage(rs.getLong(2));
+				}
+
+				if (images == null) {
+					images = new LinkedHashMap<Long, Object>();
+				}
+
+				images.put(rs.getLong(1), image);
+			}
+		} catch (SQLException e) {
+			logger.error("SQLException in ERegisterImageMappingDAO:getImageMappingMap() : ", e);
+		} catch (Exception e) {
+			logger.error("Exception in ERegisterImageMappingDAO:getImageMappingMap() : ", e);
+		} finally {
+			closeConnection();
+		}
+		
+		return images;
+	}
+	
+	public List<Long> getMappingIdsByImageIdAndUploadFlag(long imageId, boolean uploadFlag) {
+		List<Long> mappingIds = null;
+		
+		try {
+			StringBuffer sql = new StringBuffer();
+			
+			sql.append("SELECT MappingId FROM eregister_image_mapping WHERE ImageId = ? AND IsUploadedImage = ?");
+			
+			makeConnection(getDbLookup());
+			
+			statement = conn.prepareStatement(sql.toString());
+			
+			statement.setLong(1, imageId);
+			statement.setBoolean(2, uploadFlag);
+			
+			rs = statement.executeQuery();
+
+			while(rs.next()) {
+				if(mappingIds == null) {
+					mappingIds = new ArrayList<Long>();
+				}
+				
+				mappingIds.add(rs.getLong(1));
+			}
+		} catch (SQLException e) {
+			logger.error("SQLException in ERegisterImageMappingDAO:getMappingIdsByImageIdAndUploadFlag() : ", e);
+		} catch (Exception e) {
+			logger.error("Exception in ERegisterImageMappingDAO:getMappingIdsByImageIdAndUploadFlag() : ", e);
+		} finally {
+			closeConnection();
+		}
+		
+		return mappingIds;
+	}
+	
+	public boolean updateImageIdsToDefaultPlaceHolderByMappingIds(List<Long> mappingIds, long placeHolderId) {
+		boolean updated = false;
+		
+		try {
+			StringBuffer sql = new StringBuffer();
+			
+			sql.append("UPDATE eregister_image_mapping SET ImageId = ? WHERE MappingId = ?");
+			
+			makeConnection(getDbLookup());
+			
+			statement = conn.prepareStatement(sql.toString());
+			
+			statement.setLong(1, placeHolderId);
+			
+			for(Long mappingId : mappingIds) {
+				statement.setLong(2, mappingId);
+				
+				statement.executeUpdate();
+			}
+			
+			updated = true;
+		} catch (SQLException e) {
+			logger.error("SQLException in ERegisterImageMappingDAO:updateImageIdsToDefaultPlaceHolderByMappingIds() : ", e);
+		} catch (Exception e) {
+			logger.error("Exception in ERegisterImageMappingDAO:updateImageIdsToDefaultPlaceHolderByMappingIds() : ", e);
+		} finally {
+			closeConnection();
+		}
+		
+		return updated;
+	}
+
+}

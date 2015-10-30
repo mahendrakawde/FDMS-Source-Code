@@ -1,0 +1,206 @@
+package com.aldorsolutions.webfdms.beans;
+
+import java.sql.Statement;
+
+import org.apache.log4j.Logger;
+
+/**
+ * This class supplies constants and SQL for DbVitalsExecutor.
+ * 
+ * @author:
+ */
+public class DbVitalsExecutorPeer extends com.aldorsolutions.webfdms.database.DatabasePeer {
+
+	private Logger logger = Logger.getLogger(DbVitalsExecutorPeer.class
+			.getName());
+
+	static public final String EXECUTORCITY = "ExecutorCity";
+
+	static public final String EXECUTORFIRSTNAME = "ExecutorFirstName";
+
+	static public final String EXECUTORLASTNAME = "ExecutorLastName";
+
+	static public final String EXECUTORPHONE = "ExecutorPhone";
+
+	static public final String EXECUTORCELLPHONE = "ExecutorCellPhone";
+
+	static public final String EXECUTORRELATION = "ExecutorRelation";
+
+	static public final String EXECUTORSTREET2 = "ExecutorStreet2";
+
+	static public final String EXECUTORSTREET3 = "ExecutorStreet3";
+
+	static public final String EXECUTORSTATE = "ExecutorState";
+
+	static public final String EXECUTORSTREET = "ExecutorStreet";
+
+	static public final String EXECUTORZIP = "ExecutorZip";
+
+	static public final String EXECUTORSAME = "ExecutorSame";
+
+	static public final String PERSONID = "PersonId";
+
+	static public final String VITALSMASTERKEY = "VitalsMasterKey";
+
+	static public final String PERSONTYPEID = "PersonTypeID";
+
+	static public final String EXECUTOREMAIL = "ExecutorEmail";
+
+	/**
+	 * getInsertSql method comment.
+	 */
+	// protected java.sql.PreparedStatement
+	// getInsertSql(com.aldorsolutions.webfdms.database.DatabaseTransaction t,
+	// com.aldorsolutions.webfdms.database.Persistent p) throws com.aldorsolutions.webfdms.database.PersistenceException {
+	// throw new com.aldorsolutions.webfdms.database.PersistenceException("DbVitalExecutor.Insert NOT
+	// ALLOWED");
+	// }
+	/**
+	 * getRemoveSql method comment.
+	 */
+	protected java.sql.PreparedStatement getRemoveSql(
+			com.aldorsolutions.webfdms.database.DatabaseTransaction t, com.aldorsolutions.webfdms.database.Persistent p)
+			throws com.aldorsolutions.webfdms.database.PersistenceException {
+		throw new com.aldorsolutions.webfdms.database.PersistenceException(
+				"DbVitalsExecutor. Delete NOT ALLOWED");
+	}
+
+	/**
+	 * getRestoreSql method comment.
+	 */
+	protected String getRestoreSql(com.aldorsolutions.webfdms.database.Persistent p) {
+
+		logger
+				.debug("DbVitalsExecutorPeer GETRESTORE EXECUTED   !!!!!!!!!!!!!!!!!!");
+
+		String s = "SELECT " + PERSONID + "," + VITALSMASTERKEY + ","
+				+ PERSONTYPEID + "," + EXECUTORFIRSTNAME + ","
+				+ EXECUTORLASTNAME + "," + EXECUTORSTREET + ","
+				+ EXECUTORSTREET2 + "," + EXECUTORSTREET3 + "," + EXECUTORCITY
+				+ "," + EXECUTORSTATE + "," + EXECUTORZIP + "," + EXECUTORPHONE
+				+ "," + EXECUTORCELLPHONE + "," + EXECUTORRELATION + ","
+				+ EXECUTORSAME + "," + EXECUTOREMAIL + " "
+				+ "from person WHERE VitalsMasterKey = " + p.getId()
+				+ " AND PersonTypeID = " + "1";
+
+		logger.debug("dbvitalsexecutorpeer restore sql   " + s);
+		return s;
+	}
+
+	/**
+	 * getUpdateSql method comment.
+	 */
+	protected java.sql.PreparedStatement getUpdateSql(
+			com.aldorsolutions.webfdms.database.DatabaseTransaction t, com.aldorsolutions.webfdms.database.Persistent p)
+			throws com.aldorsolutions.webfdms.database.PersistenceException {
+		java.sql.Connection connection = null;
+		try {
+			DbVitalsExecutor vitals = (DbVitalsExecutor) p;
+			logger.debug("DbVitalsExecutorPeer update   "+ vitals.getExecutorPersonId() + "   !!!!!!!!!!!!!!!!!!");
+			connection = t.getConnection();
+			java.sql.PreparedStatement pstmt = connection
+					.prepareStatement("UPDATE person SET "
+							+ VITALSMASTERKEY
+							+ "=?,"
+							+ PERSONTYPEID + "=?," // / persontypeid is set to 1 since we only have an executor
+							+ EXECUTORFIRSTNAME + "=?," + EXECUTORLASTNAME
+							+ "=?," + EXECUTORSTREET + "=?," + EXECUTORSTREET2
+							+ "=?," + EXECUTORSTREET3 + "=?," + EXECUTORCITY
+							+ "=?," + EXECUTORSTATE + "=?," + EXECUTORZIP
+							+ "=?," + EXECUTORPHONE + "=?," + EXECUTORCELLPHONE
+							+ "=?," + EXECUTORRELATION + "=?," + EXECUTORSAME
+							+ "=?," + EXECUTOREMAIL + "=? "
+							+ "WHERE VitalsMasterKey = ? AND PersonId = ?");
+
+			pstmt.setString(1, Integer.toString(p.getId()));
+			pstmt.setString(2, Integer.toString(1)); // / persontypeid is set
+														// to 1 since we only
+														// have an executor
+			pstmt.setString(3, vitals.getExecutorFirstname());
+			pstmt.setString(4, vitals.getExecutorLastname());
+			pstmt.setString(5, vitals.getExecutorStreet());
+			pstmt.setString(6, vitals.getExecutorStreet2());
+			pstmt.setString(7, vitals.getExecutorStreet3());
+			pstmt.setString(8, vitals.getExecutorCity());
+			pstmt.setString(9, vitals.getExecutorState());
+			pstmt.setString(10, vitals.getExecutorZip());
+			pstmt.setString(11, vitals.getExecutorPhone());
+			pstmt.setString(12, vitals.getExecutorCellPhone());
+			pstmt.setString(13, vitals.getExecutorRelation());
+			pstmt.setString(14, vitals.getIsExecutorSame());
+			pstmt.setString(15, vitals.getExecutorEmail());
+			pstmt.setInt(16, vitals.getId());
+			pstmt.setString(17, vitals.getExecutorPersonId());
+
+			logger.debug("pstmnt in dbvitalsexecutorpeer" + pstmt);
+
+			return pstmt;
+
+		} catch (java.sql.SQLException e) {
+			throw new com.aldorsolutions.webfdms.database.PersistenceException(
+					"DbVitalsInformantPeer.Update:" + e.getMessage(), e);
+		}
+	}
+
+	/**
+	 * getUpdateSql method comment.
+	 */
+	protected java.sql.PreparedStatement getInsertSql(
+			com.aldorsolutions.webfdms.database.DatabaseTransaction t, com.aldorsolutions.webfdms.database.Persistent p)
+			throws com.aldorsolutions.webfdms.database.PersistenceException {
+		java.sql.Connection connection = null;
+		try {
+			DbVitalsExecutor vitals = (DbVitalsExecutor) p;
+			logger.debug("DbVitalsExecutorPeer insert   "
+					+ vitals.getExecutorFirstname() + "   !!!!!!!!!!!!!!!!!!");
+			logger
+					.debug("dbvitalsexecutorpeer insert vitals get vitalmasterkey "
+							+ vitals.getId());
+			connection = t.getConnection();
+			java.sql.PreparedStatement pstmt = connection
+					.prepareStatement("INSERT INTO person( "
+							+ VITALSMASTERKEY
+							+ ","
+							+ PERSONTYPEID
+							+ ","
+							+ // / persontypeid is set to 1 since we only have
+								// an executor
+							EXECUTORFIRSTNAME + "," + EXECUTORLASTNAME + ","
+							+ EXECUTORSTREET + "," + EXECUTORSTREET2 + ","
+							+ EXECUTORSTREET3 + "," + EXECUTORCITY + ","
+							+ EXECUTORSTATE + "," + EXECUTORZIP + ","
+							+ EXECUTORPHONE + "," + EXECUTORCELLPHONE + ","
+							+ EXECUTORRELATION + "," + EXECUTORSAME + ","
+							+ EXECUTOREMAIL + ") "
+							+ "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
+
+			pstmt.setString(1, Integer.toString(p.getId()));
+			pstmt.setString(2, Integer.toString(1)); // / persontypeid is set
+														// to 1 since we only
+														// have an executor
+			pstmt.setString(3, vitals.getExecutorFirstname());
+			pstmt.setString(4, vitals.getExecutorLastname());
+			pstmt.setString(5, vitals.getExecutorStreet());
+			pstmt.setString(6, vitals.getExecutorStreet2());
+			pstmt.setString(7, vitals.getExecutorStreet3());
+			pstmt.setString(8, vitals.getExecutorCity());
+			pstmt.setString(9, vitals.getExecutorState());
+			pstmt.setString(10, vitals.getExecutorZip());
+			pstmt.setString(11, vitals.getExecutorPhone());
+			pstmt.setString(12, vitals.getExecutorCellPhone());
+			pstmt.setString(13, vitals.getExecutorRelation());
+			pstmt.setString(14, vitals.getIsExecutorSame());
+			pstmt.setString(15, vitals.getExecutorEmail());
+
+			logger.debug("pstmnt in dbvitalsexecutorpeer" + pstmt);
+
+			return pstmt;
+
+		} catch (java.sql.SQLException e) {
+			throw new com.aldorsolutions.webfdms.database.PersistenceException(
+					"DbVitalsExecutorPeer.insert" + e.getMessage(), e);
+		}
+
+	}
+
+}

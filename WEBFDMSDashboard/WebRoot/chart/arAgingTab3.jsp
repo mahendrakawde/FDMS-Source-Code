@@ -1,0 +1,218 @@
+<%@ page language="java" import="java.util.*" pageEncoding="ISO-8859-1"%>
+
+<%@ taglib uri="http://jakarta.apache.org/struts/tags-bean" prefix="bean"%>
+
+<%@page import="com.softwarefx.chartfx.server.ChartServer"%>
+<%@page import="com.softwarefx.chartfx.server.dataproviders.ListProvider"%>
+<%@page import="com.softwarefx.chartfx.server.Gallery"%>
+<%@page import="com.softwarefx.chartfx.server.dataproviders.XmlDataProvider"%>
+<%@page import="com.softwarefx.chartfx.server.TitleDockable"%>
+<%@page import="com.softwarefx.chartfx.server.DockArea"%>
+<%@page import="com.softwarefx.chartfx.server.DockBorder"%>
+<%@page import="com.softwarefx.chartfx.server.ContentLayout"%>
+<%@page import="com.softwarefx.chartfx.server.AxisFormat"%>
+<%@page import="com.softwarefx.chartfx.server.Axis"%>
+<%@page import="com.aldorsolutions.dashboard.struts.form.chart.ChartListForm"%>
+<%@page import="com.softwarefx.chartfx.server.galleries.Pie"%>
+<%@page import="com.softwarefx.chartfx.server.SeriesAttributes"%>
+<%@page import="com.softwarefx.chartfx.server.internal.Internal.GalleryAttribute"%>
+<%@page import="com.softwarefx.chartfx.server.galleries.Bar"%>
+<%@page import="com.softwarefx.chartfx.server.galleries.ExplodingMode"%>
+<%@page import="com.softwarefx.chartfx.server.DataGrid"%>
+<%@page import="com.softwarefx.chartfx.server.AxisX"%>
+<%@page import="com.softwarefx.chartfx.server.AxisY"%>
+<%@page import="com.softwarefx.chartfx.server.AxesStyle"%>
+<%@page import="com.softwarefx.chartfx.server.MarkerShape"%>
+<%@page import="com.softwarefx.chartfx.server.Interlaced"%>
+<%@page import="com.softwarefx.chartfx.server.Pane"%>
+<%
+ChartListForm clf = (ChartListForm)request.getAttribute("chartListForm");
+
+ChartServer tab3Chart1 = new ChartServer(pageContext,request,response);
+tab3Chart1.setID("tab3_1");
+ChartServer tab3Chart2 = new ChartServer(pageContext,request,response);
+tab3Chart2.setID("tab3_2");
+ChartServer tab3Chart3 = new ChartServer(pageContext,request,response);
+tab3Chart3.setID("tab3_3");
+
+TitleDockable title = new TitleDockable();
+title.setAlignment(com.softwarefx.StringAlignment.CENTER);
+
+title.setFont(new java.awt.Font("Verdana",java.awt.Font.PLAIN,14));
+//title.setTextColor(new java.awt.Color(165, 42, 42));
+//title.setTextColor(new java.awt.Color(93, 123, 157));
+title.setTextColor(new java.awt.Color(127, 127, 127));
+
+tab3Chart1.setFont(new java.awt.Font("Verdana",java.awt.Font.PLAIN,11));
+tab3Chart2.setFont(new java.awt.Font("Verdana",java.awt.Font.PLAIN,11));
+tab3Chart3.setFont(new java.awt.Font("Verdana",java.awt.Font.PLAIN,11));
+
+ListProvider lstDataProvider = new ListProvider();
+
+
+%>
+
+<table width="100%" border="0">
+ <tr>
+		<td >
+			<h1>Report Dashboard </h1>
+		</td>
+		<td > 
+			<span>Selected Dates from <bean:write name="chartListForm" property="fromDate" />
+			 to <bean:write name="chartListForm" property="toDate" /> </span>
+		</td>
+		<td>&nbsp;
+		</td>
+		
+</tr>
+	<tr>
+		<td>
+<%
+
+tab3Chart1.setID("tab31");
+String[] labels = { "Days 30","Days 60","Days 90","Days 90+"};
+
+//double[] series1= { 2091215.31,1843254.50,1925495.29,36826996.87};
+//double[] series2= { 1406402.36,1721171.31,1876658.18,36705392.35};
+
+lstDataProvider.add(labels);
+// lstDataProvider.add(clf.getArCurrentReceivables());
+// lstDataProvider.add(clf.getArTotalRevenue());
+
+//title.setDock(DockArea.BOTTOM);
+title.setText("A/R Aging");
+tab3Chart1.getTitles().add(title);
+
+
+//set list provider from data
+tab3Chart1.getDataSourceSettings().setDataSource(lstDataProvider);
+
+
+tab3Chart1.setWidth(390);
+tab3Chart1.setHeight(580);
+tab3Chart1.setGallery(Gallery.BAR);
+//tab3Chart1.setPalette("Schemes.Professional");
+tab3Chart1.setPalette("ChartFX6.Windows");
+tab3Chart1.getView3D().setEnabled(true);
+
+
+tab3Chart1.getAxisY().getTitle().setText("A/R Amount");
+tab3Chart1.getAxisX().getTitle().setText("A/R Days");
+
+ 
+
+tab3Chart1.getAxisY().getLabelsFormat().setCulture(Locale.US);
+tab3Chart1.getAxisY().getLabelsFormat().setFormat(AxisFormat.CURRENCY);
+
+tab3Chart1.setToolTipFormat("%l : %v out of %T  ");
+//tab3Chart1.setToolTipFormat(" Current Receivables $ %N of Cremation %S");
+
+
+//tab3Chart1.getAxisY().setAutoScroll(true);
+tab3Chart1.getSeries().get(0).setText("Current Receivables");
+tab3Chart1.getSeries().get(1).setText("Total Revenue");
+
+tab3Chart1.getAllSeries().getPointLabels().setVisible(false);
+tab3Chart1.getAllSeries().getPointLabels().setAlignment(com.softwarefx.StringAlignment.FAR);
+tab3Chart1.getAllSeries().getPointLabels().setLineAlignment(com.softwarefx.StringAlignment.CENTER);
+
+
+
+tab3Chart1.getLegendBox().setBorder(DockBorder.EXTERNAL);
+tab3Chart1.getLegendBox().setDock(DockArea.BOTTOM);
+tab3Chart1.getLegendBox().setVisible(true);
+
+
+tab3Chart1.getImageSettings().setInteractive(true);
+tab3Chart1.renderControl();
+%>
+
+</td>
+<td>
+<%
+title.setText("Revenue & Receivables");
+tab3Chart2.getTitles().add(title);
+tab3Chart2.setID("tab32");
+tab3Chart2.setWidth(390);
+tab3Chart2.setHeight(580);
+tab3Chart2.setGallery(Gallery.BAR);
+//tab3Chart2.setPalette("Schemes.Professional");
+tab3Chart2.setPalette("ChartFX6.Windows");
+
+tab3Chart2.getView3D().setEnabled(true);
+
+
+//String[] labels2 = {"No Name","No Name","Al Chapman","Alan P. Ray","Allan Nibert","Allen Kopp","Amanda Bryant","Amanda E. Bryant","Anthony Calabrese","Anthony J. Calabrese","Barton Parshall","Betty H. Cundiff","Billy Luke Oney"};
+//double[] series_1 = {5071.54,19076.75,225.00,934723.86,126211.17,239922.37,100402.64,645138.85,360901.20,685447.37,291502.08,94655.59,12523.31};
+//double[] series_2= {5071.54,19076.75,225.00,931450.69,120867.52,239922.37,100402.64,645138.85,360901.20,685447.37,291502.08,94655.59,12523.31 };
+lstDataProvider = new ListProvider();
+// lstDataProvider.add(clf.getDirectorName());
+// lstDataProvider.add(clf.getArDirectorPayment());
+// lstDataProvider.add(clf.getArDirectorRevenue());
+
+tab3Chart2.getDataSourceSettings().setDataSource(lstDataProvider);
+
+tab3Chart2.getAllSeries().setHorizontal(true);
+tab3Chart2.getAxisX().setAutoScroll(true);
+tab3Chart2.getAxisY().getLabelsFormat().setCulture(Locale.US);
+tab3Chart2.getAxisY().getLabelsFormat().setFormat(AxisFormat.CURRENCY);
+
+tab3Chart2.getAxisX().getTitle().setText("Director");
+tab3Chart2.getAxisY().getTitle().setText("A/R Amount");
+tab3Chart2.setToolTipFormat("%l : %v \n %s ");
+
+tab3Chart2.getSeries().get(0).setText("Receivables By Director ");
+tab3Chart2.getSeries().get(1).setText("Revenue By Director ");
+tab3Chart2.getLegendBox().setBorder(DockBorder.EXTERNAL);
+tab3Chart2.getLegendBox().setDock(DockArea.BOTTOM);
+tab3Chart2.getLegendBox().setVisible(true);
+tab3Chart2.getImageSettings().setInteractive(true);
+
+tab3Chart2.renderControl();
+%>
+</td>
+<td>
+<%
+
+//String[] labels1 = {"Uncollected Revenue","Collected Revenue"};
+//short[] series= {(short)50925927,(short)880119};
+
+tab3Chart3.setID("tab33");
+title.setText("Revenue vs A/R");
+tab3Chart3.getTitles().add(title);
+
+tab3Chart3.setHeight(580);
+tab3Chart3.setWidth(390);
+
+tab3Chart3.setGallery(Gallery.PIE);
+//tab3Chart3.setPalette("Schemes.Professional");
+tab3Chart3.setPalette("ChartFX6.Windows");
+tab3Chart3.getView3D().setEnabled(true);
+
+
+tab3Chart3.getData().setSeries(1);
+tab3Chart3.getData().setPoints(2);
+// tab3Chart3.getData().set(0, 0, ((double)clf.getReceivable()[0]));
+// tab3Chart3.getData().set(0, 1, ((double)clf.getReceivable()[1]));
+// tab3Chart3.getData().getLabels().set((short)0, "Collected Revenue");
+tab3Chart3.getData().getLabels().set((short)1, "Uncollected Revenue");
+tab3Chart3.getSeries().get(0).setText("$");
+
+tab3Chart3.getAxisY().getLabelsFormat().setCulture(Locale.US);
+tab3Chart3.getAxisY().getLabelsFormat().setFormat(AxisFormat.CURRENCY);
+tab3Chart3.setToolTipFormat("%l \n %v of %t \n(%p%%) ");
+
+DataGrid dataGrid = tab3Chart3.getDataGrid();
+dataGrid.setVisible(true);
+dataGrid.setContentLayout(ContentLayout.CENTER);
+dataGrid.setBackColorHeader(new java.awt.Color(95, 106, 113));
+dataGrid.setHeight(65);
+ 
+tab3Chart3.getLegendBox().setVisible(false);
+tab3Chart3.renderControl();
+%>
+</td>
+
+</tr>
+</table>
+	

@@ -1,0 +1,147 @@
+Accident,Accident,,,,,,
+AdditionalSrv,Additional Service Name,,,,,,
+Adsource,Advertising Source Name,,,,,,
+Ancestry,Ancestry,,,,,,
+ATSOURCE,At Need Source,,,,,,
+BirthOrder,Birth Order,,,,,,
+BirthType,Birth Type,,,,,,
+CASHTYPE,General Bank Account,Account Code,,,,,
+CASKETEXT,Casket Exterior (Abbreviated),Casket Exterior,,,,,
+CASKETINT,Casket Interior,,,,,,
+CASKETTYPE,Casket Type,,,,,,
+CASKETUSE,Casket Use,,,,,,
+Caskets,Manufacturer,Description,Price,,,,
+Cemetery,Name of Cemetery,Street Address,City,State,Zip,County,Phone
+Charities,,,,,,,
+CHARITY,Charity Name,,,,,,
+CheckListAN,Sequence Number,Checklist At-Need Item,,,
+Churches,Name of Church,Address,City,State,Zip
+CITY_STATE,City,State (Spelled Out),Zip,County,State (Abbreviated)
+Counselors,Counselor Name,,,,
+County,County Name,,,,
+Country,Country Name,,,,
+Crdstyle,Lena Liu/Window Box,,,,
+Cremains,Disposition of Cremated Remains,,,,
+Crematory,Crematory Name,Street Address,City,State,Zip
+cust_hd_41,Heading 41,,,,
+cust_hd_42,Heading 42,,,,
+cust_hd_43,Heading 43,,,,
+cust_hd_44,Heading 44,,,,
+cust_hd_45,Heading 45,,,,
+cust_hd_46,Heading 46,,,,
+cust_hd_47,Heading 47,,,,
+cust_hd_48,Heading 48
+cust_hd_49,Heading 49
+cust_hd_50,Heading 50
+cust_hd_51,Heading 51
+cust_hd_52,Heading 52
+cust_hd_53,Heading 53
+cust_hd_54,Heading 54
+cust_hd_55,Heading 55
+cust_hd_56,Heading 56
+cust_hd_57,Heading 57
+cust_hd_58,Heading 58
+cust_hd_59,Heading 59
+cust_hd_60,Heading 60
+cust_hd_61,Heading 61
+cust_hd_62,Heading 62
+cust_hd_63,Heading 63
+cust_hd_64,Heading 64
+cust_hd_65,Heading 65
+cust_hd_66,Heading 66
+cust_hd_67,Heading 67
+cust_hd_68,Heading 68
+cust_hd_69,Heading 69
+cust_hd_70,Heading 70
+cust_hd_71,Heading 71
+cust_hd_72,Heading 72
+cust_hd_73,Heading 73
+cust_hd_74,Heading 74
+cust_hd_75,Heading 75
+cust_hd_76,Heading 76
+cust_hd_77,Heading 77
+cust_hd_78,Heading 78
+cust_hd_79,Heading 79
+cust_hd_80,Heading 80
+custom1,Heading 1
+custom10,Heading 10
+custom11,Heading 11
+custom12,Heading 12
+custom13,Heading 13
+custom14,Heading 14
+custom15,Heading 15
+custom16,Heading 16
+custom17,Heading 17
+custom18,Heading 18
+custom19,Heading 19
+custom2,Heading 2
+custom20,Heading 20
+custom21,Heading 21
+custom22,Heading 22
+custom23,Heading 23
+custom24,Heading 24
+custom25,Heading 25
+custom26,Heading 26
+custom27,Heading 27
+custom28,Heading 28
+custom29,Heading 29
+custom3,Heading 3
+custom30,Heading 30
+custom31,Heading 31
+custom32,Heading 32
+custom33,Heading 33
+custom34,Heading 34
+custom35,Heading 35
+custom36,Heading 36
+custom37,Heading 37
+custom38,Heading 38,,,,,,
+custom39,Heading 39,,,,,,
+custom4,Heading 4,,,,,,
+custom40,Heading 40,,,,,,
+custom5,Heading 5,,,,,,
+custom6,Heading 6,,,,,,
+custom7,Heading 7,,,,,,
+custom8,Heading 8,,,,,,
+custom9,Heading 9,,,,,,
+DecEducation,Decedent Education,,,,,,
+DISPCODE,Disposition Code,,,,,,
+Dispostn,Disposition,,,,,,
+Doctor,Doctor Name,Street Address,City,State,Zip,Phone,ID
+EMBALM,Embalming Status,,,,,,
+industry,Work Industry,,,,,,
+inpatdoa,Inpatient Option,,,,,,
+INVLOCTN,Inventory Location,,,,,,,,,,
+LOCDEATH,Name of Location,Street Address,City,State (Spelled Out),County,State (Abbreviated),Zip,,,,
+Marital,Marital Status,,,,,,,,,,
+Memstyle,Memorial Style,,,,,,,,,,
+Minister,Name of Minister,,,,,,,,,,
+MKTPLAN,Marketing Plan,,,,,,,,,,
+Occupation,Occupation,,,,,,,,,,
+Organist,Name of Organist,,,,,,,,,,
+PAYCOMP,Code,Display Name,Type,Assignment Fee %,Assignment Fee Max,Assignment Fee Min,GPL Key,Charge Modifiable,Can Payments Be Applied,Diff. Default,Can Finance Charges Be Applied
+PAYMETHOD,Payment Method,,,,,,,,,,
+PAYTYPES,Payment Type,Account Code,,,,,,,,,
+Placedth,Place of Death,,,,,,,,,,
+PLCATGRY,Price List Category (Letter),Price List Category,,,,,,,,,
+PnBanks,Pre Need Bank Name,,,,,,,,,,
+PnCasket,Pre Need Casket,,,,,,,,,,
+PnDepository,Pre Need Dispository,,,,,,,,,,
+PnFundType,Pre Need Fund Type,,,,,,,,
+PnSource,Pre Need Source,,,,,,,,
+PnUrn,Pre Need Urn,,,,,,,,
+PnVault,Pre Need Vault,,,,,,,,
+PRODLINE,Item Category,Item Category Initial,,,,,,,
+Race,Race,,,,,,,,
+Relation,Relationship,,,,,,,,
+REVTYPE,Account,Account Code,,,,,,,
+Rivals,Funeral Home Name,,,,,,,,
+SaleType,Sale Type,,,,,,,,
+Soloist,Name of Soloist,,,,,,,,
+Srvplace,Name of Service Place,Street Address,City,State,Zip,,,,
+States,State (Spelled Out),State (Abbreviated),,,,,,,
+SUPPLIER,Supplier Name,,,,,,,,
+TaxCode,Tax Code,Description,Local Tax ,State Tax,Local Limit,State Limit,Article Rate,Article Lower Limit,Article Upper Limit
+TimeOfService,Time Value,,,,,,,,
+Township,Name of Township,,
+Vaults,Manufacturer,Description,Price
+Versions,Price List,Price List Description,

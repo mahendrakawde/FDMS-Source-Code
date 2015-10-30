@@ -1,0 +1,181 @@
+<%@ page language="java" pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic"%>
+<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles"%>
+<%@ taglib uri="http://displaytag.sf.net" prefix="display"%>
+<%@ taglib uri="/WEB-INF/tld/security.tld" prefix="security"%>
+<script language="JavaScript">
+function checkSearch() { 
+
+		if ((document.acctListVendorsSearchForm.vendorName.value.length > 0) || (document.acctListVendorsSearchForm.vendorCode.value.length > 0) || (document.acctListVendorsSearchForm.includeNoLocation.value == "Y")) {
+			document.acctListVendorsSearchForm.direction.value = "Search";
+			return true;
+		}
+		else if((document.acctListVendorsSearchForm.localeID.value > 0) || (document.acctListVendorsSearchForm.locationID.value > 0)) {
+			document.acctListVendorsSearchForm.direction.value = "Search";
+		    return true;
+		}
+		else {
+			alert("To Search: Please enter vendorCode or vendorName or choose unassigned location.");
+			return false;
+		}
+
+/*		if ((document.acctListVendorsSearchForm.locationID.value == 0 ) && (document.acctListVendorsSearchForm.vendorName.value.length <= 0) ) {
+			alert("To Search: If you select all location, please be specific vendor name.");
+		   return false;
+		}
+		else {
+			return true;
+		} 
+*/
+} 
+</script>
+
+
+
+<security:token hasRole="Vendor Menu: View">
+	<html:form action="/acctListVendorsSearch" method="post">
+		<html:errors />
+		
+		<h1>Search</h1>
+		<table>
+			<tr>
+				<td align="left" width="80%" valign="top" style="padding: 4px;">
+					<fieldset >
+						<legend class="tahoma12bBlue"> Search </legend>
+						<table cellspacing="0" cellpadding="1">
+							<bean:define id="localeDtos" name="ADMIN_LOCALES" scope="session"
+								type="java.util.ArrayList" />
+							<tr class="verdana12">
+								<td align="right">Locale:</td>
+								<td align="left"><html:select property="localeID"
+										styleClass="input">
+										<option value="0">*** ALL ***</option>
+										<html:options collection="localeDtos" labelProperty="name"
+											property="localeId" />
+									</html:select></td>
+							</tr>
+							<tr class="verdana12">
+								<td colspan="2" align="center"><br />Or<br /></td>
+							</tr>
+							<bean:define id="locationDtos" name="ADMIN_LOCATIONS"
+								scope="session" type="java.util.ArrayList" />
+							<tr class="verdana12">
+								<td align="right">Location:</td>
+								<td align="left"><html:select property="locationID"
+										styleClass="input">
+										<option value="0">*** ALL ***</option>
+										<html:options collection="locationDtos" labelProperty="name"
+											property="locationId" />
+									</html:select></td>
+							</tr>
+							<tr class="verdana12">
+								<td colspan="2" align="center"><br />And<br /></td>
+							</tr>
+							<tr class="verdana12">
+								<td colspan="2" align="center"><br /></td>
+							</tr>
+							<tr class="verdana12">
+								<td align="right" >Vendor Code:</td>
+								<td><html:text name="acctListVendorsSearchForm"
+										property="vendorCode" maxlength="20" size="20"
+										onkeypress="if (window.event && (window.event.keyCode == 13)) { 
+										handleJumpButtonClick(); return false; } else { return true; }" />
+									<html:checkbox property="exactCode" />Exact Match</td>
+
+							</tr>
+							<tr class="verdana12">
+								<td align="right">Vendor Name:</td>
+								<td><html:text name="acctListVendorsSearchForm"
+										property="vendorName" maxlength="50" size="50"
+										onkeypress="if (window.event && (window.event.keyCode == 13)) { 
+										handleJumpButtonClick(); return false; } else { return true; }" />
+									<html:checkbox property="exactName" />Exact Match</td>
+
+							</tr>
+							<tr class="verdana12">
+								<td align="right">Vendor Status:</td>
+								<td><select name="includeInactive">
+										<option value="A">Active Only</option>
+										<option value="D">Inactive Only</option>
+										<option value="B">Active and Inactive</option>
+								</select></td>
+
+							</tr>
+							<tr class="verdana12">
+								<td align="right">unassigned Location:</td>
+								<td><select name="includeNoLocation">
+										<option value="N">No</option>
+										<option value="Y">Yes</option>
+								</select></td>
+
+							</tr>
+							<tr class="verdana12b">
+								<td colspan="2" align="left"><br />* If you select both of
+									all locale and all location, please be specific at least one of
+									vendor name or veondor Code or unassigned as yes. <br /></td>
+							</tr>
+							<tr >
+								<td></td>
+								<td><html:submit value="Search"
+										onclick="return checkSearch();" property="submitButton" styleClass="verdana12"></html:submit>
+								</td>
+							</tr>
+						</table>
+					</fieldset></td>
+				<td width="30%"></td>
+			</tr>
+		</table>
+		<html:hidden property="direction" />
+
+		<h1>Vendors</h1>
+		<security:token hasRole="Vendor Menu: Edit">
+			<tr >
+				<td><input type="button" value="Add Vendor" class="verdana12"
+					onclick="window.location='acctEditVendors.do?vendorID=0'">
+				</td>
+			</tr>
+		</security:token>
+
+		<display:table name="sessionScope.acctListVendorsSearchForm.vendors"
+			defaultsort="1" defaultorder="descending" style="text-align:center;"
+			pagesize="20" requestURI="acctListVendorsSearch.do"
+			class="displaytag">
+
+			<security:token hasRole="Vendor Menu: Edit">
+				<display:column property="name" title="Vendor"
+					style="text-align: left;" sortable="true" headerClass="sortable"
+					href="acctEditVendors.do" paramProperty="vendorID"
+					paramId="vendorID" />
+			</security:token>
+
+			<security:token hasRole="Vendor Menu: View"
+				excludeRole="Vendor Menu: Edit">
+				<display:column property="name" title="Vendor"
+					style="text-align: left;" sortable="true" headerClass="sortable" />
+			</security:token>
+
+			<%-- <display:column property="defaultAcctID" sortable="true" 
+			headerClass="sortable" title="Default Acct" />	 --%>
+			<display:column property="vendorCode" sortable="true"
+				headerClass="sortable" title="Code" />
+			<display:column property="deleteCode" sortable="true"
+				headerClass="sortable" title="Status" />
+			<display:column property="defaultAcct" sortable="true"
+				headerClass="sortable" title="Default Acct" />
+			<display:column property="defaultAcctDesc" sortable="true"
+				headerClass="sortable" title="Default Acct Dec" />
+			<display:column property="addr1" sortable="true"
+				style="text-align: left;" headerClass="sortable" title="Address 1" />
+			<display:column property="addr2" sortable="true"
+				style="text-align: left;" headerClass="sortable" title="Address 2" />
+			<display:column property="cityState" sortable="true"
+				headerClass="sortable" title="City" />
+			<display:column property="vendorState" sortable="true"
+				headerClass="sortable" title="State" />
+			<%-- <display:column property="internalVendor" sortable="true"
+			headerClass="sortable" title="Internal Vendor" /> --%>
+		</display:table>
+	</html:form>
+</security:token>

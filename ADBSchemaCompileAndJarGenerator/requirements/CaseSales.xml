@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<this:getDataResponse xmlns:this="http://aldorsolutions.com/webservice/services/fddeservice" xmlns:this1="http://aldorsolutions.com/webservice/xsd/fdde/service" xmlns:this2="http://aldorsolutions.com/webservice/xsd/comm/fdde" xmlns:this3="http://aldorsolutions.com/webservice/xsd/comm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://aldorsolutions.com/webservice/services/fddeservice ../build/FddeService.xsd ">
+  <this1:dataReturned>financialInfoByFuneralHome</this1:dataReturned>
+  <this1:requestedCriteria>
+  	<this1:funeralHomeId>L3FH4</this1:funeralHomeId>
+  </this1:requestedCriteria>
+  <this1:results>
+  	<this1:financialInfo>
+  		<this2:caseSale funeralHomeId="L3FH4" id="L3FH4C137">
+  			<this2:transaction tranId="1497">
+  				<this2:description>Basic Services of Funeral Dir and Staff</this2:description>
+  				<this2:amount>2555.00</this2:amount>
+  				<this2:ARAccount>11010</this2:ARAccount>
+  				<this2:GLAccount>99999</this2:GLAccount>
+  				<this2:taxStatus>TAX</this2:taxStatus>
+  				<this2:transactionDate>2008-02-01</this2:transactionDate>
+  				<this2:transactionType>Sale</this2:transactionType>
+  				<this2:itemCode>SRV</this2:itemCode>
+  				<this2:initialSaleflag>false</this2:initialSaleflag>
+  				<this2:costOfItem>-565.00</this2:costOfItem>
+  				<this2:payMethod>CK</this2:payMethod>
+  				<this2:receiptNo>123</this2:receiptNo>
+  				<this2:dateStamped>2008-02-01</this2:dateStamped>
+  			</this2:transaction>
+  			<this2:transaction tranId="1497">
+  				<this2:description>Basic Services of Funeral Dir and Staff</this2:description>
+  				<this2:amount>2555.00</this2:amount>
+  				<this2:ARAccount>11010</this2:ARAccount>
+  				<this2:GLAccount>99999</this2:GLAccount>
+  				<this2:taxStatus>TAX</this2:taxStatus>
+  				<this2:transactionDate>2008-02-01</this2:transactionDate>
+  				<this2:transactionType>Payment</this2:transactionType>
+  				<this2:itemCode>SRV</this2:itemCode>
+  				<this2:initialSaleflag>false</this2:initialSaleflag>
+  				<this2:costOfItem>565.00</this2:costOfItem>
+  				<this2:payMethod>CK</this2:payMethod>
+  				<this2:receiptNo>123</this2:receiptNo>
+  				<this2:dateStamped>2008-02-01</this2:dateStamped>
+  			</this2:transaction>
+  			<this2:transaction tranId="1499">
+  				<this2:description>Basic Services of Funeral Dir and Staff</this2:description>
+  				<this2:amount>2555.00</this2:amount>
+  				<this2:ARAccount>11010</this2:ARAccount>
+  				<this2:GLAccount>80110</this2:GLAccount>
+  				<this2:taxStatus>TAX</this2:taxStatus>
+  				<this2:transactionDate>2008-02-01</this2:transactionDate>
+  				<this2:transactionType>Finance</this2:transactionType>
+  				<this2:itemCode>SRV</this2:itemCode>
+  				<this2:initialSaleflag>false</this2:initialSaleflag>
+  				<this2:costOfItem>565.00</this2:costOfItem>
+  				<this2:payMethod>CK</this2:payMethod>
+  				<this2:receiptNo>123</this2:receiptNo>
+  				<this2:dateStamped>2008-02-01</this2:dateStamped>
+  			</this2:transaction>
+  		</this2:caseSale>
+  		<this2:caseSale funeralHomeId="L3FH4" id="L3FH4C301">
+  			<this2:transaction tranId="1521">
+  				<this2:description>2007 A/R Balance</this2:description>
+  				<this2:amount>675.00</this2:amount>
+  				<this2:ARAccount>11010</this2:ARAccount>
+  				<this2:GLAccount>99999</this2:GLAccount>
+  				<this2:taxStatus>TAX</this2:taxStatus>
+  				<this2:transactionDate>2008-02-01</this2:transactionDate>
+  				<this2:transactionType>Sale</this2:transactionType>
+  				<this2:itemCode>SRV</this2:itemCode>
+  				<this2:initialSaleflag>false</this2:initialSaleflag>
+  				<this2:costOfItem>-565.00</this2:costOfItem>
+  				<this2:payMethod>CK</this2:payMethod>
+  				<this2:receiptNo>123</this2:receiptNo>
+  				<this2:dateStamped>2008-02-01</this2:dateStamped>
+  			</this2:transaction>
+  			<this2:transaction tranId="1497">
+  				<this2:description>Basic Services of Funeral Dir and Staff</this2:description>
+  				<this2:amount>2555.00</this2:amount>
+  				<this2:ARAccount>11010</this2:ARAccount>
+  				<this2:GLAccount>99999</this2:GLAccount>
+  				<this2:taxStatus>TAX</this2:taxStatus>
+  				<this2:transactionDate>2008-02-01</this2:transactionDate>
+  				<this2:transactionType>Payment</this2:transactionType>
+  				<this2:itemCode>SRV</this2:itemCode>
+  				<this2:initialSaleflag>false</this2:initialSaleflag>
+  				<this2:costOfItem>565.00</this2:costOfItem>
+  				<this2:payMethod>CC</this2:payMethod>
+  				<this2:receiptNo>123</this2:receiptNo>
+  				<this2:dateStamped>2008-02-01</this2:dateStamped>
+  			</this2:transaction>
+  		</this2:caseSale>
+  	</this1:financialInfo>
+  </this1:results>
+</this:getDataResponse>

@@ -1,0 +1,123 @@
+<project name="SCHEMA_COMPILER" default="jarGenerate.service" basedir=".">
+
+  <property environment="currentenv" />
+  <property name="rootdir" value="../" />
+  <property file="build.properties"/>
+  <property name="jarBakName" value="WsFdms-xmlBean.jar.bak" />
+  <property name="buildDir" value="build" />
+  <property name="compiledClassDir" value="${buildDir}/class" />
+  <property name="srcCodeGenDir" value="${buildDir}/schemasrc" />
+  <property name="distDir" value="${rootdir}/dist" />
+  <property name="projDestDir" value="${rootdir}/${rootdir}/WEBSERVICESFDMS" />
+  <property name="projSchemaSrcDir" value="${projDestDir}/build/resources" />
+  <property name="projLibDir" value="${projDestDir}/build/lib" />
+  <property name="libProjDir" value="${rootdir}/${rootdir}/WEBFDMSLib/lib" />
+
+
+  <path id="class.path">
+    <fileset dir="${rootdir}/lib">
+      <include name="**/*.jar"/>
+    </fileset>
+    <dirset dir="${rootdir}/bin"/>
+  </path>
+
+
+  <!-- CLEAN -->
+  <target name="clean">
+    <echo message="Removing old directory structure..." />
+    <delete dir="${buildDir}" />
+  </target>
+
+
+  <!-- Init -->
+  <target name="init" depends="clean">
+    <echo message="Creating build directory structure..." />
+  	<mkdir dir="${buildDir}" />
+  	<mkdir dir="${compiledClassDir}" />
+  	<mkdir dir="${srcCodeGenDir}"/>
+  </target>
+
+  <!-- Java Code Generator -->
+  <target name="codeGen.service" depends="clean,init">
+    <echo message="Generating FdmsService schema java code ..." />
+    <java classpathref="class.path" 
+    	classname="com.aldorsolutions.schema.Schemas2Java">
+    	<arg value="${schemasList}"/>
+    	<arg value="${srcCodeGenDir}"/>
+    </java>
+  </target>
+
+	  <!-- Java Code Generator -->
+	  <target name="codeGen.data" depends="clean,init">
+	    <echo message="Generating FddeService schema java code ..." />
+	    <java classpathref="class.path" 
+	    	classname="com.aldorsolutions.schema.Schemas2Java">
+	    	<arg value="${libSchemasList}"/>
+	    	<arg value="${srcCodeGenDir}"/>
+	    </java>
+	  </target>
+	
+  <!-- COMPILE -->
+  <target name="compile">
+    <echo message="Compiling generated code ..." />
+    <javac classpathref="class.path" 
+    	srcdir="${srcCodeGenDir}" 
+    	destdir="${compiledClassDir}" 
+    	debug="true"/>
+  </target>
+	
+  <!-- Jar generator -->
+  <target name="jarGenerate.service" depends="codeGen.service,compile">
+    <echo message="Generating the jar ..." />
+  	<move file="${distDir}/${jarName}" 
+  			tofile="${distDir}/${backupJarName}" 
+  			overwrite="true" failonerror="false"/>
+  	<jar destfile="${jarName}" 
+  			basedir="${compiledClassDir}" includes="**/*.*"/>
+  	<copy todir="${projLibDir}"  file="${jarName}" overwrite="true"/>
+  	<move todir="${distDir}" file="${jarName}"/>
+  	<antcall target="copySchemas"/>
+  	<antcall target="clean"/>
+  </target>
+  
+  <target name="copySchemas">
+  	<copy todir="${projSchemaSrcDir}" overwrite="true">
+  		<fileset dir="${basedir}">
+  			<include name="*.xsd"/>
+  		</fileset>
+  	</copy> 
+  </target>
+	
+  <!-- Jar generator -->
+  <target name="jarGenerate.data.lib" depends="codeGen.data,compile">
+    <echo message="Generating the jar ..." />
+  	<move file="${distDir}/${libJarName}" 
+  			tofile="${distDir}/${backupJarName}" 
+  			overwrite="true" failonerror="false"/>
+  	<jar destfile="${libJarName}" 
+  			basedir="${compiledClassDir}" includes="**/*.*"/>
+  	<copy  todir="${libProjDir}"  file="${libJarName}" overwrite="true"/>
+  	<copy todir="${projLibDir}"  file="${libJarName}" overwrite="true"/>
+  	<move todir="${distDir}" file="${libJarName}"/>
+  	<antcall target="clean"/>
+  </target>
+  <!-- ================================= 
+          target: Help              
+         ================================= -->
+    <target name="Help">
+        <echo>
+Use this build script to compile schemas using Axis2 Data Binding (ADB) Framework.
+ADB is a light weight data binding framework.
+        	
+Before using this script, please set below properties in build.properties file
+schemasList=, jarName and backupJarName)
+        	From command line run the below command
+        	ant &lt;task name&gt;
+        	
+        	Task name			Task description
+        	-----------			----------------
+        	jarGenerate			
+        </echo>
+    </target>
+
+</project>

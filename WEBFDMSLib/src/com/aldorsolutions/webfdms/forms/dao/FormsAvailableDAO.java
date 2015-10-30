@@ -1,0 +1,377 @@
+/*
+ * FormsAvailablesDAO.java
+ *
+ * Created on June 19, 2006
+ */
+
+package com.aldorsolutions.webfdms.forms.dao;
+
+/**
+ *
+ * @author drollins
+ */
+
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+
+import org.apache.log4j.Logger;
+
+import com.aldorsolutions.webfdms.beans.DbFormsAvailable;
+import com.aldorsolutions.webfdms.beans.DbUserSession;
+import com.aldorsolutions.webfdms.util.DAO;
+
+
+
+public class FormsAvailableDAO extends DAO {
+    
+    private Logger logger = Logger.getLogger(FormsAvailableDAO.class.getName());
+    
+    public FormsAvailableDAO(String usersLookup) {
+		super(usersLookup);
+	}
+    
+    public FormsAvailableDAO(DbUserSession user) {
+    	super (user);
+    }
+    
+    public DbFormsAvailable getFormsAvailable ( long formID ) {
+    	DbFormsAvailable form = null;
+        
+        try {
+            StringBuffer sql = new StringBuffer();
+            
+            sql.append("select FormId, Locale, Description, ReportName, Category, " );
+            sql.append("SelectionFormula, exportType, MarginLeft, MarginRight, " );
+            sql.append("MarginTop, MarginBottom, ChainToReport, " );
+            sql.append("UserDefined, Datapull, StoredProc, XmlFile, AddLocalIDAndLocationIDReportFolder from formsavailable where FormId = ?" );
+            
+//            makeConnection(dbLookup);
+            makeConnection(getDbLookup());
+            statement = conn.prepareStatement(sql.toString());
+            statement.setLong(1, formID);
+            
+            rs = statement.executeQuery();
+            
+            if (rs.next()) {
+            	int col = 0;
+            	form = new DbFormsAvailable();
+            	form.setFormId(rs.getInt(++col));
+            	form.setLocaleNumber(rs.getInt(++col));
+            	form.setDescription( rs.getString(++col));
+            	form.setReportName(rs.getString(++col));
+            	form.setCategory(rs.getInt(++col));
+            	form.setSelectionFormula(rs.getString(++col));
+            	form.setExportType(rs.getString(++col));
+            	form.setMarginLeft(rs.getInt(++col));
+            	form.setMarginRight(rs.getInt(++col));
+            	form.setMarginTop(rs.getInt(++col));
+            	form.setMarginBottom(rs.getInt(++col));
+            	form.setChainToReport(rs.getInt(++col));
+            	form.setUserDefined(rs.getBoolean(++col));
+            	form.setDatapull(rs.getString(++col));
+            	form.setStoredProc(rs.getString(++col));
+            	form.setXmlFile(rs.getString(++col));
+            	form.setAddLocalIDAndLocationIDReportFolder(rs.getString(++col));
+            }
+            
+        } catch (SQLException e) {
+            logger.error("SQLException in getFormsAvailable() : ", e);
+        } catch (Exception e) {
+            logger.error("Exception in getFormsAvailable() : ", e);
+        } finally {
+            closeConnection();
+        }
+        
+        return form;
+    }
+
+
+    public ArrayList <DbFormsAvailable> getFormsAvailables ( long category, long localeID ) {
+    	ArrayList <DbFormsAvailable> elements = new ArrayList <DbFormsAvailable> ();
+    	
+        try {
+            StringBuffer sql = new StringBuffer();
+            
+            sql.append("select FormId, Locale, Description, ReportName, Category, " );
+            sql.append("SelectionFormula, exportType, MarginLeft, MarginRight, " );
+            sql.append("MarginTop, MarginBottom, ChainToReport, UserDefined, Datapull, StoredProc, XmlFile, AddLocalIDAndLocationIDReportFolder " );
+            sql.append("from formsavailable where Category = ? and (Locale = ? OR Locale = 0)" );
+            
+            makeConnection(dbLookup);
+            statement = conn.prepareStatement(sql.toString());
+            statement.setLong(1, category);
+            statement.setLong(2, localeID);
+            
+            rs = statement.executeQuery();
+            
+            while (rs.next()) {
+            	int col = 0;
+            	DbFormsAvailable form = new DbFormsAvailable();
+            	form.setFormId(rs.getInt(++col));
+            	form.setLocaleNumber(rs.getInt(++col));
+            	form.setDescription( rs.getString(++col));
+            	form.setReportName(rs.getString(++col));
+            	form.setCategory(rs.getInt(++col));
+            	form.setSelectionFormula(rs.getString(++col));
+            	form.setExportType(rs.getString(++col));
+            	form.setMarginLeft(rs.getInt(++col));
+            	form.setMarginRight(rs.getInt(++col));
+            	form.setMarginTop(rs.getInt(++col));
+            	form.setMarginBottom(rs.getInt(++col));
+            	form.setChainToReport(rs.getInt(++col));
+            	form.setUserDefined(rs.getBoolean(++col));
+            	form.setDatapull(rs.getString(++col));
+            	form.setStoredProc(rs.getString(++col));
+            	form.setXmlFile(rs.getString(++col));
+            	form.setAddLocalIDAndLocationIDReportFolder(rs.getString(++col));
+            	elements.add(form);
+            }
+            
+        } catch (SQLException e) {
+            logger.error("SQLException in getFormsAvailables() : ", e);
+        } catch (Exception e) {
+            logger.error("Exception in getFormsAvailables() : ", e);
+        } finally {
+            closeConnection();
+        }
+        
+        return elements;
+    }
+    
+    public ArrayList <DbFormsAvailable> getFormsAvailables ( String reportName ) {
+    	ArrayList <DbFormsAvailable> elements = new ArrayList <DbFormsAvailable> ();
+    	
+        try {
+            StringBuffer sql = new StringBuffer();
+            
+            sql.append("select FormId, Locale, Description, ReportName, Category, " );
+            sql.append("SelectionFormula, exportType, MarginLeft, MarginRight, " );
+            sql.append("MarginTop, MarginBottom, ChainToReport, UserDefined, Datapull, StoredProc, XmlFile, AddLocalIDAndLocationIDReportFolder " );
+            sql.append("from formsavailable where ReportName = ?" );
+            
+            makeConnection(dbLookup);
+            statement = conn.prepareStatement(sql.toString());
+            statement.setString(1, reportName);
+            
+            rs = statement.executeQuery();
+            
+            while (rs.next()) {
+            	int col = 0;
+            	DbFormsAvailable form = new DbFormsAvailable();
+            	form.setFormId(rs.getInt(++col));
+            	form.setLocaleNumber(rs.getInt(++col));
+            	form.setDescription( rs.getString(++col));
+            	form.setReportName(rs.getString(++col));
+            	form.setCategory(rs.getInt(++col));
+            	form.setSelectionFormula(rs.getString(++col));
+            	form.setExportType(rs.getString(++col));
+            	form.setMarginLeft(rs.getInt(++col));
+            	form.setMarginRight(rs.getInt(++col));
+            	form.setMarginTop(rs.getInt(++col));
+            	form.setMarginBottom(rs.getInt(++col));
+            	form.setChainToReport(rs.getInt(++col));
+            	form.setUserDefined(rs.getBoolean(++col));
+            	form.setDatapull(rs.getString(++col));
+            	form.setStoredProc(rs.getString(++col));
+            	form.setXmlFile(rs.getString(++col));
+            	form.setAddLocalIDAndLocationIDReportFolder(rs.getString(++col));
+            	elements.add(form);
+            }
+            
+        } catch (SQLException e) {
+            logger.error("SQLException in getFormsAvailables() : ", e);
+        } catch (Exception e) {
+            logger.error("Exception in getFormsAvailables() : ", e);
+        } finally {
+            closeConnection();
+        }
+        
+        return elements;
+    }
+    
+    public ArrayList <DbFormsAvailable> getFormsAvailables ( boolean isGroupByReportName ) {
+    	ArrayList <DbFormsAvailable> elements = new ArrayList <DbFormsAvailable> ();
+    	
+        try {
+            StringBuffer sql = new StringBuffer();
+            
+            sql.append("select FormId, Locale, Description, ReportName, Category, " );
+            sql.append("SelectionFormula, exportType, MarginLeft, MarginRight, " );
+            sql.append("MarginTop, MarginBottom, ChainToReport, UserDefined, Datapull, StoredProc, XmlFile, AddLocalIDAndLocationIDReportFolder " );
+            sql.append("from formsavailable " );
+            
+            if (isGroupByReportName) {
+            	sql.append(" group by ReportName ");
+            }
+            
+            makeConnection(dbLookup);
+            statement = conn.prepareStatement(sql.toString());
+            
+            
+            rs = statement.executeQuery();
+            
+            while (rs.next()) {
+            	int col = 0;
+            	DbFormsAvailable form = new DbFormsAvailable();
+            	form.setFormId(rs.getInt(++col));
+            	form.setLocaleNumber(rs.getInt(++col));
+            	form.setDescription( rs.getString(++col));
+            	form.setReportName(rs.getString(++col));
+            	form.setCategory(rs.getInt(++col));
+            	form.setSelectionFormula(rs.getString(++col));
+            	form.setExportType(rs.getString(++col));
+            	form.setMarginLeft(rs.getInt(++col));
+            	form.setMarginRight(rs.getInt(++col));
+            	form.setMarginTop(rs.getInt(++col));
+            	form.setMarginBottom(rs.getInt(++col));
+            	form.setChainToReport(rs.getInt(++col));
+            	form.setUserDefined(rs.getBoolean(++col));
+            	form.setDatapull(rs.getString(++col));
+            	form.setStoredProc(rs.getString(++col));
+            	form.setXmlFile(rs.getString(++col));
+            	form.setAddLocalIDAndLocationIDReportFolder(rs.getString(++col));
+            	elements.add(form);
+            }
+            
+        } catch (SQLException e) {
+            logger.error("SQLException in getFormsAvailables() : ", e);
+        } catch (Exception e) {
+            logger.error("Exception in getFormsAvailables() : ", e);
+        } finally {
+            closeConnection();
+        }
+        
+        return elements;
+    }
+    
+    public boolean addFormsAvailable(DbFormsAvailable form) {
+        boolean added = false;
+        
+        try {
+        	logger.info("In " + this.getClass() + " " + Thread.currentThread().getStackTrace()[1].getMethodName() + " is been called");
+            StringBuffer sql = new StringBuffer();
+            
+            sql.append("insert into formsavailable (Locale, Description, ReportName, ");
+            sql.append("Category, SelectionFormula, exportType, MarginLeft, MarginRight, ");
+            sql.append("MarginTop, MarginBottom, ChainToReport, UserDefined) ");
+            sql.append("values ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )");
+        	
+        	
+            int col = 0;
+            makeConnection(dbLookup);
+            statement = conn.prepareStatement(sql.toString(), Statement.RETURN_GENERATED_KEYS);
+            
+        	statement.setInt(++col, form.getLocaleNumber());
+        	statement.setString(++col, form.getDescription());
+            statement.setString(++col, form.getReportName());
+            statement.setInt(++col, form.getCategory());
+            statement.setString(++col, form.getSelectionFormula());
+            statement.setString(++col, form.getExportType());
+            statement.setInt(++col, form.getMarginLeft());
+            statement.setInt(++col, form.getMarginRight());
+            statement.setInt(++col, form.getMarginTop());
+            statement.setInt(++col, form.getMarginBottom());
+            statement.setInt(++col, form.getChainToReport());
+            statement.setBoolean(++col, form.getUserDefined());
+            
+            statement.executeUpdate();
+            added = true;
+            
+            if (added) {
+            	rs = statement.getGeneratedKeys();
+                if (rs.next()) {
+                	form.setFormId(rs.getInt(1));
+                }
+                
+                insertAudit(form);
+            }
+            
+        } catch (SQLException e) {
+            logger.error("SQLException in addFormsAvailable() : ", e);
+        } catch (Exception e) {
+            logger.error("Exception in addFormsAvailable() : ", e);
+        } finally {
+            closeConnection();
+        }
+        
+        return added;
+    }
+    
+    public boolean updateFormsAvailable(DbFormsAvailable form) {
+        boolean updated = false;
+        
+        try {
+        	
+        	DbFormsAvailable oldComp = getFormsAvailable(form.getFormId());
+        	
+            StringBuffer sql = new StringBuffer();
+            sql.append("UPDATE formsavailable SET Locale = ?, Description = ?, ReportName = ?, ");
+            sql.append("Category = ?, SelectionFormula = ?, exportType = ?, MarginLeft = ?, MarginRight = ?, ");
+            sql.append("MarginTop = ?, MarginBottom = ?, ChainToReport = ?, UserDefined = ? ");
+            sql.append("WHERE (FormId = ?)");
+            
+            int col = 0;
+            makeConnection(dbLookup);
+            statement = conn.prepareStatement(sql.toString());
+            
+            statement.setInt(++col, form.getLocaleNumber());
+        	statement.setString(++col, form.getDescription());
+            statement.setString(++col, form.getReportName());
+            statement.setInt(++col, form.getCategory());
+            statement.setString(++col, form.getSelectionFormula());
+            statement.setString(++col, form.getExportType());
+            statement.setInt(++col, form.getMarginLeft());
+            statement.setInt(++col, form.getMarginRight());
+            statement.setInt(++col, form.getMarginTop());
+            statement.setInt(++col, form.getMarginBottom());
+            statement.setInt(++col, form.getChainToReport());
+            statement.setBoolean(++col, form.getUserDefined());
+            statement.setInt(++col, form.getFormId());
+            
+            statement.executeUpdate();
+            
+            updateAudit(form, oldComp);
+            
+            updated = true;
+        } catch (SQLException e) {
+            logger.error("SQLException in updateFormsAvailable() : ", e);
+        } catch (Exception e) {
+            logger.error("Exception in updateFormsAvailable() : ", e);
+        } finally {
+            closeConnection();
+        }
+        
+        return updated;
+    }
+
+    public boolean deleteFormsAvailable(int formID) {
+        boolean deleted = false;
+        
+        try {
+        	DbFormsAvailable oldComp = getFormsAvailable(formID);
+        	
+            StringBuffer sql = new StringBuffer();
+            sql.append("delete from formsavailable where formid = ?");
+            
+            int col = 0;
+            makeConnection(dbLookup);
+            statement = conn.prepareStatement(sql.toString());
+            statement.setLong(++col, formID);
+            statement.executeUpdate();
+            
+            deleteAudit(oldComp);
+            
+            deleted = true;
+        } catch (SQLException e) {
+            logger.error("SQLException in deleteFormsAvailable() : ", e);
+        } catch (Exception e) {
+            logger.error("Exception in deleteFormsAvailable() : ", e);
+        } finally {
+            closeConnection();
+        }
+        
+        return deleted;
+    }
+    
+}

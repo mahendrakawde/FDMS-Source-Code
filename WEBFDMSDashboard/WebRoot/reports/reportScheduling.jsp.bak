@@ -1,0 +1,97 @@
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic"%>
+<%@ taglib uri="http://displaytag.sf.net" prefix="display" %>
+<%@ taglib uri="/WEB-INF/tld/security.tld" prefix="security"%>
+<%@ taglib uri="http://www.webfdms.com/taglibs/fdms" prefix="fdms" %>
+<%@ taglib uri="/WEB-INF/tld/companyOptions.tld" prefix="companyOption"%>
+
+<script language="JavaScript">
+			
+			function submitAction(value) {
+				//document.reportSchedulingForm.requestType.value = value;
+			//	document.reportSchedulingForm.submit();
+			document.forms[0].direction.value = value;
+			document.forms[0].submit();
+			} 
+			
+</script>		
+<h1>
+	Report Scheduling
+</h1>
+<h2>
+				Reports
+				<img src="./images/reportsIcon.jpg" alt="Reports" class="icons" />
+				<img src="./images/h2BgArrows.jpg" alt="" class="h2BgArrows" />
+</h2>
+<body/>
+<html:form action="/reportSchedulingList" >
+<html:base />
+<html:errors />
+<html:hidden property="direction" />
+<table cellspacing="0" cellpadding="1" border="0">
+
+	  <tr>
+		    <td >
+			<table width="100%" border="0" cellpadding="0" cellspacing="0">
+				<tr>
+				<td>
+					<fieldset >
+						<legend class="actions">
+								<strong> Report Options </strong> 
+						</legend>	
+						<table width="100%" >
+						
+						<tr>
+		                  <td width="29%" align="right" class="verdana12b">
+							<bean:define id="userLocales" name="USER_LOCALES" scope="session" />
+							
+								Locale:
+						 </td>
+						<td>
+								<html:select property="userLocaleId" name="reportSchedulingForm"
+									styleClass="input"
+									onchange="updateLocaleSubmit();">
+									<html:option value="0">All Locales</html:option>   
+									<html:options collection="userLocales" property="localeID"
+										labelProperty="name" />
+								</html:select>
+						</td>
+						</tr>
+						</table>
+					</fieldset>
+					</td>
+					</tr>
+			</table>
+		</td>
+		</tr>
+		<tr>
+		    <td >
+			<table cellspacing="0" cellpadding="1" border="0">
+				<tr><td>
+			   			<fieldset >
+						<legend class="actions">
+								<strong> Action </strong> 
+						</legend>	
+						<table width="100%" border="0" cellpadding="0" cellspacing="0">
+							<tr>
+							<td>
+							<input type="button" value="Future Schedule" onclick="submitAction('future');" />
+							</td>
+							<td>
+							<input type="button" value="Historical Schedule" onclick="submitAction('history');" />
+							</td>
+							</tr>
+						</table>
+						</fieldset>
+				</td>	
+			   </tr>	
+			</table>		
+			</td>	
+	  </tr>
+</table>
+</html:form>	
+</body>
+<script type="text/javascript">
+//checkURL();
+</script>				

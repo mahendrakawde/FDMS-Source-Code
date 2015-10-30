@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	targetNamespace="http://aldorsolutions.com/webservice/xsd/comm/fdde/sci" 
+	xmlns:this="http://aldorsolutions.com/webservice/xsd/comm/fdde/sci" 
+	xmlns:fddecomm="http://aldorsolutions.com/webservice/xsd/comm/fdde" 
+	xmlns:comm="http://aldorsolutions.com/webservice/xsd/comm" 
+	elementFormDefault="qualified">
+	
+	<xs:import namespace="http://aldorsolutions.com/webservice/xsd/comm/fdde" schemaLocation="FddeCommon.xsd"/>
+	<xs:import namespace="http://aldorsolutions.com/webservice/xsd/comm" schemaLocation="Common.xsd"/>
+	
+
+	<xs:complexType name="sciContractType">
+		<xs:complexContent>
+			<xs:extension base="this:sciTPData">
+				<xs:sequence>
+					<xs:element name="fullContractNBR" type="comm:StrMax20Len" minOccurs="0"/>
+					<xs:element name="salesId" type="xs:int" minOccurs="0"/>
+					<xs:element name="batchNumber" type="xs:string" minOccurs="0"/>
+					<xs:element name="sciCaseType" type="xs:string" minOccurs="0" />
+					<xs:element name="kitCode" type="xs:string" minOccurs="0"/>
+					<xs:element name="sciSaleType" type="this:sciSaleTypeType" minOccurs="0" />
+					<xs:element name="txnType" type="this:txnTypeType" />
+					<xs:element name="serviceDate" type="xs:date" minOccurs="0" />
+					<xs:element name="saleDate" type="xs:date" minOccurs="0" />
+					<xs:element name="batchDate" type="xs:date" minOccurs="0" />
+					<xs:element name="txnDate" type="xs:date" minOccurs="0" />
+					<xs:element name="leadSource" type="this:leadSourceType" minOccurs="0" />
+					<xs:element name="arranger" type="this:sciArrangerType" nillable="true" minOccurs="0" />
+					<xs:element name="arranger_1" type="xs:string" minOccurs="0"/>
+					<xs:element name="arranger2" type="comm:StrMax40Len" minOccurs="0" />
+					<xs:element name="arranger_2" type="xs:string" minOccurs="0"/>
+					<xs:element name="arranger3" type="xs:string" minOccurs="0"/>
+					<xs:element name="arranger_3" type="xs:string" minOccurs="0"/>
+					<xs:element name="descr2" type="comm:StrMax30Len" minOccurs="0"/>
+					<xs:element name="terms" type="xs:string" />
+					<xs:element name="nbrPymts" type="xs:string" minOccurs="0"/>
+					<xs:element name="interestMethod" type="this:ynType" minOccurs="0" />
+					<xs:element name="interestRate" type="fddecomm:DeAmountType" minOccurs="0" />
+					<xs:element name="cf_ref" type="xs:string" minOccurs="0"/>
+					<xs:element name="dpType" type="xs:string" minOccurs="0"/>
+					<xs:element name="dpAmt" type="xs:string" minOccurs="0"/>
+					<xs:element name="pymtAmt" type="fddecomm:DeAmountType" minOccurs="0"/>
+					<xs:element name="pymtStartDate" type="xs:date" minOccurs="0"/>
+					<xs:element name="sciComment" type="xs:string" minOccurs="0"/>
+					<xs:element name="purchType" type="xs:string" minOccurs="0"/>
+					<xs:element name="purchaser" type="this:purchaserType" minOccurs="0" />
+					<xs:element name="coPurchaser" type="this:purchaserType" minOccurs="0" />
+					<xs:element name="beneficiary" type="this:BasicDeceasedType" />
+					<xs:element name="claimType" type="xs:string" minOccurs="0"/>
+					<xs:element name="claimRef" type="xs:string" minOccurs="0"/>
+					<xs:element name="claimAmt" type="xs:string" minOccurs="0"/>
+					<xs:element name="claimDueDt" type="xs:string" minOccurs="0"/>
+					<xs:element name="amtRcvd" type="xs:string" minOccurs="0"/>
+					<xs:element name="insuranceItem" type="xs:string" minOccurs="0"/>
+					<xs:element name="amtOfIns" type="xs:string" minOccurs="0" />
+					<xs:element name="tax" type="this:taxType" minOccurs="0" maxOccurs="4"/>
+					<xs:element name="fncChgAmt" type="fddecomm:DeAmountType"/>
+					<xs:element name="finAdjType" type="xs:string" minOccurs="0" />
+					<xs:element name="finAdjAmt" type="fddecomm:DeAmountType" minOccurs="0" />
+					<xs:element name="finAdjRef" type="xs:string" minOccurs="0" />
+					<xs:element name="finDscntCrType" type="this:finDscntCrTypeType" />
+					<xs:element name="finDscntCrAmt" type="fddecomm:DeAmountType" />
+					<xs:element name="finDscntCrRef" type="xs:string" minOccurs="0" />
+					<xs:element name="totalSaleAmt" type="fddecomm:DeAmountType" minOccurs="0"/>
+					<xs:element name="sumOfDiscounts" type="fddecomm:DeAmountType" minOccurs="0"/>
+					<xs:element name="sumOfTaxes" type="fddecomm:DeAmountType" minOccurs="0"/>
+					<xs:element name="totalFinanceChargeInterest" type="fddecomm:DeAmountType" minOccurs="0"/>
+					<xs:element name="countOfPaymentsRecieved" type="xs:int" minOccurs="0"/>
+					<xs:element name="totalPaymentAmt" type="fddecomm:DeAmountType" minOccurs="0"/>
+					<xs:element name="totalAdjustmentAmt" type="fddecomm:DeAmountType" minOccurs="0"/>
+					<xs:element name="BalDue" type="xs:float" minOccurs="0"/>
+				</xs:sequence>
+				<xs:attribute name="balance" type="xs:float" use="optional"/>
+				<xs:attribute name="lastActivityDate" type="xs:date" use="optional"/>
+				<xs:attribute name="hasFinanceCharges" type="xs:boolean" use="optional"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="sciTPData">
+		<xs:sequence>
+			<xs:element name="active" type="this:ynType" />
+			<xs:element name="id" type="xs:string" />
+			<xs:element name="testRun" type="xs:string" minOccurs="0"/>
+			<xs:element name="mch" type="xs:string" minOccurs="0"/>
+            <xs:element name="caseName" type="xs:string" minOccurs="0"/>
+            <xs:element name="cxlGroup" type="this:cxlGroupType" />
+			<xs:element name="updateDate" type="xs:date"/>
+			<xs:element name="locCd" type="xs:int" minOccurs="0"/>
+			<xs:element name="contractNo" type="xs:string" />
+		</xs:sequence>
+		<xs:attribute name="caseId" type="fddecomm:caseIdType"/>
+	</xs:complexType>
+
+	<xs:simpleType name="ynType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Y"/>
+			<xs:enumeration value="N"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:complexType name="sciArrangerType">
+		<xs:simpleContent>
+			<xs:extension base="comm:StrMax150Len">
+				<xs:attribute name="arrangerId" type="xs:int" use="optional"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+
+	<xs:simpleType name="cxlGroupType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="EnterContract" />
+			<xs:enumeration value="EnterCash" />
+			<xs:enumeration value="EnterLineItem"></xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name="purchaserType">
+		<xs:sequence>
+			<xs:element name="name" type="fddecomm:DeNameType" minOccurs="0" />
+			<xs:element name="address" type="this:sciAddressType" minOccurs="0" />
+			<xs:element name="phone" type="comm:StrMax20Len" minOccurs="0" />
+			<xs:element name="ssn" type="comm:StrMax14Len" minOccurs="0" />
+			<xs:element name="col1" type="xs:string" minOccurs="0"/>
+			<xs:element name="acct" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="purchaserId" type="xs:string"/>
+	</xs:complexType>
+
+	<xs:complexType name="sciAddressType">
+		<xs:complexContent>
+			<xs:extension base="fddecomm:AddressType">
+				<xs:sequence>
+					<xs:element name="addrInfo" type="comm:StrMax200Len" minOccurs="0"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="lineItemType">
+		<xs:sequence>
+			<xs:element name="seq" type="xs:int"></xs:element>
+			<xs:element name="qty" type="xs:int" />
+			<xs:element name="itemCode" type="comm:StrMax50Len"
+				minOccurs="0" />
+			<xs:element name="description" type="comm:StrMax50Len"
+				minOccurs="0" />
+			<xs:element name="price" type="fddecomm:DeAmountType" />
+			<xs:element name="cost" type="fddecomm:DeAmountType" minOccurs="0"/>
+			<xs:element name="dscnt" type="fddecomm:DeAmountType"
+				minOccurs="0" />
+			<xs:element name="dscntReason" type="xs:string"
+				minOccurs="0" />
+			<xs:element name="srvType" type="xs:string" minOccurs="0" />
+		</xs:sequence>
+		<xs:attribute name="chargesId" type="xs:int"/>
+		<xs:attribute name="invHistoryId" type="xs:int" use="optional"/>
+	</xs:complexType>
+
+	<xs:complexType name="sciCashType">
+		<xs:complexContent>
+			<xs:extension base="this:sciTPData">
+				<xs:sequence>
+					<xs:element name="comment" type="comm:StrMax50Len" minOccurs="0" />
+                    <xs:element name="rcptsInBtch" type="xs:string" minOccurs="0"/>
+                    <xs:element name="btchDate" type="xs:date" minOccurs="0" />
+					<xs:element name="pymtAmt" type="fddecomm:DeAmountType" minOccurs="0" />
+					<xs:element name="pymtSource" type="this:pymtSourceType" minOccurs="0"/>
+					<xs:element name="pymtType" type="this:pymtTypeType" minOccurs="0"/>
+					<xs:element name="cashBatch" type="xs:string" minOccurs="0"/>
+					<xs:element name="runReverseCR" type="xs:string" minOccurs="0"/>
+					<xs:element name="applyNSF" type="xs:string" minOccurs="0"/>
+					<xs:element name="reverseCRBatch" type="xs:string" minOccurs="0"/>
+					<xs:element name="cashRefNbr" type="xs:string" minOccurs="0"/>
+					<xs:element name="finAdjAmt" type="fddecomm:DeAmountType" minOccurs="0"/>
+					<xs:element name="finAdjDescr" type="this:finDscntCrTypeType" minOccurs="0"/>
+					<xs:element name="finAdjRef" type="xs:string" minOccurs="0"/>
+				</xs:sequence>
+				<xs:attribute name="tranId" type="xs:int"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="BasicDeceasedType">
+        <xs:sequence>
+        	<xs:element name="name" minOccurs="0"
+        		type="fddecomm:DeCompleteNameType" />
+        	<xs:element minOccurs="0" name="birthDate" type="xs:date" />
+        	<xs:element minOccurs="0" name="deathDate" type="xs:date" />
+        	<xs:element name="col1" type="xs:string" minOccurs="0"/>
+        	<xs:element name="acct" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+	</xs:complexType>
+
+	<xs:simpleType name="sciSaleTypeType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Converted FA - Funeral Atneed"/>
+			<xs:enumeration value="Converted FP - Funeral Preneed"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="txnTypeType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Converted Contract"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="leadSourceType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="AQ - Acq Contract"/>
+			<xs:enumeration value="MU - Acq Contract"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name="taxType">
+		<xs:sequence>
+			<xs:element name="code" type="xs:string" minOccurs="0"/>
+			<xs:element name="amt" type="fddecomm:DeAmountType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:simpleType name="finDscntCrTypeType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="KNA Conversion Adj"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="pymtSourceType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Corporate"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="pymtTypeType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Conversion SUM Payment"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="sciContractLineItemType">
+		<xs:complexContent>
+			<xs:extension base="this:sciTPData">
+				<xs:sequence>
+					<xs:element name="lineItemCnt" type="xs:int" default="0" ></xs:element>
+					<xs:element name="lineItem" type="this:lineItemType" minOccurs="0" maxOccurs="unbounded"></xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="tranDetailType">
+		<xs:sequence>
+			<xs:element name="comment" type="comm:StrMax50Len" minOccurs="0" />
+			<xs:element name="pymtDate" type="xs:date" minOccurs="0"/>
+			<xs:element name="pymtAmt" type="fddecomm:DeAmountType" minOccurs="0" />
+			<xs:element name="pymtSource" type="xs:string" minOccurs="0" />
+			<xs:element name="pymtType" type="xs:string" minOccurs="0" />
+			<xs:element name="runReverseCR" type="xs:boolean" minOccurs="0" />
+			<xs:element name="cashRefNbr" type="xs:string" minOccurs="0" />
+			<xs:element name="finAdjAmt" type="fddecomm:DeAmountType" minOccurs="0" />
+			<xs:element name="finAdjDescr" type="xs:string" minOccurs="0" />
+			<xs:element name="finAdjRef" type="xs:string" minOccurs="0" />
+		</xs:sequence>
+		<xs:attribute name="tranId" type="xs:int"></xs:attribute>
+	</xs:complexType>
+
+	<xs:complexType name="sciARDetailDataType">
+		<xs:sequence>
+			<xs:element name="locCd" type="xs:int" minOccurs="0"/>
+			<xs:element name="deptIdKNA" type="xs:string" minOccurs="0"/>
+			<xs:element name="localeKNA" type="xs:int"/>
+			<xs:element name="locIdKNA" type="xs:int"/>
+			<xs:element name="sciContractNbr" type="xs:string"/>
+			<xs:element name="contractNbrKNA" type="xs:string" minOccurs="0"/>
+			<xs:element name="tranDetail" type="this:tranDetailType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="caseId" type="fddecomm:caseIdType"/>
+	</xs:complexType>
+</xs:schema>

@@ -1,0 +1,654 @@
+<%@ page language="java" import="java.util.*" pageEncoding="ISO-8859-1"%>
+
+
+<%@page import="com.softwarefx.chartfx.gauge.RadialStrip"%>
+<%@page import="com.softwarefx.chartfx.gauge.Title"%>
+<%@page import="com.softwarefx.chartfx.gauge.RadialScale"%>
+<%@page import="com.softwarefx.chartfx.gauge.RadialBorderStyle"%>
+<%@page import="com.softwarefx.chartfx.gauge.Palette"%>
+<%@page import="com.aldorsolutions.dashboard.struts.form.chart.CallVolumeTab1Form"%>
+<%@page import="com.softwarefx.chartfx.server.ChartServer"%>
+<%@page import="com.softwarefx.chartfx.server.dataproviders.ListProvider"%>
+<%@page import="com.softwarefx.chartfx.server.Gallery"%>
+<%@page import="com.softwarefx.chartfx.server.dataproviders.XmlDataProvider"%>
+<%@page import="com.softwarefx.chartfx.server.TitleDockable"%>
+<%@page import="com.softwarefx.chartfx.server.DockArea"%>
+<%@page import="com.softwarefx.chartfx.server.DockBorder"%>
+<%@page import="com.softwarefx.chartfx.server.ContentLayout"%>
+<%@page import="com.softwarefx.chartfx.server.AxisFormat"%>
+<%@page import="com.softwarefx.chartfx.server.Axis"%>
+<%@page import="com.aldorsolutions.dashboard.struts.form.chart.ChartListForm"%>
+<%@page import="java.awt.Color"%>
+<%@page import="com.softwarefx.chartfx.server.galleries.Bar"%>
+<%@page import="com.softwarefx.chartfx.server.Stacked"%>
+<%@page import="com.softwarefx.chartfx.server.SeriesAttributes"%>
+<%@page import="java.awt.Point"%>
+<%@page import="com.softwarefx.chartfx.server.PointAttributes"%>
+<%@page import="com.softwarefx.StringTrimming"%>
+<%@page import="com.softwarefx.StringAlignment"%>
+<%@page import="com.softwarefx.chartfx.server.AxisPosition"%>
+<%@page import="com.softwarefx.chartfx.server.AxisStyles"%>
+
+<%@taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
+
+<%!
+
+// Stripe 
+RadialStrip currentYearStrip=  new RadialStrip();
+RadialStrip lastYearStrip=  new RadialStrip(); 
+RadialStrip otherStrip=  new RadialStrip();
+
+// Title
+Title title = new Title();
+
+//Needle Arrow of the radial gauge
+com.softwarefx.chartfx.gauge.Needle needle = new com.softwarefx.chartfx.gauge.Needle();
+
+//Marker second point of the radial gauge
+com.softwarefx.chartfx.gauge.Marker marker11 = new com.softwarefx.chartfx.gauge.Marker();
+
+//set scale
+RadialScale scale= new RadialScale();
+
+//chart hieght width
+int radialHeight=280;
+int radialWidth=300;
+
+%>
+
+<%
+
+CallVolumeTab1Form clf = (CallVolumeTab1Form)request.getAttribute("callVolumeTab1Form");
+com.softwarefx.chartfx.gauge.RadialGauge.initWeb(pageContext,request,response);
+
+ChartServer chart1 = new ChartServer(pageContext,request,response);
+chart1.setID("tab1chart1");
+ChartServer chart2 = new ChartServer(pageContext,request,response);
+chart2.setID("tab1chart2");
+//ChartServer chart3 = new ChartServer(pageContext,request,response);
+//chart3.setID("tab1_3");
+
+
+TitleDockable title = new TitleDockable();
+title.setAlignment(com.softwarefx.StringAlignment.CENTER);
+title.setFont(new java.awt.Font("Verdana",java.awt.Font.PLAIN,14));
+//title.setTextColor(new java.awt.Color(165, 42, 42));
+//title.setTextColor(new java.awt.Color(93, 123, 157));
+title.setTextColor(new java.awt.Color(127, 127, 127));
+
+ListProvider lstDataProvider = new ListProvider();
+
+chart1.setFont(new java.awt.Font("Verdana",java.awt.Font.PLAIN,11));
+chart2.setFont(new java.awt.Font("Verdana",java.awt.Font.PLAIN,11));
+//chart3.setFont(new java.awt.Font("Verdana",java.awt.Font.PLAIN,11));
+
+
+ArrayList lastYearBurSaleType =(ArrayList) session.getAttribute("lastYearBurSaleType");
+ArrayList currentYearBurSaleType=(ArrayList )session.getAttribute("currentYearBurSaleType" );
+ArrayList lastYearCremSaleType=(ArrayList) session.getAttribute("lastYearCremSaleType" );
+ArrayList currentYearCremSaleType =(ArrayList) session.getAttribute("currentYearCremSaleType");
+
+
+//marker
+marker11.setStyle(com.softwarefx.chartfx.gauge.MarkerStyle.getMarker08());
+marker11.setColor(new java.awt.Color(229,97,5));
+%>
+	
+		<table width="100%" border="0">
+		<tr>
+		<td colspan="2">
+			<span>Selected Dates from <bean:write name="burialCremationTab2Form"
+					property="fromDate" /> to <bean:write name="burialCremationTab2Form"
+					property="toDate" /> </span>
+		</td>
+  		<td >
+  
+  		<table >
+  		<tr>
+			<td  >
+			 
+		  	<img  src="/dashboard/images/greenBox.jpg" />&nbsp; </td><td valign="middle"><span><bean:write name="callVolumeTab1Form" property="currentYear"/></span>	
+	  		</td>
+	  		<td >
+	  		<img src="/dashboard/images/blueBox.jpg" />&nbsp; </td><td valign="middle"><span> <bean:write name="callVolumeTab1Form" property="lastYear"/> </span>
+	  		 
+	  		</td>
+	  		<td width="25%">
+	  			B = Burial
+	  		</td>
+	  		<td width="25%">
+	  			C = Cremation
+	  		</td>
+		  		
+  		</tr>
+  		</table>
+  		</td>
+  	</tr>
+
+<tr>
+
+<td colspan="2" align="center">
+<%
+try{
+//title.setDock(DockArea.BOTTOM);
+title.setText("Call Volume");
+chart1.getTitles().add(title);
+
+chart1.setWidth(450);
+chart1.setHeight(380);
+chart1.setGallery(Gallery.BAR);
+//chart1.setPalette("Schemes.Professional");
+chart1.setPalette("Natural.Sky");// Natural.Adventure");  //ChartFX6.Windows
+//chart1.setPalette("ChartFX6.Windows");
+chart1.getView3D().setEnabled(true);
+
+chart1.getAllSeries().setStacked(Stacked.NORMAL);
+chart1.getAxesX().get(0).getLabelsFormat().setFormat(AxisFormat.NUMBER);
+
+chart1.getAxisX().getTitle().setText("No of Calls by Type & Year");
+chart1.getAxisY().getTitle().setText("No of Calls");
+
+
+
+/*
+String[] labels={"2010(538)\nBurial","2011(866)\nBurial","2010(544)\nCremation","2011(1069)\nCremation"};
+double[] series1={1,594,171,1};
+double[] series2={349,4,9,373};
+double[] series3={169,260,161,16};
+double[] series4={1,4,112,423};
+double[] series5={18,4,1,6};
+double[] series6={0,0,90,171};
+double[] series7={0,0,0,4};
+double[] series8={0,0,0,75};
+
+
+ListProvider lst = new ListProvider();
+lst.add(labels);
+lst.add(series1);
+lst.add(series2);
+lst.add(series3);
+lst.add(series4);
+lst.add(series5);
+lst.add(series6);
+lst.add(series7);
+lst.add(series8);
+chart1.getDataSourceSettings().setDataSource(lst);
+*/
+
+//set list provider from data
+lstDataProvider=clf.getCallVolumeChart().getListDataProvider();
+chart1.getDataSourceSettings().setDataSource(lstDataProvider);
+
+
+chart1.getAxisY().getLabelsFormat().setFormat(AxisFormat.NUMBER);
+//chart1.getAxesX().get(0).setTextColor(new java.awt.Color(133,156,182));
+//chart1.getAxesX().get(0).setTextColor(Color.WHITE);
+//chart1.getAxesX().get(0).setFont(new java.awt.Font("Times New Roman",java.awt.Font.BOLD,12));
+
+//chart1.getSeries().get(2).setText("AtNeed");
+/*
+chart1.getPoints().get(0).setText("Burials");
+chart1.getPoints().get(1).setText("Burials");
+chart1.getPoints().get(2).setText("Cremations");
+chart1.getPoints().get(3).setText("Cremations");
+*/
+
+if(clf.getLocaleID()!=0){
+	chart1.getAllSeries().getPointLabels().setVisible(true);
+	chart1.getAllSeries().getPointLabels().setTextColor(Color.WHITE);
+	chart1.getAllSeries().getPointLabels().setFont(new java.awt.Font("Verdana",java.awt.Font.BOLD,12));
+	chart1.getAllSeries().getPointLabels().setAlignment(com.softwarefx.StringAlignment.CENTER);
+	chart1.getAllSeries().getPointLabels().setLineAlignment(com.softwarefx.StringAlignment.CENTER);
+}
+
+for(int i=0;i<clf.getMaxSize();i++)
+{	
+	if( i < lastYearBurSaleType.size()){
+		chart1.getPoints().get(i,0).setText((String)lastYearBurSaleType.get(i));
+	}else{
+		chart1.getPoints().get(i,0).getPointLabels().setVisible(false);
+	}
+}
+for(int i=0;i<clf.getMaxSize();i++)
+{	
+	if( i < currentYearBurSaleType.size()){
+		chart1.getPoints().get(i,1).setText((String)currentYearBurSaleType.get(i));
+	}else{
+		chart1.getPoints().get(i,1).getPointLabels().setVisible(false);
+	}
+}
+for(int i=0;i<clf.getMaxSize();i++)
+{	
+	if( i < lastYearCremSaleType.size()){
+		chart1.getPoints().get(i,2).setText((String)lastYearCremSaleType.get(i));
+	}else{
+		chart1.getPoints().get(i,2).getPointLabels().setVisible(false);
+	}
+}
+for(int i=0;i<clf.getMaxSize();i++)
+{	
+	if( i < currentYearCremSaleType.size()){
+		chart1.getPoints().get(i,3).setText((String)currentYearCremSaleType.get(i));
+	}else{
+		chart1.getPoints().get(i,3).getPointLabels().setVisible(false);
+	}
+}
+
+/*
+chart1.getPoints().get(2,1).setText("Test1");
+chart1.getPoints().get(0,2).setText("Test2");
+chart1.getPoints().get(0,3).setText("Test3");
+chart1.getPoints().get(2,0).setText("Test4");
+*/
+
+chart1.setToolTipFormat("%L : %v out of %T  "); 
+
+chart1.getPoints().get(1).setColor(new java.awt.Color(82,122,214));
+chart1.getPoints().get(0).setColor(new java.awt.Color(103,204,103));
+chart1.getPoints().get(3).setColor(new java.awt.Color(82,122,214));
+chart1.getPoints().get(2).setColor(new java.awt.Color(103,204,103));
+
+/*
+chart1.getPoints().get(0).setColor(new java.awt.Color(133,156,182));
+chart1.getPoints().get(1).setColor(new java.awt.Color(165,229,122));
+chart1.getPoints().get(2).setColor(new java.awt.Color(133,156,182));
+chart1.getPoints().get(3).setColor(new java.awt.Color(165,229,122));
+*/
+chart1.getLegendBox().setVisible(false);
+chart1.getImageSettings().setInteractive(false);
+chart1.renderControl();
+
+}catch(Exception ex){
+%>
+Not getting Appropriate Data to generate chart.
+<% } %>
+
+</td>
+<td align="center">
+<%
+try{
+title.setText("Total Revenue");
+chart2.getTitles().add(title);
+
+chart2.setWidth(450);
+chart2.setHeight(380);
+chart2.setGallery(Gallery.BAR);
+//chart2.setPalette("ChartFX6.Windows");
+chart2.setPalette("Natural.Sky");
+//chart2.setPalette("Schemes.Professional");
+
+chart2.getView3D().setEnabled(true);
+chart2.getLegendBox().setVisible(false);
+chart2.getToolBar().setVisible(false);
+chart2.getImageSettings().setInteractive(false);
+chart2.getAllSeries().setStacked(Stacked.NORMAL);
+
+chart2.getAllSeries().setHorizontal(false);
+
+/*
+String[] labels2={"B10 (4466961)","B11 (7259033)","C10 (1443627)","C11 (2764180)"};
+double[] series_1={9907.70,4965073.01,560670.15,2995.00};
+double[] series_2={2970438.60,22140.55,41704.86,1179808.12};
+double[] series_3={2210336.73,1391708.73,68780.86,389252.27};
+double[] series_4={9921.11,37336.43,296106.48,919006.53};
+double[] series_5={84985.65,24146.68,2100,26980.98};
+double[] series_6={0,0,153793.44,410547.43};
+double[] series_7={0,0,0,13718.95};
+double[] series_8={0,0,0,142342.96};
+		
+lst = new ListProvider();
+lst.add(labels2);
+lst.add(series_1);
+lst.add(series_2);
+lst.add(series_3);
+lst.add(series_4);
+lst.add(series_5);
+lst.add(series_6);
+lst.add(series_7);
+lst.add(series_8);
+chart2.getDataSourceSettings().setDataSource(lst);
+*/
+
+chart2.getDataSourceSettings().setDataSource(clf.getTotalRevenuChart().getListDataProvider());
+
+//chart2.getAxisX().setLabelAngle((short)55);
+
+
+
+for(int i=0;i<lastYearBurSaleType.size();i++)
+{
+	chart2.getPoints().get(i,0).setText((String)lastYearBurSaleType.get(i));	
+}
+for(int i=0;i<currentYearBurSaleType.size();i++)
+{
+	chart2.getPoints().get(i,1).setText((String)currentYearBurSaleType.get(i));	
+}
+for(int i=0;i<lastYearCremSaleType.size();i++)
+{
+	chart2.getPoints().get(i,2).setText((String)lastYearCremSaleType.get(i));	
+}
+for(int i=0;i<currentYearCremSaleType.size();i++)
+{
+	chart2.getPoints().get(i,3).setText((String)currentYearCremSaleType.get(i));	
+}
+chart2.setToolTipFormat("%L : %v out of %T  "); 
+
+
+chart2.getAxisY().getLabelsFormat().setFormat(AxisFormat.CURRENCY);
+chart2.getAxisX().getTitle().setText("Revenue by Call Type & Year");
+chart2.getAxisY().getTitle().setText("Revenue");
+
+
+
+if(clf.getLocaleID()!=0){
+	chart2.getAllSeries().getPointLabels().setVisible(true);
+	chart2.getAllSeries().getPointLabels().setTextColor(Color.WHITE);
+	chart2.getAllSeries().getPointLabels().setFont(new java.awt.Font("Verdana",java.awt.Font.BOLD,10));
+	chart2.getAllSeries().getPointLabels().setAlignment(com.softwarefx.StringAlignment.CENTER);
+	chart2.getAllSeries().getPointLabels().setLineAlignment(com.softwarefx.StringAlignment.CENTER);
+}
+
+
+chart2.getPoints().get(1).setColor(new java.awt.Color(82,122,214));
+chart2.getPoints().get(0).setColor(new java.awt.Color(103,204,103));
+chart2.getPoints().get(3).setColor(new java.awt.Color(82,122,214));
+chart2.getPoints().get(2).setColor(new java.awt.Color(103,204,103));
+
+chart2.renderControl();
+}catch(Exception ex){
+%>
+Not getting Appropriate Data to generate chart.
+<% } %>
+
+</td>
+
+<%
+/*
+title.setText("Average Revenue/Call");
+chart3.getTitles().add(title);
+chart3.setWidth(390);
+chart3.setHeight(580);
+chart3.setGallery(Gallery.BAR);
+//chart3.setPalette("Schemes.Professional");
+chart3.setPalette("ChartFX6.Windows");
+
+chart3.getView3D().setEnabled(true);
+chart3.getLegendBox().setVisible(false);
+chart3.getImageSettings().setInteractive(true);
+chart3.getAllSeries().setStacked(Stacked.NORMAL);
+chart3.getAxisY().setVisible(false);
+
+
+ 
+/*
+String[] labels3={"Bur10 (8302)","Bur11 (8382)","Crem10 (2653)","Crem11 (2585)"};
+double[] ser_1={9907.70,8358.70,3278.77,2995.00};	
+double[] ser_2={8511.28,5535.13,4633.87,3163.02};
+double[] ser_3={8234.96,8501.29,2417.71,4298.80};
+double[] ser_4={9921.11,9334.10,2643.80,2172.59};
+double[] ser_5={4721.42,6036.67,2100.00,4496.83};
+double[] ser_6={0,0,1708.81,2400.86};
+double[] ser_7={0,0,0,3429.73};
+double[] ser_8={0,0,0,1897.90};
+
+lst = new ListProvider();
+lst.add(labels3);
+lst.add(ser_1);
+lst.add(ser_2);
+lst.add(ser_3);
+lst.add(ser_4);
+lst.add(ser_5);
+lst.add(ser_6);
+lst.add(ser_7);
+lst.add(ser_8);
+
+chart3.getDataSourceSettings().setDataSource(lst);
+*/
+
+/*
+chart3.getDataSourceSettings().setDataSource(clf.getAverageRevenuChart().getListDataProvider());
+
+chart3.setToolTipFormat("%L : %v ");
+
+chart3.getAllSeries().getPointLabels().setVisible(true);
+chart3.getAxisX().getTitle().setText("Average by Call Type & Year");
+chart3.getAxisY().getTitle().setText("Average Revenue by Call Type");
+
+
+
+chart3.getAllSeries().getPointLabels().setVisible(true);
+chart3.getAllSeries().getPointLabels().setTextColor(Color.WHITE);
+chart3.getAllSeries().getPointLabels().setFont(new java.awt.Font("Verdana",java.awt.Font.BOLD,12));
+chart3.getAllSeries().getPointLabels().setAlignment(com.softwarefx.StringAlignment.CENTER);
+chart3.getAllSeries().getPointLabels().setLineAlignment(com.softwarefx.StringAlignment.CENTER);
+for(int i=0;i<clf.getMaxSize();i++)
+{	
+	if( i < lastYearBurSaleType.size()){
+		chart3.getPoints().get(i,0).setText((String)lastYearBurSaleType.get(i));
+	}else{
+		chart3.getPoints().get(i,0).getPointLabels().setVisible(false);
+	}
+}
+for(int i=0;i<clf.getMaxSize();i++)
+{	
+	if( i < currentYearBurSaleType.size()){
+		chart3.getPoints().get(i,1).setText((String)currentYearBurSaleType.get(i));
+	}else{
+		chart3.getPoints().get(i,1).getPointLabels().setVisible(false);
+	}
+}
+for(int i=0;i<clf.getMaxSize();i++)
+{	
+	if( i < lastYearCremSaleType.size()){
+		chart3.getPoints().get(i,2).setText((String)lastYearCremSaleType.get(i));
+	}else{
+		chart3.getPoints().get(i,2).getPointLabels().setVisible(false);
+	}
+}
+for(int i=0;i<clf.getMaxSize();i++)
+{	
+	if( i < currentYearCremSaleType.size()){
+		chart3.getPoints().get(i,3).setText((String)currentYearCremSaleType.get(i));
+	}else{
+		chart3.getPoints().get(i,3).getPointLabels().setVisible(false);
+	}
+}
+
+chart3.getPoints().get(0).setColor(new java.awt.Color(82,122,214));
+chart3.getPoints().get(1).setColor(new java.awt.Color(103,204,103));
+chart3.getPoints().get(2).setColor(new java.awt.Color(82,122,214));
+chart3.getPoints().get(3).setColor(new java.awt.Color(103,204,103));
+
+/*chart3.getPoints().get(0).setColor(new java.awt.Color(133,156,182));
+chart3.getPoints().get(1).setColor(new java.awt.Color(165,229,122));
+chart3.getPoints().get(2).setColor(new java.awt.Color(133,156,182));
+chart3.getPoints().get(3).setColor(new java.awt.Color(165,229,122));*/
+
+
+//chart3.renderControl();
+%>
+
+
+</tr>
+<tr>
+<td>
+
+</td>
+</tr>
+
+<tr>
+		<td valign="top" align="center" colspan="3">
+			<table width="100%" border="0" cellpadding="1" >		
+				<tr>
+			<% int no=1;
+				while(no <= 3){
+			%>
+			 <td valign="top" align="center">
+			<%
+					com.softwarefx.chartfx.gauge.RadialGauge localeTab1 = new com.softwarefx.chartfx.gauge.RadialGauge();
+					localeTab1.setID("tab1guage"+no);
+					localeTab1.setHeight(radialHeight);
+					localeTab1.setWidth(radialWidth);
+					
+					//localeTab1.getBorder().setStyle(RadialBorderStyle.getSemiCircularBorder06());
+					localeTab1.getBorder().setStyle(RadialBorderStyle.getRectangularBorder01());
+					localeTab1.getBorder().setColor(Color.WHITE);
+					//localeTab1.setPalette(Palette.getOceanica());
+					localeTab1.setPalette(Palette.getChartFX6());
+							//getVivid());
+							//getChartFX6());	  
+							
+										
+						currentYearStrip=  new RadialStrip();
+						lastYearStrip=  new RadialStrip(); 
+						otherStrip=  new RadialStrip();
+						
+						lastYearStrip.setColor(Color.RED); //red
+						currentYearStrip.setColor(Color.YELLOW);  //green
+						otherStrip.setColor(new java.awt.Color(0, 255, 0)); // yellow
+						 
+						lastYearStrip.setRadius(1.0f);
+						currentYearStrip.setRadius(1.0f);
+						otherStrip.setRadius(1.0f);
+			
+			
+			   		
+					if(no==1){
+			   			try{
+			   			//SET scale
+				    	scale.setMax(clf.getMaxValue(clf.getCBTCallVolume()[4],clf.getCBTCallVolume()[5],0.5));
+						scale.setMin(0);
+						localeTab1.getScales().add(scale);
+						
+						
+						//set needle value
+				    	 needle.setValue(clf.getCBTCallVolume()[4]);
+				    	 localeTab1.setMainIndicator(needle);
+				    	 
+				     	//add second Marker value	
+						marker11.setValue(clf.getCBTCallVolume()[5]);
+						localeTab1.getMainScale().getIndicators().remove(marker11);
+						
+						localeTab1.getMainScale().getIndicators().add(marker11);
+			
+						lastYearStrip.setMin(0);
+				    	lastYearStrip.setMax(clf.getCBTCallVolume()[5]);
+				    	
+				    	if(clf.getCBTCallVolume()[5]>= clf.getCBTCallVolume()[4]){
+				    		currentYearStrip.setMin(clf.getCBTCallVolume()[5]);
+				    		currentYearStrip.setMax(clf.getCBTCallVolume()[5]);
+				    		otherStrip.setMin(clf.getCBTCallVolume()[5]);
+				    	}else{
+				    		currentYearStrip.setMin(clf.getCBTCallVolume()[5]);
+				    		currentYearStrip.setMax(clf.getCBTCallVolume()[4]);
+				    		otherStrip.setMin(clf.getCBTCallVolume()[4]);
+				    	}
+			  		
+				    	otherStrip.setMax(clf.getMaxValue(clf.getCBTCallVolume()[4],clf.getCBTCallVolume()[5],0.5));
+			   			}catch(Exception ex){
+			   				
+			   			}finally{}
+			   			
+			   		}else if(no==2){
+		    			try{
+				    	//SET scale
+				    	scale.setMax(clf.getMaxValue(clf.getCBTRevnueVolume()[4],clf.getCBTRevnueVolume()[5],0.5));
+						scale.setMin(0);
+						localeTab1.getScales().add(scale);
+						
+						
+						//set needle value
+				    	 needle.setValue(clf.getCBTRevnueVolume()[4]);
+				    	 localeTab1.setMainIndicator(needle);
+				    	 
+				     	//add second Marker value	
+						marker11.setValue(clf.getCBTRevnueVolume()[5]);
+						localeTab1.getMainScale().getIndicators().remove(marker11);
+						
+						localeTab1.getMainScale().getIndicators().add(marker11);
+			
+						lastYearStrip.setMin(0);
+				    	lastYearStrip.setMax(clf.getCBTRevnueVolume()[5]);
+				    	
+				    	if(clf.getCBTRevnueVolume()[5]>= clf.getCBTRevnueVolume()[4]){
+				    		currentYearStrip.setMin(clf.getCBTRevnueVolume()[5]);
+				    		currentYearStrip.setMax(clf.getCBTRevnueVolume()[5]);
+				    		otherStrip.setMin(clf.getCBTRevnueVolume()[5]);
+				    		
+				    	}else{
+				    	
+				    		currentYearStrip.setMin(clf.getCBTRevnueVolume()[5]);
+				    		currentYearStrip.setMax(clf.getCBTRevnueVolume()[4]);
+				    		otherStrip.setMin(clf.getCBTRevnueVolume()[4]);
+				    	}
+			  		
+				    	otherStrip.setMax(clf.getMaxValue(clf.getCBTRevnueVolume()[4],clf.getCBTRevnueVolume()[5],0.5));
+				    	
+		    			}catch(Exception ex){
+		    				
+		    			}finally{}
+			   			
+			   		}else if(no==3){
+			   			 try{
+			   			double currentYearCall=clf.getCBTAverageVolume()[4];
+			   			double lastYearCall=clf.getCBTAverageVolume()[5];
+			   			
+			   			//SET scale						
+				    	scale.setMax(clf.getMaxValue(currentYearCall,lastYearCall,0.5));
+						scale.setMin(0);
+						localeTab1.getScales().add(scale);
+						
+						
+						//set needle value
+				    	 needle.setValue(currentYearCall);
+				    	 localeTab1.setMainIndicator(needle);
+				    	 
+				     	//add second Marker value	
+						marker11.setValue(lastYearCall);
+						localeTab1.getMainScale().getIndicators().remove(marker11);
+						
+						localeTab1.getMainScale().getIndicators().add(marker11);
+			
+						lastYearStrip.setMin(0);
+				    	lastYearStrip.setMax(lastYearCall);
+				    	
+				    	if(lastYearCall>= currentYearCall){
+				    		currentYearStrip.setMin(lastYearCall);
+				    		currentYearStrip.setMax(lastYearCall);
+				    		otherStrip.setMin(lastYearCall);
+				    		
+				    	}else{
+				    		
+				    		currentYearStrip.setMin(lastYearCall);
+				    		currentYearStrip.setMax(currentYearCall);
+				    		otherStrip.setMin(currentYearCall);
+				    	}
+			  		
+				    	otherStrip.setMax(clf.getMaxValue(currentYearCall,lastYearCall,0.5));
+			   			}catch(Exception ex){
+			   				
+			   			}finally{}
+			   		}
+			    	
+			   		localeTab1.getMainScale().getStripes().add(lastYearStrip);
+			   		localeTab1.getMainScale().getStripes().add(currentYearStrip);
+			   		localeTab1.getMainScale().getStripes().add(otherStrip);
+									
+							
+			    	//render controll	    	
+				    localeTab1.renderControl(); 
+					
+				%>
+				</td>
+				<%  no++; } %>
+			</tr>
+			<tr>
+			<td align="center">Total Calls</td>
+			<td align="center">Total Revenue $ in Millions</td>
+			<td align="center">Total Avg $ in Thousands</td>
+			</tr>
+			
+			</table>
+		</td>
+		</tr>
+</table>

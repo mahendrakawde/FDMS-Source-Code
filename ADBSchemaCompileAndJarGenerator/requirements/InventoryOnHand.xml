@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<this:getDataResponse xmlns:this="http://aldorsolutions.com/webservice/services/fddeservice" xmlns:this1="http://aldorsolutions.com/webservice/xsd/fdde/service" xmlns:this2="http://aldorsolutions.com/webservice/xsd/comm/fdde" xmlns:this3="http://aldorsolutions.com/webservice/xsd/comm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://aldorsolutions.com/webservice/services/fddeservice ../build/FddeService.xsd ">
+  <this1:dataReturned>invOnHandByFuneralHome</this1:dataReturned>
+  <this1:requestedCriteria>
+  	<this1:funeralHomeId>L9FH15</this1:funeralHomeId></this1:requestedCriteria>
+  <this1:results>
+  	<this1:invItem funeralHomeId="L9FH15" id="12">
+  		<this2:name>this2:name</this2:name>
+  		<this2:serialNumber>this2:serialNumber</this2:serialNumber>
+  		<this2:inShowRoom>Yes</this2:inShowRoom>
+  		<this2:location>this2:location</this2:location>
+  		<this2:dateIn>2001-01-01</this2:dateIn>
+  		<this2:invoiceNo>invoiceNo</this2:invoiceNo>
+  		<this2:quantity>15</this2:quantity>
+  		<this2:cost>125.25</this2:cost>
+  		<this2:notes>this2:notes</this2:notes>
+  	</this1:invItem>
+  	<this1:invItem funeralHomeId="L9FH15" id="23">
+  		<this2:name>this2:name</this2:name>
+  		<this2:serialNumber>this2:serialNumber</this2:serialNumber>
+  		<this2:inShowRoom>Yes</this2:inShowRoom>
+  		<this2:location>this2:location</this2:location>
+  		<this2:dateIn>2001-01-01</this2:dateIn>
+  		<this2:invoiceNo>invoiceNo</this2:invoiceNo>
+  		<this2:quantity>15</this2:quantity>
+  		<this2:cost>125.25</this2:cost>
+  		<this2:notes>this2:notes</this2:notes>
+  	</this1:invItem>
+  </this1:results>
+</this:getDataResponse>

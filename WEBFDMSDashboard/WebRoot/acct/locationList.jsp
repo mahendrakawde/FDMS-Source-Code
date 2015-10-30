@@ -1,0 +1,32 @@
+<%@ page language="java" pageEncoding="ISO-8859-1"%>
+
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic"%>
+<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles"%>
+<%@ taglib uri="http://displaytag.sf.net" prefix="display"%>
+<%@ taglib uri="/WEB-INF/tld/security.tld" prefix="security"%>
+
+<html:form action="/acctLocationList" method="post">
+	<html:errors />
+	
+	<h1>Locations</h1>
+
+	<display:table name="sessionScope.acctLocationListForm.locations"
+		defaultsort="1" defaultorder="descending" style="text-align:center;"
+		pagesize="30" requestURI="acctLocationList.do" class="displaytag">
+		<display:column property="locationName" title="Location"
+			sortable="true" headerClass="sortable" href="acctLocationEdit.do"
+			paramProperty="locationID" paramId="locationID" />
+
+		<display:column property="localeName" sortable="true"
+			headerClass="sortable" title="Locale" />
+		<display:column property="accountantName" sortable="true"
+			headerClass="sortable" title="Accountant" />
+		<display:column property="address1" sortable="true"
+			headerClass="sortable" />
+		<display:column property="phoneNum" sortable="true"
+			headerClass="sortable" title="Phone" />
+	</display:table>
+
+</html:form>

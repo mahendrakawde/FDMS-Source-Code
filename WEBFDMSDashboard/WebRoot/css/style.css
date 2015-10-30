@@ -1,0 +1,52 @@
+html {
+	padding: 0px;
+	margin: 0px;
+}
+
+body {
+	padding: 0px;
+	margin: 0px;
+}
+
+div#sideMenu {
+	padding: 10px;
+	margin: 0px;
+	position: relative;
+	float: left;
+	width: 200px;
+}
+
+div#content {
+	padding: 10px;
+	margin: 0px;
+	position: relative;
+	float: left;
+}
+
+div#header {
+	padding: 10px;
+	margin: 0px;
+	position: relative;
+	height: 80px;
+	float: none;
+}
+
+div#footer {
+	padding: 10px;
+	margin: 0px;
+	position: relative;
+	height: 50px;
+}
+
+div.clear {
+	clear: both;
+}
+
+.label {
+	font-weight: bold;
+}
+
+.labelRight {
+	font-weight: bold;
+	text-align: right;
+}

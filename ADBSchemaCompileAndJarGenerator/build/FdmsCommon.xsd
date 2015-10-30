@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:comm="http://aldorsolutions.com/webservice/xsd/comm" xmlns:this="http://aldorsolutions.com/webservice/xsd/comm/fdms" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://aldorsolutions.com/webservice/xsd/comm/fdms">
+    <xs:import namespace="http://aldorsolutions.com/webservice/xsd/comm" schemaLocation="Common.xsd"/>
+    
+    <xs:simpleType name="PhoneNumberType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="\([1-9][0-9]{2}\) [0-9]{3}-[0-9]{4}"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="ZipCodeType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="([0-9]{5})|([0-9]{5}-[0-9]{4})|([A-Z][0-9][A-Z] [0-9][A-Z][0-9])"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="SSNType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="([0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9][0-9][0-9])|([0-9][0-9][0-9] [0-9][0-9][0-9] [0-9][0-9][0-9])"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="Location">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="id" nillable="true" type="xs:int"/>
+            <xs:element name="name" nillable="true" type="comm:StrMax50Len"/>
+            <xs:element minOccurs="0" name="address" type="this:MsStandardAddressType"/>
+            <xs:element minOccurs="0" name="phone" type="this:PhoneNumberType"/>
+            <xs:element minOccurs="0" name="license" type="comm:StrMax10Len"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="LocationsType">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="location" nillable="true" type="this:Location"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Locale">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="id" nillable="true" type="xs:int"/>
+            <xs:element minOccurs="0" name="name" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="locations" nillable="true" type="this:LocationsType"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="LocalesType">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="locale" nillable="true" type="this:Locale"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Arranger">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="id" nillable="true" type="xs:int"/>
+            <xs:element minOccurs="0" name="name" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="licenseNumber" type="comm:StrMax15Len"/>
+            <xs:element minOccurs="0" name="pnLicenceNumber" type="comm:StrMax15Len"/>
+            <xs:element minOccurs="0" name="burialLicenceNumber" type="comm:StrMax15Len"/>
+            <xs:element minOccurs="0" name="embalmerLicenceNumber" type="comm:StrMax16Len"/>
+            <xs:element minOccurs="0" name="isCounselor" type="comm:YesNoType"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="LocationOfDeathType">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="Name" type="comm:StrMax100Len"/>
+            <xs:element minOccurs="0" name="licenseNumber" type="comm:StrMax30Len"/>
+            <xs:element minOccurs="0" name="locality" type="comm:LocalityType"/>
+            <xs:element minOccurs="0" name="Address" type="this:MsStandardAddressType"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="FacilityInfoType">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="dateOfNotifyToDirector" type="xs:date"/>
+            <xs:element minOccurs="0" name="timeOfNotifyToDirector" type="this:TimeType"/>
+            <xs:element minOccurs="0" name="facility" type="this:Location"/>
+            <xs:element minOccurs="0" name="director" type="this:Arranger"/>
+            <xs:element minOccurs="0" name="embalmer" type="this:Arranger"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DispositionInfoType">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="facilityInfo" type="this:FacilityInfoType"/>
+            <xs:element minOccurs="0" name="methodOfDisposition" type="comm:StrMax27Len"/>
+            <xs:element minOccurs="0" name="dispositionPlace" type="comm:StrMax27Len"/>
+            <xs:element minOccurs="0" name="dispositionPlaceType" type="xs:string"/>
+            <xs:element minOccurs="0" name="location" type="this:MsStandardAddressType"/>
+            <xs:element minOccurs="0" name="dateEmbalmed" type="xs:date"/>
+            <xs:element minOccurs="0" name="dateOfDisposition" type="xs:date"/>
+            <xs:element minOccurs="0" name="authorizingCoroner" type="comm:StrMax27Len"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="CertificationInfoType">
+        <xs:sequence>
+            <xs:element name="notificationOfExaminerRequired" type="xs:boolean"/>
+            <xs:choice>
+                <xs:element name="physician" type="this:MedicalCertifierInfoType"/>
+                <xs:element name="medicalExaminer" type="this:MedicalCertifierInfoType"/>
+                <xs:element name="nursePractitioner" type="this:NonPracticeCertifierInfoType"/>
+            </xs:choice>
+            <xs:element name="atTimeOfDeath" type="this:AtTimeOfDeathInfoType"/>
+            <xs:element minOccurs="0" name="certifyingPhysician" type="this:CertifyingPhysicianInofType"/>
+            <xs:element name="registrarFileDate" type="xs:date"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="MedicalCertifierInfoType">
+        <xs:sequence>
+            <xs:element name="certifierDateSigned" type="xs:date"/>
+            <xs:element name="licenseNumber" type="comm:StrMax15Len"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="NonPracticeCertifierInfoType">
+        <xs:sequence>
+            <xs:element name="certifierDateSigned" type="xs:date"/>
+            <xs:element name="licenseNumber" type="comm:StrMax25Len"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="AtTimeOfDeathInfoType">
+        <xs:sequence>
+            <xs:element name="actualOrPresumedTimeOfDeath" type="this:TimeType"/>
+            <xs:element name="pronouncedDeadOn" type="xs:date"/>
+            <xs:element name="timePronounced" type="this:TimeType"/>
+            <xs:element name="medicalExaminerContacted" type="xs:boolean"/>
+            <xs:element name="placeOfDeath" type="comm:StrMax20Len"/>
+            <xs:element minOccurs="0" name="hospital" type="this:HospitalDetailType"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="HospitalDetailType">
+        <xs:sequence>
+            <xs:element name="hospitalAccessType" type="comm:StrMax20Len"/>
+            <xs:element name="caseNumber" type="comm:StrMax15Len"/>
+            <xs:element name="attendingPhysician" type="comm:StrMax35Len"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="CertifyingPhysicianInofType">
+        <xs:sequence>
+            <xs:element name="name" type="comm:StrMax50Len"/>
+            <xs:element name="address" type="this:MsStandardAddressType"/>
+            <xs:element name="phone" type="this:PhoneNumberType"/>
+            <xs:element name="certifierTitle" type="comm:StrMax10Len"/>
+            <xs:element minOccurs="0" name="datesPhysicianAttended" type="this:PhysicianAttendedDateType"/>
+            <xs:element name="physicianViewedTheBody" type="xs:boolean"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="PhysicianAttendedDateType">
+        <xs:sequence>
+            <xs:element name="fromDate" type="xs:date"/>
+            <xs:element name="toDate" type="xs:date"/>
+            <xs:element name="lastDate" type="xs:date"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="CauseType">
+        <xs:sequence>
+            <xs:element name="dueTo" type="comm:StrMax49Len"/>
+            <xs:element name="interval" type="comm:StrMax14Len"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="MedicalExaminerType">
+        <xs:sequence>
+            <xs:element name="injuryDate" type="xs:date"/>
+            <xs:element name="injuryTime" type="this:TimeType"/>
+            <xs:element name="injuryDescription" type="comm:StrMax60Len"/>
+            <xs:element name="injuryAtWork" type="xs:boolean"/>
+            <xs:element name="injuryPlace" type="comm:StrMax50Len"/>
+            <xs:element minOccurs="0" name="decedentPositionForTransportInjury" type="comm:StrMax50Len"/>
+            <xs:element name="injuryLocation" type="this:MsStandardAddressType"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="MsStandardAddressType">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="street" type="comm:StrMax30Len"/>
+            <xs:element minOccurs="0" name="city" type="comm:StrMax30Len"/>
+            <xs:element minOccurs="0" name="county" type="comm:StrMax30Len"/>
+            <xs:element minOccurs="0" name="stateAbbreviation" type="comm:StateCodeType"/>
+            <xs:element minOccurs="0" name="zipCode" type="this:ZipCodeType"/>
+            <xs:element minOccurs="0" name="country" type="comm:StrMax30Len"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="MsExtendedAddressType">
+        <xs:sequence>
+            <xs:element maxOccurs="3" minOccurs="0" name="street" type="comm:StrMax30Len"/>
+            <xs:element minOccurs="0" name="city" type="comm:StrMax30Len"/>
+            <xs:element minOccurs="0" name="stateAbbreviation" type="comm:StateCodeType"/>
+            <xs:element minOccurs="0" name="zipCode" type="this:ZipCodeType"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="MsResidenceType">
+        <xs:complexContent>
+            <xs:extension base="this:MsStandardAddressType">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="locality" type="comm:LocalityType"/>
+                    <xs:element minOccurs="0" name="residenceLengthOfTime" type="comm:StrMax15Len"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="MsNameType">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="salutation" type="comm:StrMax30Len"/>
+            <xs:element minOccurs="0" name="firstName" type="comm:StrMax50Len"/>
+            <xs:element minOccurs="0" name="middleName" type="comm:StrMax50Len"/>
+            <xs:element minOccurs="0" name="lastName" type="comm:StrMax50Len"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="MsCompleteNameType">
+        <xs:complexContent>
+            <xs:extension base="this:MsNameType">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="prefix" type="comm:StrMax15Len"/>
+                    <xs:element minOccurs="0" name="suffix" type="comm:StrMax30Len"/>
+                    <xs:element minOccurs="0" name="maidenName" type="comm:StrMax50Len"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="MsContactType">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="phone" type="this:PhoneNumberType"/>
+            <xs:element minOccurs="0" name="cellPhone" type="this:PhoneNumberType"/>
+            <xs:element minOccurs="0" name="email" type="comm:StrMax50Len"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="MsRelatedPersonType">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="name" type="this:MsNameType"/>
+            <xs:element minOccurs="0" name="address" type="this:MsExtendedAddressType"/>
+            <xs:element minOccurs="0" name="contact" type="this:MsContactType"/>
+            <xs:element minOccurs="0" name="Relation" type="comm:StrMax20Len"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:simpleType name="MsAmountType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[-]?[0-9]*[.]?[0-9]?[0-9]?"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="TimeType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="([0-1][0-2]\:[0-5][0-9] [AP][M])|([0][0-9]\:[0-5][0-9] [AP][M])"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="MsParentType">
+        <xs:sequence>
+            <xs:element name="name" type="this:MsNameType"/>
+            <xs:element name="birthPlace" type="this:MsStandardAddressType"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

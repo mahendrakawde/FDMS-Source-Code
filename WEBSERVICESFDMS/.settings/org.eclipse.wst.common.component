@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="WEBSERVICESFDMS">
+        <wb-resource deploy-path="/" source-path="/WebRoot" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <dependent-module archiveName="WEBFDMSLib.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/WEBFDMSLib/WEBFDMSLib">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <property name="context-root" value="/webservicesfdms"/>
+        <property name="java-output-path" value="/WEBSERVICESFDMS/WebRoot/WEB-INF/classes"/>
+        <property name="me-merge-utility-modules" value="true"/>
+    </wb-module>
+</project-modules>

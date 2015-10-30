@@ -1,0 +1,126 @@
+package com.aldorsolutions.webfdms.beans;
+
+import java.sql.Statement;
+
+import org.apache.log4j.Logger;
+
+import com.aldorsolutions.webfdms.database.DatabasePeer;
+import com.aldorsolutions.webfdms.database.DatabaseTransaction;
+import com.aldorsolutions.webfdms.database.PersistenceException;
+import com.aldorsolutions.webfdms.database.Persistent;
+
+/**
+ * DbApAccountPeer supplies constants and SQL for Persistent Class.
+ * Creation date: (4/30/2001 4:13:09 PM)
+ * @author: 
+ */
+public class DbInvoiceItemsPeer extends DatabasePeer {
+	
+	static public final String INVOICEITEMID = "invoiceItemID";
+	static public final String INVOICEID = "invoiceID";
+	static public final String INVENTORYITEM = "inventoryItem";
+	static public final String ITEMCODE = "itemCode";
+	static public final String ITEMDESC = "itemDesc";
+	static public final String COSTPERUNIT = "costPerUnit";
+	static public final String QUANTITY = "quantity";
+	static public final String GLACCTNUM = "glAcctNum";
+	static public final String ITEMCOST = "itemCost";
+	static public final String APACCOUNTID = "apAccountID";
+	
+	Logger logger = Logger.getLogger(DbInvoiceItemsPeer.class.getName());
+	
+	/**
+	 * getInsertSql method comment.
+	 */
+	protected java.sql.PreparedStatement getInsertSql(DatabaseTransaction t, Persistent p) throws PersistenceException {
+		java.sql.Connection connection = null;
+		java.sql.PreparedStatement pstmt = null;
+		try {
+			logger.info("In " + this.getClass() + " getInsertSql() is been called");
+			DbInvoiceItems rec = (DbInvoiceItems) p;
+			connection = t.getConnection();
+			pstmt = connection.prepareStatement("INSERT INTO invoiceitems (" + 
+					INVOICEID + "," + 
+					INVENTORYITEM + "," + 
+					ITEMCODE + "," + 
+					ITEMDESC + "," + 
+					COSTPERUNIT + "," + 
+					QUANTITY + "," + 
+					GLACCTNUM + "," + 
+					ITEMCOST + "," + 
+					APACCOUNTID + "" + 
+					") VALUES (?,?,?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
+			pstmt.setInt(1, rec.getInvoiceID());
+			pstmt.setBoolean(2, rec.isInventoryItem());
+			pstmt.setString(3, rec.getItemCode());
+			pstmt.setString(4, rec.getItemDesc());
+		    pstmt.setDouble(5, rec.getCostPerUnit());
+			pstmt.setInt(6, rec.getQuantity());			
+			pstmt.setString(7, rec.getGlAcctNum());
+			pstmt.setDouble(8, rec.getItemCost());
+			pstmt.setInt(9, rec.getApAccountID());
+			return pstmt;
+		} catch (java.sql.SQLException e) {
+			throw new PersistenceException("DbInvoiceItemsPeer.Insert:" + e.getMessage(), e);
+		}
+	}
+
+	/**
+	 * getRemoveSql method comment.
+	 */
+	protected java.sql.PreparedStatement getRemoveSql(DatabaseTransaction t, Persistent p) throws PersistenceException {
+		java.sql.PreparedStatement pstmt = null;
+		java.sql.Connection connection = null;
+		try {
+			connection = t.getConnection();
+			pstmt = connection.prepareStatement("DELETE FROM invoiceitems WHERE invoiceItemID=?");
+			pstmt.setInt(1, p.getId());
+			return pstmt;
+		} catch (java.sql.SQLException e) {
+			throw new PersistenceException("DbInvoiceItemsPeer.Remove", e);
+		}
+	}
+
+	/**
+	 * getRestoreSql method comment.
+	 */
+	protected String getRestoreSql(Persistent p) {
+		return "SELECT * FROM invoiceitems WHERE invoiceItemID = " + p.getId();
+	}
+
+	/**
+	 * getUpdateSql method comment.
+	 */
+	protected java.sql.PreparedStatement getUpdateSql(DatabaseTransaction t, Persistent p) throws PersistenceException {
+		java.sql.Connection connection = null;
+		java.sql.PreparedStatement pstmt = null;
+		try {
+			DbInvoiceItems rec = (DbInvoiceItems) p;
+			connection = t.getConnection();
+			pstmt = connection.prepareStatement("UPDATE invoiceitems SET " +
+					INVOICEID + "=?," + 
+					INVENTORYITEM + "=?," + 
+					ITEMCODE + "=?," + 
+					ITEMDESC + "=?," + 
+					COSTPERUNIT + "=?," + 
+					QUANTITY + "=?," + 
+					GLACCTNUM + "=?," + 
+					ITEMCOST + "=?," + 
+					APACCOUNTID + "=?" + 
+					" WHERE " + INVOICEITEMID + " = ?");
+			pstmt.setInt(1, rec.getInvoiceID());
+			pstmt.setBoolean(2, rec.isInventoryItem());
+			pstmt.setString(3, rec.getItemCode());
+			pstmt.setString(4, rec.getItemDesc());
+		    pstmt.setDouble(5, rec.getCostPerUnit());
+			pstmt.setInt(6, rec.getQuantity());			
+			pstmt.setString(7, rec.getGlAcctNum());
+			pstmt.setDouble(8, rec.getItemCost());
+			pstmt.setInt(9, rec.getApAccountID());
+			pstmt.setInt(10, rec.getId());
+			return pstmt;
+		} catch (java.sql.SQLException e) {
+			throw new PersistenceException("DbInvoiceItemsPeer.Update:" + e.getMessage(), e);
+		}
+	}
+}

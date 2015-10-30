@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<this:getDataResponse xmlns:this="http://aldorsolutions.com/webservice/services/fddeservice" xmlns:this1="http://aldorsolutions.com/webservice/xsd/fdde/service" xmlns:this2="http://aldorsolutions.com/webservice/xsd/comm/fdde" xmlns:this3="http://aldorsolutions.com/webservice/xsd/comm" xmlns:this4="http://aldorsolutions.com/webservice/xsd/comm/fdde/sci" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://aldorsolutions.com/webservice/services/fddeservice ../build/FddeService.xsd ">
+  <this1:dataReturned>sciCash</this1:dataReturned>
+  <this1:results>
+  	<this1:sciCash>
+  		<this4:active>Y</this4:active>
+  		<this4:id>this4:id</this4:id>
+  		<this4:testRun>this4:testRun</this4:testRun>
+  		<this4:mch>this4:mch</this4:mch>
+  		<this4:caseName>this4:caseName</this4:caseName>
+  		<this4:cxlGroup>EnterContract</this4:cxlGroup>
+  		<this4:updateDate>2001-01-01</this4:updateDate>
+  		<this4:locCd>0</this4:locCd>
+  		<this4:contractNo>0</this4:contractNo>
+  		<this4:comment>this4:comment</this4:comment>
+  		<this4:rcptsInBtch>this4:rcptsInBtch</this4:rcptsInBtch>
+  		<this4:btchDate>2001-01-01</this4:btchDate>
+  		<this4:pymtAmt>this4:pymtAmt</this4:pymtAmt>
+  		<this4:pymtSource>Corporate</this4:pymtSource>
+  		<this4:pymtType>Conversion SUM Payment</this4:pymtType>
+  		<this4:cashBatch>this4:cashBatch</this4:cashBatch>
+  		<this4:runReverseCR>this4:runReverseCR</this4:runReverseCR>
+  		<this4:applyNSF>this4:applyNSF</this4:applyNSF>
+  		<this4:reverseCRBatch>
+  			this4:reverseCRBatch
+  		</this4:reverseCRBatch>
+  		<this4:cashRefNbr>this4:cashRefNbr</this4:cashRefNbr>
+  		<this4:finAdjAmt>this4:finAdjAmt</this4:finAdjAmt>
+  		<this4:finAdjDescr>this4:finAdjDescr</this4:finAdjDescr>
+  		<this4:finAdjRef>this4:finAdjRef</this4:finAdjRef>
+  	</this1:sciCash>
+  </this1:results>
+</this:getDataResponse>

@@ -1,0 +1,652 @@
+package com.aldorsolutions.webfdms.reporting.dao;
+
+import java.sql.Date;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.GregorianCalendar;
+
+import org.apache.log4j.Logger;
+
+import com.aldorassist.webfdms.model.ReportSchedulingDTO;
+import com.aldorsolutions.webfdms.beans.DbUserSession;
+import com.aldorsolutions.webfdms.util.DAO;
+
+/**
+ * 
+ * @author David Rollins Date: Jul 20, 2007 File: FormAvailableFilterDAO.java
+ * 
+ */
+public class ReportSchedulingDAO extends DAO {
+
+	private Logger logger = Logger.getLogger(ReportSchedulingDAO.class
+			.getName());
+
+	public ReportSchedulingDAO(String usersLookup) {
+		super(usersLookup);
+	}
+
+	/**
+	 * 
+	 * @param user
+	 */
+	public ReportSchedulingDAO(DbUserSession user) {
+		super(user);
+	}
+
+	/**
+	 * 
+	 * @param companyID
+	 * @param userId
+	 */
+	public ReportSchedulingDAO(long companyID, long userId) {
+		super(companyID, userId);
+	}
+
+	/**
+	 * 
+	 * @param formFilterID
+	 * @return
+	 */
+	public ReportSchedulingDTO getReportScheduling(int schedulingID) {
+		ReportSchedulingDTO reportScheduling = null;
+
+		try {
+			String sql = "select 	SchedulingID, FormID, Locale, Location, FromDate, ToDate, RunDate, RunTimeHH, RunTimeMM, EmailTo, EmailCC, "
+					+ "RepeatType, RepeatNumber, Datetime, StartDateTime, StopDateTime, ReportName, Status, ReportType, UserId  from reportscheduling "
+					+ "where SchedulingId = ?";
+
+			makeConnection(getDbLookup());
+			statement = conn.prepareStatement(sql);
+			statement.setLong(1, schedulingID);
+
+			rs = statement.executeQuery();
+
+			if (rs.next()) {
+				int col = 0;
+				reportScheduling = new ReportSchedulingDTO();
+				reportScheduling.setSchedulingID(rs.getInt(++col));
+				reportScheduling.setFormID(rs.getInt(++col));
+				reportScheduling.setLocale(rs.getString(++col));
+				reportScheduling.setLocation(rs.getString(++col));
+				reportScheduling.setFromDate(rs.getDate(++col));
+				reportScheduling.setToDate(rs.getDate(++col));
+				reportScheduling.setRunDate(rs.getDate(++col));
+				reportScheduling.setRunTimeHH(rs.getInt(++col));
+				reportScheduling.setRunTimeMM(rs.getInt(++col));
+				reportScheduling.setEmailTo(rs.getString(++col));
+				reportScheduling.setEmailCC(rs.getString(++col));
+				reportScheduling.setRepeatType(rs.getString(++col));
+				reportScheduling.setRepeatNumber(rs.getInt(++col));
+				reportScheduling.setDatetime(rs.getLong(++col));
+				reportScheduling.setStartDateTime(rs.getLong(++col));
+				reportScheduling.setStopDateTime(rs.getLong(++col));
+				reportScheduling.setReportName(rs.getString(++col));
+				reportScheduling.setStatus(rs.getString(++col));
+				reportScheduling.setReportType(rs.getString(++col));
+				reportScheduling.setUserId(rs.getInt(++col));
+			}
+
+		} catch (SQLException e) {
+			logger.error("SQLException in getReportScheduling() : ", e);
+		} catch (Exception e) {
+			logger.error("Exception in getReportScheduling() : ", e);
+		} finally {
+			closeConnection();
+		}
+
+		return reportScheduling;
+	}
+
+	/**
+	 * 
+	 * @param formID
+	 * @return
+	 */
+	public ArrayList<ReportSchedulingDTO> getReportScheduling(String reportType) {
+		ArrayList<ReportSchedulingDTO> list = new ArrayList<ReportSchedulingDTO>();
+
+		try {
+			String sql = "select SchedulingID, FormID, Locale, Location, FromDate, ToDate, RunDate, RunTimeHH, RunTimeMM,  EmailTo, EmailCC, "
+					+ "RepeatType, RepeatNumber, Datetime, StartDateTime, StopDateTime, ReportName, Status, ReportType, UserId from reportscheduling where Status <> 'D' and ReportType = '"+reportType+"'";
+
+			makeConnection(getDbLookup());
+			statement = conn.prepareStatement(sql);
+
+			rs = statement.executeQuery();
+
+			while (rs.next()) {
+				int col = 0;
+				ReportSchedulingDTO reportScheduling = new ReportSchedulingDTO();
+				reportScheduling.setSchedulingID(rs.getInt(++col));
+				reportScheduling.setFormID(rs.getInt(++col));
+				reportScheduling.setLocale(rs.getString(++col));
+				reportScheduling.setLocation(rs.getString(++col));
+				reportScheduling.setFromDate(rs.getDate(++col));
+				reportScheduling.setToDate(rs.getDate(++col));
+				reportScheduling.setRunDate(rs.getDate(++col));
+				reportScheduling.setRunTimeHH(rs.getInt(++col));
+				reportScheduling.setRunTimeMM(rs.getInt(++col));
+				reportScheduling.setEmailTo(rs.getString(++col));
+				reportScheduling.setEmailCC(rs.getString(++col));
+				reportScheduling.setRepeatType(rs.getString(++col));
+				reportScheduling.setRepeatNumber(rs.getInt(++col));
+				reportScheduling.setDatetime(rs.getLong(++col));
+				reportScheduling.setStartDateTime(rs.getLong(++col));
+				reportScheduling.setStopDateTime(rs.getLong(++col));
+				reportScheduling.setReportName(rs.getString(++col));
+				reportScheduling.setStatus(rs.getString(++col));
+				reportScheduling.setReportType(rs.getString(++col));
+				reportScheduling.setUserId(rs.getInt(++col));
+				list.add(reportScheduling);
+			}
+
+		} catch (SQLException e) {
+			logger.error("SQLException in getReportScheduling() : ", e);
+		} catch (Exception e) {
+			logger.error("Exception in getReportScheduling() : ", e);
+		} finally {
+			closeConnection();
+		}
+
+		return list;
+	}
+	
+	public ArrayList<ReportSchedulingDTO> getSuccessReportScheduling(int userId) {
+		ArrayList<ReportSchedulingDTO> list = new ArrayList<ReportSchedulingDTO>();
+
+		try {
+			String sql = "select SchedulingID, FormID, Locale, Location, FromDate, ToDate, RunDate, RunTimeHH, RunTimeMM,  EmailTo, EmailCC, "
+					+ "RepeatType, RepeatNumber, Datetime, StartDateTime, StopDateTime, ReportName, Status, ReportType, UserId from reportscheduling where UserId = ? and Status = 'S' ";
+
+			int i = 0;
+			makeConnection(getDbLookup());
+			statement = conn.prepareStatement(sql);
+			statement.setInt(++i, userId );
+			
+			rs = statement.executeQuery();
+
+			while (rs.next()) {
+				int col = 0;
+				ReportSchedulingDTO reportScheduling = new ReportSchedulingDTO();
+				reportScheduling.setSchedulingID(rs.getInt(++col));
+				reportScheduling.setFormID(rs.getInt(++col));
+				reportScheduling.setLocale(rs.getString(++col));
+				reportScheduling.setLocation(rs.getString(++col));
+				reportScheduling.setFromDate(rs.getDate(++col));
+				reportScheduling.setToDate(rs.getDate(++col));
+				reportScheduling.setRunDate(rs.getDate(++col));
+				reportScheduling.setRunTimeHH(rs.getInt(++col));
+				reportScheduling.setRunTimeMM(rs.getInt(++col));
+				reportScheduling.setEmailTo(rs.getString(++col));
+				reportScheduling.setEmailCC(rs.getString(++col));
+				reportScheduling.setRepeatType(rs.getString(++col));
+				reportScheduling.setRepeatNumber(rs.getInt(++col));
+				reportScheduling.setDatetime(rs.getLong(++col));
+				reportScheduling.setStartDateTime(rs.getLong(++col));
+				reportScheduling.setStopDateTime(rs.getLong(++col));
+				reportScheduling.setReportName(rs.getString(++col));
+				reportScheduling.setStatus(rs.getString(++col));
+				reportScheduling.setReportType(rs.getString(++col));
+				reportScheduling.setUserId(rs.getInt(++col));
+				list.add(reportScheduling);
+			}
+
+		} catch (SQLException e) {
+			logger.error("SQLException in getReportScheduling() : ", e);
+		} catch (Exception e) {
+			logger.error("Exception in getReportScheduling() : ", e);
+		} finally {
+			closeConnection();
+		}
+
+		return list;
+	}
+	
+	public ArrayList<ReportSchedulingDTO> getReportSchedulingList(int userId) {
+		ArrayList<ReportSchedulingDTO> list = new ArrayList<ReportSchedulingDTO>();
+
+		try {
+			String sql = "select SchedulingID, FormID, Locale, Location, FromDate, ToDate, RunDate, RunTimeHH, RunTimeMM,  EmailTo, EmailCC, "
+					+ " RepeatType, RepeatNumber, Datetime, StartDateTime, StopDateTime, ReportName, Status, ReportType, UserId from reportscheduling where UserId = ? and Status = 'S' and ReportType = 'S' "
+					+ " ORDER BY RunDate DESC";
+
+			int i = 0;
+			makeConnection(getDbLookup());
+			statement = conn.prepareStatement(sql);
+			statement.setInt(++i, userId );
+			
+			rs = statement.executeQuery();
+
+			while (rs.next()) {
+				int col = 0;
+				ReportSchedulingDTO reportScheduling = new ReportSchedulingDTO();
+				reportScheduling.setSchedulingID(rs.getInt(++col));
+				reportScheduling.setFormID(rs.getInt(++col));
+				reportScheduling.setLocale(rs.getString(++col));
+				reportScheduling.setLocation(rs.getString(++col));
+				reportScheduling.setFromDate(rs.getDate(++col));
+				reportScheduling.setToDate(rs.getDate(++col));
+				reportScheduling.setRunDate(rs.getDate(++col));
+				reportScheduling.setRunTimeHH(rs.getInt(++col));
+				reportScheduling.setRunTimeMM(rs.getInt(++col));
+				reportScheduling.setEmailTo(rs.getString(++col));
+				reportScheduling.setEmailCC(rs.getString(++col));
+				reportScheduling.setRepeatType(rs.getString(++col));
+				reportScheduling.setRepeatNumber(rs.getInt(++col));
+				reportScheduling.setDatetime(rs.getLong(++col));
+				reportScheduling.setStartDateTime(rs.getLong(++col));
+				reportScheduling.setStopDateTime(rs.getLong(++col));
+				reportScheduling.setReportName(rs.getString(++col));
+				reportScheduling.setStatus(rs.getString(++col));
+				reportScheduling.setReportType(rs.getString(++col));
+				reportScheduling.setUserId(rs.getInt(++col));
+				list.add(reportScheduling);
+			}
+
+		} catch (SQLException e) {
+			logger.error("SQLException in getReportScheduling() : ", e);
+		} catch (Exception e) {
+			logger.error("Exception in getReportScheduling() : ", e);
+		} finally {
+			closeConnection();
+		}
+
+		return list;
+	}	
+	
+	public ArrayList<ReportSchedulingDTO> getReportSchedulingQ() {
+		ArrayList<ReportSchedulingDTO> list = new ArrayList<ReportSchedulingDTO>();
+
+		try {
+			String sql = "select SchedulingID, FormID, Locale, Location, FromDate, ToDate, RunDate, RunTimeHH, RunTimeMM, EmailTo, EmailCC, "
+					+ "RepeatType, RepeatNumber, Datetime, StartDateTime, StopDateTime, ReportName, Status, ReportType, UserId from reportscheduling where Status = 'Q' and ReportType='S'";
+
+			makeConnection(getDbLookup());
+			statement = conn.prepareStatement(sql);
+
+			rs = statement.executeQuery();
+
+			while (rs.next()) {
+				int col = 0;
+				ReportSchedulingDTO reportScheduling = new ReportSchedulingDTO();
+				reportScheduling.setSchedulingID(rs.getInt(++col));
+				reportScheduling.setFormID(rs.getInt(++col));
+				reportScheduling.setLocale(rs.getString(++col));
+				reportScheduling.setLocation(rs.getString(++col));
+				reportScheduling.setFromDate(rs.getDate(++col));
+				reportScheduling.setToDate(rs.getDate(++col));
+				reportScheduling.setRunDate(rs.getDate(++col));
+				reportScheduling.setRunTimeHH(rs.getInt(++col));
+				reportScheduling.setRunTimeMM(rs.getInt(++col));
+				reportScheduling.setEmailTo(rs.getString(++col));
+				reportScheduling.setEmailCC(rs.getString(++col));
+				reportScheduling.setRepeatType(rs.getString(++col));
+				reportScheduling.setRepeatNumber(rs.getInt(++col));
+				reportScheduling.setDatetime(rs.getLong(++col));
+				reportScheduling.setStartDateTime(rs.getLong(++col));
+				reportScheduling.setStopDateTime(rs.getLong(++col));
+				reportScheduling.setReportName(rs.getString(++col));
+				reportScheduling.setStatus(rs.getString(++col));
+				reportScheduling.setReportType(rs.getString(++col));
+				reportScheduling.setUserId(rs.getInt(++col));
+				list.add(reportScheduling);
+			}
+
+		} catch (SQLException e) {
+			logger.error("SQLException in getReportScheduling() : ", e);
+		} catch (Exception e) {
+			logger.error("Exception in getReportScheduling() : ", e);
+		} finally {
+			closeConnection();
+		}
+
+		return list;
+	}
+	
+	public ArrayList<ReportSchedulingDTO> getReportSchedulingQ(int userId) {
+		ArrayList<ReportSchedulingDTO> list = new ArrayList<ReportSchedulingDTO>();
+
+		try {
+			String sql = "select SchedulingID, FormID, Locale, Location, FromDate, ToDate, RunDate, RunTimeHH, RunTimeMM, EmailTo, EmailCC, "
+					+ " RepeatType, RepeatNumber, Datetime, StartDateTime, StopDateTime, ReportName, Status, ReportType, UserId from reportscheduling where Status in ('Q','R') and ReportType in ('S','R') "
+					+ " and UserId = ? ORDER BY RunDate";
+
+			int i = 0;
+			makeConnection(getDbLookup());
+			statement = conn.prepareStatement(sql);
+			statement.setInt(++i, userId);
+
+			rs = statement.executeQuery();
+
+			while (rs.next()) {
+				int col = 0;
+				ReportSchedulingDTO reportScheduling = new ReportSchedulingDTO();
+				reportScheduling.setSchedulingID(rs.getInt(++col));
+				reportScheduling.setFormID(rs.getInt(++col));
+				reportScheduling.setLocale(rs.getString(++col));
+				reportScheduling.setLocation(rs.getString(++col));
+				reportScheduling.setFromDate(rs.getDate(++col));
+				reportScheduling.setToDate(rs.getDate(++col));
+				reportScheduling.setRunDate(rs.getDate(++col));
+				reportScheduling.setRunTimeHH(rs.getInt(++col));
+				reportScheduling.setRunTimeMM(rs.getInt(++col));
+				reportScheduling.setEmailTo(rs.getString(++col));
+				reportScheduling.setEmailCC(rs.getString(++col));
+				reportScheduling.setRepeatType(rs.getString(++col));
+				reportScheduling.setRepeatNumber(rs.getInt(++col));
+				reportScheduling.setDatetime(rs.getLong(++col));
+				reportScheduling.setStartDateTime(rs.getLong(++col));
+				reportScheduling.setStopDateTime(rs.getLong(++col));
+				reportScheduling.setReportName(rs.getString(++col));
+				reportScheduling.setStatus(rs.getString(++col));
+				reportScheduling.setReportType(rs.getString(++col));
+				reportScheduling.setUserId(rs.getInt(++col));
+				list.add(reportScheduling);
+			}
+
+		} catch (SQLException e) {
+			logger.error("SQLException in getReportScheduling() : ", e);
+		} catch (Exception e) {
+			logger.error("Exception in getReportScheduling() : ", e);
+		} finally {
+			closeConnection();
+		}
+
+		return list;
+	}	
+
+	public ArrayList<ReportSchedulingDTO> getReportSchedulingQ(Date scheduleDate, int scheduledHour, boolean intial) {
+		ArrayList<ReportSchedulingDTO> list = new ArrayList<ReportSchedulingDTO>();
+
+		logger.info("ReportSchedulingDAO.getReportSchedulingQ(start, end) scheduleDate: "+ scheduleDate + "; scheduledHour : " + scheduledHour + " ; intial : " + intial  );
+		try {
+			String sql = "SELECT SchedulingID, FormID, Locale, Location, FromDate, ToDate, RunDate, RunTimeHH, RunTimeMM, EmailTo, EmailCC,  " +
+					     "	RepeatType, RepeatNumber, DATETIME, StartDateTime, StopDateTime, ReportName, STATUS, ReportType, UserId " +
+					     "	FROM reportscheduling " +
+					     "	WHERE STATUS IN ('Q'"  + (intial? ",'R') " : ") ") 
+					     + " AND ReportType IN ('S'" + (intial? ", 'R') " : ") " )+
+					     "	AND ((Rundate < ?) " +
+					     	"	OR " +
+					     	"	(RunTimeHH <  ? AND RunDate = ?)) " +
+					     "	ORDER BY RunDate,RunTimeHH";
+			int i = 0;
+			makeConnection(getDbLookup());
+			statement = conn.prepareStatement(sql);
+			statement.setDate(++i, scheduleDate );
+			statement.setInt(++i, scheduledHour);
+			statement.setDate(++i, scheduleDate);
+			
+			rs = statement.executeQuery();
+
+			while (rs.next()) {
+				int col = 0;
+				ReportSchedulingDTO reportScheduling = new ReportSchedulingDTO();
+				reportScheduling.setSchedulingID(rs.getInt(++col));
+				reportScheduling.setFormID(rs.getInt(++col));
+				reportScheduling.setLocale(rs.getString(++col));
+				reportScheduling.setLocation(rs.getString(++col));
+				reportScheduling.setFromDate(rs.getDate(++col));
+				reportScheduling.setToDate(rs.getDate(++col));
+				reportScheduling.setRunDate(rs.getDate(++col));
+				reportScheduling.setRunTimeHH(rs.getInt(++col));
+				reportScheduling.setRunTimeMM(rs.getInt(++col));
+				reportScheduling.setEmailTo(rs.getString(++col));
+				reportScheduling.setEmailCC(rs.getString(++col));
+				reportScheduling.setRepeatType(rs.getString(++col));
+				reportScheduling.setRepeatNumber(rs.getInt(++col));
+				reportScheduling.setDatetime(rs.getLong(++col));
+				reportScheduling.setStartDateTime(rs.getLong(++col));
+				reportScheduling.setStopDateTime(rs.getLong(++col));
+				reportScheduling.setReportName(rs.getString(++col));
+				reportScheduling.setStatus(rs.getString(++col));
+				reportScheduling.setReportType(rs.getString(++col));
+				reportScheduling.setUserId(rs.getInt(++col));
+				list.add(reportScheduling);
+			}
+
+		} catch (SQLException e) {
+			logger.error("SQLException in getReportScheduling() : ", e);
+		} catch (Exception e) {
+			logger.error("Exception in getReportScheduling() : ", e);
+		} finally {
+			closeConnection();
+		}
+		logger.info("ReportSchedulingDAO.getReportSchedulingQ(start, end) list size : " + list.size());
+		return list;
+	}
+
+	public ArrayList<ReportSchedulingDTO> getReportSchedulingQ(Date startDate, int startHour, Date endDate, int endHour) {
+		logger.info("ReportSchedulingDAO.getReportSchedulingQ(start, end) startDate: "+ startDate + "; startHour : " + startHour + " ; endDate : " + endDate + " ; endHour : " + endHour);
+		ArrayList<ReportSchedulingDTO> list = new ArrayList<ReportSchedulingDTO>();
+		try {
+			
+			StringBuffer sql = new StringBuffer(512);
+			sql.append("SELECT SchedulingID, FormID, Locale, Location, FromDate, ToDate, RunDate, RunTimeHH, RunTimeMM, EmailTo, EmailCC," )
+			    .append(" RepeatType, RepeatNumber, DATETIME, StartDateTime, StopDateTime, ReportName, STATUS, ReportType, UserId ") 
+				.append(" FROM reportscheduling ") 
+				.append(" WHERE STATUS IN ('Q') AND ReportType='S'  ");
+			if(endDate.after(startDate)){
+				sql.append(" AND (( RunTimeHH >= ? AND RunDate = ?)" ) 
+				   .append(" OR ") 
+				   .append("(RunTimeHH < ? AND RunDate = ? ))");
+			}else {
+				sql.append(" AND (RuntimeHH >= ? AND RuntimeHH < ? AND RunDate = ? )");
+			}				
+			logger.info("ReportSchedulingDAO.getReportSchedulingQ(start, end) SQL:  " +sql.toString());
+			makeConnection(getDbLookup());
+			statement = conn.prepareStatement(sql.toString());
+			int index =1;
+			if(endDate.after(startDate)){
+				statement.setInt(index++, startHour);
+				statement.setDate(index++, startDate);
+				statement.setInt(index++, endHour);
+				statement.setDate(index++, endDate);
+			}else {
+				statement.setInt(index++, startHour);
+				statement.setInt(index++, endHour);
+				statement.setDate(index++, startDate);
+			}
+
+			rs = statement.executeQuery();
+
+			while (rs.next()) {
+				int col = 0;
+				ReportSchedulingDTO reportScheduling = new ReportSchedulingDTO();
+				reportScheduling.setSchedulingID(rs.getInt(++col));
+				reportScheduling.setFormID(rs.getInt(++col));
+				reportScheduling.setLocale(rs.getString(++col));
+				reportScheduling.setLocation(rs.getString(++col));
+				reportScheduling.setFromDate(rs.getDate(++col));
+				reportScheduling.setToDate(rs.getDate(++col));
+				reportScheduling.setRunDate(rs.getDate(++col));
+				reportScheduling.setRunTimeHH(rs.getInt(++col));
+				reportScheduling.setRunTimeMM(rs.getInt(++col));
+				reportScheduling.setEmailTo(rs.getString(++col));
+				reportScheduling.setEmailCC(rs.getString(++col));
+				reportScheduling.setRepeatType(rs.getString(++col));
+				reportScheduling.setRepeatNumber(rs.getInt(++col));
+				reportScheduling.setDatetime(rs.getLong(++col));
+				reportScheduling.setStartDateTime(rs.getLong(++col));
+				reportScheduling.setStopDateTime(rs.getLong(++col));
+				reportScheduling.setReportName(rs.getString(++col));
+				reportScheduling.setStatus(rs.getString(++col));
+				reportScheduling.setReportType(rs.getString(++col));
+				reportScheduling.setUserId(rs.getInt(++col));
+				list.add(reportScheduling);
+			}
+
+		} catch (SQLException e) {
+			logger.error("SQLException in getReportScheduling() : ", e);
+		} catch (Exception e) {
+			logger.error("Exception in getReportScheduling() : ", e);
+		} finally {
+			closeConnection();
+		}
+		logger.info("ReportSchedulingDAO.getReportSchedulingQ(start, end) list size : " + list.size());
+		return list;
+	}
+	
+	
+	/**
+	 * 
+	 * @param formAvailableFilter
+	 * @return
+	 * @throws Exception
+	 */
+	public boolean addReportScheduling(ReportSchedulingDTO reportScheduling)
+			throws Exception {
+		boolean added = false;
+
+		try {
+			logger.info("In " + this.getClass() + " " + Thread.currentThread().getStackTrace()[1].getMethodName() + " is been called");
+			String sql = "insert into reportscheduling ( "
+					+ "FormID, Locale, Location, FromDate, ToDate, RunDate, RunTimeHH, RunTimeMM, EmailTo, EmailCC, "
+					+ "RepeatType, RepeatNumber, Datetime, StartDateTime, StopDateTime, ReportName, Status, ReportType, UserId) "
+					+ "VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )";
+
+			int col = 0;
+			makeConnection(getDbLookup());
+			statement = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+			// statement.setInt(++col, reportScheduling.getSchedulingID());
+			statement.setInt(++col, reportScheduling.getFormID());
+			statement.setString(++col, reportScheduling.getLocale());
+			statement.setString(++col, reportScheduling.getLocation());
+			statement.setDate(++col, reportScheduling.getFromDate());
+			statement.setDate(++col, reportScheduling.getToDate());
+			statement.setDate(++col, reportScheduling.getRunDate());
+			statement.setInt(++col,reportScheduling.getRunTimeHH());
+			statement.setInt(++col, reportScheduling.getRunTimeMM());
+			statement.setString(++col, reportScheduling.getEmailTo());
+			statement.setString(++col, reportScheduling.getEmailCC());
+			statement.setString(++col, reportScheduling.getRepeatType());
+			statement.setInt(++col, reportScheduling.getRepeatNumber());
+			// statement.setLong(++col, reportScheduling.getDateTime());
+			statement.setTimestamp(++col, new java.sql.Timestamp(
+					reportScheduling.getDatetime()));
+			statement.setTimestamp(++col, new java.sql.Timestamp(
+					reportScheduling.getStartDateTime()));
+			statement.setTimestamp(++col, new java.sql.Timestamp(
+					reportScheduling.getStopDateTime()));
+			statement.setString(++col, reportScheduling.getReportName());
+			statement.setString(++col, reportScheduling.getStatus());
+			statement.setString(++col, reportScheduling.getReportType());
+			statement.setInt(++col,reportScheduling.getUserId());
+			statement.executeUpdate();
+			added = true;
+
+			if (added) {
+				rs = statement.getGeneratedKeys();
+				if (rs.next()) {
+					reportScheduling.setSchedulingID(rs.getInt(1));
+				}
+
+//				insertAudit(reportScheduling);
+			}
+
+		} catch (SQLException e) {
+			throw e;
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			closeConnection();
+		}
+
+		return added;
+	}
+
+	/**
+	 * 
+	 * @param formAvailableFilter
+	 * @return
+	 */
+	public boolean updateReportScheduling(ReportSchedulingDTO reportScheduling)
+			throws SQLException, Exception {
+		boolean updated = false;
+
+		try {
+
+			ReportSchedulingDTO oldComp = getReportScheduling(reportScheduling
+					.getSchedulingID());
+
+			String sql = "UPDATE reportscheduling set FormID = ?, Locale = ?, "
+					+ "Location = ?, FromDate = ?, ToDate = ?, RunDate = ?, RunTimeHH = ?, RunTimeMM = ?, EmailTo = ?, EmailCC = ?, RepeatType = ?, "
+					+ "RepeatNumber = ?, Datetime = ?, StartDateTime = ?, StopDateTime = ?, ReportName = ?, Status = ?, ReportType = ?, UserId = ? WHERE SchedulingID = ?";
+
+			int col = 0;
+			makeConnection(getDbLookup());
+			statement = conn.prepareStatement(sql);
+			statement.setInt(++col, reportScheduling.getFormID());
+			statement.setString(++col, reportScheduling.getLocale());
+			statement.setString(++col, reportScheduling.getLocation());
+			statement.setDate(++col, reportScheduling.getFromDate());
+			statement.setDate(++col, reportScheduling.getToDate());
+			statement.setDate(++col, reportScheduling.getRunDate());
+			statement.setInt(++col,reportScheduling.getRunTimeHH());
+			statement.setInt(++col, reportScheduling.getRunTimeMM());
+			statement.setString(++col, reportScheduling.getEmailTo());
+			statement.setString(++col, reportScheduling.getEmailCC());
+			statement.setString(++col, reportScheduling.getRepeatType());
+			statement.setInt(++col, reportScheduling.getRepeatNumber());
+			// statement.setLong(++col, reportScheduling.getDateTime());
+			statement.setTimestamp(++col, new java.sql.Timestamp(
+					reportScheduling.getDatetime()));
+			statement.setTimestamp(++col, new java.sql.Timestamp(
+					reportScheduling.getStartDateTime()));
+			statement.setTimestamp(++col, new java.sql.Timestamp(
+					reportScheduling.getStopDateTime()));
+			statement.setString(++col, reportScheduling.getReportName());
+			statement.setString(++col, reportScheduling.getStatus());
+			statement.setString(++col, reportScheduling.getReportType());
+			statement.setInt(++col, reportScheduling.getUserId());
+			statement.setInt(++col, reportScheduling.getSchedulingID());
+			statement.executeUpdate();
+
+//			updateAudit(reportScheduling, oldComp);
+
+			updated = true;
+		} catch (SQLException e) {
+			throw e;
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			closeConnection();
+		}
+
+		return updated;
+	}
+
+	/**
+	 * 
+	 * @param formFilterID
+	 * @return
+	 */
+	public boolean deleteReportScheduling(int schedulingID) {
+		boolean deleted = false;
+
+		try {
+			ReportSchedulingDTO oldComp = getReportScheduling(schedulingID);
+
+			String sql = "DELETE FROM reportscheduling where SchedulingID = ?";
+
+			int col = 0;
+			makeConnection(getDbLookup());
+			statement = conn.prepareStatement(sql);
+			statement.setInt(++col, schedulingID);
+			statement.executeUpdate();
+
+//			deleteAudit(oldComp);
+
+			deleted = true;
+		} catch (SQLException e) {
+			logger.error("SQLException in deleteReportScheduling() : ", e);
+		} catch (Exception e) {
+			logger.error("Exception in deleteReportScheduling() : ", e);
+		} finally {
+			closeConnection();
+		}
+
+		return deleted;
+	}
+
+}

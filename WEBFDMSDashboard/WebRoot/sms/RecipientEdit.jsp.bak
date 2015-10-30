@@ -1,0 +1,64 @@
+<%@ page language="java" pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://jakarta.apache.org/struts/tags-bean" prefix="bean"%>
+<%@ taglib uri="http://jakarta.apache.org/struts/tags-html" prefix="html"%>
+<%@ taglib uri="/WEB-INF/tld/security.tld" prefix="security"%>
+
+<script type="text/javascript">
+
+</script>
+
+
+<h1>
+	Edit Recipient.
+</h1>
+<html:form action="/recipientEditSave">
+		<html:base/>
+		<html:errors />
+			
+
+			<table width="100%" cellpadding="3" cellspacing="0" border="0">
+			   <tr>
+								<td>
+									First Name
+								</td>
+								<td>
+								    Last Name
+								</td>
+								<td>
+								    (Area Code)-Phone
+								</td>
+								<td>
+								    Greeting
+								</td>
+				</tr>
+				<tr>
+								<td>
+									<html:text name="recipientForm" property="firstname" size="20" maxlength="20"/>
+								</td>
+								<td>
+								    <html:text name="recipientForm" property="lastname" size="20" maxlength="20"/>
+								</td>
+								<td>
+								    (<html:text name="recipientForm" property="areacode" size="3" maxlength="3"/>)-<html:text name="recipientForm" property="phone" size="7" maxlength="7"/>
+								</td>
+								<td>
+								    <html:text name="recipientForm" property="greeting" size="50" maxlength="50"/>
+								</td>
+				</tr>
+				<tr>
+							    <td colspan="4" align = "center">
+							    
+												<html:submit value="Edit" property="actionType" />
+												<html:submit value="Cancel" property="actionType" />
+									
+							    </td>
+				</tr>
+			</table>
+			<html:hidden property="id" name="recipientForm" />
+			<html:hidden property="type" name="recipientForm" />
+
+		</html:form>
+
+<script type="text/javascript">
+
+</script>

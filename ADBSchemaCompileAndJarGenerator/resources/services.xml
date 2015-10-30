@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This file was auto-generated from WSDL -->
+<!-- by the Apache Axis2 version: 1.4.1  Built on : Aug 13, 2008 (05:03:35 LKT) -->
+<serviceGroup>
+    <service name="FdmsService">
+        <messageReceivers>
+            <messageReceiver mep="http://www.w3.org/ns/wsdl/in-out" class="com.aldorsolutions.wsfdms.services.fdmsservice.FdmsServiceMessageReceiverInOut"/>
+        </messageReceivers>
+        <parameter name="ServiceClass">com.aldorsolutions.wsfdms.services.fdmsservice.FdmsServiceSkeleton</parameter>
+        <parameter name="useOriginalwsdl">true</parameter>
+        <parameter name="modifyUserWSDLPortAddress">false</parameter>
+        <operation name="getService" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://aldorsolutions.com/wsfdms/services/fdmsservice">
+            <actionMapping>urn:getService</actionMapping>
+            <outputActionMapping>urn:getServiceResponse</outputActionMapping>
+            <faultActionMapping faultName="fdmsFault">urn:getFdmsFault</faultActionMapping>
+            <faultActionMapping faultName="getFdmsFault">urn:getServicegetFdmsFault</faultActionMapping>
+        </operation>
+        <operation name="getFdmsInfo" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://aldorsolutions.com/wsfdms/services/fdmsservice">
+            <actionMapping>urn:getFdmsInfo</actionMapping>
+            <outputActionMapping>urn:getFdmsInfoResponse</outputActionMapping>
+            <faultActionMapping faultName="fdmsFault">urn:getFdmsFault</faultActionMapping>
+            <faultActionMapping faultName="getFdmsFault">urn:getFdmsInfogetFdmsFault</faultActionMapping>
+        </operation>
+    </service>
+</serviceGroup>

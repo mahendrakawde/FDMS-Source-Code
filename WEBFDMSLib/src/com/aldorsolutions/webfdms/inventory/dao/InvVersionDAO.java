@@ -1,0 +1,376 @@
+package com.aldorsolutions.webfdms.inventory.dao;
+
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Calendar;
+
+import org.apache.log4j.Logger;
+
+import com.aldorsolutions.webfdms.beans.DbUserSession;
+import com.aldorsolutions.webfdms.company.bean.CompanyManagerBean;
+import com.aldorsolutions.webfdms.company.model.CompanyDTO;
+import com.aldorsolutions.webfdms.inventory.model.InvVersionDTO;
+import com.aldorsolutions.webfdms.inventory.model.InvVersionSelDTO;
+import com.aldorsolutions.webfdms.util.DAO;
+
+
+/**
+ * @author David Rollins
+ * Date: Mar 5, 2007
+ * File: InvVersionDAO.java	
+ * 
+ */
+public class InvVersionDAO extends DAO {
+	private CompanyDTO company = null;
+	private String dbLookup = DAO.DB_FDMSUSERS;
+    
+    /** Creates a new instance of SecurityConfigDAO */
+    public InvVersionDAO(DbUserSession user) {
+    	this( user.getCompanyID(), user.getId() );
+    }
+
+    /** Creates a new instance of InvVersionDAO */
+    public InvVersionDAO ( long companyID, long userId ) {
+    	this.companyID = companyID;
+    	this.userID = userId;
+    	this.company = getCompany(companyID);
+    	dbLookup = company.getDbLookup();
+    }
+    
+	private CompanyDTO getCompany ( long companyID ) {
+		return ( new CompanyManagerBean().getCompany((int)companyID) );
+	}
+	    
+    private Logger logger = Logger.getLogger(InvVersionDAO.class.getName());
+    public static int ACTIVE = 1;
+    public static int DELETED = 0;
+    private long userID = 0;
+    private long companyID = 0;
+    
+    public ArrayList getVersions() {
+        ArrayList versions = new ArrayList();
+        InvVersionDTO version = null;
+        
+        try {
+            StringBuffer sql = new StringBuffer();
+            sql.append("SELECT InvVersionID, PriceListID, CompanyID, ");
+            sql.append("Name, Description, InvFromDate, InvToDate, ");
+            sql.append("Active, Timestamp ");
+            sql.append("FROM invversion ");
+            sql.append("ORDER BY Name");
+            
+            makeConnection(company.getDbLookup());
+            statement = conn.prepareStatement(sql.toString());
+            rs = statement.executeQuery();
+            
+            while (rs.next()) {
+                version = new InvVersionDTO();
+                version.setInvVersionID(rs.getLong(1));
+                version.setPriceListID(rs.getLong(2));
+                version.setCompanyID(rs.getLong(3));
+                version.setName(rs.getString(4));
+                version.setDescription(rs.getString(5));
+                version.setInvFromDate(rs.getDate(6));
+                version.setInvToDate(rs.getDate(7));
+                version.setActive(rs.getBoolean(8));
+                version.setTimestamp(rs.getTimestamp(9));
+                
+                versions.add(version);
+            }
+            
+        } catch (SQLException e) {
+            logger.error("SQLException in getVersions() : ", e);
+        } catch (Exception e) {
+            logger.error("Exception in getVersions() : ", e);
+        } finally {
+            closeConnection();
+        }
+        
+        return versions;
+    }
+
+    
+    public ArrayList getVersions(boolean status) {
+        
+        ArrayList versions = new ArrayList();
+        InvVersionDTO version = null;
+        
+        try {
+            StringBuffer sql = new StringBuffer();
+            sql.append("SELECT InvVersionID, PriceListID, CompanyID, ");
+            sql.append("Name, Description, InvFromDate, InvToDate, ");
+            sql.append("Active, Timestamp ");
+            sql.append("FROM invversion ");
+            sql.append("WHERE (Active = ?) ");
+            sql.append("ORDER BY Name");
+            
+            makeConnection(company.getDbLookup());
+            statement = conn.prepareStatement(sql.toString());
+            statement.setBoolean(1, status);
+            rs = statement.executeQuery();
+            
+            int col = 0;
+            while (rs.next()) {                
+            	version = new InvVersionDTO();
+                version.setInvVersionID(rs.getLong(++col));
+                version.setPriceListID(rs.getLong(++col));
+                version.setCompanyID(rs.getLong(++col));
+                version.setName(rs.getString(++col));
+                version.setDescription(rs.getString(++col));
+                version.setInvFromDate(rs.getDate(++col));
+                version.setInvToDate(rs.getDate(++col));
+                version.setActive(rs.getBoolean(++col));
+                version.setTimestamp(rs.getTimestamp(++col));
+                versions.add(version);
+                col = 0;
+            }
+            
+        } catch (SQLException e) {
+            logger.error("SQLException in getVersions() : ", e);
+        } catch (Exception e) {
+            logger.error("Exception in getVersions() : ", e);
+        } finally {
+            closeConnection();
+        }
+        
+        return versions;        
+    }
+    
+    public InvVersionDTO getVersion(long invVersionID) {
+    	InvVersionDTO version = null;
+        
+        try {
+            StringBuffer sql = new StringBuffer();
+            sql.append("SELECT InvVersionID, PriceListID, CompanyID, ");
+            sql.append("Name, Description, InvFromDate, InvToDate, ");
+            sql.append("Active, Timestamp ");
+            sql.append("FROM invversion ");
+            sql.append("WHERE (InvVersionID = ?) ");
+            sql.append("ORDER BY Name");
+            
+            makeConnection(company.getDbLookup());
+            statement = conn.prepareStatement(sql.toString());
+            statement.setLong(1, invVersionID);
+            
+            rs = statement.executeQuery();
+            if (rs.next()) {
+                int col = 0;
+                version = new InvVersionDTO();
+                version.setInvVersionID(rs.getLong(++col));
+                version.setPriceListID(rs.getLong(++col));
+                version.setCompanyID(rs.getLong(++col));
+                version.setName(rs.getString(++col));
+                version.setDescription(rs.getString(++col));
+                version.setInvFromDate(rs.getDate(++col));
+                version.setInvToDate(rs.getDate(++col));
+                version.setActive(rs.getBoolean(++col));
+                version.setTimestamp(rs.getTimestamp(++col));
+            }
+        } catch (SQLException e) {
+            logger.error("SQLException in getVersion() : ", e);
+        } catch (Exception e) {
+            logger.error("Exception in getVersion() : ", e);
+        } finally {
+            closeConnection();
+        }
+        
+        return version;
+    }
+    
+    public boolean addVersions(InvVersionDTO version) {
+        boolean added = false;
+        
+        try {
+        	logger.info("In " + this.getClass() + " " + Thread.currentThread().getStackTrace()[1].getMethodName() + " is been called");
+            StringBuffer sql = new StringBuffer();
+            sql.append("INSERT INTO invversion ( PriceListID, CompanyID, ");
+            sql.append("Name, Description, InvFromDate, InvToDate, ");
+            sql.append("Active, Timestamp ) ");
+            sql.append("VALUES (?,?,?,?,?,?,?,?)");
+            
+            int col = 0;
+            makeConnection(company.getDbLookup());
+            statement = conn.prepareStatement(sql.toString(), Statement.RETURN_GENERATED_KEYS);
+            statement.setLong(++col, version.getPriceListID());
+            statement.setLong(++col, version.getCompanyID());
+            statement.setString(++col, version.getName());
+            statement.setString(++col, version.getDescription());
+            statement.setDate(++col, version.getInvFromDate());
+            statement.setDate(++col, version.getInvToDate());
+            statement.setBoolean(++col, version.isActive());
+            statement.setTimestamp(++col, new java.sql.Timestamp(Calendar.getInstance().getTimeInMillis()) );
+            
+            statement.executeUpdate();
+            added = true;
+            
+            if (added) {
+            	rs = statement.getGeneratedKeys();
+                if (rs.next()) {
+                	version.setInvVersionID(rs.getLong(1));
+                }
+                
+                auditDTO.setCompanyId((int) version.getCompanyID());
+                auditDTO.setLocaleId(0);
+                auditDTO.setUserId((int) userID);
+                
+                insertAudit(version);
+            }
+            
+        } catch (SQLException e) {
+            logger.error("SQLException in addVersions() : ", e);
+        } catch (Exception e) {
+            logger.error("Exception in addVersions() : ", e);
+        } finally {
+            closeConnection();
+        }
+        
+        return added;
+    }
+    /**
+     * @param versionId
+     */
+    public void deleteVersion(long versionId) {
+        
+        try {
+        	InvVersionDTO oldVer = getVersion(versionId);
+        	InvVersionDTO newVer = getVersion(versionId);
+        	
+            String sql = "UPDATE invversion SET DeleteCode = 'false' WHERE (InvVersionID = ?)";
+            makeConnection(company.getDbLookup());
+            statement = conn.prepareStatement(sql);
+            statement.setLong(1, versionId);
+            statement.executeUpdate();     
+            
+            auditDTO.setCompanyId((int) companyID);
+            auditDTO.setUserId((int) userID);
+            auditDTO.setLocaleId(0);            
+            
+            newVer.setActive(false);
+            
+            deleteAudit(oldVer, newVer);
+            
+        } catch (SQLException e) {
+            logger.error("SQLException in deleteVersion() : ", e);
+        } catch (Exception e) {
+            logger.error("Exception in deleteVersion() : ", e);
+        } finally {
+            closeConnection();
+        }
+        
+    }
+    
+
+    public ArrayList getVersionLocations(long invVersionID) {
+        
+        logger.debug("Entering getUserLocations()");
+        ArrayList versionLocs = new ArrayList();
+        
+        try {
+            StringBuffer sql = new StringBuffer();
+            sql.append("SELECT LocationID, LocaleID, CompanyID ");
+            sql.append("FROM invversionsel WHERE (InvVersionID = ?) ");
+            
+            makeConnection(company.getDbLookup());
+            statement = conn.prepareStatement(sql.toString());
+            statement.setLong(1, invVersionID);
+            
+            rs = statement.executeQuery();
+            while (rs.next()) {
+                InvVersionSelDTO invVersionSel = new InvVersionSelDTO();
+                invVersionSel.setInvVersionID(invVersionID);
+                invVersionSel.setLocationID(rs.getLong(1));
+                invVersionSel.setLocaleID(rs.getLong(2));
+                invVersionSel.setCompanyID(rs.getLong(3));
+                versionLocs.add(invVersionSel);
+            }
+            
+        } catch (SQLException e) {
+            logger.error("SQL Exception in getVersionLocations() : ", e);
+        } catch (Exception e) {
+            logger.error("Exception in getVersionLocations() : ", e);
+        } finally {
+            closeConnection();
+        }
+        
+        return versionLocs;
+    }    
+    
+    
+    /**
+     * Delete all locations associated to user from userlocations table
+     * in webfdmsusers db
+     * @param userId
+     */
+    public void deleteVersionLocations(long invVersionID) {
+        
+        try {
+        	ArrayList versionLocs = getVersionLocations(invVersionID);
+        	        	
+            String sql = "DELETE FROM invversionsel WHERE (InvVersionID = ?)";
+            makeConnection(company.getDbLookup());
+            statement = conn.prepareStatement(sql);
+            statement.setLong(1, invVersionID);
+            statement.executeUpdate();
+            
+            for ( int i = 0; i < versionLocs.size(); i++ ) {
+            	InvVersionSelDTO loc = (InvVersionSelDTO) versionLocs.get(i);
+
+                auditDTO.setCompanyId((int) companyID);
+                auditDTO.setUserId((int) userID);
+                auditDTO.setLocaleId((int) loc.getLocaleID());            
+                
+                deleteAudit(loc, null);
+            }
+            
+        } catch (SQLException e) {
+            logger.error("SQL Exception in deleteUserLocations() : ", e);
+        } catch (Exception e) {
+            logger.error("Exception in deleteUserLocations() : ", e);
+        } finally {
+            closeConnection();
+        }
+    }
+    
+    /**
+     * adds locations for user in userlocations table in webfdmsusers db
+     * @param locations an ArrayList of UserLocationDTO's
+     */
+    public void addVersionLocations(long invVersionID, ArrayList locations) {
+        
+        try {
+            StringBuffer sql = new StringBuffer();
+            sql.append("INSERT INTO invversionsel (InvVersionID, LocaleID, LocationID, CompanyID) ");
+            sql.append("VALUES (?,?,?,?)");
+            
+            makeConnection(company.getDbLookup());
+            statement = conn.prepareStatement(sql.toString());
+            
+            int i = 0;
+            while (i < locations.size()) {
+            	InvVersionSelDTO location = (InvVersionSelDTO) locations.get(i++);
+            	
+                statement.setLong(1, invVersionID);
+                statement.setLong(2, location.getLocaleID() );
+                statement.setLong(3, location.getLocationID() );
+                statement.setLong(4, location.getCompanyID() );
+                statement.executeUpdate();
+                statement.clearParameters();
+                
+                auditDTO.setLocaleId( (int) location.getLocaleID() );
+                auditDTO.setUserId( (int) userID);
+                auditDTO.setCompanyId( (int) location.getCompanyID());
+                
+                insertAudit(location);    
+            }
+            
+        } catch (SQLException e) {
+            logger.error("SQL Exception in addVersionLocations() : ", e);
+        } catch (Exception e) {
+            logger.error("Exception in addVersionLocations() : ", e);
+        } finally {
+            closeConnection();
+        }        
+    }
+    
+}

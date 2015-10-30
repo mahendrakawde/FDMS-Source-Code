@@ -1,0 +1,80 @@
+body {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	margin: 0px;
+	background-color: #C8D9E3;
+}
+
+legend {
+	font-color: #000066;
+	font-size: 13px;
+	font-weight: bold;
+}
+fieldset table {
+	font-size: 12px;
+}
+a:link, a:visited {
+        color: #990000;
+}
+a:hover {
+        color: #FF0000;
+}
+
+.input {
+	font-size: 12px;
+	border: solid 1px #000066;
+	background-color: #F2F2F2;
+}
+label {
+	font-weight: bold;
+}
+.content {
+	border-top: solid 1px #000066;
+        border-left: solid 1px #000066;
+        border-right: solid 2px #000066;
+        border-bottom: solid 2px #000066;
+	background-color: #FFFFFF;
+	height: 300px;
+	padding: 25px;
+        font-size: 12px;
+}
+
+.nav {
+        border-top: solid 1px #000066;
+	border-bottom: solid 1px #000066;
+        background-image: url('../images/navBack.gif');
+        background-repeat: repeat-x;
+}
+.nav td {	
+	font-size: 12px;
+	border-right: solid 1px #000066;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+.nav td.over {
+	background-color: #FFFFFF;
+	color: #000066;
+	cursor: pointer;
+	cursor: hand;
+}
+.message {
+        color: #339900;
+        font-size: 12px;
+        font-weight: bold;
+}
+.footer {
+        border-top: solid 1px #000066;
+        font-size: 11px;
+        color: #FFFFFF;
+        background-image: url('../images/footerBack.gif');
+        background-repeat: repeat-x;
+}
+.label {
+        background-color: #DCEDF7;
+}
+.required {
+        color: #FF0000;
+        background-color: #DCEDF7;
+}
+caption {
+        color: #FF0000;
+}

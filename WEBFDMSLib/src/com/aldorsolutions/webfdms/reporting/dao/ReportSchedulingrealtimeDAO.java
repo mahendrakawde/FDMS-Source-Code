@@ -1,0 +1,272 @@
+package com.aldorsolutions.webfdms.reporting.dao;
+
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+
+import org.apache.log4j.Logger;
+
+import com.aldorassist.webfdms.model.ReportSchedulingDTO;
+import com.aldorsolutions.webfdms.beans.DbUserSession;
+import com.aldorsolutions.webfdms.util.DAO;
+
+/**
+ * 
+ * @author Chai Jongs  
+ */
+public class ReportSchedulingrealtimeDAO extends DAO {
+
+	private Logger logger = Logger.getLogger(ReportSchedulingDAO.class
+			.getName());
+
+	public ReportSchedulingrealtimeDAO(String usersLookup) {
+		super(usersLookup);
+	}
+
+	/**
+	 * 
+	 * @param user
+	 */
+	public ReportSchedulingrealtimeDAO(DbUserSession user) {
+		super(user);
+	}
+
+	/**
+	 * 
+	 * @param companyID
+	 * @param userId
+	 */
+	public ReportSchedulingrealtimeDAO(long companyID, long userId) {
+		super(companyID, userId);
+	}
+
+	/**
+	 * 
+	 * @param formFilterID
+	 * @return
+	 */
+	public ReportSchedulingDTO getReportScheduling(int schedulingID) {
+		ReportSchedulingDTO reportScheduling = null;
+
+		try {
+			String sql = "select 	SchedulingID, FormID, Locale, Location, FromDate, ToDate, RunDate, "
+					+ "RepeatType, RepeatNumber, Datetime, ReportName from reportschedulingrealtime "
+					+ "where SchedulingId = ?";
+
+			makeConnection(getDbLookup());
+			statement = conn.prepareStatement(sql);
+			statement.setLong(1, schedulingID);
+
+			rs = statement.executeQuery();
+
+			if (rs.next()) {
+				int col = 0;
+				reportScheduling = new ReportSchedulingDTO();
+				reportScheduling.setSchedulingID(rs.getInt(++col));
+				reportScheduling.setFormID(rs.getInt(++col));
+				reportScheduling.setLocale(rs.getString(++col));
+				reportScheduling.setLocation(rs.getString(++col));
+				reportScheduling.setFromDate(rs.getDate(++col));
+				reportScheduling.setToDate(rs.getDate(++col));
+				reportScheduling.setRunDate(rs.getDate(++col));
+				reportScheduling.setRepeatType(rs.getString(++col));
+				reportScheduling.setRepeatNumber(rs.getInt(++col));
+				reportScheduling.setDatetime(rs.getLong(++col));
+				reportScheduling.setReportName(rs.getString(++col));
+			}
+
+		} catch (SQLException e) {
+			logger.error("SQLException in getReportschedulingRealtime() : ", e);
+		} catch (Exception e) {
+			logger.error("Exception in getReportschedulingRealtime() : ", e);
+		} finally {
+			closeConnection();
+		}
+
+		return reportScheduling;
+	}
+
+	/**
+	 * 
+	 * @param formID
+	 * @return
+	 */
+	public ArrayList<ReportSchedulingDTO> getReportScheduling() {
+		ArrayList<ReportSchedulingDTO> list = new ArrayList<ReportSchedulingDTO>();
+
+		try {
+			String sql = "select SchedulingID, FormID, Locale, Location, FromDate, ToDate, RunDate, "
+					+ "RepeatType, RepeatNumber, Datetime, ReportName from reportschedulingrealtime ";
+
+			makeConnection(getDbLookup());
+			statement = conn.prepareStatement(sql);
+
+			rs = statement.executeQuery();
+
+			while (rs.next()) {
+				int col = 0;
+				ReportSchedulingDTO reportScheduling = new ReportSchedulingDTO();
+				reportScheduling.setSchedulingID(rs.getInt(++col));
+				reportScheduling.setFormID(rs.getInt(++col));
+				reportScheduling.setLocale(rs.getString(++col));
+				reportScheduling.setLocation(rs.getString(++col));
+				reportScheduling.setFromDate(rs.getDate(++col));
+				reportScheduling.setToDate(rs.getDate(++col));
+				reportScheduling.setRunDate(rs.getDate(++col));
+				reportScheduling.setRepeatType(rs.getString(++col));
+				reportScheduling.setRepeatNumber(rs.getInt(++col));
+				reportScheduling.setDatetime(rs.getLong(++col));
+				reportScheduling.setReportName(rs.getString(++col));
+				list.add(reportScheduling);
+			}
+
+		} catch (SQLException e) {
+			logger.error("SQLException in getReportSchedulingRealtime() : ", e);
+		} catch (Exception e) {
+			logger.error("Exception in getReportSchedulingRealtime() : ", e);
+		} finally {
+			closeConnection();
+		}
+
+		return list;
+	}
+
+	/**
+	 * 
+	 * @param formAvailableFilter
+	 * @return
+	 * @throws Exception
+	 */
+	public boolean addReportScheduling(ReportSchedulingDTO reportScheduling)
+			throws Exception {
+		boolean added = false;
+
+		try {
+			logger.info("In " + this.getClass() + " " + Thread.currentThread().getStackTrace()[1].getMethodName() + " is been called");
+			String sql = "insert into reportschedulingrealtime ( "
+					+ "FormID, Locale, Location, FromDate, ToDate, RunDate, "
+					+ "RepeatType, RepeatNumber, Datetime, ReportName) "
+					+ "VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )";
+
+			int col = 0;
+			makeConnection(getDbLookup());
+			statement = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+			// statement.setInt(++col, reportScheduling.getSchedulingID());
+			statement.setInt(++col, reportScheduling.getFormID());
+			statement.setString(++col, reportScheduling.getLocale());
+			statement.setString(++col, reportScheduling.getLocation());
+			statement.setDate(++col, reportScheduling.getFromDate());
+			statement.setDate(++col, reportScheduling.getToDate());
+			statement.setDate(++col, reportScheduling.getRunDate());
+			statement.setString(++col, reportScheduling.getRepeatType());
+			statement.setInt(++col, reportScheduling.getRepeatNumber());
+			// statement.setLong(++col, reportScheduling.getDateTime());
+			statement.setTimestamp(++col, new java.sql.Timestamp(
+					reportScheduling.getDatetime()));
+			statement.setString(++col, reportScheduling.getReportName());
+			statement.executeUpdate();
+			added = true;
+
+			if (added) {
+				rs = statement.getGeneratedKeys();
+				if (rs.next()) {
+					reportScheduling.setSchedulingID(rs.getInt(1));
+				}
+
+				insertAudit(reportScheduling);
+			}
+
+		} catch (SQLException e) {
+			throw e;
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			closeConnection();
+		}
+
+		return added;
+	}
+
+	/**
+	 * 
+	 * @param formAvailableFilter
+	 * @return
+	 */
+	public boolean updateReportScheduling(ReportSchedulingDTO reportScheduling)
+			throws SQLException, Exception {
+		boolean updated = false;
+
+		try {
+
+			ReportSchedulingDTO oldComp = getReportScheduling(reportScheduling
+					.getSchedulingID());
+
+			String sql = "UPDATE reportschedulingrealtime set FormID = ?, Locale = ?, "
+					+ "Location = ?, FromDate = ?, ToDate = ?, RunDate = ?, RepeatType = ?, "
+					+ "RepeatNumber = ?, Datetime = ?, ReportName = ? WHERE SchedulingID = ?";
+
+			int col = 0;
+			makeConnection(getDbLookup());
+			statement = conn.prepareStatement(sql);
+			statement.setInt(++col, reportScheduling.getFormID());
+			statement.setString(++col, reportScheduling.getLocale());
+			statement.setString(++col, reportScheduling.getLocation());
+			statement.setDate(++col, reportScheduling.getFromDate());
+			statement.setDate(++col, reportScheduling.getToDate());
+			statement.setDate(++col, reportScheduling.getRunDate());
+			statement.setString(++col, reportScheduling.getRepeatType());
+			statement.setInt(++col, reportScheduling.getRepeatNumber());
+			// statement.setLong(++col, reportScheduling.getDateTime());
+			statement.setTimestamp(++col, new java.sql.Timestamp(
+					reportScheduling.getDatetime()));
+			statement.setString(++col, reportScheduling.getReportName());
+			statement.executeUpdate();
+
+			updateAudit(reportScheduling, oldComp);
+
+			updated = true;
+		} catch (SQLException e) {
+			throw e;
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			closeConnection();
+		}
+
+		return updated;
+	}
+
+	/**
+	 * 
+	 * @param formFilterID
+	 * @return
+	 */
+	public boolean deleteReportScheduling(int schedulingID) {
+		boolean deleted = false;
+
+		try {
+			ReportSchedulingDTO oldComp = getReportScheduling(schedulingID);
+
+			String sql = "DELETE FROM reportschedulingrealtime where SchedulingID = ?";
+
+			int col = 0;
+			makeConnection(getDbLookup());
+			statement = conn.prepareStatement(sql);
+			statement.setInt(++col, schedulingID);
+			statement.executeUpdate();
+
+			deleteAudit(oldComp);
+
+			deleted = true;
+		} catch (SQLException e) {
+			logger.error("SQLException in deleteReportSchedulingRealtime() : ", e);
+		} catch (Exception e) {
+			logger.error("Exception in deleteReportSchedulingRealtime() : ", e);
+		} finally {
+			closeConnection();
+		}
+
+		return deleted;
+	}
+
+}

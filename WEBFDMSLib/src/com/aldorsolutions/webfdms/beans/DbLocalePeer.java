@@ -1,0 +1,249 @@
+package com.aldorsolutions.webfdms.beans;
+
+import java.sql.Statement;
+import java.util.Calendar;
+import java.util.Date;
+
+import org.apache.log4j.Logger;
+
+import com.aldorsolutions.webfdms.util.FormatString;
+
+
+/**
+ * DbLocalePeer supplies constants and SQL for Persistent Class.
+ * Creation date: (11/14/2001 4:13:09 PM)
+ * @author: 
+ */
+public class DbLocalePeer extends com.aldorsolutions.webfdms.database.DatabasePeer {
+
+	static public final String IDENTITY    	= "LocaleID";
+	static public final String NAME		 	= "Name";
+	static public final String NEXTCONTRACT = "NextContractNo";
+	static public final String NEXTRECEIPT 	= "NextReceiptNo";
+	static public final String NEXTNONCASH 	= "NextNonCashNo";
+	static public final String LASTFCDATE	= "LastFinChgDate";
+	static public final String EXPIREDATE	= "AccessExpirationDate";
+	static public final String NUMBERUSERS	= "NumberOfUsers";
+	static public final String PRENEEDLIC	= "PreneedLicense";
+	static public final String ATNEEDLIC	= "AtneedLicense";
+	static public final String INTERFACE	= "InterfaceType";
+	static public final String MANAGER		= "ManagerName";
+	static public final String ABBITID		= "AbbitID";
+	static public final String BANKID		= "DefaultBankID";
+	static public final String COMMISSION	= "DefaultCommission";
+	static public final String REFUNDRATE	= "DefaultRefundRate";
+	static public final String NEXTPNNO		= "NextPreNeedNumber";
+	static public final String INFLATION	= "DefaultInflationRate";
+	static public final String SALEDATECODE	= "DefaultSaleDateCode";
+	static public final String DUEDATEDAYS	= "DaysBeforeDue";
+	static public final String USELOCALIZEDSPEEDDATA = "LocalizedSpeedData";
+    static public final String AUTO_FILL_DATE_OF_DEATH = "AutoFillDateOfDeath";
+	static public final String AUTO_FILL_ARRANGE_DATE = "AutoFillArrangeDate";
+	static public final String COMPANYID    = "CompanyID";
+	static public final String INACTIVECODE = "InactiveCode";
+	static public final String FLAG_ACCT_INT_DATES = "ConfigAcctInterfaceDateRange";
+	static public final String FLAG_SHOW_FINANCING = "ConfigShowFinancing";
+	static public final String LOCALETYPE = "FDMS_LocaleType";
+	
+	Logger logger = Logger.getLogger(DbLocalePeer.class.getName());
+	
+/**
+ * getInsertSql method comment.
+ */
+protected java.sql.PreparedStatement getInsertSql(com.aldorsolutions.webfdms.database.DatabaseTransaction t, com.aldorsolutions.webfdms.database.Persistent p) throws com.aldorsolutions.webfdms.database.PersistenceException {
+
+		java.sql.Connection connection = null;
+		java.sql.PreparedStatement pstmt = null;
+		
+		try {
+			logger.info("In " + this.getClass() + " getInsertSql() is been called");
+			DbLocale locale=(DbLocale)p;
+			connection = t.getConnection();
+			pstmt = connection.prepareStatement(
+			"INSERT INTO locales (" +
+				NAME +","+
+				NEXTCONTRACT +","+
+				NEXTRECEIPT +","+
+				NEXTNONCASH +","+
+				LASTFCDATE +","+
+				EXPIREDATE +","+
+				NUMBERUSERS +","+
+				PRENEEDLIC  +","+
+				ATNEEDLIC +","+
+				INTERFACE +","+
+				MANAGER +","+
+				ABBITID +","+
+				BANKID +","+
+				COMMISSION +","+
+				REFUNDRATE +","+
+				NEXTPNNO   +","+
+				INFLATION  +","+
+				SALEDATECODE +","+
+				DUEDATEDAYS +","+
+				USELOCALIZEDSPEEDDATA + ","+
+		        AUTO_FILL_DATE_OF_DEATH+","+
+		        AUTO_FILL_ARRANGE_DATE+", "+
+		        COMPANYID+", "+
+		        INACTIVECODE+", "+
+		        FLAG_ACCT_INT_DATES+", "+
+		        FLAG_SHOW_FINANCING + ", " + 
+		        LOCALETYPE+" "+
+				") VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS
+			);		
+			pstmt.setString(1, locale.getName());
+			pstmt.setInt(2, locale.getNextContractNo());
+			pstmt.setInt(3, locale.getNextReceiptNo());
+			pstmt.setInt(4, locale.getNextNonCashNo());
+			if(locale.getLastFinanceChargeDate()!= null)
+				pstmt.setDate(5, new java.sql.Date(locale
+					.getLastFinanceChargeDate().getTime()));
+			else
+				pstmt.setDate(5, null);
+			if(locale.getExpirationDate()!= null)
+				pstmt.setDate(6, new java.sql.Date(locale.getExpirationDate()
+					.getTime()));
+			else{
+				Calendar cal = Calendar.getInstance();
+				cal.setTime(new Date());
+				cal.add(Calendar.DATE, 90);
+				pstmt.setDate(6, new java.sql.Date(cal.getTime().getTime()));
+			}
+				
+			pstmt.setInt(7, locale.getNumberOfUsers());
+			pstmt.setString(8, locale.getPreneedLicense());
+			pstmt.setString(9, locale.getAtneedLicense());
+			pstmt.setInt(10, locale.getInterfaceType());
+			pstmt.setString(11, locale.getManagerName());
+			pstmt.setInt(12, locale.getAbbitID());
+			pstmt.setInt(13, locale.getBankID());
+			pstmt.setDouble(14, locale.getCommissionRate());
+			pstmt.setDouble(15, locale.getRefundRate());
+			pstmt.setInt(16, locale.getNextPreNeedNo());
+			pstmt.setDouble(17, locale.getInflationRate());
+			pstmt.setInt(18, locale.getSaleDateCode());
+			pstmt.setInt(19, locale.getDaysBeforeDue());
+			pstmt.setString(20, FormatString.booleanToYN(locale.getUseLocalizedSpeedData()));
+		    pstmt.setBoolean(21, locale.getAutoFillDateOfDeath());
+		    pstmt.setBoolean(22, locale.getAutoFillArrangeDate());
+		    pstmt.setInt(23, locale.getCompanyID());
+		    if(locale.getInactiveCode() != null)
+		    	pstmt.setString(24, locale.getInactiveCode());
+		    else
+		    	pstmt.setString(24, "");
+		    pstmt.setBoolean(25, locale.isFlagAcctInterfaceShowDates() );
+		    pstmt.setBoolean(26, locale.isFlagShowFinancing() );
+		    pstmt.setInt(27, locale.getLocaleType());
+						
+		} catch (java.sql.SQLException e){
+			throw new com.aldorsolutions.webfdms.database.PersistenceException("DbLocalePeer.Insert:"+e.getMessage(),e);
+		}
+		
+		return pstmt;
+}
+/**
+ * getRemoveSql method comment.
+ */
+protected java.sql.PreparedStatement getRemoveSql(
+		com.aldorsolutions.webfdms.database.DatabaseTransaction t, 
+		com.aldorsolutions.webfdms.database.Persistent p) throws com.aldorsolutions.webfdms.database.PersistenceException {
+	
+		java.sql.PreparedStatement pstmt=null;
+		java.sql.Connection connection = null;
+		
+		try {
+			connection = t.getConnection();
+			pstmt = connection.prepareStatement("update locales set InactiveCode = 'D' WHERE (LocaleID=?)");
+			pstmt.setInt(1,p.getId());			
+		} catch (java.sql.SQLException e){
+			throw new com.aldorsolutions.webfdms.database.PersistenceException("DbLocalePeer.Remove",e);
+		}
+		
+		return pstmt;
+}
+/**
+ * getRestoreSql method comment.
+ */
+protected String getRestoreSql(com.aldorsolutions.webfdms.database.Persistent p) {
+		return 
+		"SELECT * from locales WHERE LocaleID = "
+		+ p.getId();
+}
+/**
+ * getUpdateSql method comment.
+ */
+protected java.sql.PreparedStatement getUpdateSql(
+		com.aldorsolutions.webfdms.database.DatabaseTransaction t, 
+		com.aldorsolutions.webfdms.database.Persistent p) throws com.aldorsolutions.webfdms.database.PersistenceException {
+	
+		java.sql.Connection connection = null;
+		java.sql.PreparedStatement pstmt = null;
+		try {
+			DbLocale locale=(DbLocale)p;
+			connection = t.getConnection();
+			pstmt = connection.prepareStatement(
+			"UPDATE locales SET "+
+				NAME +"=?,"+
+				NEXTCONTRACT +"=?,"+
+				NEXTRECEIPT +"=?,"+
+				NEXTNONCASH +"=?,"+
+				LASTFCDATE +"=?,"+
+				EXPIREDATE +"=?,"+
+				NUMBERUSERS +"=?,"+
+				PRENEEDLIC  +"=?,"+
+				ATNEEDLIC  +"=?,"+
+				INTERFACE +"=?,"+
+				MANAGER +"=?,"+
+				ABBITID +"=?,"+
+				BANKID +"=?,"+
+				COMMISSION +"=?,"+
+				REFUNDRATE +"=?,"+
+				NEXTPNNO 	+"=?,"+
+				INFLATION 	+"=?,"+
+				SALEDATECODE 	+"=?,"+
+				DUEDATEDAYS 	+"=?,"+
+				USELOCALIZEDSPEEDDATA +"=?,"+
+		        AUTO_FILL_DATE_OF_DEATH+"=?,"+
+		        AUTO_FILL_ARRANGE_DATE+"=?, "+
+		        COMPANYID+"=?, "+
+		        INACTIVECODE+"=?, "+
+		        FLAG_ACCT_INT_DATES+"=?, "+
+		        FLAG_SHOW_FINANCING+"=?, "+  
+		        LOCALETYPE+"=? "+
+				"WHERE LocaleID = ?"
+			);		
+			pstmt.setString(1, locale.getName());	
+			pstmt.setInt(2,locale.getNextContractNo());
+			pstmt.setInt(3,locale.getNextReceiptNo());
+			pstmt.setInt(4,locale.getNextNonCashNo());
+			pstmt.setDate(5, new java.sql.Date(locale.getLastFinanceChargeDate().getTime()));
+			pstmt.setDate(6, new java.sql.Date(locale.getExpirationDate().getTime()));
+			pstmt.setInt(7,locale.getNumberOfUsers());
+			pstmt.setString(8, locale.getPreneedLicense());
+			pstmt.setString(9, locale.getAtneedLicense());
+			pstmt.setInt(	10,locale.getInterfaceType());
+			pstmt.setString(11, locale.getManagerName());
+			pstmt.setInt(	12, locale.getAbbitID());
+			pstmt.setInt(	13, locale.getBankID());
+			pstmt.setDouble(14, locale.getCommissionRate());
+			pstmt.setDouble(15, locale.getRefundRate());
+			pstmt.setInt(	16, locale.getNextPreNeedNo());
+			pstmt.setDouble(17, locale.getInflationRate());
+			pstmt.setInt(	18, locale.getSaleDateCode());
+			pstmt.setInt(	19, locale.getDaysBeforeDue());
+			pstmt.setString(20, FormatString.booleanToYN(locale.getUseLocalizedSpeedData()));
+		    pstmt.setBoolean(21, locale.getAutoFillDateOfDeath());
+		    pstmt.setBoolean(22, locale.getAutoFillArrangeDate());
+		    pstmt.setInt(	23, locale.getCompanyID());
+		    pstmt.setString(24, locale.getInactiveCode());
+		    pstmt.setBoolean(25, locale.isFlagAcctInterfaceShowDates() );
+		    pstmt.setBoolean(26, locale.isFlagShowFinancing() );
+		    pstmt.setInt(27, locale.getLocaleType());
+			pstmt.setInt(28,locale.getId());			
+			
+		} catch (java.sql.SQLException e){
+			throw new com.aldorsolutions.webfdms.database.PersistenceException("DbLocalePeer.Update:"+e.getMessage(),e);
+		}
+		
+		return pstmt;
+}
+}

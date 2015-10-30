@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:comm="http://aldorsolutions.com/webservice/xsd/comm" xmlns:scicomm="http://aldorsolutions.com/webservice/xsd/comm/fdde/sci" xmlns:fddecomm="http://aldorsolutions.com/webservice/xsd/comm/fdde" xmlns:this="http://aldorsolutions.com/webservice/xsd/fdde/service" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://aldorsolutions.com/webservice/xsd/fdde/service">
+	
+	<xs:import namespace="http://aldorsolutions.com/webservice/xsd/comm/fdde" schemaLocation="FddeCommon.xsd"/>
+	<xs:import namespace="http://aldorsolutions.com/webservice/xsd/comm/fdde/sci" schemaLocation="SciCommon.xsd"/>
+	<xs:import namespace="http://aldorsolutions.com/webservice/xsd/comm" schemaLocation="Common.xsd"/>
+	
+    <xs:complexType name="dataRequestType">
+    	<xs:sequence>
+    		<xs:element name="dataInterest"	type="this:dataInterestType" />
+            <xs:element name="debug" type="this:debugType" minOccurs="0" nillable="true"/>
+            <xs:element minOccurs="0" name="criteria" type="this:criteriaType" />
+    		<xs:element name="filter" type="this:filterType" minOccurs="0" />
+    	</xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="dataResponseType">
+    	<xs:sequence>
+	    	<xs:element name="dataReturned" type="this:dataInterestType"/>
+    		<xs:element name="debug" type="this:debugType" minOccurs="0"/>
+	    	<xs:element minOccurs="0" name="requestedCriteria" type="this:criteriaType"/>
+			<xs:element name="results" type="this:resultType"/>
+		</xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="dataInterestType">
+    	<xs:restriction base="xs:string">
+    		<xs:enumeration value="funeralHomes" />
+    		<xs:enumeration value="casesByFuneralHome" />
+    		<xs:enumeration value="financialInfoByFuneralHome" />
+    		<xs:enumeration value="caseById" />
+    		<xs:enumeration value="caseSaleByCaseId" />
+    		<xs:enumeration value="invOnHandByFuneralHome" />
+    		<xs:enumeration value="sciContracts" />
+    		<xs:enumeration value="sciCash" />
+    		<xs:enumeration value="accountsReceivable" />
+    		<xs:enumeration value="sciGenerateContractNos"></xs:enumeration>
+    		<xs:enumeration value="sciLineItem"></xs:enumeration>
+    		<xs:enumeration value="sciARDetailData"></xs:enumeration>
+    	</xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="criteriaType">
+	    <xs:choice>
+	    	<xs:element name="funeralHomeId"
+	    		type="fddecomm:funeralHomeIdType" />
+	    	<xs:element name="caseId" type="fddecomm:caseIdType" />
+	    	<xs:element name="state" type="comm:StateCodeType" maxOccurs="unbounded"/>
+	    </xs:choice>
+    </xs:complexType>
+    <xs:complexType name="resultType">
+    	<xs:sequence>
+	    	<xs:choice minOccurs="0">
+	    		<xs:element maxOccurs="unbounded" name="funeralHome"
+	    			type="fddecomm:funeralHomeType" />
+	    		<xs:element name="case" type="fddecomm:caseType"
+	    			minOccurs="1" maxOccurs="unbounded" />
+	    		<xs:element name="financialInfo"
+	    			type="fddecomm:financialInfoType" />
+	    		<xs:element name="invItem" type="fddecomm:invItemType"
+	    			maxOccurs="unbounded" />
+	    		<xs:element name="sciContract"
+	    			type="scicomm:sciContractType" minOccurs="1"
+	    			maxOccurs="unbounded" />
+	    		<xs:element name="sciCash" type="scicomm:sciCashType"
+	    			minOccurs="1" maxOccurs="unbounded" />
+	    		<xs:element name="arFields"
+	    			type="fddecomm:accountsRecievable" minOccurs="1"
+	    			maxOccurs="unbounded" />
+	    		<xs:element name="success" type="xs:boolean"></xs:element>
+	    		<xs:element name="sciContractLineItem"
+	    			type="scicomm:sciContractLineItemType" minOccurs="1"
+	    			maxOccurs="unbounded">
+	    		</xs:element>
+	    		<xs:element name="sciARDetailData" type="scicomm:sciARDetailDataType" minOccurs="1" maxOccurs="unbounded"></xs:element>
+	    	</xs:choice>
+	    	<xs:element name="invalidRow" type="this:invalidRowDetails" minOccurs="0" maxOccurs="unbounded"/>
+    	</xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="errorCodeType">
+    	<xs:restriction base="xs:string">
+    		<xs:enumeration value="InvalidCriteria"/>
+    		<xs:enumeration value="NoData"/>
+    		<xs:enumeration value="NotAuthorizedToAccessData"/>
+    		<xs:enumeration value="Others"/>
+    		<xs:enumeration value="InvalidUser"/>
+    		<xs:enumeration value="UserLocked"/>
+    		<xs:enumeration value="UserExpired"/>
+    		<xs:enumeration value="RequestMissing"/>
+    	</xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="filterType">
+    	<xs:choice>
+    		<xs:element name="caseFilter" type="this:caseFilterType" minOccurs="0" />
+    		<xs:element name="financialFilter" type="this:financialFilterType" minOccurs="0"/>
+    	</xs:choice>
+    </xs:complexType>
+
+    <xs:complexType name="caseFilterType">
+    	<xs:sequence>
+    		<xs:element name="isVoid" type="xs:boolean" minOccurs="0" nillable="true"/>
+    		<xs:element name="isAtNeed" type="xs:boolean" minOccurs="0" nillable="true"/>
+            <xs:element name="isPreNeed" type="xs:boolean" minOccurs="0" nillable="true"/>
+            <xs:element name="caseData" type="this:caseDataType" minOccurs="0" maxOccurs="3"/>
+    	</xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="caseDataType">
+    	<xs:restriction base="xs:string">
+    		<xs:enumeration value="callInfo"/>
+    		<xs:enumeration value="vitals"/>
+    		<xs:enumeration value="services"/>
+    	</xs:restriction>
+    </xs:simpleType>
+    
+    <xs:complexType name="financialFilterType">
+    	<xs:sequence>
+    		<xs:element name="saleInterest" maxOccurs="2" type="this:saleInterestType"/>
+    	</xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="saleInterestType">
+    	<xs:restriction base="xs:string">
+    		<xs:enumeration value="caseSales"/>
+    		<xs:enumeration value="miscSales"/>
+    	</xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="debugType">
+    	<xs:restriction base="xs:string">
+    		<xs:enumeration value="reportInvalidRowIds" />
+    		<xs:enumeration value="includeInvalidRowIds" />
+    		<xs:enumeration value="" />
+    	</xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="invalidRowDetails">
+    	<xs:sequence>
+    		<xs:element name="rowId" type="this:rowIdType"/>
+    		<xs:element name="parentId" type="this:rowIdType" minOccurs="0"/>
+    	</xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="rowIdType">
+    	<xs:simpleContent>
+    		<xs:extension base="xs:string">
+    			<xs:attribute name="type" type="xs:string" use="optional"/>
+    		</xs:extension>
+    	</xs:simpleContent>
+    </xs:complexType>
+</xs:schema>

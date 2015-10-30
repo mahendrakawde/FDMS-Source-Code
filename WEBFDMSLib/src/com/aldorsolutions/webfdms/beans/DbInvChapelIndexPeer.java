@@ -1,0 +1,83 @@
+package com.aldorsolutions.webfdms.beans;
+
+import java.sql.Statement;
+
+/**
+ * DbLocationssPeer supplies SQL for Persistent Class
+ * Creation date: (11/14/2001 4:13:09 PM)
+ * @author: 
+ */
+public class DbInvChapelIndexPeer extends com.aldorsolutions.webfdms.database.DatabasePeer {
+
+	static public final String IDENTITY    	= "IndexID";
+	static public final String ITEM	 		= "ItemNumber";
+	static public final String LOCATION		= "LocationNumber";
+/**
+ * getInsertSql method comment.
+ */
+protected java.sql.PreparedStatement getInsertSql(com.aldorsolutions.webfdms.database.DatabaseTransaction t, com.aldorsolutions.webfdms.database.Persistent p) throws com.aldorsolutions.webfdms.database.PersistenceException {
+		java.sql.Connection connection = null;
+		try {
+			DbInvChapelIndex rec=(DbInvChapelIndex)p;
+			connection = t.getConnection();
+			java.sql.PreparedStatement pstmt = connection.prepareStatement(
+			"INSERT INTO invchapelindex ("+
+				ITEM	+","+
+				LOCATION	+" "+
+				") VALUES (?,?)", Statement.RETURN_GENERATED_KEYS);
+			pstmt.setInt(1, rec.getItemNumber());	
+			pstmt.setInt(2, rec.getLocationNumber());
+			return pstmt;
+		}
+		catch (java.sql.SQLException e){
+			throw new com.aldorsolutions.webfdms.database.PersistenceException("DbInvChapelIndexPeer.Insert:"+e.getMessage(),e);
+		}
+}
+/**
+ * getRemoveSql method comment.
+ */
+protected java.sql.PreparedStatement getRemoveSql(com.aldorsolutions.webfdms.database.DatabaseTransaction t, com.aldorsolutions.webfdms.database.Persistent p) throws com.aldorsolutions.webfdms.database.PersistenceException {
+		java.sql.PreparedStatement pstmt=null;
+		java.sql.Connection connection = null;
+		try {
+			connection = t.getConnection();
+			pstmt = connection.prepareStatement("DELETE FROM invchapelindex WHERE IndexID=?");
+			pstmt.setInt(1,p.getId());
+			return pstmt;
+		}
+		catch (java.sql.SQLException e){
+			throw new com.aldorsolutions.webfdms.database.PersistenceException("DbInvChapelIndexPeer.Remove",e);
+		}
+}
+/**
+ * getRestoreSql method comment.
+ */
+protected String getRestoreSql(com.aldorsolutions.webfdms.database.Persistent p) {
+		return 
+		"SELECT * FROM invchapelindex WHERE IndexID = "
+		+ p.getId();
+}
+/**
+ * getUpdateSql method comment.
+ */
+protected java.sql.PreparedStatement getUpdateSql(com.aldorsolutions.webfdms.database.DatabaseTransaction t, com.aldorsolutions.webfdms.database.Persistent p) throws com.aldorsolutions.webfdms.database.PersistenceException {
+		java.sql.Connection connection = null;
+		try {
+			DbInvChapelIndex rec=(DbInvChapelIndex)p;
+			connection = t.getConnection();
+			java.sql.PreparedStatement pstmt = connection.prepareStatement(
+			"UPDATE invchapelindex SET "+
+				ITEM	+"=?,"+
+				LOCATION	+"=? "+
+				" WHERE IndexID = ?"
+			);		
+			pstmt.setInt(1, rec.getItemNumber());	
+			pstmt.setInt(2, rec.getLocationNumber());
+			pstmt.setInt(3,rec.getId());
+			return pstmt;
+		}
+		catch (java.sql.SQLException e){
+			throw new com.aldorsolutions.webfdms.database.PersistenceException("DbInvChapelIndexPeer.Update:"+e.getMessage(),e);
+		}
+}
+}

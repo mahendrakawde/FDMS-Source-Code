@@ -1,0 +1,603 @@
+package fdms.ui.struts.action;
+
+import java.sql.Date;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.TreeMap;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.apache.log4j.Logger;
+import org.apache.struts.action.Action;
+import org.apache.struts.action.ActionError;
+import org.apache.struts.action.ActionErrors;
+import org.apache.struts.action.ActionForm;
+import org.apache.struts.action.ActionForward;
+import org.apache.struts.action.ActionMapping;
+import org.apache.struts.config.ModuleConfig;
+
+import com.aldorassist.webfdms.delegate.CompanyOptionsManager;
+import com.aldorassist.webfdms.model.CompanyOptionsDTO;
+import com.aldorassist.webfdms.model.LocaleDTO;
+import com.aldorsolutions.webfdms.beans.DbCase;
+import com.aldorsolutions.webfdms.beans.DbChargeItem;
+import com.aldorsolutions.webfdms.beans.DbFinancialSummary;
+import com.aldorsolutions.webfdms.beans.DbInvMaster;
+import com.aldorsolutions.webfdms.beans.DbInvOnHand;
+import com.aldorsolutions.webfdms.beans.DbPreneed;
+import com.aldorsolutions.webfdms.beans.DbUserSession;
+import com.aldorsolutions.webfdms.beans.DbVitalsDeceased;
+import com.aldorsolutions.webfdms.beans.DbVitalsFirstCall;
+import com.aldorsolutions.webfdms.beans.FdmsDb;
+import com.aldorsolutions.webfdms.beans.InventorySold;
+import com.aldorsolutions.webfdms.beans.custom.FinancialInformationLineItem;
+import com.aldorsolutions.webfdms.common.Constants;
+import com.aldorsolutions.webfdms.database.DatabaseTransaction;
+import com.aldorsolutions.webfdms.database.PersistenceException;
+import com.aldorsolutions.webfdms.util.CsvTable;
+import com.aldorsolutions.webfdms.util.FormatCurrency;
+import com.aldorsolutions.webfdms.util.FormatDate;
+import com.aldorsolutions.webfdms.util.FormatNumber;
+import com.aldorsolutions.webfdms.util.SessionHelpers;
+
+import fdms.ui.struts.form.FinancialInformationForm;
+import fdms.ui.struts.form.QtyFinancialMerchandiseInformationForm;
+
+public class SaveFinancial extends Action {
+
+    private Logger logger = Logger.getLogger(SaveFinancial.class.getName());
+    private ArrayList formErrors;
+
+    /**
+     * This method is called by the "SAVE" button from the Financial form.
+     * It handles posting a case, processing, and saving all contract
+     * services and merchandise.
+     * This method calls FdmsDb.PostFinancial() to handle saving the
+     * charges and for adding history transactions.
+     */
+    public ActionForward execute(ActionMapping mapping,
+                                      ActionForm actionForm,
+                                      HttpServletRequest request,
+                                      HttpServletResponse response)
+                                      throws javax.servlet.ServletException, java.io.IOException {
+                                          
+        logger.debug("*** Entering SaveFinancial ***");
+
+        formErrors = new ArrayList();
+        FinancialInformationForm form = (FinancialInformationForm) actionForm;
+        ActionErrors  errors = new ActionErrors();
+        //ActionForward actionForward= forwardShowCaseStatusGlobal(mapping);
+        ActionForward actionForward = mapping.findForward("showFinancialInformation");
+        HttpSession session = request.getSession();
+        DbUserSession sessionUser = SessionHelpers.getUserSession(request);
+        DatabaseTransaction t = null;
+        DbFinancialSummary finan = null;
+        DbVitalsFirstCall firstcall = null;
+        DbCase aCase = null;
+        DbPreneed preneed = null;
+        DbVitalsDeceased vitals = null;
+        DbInvOnHand invOnHand = null;
+        int vitalsid = 0;
+        int depositId = 0;
+        boolean subtractFromAmount = false;
+
+        vitalsid=SessionHelpers.getVitalsIdFromSession(request, sessionUser);
+        if (vitalsid<1){
+            logger.debug("SaveFinancial. Invalid VitalsID to process : " + vitalsid);
+            errors.add(ActionErrors.GLOBAL_ERROR, new ActionError("error.ui.nocase"));
+        }
+
+        // If errors found, bail out and return to input page
+        if( !errors.isEmpty() ){
+            logger.debug("SaveFinancial Invoking forward mapping getInput() ");
+            saveErrors(request, errors );
+            return (new ActionForward(mapping.getInput() ));
+        }
+
+        logger.debug("SaveFinancial processing ID : " + vitalsid
+                    + "\nAction : " + form.getDirective()
+                    + "\nLine# : " + form.getRemoveline());
+        
+        // Check for CANCEL button
+        // If found, forward to show case status action     
+        logger.debug("Forms directive : " + form.getDirective());
+        
+        if(form.getDirective().equals("cancel")){
+            
+            session.removeAttribute("financialInformation");
+
+            logger.debug("SaveFinancial cancelled. forward to case status.");
+            // go back to case status
+            
+            actionForward = mapping.findForward("showCaseStatusGlobal");
+            String returnPath = actionForward.getPath();
+            int periodpos = returnPath.indexOf(".do");
+            returnPath = returnPath.substring(0,periodpos);
+            
+            ModuleConfig modconf =  mapping.getModuleConfig();
+            Action finalAction = null;
+            ActionMapping finalAC = (ActionMapping) modconf.findActionConfig(returnPath);
+            
+            try {
+                Class clazz = Class.forName(finalAC.getType());
+                finalAction = (Action) clazz.newInstance();
+                return finalAction.execute(finalAC,form,request,response);
+                // AppLog.trace("chaining to:"+finalAction.toString());
+            } catch (Exception e) {
+                // AppLog.warning("Could not find chained action: " + e.getMessage());
+            	logger.error("Could not find chained action: ", e);
+                return mapping.findForward("globalCancel");
+            }
+            
+        }
+
+        // Check for HELP button
+        else if( form.getDirective().equals("help") ){
+//            return mapping.findForward("usingHelp");
+        	//do nothing.
+        } 
+        else if ( form.getDirective().equals("addservices") ){
+            logger.debug("Redirecting to financialAddServices");            
+            return mapping.findForward("financialAddServices");
+        } else if ( form.getDirective().equals("addmerch") ){
+            return mapping.findForward("financialAddMerchandise");
+        } else if ( form.getDirective().equals("package") ){
+            request.setAttribute("priceListVersion",form.getPriceListVersion());
+            return (mapping.findForward("showInsertPackages"));
+        } else if ( form.getDirective().equals("changepricelist") ){
+            return mapping.findForward("financialChangePriceList");
+        } else if ( form.getDirective().equals("components") ){
+            return mapping.findForward("financialSpecifyComponents");
+        } else if ( form.getDirective().equals("RemoveCharge") ){
+            request.setAttribute("itemId",form.getRemoveline());
+            return (mapping.findForward("processFinancialInformationLineItemDelete"));
+        } else if (form.getDirective().equals("RemoveAllCharges")) {
+            return mapping.findForward("processFinancialInformationLineItemsDeleteAll");
+        } else if ( form.getDirective().equals("ChangeCharge") ){
+            request.setAttribute("itemId",form.getRemoveline());
+            return (mapping.findForward("financialChangeChargeLine"));
+        } else if ( form.getDirective().equals("changeposteddate") ){
+        	logger.debug("Redirecting to financialChangePostedDate");            
+            return mapping.findForward("financialChangePostedDate"); 
+        } else try {
+            t = (DatabaseTransaction)DatabaseTransaction.getTransaction(sessionUser);
+            //AppLog.trace("ProcessServices directive:"+ form.getDirective());
+            //if( form.getDirective().equals("cancel") ){
+            // go back to case status unless no vitals-id then show introduciton
+            //  return (forwardShowCaseStatusGlobal(mapping));
+            //}
+            //if( form.getDirective().equals("help") ){
+            //  return (forwardUsingHelp(mapping));
+            //}
+            // continue with attempt to save changes
+            finan = FdmsDb.getInstance().getFinancial(t,vitalsid);
+            firstcall = FdmsDb.getInstance().getVitalsFirstCall(t,vitalsid);
+            preneed = FdmsDb.getInstance().getPreneed(t, vitalsid);
+            aCase = FdmsDb.getInstance().getCase(t, vitalsid);
+            vitals = FdmsDb.getInstance().getVitalsDeceased(t, vitalsid);
+
+            if (firstcall==null || preneed==null || aCase==null){
+                logger.debug("SaveFinancial Vitals object not found for ID : " + vitalsid);
+                errors.add(ActionErrors.GLOBAL_ERROR,
+                    new ActionError("error.PersistenceException","Vitals ID does not exist:" + vitalsid)
+                    );
+            }
+
+            if(finan == null ){
+                // add to financial summary table for this case
+                finan = new DbFinancialSummary();
+                finan.setNew();
+                t.addPersistent(finan);
+                finan.setId(vitalsid );
+            }
+
+            short checkbox = 0;
+            // Update persistent objects from form
+            // and check for validation errors
+            finan.setCAdvertisingSource(form.getAdvertisingSource());
+            finan.setCPriceListTable(form.getPriceListVersion());
+            if (form.getApplyFinanceCharges()) checkbox=1;
+            finan.setIFinServiceChargesBox(checkbox);
+            firstcall.setDispositionCode(form.getDisposition());
+            vitals.setCustomerName(form.getCustomerName());
+            LocaleDTO locale = FdmsDb.getInstance().getLocale(sessionUser.getDbLookup(), sessionUser.getRegion());
+  //      	boolean showFinancing = locale.isFlagShowFinancing();
+        	
+  //      	if ( showFinancing ) 
+  //      	{
+        		getOptionalFinancialFields (formErrors, form, errors, finan, firstcall);
+  //      	}
+
+            finan.setCPreviousFhUsed(form.getPreviousFuneralHomeUsed());
+            finan.setCFamilyPreviouslyServed( form.getProvidedServices());
+
+            // Account Description might be required.
+            CompanyOptionsManager coMgr = new CompanyOptionsManager ();
+            	// Now check to see if this options is turned on for this customer
+            int acctDescription = coMgr.getCompanyOptionValueForCompany(sessionUser.getCompanyID(), CompanyOptionsDTO.COMPANY_OPTION_ACCOUNT_DESCRIPTIONS);
+            	// If account descriptions are turned on then load them
+            if (acctDescription == 1) {
+	            if (form.getSalesDescCDID() == null || form.getSalesDescCDID().trim().equals("")) {
+	            	
+	            	errors.add(ActionErrors.GLOBAL_ERROR,new ActionError("error.ui.financial.saleDescription"));
+	              formErrors.add("salesDescCDID");
+	            	
+	            } else {
+	            	finan.setSalesDescCDID(Long.parseLong(form.getSalesDescCDID()));
+	            }
+            }
+            if (form.getSaleType() == null || form.getSaleType().trim().equals("")) {
+            	
+            	errors.add(ActionErrors.GLOBAL_ERROR,new ActionError("error.ui.financial.saletype"));
+                formErrors.add("saleType");
+            	
+            }
+
+            boolean saleTypeChanged = false;
+            
+            // If the sale type has changed (will require the case to have already been entered)
+            if (finan.getIARsentBox()!=0 && locale.getInterfaceType() == Constants.INTERFACE_LAWSON) {
+                saleTypeChanged = (finan.getCFinSaleType().compareTo(form.getSaleType()) != 0);
+            }
+            //logger.error("**** Current Sale Type: " + finan.getCFinSaleType() + " New Sale Type: " + form.getSaleType() + " Are they the different: " + saleTypeChanged);
+            
+            finan.setCFinSaleType(form.getSaleType());
+            DbPreneed dbPreNeed = null;
+			dbPreNeed = FdmsDb.getInstance().getPreneed(t, vitalsid);
+			if (dbPreNeed != null && dbPreNeed.getServiceType() !=null && dbPreNeed.getServiceType().trim().length() > 0) {
+				 dbPreNeed.setServiceType(form.getSaleType());
+			}
+
+            int sent=0;
+            int action = FdmsDb.FINANCIAL_SAVE_UNPOSTED;
+            if (finan.getIARsentBox()!=0){
+                sent=1;  // once posted always posted regardless of form
+            }
+            if (form.getSendToAccounting()){
+                sent=1; // we are posting this session
+            }
+            if (sent==1){ // if posting this session
+                if (finan.getIARsentBox()==0){  // not posted before
+                    action = FdmsDb.FINANCIAL_FIRST_POST;
+                } else {
+                    // case previously posted so this is an adjustment
+                    action = FdmsDb.FINANCIAL_POST_ADJUST;
+                }
+            }
+            finan.setIARsentBox((short)sent);
+            finan.setCFinMiscNotes(form.getMiscNotes());
+            
+
+            firstcall.setMarketingPlan(form.getServicePlan());
+            preneed.setSource(form.getSource());
+
+            // Update DbCase information - SetDateKey(vitals.cVitKeySaleDate, finan.cFinSaleDate); // store as ymd in key field
+            try {
+            	logger.debug("form.getSaleDate(): " + form.getSaleDate());
+                aCase.setSaleDate(FormatDate.convertToDateYYYYMMDD(form.getSaleDate()));
+            } catch(Exception e){
+            	
+            	if ( locale.isConfigShowFinancing() ) {
+            		errors.add(ActionErrors.GLOBAL_ERROR, 
+            				new ActionError("error.ui.financial.saledate"));
+                    formErrors.add("saleDate");
+            	}
+            }
+            
+            // Validate Deposit Information
+            
+            if (form.getDepositId() != null) {
+                try {
+                    depositId = Integer.parseInt(form.getDepositId());
+                } catch (NumberFormatException e) {
+                    // unable to parse int from String
+                }
+            }
+
+            String depositAmount = form.getAmountPaid();
+            int amountpaid = 0;
+
+            Date depositDate = null;
+            Date datePaid = null;
+            
+            
+            // if deposit amount entered validate deposit information
+            if (!(form.getVoidedContract().equals("V")) 
+                && ( (depositId > 0) 
+                		|| ((depositAmount != null) && (!depositAmount.equals(""))) )
+                ) {
+                
+                try {
+                    amountpaid = FormatCurrency.convertToCurrency(form.getAmountPaid());
+                    if (amountpaid == 0){
+                        errors.add(ActionErrors.GLOBAL_ERROR, new ActionError("error.ui.payment.amount"));
+                        formErrors.add("amountPaid");
+                    }
+                } catch (Exception e){
+                    errors.add(ActionErrors.GLOBAL_ERROR, new ActionError("error.ui.payment.amount"));
+                    formErrors.add("amountPaid");
+                }
+                
+                if (form.getPaymentSource().compareTo(" ") <= 0){
+                    errors.add(ActionErrors.GLOBAL_ERROR, new ActionError("error.ui.payment.emptydescr"));
+                    formErrors.add("paymentSource");
+                }   
+                
+                String ncaValue = form.getNonCashAdjustment();
+                
+                if ( ncaValue == null || ncaValue.trim().length() == 0 ) {
+                	errors.add(ActionErrors.GLOBAL_ERROR, new ActionError("error.ui.payment.nca"));
+                	formErrors.add("nonCashAdjustment");
+                }
+
+                
+                // Verify deposit date
+                try {
+                    FormatDate.convertToDateYYYYMMDD( form.getDateOfDeposit());
+                    depositDate = new Date (FormatDate.convertToDate( form.getDateOfDeposit() ).getTime());
+                    
+                } catch (Exception e){
+                    errors.add(ActionErrors.GLOBAL_ERROR, new ActionError("error.ui.payment.depositdate"));
+                    formErrors.add("dateOfDeposit");
+                }
+                // Verify date paid
+                try {
+                    FormatDate.convertToDateMMDDYYYY( form.getDateOfPayment() );
+                    datePaid = new Date (FormatDate.convertToDate( form.getDateOfPayment() ).getTime());
+                } catch (Exception e){
+                    errors.add(ActionErrors.GLOBAL_ERROR, new ActionError("error.ui.payment.paiddate"));
+                    formErrors.add("dateOfPayment");
+                }
+                
+            }
+            
+            // Code added by Parth
+            
+            Iterator lineItems = null;
+            
+            FinancialInformationLineItem lineItem = null;
+            
+            FinancialInformationForm financialInfo =
+                (FinancialInformationForm) session.getAttribute("financialInformation");
+            
+            QtyFinancialMerchandiseInformationForm qtyFinancialMerchandiseInfo =
+                (QtyFinancialMerchandiseInformationForm)session.getAttribute("qtyFinancialMerchandiseInformation");
+            
+            if(qtyFinancialMerchandiseInfo != null) {
+            	//TreeMap chargeSet = (TreeMap)qtyFinancialMerchandiseInfo.getLineItems();
+            	
+            	TreeMap chargeSet = (TreeMap)financialInfo.getLineItems();
+                
+                lineItems = chargeSet.values().iterator();
+            } else {
+            	lineItems = form.getLineItems().values().iterator();
+            }
+            /* code Added by bhavesh */
+            DbChargeItem chargeItem= null;
+            while(lineItems.hasNext()) {
+            	lineItem = (FinancialInformationLineItem) lineItems.next();
+            	//System.out.println(" Item Serial number :: "+lineItem.getSerialNumber() );
+   
+            	if(lineItem.getStockType().equals(DbInvMaster.STOCK_TYPE_SERIAL) && lineItem.getItemDeletion() != 1 && lineItem.getSerialNumber()!=null && !lineItem.getSerialNumber().equals("- Select -") ) {
+            		chargeItem = lineItem.getDbChargeItem();
+            		//System.out.println("chargeItem.getInvOnHandID() :: "+chargeItem.getInvOnHandID());
+            		invOnHand = FdmsDb.getInstance().getInvOnHand(t, chargeItem.getInvOnHandID());
+            		if(invOnHand !=null && invOnHand.getQuantity()==1)
+            			invOnHand.setQuantity(invOnHand.getQuantity()-1);
+               		/*
+            		if(invOnHand.getQuantity() < 1) {
+            			errors.add(ActionErrors.GLOBAL_ERROR, new ActionError("error.ui.inventory.sold", invOnHand.getCSerialNumber()));
+            		}*/
+            	}else if(lineItem.getStockType().equals(DbInvMaster.STOCK_TYPE_SERIAL) && lineItem.getItemDeletion() == 1 && lineItem.getSerialNumber()!=null && !lineItem.getSerialNumber().equals("- Select -") ){
+            		chargeItem = lineItem.getDbChargeItem();
+            		//System.out.println("chargeItem.getInvOnHandID() :: "+chargeItem.getInvOnHandID());
+            		invOnHand = FdmsDb.getInstance().getInvOnHand(t, chargeItem.getInvOnHandID());
+            		if(invOnHand !=null && invOnHand.getQuantity()==0)
+            			invOnHand.setQuantity(invOnHand.getQuantity()+1);
+            	}
+            }
+            
+            // Code added by Parth
+            
+            // if errors found, return to input screen without saving anything
+            if( !errors.isEmpty() )   {
+                logger.debug("Errors found, exiting back to Financial Information page.");
+                saveErrors(request, errors );
+                request.setAttribute("formErrors", formErrors);
+                t.closeConnection();
+                return (new ActionForward(mapping.getInput() ));
+                // return mapping.findForward("failure");
+            }
+
+            // Added JS
+            // no calculate anymore because it all have been Chai.
+//            FdmsDb.getInstance().calculateSalesTax(sessionUser, form.getLineItems(), form.getPriceListVersion(),vitalsid);
+            FdmsDb.getInstance().calculateSalesTaxPost(sessionUser, form.getLineItems(), form.getPriceListVersion(),vitalsid);
+            
+            if (saleTypeChanged) {
+                // collect chargess
+                //Convert the HashMap to a TreeMap So It Can Iterate in Sequence# Order
+                Map financialInformationMap = FdmsDb.getInstance().getChargesForCase(t,firstcall.getId());
+                Iterator fiIterator = financialInformationMap.values().iterator();
+                DbChargeItem unsortedLineItem;
+                Map sortedFinancialInformationMap = new TreeMap();
+                TreeMap financialInformationLineItems;
+                while(fiIterator.hasNext()){
+                    unsortedLineItem = ( DbChargeItem )fiIterator.next();
+                    sortedFinancialInformationMap.put(new Integer(unsortedLineItem.getSequenceNumber()),unsortedLineItem);
+                }
+            
+                //Make a new Iterator for the Sorted Map
+                Iterator sfiIterator = sortedFinancialInformationMap.values().iterator();
+                DbChargeItem sortedLineItem;
+                financialInformationLineItems = new TreeMap();
+                while(sfiIterator.hasNext()){
+                    sortedLineItem = ( DbChargeItem )sfiIterator.next();
+                    FinancialInformationLineItem fiLineItem = new FinancialInformationLineItem(sortedLineItem);
+                    if (fiLineItem.getDbChargeItem().getGlFromInv() == false) {
+                        InventorySold soldData = new InventorySold();
+                        FdmsDb.getInstance().getDefaultGlSalesAccts(t,soldData,sessionUser.getRegion(),aCase.getChapelNumber(),String.valueOf(sortedLineItem.getItemCategoryType()), finan.getCFinSaleType(), firstcall.getDispositionCode());
+                        fiLineItem.setItemGLAccount( soldData.getAcctRevenue() );
+                    }
+                    else {
+                        fiLineItem.setItemGLAccount(fiLineItem.getDbChargeItem().getGlAcct());
+                    }
+                    financialInformationLineItems.put( new Integer(fiLineItem.getItemSequenceNumber()),fiLineItem );
+                }
+//                FdmsDb.getInstance().postFinancial( t, FdmsDb.FINANCIAL_SALE_TYPE_CHANGE, finan, 
+//                		financialInformationLineItems, firstcall, locale,sessionUser.getDbLookup(), sessionUser.getCompanyID(),sessionUser.getId());
+                FdmsDb.getInstance().postFinancial( t, FdmsDb.FINANCIAL_SALE_TYPE_CHANGE, finan, 
+                		financialInformationLineItems, firstcall, locale,sessionUser.getDbLookup());
+            }
+            // finish up
+//            FdmsDb.getInstance().postFinancial( t, action, finan, form.getLineItems(), firstcall, locale,sessionUser.getDbLookup(),sessionUser.getCompanyID(),sessionUser.getId());
+            FdmsDb.getInstance().postFinancial( t, action, finan, form.getLineItems(), firstcall, locale,sessionUser.getDbLookup());
+
+            t.closeConnection();            
+            t = (DatabaseTransaction)DatabaseTransaction.getTransaction(sessionUser);            
+                        
+            // save/update deposit information            
+                        
+            if ((depositId > 0 || amountpaid > 0) && !form.getVoidedContract().equals("V") && !form.isPostedDeposit()) {                
+                int componentId = 0;
+                
+                if (form.getComponentId() != null) {
+                    try {
+                        componentId = Integer.parseInt(form.getComponentId());
+                    } catch (NumberFormatException e) {
+                        // unable to parse int from String
+                    }
+                }
+                
+                if (componentId == 0)
+                    componentId = FdmsDb.getInstance().getComponentId(t, vitalsid);
+                
+                
+                if ( action != FdmsDb.FINANCIAL_POST_ADJUST ) {
+
+                	if ( depositId != 0 ) {
+                    	// Backout previously unposted deposit
+                		logger.debug("Rollback unposted Payment");
+                    	FdmsDb.getInstance().rollbackPayment( t, sessionUser,
+                    			vitalsid, depositId, componentId, action, true );
+
+                        t.closeConnection();            
+                        t = (DatabaseTransaction)DatabaseTransaction.getTransaction(sessionUser);            
+                               
+                    }
+                	
+
+                  String subtractFromBalance = CsvTable.getField(form.getNonCashAdjustment(),3);
+                  if("N".equalsIgnoreCase(subtractFromBalance)) {
+            				subtractFromAmount = true;
+            			}
+
+                	// Should not allow to save deposit after being posted
+                	logger.debug("Posting Payment");
+                	FdmsDb.getInstance().postPayment(
+                			t, 
+                			sessionUser, 
+                			vitalsid, 
+                			form.getPaymentSource(), 
+                			amountpaid,
+                			form.getNonCashAdjustment(), 
+                			depositDate, 
+                			datePaid,
+											form.getManualReceiptNumber(), 
+											form.getMethodOfPayment(), 
+											componentId, 
+											(short) 9000,
+											subtractFromAmount);
+                }
+                
+            }           
+           
+        } catch(PersistenceException pe) {
+            logger.error("Persistence Exception in SaveFinancial do.Perform. " + pe, pe);
+            errors.add(ActionErrors.GLOBAL_ERROR, new ActionError("error.PersistenceException",pe.getMessage()));          
+        } catch(Exception pe) {
+            logger.error("Exception in  SaveFinancial .doPerform. ", pe);
+            errors.add(ActionErrors.GLOBAL_ERROR, new ActionError("error.GeneralException",pe.getMessage()));
+        } finally {
+            if (t != null) t.closeConnection();
+        }
+
+        //Action Forward Logic
+        if( !errors.isEmpty() )  {
+            logger.debug("Errors found, exiting back to Financial Information page.");
+            saveErrors(request, errors );
+            // actionForward = new ActionForward(mapping.getInput() );
+            return mapping.findForward("failure");
+        } 
+     //   else {
+       //     session.removeAttribute("financialInformation");
+      //  }
+        
+        return  actionForward;
+    }
+    
+    private void getOptionalFinancialFields (ArrayList formErrors, FinancialInformationForm form, 
+    		ActionErrors errors, DbFinancialSummary finan, DbVitalsFirstCall firstcall) {
+
+        try {
+       		String dueDate = form.getDueDate();
+       		
+       		if (form.getSendToAccounting() && (dueDate==null || dueDate.compareTo("00")<=0) ) {
+       			throw new Exception();
+       		}
+       		
+       		finan.setCFinDueDate(FormatDate.convertToDateMMDDYYYY(form.getDueDate()));
+        } catch(Exception e){
+            errors.add(ActionErrors.GLOBAL_ERROR,new ActionError("error.ui.financial.duedate"));
+            formErrors.add("dueDate");
+        }
+
+        try {
+            if (form.getSendToAccounting() && finan.getIFinServiceChargesBox() != 0 && (form.getInterestFromDate()==null || form.getInterestFromDate().compareTo("00")<=0)) throw new Exception();
+            firstcall.setInterestFromDate( FormatDate.convertToDateMMDDYYYY(form.getInterestFromDate()));
+        } catch(Exception e){
+            errors.add(ActionErrors.GLOBAL_ERROR,new ActionError("error.ui.financial.interestfrom"));
+            formErrors.add("interestFromDate");
+        }
+
+        if (form.getInterestRate().compareTo(" ")>0){
+            try {
+                finan.setFFinServiceChargeRate( FormatNumber.parseFloatWithException( form.getInterestRate()));
+            } catch(Exception e){
+                errors.add(ActionErrors.GLOBAL_ERROR,new ActionError("error.ui.financial.interestrate"));
+                formErrors.add("interestRate");
+            }
+        }
+        
+        try {
+            if (form.getSendToAccounting() && 
+            		(form.getSaleDate()==null 
+            				|| form.getSaleDate().trim().equals("") 
+							|| form.getSaleDate().compareTo("00")<=0)) 
+            	throw new Exception();
+            finan.setCFinSaleDate(      FormatDate.convertToDateMMDDYYYY(form.getSaleDate()));
+        } catch(Exception e){
+            errors.add(ActionErrors.GLOBAL_ERROR,new ActionError("error.ui.financial.saledate"));
+            formErrors.add("saleDate");
+        }
+        
+        // can posted to transaction if only you have some items
+        if (form.getSendToAccounting() && (form.getLineItems().size() <= 0)) {
+        	errors.add(ActionErrors.GLOBAL_ERROR,new ActionError("error.ui.financial.emptyFinWhenPost"));
+        }
+        
+        try {
+            if (form.getStmtDate() != null && form.getStmtDate().trim().length() > 0) {
+                finan.setCFinDateInvoiceSent(FormatDate.convertToDateMMDDYYYY(form.getStmtDate()));
+            }
+        } catch(Exception e){
+            errors.add(ActionErrors.GLOBAL_ERROR,new ActionError("error.ui.financial.stmtDate"));
+            formErrors.add("stmtDate");
+        }
+    }
+    
+    
+}

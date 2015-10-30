@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<this:getDataResponse xmlns:this="http://aldorsolutions.com/webservice/services/fddeservice" xmlns:this1="http://aldorsolutions.com/webservice/xsd/fdde/service" xmlns:this2="http://aldorsolutions.com/webservice/xsd/comm/fdde" xmlns:this3="http://aldorsolutions.com/webservice/xsd/comm" xmlns:this4="http://aldorsolutions.com/webservice/xsd/comm/fdde/sci" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://aldorsolutions.com/webservice/services/fddeservice ../build/FddeService.xsd ">
+  <this1:dataReturned>sciContracts</this1:dataReturned>
+  <this1:results>
+  	<this1:sciContract balance="0.0" caseId=""
+  		hasFinanceCharges="true" lastActivityDate="2001-01-01">
+  		<this4:active>Y</this4:active>
+  		<this4:id>this4:id</this4:id>
+  		<this4:testRun>this4:testRun</this4:testRun>
+  		<this4:mch>this4:mch</this4:mch>
+  		<this4:caseName>this4:caseName</this4:caseName>
+  		<this4:cxlGroup>EnterContract</this4:cxlGroup>
+  		<this4:updateDate>2001-01-01</this4:updateDate>
+  		<this4:locCd>0</this4:locCd>
+  		<this4:contractNo>this4:contractNo</this4:contractNo>
+  		<this4:fullContractNBR>
+  			this4:fullContractNBR
+  		</this4:fullContractNBR>
+  		<this4:salesId>0</this4:salesId>
+  		<this4:batchNumber>this4:batchNumber</this4:batchNumber>
+  		<this4:sciCaseType>this4:sciCaseType</this4:sciCaseType>
+  		<this4:kitCode>this4:kitCode</this4:kitCode>
+  		<this4:sciSaleType>
+  			Converted FA - Funeral Atneed
+  		</this4:sciSaleType>
+  		<this4:txnType>Converted Contract</this4:txnType>
+  		<this4:serviceDate>2001-01-01</this4:serviceDate>
+  		<this4:saleDate>2001-01-01</this4:saleDate>
+  		<this4:batchDate>2001-01-01</this4:batchDate>
+  		<this4:txnDate>2001-01-01</this4:txnDate>
+  		<this4:leadSource>AQ - Acq Contract</this4:leadSource>
+  		<this4:arranger>this4:arranger</this4:arranger>
+  		<this4:arranger_1>this4:arranger_1</this4:arranger_1>
+  		<this4:arranger2>this4:arranger2</this4:arranger2>
+  		<this4:arranger_2>this4:arranger_2</this4:arranger_2>
+  		<this4:arranger3>this4:arranger3</this4:arranger3>
+  		<this4:arranger_3>this4:arranger_3</this4:arranger_3>
+  		<this4:descr2>this4:descr2</this4:descr2>
+  		<this4:terms>this4:terms</this4:terms>
+  		<this4:nbrPymts>this4:nbrPymts</this4:nbrPymts>
+  		<this4:interestMethod>Y</this4:interestMethod>
+  		<this4:interestRate>this4:interestRate</this4:interestRate>
+  		<this4:cf_ref>this4:cf_ref</this4:cf_ref>
+  		<this4:dpType>this4:dpType</this4:dpType>
+  		<this4:dpAmt>this4:dpAmt</this4:dpAmt>
+  		<this4:pymtAmt>this4:pymtAmt</this4:pymtAmt>
+  		<this4:pymtStartDate>2001-01-01</this4:pymtStartDate>
+  		<this4:sciComment>this4:sciComment</this4:sciComment>
+  		<this4:purchType>this4:purchType</this4:purchType>
+  		<this4:purchaser purchaserId="">
+  			<this4:name></this4:name>
+  			<this4:address></this4:address>
+  			<this4:phone>this4:phone</this4:phone>
+  			<this4:ssn>this4:ssn</this4:ssn>
+  			<this4:col1>this4:col1</this4:col1>
+  			<this4:acct>this4:acct</this4:acct>
+  		</this4:purchaser>
+  		<this4:coPurchaser purchaserId="">
+  			<this4:name></this4:name>
+  			<this4:address></this4:address>
+  			<this4:phone>this4:phone</this4:phone>
+  			<this4:ssn>this4:ssn</this4:ssn>
+  			<this4:col1>this4:col1</this4:col1>
+  			<this4:acct>this4:acct</this4:acct></this4:coPurchaser>
+  		<this4:beneficiary>
+  			<this4:name></this4:name>
+  			<this4:birthDate>2001-01-01</this4:birthDate>
+  			<this4:deathDate>2001-01-01</this4:deathDate>
+  			<this4:col1>this4:col1</this4:col1>
+  			<this4:acct>this4:acct</this4:acct></this4:beneficiary>
+  		<this4:claimType>this4:claimType</this4:claimType>
+  		<this4:claimRef>this4:claimRef</this4:claimRef>
+  		<this4:claimAmt>this4:claimAmt</this4:claimAmt>
+  		<this4:claimDueDt>this4:claimDueDt</this4:claimDueDt>
+  		<this4:amtRcvd>this4:amtRcvd</this4:amtRcvd>
+  		<this4:insuranceItem>this4:insuranceItem</this4:insuranceItem>
+  		<this4:amtOfIns>this4:amtOfIns</this4:amtOfIns>
+  		<this4:tax>
+  			<this4:code>this4:code</this4:code>
+  			<this4:amt>0.0</this4:amt>
+  		</this4:tax>
+  		<this4:tax>
+  			<this4:code>this4:code</this4:code>
+  			<this4:amt>0.0</this4:amt></this4:tax>
+  		<this4:tax>
+  			<this4:code>this4:code</this4:code>
+  			<this4:amt>0.0</this4:amt></this4:tax>
+  		<this4:tax>
+  			<this4:code>this4:code</this4:code>
+  			<this4:amt>0.0</this4:amt></this4:tax>
+  		<this4:fncChgAmt>0.0</this4:fncChgAmt>
+  		<this4:finAdjType>this4:finAdjType</this4:finAdjType>
+  		<this4:finAdjAmt>0.0</this4:finAdjAmt>
+  		<this4:finAdjRef>this4:finAdjRef</this4:finAdjRef>
+  		<this4:finDscntCrType>
+  			KNA Conversion Adj
+  		</this4:finDscntCrType>
+  		<this4:finDscntCrAmt>0.0</this4:finDscntCrAmt>
+  		<this4:finDscntCrRef>this4:finDscntCrRef</this4:finDscntCrRef>
+  		<this4:totalSaleAmt>0.0</this4:totalSaleAmt>
+  		<this4:sumOfDiscounts>
+  			0
+  		</this4:sumOfDiscounts>
+  		<this4:sumOfTaxes>0</this4:sumOfTaxes>
+  		<this4:totalFinanceChargeInterest>
+  			0.0
+  		</this4:totalFinanceChargeInterest>
+  		<this4:countOfPaymentsRecieved>
+  			0
+  		</this4:countOfPaymentsRecieved>
+  		<this4:totalPaymentAmt>
+  			0.0
+  		</this4:totalPaymentAmt>
+  		<this4:totalAdjustmentAmt>
+  			0.0
+  		</this4:totalAdjustmentAmt>
+  		<this4:BalDue>0.0</this4:BalDue>
+  	</this1:sciContract>
+  </this1:results>
+</this:getDataResponse>

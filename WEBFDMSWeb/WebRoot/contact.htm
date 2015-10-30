@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<TITLE>About FDMS Network</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<STYLE TYPE="text/css">
+body {overflow:hidden; border: 1px solid; margin:0px #000000;}
+.abouttxt {
+	font: bold 12px Verdana, Arial, Helvetica, sans-serif;
+	color: #FFFFFF;
+	text-decoration: none;
+}
+.scrolltext {
+	font: normal 10px Verdana, Arial, sans-serif;
+	color: #FFFFFF;
+	text-decoration: none;
+}
+</STYLE>
+<STYLE TYPE="text/css">
+#p7s1content1 { position: absolute; width: 321px; z-index: 99; left: 0px; top: 78px; visibility: visible }
+</STYLE>
+<SCRIPT language="JavaScript" TYPE="text/JavaScript">
+<!--
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function P7_moveScroll(co,md,op,dy,cy) { //v2.9 by PVII
+ var g,d,dd,x,y,h,w,tt,ff,m=false,pa="";
+ op=parseInt(op);cy=parseInt(cy);dy=parseInt(dy);
+ if((parseInt(navigator.appVersion)>4 || navigator.userAgent.indexOf("MSIE")>-1)&& navigator.userAgent.indexOf("Opera")==-1){pa="px";}
+ if((g=MM_findObj(co))==null){return;}
+ if((d=MM_findObj(g.p7Scroll))==null){return;}
+ var sp=parseInt(sp=g.P7Ssp),fr=parseInt(g.P7Sfr),ff=fr;
+ if(op==2){g.p7sCycle=0;g.p7sCycDy=(dy>0)?dy:g.p7sCycDy;dy=0;op=3;}
+ if(op==3){g.p7sCycle+=sp;ff=fr;if(parseInt(g.p7sCycle)>cy){
+  op=2;g.p7sCycle=0;ff=g.p7sCycDy;}}g.P7Sop=op;if(dy>0){ff=dy;}
+ var ti="g.p7Magic=setTimeout(\"P7_moveScroll('"+co+"','"+md+"',"+op+",0,"+cy+")\","+ff+")";
+ if(op==2 || dy>0){clearTimeout(g.p7Magic);eval(ti);return;}
+ dd=(document.layers)?d:d.style;x=parseInt(dd.left);y=parseInt(dd.top);
+ if(document.all || document.getElementById){
+  h=parseInt(d.offsetHeight);w=parseInt(d.offsetWidth);
+  if(!h){h=parseInt(d.style.pixelHeight);w=parseInt(d.style.pixelWidth);}
+ }else if(document.layers){h=parseInt(d.clip.height);w=parseInt(d.clip.width);}
+ var st=0,rStart=parseInt(g.p7sStartLeft),tStart=parseInt(g.p7sStartTop);g.p7sH=h;g.p7sW=w;
+ if(md=="Down"){tt=y-sp;st=parseInt(g.p7sBot)-h-tStart;
+  if(tStart<0 && tt<tStart){dd.top=tStart+pa;
+  }else if(tStart>=0 && tt<st){dd.top=st+pa;}else{dd.top=tt+pa;m=true;}}
+ if(md=="Up"){tt=sp+y;var rEnd=tStart+h;if(tStart<0 && tt>rEnd){dd.top=rEnd+pa;
+  }else if(tStart>=0 && tt>tStart){dd.top=tStart+pa;}else{dd.top=tt+pa;m=true;}}
+ if(md=="Right"){tt=x-sp;st=parseInt(g.p7sRight)-w-rStart;
+  if(rStart<0 && tt<rStart){dd.left=rStart+pa;
+  }else if (rStart>=0 && tt<st){dd.left=st+pa;}else{dd.left=tt+pa;m=true;}}
+ if(md=="Left"){tt=x+sp;var rEnd=rStart+w;if(rStart<0 && tt>rEnd){dd.left=rEnd+pa;
+  }else if (rStart>=0 && tt>rStart){dd.left=rStart+pa;}else{dd.left=tt+pa;m=true;}}
+ if(m && g.toMove){eval(ti);}else{if(g.P7Sflip==1){clearTimeout(g.p7Magic);var tj=0;
+  eval("g.p7Magic=setTimeout(\"P7_runScroller('"+co+"','Reverse','Medium',0,0,0,1)\","+tj+")");
+ }else{if(op>0 && g.toMove){
+  g.p7sCycle=0;dd.top=g.p7sStartTop+pa;dd.left=g.p7sStartLeft+pa;eval(ti);}}}
+}
+
+function P7_runScroller(co,md,spd,op,dy,cy,flp) { //v2.9 by PVII
+ var g,d,dd,rl=0;rt=0;pa='',sp=2,fr=10,slw=true,kl=true;
+ if((parseInt(navigator.appVersion)>4 || navigator.userAgent.indexOf("MSIE")>-1)&& navigator.userAgent.indexOf("Opera")==-1){pa="px";}
+ if(navigator.userAgent.indexOf("NT")>-1 || navigator.userAgent.indexOf("Windows 2000")>-1 ){slw=false;}
+ if((g=MM_findObj(co))!=null){if(g.p7Scroll){
+ if((d=MM_findObj(g.p7Scroll))!=null){dd=(document.layers)?d:d.style;
+ if(md=="Resume" && g.P7Sspd){spd=g.P7Sspd;md=g.P7Smd;op=g.P7Sop;dy=0;cy=g.P7Scy;flp=g.P7Sflip;kl=false;}
+ if(md=="Reverse" && g.P7Sspd){spd=g.P7Sspd;md=g.P7Smd;op=g.P7Sop;flp=g.P7Sflip;dy=0;cy=g.P7Scy;kl=false;g.p7sCycle=0;
+  if(g.P7Smd == "Down"){md="Up";if(g.P7Sop>0){g.p7sStartTop=g.p7sStartTop-g.p7sH;}}
+  if(g.P7Smd == "Up"){md="Down";if(g.P7Sop>0){g.p7sStartTop=g.p7sStartTop+g.p7sH;}}
+  if(g.P7Smd == "Left"){md="Right";if(g.P7Sop>0){g.p7sStartLeft=g.p7sStartLeft+g.p7sW;}}
+  if(g.P7Smd == "Right"){md="Left";if(g.P7Sop>0){g.p7sStartLeft=g.p7sStartLeft-g.p7sW;}}}
+ if(spd=="Slow"){sp=(slw)?2:1;fr=(slw)?40:30;
+ }else if(spd=="Medium"){sp=(slw)?4:1;fr=(slw)?40:10;
+ }else{sp=(slw)?8:4;fr=(slw)?40:10;}
+ if(md=="Stop"){g.toMove=false;clearTimeout(g.p7Magic);}else if(md=="Reset"){
+  g.toMove=false;dd.top=g.p7sStartTop+pa;dd.left=g.p7sStartLeft+pa;
+ }else{if(kl){g.P7Ssp=sp;g.P7Sfr=fr;}if(md=="Speed"){return;}
+  g.toMove=true;clearTimeout(g.p7Magic);
+  g.P7Smd=md;g.P7Sspd=spd;g.P7Sop=op;g.P7Sdy=dy;g.P7Scy=cy;g.P7Sflip=flp;
+  eval("P7_moveScroll('"+co+"','"+md+"',"+op+","+dy+","+cy+")");}}}}
+}
+//-->
+</SCRIPT>
+</HEAD>
+
+<BODY LEFTMARGIN="0" TOPMARGIN="0" MARGINWIDTH="0" MARGINHEIGHT="0">
+<TABLE WIDTH="363" HEIGHT="357" BORDER="0" CELLPADDING="0" CELLSPACING="0" background="images-old/splash.jpg">
+  <TR>
+    <TD HEIGHT="200">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD ALIGN="CENTER" VALIGN="TOP">
+      <TABLE WIDTH="363" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+        <TR>
+          <TD WIDTH="20">&nbsp;</TD>
+          <TD HEIGHT="110" align="center" valign="top" CLASS="scrolltext"><font size="3" face="Verdana, Arial, Helvetica, sans-serif"><strong><font size="2">Davidson
+            Software Systems, Inc.<br>
+            P.O. Box 9312<br>
+            Jonesboro, AR. 72403<br>
+            <br>
+            Phone: 866.230.0800
+            <br>
+            Fax: 972.398.6454
+            </font><br>
+          </strong></font>
+          <FONT FACE="Verdana, Arial, Helvetica"><A HREF="mailto:info@aldorsolutions.com" TARGET="_self"><STRONG><font color="#FFFFFF" size="2">info@aldorsolutions.com</font></STRONG></A></FONT>
+          <br><FONT FACE="Verdana, Arial, Helvetica"><A HREF="http://training.aldorsolutions.com/" TARGET="_blank" ><STRONG><font color="#FFFFFF" size="2">Online Training Guide</font></STRONG></A></FONT>
+          <br><FONT FACE="Verdana, Arial, Helvetica"><A HREF="http://support.aldorsolutions.com/" TARGET="_blank" ><STRONG><font color="#FFFFFF" size="2">Support Site</font></STRONG></A></FONT>
+          <font color="#FFFFFF" size="2" face="Verdana, Arial, Helvetica, sans-serif"><strong>            </strong></font>
+          <font size="3" face="Verdana, Arial, Helvetica, sans-serif"><strong><br>
+          </strong></font></TD>
+          <TD WIDTH="20">&nbsp;</TD>
+        </TR>
+      </TABLE>
+      <INPUT NAME="button" TYPE=button onClick="javascript:self.close();" VALUE="Close">
+    </TD>
+  </TR>
+</TABLE>
+</BODY>
+</HTML>

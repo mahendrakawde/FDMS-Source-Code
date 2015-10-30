@@ -1,0 +1,286 @@
+<html>
+<head>
+<title>WebFDMS</title>
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+<meta name="generator" content="RoboHelp by eHelp Corporation   www.ehelp.com">
+<meta name "description" content="WebHelp 2002">
+</head>
+<body>
+<script language="JavaScript">
+<!--
+
+var gArrayCsh = new Array();
+
+var gstrWindowOption = "";
+var gstrURL = "";
+var gbWithNavPane = false;
+
+function CshEntityItem(strAliasId, nTopicNum, strUrl) 
+{
+    this.strAliasId = strAliasId;
+    this.nTopicNum = nTopicNum;
+    this.strUrl = strUrl;
+}
+
+
+//Try to get to topic number from hash string
+function GetTopicNumberAuto(strMayBeNumber)
+{
+   var nNum = -1;
+   if (strMayBeNumber.length >= 1)
+   {
+		var strTmp = strMayBeNumber;
+		var iEnd = strTmp.length;
+		for (var i=0; i<iEnd; i++)
+		{
+			  var ch = strTmp.charAt(i);
+			  if (!((ch == "0") || (ch == "1") ||
+			        (ch == "2") || (ch == "3") ||
+			        (ch == "4") || (ch == "5") ||
+			        (ch == "6") || (ch == "7") ||
+			        (ch == "8") || (ch == "9")))
+			      return GetTopicNumberById(strTmp);
+		}
+		nNum = parseInt(strTmp);
+   }
+   return nNum;
+}
+
+function GetTopicNumber(strHashString)
+{
+	var nTopicEndPos = strHashString.indexOf(',')
+	if (nTopicEndPos == -1) { // no window option.
+		return GetTopicNumberOnly(strHashString);
+	}
+	else {
+		var strWindowOption = strHashString.substring(nTopicEndPos + 1, strHashString.length);
+		var strWithNavPane = 'withnavpane=true';
+		if (strWindowOption.toLowerCase().indexOf(strWithNavPane) == 0)
+		{
+			if (strWindowOption.length > strWithNavPane.length)
+				gstrWindowOption = strWindowOption.substring(strWithNavPane.length + 1);
+			else
+				gstrWindowOption = "";
+			gbWithNavPane = true;
+		}
+		else
+			gstrWindowOption = strWindowOption;
+		return GetTopicNumberOnly(strHashString.substring(0, nTopicEndPos));		
+	}
+}
+
+function GetTopicNumberOnly(strTopicString)
+{
+	var nEqualPos = strTopicString.indexOf('=');
+	if (nEqualPos == -1) {
+		return GetTopicNumberAuto(strTopicString);
+	}
+	else {
+		var strValue=strTopicString.substring(nEqualPos + 1, strTopicString.length);
+		if (strTopicString.toLowerCase().indexOf("topicnumber") == 0) {
+			return parseInt(strValue);
+		} else if (strTopicString.toLowerCase().indexOf("topicid") == 0) {
+			return GetTopicNumberById(strValue);
+		} else if (strTopicString.toLowerCase().indexOf("remoteurl") == 0) {
+			gstrURL = strValue;
+			return -1;
+		}
+
+	}
+}
+
+//Find HomePage of the WebHelp system
+// we try to get the topic from remote project if it exists.
+function RedirectToHomePage()
+{
+	if (parent && parent != this && parent.goNext)
+	{
+		var sHome = parent.goNext();
+		if (sHome != "")
+			RedirectTo(sHome);
+	}
+}
+
+function getHomePage()
+{
+	if (parent && parent != this && parent.getRelHomePage)
+	{
+		return parent.getRelHomePage(document.location.href);
+	}
+	return "";
+}
+
+function addRemoteProject(strPath)
+{
+	if (parent && parent != this && parent.addProject)
+	{
+		parent.addProject(strPath);
+	}
+}
+
+//Redirect page to...
+function RedirectTo(strUrl)
+{
+   if (gstrWindowOption.length != 0) {
+		var wnd = window.open(strUrl, "HelpStub", gstrWindowOption);
+		// close current window and rename the stub window to current window.
+		wnd.focus();
+		if (parent)
+			parent.close();
+   }
+   else {
+	parent.document.location.href = strUrl;
+	window.focus();
+  }
+}
+
+//Prompt the user that we can not find...
+function FailToFind(strMsg)
+{
+    RedirectToHomePage();
+}
+
+//Find topic by topic number (defined in h file)
+function FindTopicByTopicNum(nTopicNum)
+{
+	var i = 0;
+	var iEnd = gArrayCsh.length;
+	for (i=0; i<iEnd; i++)
+	{
+		if (gArrayCsh[i].nTopicNum == nTopicNum)
+		{
+			var strURL = gArrayCsh[i].strUrl;
+			if (gbWithNavPane)
+			{
+				var strHomePage = getHomePage();
+				if (strHomePage.length != 0)
+					strURL = strHomePage + strURL;
+			}	
+			RedirectTo(strURL);
+			return true;
+		}
+	}
+	FailToFind("Fail to find topic assocaite with topic number: " + nTopicNum);
+	return false;
+}
+
+//Find topic by topic id (alias id defined in ali file)
+function GetTopicNumberById(strTopicId)
+{
+   var i = 0;
+   var iEnd = gArrayCsh.length;
+   for (i=0; i<iEnd; i++)
+   {
+	if (gArrayCsh[i].strAliasId == strTopicId)
+	{
+	    return gArrayCsh[i].nTopicNum;
+	 }
+   }
+   gstrURL = "";
+   return -1;
+}
+
+//Set Context-sensitive help entity...
+function SetCsh(n, strAliasId, nTopicNum, strUrl)
+{
+   gArrayCsh[n] = new CshEntityItem(strAliasId,nTopicNum,strUrl);
+}
+
+
+function getHash()
+{
+	if (parent && parent != this)
+		return parent.location.hash;
+	else
+		return "";
+}
+//-->
+</script>
+<script language="javascript">
+<!--
+  SetCsh(0,"Logging_in_to_WebFDMS",29,"logging_in_to_fdms.htm");
+  SetCsh(1,"Reports_Menu",25,"reports_menu.htm");
+  SetCsh(2,"Sample_Unposted_Cases_Report",33,"sample_unposted_cases_report.htm");
+  SetCsh(3,"Arranger_Management",16,"arranger_management.htm");
+  SetCsh(4,"Edit_Price_List",11,"edit_price_list.htm");
+  SetCsh(5,"Advanced_Search",9,"advanced_search.htm");
+  SetCsh(6,"Add_New_Item",44,"add_new_item.htm");
+  SetCsh(7,"GL_Sales_Account",18,"gl_sales_account.htm");
+  SetCsh(8,"Edit_Expense_Accounts",14,"edit_expense_accounts.htm");
+  SetCsh(9,"Sample_Pre_Need_Status_Report",39,"sample_pre_need_status_report.htm");
+  SetCsh(10,"Sample_Case_List_Report",30,"sample_case_list_report.htm");
+  SetCsh(11,"Location_Management",12,"location_management.htm");
+  SetCsh(12,"Adding_a_New_User",5,"adding_a_new_user.htm");
+  SetCsh(13,"Manager",40,"manager.htm");
+  SetCsh(14,"Setup_Menu",13,"setup_menu.htm");
+  SetCsh(15,"Reports",41,"reports.htm");
+  SetCsh(16,"Sample_Pre_Need_Deposits",38,"sample_pre_need_deposits.htm");
+  SetCsh(17,"Sample_Sales_by_Type_Director",32,"sample_sales_by_type_director.htm");
+  SetCsh(18,"Pre_Need_Reports",35,"pre_need_reports.htm");
+  SetCsh(19,"Case_Sorting",21,"case_sorting.htm");
+  SetCsh(20,"Deleting_a_User",7,"deleting_a_user.htm");
+  SetCsh(21,"Creating_a_Desktop_Icon_Shortcut",2,"creating_a_desktop_icon_shortcut.htm");
+  SetCsh(22,"Sample_Sales_by_Director",31,"sample_sales_by_director.htm");
+  SetCsh(23,"Inventory_Menu",26,"inventory_menu.htm");
+  SetCsh(24,"Speed_Data_Formatting",22,"speed_data_formatting.htm");
+  SetCsh(25,"Changing_User_Information",6,"changing_user_information.htm");
+  SetCsh(26,"Selecting_the_Case_List_Display_Options",8,"selecting_the_case_list_display_options.htm");
+  SetCsh(27,"At_Need_Reports",34,"at_need_reports.htm");
+  SetCsh(28,"User_Administration",3,"user_administration.htm");
+  SetCsh(29,"Dates",28,"dates.htm");
+  SetCsh(30,"Case_Menu",24,"case_menu.htm");
+  SetCsh(31,"Viewing_a_Case_List",19,"viewing_a_case_list.htm");
+  SetCsh(32,"Menu_Options",23,"menu_options.htm");
+  SetCsh(33,"Navigating_the_Pages",20,"navigating_the_pages.htm");
+  SetCsh(34,"Edit_Speed_Data",10,"edit_speed_data.htm");
+
+
+//-->
+</script>
+<script language="javascript">
+<!--
+//Find CSH according to hash string after this page
+if (getHash().length > 0)
+{
+   // VH 05/16/00 now support 
+   // TopicID=
+   // TopicNumber=
+   // RemoteURL=   
+   // and WindowsOptions
+   // with the format #a=xxx,b=xxx,c=xxx...
+   var strHashString = getHash().toString();
+   // change ? to : for remote URL. because java applet have some problem to pass a URL with two : inside the URL so we changed it. 
+   // so here need to change it back.
+   strHashString = strHashString.substring(1,strHashString.length);
+   strHashString = strHashString.replace("%072%057%057", "://");
+   var nTopicNum = GetTopicNumber(strHashString);
+
+   if (nTopicNum != -1)
+   {
+      FindTopicByTopicNum(nTopicNum);
+   }
+   else
+   {
+      if (gstrURL.length > 0) 
+	RedirectTo(gstrURL);
+      else
+      	RedirectToHomePage();
+   }
+}
+else
+{
+   RedirectToHomePage();
+}
+//-->
+</script>
+<noscript>
+ <p> Your browser does not support JavaScript. WebHelp Context-Sensitive Help requires JavaScript support to run.</p>
+</noscript>
+</body>
+</html>
+
+
+
+
+
+

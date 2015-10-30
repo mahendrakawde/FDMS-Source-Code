@@ -1,0 +1,204 @@
+package com.aldorsolutions.webfdms.reporting.dao;
+
+import java.sql.SQLException;
+import java.sql.Statement;
+
+import org.apache.log4j.Logger;
+
+import com.aldorassist.webfdms.model.ERegisterBookDTO;
+import com.aldorsolutions.webfdms.beans.DbUserSession;
+import com.aldorsolutions.webfdms.util.DAO;
+
+/**
+ * 
+ * @author David Rollins Date: Jul 20, 2007 File: FormAvailableFilterDAO.java
+ * 
+ */
+public class ERegisterBookDAO extends DAO {
+
+	private Logger logger = Logger.getLogger(ERegisterBookDAO.class
+			.getName());
+
+	public ERegisterBookDAO(String usersLookup) {
+		super(usersLookup);
+	}
+
+	/**
+	 * 
+	 * @param user
+	 */
+	public ERegisterBookDAO(DbUserSession user) {
+		super(user);
+	}
+
+	/**
+	 * 
+	 * @param companyID
+	 * @param userId
+	 */
+	public ERegisterBookDAO(long companyID, long userId) {
+		super(companyID, userId);
+	}
+
+	public ERegisterBookDTO getERegisterBook(int companyId, int caseId) {
+		ERegisterBookDTO regBook = null;
+
+		try {
+			String sql = "select  RegisterId, CompanyId, LocaleId, LocationId, CaseId, ArrangerId, RegBookHeader, ServiceMessage, VideoLink, TargetWebPage, ObitLink, ReferenceId " 
+				    + " ,ImageUrl ,DeceasedFullName ,locationName ,localeName, QrCodePath, DateOfBirth, DateOfDeath, BackgroundThemeId, ServiceScreenThemeId "
+					+ " FROM eregister WHERE CompanyId = ? AND CaseId = ?";
+
+			makeConnection(getDbLookup());
+			statement = conn.prepareStatement(sql);
+			statement.setLong(1, companyId);
+			statement.setLong(2, caseId);
+
+			rs = statement.executeQuery();
+
+			if (rs.next()) {
+				int col = 0;
+
+				regBook = new ERegisterBookDTO();
+				regBook.setRegisterId(rs.getInt(++col));
+				regBook.setCompanyId(rs.getInt(++col));
+				regBook.setLocaleId(rs.getInt(++col));
+				regBook.setLocationId(rs.getInt(++col));
+				regBook.setCaseId(rs.getInt(++col));
+				regBook.setArrangerId(rs.getLong(++col));
+				regBook.setRegBookHeader(rs.getString(++col));
+				regBook.setServiceMessage(rs.getString(++col));
+				regBook.setVideolink(rs.getString(++col));
+				regBook.setTargetWebPage(rs.getString(++col));
+				regBook.setObituryLink(rs.getString(++col));
+				regBook.setReferenceId(rs.getInt(++col));
+				regBook.setImageLink(rs.getString(++col));
+				regBook.setFullName(rs.getString(++col));
+				regBook.setLocationName(rs.getString(++col));
+				regBook.setLocaleName(rs.getString(++col));
+				regBook.setQrCodePath(rs.getString(++col));
+				regBook.setDateOfBirth(rs.getString(++col));
+				regBook.setDateOfDeath(rs.getString(++col));
+				regBook.setBackgroundThemeId(rs.getLong(++col));
+				regBook.setServiceScreenThemeId(rs.getLong(++col));
+			}
+
+		} catch (SQLException e) {
+			logger.error("SQLException in getERegisterBook() : ", e);
+		} catch (Exception e) {
+			logger.error("Exception in getERegisterBook() : ", e);
+		} finally {
+			closeConnection();
+		}
+
+		return regBook;
+	}	
+	
+	public boolean addERegisterBook(ERegisterBookDTO data)
+	throws Exception {
+	boolean added = false;
+	
+	try {
+		logger.info("In " + this.getClass() + " " + Thread.currentThread().getStackTrace()[1].getMethodName() + " is been called");
+		String sql = "INSERT INTO eregister	(CompanyId,	LocaleId, LocationId, CaseId, ArrangerId, RegBookHeader, ServiceMessage, VideoLink, TargetWebPage, ObitLink, ReferenceId,ImageUrl ,DeceasedFullName ,locationName ,localeName, QrCodePath, DateOfBirth, DateOfDeath, BackgroundThemeId, ServiceScreenThemeId)"
+				+ "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+	
+		int col = 0;
+		makeConnection(getDbLookup());
+		statement = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+		
+		statement.setInt(++col, data.getCompanyId());
+		statement.setInt(++col, data.getLocaleId());
+		statement.setInt(++col, data.getLocationId());
+		statement.setInt(++col, data.getCaseId());
+		statement.setLong(++col, data.getArrangerId());
+		statement.setString(++col, data.getRegBookHeader());
+		statement.setString(++col, data.getServiceMessage());
+		statement.setString(++col, data.getVideolink());
+		statement.setString(++col, data.getTargetWebPage());
+		statement.setString(++col, data.getObituryLink());
+		statement.setInt(++col, data.getReferenceId());
+		statement.setString(++col, data.getImageLink());
+		statement.setString(++col, data.getFullName());
+		statement.setString(++col, data.getLocationName());
+		statement.setString(++col, data.getLocaleName());
+		statement.setString(++col, data.getQrCodePath());
+		statement.setString(++col, data.getDateOfBirth());
+		statement.setString(++col, data.getDateOfDeath());
+		statement.setLong(++col, data.getBackgroundThemeId());
+		statement.setLong(++col, data.getServiceScreenThemeId());
+
+		statement.executeUpdate();
+		added = true;
+	
+		if (added) {
+			rs = statement.getGeneratedKeys();
+			if (rs.next()) {
+				data.setRegisterId(rs.getInt(1));
+			}
+	
+	//		insertAudit(reportScheduling);
+		}
+	
+	} catch (SQLException e) {
+		throw e;
+	} catch (Exception e) {
+		throw e;
+	} finally {
+		closeConnection();
+	}
+	
+	return added;
+	}	
+	
+	public boolean updateERegisterBook(ERegisterBookDTO data)
+	throws SQLException, Exception {
+	boolean updated = false;
+	
+	try {
+	
+		String sql = "UPDATE eregister 	SET	CompanyId = ? , LocaleId = ? , "
+					+" LocationId = ? , CaseId = ? , ArrangerId = ?, RegBookHeader = ? , ServiceMessage = ? , VideoLink = ? , TargetWebPage = ?, ObitLink = ?, ReferenceId = ? "
+					+" ,ImageUrl = ?,DeceasedFullName = ?,locationName = ?,localeName = ?,QrCodePath = ?,DateOfBirth = ?,DateOfDeath=?,BackgroundThemeId = ?, ServiceScreenThemeId = ?"
+					+" WHERE RegisterId = ?";
+	
+		int col = 0;
+		makeConnection(getDbLookup());
+		statement = conn.prepareStatement(sql);
+		
+		statement.setInt(++col, data.getCompanyId());
+		statement.setInt(++col, data.getLocaleId());
+		statement.setInt(++col, data.getLocationId());
+		statement.setInt(++col, data.getCaseId());
+		statement.setLong(++col, data.getArrangerId());
+		statement.setString(++col, data.getRegBookHeader());
+		statement.setString(++col, data.getServiceMessage());
+		statement.setString(++col, data.getVideolink());
+		statement.setString(++col, data.getTargetWebPage());
+		statement.setString(++col, data.getObituryLink());
+		statement.setInt(++col, data.getReferenceId());
+		statement.setString(++col, data.getImageLink());
+		statement.setString(++col, data.getFullName());
+		statement.setString(++col, data.getLocationName());
+		statement.setString(++col, data.getLocaleName());
+		statement.setString(++col, data.getQrCodePath());
+		statement.setString(++col, data.getDateOfBirth());
+		statement.setString(++col, data.getDateOfDeath());
+		statement.setLong(++col, data.getBackgroundThemeId());
+		statement.setLong(++col, data.getServiceScreenThemeId());
+		statement.setInt(++col, data.getRegisterId());
+
+		statement.executeUpdate();
+		
+		updated = true;
+		} catch (SQLException e) {
+			throw e;
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			closeConnection();
+		}
+		
+		return updated;
+	}	
+	
+}

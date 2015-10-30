@@ -1,0 +1,243 @@
+package com.aldorsolutions.webfdms.admin.user.dao;
+
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+
+import org.apache.log4j.Logger;
+
+import com.aldorsolutions.webfdms.admin.user.model.UserVacationDTO;
+import com.aldorsolutions.webfdms.util.DAO;
+
+
+/**
+ * 
+ * @author David Rollins
+ * Date: May 21, 2007
+ * File: UserVacationDAO.java	
+ *
+ */
+public class UserVacationDAO extends DAO {
+    
+    private Logger logger = Logger.getLogger(UserVacationDAO.class.getName());
+    
+    public UserVacationDAO() {
+    	super ();
+    }
+    
+    public UserVacationDTO getUserVacation ( long userVacationID ) {
+    	UserVacationDTO userVacation = null;
+        
+        try {
+            StringBuffer sql = new StringBuffer();
+            sql.append("select UserVacationID, UserID, notifyUserID, dateFrom, " +
+            		"dateTo from uservacations where UserVacationID = ?" );
+            
+            makeConnection(DAO.DB_FDMSUSERS);
+            statement = conn.prepareStatement(sql.toString());
+            statement.setLong(1, userVacationID);
+            
+            rs = statement.executeQuery();
+            
+            if (rs.next()) {
+            	int col = 0;
+            	userVacation = new UserVacationDTO();
+            	userVacation.setUserVacationID(rs.getInt(++col));
+            	userVacation.setUserID(rs.getLong(++col));
+            	userVacation.setNotifyUserID(rs.getLong(++col));
+            	userVacation.setDateFrom( rs.getDate(++col) );
+            	userVacation.setDateTo( rs.getDate(++col) );
+            	
+            }
+            
+        } catch (SQLException e) {
+            logger.error("SQLException in getUserVacation() : ", e);
+        } catch (Exception e) {
+            logger.error("Exception in getUserVacation() : ", e);
+        } finally {
+            closeConnection();
+        }
+        
+        return userVacation;
+    }
+
+    public ArrayList <UserVacationDTO> getUserVactions ( ) {
+    	ArrayList <UserVacationDTO> elements = new ArrayList <UserVacationDTO> ();
+    	
+        try {
+            StringBuffer sql = new StringBuffer();
+            sql.append("select UserVacationID, UserID, notifyUserID, dateFrom, " +
+            		"dateTo from uservacations ");
+            
+            makeConnection(DAO.DB_FDMSUSERS);
+            statement = conn.prepareStatement(sql.toString());
+            
+            rs = statement.executeQuery();
+            
+            while (rs.next()) {
+            	int col = 0;
+            	UserVacationDTO userVacation = new UserVacationDTO();
+            	userVacation.setUserVacationID(rs.getInt(++col));
+            	userVacation.setUserID(rs.getLong(++col));
+            	userVacation.setNotifyUserID(rs.getLong(++col));
+            	userVacation.setDateFrom( rs.getDate(++col) );
+            	userVacation.setDateTo( rs.getDate(++col) );
+            	elements.add(userVacation);
+            }
+            
+        } catch (SQLException e) {
+            logger.error("SQLException in getCompanies() : ", e);
+        } catch (Exception e) {
+            logger.error("Exception in getCompanies() : ", e);
+        } finally {
+            closeConnection();
+        }
+        
+        return elements;
+    }
+
+    public ArrayList <UserVacationDTO> getUserVactions ( long userID ) {
+    	ArrayList <UserVacationDTO> elements = new ArrayList <UserVacationDTO> ();
+    	
+        try {
+            StringBuffer sql = new StringBuffer();
+            sql.append("select UserVacationID, UserID, notifyUserID, dateFrom, " +
+            		"dateTo from uservacations where UserID = ? ");
+            
+            makeConnection(DAO.DB_FDMSUSERS);
+            statement = conn.prepareStatement(sql.toString());
+            statement.setLong(1, userID);
+            
+            rs = statement.executeQuery();
+            
+            while (rs.next()) {
+            	int col = 0;
+            	UserVacationDTO userVacation = new UserVacationDTO();
+            	userVacation.setUserVacationID(rs.getInt(++col));
+            	userVacation.setUserID(rs.getLong(++col));
+            	userVacation.setNotifyUserID(rs.getLong(++col));
+            	userVacation.setDateFrom( rs.getDate(++col) );
+            	userVacation.setDateTo( rs.getDate(++col) );
+            	elements.add(userVacation);
+            }
+            
+        } catch (SQLException e) {
+            logger.error("SQLException in getUserVactions() : ", e);
+        } catch (Exception e) {
+            logger.error("Exception in getUserVactions() : ", e);
+        } finally {
+            closeConnection();
+        }
+        
+        return elements;
+    }
+    
+    public boolean addUserVacation(UserVacationDTO userVacation) {
+        boolean added = false;
+        
+        try {
+        	logger.info("In " + this.getClass() + " " + Thread.currentThread().getStackTrace()[1].getMethodName() + " is been called");
+            StringBuffer sql = new StringBuffer();
+            sql.append("insert into uservacations (UserVacationID, UserID, " +
+            		"notifyUserID, dateFrom, dateTo) values (?, ?, ?, ?, ?)");
+            
+            int col = 0;
+            makeConnection(DAO.DB_FDMSUSERS);
+            statement = conn.prepareStatement(sql.toString(), Statement.RETURN_GENERATED_KEYS);
+            
+            statement.setLong(++col, userVacation.getUserVacationID());
+            statement.setLong(++col, userVacation.getUserID());
+            statement.setLong(++col, userVacation.getNotifyUserID());
+            statement.setDate(++col, userVacation.getDateFrom());
+            statement.setDate(++col, userVacation.getDateTo());
+            
+            statement.executeUpdate();
+            added = true;
+            
+            if (added) {
+            	rs = statement.getGeneratedKeys();
+                if (rs.next()) {
+                	userVacation.setUserVacationID(rs.getInt(1));
+                }
+                
+                insertAudit(userVacation);
+            }
+            
+        } catch (SQLException e) {
+            logger.error("SQLException in addUserVacation() : ", e);
+        } catch (Exception e) {
+            logger.error("Exception in addUserVacation() : ", e);
+        } finally {
+            closeConnection();
+        }
+        
+        return added;
+    }
+    
+    public boolean updateUserVacation(UserVacationDTO userVacation) {
+        boolean updated = false;
+        
+        try {
+        	
+        	UserVacationDTO oldComp = getUserVacation(userVacation.getUserVacationID());
+        	
+            StringBuffer sql = new StringBuffer();
+            sql.append("UPDATE uservacations SET UserID = ?, " +
+            		"notifyUserID = ?, dateFrom = ?, dateTo = ? ");
+            sql.append("WHERE (UserVacationID = ?)");
+            
+            int col = 0;
+            makeConnection(DAO.DB_FDMSUSERS);
+            statement = conn.prepareStatement(sql.toString());
+            statement.setLong(++col, userVacation.getUserID());
+            statement.setLong(++col, userVacation.getNotifyUserID());
+            statement.setDate(++col, userVacation.getDateFrom());
+            statement.setDate(++col, userVacation.getDateTo());
+            statement.setLong(++col, userVacation.getUserVacationID());
+            statement.executeUpdate();
+            
+            updateAudit(userVacation, oldComp);
+            
+            updated = true;
+        } catch (SQLException e) {
+            logger.error("SQLException in updateUserVacation() : ", e);
+        } catch (Exception e) {
+            logger.error("Exception in updateUserVacation() : ", e);
+        } finally {
+            closeConnection();
+        }
+        
+        return updated;
+    }
+
+    public boolean deleteUserVacation(int userVacationID) {
+        boolean deleted = false;
+        
+        try {
+        	UserVacationDTO oldComp = getUserVacation(userVacationID);
+        	
+            StringBuffer sql = new StringBuffer();
+            sql.append("delete from uservacations ");
+            sql.append("WHERE (UserVacationID = ?)");
+            
+            int col = 0;
+            makeConnection(DAO.DB_FDMSUSERS);
+            statement = conn.prepareStatement(sql.toString());
+            statement.setLong(++col, userVacationID);
+            statement.executeUpdate();
+            
+            deleteAudit(oldComp);
+            
+            deleted = true;
+        } catch (SQLException e) {
+            logger.error("SQLException in deleteUserVacation() : ", e);
+        } catch (Exception e) {
+            logger.error("Exception in deleteUserVacation() : ", e);
+        } finally {
+            closeConnection();
+        }
+        
+        return deleted;
+    }
+    
+}

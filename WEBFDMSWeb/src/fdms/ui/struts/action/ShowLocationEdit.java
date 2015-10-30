@@ -1,0 +1,208 @@
+package fdms.ui.struts.action;
+
+import java.util.ArrayList;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.apache.log4j.Logger;
+import org.apache.struts.action.Action;
+import org.apache.struts.action.ActionError;
+import org.apache.struts.action.ActionErrors;
+import org.apache.struts.action.ActionForm;
+import org.apache.struts.action.ActionForward;
+import org.apache.struts.action.ActionMapping;
+
+import com.aldorassist.webfdms.model.LocaleDTO;
+import com.aldorsolutions.webfdms.beans.DbLocale;
+import com.aldorsolutions.webfdms.beans.DbLocation;
+import com.aldorsolutions.webfdms.beans.DbUserSession;
+import com.aldorsolutions.webfdms.beans.FdmsDb;
+import com.aldorsolutions.webfdms.database.DatabaseTransaction;
+import com.aldorsolutions.webfdms.database.PersistenceException;
+import com.aldorsolutions.webfdms.pricelist.bean.PriceListManager;
+import com.aldorsolutions.webfdms.util.FormatCurrency;
+import com.aldorsolutions.webfdms.util.FormatNumber;
+import com.aldorsolutions.webfdms.util.FormatString;
+import com.aldorsolutions.webfdms.util.OptionsList;
+import com.aldorsolutions.webfdms.util.SessionHelpers;
+
+import fdms.ui.struts.form.LocationEditForm;
+import fdms.ui.struts.form.LocationListForm;
+
+
+public class ShowLocationEdit extends Action {
+
+    private Logger logger = Logger.getLogger(ShowLocationEdit.class.getName());
+    private ArrayList formErrors;
+
+    /**
+     * Called from WebFdmsLocationAdmin.jsp, this action prepares to show
+     * WebFdmsLocationEdit.jsp.
+     * The LocationListForm is used to determine if adding or which.
+     * location is being updated.
+     * Then, the LocationEdit form is created for the jsp to use.
+     */
+    public ActionForward execute(
+            ActionMapping mapping,
+            ActionForm actionForm,
+            HttpServletRequest request, 
+            HttpServletResponse response)
+            throws javax.servlet.ServletException, java.io.IOException {
+    
+        formErrors = new ArrayList();
+        LocationListForm form = (LocationListForm) actionForm;
+        ActionErrors errors = new ActionErrors();
+        HttpSession session = request.getSession();
+        DbUserSession sessionUser = SessionHelpers.getUserSession(request);
+        DatabaseTransaction t = null;
+        DbLocation dbLocation = null;
+        LocationEditForm locationEdit = new LocationEditForm();
+        ArrayList stateList = new ArrayList();
+        ArrayList selectList = new ArrayList();
+        ArrayList dbPriceList = new ArrayList();
+        ArrayList priceList = new ArrayList();
+        String submitType = form.getSubmitbutton();
+        
+        locationEdit.setCompanyID(Long.toString(sessionUser.getCompanyID()));
+
+        //AppLog.trace("ShowLocationEdit action doPerform submit = " +submitType);
+
+        // Exit
+        if (submitType.equals("exit")) {
+            ActionForward actionForward = mapping.findForward("webFDMSManagement");
+            return actionForward;
+        }
+
+        // Change or Delete
+        if (!submitType.equals("add") && FormatNumber.parseInteger(form.getLocationID()) < 1) {
+            //AppLog.trace("ShowLocationEdit - Change/delete with no selection.");
+            errors.add(ActionErrors.GLOBAL_ERROR, new ActionError("error.tables.noselect"));
+            formErrors.add("locationID");            
+            saveErrors(request, errors);
+            request.setAttribute("formErrors", formErrors);
+            return (new ActionForward(mapping.getInput()));
+        }        
+
+        //Database Access Logic
+        try {
+            t = (DatabaseTransaction)DatabaseTransaction.getTransaction(sessionUser);
+            
+            if (submitType.equals("delete")) {
+                dbLocation = new DbLocation();
+                dbLocation.setId(Integer.parseInt(form.getLocationID()));
+                dbLocation.remove();
+                t.addPersistent(dbLocation);
+                t.save();
+                
+                return mapping.findForward("showLocationAdminGlobal");
+            } else {
+            
+            	ArrayList <LocaleDTO> locales = FdmsDb.getInstance().getLocalesForCompany(sessionUser.getDbLookup(),
+    					(int) sessionUser.getCompanyID());
+    	        ArrayList localeList = new ArrayList();
+    	        
+    	        // Populate the Locale List
+    	        
+    	        for ( LocaleDTO locale : locales ) {
+    	        	localeList.add(new OptionsList(String.valueOf(locale.getLocaleID()), locale.getName()));
+    	        }
+                
+            	session.setAttribute("locales", localeList);
+            	            	
+                if (!submitType.equals("add")) {
+                    dbLocation = FdmsDb.getInstance().getLocation(t, Integer.parseInt(form.getLocationID()));
+
+                    //Populate the Facility Information
+                    locationEdit.setLocaleId( Integer.toString ( dbLocation.getLocaleNumber() ) );
+                    locationEdit.setLocationID(form.getLocationID());
+                    locationEdit.setFuneralHomeName(dbLocation.getName());
+                    locationEdit.setDivision(dbLocation.getDivision());
+                    locationEdit.setLocationNumber(dbLocation.getLocationNumber());
+                    locationEdit.setAddr1(dbLocation.getAddr1());
+                    locationEdit.setAddr2(dbLocation.getAddr2());
+                    locationEdit.setAddr3(dbLocation.getAddr3());
+                    locationEdit.setCity(dbLocation.getCity());
+                    locationEdit.setState(dbLocation.getState());
+                    locationEdit.setZipCode(dbLocation.getZip());
+                    locationEdit.setCounty(dbLocation.getCounty());                    
+                    locationEdit.setPhoneNumber(FormatString.formatPhone(dbLocation.getPhone()));
+                    locationEdit.setOtherPhone(FormatString.formatPhone(dbLocation.getPhoneAlternate()));
+                    locationEdit.setLicenseNumber(dbLocation.getLicenseNumber());
+                    locationEdit.setWebsite(dbLocation.getWebsite());
+                    locationEdit.setEmail(dbLocation.getEmail());
+                    locationEdit.setApGlAcct(dbLocation.getApAcct());
+                    locationEdit.setArGlAcct(dbLocation.getArAcct());
+                    locationEdit.setCashGlAcct(dbLocation.getCashAcct());
+                    locationEdit.setDiscountGlAcct(dbLocation.getDiscountAcct());
+                    locationEdit.setFinChrgGlAcct(dbLocation.getFinanceChargeAcct());
+                    locationEdit.setNextCheckNumber(String.valueOf(dbLocation.getNextCheckNumber()));
+                    locationEdit.setCheckingAcctBalance(FormatCurrency.toCurrency(dbLocation.getCashBalance()));
+                    locationEdit.setStandardServiceFee(FormatCurrency.toCurrency(dbLocation.getStdServiceCharge()));
+                    locationEdit.setPriceListVersion(dbLocation.getPriceListVersion());
+                    locationEdit.setGenericVitals( dbLocation.getPreferenceGenericVitals().equalsIgnoreCase("Y"));
+                    locationEdit.setManagerName(   dbLocation.getManagerName());
+                    locationEdit.setUndepositedFundsAcct(dbLocation.getUndepositedFundsAcct());
+                    locationEdit.setUseUndepositedFundsAcct(dbLocation.getUseUndepositedFundsAcct());
+                    locationEdit.setOneTimeVendorCode(dbLocation.getOneTimeVendorCode());
+                    locationEdit.setFuneralSyncLocationId(dbLocation.getFuneralSyncLocationId());
+                    locationEdit.setMerchandiseId(dbLocation.getMerchandiseId());
+                    locationEdit.setTurnOnApplyFinanceCharge(dbLocation.getTurnOnApplyFinanceCharge().equalsIgnoreCase("Y"));
+                    locationEdit.setMonthlyInterestRate(dbLocation.getMonthlyInterestRate());
+                    locationEdit.setRegisterPage(dbLocation.getERegisterPage());
+                    locationEdit.setRegisterTargetPage(dbLocation.getERegisterTargetPage());
+                } 
+                else {
+                	dbLocation = new DbLocation();
+                	locationEdit.setLocationID("0");
+                }
+
+                // Default Refund rate to 100% if not present
+                if (FormatNumber.parseDouble(locationEdit.getRefund()) <=0){
+                    locationEdit.setRefund("100");
+                }
+                // Create the list collections
+                // chai - not reading in webfdsmsdata1 but in dblookup of the user.
+                stateList = com.aldorsolutions.webfdms.beans.FdmsDb.getInstance().getStateList();
+//                stateList = com.aldorsolutions.webfdms.beans.FdmsDb.getInstance().getStateList(sessionUser.getDbLookup());
+                selectList.add(new OptionsList("--Select--","--Select--"));
+                
+                dbPriceList = new PriceListManager().getPriceListVersions(t, dbLocation.getLocaleNumber() );
+                for (int i=0; i < dbPriceList.size(); i++) {
+                    String listValue = (String)dbPriceList.get(i);
+                    priceList.add(new OptionsList(listValue, listValue));
+                }
+                // Put bank list in session
+                ProcessPnStatus.setBankListInSession(request, sessionUser);
+                // clean up
+                form.setLocationID("");                
+
+                // Set collections in session
+                locationEdit.setDirective(submitType);
+                session.setAttribute("locationEdit",locationEdit);
+                session.setAttribute("stateList",stateList);
+                session.setAttribute("selectList",selectList);
+                session.setAttribute("priceList", priceList);         
+            }
+
+        } catch(PersistenceException pe) {
+            logger.error("Persistence Exception in ShowLocationEdit.doPerform. " + pe);
+            errors.add(ActionErrors.GLOBAL_ERROR, new ActionError("error.PersistenceException",pe.getCause()));
+        } catch(Exception pe) {
+            logger.error("Exception in  ShowLocationEdit.doPerform. ", pe);
+            errors.add(ActionErrors.GLOBAL_ERROR, new ActionError("error.GeneralException",pe.getMessage()));
+        } finally {
+            if (t != null) t.closeConnection();
+        }
+        
+        // Check for any errors
+        if (!errors.isEmpty()) {
+            saveErrors(request, errors );
+            return  new ActionForward(mapping.getInput());
+        }    
+
+        return mapping.findForward("locationEdit");
+        //return mapping.findForward("WebFDMSLocationEdit");
+    }
+}

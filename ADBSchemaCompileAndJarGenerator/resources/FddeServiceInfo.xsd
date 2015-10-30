@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xs:schema xmlns:fddecomm="http://aldorsolutions.com/webservice/xsd/comm/fdde" xmlns:this="http://aldorsolutions.com/webservice/xsd/fdde/service" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://aldorsolutions.com/webservice/xsd/fdde/service">
+	
+	<xs:import namespace="http://aldorsolutions.com/webservice/xsd/comm/fdde" schemaLocation="FddeCommon.xsd"/>
+	
+    <xs:complexType name="dataRequestType">
+    	<xs:sequence>
+	    	<xs:element name="dataInterest" type="this:dataInterestType"/>
+			<xs:element minOccurs="0" name="criteria" type="this:criteriaType"/>
+		</xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="dataResponseType">
+    	<xs:sequence>
+	    	<xs:element name="dataReturned" type="this:dataInterestType"/>
+	    	<xs:element minOccurs="0" name="requestedCriteria" type="this:criteriaType"/>
+			<xs:element name="results" type="this:resultType"/>
+		</xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="dataInterestType">
+    	<xs:restriction base="xs:string">
+    		<xs:enumeration value="funeralHomes"/>
+    		<xs:enumeration value="casesByfuneralHome"/>
+    	</xs:restriction>
+    </xs:simpleType>
+    
+    <xs:complexType name="criteriaType">
+	    <xs:choice>
+	    	<xs:element name="funeralHomeId" type="fddecomm:funeralHomeIdType"/>
+	    </xs:choice>
+    </xs:complexType>
+    <xs:complexType name="resultType">
+    	<xs:choice>
+    		<xs:element maxOccurs="unbounded" name="funeralHome"
+    			type="fddecomm:funeralHomeType" />
+    		<xs:element name="fhCase" type="fddecomm:caseType" minOccurs="1" maxOccurs="unbounded"/>
+    	</xs:choice>
+    </xs:complexType>
+    
+
+    <xs:simpleType name="errorCodeType">
+    	<xs:restriction base="xs:string">
+    		<xs:enumeration value="InvalidCriteria"/>
+    		<xs:enumeration value="NoData"/>
+    		<xs:enumeration value="NotAuthorizedToAccessData"/>
+    		<xs:enumeration value="Others"/>
+    		<xs:enumeration value="InvalidUser"/>
+    		<xs:enumeration value="UserLocked"/>
+    		<xs:enumeration value="UserExpired"/>
+    		<xs:enumeration value="RequestMissing"/>
+    	</xs:restriction>
+    </xs:simpleType>
+</xs:schema>

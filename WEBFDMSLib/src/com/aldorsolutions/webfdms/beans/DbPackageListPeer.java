@@ -1,0 +1,119 @@
+package com.aldorsolutions.webfdms.beans;
+
+import java.sql.Statement;
+
+import com.aldorsolutions.webfdms.database.Persistent;
+import com.aldorsolutions.webfdms.util.FormatString;
+/**
+ * The DbPackageListPeer handles database access for the DbPackageList business
+ * object.  The DatabasePeer that it extends specifically prescribes
+ * for it methods that allow it to create SQL statements.
+ */
+public class DbPackageListPeer extends com.aldorsolutions.webfdms.database.DatabasePeer  {
+
+	static public final String VERSION			= "PriceListVersion";
+	static public final String PKGPLID			= "PkgPriceListId";
+	static public final String INCLUDED		   	= "IncludedCode"	;
+	static public final String SEQUENCENUMBER	= "Sequencenumber";
+	static public final String PRICELISTID		= "PriceListId";
+	static public final String DESCRIPTION		= "Description";
+	static public final String IDENTITY			= "RecordId";
+	static public final String RECORDTYPE		= "RecordType";
+	static public final String INVMASTERID		= "InvMasterID";
+		
+	/**
+	 * Insert the method's description here.
+	 * Creation date: (10/29/2001 7:17:27 PM)
+	 */
+	public DbPackageListPeer() {
+		super();
+	}
+	/**
+	 * getInsertSql method comment.
+	 */
+	protected java.sql.PreparedStatement getInsertSql(com.aldorsolutions.webfdms.database.DatabaseTransaction t, com.aldorsolutions.webfdms.database.Persistent p) throws com.aldorsolutions.webfdms.database.PersistenceException {
+		java.sql.Connection connection = null;
+		try {
+			DbPackageList rec=(DbPackageList)p;
+			connection = t.getConnection();
+			java.sql.PreparedStatement pstmt = connection.prepareStatement(
+			"INSERT INTO packagepricelist ("+
+				VERSION	+","+
+				PKGPLID	+","+
+				INCLUDED	+","+
+				SEQUENCENUMBER+","+
+				PRICELISTID	+","+
+				DESCRIPTION	+" "+
+				") VALUES (?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS
+			);		
+			pstmt.setString(1, rec.getVersion() );	
+			pstmt.setInt	(2, rec.getPkgPriceListId() );	
+			pstmt.setString(3, FormatString.charToString(rec.getIncludedCode()) );	
+			pstmt.setShort (4, rec.getSeqNumber() );
+			pstmt.setInt	(5, rec.getPriceListId() );	
+			pstmt.setString(6, rec.getExtraDescr() );	
+			return pstmt;
+		}
+		catch (java.sql.SQLException e){
+			throw new com.aldorsolutions.webfdms.database.PersistenceException("DbPackageListPeer.Insert",e);
+		}
+	}
+	/**
+	 * getRemoveSql method comment.
+	 */
+	protected java.sql.PreparedStatement getRemoveSql(com.aldorsolutions.webfdms.database.DatabaseTransaction t, com.aldorsolutions.webfdms.database.Persistent p) throws com.aldorsolutions.webfdms.database.PersistenceException {
+		java.sql.PreparedStatement pstmt=null;
+		java.sql.Connection connection = null;
+		try {
+			connection = t.getConnection();
+			pstmt = connection.prepareStatement("DELETE FROM  packagepricelist WHERE RecordId =?");
+			pstmt.setInt(1,p.getId());
+			return pstmt;
+		}
+		catch (java.sql.SQLException e){
+			throw new com.aldorsolutions.webfdms.database.PersistenceException("DbPackageListPeer.Remove",e);
+		}
+}
+	/**
+	 * Provides the SQL used to restore a price list entry from the database
+	 * @param p the Customer being restored (only the ID field is filled in)
+	 * @return the SQL used to restore that customer
+	 */
+	public String getRestoreSql(Persistent p) {
+		// SELECT * from t_customer WHERE cust_id = 1
+		return 
+		"SELECT * from packagepricelist WHERE RecordId = "
+		+ p.getId();
+	}
+	/**
+	 * getUpdateSql method comment.
+	 */
+	protected java.sql.PreparedStatement getUpdateSql(com.aldorsolutions.webfdms.database.DatabaseTransaction t, com.aldorsolutions.webfdms.database.Persistent p) throws com.aldorsolutions.webfdms.database.PersistenceException {
+		java.sql.Connection connection = null;
+		try {
+			DbPackageList rec=(DbPackageList)p;
+			connection = t.getConnection();
+			java.sql.PreparedStatement pstmt = connection.prepareStatement(
+			"UPDATE packagepricelist SET "+
+				VERSION	+"=?,"+
+				PKGPLID	+"=?,"+
+				INCLUDED	+"=?,"+
+				SEQUENCENUMBER	+"=?,"+
+				PRICELISTID	+"=?,"+
+				DESCRIPTION	+"=? "+
+				" WHERE "+IDENTITY+" = ?",
+			java.sql.ResultSet.TYPE_SCROLL_SENSITIVE, java.sql.ResultSet.CONCUR_UPDATABLE);		
+			pstmt.setString(1, rec.getVersion() );	
+			pstmt.setInt	(2, rec.getPkgPriceListId() );	
+			pstmt.setString(3, FormatString.charToString(rec.getIncludedCode()) );	
+			pstmt.setShort (4, rec.getSeqNumber() );
+			pstmt.setInt	(5, rec.getPriceListId() );	
+			pstmt.setString(6, rec.getExtraDescr() );	
+			pstmt.setInt   (7, rec.getId());
+			return pstmt;
+		}
+		catch (java.sql.SQLException e){
+			throw new com.aldorsolutions.webfdms.database.PersistenceException("DbPackageListPeer.Update",e);
+		}
+	}
+}

@@ -1,0 +1,399 @@
+package com.aldorassist.webfdms.dao;
+
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.log4j.Logger;
+
+import com.aldorassist.webfdms.model.SpeedDataRuleDTO;
+import com.aldorsolutions.webfdms.beans.DbSpeedData;
+import com.aldorsolutions.webfdms.beans.DbUserSession;
+import com.aldorsolutions.webfdms.database.PersistenceException;
+import com.aldorsolutions.webfdms.util.DAO;
+import com.aldorsolutions.webfdms.util.FormatString;
+
+/**
+ * 
+ * @author David Rollins 
+ * Sep 6, 2007 
+ * SpeedDataDAO.java
+ * 
+ */
+public class SpeedDataDAO extends DAO {
+
+	private Logger logger = Logger.getLogger(SpeedDataDAO.class.getName());
+
+	public SpeedDataDAO(String dbLookup) {
+		super(dbLookup);
+	}
+	
+	public SpeedDataDAO(DbUserSession user) {
+		super(user);
+	}
+
+	public SpeedDataDAO(long companyID, long userID) {
+		super(companyID, userID);
+	}
+
+	private static String selectFields() {
+		return ("Identity, TabCategory, Locale, LocationId, TabData, SortSequence");
+	}
+
+	public DbSpeedData getSpeedData(long identity) {
+		DbSpeedData speedData = null;
+
+		try {
+			String sql = "select " + selectFields()
+					+ " from speeddata where Identity = ?";
+
+			makeConnection(getDbLookup());
+			statement = conn.prepareStatement(sql);
+			statement.setLong(1, identity);
+
+			rs = statement.executeQuery();
+
+			if (rs.next()) {
+				int col = 0;
+				speedData = new DbSpeedData();
+				speedData.setId(rs.getInt(++col));
+				speedData.setCategory(rs.getString(++col));
+				speedData.setLocale(rs.getInt(++col));
+				speedData.setLocationId(rs.getInt(++col));
+				speedData.setData(rs.getString(++col));
+				speedData.setSortSequence(rs.getInt(++col));
+			}
+
+		} catch (SQLException e) {
+			logger.error("SQLException in getSpeedData() : ", e);
+		} catch (Exception e) {
+			logger.error("Exception in getSpeedData() : ", e);
+		} finally {
+			closeConnection();
+		}
+
+		return speedData;
+	}
+
+	public ArrayList<DbSpeedData> getSpeedData(String tabCategory) throws PersistenceException {
+		return ( getSpeedData(getDbLookup(), tabCategory, 0, 0, null) );
+	}
+	
+	public ArrayList<DbSpeedData> getSpeedData(String tabCategory, long locale) throws PersistenceException {
+		return ( getSpeedData(getDbLookup(), tabCategory, locale, 0, null) );
+	}
+	
+	public ArrayList<DbSpeedData> getAllSpeedData(String dbLookup) throws PersistenceException {
+		ArrayList<DbSpeedData> list = new ArrayList<DbSpeedData>();
+
+		try {
+			String sql = "select " + selectFields() + " from speeddata ORDER BY SortSequence ASC, TabData ASC";
+			
+			makeConnection(dbLookup);
+			statement = conn.prepareStatement(sql);
+			
+			rs = statement.executeQuery();
+
+			while (rs.next()) {
+				int col = 0;
+				DbSpeedData speedData = new DbSpeedData();
+				speedData.setId(rs.getInt(++col));
+				speedData.setCategory(rs.getString(++col));
+				speedData.setLocale(rs.getInt(++col));
+				speedData.setLocationId(rs.getInt(++col));
+				speedData.setData(rs.getString(++col));
+				speedData.setSortSequence(rs.getInt(++col));
+				list.add(speedData);
+			}
+
+		} catch (SQLException e) {
+			throw new PersistenceException (e); 
+		} catch (Exception e) {
+			logger.error("Exception in getSpeedData() : ", e);
+		} finally {
+			closeConnection();
+		}
+
+		return list;
+	}
+
+	public ArrayList<DbSpeedData> getSpeedData(String dbLookup, String tabCategory, long locale, long locationID, String data) throws PersistenceException {
+		ArrayList<DbSpeedData> list = new ArrayList<DbSpeedData>();
+
+		try {
+			ArrayList <Object> parameters = new ArrayList <Object> ();
+			String sql = "select " + selectFields() + " from speeddata ";
+			String whereClause = "WHERE ";
+			String orderByClause = " ORDER BY SortSequence ASC, TabData ASC";
+			
+			//where TabCategory like ?";
+			
+			if ( locationID > 0 ) {
+				whereClause += " (LocationId = ?)";
+				parameters.add(locationID);
+			}
+			else {
+				whereClause += " (";
+					
+				if ( locale > 0 ) {
+					whereClause += "Locale = 0 OR Locale = ?";
+					parameters.add(locale);
+				} else {
+					whereClause += "Locale = 0";
+				}
+				
+				whereClause += ")";
+			}
+			
+			if( tabCategory != null && tabCategory.length() > 0 ) {
+				whereClause += " AND TabCategory = ?";
+				parameters.add(tabCategory);
+			}
+			
+			if( data != null && data.length() > 0 ) {
+				whereClause += " AND TabData LIKE ?";
+				parameters.add("%"+data);
+			}
+
+			makeConnection(dbLookup);
+			statement = conn.prepareStatement(sql + whereClause + orderByClause);
+			
+			for ( int i = 0; i < parameters.size(); i++ ) {
+				statement.setObject((i+1), parameters.get(i));
+			}
+			
+			rs = statement.executeQuery();
+
+			while (rs.next()) {
+				int col = 0;
+				DbSpeedData speedData = new DbSpeedData();
+				speedData.setId(rs.getInt(++col));
+				speedData.setCategory(rs.getString(++col));
+				speedData.setLocale(rs.getInt(++col));
+				speedData.setLocationId(rs.getInt(++col));
+				speedData.setData(rs.getString(++col));
+				speedData.setSortSequence(rs.getInt(++col));
+				list.add(speedData);
+			}
+
+		} catch (SQLException e) {
+			throw new PersistenceException (e); 
+		} catch (Exception e) {
+			logger.error("Exception in getSpeedData() : ", e);
+		} finally {
+			closeConnection();
+		}
+
+		return list;
+	}
+
+	public boolean addspeedData(DbSpeedData speedData) throws Exception {
+		boolean added = false;
+
+		try {
+			logger.info("In " + this.getClass() + " " + Thread.currentThread().getStackTrace()[1].getMethodName() + " is been called");
+			String sql = "insert into speeddata (" + selectFields()
+					+ ") VALUES " + "( ?, ?, ?, ?, ?, ? )";
+
+			int col = 0;
+			makeConnection(getDbLookup());
+			statement = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+			
+			statement.setInt(++col, speedData.getId() );
+			statement.setString(++col, speedData.getCategory() );
+			statement.setInt(++col, speedData.getLocale() );
+			statement.setInt(++col, speedData.getLocationId() );
+			statement.setString(++col, speedData.getData() );
+			statement.setInt(++col, speedData.getSortSequence());
+			
+			statement.executeUpdate();
+			added = true;
+
+			if (added) {
+				rs = statement.getGeneratedKeys();
+				if (rs.next()) {
+					speedData.setId(rs.getInt(1));
+				}
+
+				insertAudit(speedData);
+			}
+
+		} catch (SQLException e) {
+			logger.error("SQLException in addspeedData() : ", e);
+			throw e;
+		} catch (Exception e) {
+			logger.error("Exception in addspeedData() : ", e);
+			throw e;
+		} finally {
+			closeConnection();
+		}
+
+		return added;
+	}
+
+	public boolean updateSpeedData(DbSpeedData speedData) {
+		boolean updated = false;
+
+		try {
+
+			DbSpeedData oldComp = getSpeedData(speedData.getId());
+
+			String sql = "UPDATE speeddata set TabCategory, Locale, LocationId, TabData, SortSequence WHERE Identity = ?";
+
+			int col = 0;
+			makeConnection(getDbLookup());
+			statement = conn.prepareStatement(sql.toString());
+			
+			statement.setString(++col, speedData.getCategory() );
+			statement.setInt(++col, speedData.getLocale() );
+			statement.setInt(++col, speedData.getLocationId() );
+			statement.setString(++col, speedData.getData() );
+			statement.setInt(++col, speedData.getSortSequence());
+			statement.setInt(++col, speedData.getId() );
+			
+			statement.executeUpdate();
+
+			updateAudit(speedData, oldComp);
+
+			updated = true;
+		} catch (SQLException e) {
+			logger.error("SQLException in updateSpeedData() : ", e);
+		} catch (Exception e) {
+			logger.error("Exception in updateSpeedData() : ", e);
+		} finally {
+			closeConnection();
+		}
+
+		return updated;
+	}
+
+	public boolean deleteSpeedData(int speedDataID) {
+		boolean deleted = false;
+
+		try {
+			DbSpeedData oldComp = getSpeedData(speedDataID);
+
+			String sql = "delete from speeddata WHERE Identity = ?";
+
+			int col = 0;
+			makeConnection(getDbLookup());
+			statement = conn.prepareStatement(sql.toString());
+			statement.setLong(++col, speedDataID);
+			statement.setBoolean(++col, true);
+			statement.executeUpdate();
+
+			deleteAudit(oldComp);
+
+			deleted = true;
+		} catch (SQLException e) {
+			logger.error("SQLException in deleteSpeedData() : ", e);
+		} catch (Exception e) {
+			logger.error("Exception in deleteSpeedData() : ", e);
+		} finally {
+			closeConnection();
+		}
+
+		return deleted;
+	}
+
+	/**
+	 * 
+	 * @param tabCategory
+	 * @param dbLookup
+	 * @return
+	 */
+	public SpeedDataRuleDTO getSpeedDataRule(String tabCategory, String dbLookup) {
+		SpeedDataRuleDTO speedDataRuleDTO = null;
+		
+		try {
+			makeConnection(dbLookup);
+			String sql = "SELECT Col0, Col1, Col2, Col3, Col4, Col5, Col6, Col7, Col8, Col9, Col10, LockForAdmin " +
+						"FROM speeddatarule WHERE (TabCategory=?)";
+			
+			statement = conn.prepareStatement(sql);
+			statement.setString(1, tabCategory);
+			rs = statement.executeQuery();
+			
+			if (rs.next()) {
+				int col = 0;				
+				ArrayList <String> labels = new ArrayList <String> ();
+				labels.add(FormatString.blankNull(rs.getString(++col)));
+				labels.add(FormatString.blankNull(rs.getString(++col)));
+				labels.add(FormatString.blankNull(rs.getString(++col)));
+				labels.add(FormatString.blankNull(rs.getString(++col)));
+				labels.add(FormatString.blankNull(rs.getString(++col)));
+				labels.add(FormatString.blankNull(rs.getString(++col)));
+				labels.add(FormatString.blankNull(rs.getString(++col)));
+				labels.add(FormatString.blankNull(rs.getString(++col)));
+				labels.add(FormatString.blankNull(rs.getString(++col)));
+				labels.add(FormatString.blankNull(rs.getString(++col)));
+				labels.add(FormatString.blankNull(rs.getString(++col)));
+				String lockForAdmin = FormatString.blankNull(rs.getString(++col));
+				speedDataRuleDTO = new SpeedDataRuleDTO(tabCategory, labels, lockForAdmin);
+			}
+		} catch (SQLException e) {
+			logger.error("SQLException in getSpeedDataRule() : ", e);
+		} catch (Exception e) {
+			logger.error("Exception in getSpeedDataRule() : ", e);
+		}	
+		finally {
+			closeConnection();
+		}
+		
+		return speedDataRuleDTO;
+	}
+	
+	/**
+	 * 
+	 * @param dbLookup
+	 * @return
+	 */
+	public List <SpeedDataRuleDTO> getSpeedDataRules(String dbLookup) {
+		
+		ArrayList <SpeedDataRuleDTO> list = null;
+		
+		try {
+			makeConnection(dbLookup);
+			String sql = "SELECT TabCategory, Col0, Col1, Col2, Col3, Col4, Col5, Col6, Col7, Col8, Col9, Col10, LockForAdmin " +
+						"FROM speeddatarule";
+			
+			statement = conn.prepareStatement(sql);
+			rs = statement.executeQuery();
+			
+			list = new ArrayList <SpeedDataRuleDTO> ();
+			
+			while (rs.next()) {
+				int col = 0;				
+				SpeedDataRuleDTO speedDataRuleDTO = null;
+				ArrayList <String> labels = new ArrayList <String> ();
+				String tabCategory = FormatString.blankNull(rs.getString(++col));
+				labels.add(FormatString.blankNull(rs.getString(++col)));
+				labels.add(FormatString.blankNull(rs.getString(++col)));
+				labels.add(FormatString.blankNull(rs.getString(++col)));
+				labels.add(FormatString.blankNull(rs.getString(++col)));
+				labels.add(FormatString.blankNull(rs.getString(++col)));
+				labels.add(FormatString.blankNull(rs.getString(++col)));
+				labels.add(FormatString.blankNull(rs.getString(++col)));
+				labels.add(FormatString.blankNull(rs.getString(++col)));
+				labels.add(FormatString.blankNull(rs.getString(++col)));
+				labels.add(FormatString.blankNull(rs.getString(++col)));
+				labels.add(FormatString.blankNull(rs.getString(++col)));
+				String lockForAdmin = FormatString.blankNull(rs.getString(++col));
+				speedDataRuleDTO = new SpeedDataRuleDTO(tabCategory, labels, lockForAdmin);
+				
+				list.add(speedDataRuleDTO);
+			}
+		} catch (SQLException e) {
+			logger.error("SQLException in getSpeedDataRule() : ", e);
+		} catch (Exception e) {
+			logger.error("Exception in getSpeedDataRule() : ", e);
+		}	
+		finally {
+			closeConnection();
+		}
+		
+		return list;
+	}
+
+}

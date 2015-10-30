@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:comm="http://aldorsolutions.com/webservice/xsd/comm" xmlns:fdmscomm="http://aldorsolutions.com/webservice/xsd/comm/fdms" xmlns:this="http://aldorsolutions.com/webservice/xsd/fdms/service" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://aldorsolutions.com/webservice/xsd/fdms/service">
+    <xs:import namespace="http://aldorsolutions.com/webservice/xsd/comm" schemaLocation="Common.xsd"/>
+    <xs:import namespace="http://aldorsolutions.com/webservice/xsd/comm/fdms" schemaLocation="FdmsCommon.xsd"/>
+    <xs:complexType name="FdmsRequest">
+        <xs:annotation>
+            <xs:appinfo>
+				Available Request Types: atNeed - atNeedRequest , atNeedFinance -
+				atNeedFinanceRequest
+    		</xs:appinfo>
+            <xs:documentation>
+				This a Fdms service request.
+    		</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="requestType" type="this:serviceType"/>
+            <xs:element name="requestContext" type="this:RequestContextType"/>
+            <xs:choice>
+                <xs:element name="atNeedRequest" nillable="true" type="this:AtNeedRequest"/>
+                <xs:element name="atNeedFinanceRequest" type="this:AtNeedFinanceRequest"/>
+                <xs:element name="vitalsRequest" type="this:VitalsRequest"/>
+                <xs:element name="preNeedRequest" type="this:PreNeedRequest"/>
+            </xs:choice>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:simpleType name="serviceType">
+        <xs:annotation>
+            <xs:appinfo>
+				Available Service Types: atNeed , atNeedFinance
+    		</xs:appinfo>
+            <xs:documentation>
+				Informs Request or Response Service Type.
+    		</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="atNeed"/>
+            <xs:enumeration value="atNeedFinance"/>
+            <xs:enumeration value="preNeed"/>
+            <xs:enumeration value="vitals"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="FdmsResponse">
+        <xs:annotation>
+            <xs:appinfo>
+				Available Response Types: atNeed - atNeedResponse , atNeedFinance -
+				atNeedFinanceResponse
+    		</xs:appinfo>
+            <xs:documentation>
+				This a Fdms service response.
+    		</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="responseType" type="this:serviceType"/>
+            <xs:choice>
+                <xs:element minOccurs="0" name="vitalsId" nillable="true" type="xs:int"/>
+                <xs:element name="fdmsStatusResponse" type="this:FdmsStatusResponseType"/>
+            </xs:choice>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="AtNeedRequest">
+        <xs:complexContent>
+            <xs:extension base="this:CaseRequest">
+                <xs:sequence>
+                    <xs:element name="firstCall" type="this:FirstCallType"/>
+                    <xs:element name="deceased" type="this:DeceasedType"/>
+                    <xs:element minOccurs="0" name="informant" type="this:InformantPerson"/>
+                    <xs:element minOccurs="0" name="nextOfKin" type="this:NextOfKinTypePerson"/>
+                    <xs:element minOccurs="0" name="executor" type="this:NextOfKinTypePerson"/>
+                    <xs:element minOccurs="0" name="shipAndAirlineInfo" type="xs:string"/>
+                    <xs:element minOccurs="0" name="callInfoNote" type="xs:string"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="DeceasedType">
+        <xs:sequence>
+            <xs:element name="name" type="fdmscomm:MsCompleteNameType"/>
+            <xs:element name="memorialName" type="comm:StrMax150Len"/>
+            <xs:element minOccurs="0" name="placeOfDeath" type="comm:StrMax50Len"/>
+            <xs:element minOccurs="0" name="placeOfDeathAddress" type="fdmscomm:MsStandardAddressType"/>
+            <xs:element minOccurs="0" name="locDeathLicenseNumber" type="comm:StrMax50Len"/>
+            <xs:element minOccurs="0" name="birthDate" type="xs:date"/>
+            <xs:element minOccurs="0" name="deathDate" type="xs:date"/>
+            <xs:element minOccurs="0" name="ageYears" nillable="true" type="xs:int"/>
+            <xs:element name="serviceDate" type="xs:date"/>
+            <xs:element minOccurs="0" name="dispositionDate" type="xs:date"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="CaseInfoType">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="decedentVitalsId" type="xs:int"/>
+            <xs:element minOccurs="0" name="decedentCaseNumber" type="comm:StrMax20Len"/>
+            <xs:element minOccurs="0" name="decedentContractNumber" type="comm:StrMax20Len"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="FirstCallType">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="arrangeDate" type="xs:date"/>
+            <xs:element minOccurs="0" name="arrangeTime" type="fdmscomm:TimeType"/>
+            <xs:element minOccurs="0" name="originalPreneedDate" type="xs:date"/>
+            <xs:element minOccurs="0" name="funeralHome" type="fdmscomm:Location"/>
+            <xs:element name="facility" type="this:FaciltyType"/>
+            <xs:element minOccurs="0" name="source" type="comm:StrMax20Len"/>
+            <xs:element minOccurs="0" name="embalming" type="comm:StrMax30Len"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="FaciltyType">
+        <xs:choice>
+            <xs:element name="sameAsFuneralHome">
+                <xs:complexType/>
+            </xs:element>
+            <xs:element name="location" type="fdmscomm:Location"/>
+        </xs:choice>
+    </xs:complexType>
+    <xs:complexType name="InformantPerson">
+        <xs:complexContent>
+            <xs:extension base="fdmscomm:MsRelatedPersonType">
+                <xs:attribute name="useDecessedAddr" type="xs:boolean" use="required"/>
+                <xs:attribute name="billToParty" type="xs:boolean" use="required"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="NextOfKinTypePerson">
+        <xs:complexContent>
+            <xs:extension base="fdmscomm:MsRelatedPersonType">
+                <xs:attribute name="sameAsInformant" type="xs:boolean" use="required"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="CaseRequest">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="caseInfo" type="this:CaseInfoType"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="ChargeType">
+        <xs:sequence>
+            <xs:element name="contractLineNo" type="xs:int"/>
+            <xs:element name="description" type="comm:StrMax50Len"/>
+            <xs:element name="amount" type="fdmscomm:MsAmountType"/>
+            <xs:element name="taxCode" type="comm:StrMax10Len"/>
+            <xs:element name="sequenceNo" type="xs:int"/>
+            <xs:element name="fromPackage" type="xs:boolean"/>
+            <xs:element name="item" type="this:ItemType"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="InventoryItemType">
+        <xs:sequence>
+            <xs:element name="invMasterKey" type="xs:int"/>
+            <xs:element minOccurs="0" name="invOnHandId" type="xs:int"/>
+            <xs:element minOccurs="0" name="serialNo" type="comm:StrMax25Len"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="ItemType">
+        <xs:choice>
+            <xs:element name="merchandiseItem" type="this:InventoryItemType"/>
+            <xs:element name="serviceItem" type="this:serviceItemType"/>
+        </xs:choice>
+    </xs:complexType>
+    <xs:complexType name="serviceItemType">
+        <xs:attribute name="id" type="xs:int" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="FinancialInfoType">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="invoiceDate" type="xs:date"/>
+            <xs:element minOccurs="0" name="dueDate" type="xs:date"/>
+            <xs:element minOccurs="0" name="lastStatementDate" type="xs:date"/>
+            <xs:element name="salesType" type="xs:string"/>
+            <xs:element minOccurs="0" name="serviceType" type="xs:string"/>
+            <xs:element minOccurs="0" name="source" type="comm:StrMax20Len"/>
+            <xs:element minOccurs="0" name="disposition" type="xs:string"/>
+            <xs:element minOccurs="0" name="servicePlan" type="xs:string"/>
+            <xs:element minOccurs="0" name="HaveWeEverProvidedServicesForThisFamily" type="comm:YesNoType"/>
+            <xs:element minOccurs="0" name="WhatFuneralHomeDidFamilyPreviouslyUse" type="comm:StrMax25Len"/>
+            <xs:element minOccurs="0" name="HowDidFamilyHearAboutUs" type="comm:StrMax25Len"/>
+            <xs:element minOccurs="0" name="miscNotes" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DepositInfoType">
+        <xs:sequence>
+            <xs:element name="depositAmount" type="fdmscomm:MsAmountType"/>
+            <xs:element name="datePaid" type="xs:date"/>
+            <xs:element name="adjustmentType" type="xs:string"/>
+            <xs:element minOccurs="0" name="paymentSource" type="comm:StrMax30Len"/>
+            <xs:element name="depositDate" type="xs:date"/>
+            <xs:element minOccurs="0" name="manualReceiptno" type="comm:StrMax15Len"/>
+            <xs:element name="paymentMethod" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="ApplyFinanceCharge">
+        <xs:sequence>
+            <xs:element name="monthlyInterestRate" type="fdmscomm:MsAmountType"/>
+            <xs:element name="interestFromDate" type="xs:date"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="FinanceChargeOptionType">
+        <xs:sequence>
+            <xs:element name="applyFinanceCharge" type="this:ApplyFinanceCharge"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="ChargesType">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="charge" type="this:ChargeType"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="PreNeedFinanceRequest">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="charges" type="this:ChargesType"/>
+            <xs:element name="financialInfo" type="this:FinancialInfoType"/>
+            <xs:element minOccurs="0" name="depositInfo" type="this:DepositInfoType"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="AtNeedFinanceRequest">
+        <xs:complexContent>
+            <xs:extension base="this:PreNeedFinanceRequest">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="financeChargeOption" type="this:FinanceChargeOptionType"/>
+                    <xs:element minOccurs="0" name="sendChargesToAccounting" type="comm:YesNoType"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="VitalsRequest">
+        <xs:sequence>
+            <xs:element name="vitalsId" type="xs:int"/>
+            <xs:element minOccurs="0" name="idTagNumber" type="comm:StrMax30Len"/>
+            <xs:element minOccurs="0" name="deceasedName" type="fdmscomm:MsCompleteNameType"/>
+            <xs:element minOccurs="0" name="otherName" type="fdmscomm:MsCompleteNameType"/>
+            <xs:element name="gender" type="comm:GenderType"/>
+            <xs:element minOccurs="0" name="dateOfBirth" type="xs:date"/>
+            <xs:element minOccurs="0" name="dateOfDeath" type="xs:date"/>
+            <xs:element minOccurs="0" name="age" type="comm:AgeType"/>
+            <xs:element minOccurs="0" name="locationOfDeath" type="fdmscomm:LocationOfDeathType"/>
+            <xs:element minOccurs="0" name="currentResidence" type="fdmscomm:MsResidenceType"/>
+            <xs:element minOccurs="0" name="generalHistory" type="this:GeneralHistoryType"/>
+            <xs:element minOccurs="0" name="ethnicity" type="this:EthnicityType"/>
+            <xs:element minOccurs="0" name="occupationalHistory" type="comm:OccupationalHistoryType"/>
+            <xs:element minOccurs="0" name="maritalStatus" type="comm:StrMax14Len"/>
+            <xs:element minOccurs="0" name="survivingSpouseName" type="fdmscomm:MsNameType"/>
+            <xs:element minOccurs="0" name="father" type="fdmscomm:MsParentType"/>
+            <xs:element minOccurs="0" name="mother" type="fdmscomm:MsParentType"/>
+            <xs:element minOccurs="0" name="informantInfo" type="fdmscomm:MsRelatedPersonType"/>
+            <xs:element minOccurs="0" name="dispositionInfo" type="fdmscomm:DispositionInfoType"/>
+            <xs:element minOccurs="0" name="certification" type="fdmscomm:CertificationInfoType"/>
+            <xs:element minOccurs="0" name="causeOfDeath" type="this:CauseOfDeathType"/>
+            <xs:element minOccurs="0" name="medicalExaminer" type="fdmscomm:MedicalExaminerType"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="GeneralHistoryType">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="birthplace" type="fdmscomm:MsStandardAddressType"/>
+            <xs:element minOccurs="0" name="SSN" type="fdmscomm:SSNType"/>
+            <xs:element minOccurs="0" name="decedentsEducation" type="this:DecedentsEducationType"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DecedentsEducationType">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="highestGradeCompleted" type="comm:StrMax200Len"/>
+            <xs:element minOccurs="0" name="yearsOfElementaryOrSecondary" type="comm:StrMax03Len"/>
+            <xs:element minOccurs="0" name="yearsOfColege" type="comm:StrMax03Len"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="EthnicityType">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="race" type="xs:string"/>
+            <xs:element minOccurs="0" name="ancestry" type="xs:string"/>
+            <xs:element minOccurs="0" name="tribal" type="this:TribalType"/>
+            <xs:element minOccurs="0" name="hispanicOrigin" type="comm:YesNoType"/>
+            <xs:element minOccurs="0" name="citizenship" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TribalType">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="member" type="comm:SimpleAnswerType"/>
+            <xs:element minOccurs="0" name="name" type="comm:StrMax30Len"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="CauseOfDeathType">
+        <xs:sequence>
+            <xs:element maxOccurs="4" minOccurs="0" name="cause" type="fdmscomm:CauseType"/>
+            <xs:element name="tobaccoUser" type="comm:CompleteAnswerType"/>
+            <xs:element minOccurs="0" name="pregnantAtDeath" type="xs:string"/>
+            <xs:element minOccurs="0" name="otherCondition" type="comm:StrMax50Len"/>
+            <xs:element name="typeOfDeath" type="comm:StrMax50Len"/>
+            <xs:element name="wasBodyFoundMore24Hr" type="xs:boolean"/>
+            <xs:element name="wasAnAutopsyPerformed" type="xs:boolean"/>
+            <xs:element minOccurs="0" name="wereAutopsyFindingsAvailablePriorToCauseOfDeath" type="comm:YesNoType"/>
+            <xs:element minOccurs="0" name="hospiceStatus" type="comm:YesNoType"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="RequestContextType">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="localeId" type="xs:int"/>
+            <xs:element minOccurs="0" name="locationId" type="xs:int"/>
+            <xs:element minOccurs="0" name="directorId" type="xs:int"/>
+            <xs:element minOccurs="0" name="vitalsId" type="xs:int"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="PreNeedRequest">
+        <xs:complexContent>
+            <xs:extension base="this:CaseRequest">
+                <xs:sequence>
+                    <xs:element name="buyer" type="this:BuyerInfoType"/>
+                    <xs:element name="insuredInfo" type="this:insuredInfoType"/>
+                    <xs:element name="salesInfo" type="this:salesInfoType"/>
+                    <xs:element minOccurs="0" name="fundDepository" type="this:fundDepositoryType"/>
+                    <xs:element minOccurs="0" name="source" type="comm:StrMax40Len"/>
+                    <xs:element minOccurs="0" name="notes" type="xs:string"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="BuyerInfoType">
+        <xs:complexContent>
+            <xs:extension base="fdmscomm:MsRelatedPersonType">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="SSN" type="fdmscomm:SSNType"/>
+                    <xs:element minOccurs="0" name="Co-Buyer" type="comm:StrMax150Len"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="insuredInfoType">
+        <xs:sequence>
+            <xs:element name="name" type="fdmscomm:MsNameType"/>
+            <xs:element minOccurs="0" name="address" type="fdmscomm:MsStandardAddressType"/>
+            <xs:element minOccurs="0" name="SSN" type="fdmscomm:SSNType"/>
+            <xs:element minOccurs="0" name="dathOfBirth" type="xs:date"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="salesInfoType">
+        <xs:sequence>
+            <xs:element name="saleDate" type="xs:date"/>
+            <xs:element minOccurs="0" name="service" type="comm:StrMax40Len"/>
+            <xs:element minOccurs="0" name="casket" type="comm:StrMax29Len"/>
+            <xs:element minOccurs="0" name="vault" type="comm:StrMax29Len"/>
+            <xs:element minOccurs="0" name="urn" type="comm:StrMax29Len"/>
+            <xs:element minOccurs="0" name="serviceSaleAmount" type="fdmscomm:MsAmountType"/>
+            <xs:element minOccurs="0" name="casketSaleAmount" type="fdmscomm:MsAmountType"/>
+            <xs:element minOccurs="0" name="urnSaleAmount" type="fdmscomm:MsAmountType"/>
+            <xs:element minOccurs="0" name="vaultSaleAmount" type="fdmscomm:MsAmountType"/>
+            <xs:element minOccurs="0" name="otherSaleAmount" type="fdmscomm:MsAmountType"/>
+            <xs:element minOccurs="0" name="GSTAmount" type="fdmscomm:MsAmountType"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="disbursements" type="this:disbursementType"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="disbursementType">
+        <xs:sequence>
+            <xs:element name="disbursement" type="comm:StrMax30Len"/>
+            <xs:element name="amount" type="fdmscomm:MsAmountType"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="fundDepositoryType">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="fundType" type="comm:StrMax24Len"/>
+            <xs:element minOccurs="0" name="fundWith" type="comm:StrMax40Len"/>
+            <xs:element minOccurs="0" name="startedDate" type="xs:date"/>
+            <xs:element minOccurs="0" name="maturityDate" type="xs:date"/>
+            <xs:element minOccurs="0" name="accountNumber" type="comm:StrMax30Len"/>
+            <xs:element minOccurs="0" name="EstimateInterestRate" type="fdmscomm:MsAmountType"/>
+            <xs:element minOccurs="0" name="faceValue" type="fdmscomm:MsAmountType"/>
+            <xs:element minOccurs="0" name="contractAmount" type="fdmscomm:MsAmountType"/>
+            <xs:element minOccurs="0" name="YTDPaid" type="fdmscomm:MsAmountType"/>
+            <xs:element minOccurs="0" name="totalPaid" type="fdmscomm:MsAmountType"/>
+            <xs:element minOccurs="0" name="YTDInterest" type="fdmscomm:MsAmountType"/>
+            <xs:element minOccurs="0" name="managementFee" type="fdmscomm:MsAmountType"/>
+            <xs:element minOccurs="0" name="commission" type="fdmscomm:MsAmountType"/>
+            <xs:element minOccurs="0" name="lastPaymentDate" type="xs:date"/>
+            <xs:element minOccurs="0" name="lastPaymentAmount" type="fdmscomm:MsAmountType"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="FdmsStatusResponseType">
+        <xs:sequence>
+            <xs:element name="status" type="xs:boolean"/>
+            <xs:element minOccurs="0" name="message" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>
