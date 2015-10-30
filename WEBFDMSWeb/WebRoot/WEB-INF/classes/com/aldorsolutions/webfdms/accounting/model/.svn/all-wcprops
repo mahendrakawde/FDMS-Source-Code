@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSWeb/src/com/aldorsolutions/webfdms/accounting/model
+END
+AccountingInterfaceDTO.java
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSWeb/src/com/aldorsolutions/webfdms/accounting/model/AccountingInterfaceDTO.java
+END
+DeceasedDTO.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSWeb/src/com/aldorsolutions/webfdms/accounting/model/DeceasedDTO.java
+END
+ItemDTO.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSWeb/src/com/aldorsolutions/webfdms/accounting/model/ItemDTO.java
+END
+SaleInfoDTO.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSWeb/src/com/aldorsolutions/webfdms/accounting/model/SaleInfoDTO.java
+END
+CustomerDTO.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSWeb/src/com/aldorsolutions/webfdms/accounting/model/CustomerDTO.java
+END
+GLAccountDefaultDTO.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSWeb/src/com/aldorsolutions/webfdms/accounting/model/GLAccountDefaultDTO.java
+END

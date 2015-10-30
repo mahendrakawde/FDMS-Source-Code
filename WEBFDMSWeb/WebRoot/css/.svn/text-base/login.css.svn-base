@@ -1,0 +1,277 @@
+html {
+   padding: 0px;
+   margin: 0px;
+}
+
+body {
+   padding: 20px;
+   margin: 0px;
+   font: normal 11px/20px Verdana;
+   background: #fff;
+   color: #000;
+}
+
+/*                           
+        MISCELLANEOUS        
+                           */
+.hide {
+   display: none;
+}
+
+br.clear {
+   padding: 0px;
+   margin: 0px;
+   width: 0px;
+   height: 0px;
+   clear: both;
+}
+
+.centertext {
+   text-align: center;
+}
+
+a:link, a:visited, a:active {
+   color: #134d78;
+   text-decoration: none;
+}
+a:hover {
+   color: #2596e9;
+   text-decoration: underline;
+}
+
+.bluetext {
+   color: #134d78;
+}
+
+p#version {
+   text-align: center;
+}
+/***************************/
+
+div#container {
+   padding: 0px;
+   margin: 0px auto;
+   width: 800px;
+}
+
+   h1#aldor {
+   padding: 0px;
+   margin: 0px;
+   display: block;
+   width: 320px;
+   height: 100px;
+   background: url(../imagesLogin/FDMS_logo_v3s.jpg) no-repeat;
+   }
+      h1#aldor a:link, h1#aldor a:visited, h1#aldor a:active, h1#aldor a:hover {
+         padding: 0px;
+         margin: 0px;
+         display: block;
+         width: 320px;
+         height: 175px;
+         text-decoration: none;
+      }
+
+   ul#nav {
+      padding: 0px;
+      margin: 10px 0px 0px 0px;
+      width: 225px;
+      height: 338px;
+      list-style: none;
+      background: url(../imagesLogin/nav_bg.jpg) no-repeat;
+      float: left;
+      position: relative;
+   }
+      ul#nav li {
+         padding: 0px;
+         margin: 0px;
+         display: block;
+         width: 220px;
+         height: 73px;
+         position: absolute;
+         left: 3px;
+      }
+      ul#nav li#software {
+         top: 4px;
+      }
+         li#software a:link, li#software a:visited, li#software a:active {
+            display: block;
+            width: 220px;
+            height: 73px;
+            background: url(../imagesLogin/nav_software_bg.jpg) no-repeat;
+            text-decoration: none;
+         }
+         li#software a:hover {
+            background: none;
+            text-decoration: none;
+         }
+      ul#nav li#website {
+         top: 90px;
+      }
+         li#website a:link, li#website a:visited, li#website a:active {
+            display: block;
+            width: 220px;
+            height: 73px;
+            background: url(../imagesLogin/nav_website_bg.jpg) no-repeat;
+            text-decoration: none;
+         }
+         li#website a:hover {
+            background: none;
+            text-decoration: none;
+         }
+      ul#nav li#memorialization {
+         top: 177px;
+      }
+         li#memorialization a:link, li#memorialization a:visited, li#memorialization a:active {
+            display: block;
+            width: 220px;
+            height: 73px;
+            background: url(../imagesLogin/nav_memorialization_bg.jpg) no-repeat;
+            text-decoration: none;
+         }
+         li#memorialization a:hover {
+            background: none;
+            text-decoration: none;
+         }
+      ul#nav li#news {
+         top: 262px;
+      }
+         li#news a:link, li#news a:visited, li#news a:active {
+            display: block;
+            width: 220px;
+            height: 73px;
+            background: url(../imagesLogin/nav_news_bg.jpg) no-repeat;
+            text-decoration: none;
+         }
+         li#news a:hover {
+            background: none;
+            text-decoration: none;
+         }
+   
+   div#content {
+      padding: 0px 20px;
+      margin: 0px;
+      width: 522px;
+      background: url(../imagesLogin/content_bg.jpg) repeat-y;
+      float: left;
+      position: relative;
+   }
+      p#top {
+         padding: 0px;
+         margin: 0px -20px 0px -20px;
+         display: block;
+         width: 562px;
+         height: 30px;
+         background: url(../imagesLogin/content_top.jpg) no-repeat;
+      }
+      p#bottom {
+         padding: 0px;
+         margin: 15px -20px 0px -20px;
+         display: block;
+         width: 562px;
+         height: 30px;
+         background: url(../imagesLogin/content_bottom.jpg) no-repeat;
+      }
+      
+/*                           
+         LOGIN FORM          
+                           */
+      div#content form#login {
+         padding: 0px 10px 0px 0px;
+         margin: 0px;
+         width: 185px;
+         float: left;
+      }
+         p#fdmslogo {
+            padding: 0px;
+            margin: 0px auto;
+            width: 177px;
+            height: 56px;
+            background: url(../imagesLogin/logo_fdms.jpg) no-repeat;
+         }
+         p#welcomesentence {
+            padding: 5px 0px;
+            margin: 0px;
+            color: #fe7c01;
+            text-align: center;
+         }
+         
+         form#login input#submit {
+            padding: 1px;
+            margin: 0px;
+            width: 100px;
+         }
+         
+         form#login input {
+            padding: 5px;
+            margin: 0px;
+            width: 175px;
+            font: normal 15px/15px Verdana;
+            color: #000;
+            border: 1px solid #134d78;
+            background: #fff;
+         }
+/***************************/
+
+/*                           
+         CONTACT BOX         
+                           */
+      div#content div#contact {
+         padding: 0px;
+         margin: 20px 0px 0px 0px;
+         width: 325px;
+         float: left;
+      }
+/***************************/
+      
+      div#parent {
+         padding: 0px;
+         margin: 0px;
+         width: 287px;
+         height: 187px;
+         background: url(../imagesLogin/parent_bg.jpg) no-repeat;
+         position: absolute;
+         bottom: -140px;
+         right: 20px;
+      }
+         div#parent h3#header {
+            padding: 0px;
+            margin: 0px;
+            display: block;
+            width: 287px;
+            height: 37px;
+            background: url(../imagesLogin/parent_header.jpg) no-repeat;
+         }
+         div#parent p a:link, div#parent p a:visited, div#parent p a:active, div#parent p a:hover {
+            padding: 0px;
+            margin: 0px;
+            display: block;
+            width: 143px;
+            height: 53px;
+            text-decoration: none;
+         }
+         div#parent p#davidson {
+            width: 144px;
+            height: 53px;
+            background: url(../imagesLogin/parent_logo_davidson.jpg) no-repeat;
+         }
+         div#parent p#funeralwire {
+            width: 144px;
+            height: 53px;
+            background: url(../imagesLogin/parent_logo_funeralwire.jpg) no-repeat;
+         }
+         div#parent p#fdms {
+            width: 143px;
+            height: 53px;
+            background: url(../imagesLogin/parent_logo_fdms.jpg) no-repeat;
+         }
+         div#parent p#reports {
+            width: 143px;
+            height: 53px;
+            background: url(../imagesLogin/parent_logo_reports.jpg) no-repeat;
+         }
+         div#parent p.logo {
+            padding: 0px;
+            margin: 0px;
+            float: left;
+            display: block;
+         }

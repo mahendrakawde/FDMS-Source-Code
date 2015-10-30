@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+ <globalConfiguration>
+  <parameter name="sendMultiRefs" value="true"/>
+  <parameter name="disablePrettyXML" value="true"/>
+  <parameter name="adminPassword" value="admin"/>
+  <parameter name="dotNetSoapEncFix" value="true"/>
+  <parameter name="enableNamespacePrefixOptimization" value="false"/>
+  <parameter name="sendXMLDeclaration" value="true"/>
+  <parameter name="sendXsiTypes" value="true"/>
+  <requestFlow>
+   <handler type="java:org.apache.axis.handlers.JWSHandler">
+    <parameter name="scope" value="session"/>
+   </handler>
+   <handler type="java:org.apache.axis.handlers.JWSHandler">
+    <parameter name="scope" value="request"/>
+    <parameter name="extension" value=".jwr"/>
+   </handler>
+  </requestFlow>
+ </globalConfiguration>
+ <handler name="URLMapper" type="java:org.apache.axis.handlers.http.URLMapper"/>
+ <handler name="LocalResponder" type="java:org.apache.axis.transport.local.LocalResponder"/>
+ <handler name="Authenticate" type="java:org.apache.axis.handlers.SimpleAuthenticationHandler"/>
+ <service name="QBWebConnectorSvcSoap" provider="java:RPC" style="wrapped" use="literal">
+  <operation name="authenticate" qname="ns1:authenticate" returnItemQName="ns1:string" returnQName="ns1:authenticateResult" returnType="ns1:ArrayOfString" soapAction="http://developer.intuit.com/authenticate" xmlns:ns1="http://developer.intuit.com/">
+   <parameter qname="ns1:strUserName" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter qname="ns1:strPassword" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </operation>
+  <operation name="sendRequestXML" qname="ns2:sendRequestXML" returnQName="ns2:sendRequestXMLResult" returnType="xsd:string" soapAction="http://developer.intuit.com/sendRequestXML" xmlns:ns2="http://developer.intuit.com/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <parameter qname="ns2:ticket" type="xsd:string"/>
+   <parameter qname="ns2:strHCPResponse" type="xsd:string"/>
+   <parameter qname="ns2:strCompanyFileName" type="xsd:string"/>
+   <parameter qname="ns2:qbXMLCountry" type="xsd:string"/>
+   <parameter qname="ns2:qbXMLMajorVers" type="xsd:int"/>
+   <parameter qname="ns2:qbXMLMinorVers" type="xsd:int"/>
+  </operation>
+  <operation name="receiveResponseXML" qname="ns3:receiveResponseXML" returnQName="ns3:receiveResponseXMLResult" returnType="xsd:int" soapAction="http://developer.intuit.com/receiveResponseXML" xmlns:ns3="http://developer.intuit.com/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <parameter qname="ns3:ticket" type="xsd:string"/>
+   <parameter qname="ns3:response" type="xsd:string"/>
+   <parameter qname="ns3:hresult" type="xsd:string"/>
+   <parameter qname="ns3:message" type="xsd:string"/>
+  </operation>
+  <operation name="connectionError" qname="ns4:connectionError" returnQName="ns4:connectionErrorResult" returnType="xsd:string" soapAction="http://developer.intuit.com/connectionError" xmlns:ns4="http://developer.intuit.com/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <parameter qname="ns4:ticket" type="xsd:string"/>
+   <parameter qname="ns4:hresult" type="xsd:string"/>
+   <parameter qname="ns4:message" type="xsd:string"/>
+  </operation>
+  <operation name="getLastError" qname="ns5:getLastError" returnQName="ns5:getLastErrorResult" returnType="xsd:string" soapAction="http://developer.intuit.com/getLastError" xmlns:ns5="http://developer.intuit.com/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <parameter qname="ns5:ticket" type="xsd:string"/>
+  </operation>
+  <operation name="closeConnection" qname="ns6:closeConnection" returnQName="ns6:closeConnectionResult" returnType="xsd:string" soapAction="http://developer.intuit.com/closeConnection" xmlns:ns6="http://developer.intuit.com/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <parameter qname="ns6:ticket" type="xsd:string"/>
+  </operation>
+  <operation name="clientVersion" qname="ns6:clientVersion" returnQName="ns6:clientVersionResult" returnType="xsd:string" soapAction="http://developer.intuit.com/clientVersion" xmlns:ns6="http://developer.intuit.com/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <parameter qname="ns6:qbVersion" type="xsd:string"/>
+  </operation>
+  <parameter name="allowedMethods" value="authenticate clientVersion closeConnection receiveResponseXML connectionError sendRequestXML getLastError"/>
+  <parameter name="typeMappingVersion" value="1.2"/>
+  <parameter name="wsdlPortType" value="QBWebConnectorSvcSoap"/>
+  <parameter name="className" value="com.aldorsolutions.webfdms.webservice.QBWebConnectorSvcSoapImpl"/>
+  <parameter name="wsdlServicePort" value="QBWebConnectorSvcSoap"/>
+  <parameter name="schemaQualified" value="http://developer.intuit.com/"/>
+  <parameter name="wsdlTargetNamespace" value="http://developer.intuit.com/"/>
+  <parameter name="wsdlServiceElement" value="QBWebConnectorSvc"/>
+  <arrayMapping innerType="xsd:string" languageSpecificType="java:java.lang.String[]" qname="ns7:ArrayOfString" xmlns:ns7="http://developer.intuit.com/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+ </service>
+ <service name="AdminService" provider="java:MSG">
+  <parameter name="allowedMethods" value="AdminService"/>
+  <parameter name="enableRemoteAdmin" value="false"/>
+  <parameter name="className" value="org.apache.axis.utils.Admin"/>
+  <namespace>http://xml.apache.org/axis/wsdd/</namespace>
+ </service>
+ <service name="Version" provider="java:RPC">
+  <parameter name="allowedMethods" value="getVersion"/>
+  <parameter name="className" value="org.apache.axis.Version"/>
+ </service>
+ <transport name="http">
+  <requestFlow>
+   <handler type="URLMapper"/>
+   <handler type="java:org.apache.axis.handlers.http.HTTPAuthHandler"/>
+  </requestFlow>
+  <parameter name="qs:list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <parameter name="qs:wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+  <parameter name="qs.list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <parameter name="qs.method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <parameter name="qs:method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <parameter name="qs.wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+ </transport>
+ <transport name="local">
+  <responseFlow>
+   <handler type="LocalResponder"/>
+  </responseFlow>
+ </transport>
+</deployment>

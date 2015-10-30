@@ -1,0 +1,298 @@
+package com.aldorsolutions.webfdms.beans;
+
+import com.aldorsolutions.webfdms.database.DatabasePeer;
+import com.aldorsolutions.webfdms.database.DatabaseTransaction;
+import com.aldorsolutions.webfdms.database.PersistenceException;
+import com.aldorsolutions.webfdms.database.Persistent;
+
+/**
+ * DbLocationPeer supplies constants and SQL for Persistent Class.
+ * Creation date: (11/14/2001 4:13:09 PM)
+ * @author:
+ */
+public class DbLocationPeer extends DatabasePeer {
+
+  static public final String IDENTITY     = "LocationID";
+  static public final String NAME     = "Name";
+  static public final String COMPANYNO  = "CompanyNumber";
+  static public final String LOCATIONNUM = "LocationNum";
+  static public final String DIVISION	= "Division";
+  static public final String LOCALE     = "Locale";
+  static public final String SERVICEFEE = "StandardServiceFee";
+  static public final String PRICELIST  = "PriceListVersion";
+  static public final String PACKAGELIST  = "PackageVersion";
+  static public final String INACTIVE   = "InactiveCode";
+  static public final String CASHACCT   = "CashGlAcct";
+  static public final String ARACCT   = "ArGlAcct";
+  static public final String FINCHRGACCT  = "FinChrgGlAcct";
+  static public final String APACCT   = "ApGlAcct";
+  static public final String DISCOUNTACCT = "DiscountGlAcct";
+  static public final String NEXTCHECKNO  = "NextCheckNumber";
+  static public final String DISCOUNTCODE = "DiscountHandlingCode";
+  static public final String CASHBALANCE  = "CheckingAcctBalance";
+  static public final String ADDR1    = "Addr1";
+  static public final String ADDR2    = "Addr2";
+  static public final String ADDR3    = "Addr3";
+  static public final String CITY     = "City";
+  static public final String STATE    = "State";  
+  static public final String ZIPCODE    = "ZipCode";
+  static public final String COUNTY = "County";
+  static public final String PHONE    = "PhoneNumber";
+  static public final String ALTPHONE   = "OtherPhone";
+  static public final String LICENSENO  = "LicenseNumber";
+  static public final String PREFVITALS = "genericVitals";
+  static public final String MANAGERNAME  = "ManagerName";
+  static public final String UNDEPOSITED_FUNDS_ACCT = "UndepositedFundsAcct";
+  static public final String USE_UNDEPOSITED_FUNDS_ACCT = "UseUndepositedFundsAcct";
+  static public final String WEBSITE = "Website";
+  static public final String EMAIL = "Email";
+  static public final String ACCTUSERID = "AcctUserID";
+  static public final String INTERNALVENDORLIMIT = "internalVendorLimit";
+  static public final String EXTERNALVENDORLIMIT = "externalVendorLimit";
+  static public final String ONETIMEVENDORCODE = "OneTimeVendorCode";
+  static public final String FUNERALSYNCLOCATIONID = "FuneralSyncLocationId";
+  static public final String MERCHANDISEID = "MerchandiseId";
+  static public final String TURNONAPPLYFINANCECHARGE = "TurnOnApplyFinanceCharge";
+  static public final String MONTHLYINTERESTRATE = "MonthlyInterestRate";
+  static public final String EREGISTERPAGE = "ERegisterPage";
+  static public final String EREGISTERTARGETPAGE = "ERegisterTargetPage";
+/**
+ * getInsertSql method comment.
+ */
+protected java.sql.PreparedStatement getInsertSql(DatabaseTransaction t, Persistent p) throws PersistenceException {
+    java.sql.Connection connection = null;
+    try {
+      DbLocation rec=(DbLocation)p;
+      connection = t.getConnection();
+      java.sql.PreparedStatement pstmt = connection.prepareStatement(
+      "INSERT INTO locations ("+
+        NAME +","+
+        COMPANYNO +","+
+        LOCATIONNUM +","+
+		DIVISION +","+
+        LOCALE +","+
+        SERVICEFEE +","+
+        PRICELIST +","+
+        PACKAGELIST +","+
+        CASHACCT +","+
+        ARACCT +","+
+        FINCHRGACCT +","+
+        INACTIVE +","+
+        APACCT +","+
+        DISCOUNTACCT +","+
+        NEXTCHECKNO +","+
+        DISCOUNTCODE +","+
+        CASHBALANCE +","+
+        ADDR1 +","+
+        ADDR2 +","+
+        ADDR3 +","+
+        CITY +","+
+        STATE +","+
+        ZIPCODE +","+
+        COUNTY + "," +
+        PHONE +","+
+        ALTPHONE +","+
+        LICENSENO +","+
+		WEBSITE +","+
+		EMAIL +","+
+        PREFVITALS +","+
+        MANAGERNAME+", "+
+        UNDEPOSITED_FUNDS_ACCT+", "+
+        USE_UNDEPOSITED_FUNDS_ACCT+", "+
+        ACCTUSERID +", "+
+        INTERNALVENDORLIMIT +", "+
+        EXTERNALVENDORLIMIT +", "+
+        ONETIMEVENDORCODE +", "+
+        FUNERALSYNCLOCATIONID +", "+
+        MERCHANDISEID +", "+
+        TURNONAPPLYFINANCECHARGE +", "+
+        MONTHLYINTERESTRATE +", "+
+        EREGISTERPAGE +", "+
+        EREGISTERTARGETPAGE +" "+
+        ") VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"
+      );
+      pstmt.setString(1, rec.getName());
+      pstmt.setString(2, rec.getCompanyNumber());
+      pstmt.setString(3, rec.getLocationNumber());
+      pstmt.setString(4, rec.getDivision());
+      pstmt.setInt   (5, rec.getLocaleNumber());
+      pstmt.setInt   (6, rec.getStdServiceCharge());
+      pstmt.setString(7, rec.getPriceListVersion());
+      pstmt.setString(8, rec.getPackageVersion());
+      pstmt.setString(9, rec.getCashAcct());
+      pstmt.setString(10, rec.getArAcct());
+      pstmt.setString(11, rec.getFinanceChargeAcct());
+      pstmt.setString(12, rec.getInactiveCode());
+      pstmt.setString(13, rec.getApAcct());
+      pstmt.setString(14, rec.getDiscountAcct());
+      pstmt.setLong   (15, rec.getNextCheckNumber());
+      pstmt.setString(16, rec.getDiscountHandlingCode());
+      pstmt.setInt   (17, rec.getCashBalance());
+      pstmt.setString(18, rec.getAddr1());
+      pstmt.setString(19, rec.getAddr2());
+      pstmt.setString(20, rec.getAddr3());
+      pstmt.setString(21, rec.getCity());
+      pstmt.setString(22, rec.getState());
+      pstmt.setString(23, rec.getZip());
+      pstmt.setString(24, rec.getCounty());      
+      pstmt.setString(25, rec.getPhone());
+      pstmt.setString(26, rec.getPhoneAlternate());
+      pstmt.setString(27, rec.getLicenseNumber());
+      pstmt.setString(28, rec.getWebsite());
+      pstmt.setString(29, rec.getEmail());
+      pstmt.setString(30, rec.getPreferenceGenericVitals());
+      pstmt.setString(31, rec.getManagerName());
+      pstmt.setString(32, rec.getUndepositedFundsAcct());
+      pstmt.setBoolean(33, rec.getUseUndepositedFundsAcct());
+      pstmt.setLong  (34, rec.getAccountantUserID() );
+      pstmt.setDouble(35, rec.getInternalVendorLimit() );
+      pstmt.setDouble(36, rec.getExternalVendorLimit() );
+      pstmt.setString(37, rec.getOneTimeVendorCode() );
+      pstmt.setString(38, rec.getFuneralSyncLocationId());
+      pstmt.setInt   (39, rec.getMerchandiseId());
+      pstmt.setString(40, rec.getTurnOnApplyFinanceCharge() );
+      pstmt.setString(41, rec.getMonthlyInterestRate());
+      pstmt.setString(42, rec.getERegisterPage());
+      pstmt.setString(43, rec.getERegisterTargetPage());
+      return pstmt;
+    }
+    catch (java.sql.SQLException e){
+      throw new PersistenceException("DbLocationPeer.Insert:"+e.getMessage(),e);
+    }
+}
+/**
+ * getRemoveSql method comment.
+ */
+protected java.sql.PreparedStatement getRemoveSql(DatabaseTransaction t, Persistent p) throws PersistenceException {
+    java.sql.PreparedStatement pstmt=null;
+    java.sql.Connection connection = null;
+    try {
+      connection = t.getConnection();
+      //pstmt = connection.prepareStatement("DELETE FROM Locations WHERE LocationID =?");
+      //pstmt.setInt(1,p.getId());
+      // 9/11/2002 changed to logical delete instead of physical removal
+      pstmt = connection.prepareStatement(
+      "UPDATE locations SET InactiveCode=? where LocationID=?");
+      pstmt.setString(1, "D");
+      pstmt.setInt(2,p.getId());
+
+      return pstmt;
+    }
+    catch (java.sql.SQLException e){
+      throw new PersistenceException("DbLocationsPeer.Remove",e);
+    }
+}
+/**
+ * getRestoreSql method comment.
+ */
+protected String getRestoreSql(Persistent p) {
+    return
+    "SELECT * from locations WHERE LocationID = "
+    + p.getId();
+}
+/**
+ * getUpdateSql method comment.
+ */
+protected java.sql.PreparedStatement getUpdateSql(DatabaseTransaction t, Persistent p) throws PersistenceException {
+    java.sql.Connection connection = null;
+    try {
+      DbLocation rec=(DbLocation)p;
+      connection = t.getConnection();
+      java.sql.PreparedStatement pstmt = connection.prepareStatement(
+      "UPDATE locations SET "+
+        NAME +"=?,"+
+        COMPANYNO +"=?,"+
+        LOCATIONNUM +"=?,"+
+		DIVISION +"=?,"+
+        LOCALE +"=?,"+
+        SERVICEFEE +"=?,"+
+        PRICELIST +"=?,"+
+        PACKAGELIST +"=?,"+
+        CASHACCT +"=?,"+
+        ARACCT +"=?,"+
+        FINCHRGACCT +"=?,"+
+        INACTIVE +"=?,"+
+        APACCT +"=?,"+
+        DISCOUNTACCT +"=?,"+
+        NEXTCHECKNO +"=?,"+
+        DISCOUNTCODE +"=?,"+
+        CASHBALANCE +"=?,"+
+        ADDR1 +"=?,"+
+        ADDR2 +"=?,"+
+        ADDR3 +"=?,"+
+        CITY +"=?,"+
+        STATE +"=?,"+
+        ZIPCODE +"=?,"+
+        COUNTY + "=?,"+
+        PHONE +"=?,"+
+        ALTPHONE +"=?,"+
+        LICENSENO +"=?,"+
+		WEBSITE +"=?,"+
+		EMAIL +"=?,"+
+        PREFVITALS +"=?,"+
+        MANAGERNAME+"=?,"+
+        UNDEPOSITED_FUNDS_ACCT+"=?,"+
+        USE_UNDEPOSITED_FUNDS_ACCT+"=?, "+
+        ACCTUSERID +"=?, "+
+        INTERNALVENDORLIMIT +"=?, "+
+        EXTERNALVENDORLIMIT +"=?, "+
+        ONETIMEVENDORCODE +"=?, "+
+        FUNERALSYNCLOCATIONID+"=?, "+
+        MERCHANDISEID+"=?, "+
+        TURNONAPPLYFINANCECHARGE +"=?, "+
+        MONTHLYINTERESTRATE+"=?, "+
+        EREGISTERPAGE+"=?, "+
+        EREGISTERTARGETPAGE+"=? "+
+        " WHERE "+IDENTITY+" = ?"
+      );
+      pstmt.setString(1, rec.getName());
+      pstmt.setString(2, rec.getCompanyNumber());
+      pstmt.setString(3, rec.getLocationNumber());
+      pstmt.setString(4, rec.getDivision());
+      pstmt.setInt   (5, rec.getLocaleNumber());
+      pstmt.setInt   (6, rec.getStdServiceCharge());
+      pstmt.setString(7, rec.getPriceListVersion());
+      pstmt.setString(8, rec.getPackageVersion());
+      pstmt.setString(9, rec.getCashAcct());
+      pstmt.setString(10, rec.getArAcct());
+      pstmt.setString(11, rec.getFinanceChargeAcct());
+      pstmt.setString(12, rec.getInactiveCode());
+      pstmt.setString(13, rec.getApAcct());
+      pstmt.setString(14, rec.getDiscountAcct());
+      pstmt.setLong   (15, rec.getNextCheckNumber());
+      pstmt.setString(16, rec.getDiscountHandlingCode());
+      pstmt.setInt   (17, rec.getCashBalance());
+      pstmt.setString(18, rec.getAddr1());
+      pstmt.setString(19, rec.getAddr2());
+      pstmt.setString(20, rec.getAddr3());
+      pstmt.setString(21, rec.getCity());
+      pstmt.setString(22, rec.getState());
+      pstmt.setString(23, rec.getZip());
+      pstmt.setString(24, rec.getCounty());      
+      pstmt.setString(25, rec.getPhone());
+      pstmt.setString(26, rec.getPhoneAlternate());
+      pstmt.setString(27, rec.getLicenseNumber());
+      pstmt.setString(28, rec.getWebsite());
+      pstmt.setString(29, rec.getEmail());
+      pstmt.setString(30, rec.getPreferenceGenericVitals());
+      pstmt.setString(31, rec.getManagerName());
+      pstmt.setString(32, rec.getUndepositedFundsAcct());
+      pstmt.setBoolean(33, rec.getUseUndepositedFundsAcct());
+      pstmt.setLong  (34, rec.getAccountantUserID() );
+      pstmt.setDouble(35, rec.getInternalVendorLimit() );
+      pstmt.setDouble(36, rec.getExternalVendorLimit() );
+      pstmt.setString(37, rec.getOneTimeVendorCode() );
+      pstmt.setString(38, rec.getFuneralSyncLocationId() );
+      pstmt.setInt   (39, rec.getMerchandiseId());
+      pstmt.setString(40, rec.getTurnOnApplyFinanceCharge());
+      pstmt.setString(41, rec.getMonthlyInterestRate());
+      pstmt.setString(42, rec.getERegisterPage());
+      pstmt.setString(43, rec.getERegisterTargetPage());
+      pstmt.setInt   (44, rec.getId());
+      return pstmt;
+    }
+    catch (java.sql.SQLException e){
+      throw new PersistenceException("DbLocationPeer.Update:"+e.getMessage(),e);
+    }
+}
+}

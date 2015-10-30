@@ -1,0 +1,145 @@
+<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean"%>
+<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html"%>
+<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"%>
+<%@ taglib uri="/WEB-INF/struts-form.tld" prefix="form"%>
+<%@ taglib uri="/WEB-INF/struts-template.tld" prefix="template"%>
+<%@ taglib uri="http://www.webfdms.com/taglibs/alert-message" prefix="alert"%>
+
+<html>
+
+<head>
+<title>Add Merchandise</title>
+<html:base />
+<SCRIPT language="JavaScript" src="webfdmslib.js"></script>
+<script language="JavaScript" type="text/javascript" src="jsScripts/formSaveWarning.js" ></script>
+<script>
+	  function setSubmit(target) {
+	  	 formConfirmOff();
+	     document.forms[0].submitButton.value=target;
+	  }
+	  function setImage(elementId) {
+	  WriteLayer('thumbnailImage',null, '<img name="itemImage" src="images-old/NoPicture.jpg" alt="" style="background-color: #6699CC" height="40" border="0">');
+		 <logic:iterate name="addMerchandiseImageList" id="lineItem" indexId="currIndex" scope="request">
+		    if (<bean:write name='currIndex'/> == elementId && "<bean:write name='lineItem' property='listValue'/>" == "true") {
+		       if ("<bean:write name='lineItem' property='listLabel'/>" == "NoPicture.jpg")
+			       WriteLayer('thumbnailImage',null,'<span style="font-family:arial;font-weight:bold;border:1px solid #CCCCCC;color:#CCCCCC;margin:5px;width:100px;text-align:center;">NO IMAGE</span>'); 
+		       else
+				   WriteLayer('thumbnailImage',null,'<a name=\'itemLink\' href=\'<bean:write name="lineItem" property="listLabel"/> \' target=\'window.open(,"imgWIN","Height=400,Width=600");\'><img name=\'itemImage\' src=\'<bean:write name="lineItem" property="listLabel"/> \' alt=\'\' style=\'background-color: #6699CC\' height=\'40\' border=\'0\'></a>');
+			}
+		 </logic:iterate>
+	  }
+	  
+	  function WriteLayer(ID,parentID,sText) {
+		  if (document.layers) {
+			  var oLayer = (parentID)? eval('document.' + parentID + '.document.' + ID + '.document') : document.layers[ID].document;
+			  oLayer.open();
+			  oLayer.write(sText);
+			  oLayer.close();
+		  }
+		  else if (document.all) document.all[ID].innerHTML = sText
+		  else if (parseInt(navigator.appVersion)>=5&&navigator.appName=="Netscape") {
+			  document.getElementById(ID).innerHTML = sText;
+		  }
+	  }
+   </script>
+
+<link href="css/fdmsnet.css" rel="stylesheet" type="text/css">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0"
+	onload="setPadding('$',document.all.listValue);">
+<alert:alertMessage messageType="R" />
+<html:errors />
+<html:form action="/processQtyFinancialAddMerchandise"
+	name="financialAddMerchandise"
+	type="fdms.ui.struts.form.FinancialAddMerchandiseForm">
+	
+	<html:hidden name="financialAddMerchandise" property="submitButton" />
+	<table width="98%" BORDER="0" align="center" cellpadding="0"
+		cellspacing="0">
+		<tr>
+			<td colspan="3">
+			<table width="100%" border="0" cellpadding="0" cellspacing="0">
+				<tr>
+					<td height="50" align="left" class="pageTitle">Add Merchandise</td>
+				</tr>
+				<tr>
+					<td width="200" rowspan="3" valign="middle">
+					    <div id="thumbnailImage">
+						</div>
+					</td>
+					<td align="left" class="tahoma14bBlue">
+					<table width="100%" border="0" cellspacing="0" cellpadding="0">
+						<tr>
+							<td>&nbsp;</td>
+							<td width="250" height="40" align="right" valign="top">
+							<fieldset><legend class="tahoma12bMaroon">Actions</legend> <html:image
+								alt="Add Selected Merchandise to Contract"
+								src="images-old/buttonadd.gif" onclick="setSubmit('save');" /> <html:image
+								alt="Exit" src="images-old/buttonexit.gif"
+								onclick="setSubmit('exit');" /> <html:link forward="help">
+								<html:img alt="Help" src="images-old/buttonhelp.gif" />
+							</html:link></fieldset>
+							</td>
+						</tr>
+					</table>
+					</td>
+				</tr>
+			</table>
+			</td>
+		</tr>
+		<tr>
+			<td align="left" bordercolor="#FFFFCC" bordercolorlight="#FFFFCC" bordercolordark="#FFFFCC">
+			<fieldset><legend class="tahoma12bBlue">Item Information</legend>
+			<table width="100%" border="0" cellpadding="0" cellspacing="0">
+				<tr>
+				<td align="center">
+				<span class="tahoma12bRed">Find by Category:</span>
+				</td>
+				<td>
+				<html:select size="1" name="inventory" property="categorySelect" style="font-family: Arial; font-size: 10pt" 
+						onchange="submit();">
+                         <html:option value="All">Select</html:option>
+                          <html:option value="All">Show All Categories</html:option>
+                         <html:options collection="categorylist" property="listValue" labelProperty="listLabel" />
+                     </html:select>
+				</td>
+				</tr>
+				
+				<tr>
+					<td height="28" align="center" valign="middle"><span
+						class="tahoma12bRed" >Find:</span> 
+						</td>
+						<td>
+						<html:text size="30"
+						property="itemSearch" styleId="itemSearch"
+						onfocus="focusAutoFilter('itemSearch', 'listValue');" />
+					</td>
+				</tr>
+				
+				<tr>
+					<td align="center" valign="bottom" colspan = "2">
+						<html:select styleId="listValue" property="listValue" multiple="true" size="15" style="color: #000080; font-family: Courier New; font-size: 10pt;" onchange="setImage(this.selectedIndex);">
+							<html:options collection="addMerchandiseList" property="listValue" labelProperty="listLabel" />
+						</html:select>
+					</td>
+				</tr>
+				<tr align="center">
+					<td height="40" align="center" valign="middle" colspan="2">
+						<html:image alt="Add Selected Merchandise to Contract" src="images-old/buttonadd.gif" onclick="setSubmit('save');" />
+					</td>
+				</tr>
+			</table>
+			</fieldset>
+			</td>
+		</tr>
+	</table>
+</html:form>
+<%--
+<script language="JavaScript" type="text/javascript">
+    populateArrays();
+    formConfirmOn();
+</script>	--%>
+</body>
+</html>

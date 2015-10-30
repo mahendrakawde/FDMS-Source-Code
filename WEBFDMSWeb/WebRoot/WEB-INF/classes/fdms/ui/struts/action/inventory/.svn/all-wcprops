@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSWeb/src/fdms/ui/struts/action/inventory
+END
+ProcessInventoryVersionAddEdit.java
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSWeb/src/fdms/ui/struts/action/inventory/ProcessInventoryVersionAddEdit.java
+END
+ProcessInventoryVersion.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSWeb/src/fdms/ui/struts/action/inventory/ProcessInventoryVersion.java
+END
+ShowInventoryVersionAddEdit.java
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSWeb/src/fdms/ui/struts/action/inventory/ShowInventoryVersionAddEdit.java
+END
+ShowInventoryVersion.java
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSWeb/src/fdms/ui/struts/action/inventory/ShowInventoryVersion.java
+END

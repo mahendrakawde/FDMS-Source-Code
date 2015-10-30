@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/src/com/aldorsolutions/dashboard/struts/form/sms
+END
+SMSTTVListForm.java
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/src/com/aldorsolutions/dashboard/struts/form/sms/SMSTTVListForm.java
+END
+RecipientForm.java
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/src/com/aldorsolutions/dashboard/struts/form/sms/RecipientForm.java
+END
+SMSTTVRecipientForm.java
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/src/com/aldorsolutions/dashboard/struts/form/sms/SMSTTVRecipientForm.java
+END
+SMSTTVEditForm.java
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/src/com/aldorsolutions/dashboard/struts/form/sms/SMSTTVEditForm.java
+END

@@ -1,0 +1,95 @@
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webservice
+END
+SciCashExtractThread.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webservice/SciCashExtractThread.java
+END
+SciARDetailDataExtractThread.java
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webservice/SciARDetailDataExtractThread.java
+END
+GreetinsDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webservice/GreetinsDAO.java
+END
+GenericThread.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webservice/GenericThread.java
+END
+SCIFddeServiceDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webservice/SCIFddeServiceDAO.java
+END
+UserLocation.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webservice/UserLocation.java
+END
+SumOfTransDetails.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webservice/SumOfTransDetails.java
+END
+FddeServiceDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webservice/FddeServiceDAO.java
+END
+FddeXsdFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webservice/FddeXsdFactory.java
+END
+SciLineItemsExtractThread.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webservice/SciLineItemsExtractThread.java
+END
+ConvertorUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webservice/ConvertorUtil.java
+END
+SciContractsExtractThread.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webservice/SciContractsExtractThread.java
+END
+FddeServiceDTOFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webservice/FddeServiceDTOFactory.java
+END
+DuplicateLineItems.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webservice/DuplicateLineItems.java
+END
+SCIServiceDTOFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webservice/SCIServiceDTOFactory.java
+END

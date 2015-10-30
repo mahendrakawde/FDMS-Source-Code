@@ -1,0 +1,52 @@
+package com.aldorsolutions.dashboard.utils;
+
+import com.softwarefx.chartfx.server.dataproviders.ListProvider;
+
+public class FDMSChartFX {
+	
+	private ListProvider listDataProvider = new ListProvider();
+	private int setChartHeight;
+	private int setChartWidth;
+	/**
+	 * @return the listDataProvider
+	 */
+	public ListProvider getListDataProvider() {
+		return listDataProvider;
+	}
+	/**
+	 * @param listDataProvider the listDataProvider to set
+	 */
+	public void setListDataProvider(ListProvider listDataProvider) {
+		this.listDataProvider = listDataProvider;
+	}
+	/**
+	 * @return the setChartHeight
+	 */
+	public int getSetChartHeight() {
+		return setChartHeight;
+	}
+	/**
+	 * @param setChartHeight the setChartHeight to set
+	 */
+	public void setSetChartHeight(int setChartHeight) {
+		this.setChartHeight = setChartHeight;
+	}
+	/**
+	 * @return the setChartWidth
+	 */
+	public int getSetChartWidth() {
+		return setChartWidth;
+	}
+	/**
+	 * @param setChartWidth the setChartWidth to set
+	 */
+	public void setSetChartWidth(int setChartWidth) {
+		this.setChartWidth = setChartWidth;
+	}
+
+	
+	
+	
+	
+
+}

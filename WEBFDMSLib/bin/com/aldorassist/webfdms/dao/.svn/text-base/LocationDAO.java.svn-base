@@ -1,0 +1,670 @@
+/*
+ * RolesDAO.java
+ *
+ * Created on June 19, 2006
+ */
+
+package com.aldorassist.webfdms.dao;
+
+/**
+ *
+ * @author drollins
+ */
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+import org.apache.log4j.Logger;
+
+import com.aldorassist.webfdms.model.InvoiceDTO;
+import com.aldorassist.webfdms.model.LocationDTO;
+import com.aldorsolutions.webfdms.beans.DbUserSession;
+import com.aldorsolutions.webfdms.checkwriter.model.ApVendorLocationDTO;
+import com.aldorsolutions.webfdms.util.DAO;
+
+
+public class LocationDAO extends DAO {
+    
+    private Logger logger = Logger.getLogger(LocationDAO.class.getName());
+    
+    public LocationDAO(DbUserSession user) {
+    	super (user);
+    }
+    
+    public LocationDAO(long companyID, long userID) throws Exception {
+    	super (companyID, userID);
+    }
+    
+    public LocationDTO getLocation ( long locationID ) throws Exception {
+    	return ( getLocation(locationID, dbLookup) );
+    }
+    
+    private static String getSelectFields () {
+    	return " LocationID, Name, Locale, CompanyNumber, LocationNum, " +
+               "Division, StandardServiceFee, PriceListVersion, PackageVersion, " +
+               "CashGlAcct, ArGlAcct, FinChrgGlAcct, InactiveCode, ApGlAcct, " +
+               "DiscountGlAcct, NextCheckNumber, DiscountHandlingCode, " +
+               "CheckingAcctBalance, ManagerName, Addr1, Addr2, Addr3, City, " +
+               "State, ZipCode, County, PhoneNumber, OtherPhone, LicenseNumber, " +
+               "genericVitals, UndepositedFundsAcct, UseUndepositedFundsAcct, " +
+               "Website, Email, AcctUserID, internalVendorLimit, externalVendorLimit, OneTimeVendorCode, FuneralSyncLocationId ";
+    }
+    
+    private void addRSToLocation ( LocationDTO location, ResultSet rs) throws SQLException {
+    	int col = 0;
+    	location.setLocationID(rs.getLong(++col));
+    	location.setName(rs.getString(++col));
+    	location.setLocaleID(rs.getLong(++col));
+    	location.setCompanyID(rs.getLong(++col));
+    	location.setLocationNumber(rs.getString(++col));
+    	location.setDivision(rs.getString(++col));
+    	location.setStdServiceCharge(rs.getLong(++col));
+    	location.setPriceListVersion( rs.getString(++col) );
+    	location.setPackageVersion( rs.getString(++col) );
+    	location.setCashAcct( rs.getString(++col) );
+    	location.setArAcct( rs.getString(++col) );
+    	location.setFinanceChargeAcct( rs.getString(++col) );
+    	location.setInactiveCode( rs.getString(++col) );
+    	location.setApAcct(rs.getString(++col));
+    	location.setDiscountAcct(rs.getString(++col) );
+    	location.setNextCheckNumber(rs.getLong(++col) );
+    	location.setDiscountHandlingCode(rs.getString(++col) );
+    	location.setCashBalance( rs.getLong(++col) );
+    	location.setManagerName( rs.getString(++col) );
+    	location.setAddr1( rs.getString(++col) );
+    	location.setAddr2( rs.getString(++col) );
+    	location.setAddr3(rs.getString(++col));
+    	location.setCity(rs.getString(++col) );
+    	location.setState(rs.getString(++col) );
+    	location.setZip(rs.getString(++col) );
+    	location.setCounty(rs.getString(++col) );
+    	location.setPhone( rs.getString(++col) );
+    	location.setPhoneAlternate(rs.getString(++col) );
+    	location.setLicenseNumber(rs.getString(++col) );
+    	location.setPreferenceGenericVitals(rs.getString(++col) );
+    	location.setUndepositedFundsAcct(rs.getString(++col) );
+    	location.setUseUndepositedFundsAcct(rs.getBoolean(++col) );
+    	location.setWebsite(rs.getString(++col) );
+    	location.setEmail(rs.getString(++col) );
+    	location.setAccountantUserID(rs.getLong(++col));
+    	location.setInternalVendorLimit(rs.getDouble(++col));
+    	location.setExternalVendorLimit(rs.getDouble(++col));
+    	location.setOnetimeVendorCode(rs.getString(++col) );
+    	location.setFuneralSyncLocationId(rs.getString(++col));
+    }
+    
+    public LocationDTO getLocation ( long locationID, String dbLookup ) throws Exception {
+    	LocationDTO location = null;
+        
+        try {
+            StringBuffer sql = new StringBuffer();
+            
+            sql.append("select " + getSelectFields() + 
+            		"from locations where LocationID = ?" );
+            
+            makeConnection(dbLookup);
+            statement = conn.prepareStatement(sql.toString());
+            statement.setLong(1, locationID);
+            
+            rs = statement.executeQuery();
+            
+            if (rs.next()) {
+            	location = new LocationDTO();
+            	addRSToLocation(location, rs);
+            }
+            
+        } catch (SQLException e) {
+            logger.error("SQLException in getLocation() : ", e);
+            throw e;
+        } catch (Exception e) {
+            logger.error("Exception in getLocation() : ", e);
+            throw e;
+        } finally {
+            closeConnection();
+        }
+        
+        return location;
+    }
+
+    public LocationDTO getLocationByFuneralSyncLocationId ( String locationID ) throws Exception {
+    	LocationDTO location = null;
+        
+        try {
+            StringBuffer sql = new StringBuffer();
+            
+            sql.append("select " + getSelectFields() + 
+            		"from locations where FuneralSyncLocationId = ?" );
+            
+            makeConnection(dbLookup);
+            statement = conn.prepareStatement(sql.toString());
+            statement.setString(1, locationID);
+            
+            rs = statement.executeQuery();
+            
+            if (rs.next()) {
+            	location = new LocationDTO();
+            	addRSToLocation(location, rs);
+            }
+            
+        } catch (SQLException e) {
+            logger.error("SQLException in getLocation() : ", e);
+            throw e;
+        } catch (Exception e) {
+            logger.error("Exception in getLocation() : ", e);
+            throw e;
+        } finally {
+            closeConnection();
+        }
+        
+        return location;
+    }
+    
+    public ArrayList <LocationDTO> getLocations ( long companyID, boolean active ) throws Exception {
+    	ArrayList <LocationDTO> elements = new ArrayList <LocationDTO> ();
+    	
+        try {
+            StringBuilder sql = new StringBuilder();
+            sql.append("select " + getSelectFields() + "from locations where CompanyNumber = ? ");
+            
+            if (active) {
+				sql.append("AND InactiveCode <> 'D' or InactiveCode is null ");
+			}
+            
+			sql.append("order by Name");
+            
+            makeConnection(dbLookup);
+            statement = conn.prepareStatement(sql.toString());
+            statement.setLong(1, companyID);
+            
+            rs = statement.executeQuery();
+            
+            while (rs.next()) {
+            	LocationDTO location = new LocationDTO();
+            	addRSToLocation(location, rs);
+            	elements.add(location);
+            }
+            
+        } catch (SQLException e) {
+            logger.error("SQLException in getLocations() : ", e);
+            throw e;
+        } catch (Exception e) {
+            logger.error("Exception in getLocations() : ", e);
+            throw e;
+        } finally {
+            closeConnection();
+        }
+        
+        return elements;
+    }
+    
+    public ArrayList <LocationDTO> getLocations ( boolean activeOnly ) throws Exception {
+    	return ( getLocations ( activeOnly, dbLookup ) );
+    }
+    
+    public ArrayList <LocationDTO> getLocations ( boolean active, String dbLookup ) throws Exception {
+    	ArrayList <LocationDTO> elements = new ArrayList <LocationDTO> ();
+    	
+        try {
+            StringBuffer sql = new StringBuffer();
+            sql.append("select " + getSelectFields() + 
+            		"from locations ");
+
+             if ( active ) {
+             	sql.append("where InactiveCode <> 'D' or InactiveCode is null");
+             }
+            
+             sql.append("order by Name");
+            
+            makeConnection(dbLookup);
+            statement = conn.prepareStatement(sql.toString());
+            statement.setLong(1, companyID);
+            
+            rs = statement.executeQuery();
+            
+            while (rs.next()) {
+            	LocationDTO location = new LocationDTO();
+            	addRSToLocation(location, rs);
+            	elements.add(location);
+            }
+            
+        } catch (SQLException e) {
+            logger.error("SQLException in getCompanies() : ", e);
+            throw e;
+        } catch (Exception e) {
+            logger.error("Exception in getCompanies() : ", e);
+            throw e;
+        } finally {
+            closeConnection();
+        }
+        
+        return elements;
+    }
+    
+    public LocationDTO getLocationsByLocationID (int locationID ) throws Exception {
+    	LocationDTO location = null;
+    	
+        try {
+            StringBuffer sql = new StringBuffer();
+            sql.append("select " + getSelectFields() + 
+            		"from locations where LocationID = "+ locationID);
+            
+             sql.append(" order by Name");
+            
+            makeConnection(dbLookup);
+            statement = conn.prepareStatement(sql.toString());
+            
+            rs = statement.executeQuery();
+            
+            if (rs.next()) {
+	            location = new LocationDTO();
+	            addRSToLocation(location, rs);
+            }
+            
+        } catch (SQLException e) {
+            logger.error("SQLException in getCompanies() : ", e);
+            throw e;
+        } catch (Exception e) {
+            logger.error("Exception in getCompanies() : ", e);
+            throw e;
+        } finally {
+            closeConnection();
+        }
+        
+        return location;
+    }
+    
+    public  ArrayList <LocationDTO> getLocationsByLocationIDs (ArrayList <Long> locationIDs ) throws Exception {
+    	ArrayList <LocationDTO> locations = new ArrayList <LocationDTO> ();
+    	LocationDTO location = null;
+
+        try {
+            StringBuffer sql = new StringBuffer();
+            
+          	String sLocationIDs = "";
+        	for ( Long locationID: locationIDs){
+        		sLocationIDs = sLocationIDs+locationID+", ";
+        	}
+        	sLocationIDs = sLocationIDs.substring(0, sLocationIDs.length()-2);       
+        	          
+            
+            sql.append("select " + getSelectFields() + 
+            		"from locations where LocationID in ("+sLocationIDs+")");
+            
+             sql.append(" order by Name");
+            
+            makeConnection(dbLookup);
+            statement = conn.prepareStatement(sql.toString());
+            
+            rs = statement.executeQuery();
+            
+            while (rs.next()) {
+
+	            location = new LocationDTO();
+	            addRSToLocation(location, rs);
+	            locations.add(location);
+	            
+            }
+            
+        } catch (SQLException e) {
+            logger.error("SQLException in getCompanies() : ", e);
+            throw e;
+        } catch (Exception e) {
+            logger.error("Exception in getCompanies() : ", e);
+            throw e;
+        } finally {
+            closeConnection();
+        }
+        
+        return locations;
+    }
+  
+    
+    
+
+    public ArrayList <LocationDTO> getLocationsByAccountant ( long companyID, long acctUserID ) throws Exception {
+    	ArrayList <LocationDTO> elements = new ArrayList <LocationDTO> ();
+    	
+        try {
+            StringBuffer sql = new StringBuffer();
+            sql.append("select " + getSelectFields() + 
+            		"from locations where CompanyNumber = ? " +
+            		"and AcctUserID = ? " +
+            		"order by Name");
+            
+            makeConnection(dbLookup);
+            statement = conn.prepareStatement(sql.toString());
+            statement.setLong(1, companyID);
+            statement.setLong(2, acctUserID);
+            
+            rs = statement.executeQuery();
+            
+            while (rs.next()) {
+            	LocationDTO location = new LocationDTO();
+            	addRSToLocation(location, rs);
+            	elements.add(location);
+            }
+            
+        } catch (SQLException e) {
+            logger.error("SQLException in getCompanies() : ", e);
+            throw e;
+        } catch (Exception e) {
+            logger.error("Exception in getCompanies() : ", e);
+            throw e;
+        } finally {
+            closeConnection();
+        }
+        
+        return elements;
+    }
+
+    public ArrayList <LocationDTO> getLocationsByAccountant ( long companyID, ArrayList <Integer> userIDs ) throws Exception {
+    	ArrayList <LocationDTO> elements = new ArrayList <LocationDTO> ();
+    	
+        try {
+            StringBuffer sql = new StringBuffer();
+            sql.append("select " + getSelectFields() + 
+            		"from locations where CompanyNumber = ? ");
+            
+            if ( userIDs == null || userIDs.size() == 0 ) {
+            	throw new Exception ( "Invalid UserIds.  Arraylist is empty" );
+            }
+            else if ( userIDs.size() == 1 ) {
+            	sql.append("and AcctUserID " );
+                sql.append("= ? ");
+            }
+            else if ( userIDs.size() > 1 ) {
+            	
+            	sql.append("and AcctUserID " );
+                sql.append("in ( ");
+            	
+            	for ( int i = 0; i < userIDs.size(); i++ ) {
+            		sql.append("?");
+            		
+            		if ( i < (userIDs.size() - 1) ){
+            			sql.append(", ");
+            		}
+            	}
+            	
+            	sql.append(") ");
+            }
+            
+            sql.append("order by Name");
+            
+            makeConnection(dbLookup);
+            statement = conn.prepareStatement(sql.toString());
+            statement.setLong(1, companyID);
+            
+            for ( int i = 0; i < userIDs.size(); i++ ) {
+            	statement.setLong((i+2), userIDs.get(i) );
+        	}
+            
+            rs = statement.executeQuery();
+            
+            while (rs.next()) {
+            	LocationDTO location = new LocationDTO();
+            	addRSToLocation(location, rs);
+            	elements.add(location);
+            }
+            
+        } catch (SQLException e) {
+            logger.error("SQLException in getCompanies() : ", e);
+            throw e;
+        } catch (Exception e) {
+            logger.error("Exception in getCompanies() : ", e);
+            throw e;
+        } finally {
+            closeConnection();
+        }
+        
+        return elements;
+    }
+    
+    public boolean addLocation(LocationDTO location) throws Exception {
+    	return addLocation( location,  dbLookup, false);
+    }
+    
+    public boolean addLocation(LocationDTO location, String dbLookup) throws Exception {
+    	return addLocation( location,  dbLookup, false);
+    }
+
+    public boolean addLocation(LocationDTO location, String dbLookup, boolean isGlobal) throws Exception {
+    	boolean added = false;
+        
+        try {
+            StringBuffer sql = new StringBuffer();
+            
+            sql.append("insert into locations (" + getSelectFields() + ") " +
+            		"values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, " +
+            		  "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, " +
+            		  "?, ?, ?, ?, ?,?,?)"); 
+            
+            int col = 0;
+            makeConnection(dbLookup, isGlobal);
+            statement = conn.prepareStatement(sql.toString());
+            
+            
+            statement.setLong(++col, location.getLocationID());
+            statement.setString(++col, location.getName());
+            statement.setLong(++col, location.getLocaleID());
+            statement.setLong(++col, location.getCompanyID());
+            statement.setString(++col, location.getLocationNumber());
+            statement.setString(++col, location.getDivision());
+            statement.setLong(++col, location.getStdServiceCharge());
+            statement.setString(++col, location.getPriceListVersion());
+            statement.setString(++col, location.getPackageVersion());
+            statement.setString(++col, location.getCashAcct());
+            statement.setString(++col, location.getArAcct());
+            statement.setString(++col, location.getFinanceChargeAcct());
+            statement.setString(++col, location.getInactiveCode());
+            statement.setString(++col, location.getApAcct());
+            statement.setString(++col, location.getDiscountAcct());
+            statement.setLong(++col, location.getNextCheckNumber());
+            statement.setString(++col, location.getDiscountHandlingCode());
+            statement.setLong(++col, location.getCashBalance());
+            statement.setString(++col, location.getManagerName());
+            statement.setString(++col, location.getAddr1());
+            statement.setString(++col, location.getAddr2());
+            statement.setString(++col, location.getAddr3());
+            statement.setString(++col, location.getCity());
+            statement.setString(++col, location.getState());
+            statement.setString(++col, location.getZip());
+            statement.setString(++col, location.getCounty());
+            statement.setString(++col, location.getPhone());
+            statement.setString(++col, location.getPhoneAlternate());
+            statement.setString(++col, location.getLicenseNumber());
+            statement.setString(++col, location.getPreferenceGenericVitals());
+            statement.setString(++col, location.getUndepositedFundsAcct());
+            statement.setBoolean(++col, location.isUseUndepositedFundsAcct());
+            statement.setString(++col, location.getWebsite());
+            statement.setString(++col, location.getEmail());
+            statement.setLong(++col, location.getAccountantUserID());
+            statement.setDouble(++col, location.getInternalVendorLimit());
+            statement.setDouble(++col, location.getExternalVendorLimit());
+            statement.setString(++col, location.getOnetimeVendorCode());
+            statement.setString(++col, location.getFuneralSyncLocationId());
+            statement.executeUpdate();
+            added = true;
+            
+            if (added) {
+            	rs = statement.getGeneratedKeys();
+                if (rs.next()) {
+                	location.setLocationID(rs.getInt(1));
+                }
+                
+                auditDTO.setCompanyId((int)location.getCompanyID());
+                auditDTO.setLocaleId((int)location.getLocaleID());
+                
+                insertAudit(location);
+            }
+            
+        } catch (SQLException e) {
+            logger.error("SQLException in addLocation() : ", e);
+            throw e;
+        } catch (Exception e) {
+            logger.error("Exception in addLocation() : ", e);
+            throw e;
+        } finally {
+            closeConnection();
+        }
+        
+        return added;
+    }
+    
+    public boolean updateLocation(LocationDTO location) throws Exception {
+        return ( updateLocation(location, dbLookup) );
+    }
+    
+    public boolean updateLocation(LocationDTO location, String dbLookup) throws Exception {
+    	boolean updated = false;
+        
+        try {
+        	
+        	LocationDTO oldComp = getLocation(location.getLocationID());
+        	
+            StringBuffer sql = new StringBuffer();
+            sql.append("UPDATE locations SET Name = ?, Locale = ?, " +
+            		"CompanyNumber = ?, LocationNum = ?, Division = ?, StandardServiceFee = ?, " +
+            		"PriceListVersion = ?, PackageVersion = ?, CashGlAcct = ?, ArGlAcct = ?, " +
+            		"FinChrgGlAcct = ?, InactiveCode = ?, ApGlAcct = ?, DiscountGlAcct = ?, " +
+            		"NextCheckNumber = ?, DiscountHandlingCode = ?, CheckingAcctBalance = ?, " +
+            		"ManagerName = ?, Addr1 = ?, Addr2 = ?, Addr3 = ?, City = ?, State = ?, ZipCode = ?, " +
+            		"County = ?, PhoneNumber = ?, OtherPhone = ?, LicenseNumber = ?, genericVitals = ?, " +
+            		"UndepositedFundsAcct = ?, UseUndepositedFundsAcct = ?, Website = ?, Email  = ?, " +
+            		"AcctUserID = ?, internalVendorLimit = ?, externalVendorLimit = ?, OneTimeVendorCode =?, FuneralSyncLocationId = ? " +
+            		"WHERE (LocationID = ?)");
+            
+            int col = 0;
+            makeConnection(dbLookup);
+            statement = conn.prepareStatement(sql.toString());
+            statement.setString(++col, location.getName());
+            statement.setLong(++col, location.getLocaleID());
+            statement.setLong(++col, location.getCompanyID());
+            statement.setString(++col, location.getLocationNumber());
+            statement.setString(++col, location.getDivision());
+            statement.setLong(++col, location.getStdServiceCharge());
+            statement.setString(++col, location.getPriceListVersion());
+            statement.setString(++col, location.getPackageVersion());
+            statement.setString(++col, location.getCashAcct());
+            statement.setString(++col, location.getArAcct());
+            statement.setString(++col, location.getFinanceChargeAcct());
+            statement.setString(++col, location.getInactiveCode());
+            statement.setString(++col, location.getApAcct());
+            statement.setString(++col, location.getDiscountAcct());
+            statement.setLong(++col, location.getNextCheckNumber());
+            statement.setString(++col, location.getDiscountHandlingCode());
+            statement.setLong(++col, location.getCashBalance());
+            statement.setString(++col, location.getManagerName());
+            statement.setString(++col, location.getAddr1());
+            statement.setString(++col, location.getAddr2());
+            statement.setString(++col, location.getAddr3());
+            statement.setString(++col, location.getCity());
+            statement.setString(++col, location.getState());
+            statement.setString(++col, location.getZip());
+            statement.setString(++col, location.getCounty());
+            statement.setString(++col, location.getPhone());
+            statement.setString(++col, location.getPhoneAlternate());
+            statement.setString(++col, location.getLicenseNumber());
+            statement.setString(++col, location.getPreferenceGenericVitals());
+            statement.setString(++col, location.getUndepositedFundsAcct());
+            statement.setBoolean(++col, location.isUseUndepositedFundsAcct());
+            statement.setString(++col, location.getWebsite());
+            statement.setString(++col, location.getEmail());
+            statement.setLong(++col, location.getAccountantUserID());
+            statement.setDouble(++col, location.getInternalVendorLimit());
+            statement.setDouble(++col, location.getExternalVendorLimit());
+            statement.setString(++col, location.getOnetimeVendorCode());
+            statement.setString(++col, location.getFuneralSyncLocationId());
+            statement.setLong(++col, location.getLocationID());
+            statement.executeUpdate();
+            
+            auditDTO.setCompanyId((int)location.getCompanyID());
+            auditDTO.setLocaleId((int)location.getLocaleID());
+            
+            updateAudit(location, oldComp);
+            
+            updated = true;
+        } catch (SQLException e) {
+            logger.error("SQLException in updateLocation() : ", e);
+            throw e;
+        } catch (Exception e) {
+            logger.error("Exception in updateLocation() : ", e);
+            throw e;
+        } finally {
+            closeConnection();
+        }
+        
+        return updated;
+    }
+
+    public boolean deleteLocation(long locationID) throws Exception {
+        return ( deleteLocation(locationID, dbLookup) );
+    }
+
+    public boolean deleteLocation(long locationID, String dbLookup) throws Exception {
+        boolean deleted = false;
+        
+        try {
+            StringBuffer sql = new StringBuffer();
+            
+            sql.append("update locations set InactiveCode = 'D' WHERE (LocationID=?)");
+            
+            int col = 0;
+            makeConnection(dbLookup);
+            statement = conn.prepareStatement(sql.toString());
+            statement.setLong(++col, locationID);
+            statement.executeUpdate();
+            
+            deleted = true;
+        } catch (SQLException e) {
+            logger.error("SQLException in deleteLocation() : ", e);
+            throw e;
+        } catch (Exception e) {
+            logger.error("Exception in deleteLocation() : ", e);
+            throw e;
+        } finally {
+            closeConnection();
+        }
+        
+        return deleted;
+    }
+    
+	/* Code commented by Haranesh for Ticket# 5554 New Setup Issues  (Default Location added)*/
+    // Created new Method that will return the location info when New company setup created
+    public  ArrayList <LocationDTO> getLocations(String dbLookup1) throws Exception {
+        ArrayList <LocationDTO> locations = new ArrayList <LocationDTO> ();
+        LocationDTO location = null;
+
+           try {
+               StringBuffer sql = new StringBuffer();
+               
+               sql.append("select " + getSelectFields() + 
+                 "from locations");
+               
+               makeConnection(dbLookup1);
+               statement = conn.prepareStatement(sql.toString());
+               
+               rs = statement.executeQuery();
+               
+               while (rs.next()) {
+
+                location = new LocationDTO();
+                addRSToLocation(location, rs);
+                locations.add(location);
+                
+               }
+               
+           } catch (SQLException e) {
+               logger.error("SQLException in getLocations : ", e);
+               throw e;
+           } catch (Exception e) {
+               logger.error("Exception in getLocations : ", e);
+               throw e;
+           } finally {
+               closeConnection();
+           }
+           
+           return locations;
+       }
+    
+}

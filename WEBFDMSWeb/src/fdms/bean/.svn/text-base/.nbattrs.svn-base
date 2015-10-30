@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE attributes PUBLIC "-//NetBeans//DTD DefaultAttributes 1.0//EN" "http://www.netbeans.org/dtds/attributes-1_0.dtd">
+<attributes version="1.0">
+    <fileobject name="DbApVendor.java">
+        <attr name="class_dependency_com.aldorsolutions.webfdms.database.Persistent" stringvalue="DbApVendor"/>
+    </fileobject>
+    <fileobject name="DbLocation.java">
+        <attr name="class_dependency_com.aldorsolutions.webfdms.database.Persistent" stringvalue="DbLocation"/>
+    </fileobject>
+    <fileobject name="DbLocationPeer.java">
+        <attr name="class_dependency_com.aldorsolutions.webfdms.database.DatabasePeer" stringvalue="DbLocationPeer"/>
+    </fileobject>
+    <fileobject name="DbPreneed.java">
+        <attr name="class_dependency_com.aldorsolutions.webfdms.database.Persistent" stringvalue="DbPreneed"/>
+    </fileobject>
+    <fileobject name="DbPreneedPeer.java">
+        <attr name="class_dependency_com.aldorsolutions.webfdms.database.DatabasePeer" stringvalue="DbPreneedPeer"/>
+    </fileobject>
+    <fileobject name="DbVeteranPeer.java">
+        <attr name="class_dependency_com.aldorsolutions.webfdms.database.DatabasePeer" stringvalue="DbVeteranPeer"/>
+    </fileobject>
+    <fileobject name="DbVitalsMedical.java">
+        <attr name="class_dependency_com.aldorsolutions.webfdms.database.Persistent" stringvalue="DbVitalsMedical"/>
+    </fileobject>
+    <fileobject name="DbVitalsMedicalPeer.java">
+        <attr name="class_dependency_com.aldorsolutions.webfdms.database.DatabasePeer" stringvalue="DbVitalsMedicalPeer"/>
+    </fileobject>
+    <fileobject name="DbVitalsSchedule.java">
+        <attr name="class_dependency_com.aldorsolutions.webfdms.database.Persistent" stringvalue="DbVitalsSchedule"/>
+    </fileobject>
+</attributes>

@@ -1,0 +1,251 @@
+<!doctype HTML public "-//W3C//DTD HTML 4.0 Frameset//EN">
+
+<html>
+
+<!--(==============================================================)-->
+<!--(Document created with RoboEditor. )============================-->
+<!--(==============================================================)-->
+
+<head>
+
+<title>Menu Options</title>
+
+<!--(Meta)==========================================================-->
+
+<meta http-equiv=content-type content="text/html; charset=windows-1252">
+<meta name=generator content="RoboHELP by eHelp Corporation - www.ehelp.com">
+<meta name=generator-major-version content=0.1>
+<meta name=generator-minor-version content=1>
+<meta name=filetype content=kadov>
+<meta name=filetype-version content=1>
+<meta name=page-count content=1>
+<meta name=layout-height content=667>
+<meta name=layout-width content=697>
+<meta name=x-ignored-words content="WebFDMS;FDMS;Davidson">
+
+
+<!--(Links)=========================================================-->
+
+ <link rel='stylesheet' href='webfdms_ns.css'>
+<script type="text/javascript" language="JavaScript" title="WebHelpSplitCss">
+<!--
+if (navigator.appName !="Netscape")
+{   document.write("<link rel='stylesheet' href='webfdms.css'>");}
+//-->
+</script>
+<!--(Scripts)=======================================================-->
+
+<script LANGUAGE="JavaScript" TITLE="BSSC Special Effects" src="./ehlpdhtm.js" name="EHELP_DHTM"></script>
+
+<style type="text/css">
+<!--
+table.whs1 {width: 583px; margin-left: 4.50pt; border-spacing: 0px; border-spacing: 0px;}
+tr.whs2 {x-cell-content-align: top;}
+td.whs3 {width: 96px; padding-left: 1px; padding-top: 1px; padding-right: 1px; padding-bottom: 1px;}
+td.whs4 {width: 487px; padding-left: 1px; padding-top: 1px; padding-right: 1px; padding-bottom: 1px;}
+img_whs5 {border-style: none; border: none; width: 48px; height: 22px; float: none;}
+-->
+</style>
+<script type="text/javascript" language="JavaScript" title="WebHelpInlineScript">
+<!--
+function reDo() {
+  if (innerWidth != origWidth || innerHeight != origHeight)
+     location.reload();
+}
+if ((parseInt(navigator.appVersion) == 4) && (navigator.appName == "Netscape")) {
+	origWidth = innerWidth;
+	origHeight = innerHeight;
+	onresize = reDo;
+}
+onerror = null; 
+//-->
+</script>
+<style type="text/css">
+<!--
+  div.WebHelpPopupMenu {position:absolute; left:0px; top:0px; z-index:4; visibility:hidden;}
+  p.WebHelpNavBar {text-align:right;}
+-->
+</style>
+<script type="text/javascript" language="javascript1.2" src="whmsg.js"></script>
+<script type="text/javascript" language="javascript" src="whver.js"></script>
+<script type="text/javascript" language="javascript1.2" src="whproxy.js"></script>
+<script type="text/javascript" language="javascript1.2" src="whutils.js"></script>
+<script type="text/javascript" language="javascript1.2" src="whtopic.js"></script>
+<script type="text/javascript" language="javascript1.2">
+<!--
+if (window.gbWhTopic)
+{
+	if (window.setRelStartPage)
+	{
+	setRelStartPage("webfdms.htm");
+addTocInfo("Getting Started\nMenu Options");
+addAvenueInfo("MAIN","creating_a_desktop_icon_shortcut.htm","dates.htm");
+addSearchFormHref("javascript:document.ehelpform.submit()");
+
+	}
+}
+else
+	document.location.reload();
+//-->
+</script>
+</head>
+
+<!--(Body)==========================================================-->
+
+
+<body>
+
+<script type="text/javascript" language="javascript1.2">
+<!--
+if (window.writeIntopicBar)
+	writeIntopicBar(4);
+//-->
+</script>
+<h1>Menu Options</h1>
+
+<p class=Body-Text>The top portion of the main window offers the below 
+ menu options. <span style="font-style: italic;"><I>For some options, click 
+ the link to see detailed information.</I></span></p>
+
+<!--(Table)=========================================================-->
+<table x-use-null-cells cellspacing="0" width="583" class="whs1">
+
+<tr valign="top" class="whs2">
+<td width="96px" class="whs3">
+<p class=Table-Text
+	style="margin-right: 6.50pt;"><span style="font-weight: bold;"><B>File</B></span></td>
+<td width="487px" class="whs4">
+<p class=Table-Text><span style="font-weight: bold;"><B>Home. &nbsp;</B></span><span>Returns 
+ you to the Case List.</span></p>
+<p class=Table-Text
+	style="margin-right: 6.50pt;"><span style="font-weight: bold;"><B>Exit. 
+ </B></span>Exits the FDMS Network program and returns you to the login 
+ window. <span style="font-style: italic;"><I><br>
+Note: When you see an Exit button within a window while using the application, 
+ this exits the current window and returns you to the previous window in 
+ the hierarchy. It does not exit the system.</I></span><br>
+<img src="btn_exit.gif" x-maintain-ratio="TRUE" width="48px" height="22px" border="0" class="img_whs5"></td></tr>
+
+<tr valign="top" class="whs2">
+<td width="96px" class="whs3">
+<p class=Table-Text
+	style="margin-right: 6.50pt;"><span style="font-weight: bold;"><B>Cases</B></span></td>
+<td width="487px" class="whs4">
+<p class=Table-Text
+	style="margin-right: 6.50pt;"><a href="viewing_a_case_list.htm">Case 
+ List</a></p>
+<p class=Table-Text
+	style="margin-right: 6.50pt;"><a href="advanced_search.htm">Advanced 
+ Search</a></td></tr>
+
+<tr valign="top" class="whs2">
+<td width="96px" class="whs3">
+<p class=Table-Text
+	style="margin-right: 6.50pt;"><span style="font-weight: bold;"><B>Reports</B></span></td>
+<td width="487px" class="whs4">
+<p class=Table-Text
+	style="margin-right: 6.50pt;"><a href="at_need_reports.htm">At Need</a> 
+ </p>
+<p class=Table-Text
+	style="margin-right: 6.50pt;"><a href="pre_need_reports.htm">Pre-Need</a> 
+ </td></tr>
+
+<tr valign="top" class="whs2">
+<td width="96px" class="whs3">
+<p class=Table-Text
+	style="margin-right: 6.50pt;"><span style="font-weight: bold;"><B>Inventory</B></span></td>
+<td width="487px" class="whs4">
+<p class=Table-Text
+	style="margin-right: 6.50pt;"><a href="manager.htm">Manager</a> </p>
+<p class=Table-Text
+	style="margin-right: 6.50pt;"><a href="reports.htm">Reports</a> </td></tr>
+
+<tr valign="top" class="whs2">
+<td width="96px" class="whs3">
+<p class=Table-Text
+	style="margin-right: 6.50pt;"><span style="font-weight: bold;"><B>Accounting</B></span></td>
+<td width="487px" class="whs4">
+<p class=Table-Text
+	style="margin-right: 6.50pt;"><a href="Calculate_Finance_Charges.htm">Calculate 
+ Finance Charge</a></p>
+<p class=Table-Text
+	style="margin-right: 6.50pt;"><a href="Check_Writer.htm">Check Writer</a></p>
+<p class=Table-Text
+	style="margin-right: 6.50pt;"><a href="Edit_Void_Checks.htm">Edit/Void 
+ Checks</a></p>
+<p class=Table-Text
+	style="margin-right: 6.50pt;"><a href="Misc._Cash_Receipts.htm">Misc. 
+ Cash Receipts</a></p>
+<p class=Table-Text
+	style="margin-right: 6.50pt;"><a href="reports.htm">Reports</a></p>
+<p class=Table-Text
+	style="margin-right: 6.50pt;"><a href="Accounting_Interface.htm">Accounting 
+ Interface</a></td></tr>
+
+<tr valign="top" class="whs2">
+<td width="96px" class="whs3">
+<p class=Table-Text
+	style="margin-right: 6.50pt;"><span style="font-weight: bold;"><B>Setup</B></span></td>
+<td width="487px" class="whs4">
+<p class=Table-Text
+	style="margin-right: 6.50pt;"><a href="edit_speed_data.htm">Edit Speed 
+ Data</a></p>
+<p class=Table-Text
+	style="margin-right: 6.50pt;"><a href="edit_expense_accounts.htm">Edit 
+ Expense Accounts</a> </p>
+<p class=Table-Text
+	style="margin-right: 6.50pt;"><a href="edit_price_list.htm">Edit Price 
+ List</a></p>
+<p class=Table-Text
+	style="margin-right: 6.50pt;"><a href="Editing_a_Package.htm">Edit 
+ Packages</a></p>
+<p class=Table-Text
+	style="margin-right: 6.50pt;"><a href="user_administration.htm">User 
+ Administration</a></p>
+<p class=Table-Text
+	style="margin-right: 6.50pt;"><a href="location_management.htm">Location 
+ Management</a></p>
+<p class=Table-Text
+	style="margin-right: 6.50pt;"><a href="arranger_management.htm">Arranger 
+ Management</a></p>
+<p class=Table-Text
+	style="margin-right: 6.50pt;"><a href="forms_available.htm">Forms Available</a></p>
+<p class=Table-Text
+	style="margin-right: 6.50pt;"><a href="gl_sales_account.htm">GL 
+ Sales Account</a></td></tr>
+
+<tr valign="top" class="whs2">
+<td width="96px" class="whs3">
+<p class=Table-Text
+	style="margin-right: 6.50pt;"><span style="font-weight: bold;"><B>Help</B></span></td>
+<td width="487px" class="whs4">
+<p class=Table-Text><span style="font-weight: bold;"><B>Help Index. </B></span>Displays 
+ online help. <span style="font-style: italic;"><I>Note: While viewing certain 
+ windows while working within the system, you may also click the </I></span><span 
+ style="font-weight: bold; font-style: italic;"><I><B>Help </B></I></span><span style="font-style: italic;"><I>button 
+ to display the online help.</I></span></p>
+<p class=Table-Text><span style="font-weight: bold;"><B>About FDMS Network</B></span>. 
+ Displays information about FDMS.</p>
+<p class=Table-Text><span style="font-weight: bold;"><B>Contact Us.</B></span> 
+ Displays contact information for Davidson Software.</td></tr>
+</table>
+
+<hr></hr>
+<form name="firstCallInformation" method="POST" action="">
+<input type="image" name="" src="icon_print.gif" alt="Print" onclick="window.print()"> Print Topic
+</form>
+
+<script type="text/javascript" language="javascript1.2">
+<!--
+if (window.autoSync)
+	autoSync(1);
+if (window.writeIntopicBar)
+	writeIntopicBar(0);
+//-->
+</script>
+<form method="POST" action="http://www.helpcommunity.com/ehelpapi.asp?cmd=WebSave" name="ehelpform" target="_top" style="display:'none';">
+<input type="hidden" name="data" value="2A0C020C0000004D656E75204F7074696F6E730D020C0000004D656E75204F7074696F6E7311020F00000047657474696E67205374617274656412020C0000004D656E75204F7074696F6E7313020700000057656246444D5315020B00000077656266646D732E68746D1703A10100003C3F786D6C2076657273696F6E3D22312E30223F3E0D0A3C21444F43545950452053595354454D20226568656C706F70742E647464223E0D0A3C46494C452D4F5054494F4E532046494C452D56455253494F4E3D2232222047454E455241544F523D22526F626F48454C5020666F722057696E48656C7020392E3220392E32302E353334222046494C452D4B45593D2237663337336665345F303535615F346239395F616634395F316139623538346263653435223E0D0A3C2F46494C452D4F5054494F4E533E0D0A3C4548454C502D4F5054494F4E5320464F524D41542D56455253494F4E3D22312E30223E0D0A203C4F5054494F4E5320454E41424C45443D224E4F2220454D4245444445443D2259455322204D41494E2D57494E444F572D4F4E4C593D224E4F2220434F4D4D554E4954592D4E4F544946593D224E4F222046495253542D504147453D224E4F542D534554223E0D0A203C2F4F5054494F4E533E0D0A203C425554544F4E2D4C4142454C3E5765625365617263680D0A203C2F425554544F4E2D4C4142454C3E0D0A3C2F4548454C502D4F5054494F4E533E18010400000002000000702A">
+</form>
+</body>
+
+</html>

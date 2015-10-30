@@ -187,7 +187,6 @@
 	<title><%=tableParam%> Table Popup</title>
 	
 	 <html:base/> 
-	<!-- <script language="JavaScript" type="text/javascript" src="jsScripts/jquery.js" ></script> -->
 	<script language="JavaScript" type="text/javascript" src="webfdmslib.js"></script>
 	<script language="JavaScript" type="text/javascript" src="jsScripts/formSaveWarning.js" ></script>
 	<script language="JavaScript">
@@ -249,24 +248,6 @@
 	        opener.document.getElementById("<%=field7Param%>").value= getTableField(selLine, <%=tab7num%>);
 	<% } %>
 	}
-
-	 /* $(document).ready(function() {
-  		$("#frm_addSpeedData").submit(function(event) {  
-        //event.preventDefault();
-        $.ajax({
-             type: "POST", //chose your request type method POST or GET
-              url: "http://localhost:8080/webfdms/addSpeedDataAction.do", // your struts action url
-              data: $(this).serialize(),
-              async: false,
-              success: function(data) {
-              	//alert('2');
-                window.opener.location.reload(); // callback code here
-              }
-        	});
-        	//alert('1');
-   		});
-	}); */ 
-	
 	 </script>	
 	 	 
 </head>
@@ -308,8 +289,8 @@
 	  <td><input type="button" name="finished" value="Close" onclick="formConfirmOff();window.close()" /></td>
 	</tr>
 </table>
-</form><!-- action="/addSpeedDataAction" -->
-<html:form styleId="frm_addSpeedData" action="/addSpeedDataAction" name="addSpeedData" type="fdms.ui.struts.form.AddSpeedDataForm">
+</form>
+<html:form action="/addSpeedDataAction" name="addSpeedData" type="fdms.ui.struts.form.AddSpeedDataForm">
 <html:hidden name="addSpeedData" property="identity"/>
 <table width="90%">
 	<tr>

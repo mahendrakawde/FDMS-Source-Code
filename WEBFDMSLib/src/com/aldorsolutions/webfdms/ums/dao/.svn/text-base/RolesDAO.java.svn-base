@@ -1,0 +1,257 @@
+/*
+ * RolesDAO.java
+ *
+ * Created on June 19, 2006
+ */
+
+package com.aldorsolutions.webfdms.ums.dao;
+
+/**
+ *
+ * @author drollins
+ */
+
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+import org.apache.log4j.Logger;
+
+import com.aldorsolutions.webfdms.ums.model.RolesDTO;
+import com.aldorsolutions.webfdms.util.DAO;
+
+
+
+public class RolesDAO extends DAO {
+    
+    private Logger logger = Logger.getLogger(RolesDAO.class.getName());
+    
+    public RolesDAO() {
+    	super ();
+    }
+    
+    public RolesDTO getRole ( long roleID ) {
+    	RolesDTO role = null;
+        
+        try {
+            StringBuffer sql = new StringBuffer();
+            sql.append("SELECT ROLE_ID, NAME, DESCR, STATUS ");
+            sql.append("FROM ums_role where ROLE_ID = ?" );
+            
+            makeConnection(DAO.DB_FDMSUSERS);
+            statement = conn.prepareStatement(sql.toString());
+            statement.setLong(1, roleID);
+            
+            rs = statement.executeQuery();
+            
+            if (rs.next()) {
+            	int col = 0;
+            	role = new RolesDTO();
+            	role.setRoleID(rs.getInt(++col));
+            	role.setName(rs.getString(++col));
+            	role.setDescription( rs.getString(++col));
+            	role.setStatus( rs.getBoolean(++col) );
+            }
+            
+        } catch (SQLException e) {
+            logger.error("SQLException in getRole() : ", e);
+        } catch (Exception e) {
+            logger.error("Exception in getRole() : ", e);
+        } finally {
+            closeConnection();
+        }
+        
+        return role;
+    }
+
+    public ArrayList <RolesDTO> getRoles ( boolean activeOnly ) {
+    	ArrayList <RolesDTO> elements = new ArrayList <RolesDTO> ();
+    	
+        try {
+            StringBuffer sql = new StringBuffer();
+            sql.append("SELECT ROLE_ID, NAME, DESCR, STATUS FROM ums_role");
+            
+            if ( activeOnly ) {
+            	sql.append ( " where STATUS = '1'" );
+            }
+            
+            sql.append(" order by name");
+            
+            makeConnection(DAO.DB_FDMSUSERS);
+            statement = conn.prepareStatement(sql.toString());
+            
+            rs = statement.executeQuery();
+            
+            while (rs.next()) {
+            	int col = 0;
+            	RolesDTO role = new RolesDTO();
+            	role.setRoleID(rs.getInt(++col));
+            	role.setName(rs.getString(++col));
+            	role.setDescription(rs.getString(++col));
+            	role.setStatus( rs.getBoolean(++col) );
+            	elements.add(role);
+            }
+            
+        } catch (SQLException e) {
+            logger.error("SQLException in getCompanies() : ", e);
+        } catch (Exception e) {
+            logger.error("Exception in getCompanies() : ", e);
+        } finally {
+            closeConnection();
+        }
+        
+        return elements;
+    }
+    
+    public ArrayList <RolesDTO> getRolesByUser ( boolean activeOnly, long userID ) {
+    	ArrayList <RolesDTO> elements = new ArrayList <RolesDTO> ();
+    	
+        try {
+            StringBuffer sql = new StringBuffer();
+            sql.append("SELECT ums_role.ROLE_ID, ums_role.NAME, ums_role.DESCR, ums_role.STATUS " +
+            		"FROM ums_rolesmembership, ums_role " +
+            		"WHERE ( ums_rolesmembership.roleID = ums_role.ROLE_ID ) " +
+            		"AND ( ( ums_rolesmembership.userID = ? ) ");
+
+            if ( activeOnly ) {
+            	sql.append ( " where STATUS = '1'" );
+            }
+            		
+            sql.append(") ORDER BY ums_role.NAME ASC");
+            
+            makeConnection(DAO.DB_FDMSUSERS);
+            statement = conn.prepareStatement(sql.toString());
+            statement.setLong(1, userID);            
+            
+            rs = statement.executeQuery();
+            
+            while (rs.next()) {
+            	int col = 0;
+            	RolesDTO role = new RolesDTO();
+            	role.setRoleID(rs.getInt(++col));
+            	role.setName(rs.getString(++col));
+            	role.setDescription(rs.getString(++col));
+            	role.setStatus( rs.getBoolean(++col) );
+            	elements.add(role);
+            }
+            
+        } catch (SQLException e) {
+            logger.error("SQLException in getRolesByUser() : ", e);
+        } catch (Exception e) {
+            logger.error("Exception in getRolesByUser() : ", e);
+        } finally {
+            closeConnection();
+        }
+        
+        return elements;
+    }
+    
+    public boolean addRole(RolesDTO role) {
+        boolean added = false;
+        
+        try {
+            StringBuffer sql = new StringBuffer();
+            sql.append("INSERT INTO ums_role (NAME, DESCR, STATUS) ");
+            sql.append("VALUES (?, ?, ?)");
+            
+            int col = 0;
+            makeConnection(DAO.DB_FDMSUSERS);
+            statement = conn.prepareStatement(sql.toString());
+            statement.setString(++col, role.getName());
+            statement.setString(++col, role.getDescription());
+            statement.setBoolean(++col, role.isStatus());
+            
+            statement.executeUpdate();
+            added = true;
+            
+            if (added) {
+            	rs = statement.getGeneratedKeys();
+                if (rs.next()) {
+                	role.setRoleID(rs.getInt(1));
+                }
+                
+                //auditDTO.setRoleId(role.getRoleID());
+                
+                //insertAudit(role);
+            }
+            
+        } catch (SQLException e) {
+            logger.error("SQLException in addRole() : ", e);
+        } catch (Exception e) {
+            logger.error("Exception in addRole() : ", e);
+        } finally {
+            closeConnection();
+        }
+        
+        return added;
+    }
+    
+    public boolean updateRole(RolesDTO role) {
+        boolean updated = false;
+        
+        try {
+        	
+//        	RolesDTO oldComp = getRole(role.getRoleID());
+        	
+            StringBuffer sql = new StringBuffer();
+            sql.append("UPDATE ums_role SET NAME = ?, DESCR = ?, STATUS = ? ");
+            sql.append("WHERE (ROLE_ID = ?)");
+            
+            int col = 0;
+            makeConnection(DAO.DB_FDMSUSERS);
+            statement = conn.prepareStatement(sql.toString());
+            statement.setString(++col, role.getName());
+            statement.setString(++col, role.getDescription());
+            statement.setBoolean(++col, role.isStatus());
+            statement.setLong(++col, role.getRoleID());
+            statement.executeUpdate();
+            
+//            auditDTO.setRoleId(role.getRoleID());
+            
+//            updateAudit(role, oldComp);
+            
+            updated = true;
+        } catch (SQLException e) {
+            logger.error("SQLException in updateRole() : ", e);
+        } catch (Exception e) {
+            logger.error("Exception in updateRole() : ", e);
+        } finally {
+            closeConnection();
+        }
+        
+        return updated;
+    }
+
+    public boolean deleteRole(int roleID) {
+        boolean deleted = false;
+        
+        try {
+//        	RolesDTO oldComp = getRole(roleID);
+        	
+            StringBuffer sql = new StringBuffer();
+            sql.append("UPDATE ums_role SET Status = ? ");
+            sql.append("WHERE (ROLE_ID = ?)");
+            
+            int col = 0;
+            makeConnection(DAO.DB_FDMSUSERS);
+            statement = conn.prepareStatement(sql.toString());
+            statement.setBoolean(++col, true);
+            statement.setLong(++col, roleID);
+            statement.executeUpdate();
+            
+//            auditDTO.setRoleId(roleID);
+            
+//            deleteAudit(oldComp);
+            
+            deleted = true;
+        } catch (SQLException e) {
+            logger.error("SQLException in deleteRole() : ", e);
+        } catch (Exception e) {
+            logger.error("Exception in deleteRole() : ", e);
+        } finally {
+            closeConnection();
+        }
+        
+        return deleted;
+    }
+    
+}

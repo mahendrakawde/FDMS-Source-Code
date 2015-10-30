@@ -1,0 +1,512 @@
+/*
+ * ProcessUserForm.java
+ *
+ * Created on February 5, 2005, 2:20 PM
+ */
+
+package fdms.admin.user.action;
+
+/**
+ *
+ * @author Guadalupe Garcia
+ */
+
+import java.io.IOException;
+import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.apache.log4j.Logger;
+import org.apache.struts.action.Action;
+import org.apache.struts.action.ActionError;
+import org.apache.struts.action.ActionErrors;
+import org.apache.struts.action.ActionForm;
+import org.apache.struts.action.ActionForward;
+import org.apache.struts.action.ActionMapping;
+import org.apache.struts.util.MessageResources;
+
+import com.aldorsolutions.webfdms.admin.user.bean.UserManagerBean;
+import com.aldorsolutions.webfdms.admin.user.model.UserDTO;
+import com.aldorsolutions.webfdms.admin.user.model.UserLocationDTO;
+import com.aldorsolutions.webfdms.company.bean.CompanyManagerBean;
+import com.aldorsolutions.webfdms.company.model.CompanyDTO;
+import com.aldorsolutions.webfdms.security.util.Encryptor;
+import com.aldorsolutions.webfdms.ums.bean.RolesManager;
+import com.aldorsolutions.webfdms.ums.bean.RolesMembershipManager;
+import com.aldorsolutions.webfdms.ums.model.RolesDTO;
+import com.aldorsolutions.webfdms.ums.model.RolesMembershipDTO;
+import com.aldorsolutions.webfdms.util.LoginLogger;
+
+import fdms.admin.user.form.UserForm;
+
+public class ProcessUserForm extends Action {
+    
+    private Logger logger = Logger.getLogger(ProcessUserForm.class.getName());
+    
+    /**
+     * 
+     */
+    public ActionForward execute(
+            ActionMapping mapping,
+            ActionForm actionForm,
+            HttpServletRequest request,
+            HttpServletResponse response) throws ServletException, IOException {
+        
+        String target = "users";
+        UserForm form = (UserForm) actionForm;
+        String submitType = request.getParameter(mapping.getParameter());
+        long userIdL = 0L;
+        UserManagerBean userManagerBean = new UserManagerBean();
+        String message = "";
+        ActionErrors errors = new ActionErrors();
+        MessageResources resources = this.getResources(request);;
+        UserDTO user = null;
+        boolean success = false;
+        boolean newUser = false;
+        
+        if (form.getUserId() != null) {
+            try {
+                userIdL = Long.parseLong(form.getUserId());
+            } catch (NumberFormatException e) {
+                // unable to parse long from String
+            }
+        }
+        
+        request.setAttribute("locationsSize", new Integer(form.getLocations().size()).toString() );
+                
+        try {
+            if (submitType.equals("Submit")) {
+            	
+            	if (userIdL > 0L) {
+            		user = userManagerBean.getUser(userIdL);
+            	}
+            	
+            	
+                user = getUser(userIdL, form, user, request);                
+                
+                                
+                if (userIdL > 0L) { // updating user
+                    success = userManagerBean.updateUser(user);
+
+                    saveUserRoles(user, form);
+                    
+                    if (success)  {
+                        message = resources.getMessage("userForm.message.updated");                        
+                    } else {
+                        errors.add(ActionErrors.GLOBAL_ERROR,
+                                new ActionError("error.userForm.updated"));
+                    }
+                } else { // adding user
+                    success = userManagerBean.addUser(user);
+                
+                    
+                	if (success) saveUserRoles(user, form);
+                    
+                    if (success) {
+                        message = resources.getMessage("userForm.message.added");
+                        newUser = true;
+                    } else {
+                        errors.add(ActionErrors.GLOBAL_ERROR,
+                                new ActionError("error.userForm.added"));
+                    }
+                }
+                
+            } else if (submitType.equals("Delete") && userIdL > 0L) {
+                userManagerBean.deleteUser(userIdL);
+                message = resources.getMessage("userForm.message.deleted");
+
+                return mapping.findForward(target);
+            }
+        } catch (Exception e) {
+            logger.error("Exception in perform() : ", e);      
+            errors.add(ActionErrors.GLOBAL_ERROR, new ActionError("error.GeneralException", e.getMessage()) );
+        }
+        
+        String [] locationIds  = form.getLocationIds();
+        
+        if ( (locationIds == null || locationIds.length == 0) && userIdL > 0 ) {
+        	errors.add(ActionErrors.GLOBAL_ERROR, new ActionError("error.GeneralException", "No Locations specified") );
+        }
+        
+        
+        if (errors.isEmpty()) {
+            request.setAttribute("message", message);
+            
+            if (!newUser) {
+                ArrayList locationList = userManagerBean.getLocations(
+                		user.getDbLookup(),
+						(int) user.getUserId(), 
+						user.getCompanyID(),
+						user.getRegionId() );
+                
+                ArrayList <UserLocationDTO> saveLocations = new ArrayList <UserLocationDTO> ();
+                
+                for ( int i=0; i < locationList.size(); i++ ) {
+                	UserLocationDTO location = (UserLocationDTO) locationList.get(i);
+                	
+                	long locationID = location.getLocationId();
+                	
+                	for ( int x = 0; x < locationIds.length; x++ ) {
+                		int aLocID = Integer.parseInt(locationIds[x]);
+                		
+                		if ( aLocID == locationID ) {
+                			saveLocations.add(location);
+                		}
+                	}
+                }
+                
+                userManagerBean.deleteUserLocations( user.getUserId() );
+                try {
+					userManagerBean.addUserLocations( user.getUserId(), saveLocations );
+				} catch (Exception e) {
+					logger.error(e);
+				}
+                
+            }
+            else if ( newUser ) {
+            	redisplayUserPage( form, user, userManagerBean, request);
+            }
+        } else {
+            saveErrors(request, errors);
+            target = redisplayUserPage(form, user, userManagerBean, request);
+        }
+        
+        return mapping.findForward(target);
+    }
+    
+    /**
+     * 
+     * @param form
+     * @param user
+     * @param userManagerBean
+     * @param request
+     * @return
+     */
+    private String redisplayUserPage (UserForm form, UserDTO user, UserManagerBean userManagerBean, HttpServletRequest request) {
+    	
+    	HttpSession session = request.getSession();
+    	form.setUserId(Long.toString(user.getUserId()));
+        
+        ArrayList locations = userManagerBean.getLocations(
+        		user.getDbLookup(),
+				(int) user.getUserId(), 
+				user.getCompanyID(),
+				user.getRegionId() );
+        
+        session.setAttribute("ADMIN_LOCATIONS", locations);
+        form.setLocations(locations);
+        form.setLocationIds(userManagerBean.getUserLocationIds(user.getUserId()));                            
+        
+        request.setAttribute("locationsSize", new Integer(form.getLocations().size()).toString() );
+        
+
+        ArrayList locales = userManagerBean.getLocales(
+                user.getDbLookup(),
+				(int) user.getUserId(), 
+				user.getCompanyID(),
+				user.getRegionId());
+        
+        session.setAttribute("ADMIN_LOCALES", locales);
+        form.setLocales(locales);
+        form.setLocaleIds(userManagerBean.getUserLocaleIds(user.getUserId()));                            
+        
+        request.setAttribute("localeSize", new Integer(form.getLocations().size()).toString() );
+
+        logger.debug( "LocaleIds: " + form.getLocaleIds() );
+        logger.debug( "LocationIds: " + form.getLocationIds() );
+        
+    	String js = createLocaleJavascript ( locations, form.getLocationIds() );
+    	
+    	form.setLocaleMapJavascript(js);
+    	
+        return ("userForm");
+    }
+    
+    /**
+     * 
+     * @param userId
+     * @param form
+     * @param user
+     * @param request
+     * @return
+     */
+    private UserDTO getUser(long userId, UserForm form, UserDTO user, HttpServletRequest request) {
+        
+    	if ( user == null ) {
+    		user = new UserDTO();
+    	}
+        
+        user.setUserId(userId);
+        user.setName(form.getName());
+        
+        if ( "***SAME***".equals(form.getPassword()) == false ) {
+        	user.setPassword( Encryptor.encrypt(form.getPassword()) );
+        	user.setChangePassword(true);
+        }
+        
+        int regionId = 0;
+        try {
+            regionId = Integer.parseInt(form.getRegionId());
+        } catch (NumberFormatException e) {
+            // unable to parse int from String
+        }
+        user.setRegionId(regionId);
+        
+        user.setAdministrator(getChecked(form.getAdministrator()));
+        user.setAtneed(getChecked(form.getAtneed()));
+        user.setPreneed(getChecked(form.getPreneed()));
+        user.setFinancial(getChecked(form.getFinancial()));
+        user.setPayments(getChecked(form.getPayments()));
+        user.setAcctsRec(getChecked(form.getAcctsRec()));
+        user.setForms(getChecked(form.getForms()));
+        user.setReports(getChecked(form.getReports()));
+        user.setDeleteCases(getChecked(form.getDeleteCases()));
+        user.setInitials(form.getInitials());
+        user.setInventory(getChecked(form.getInventory()));
+        user.setViewOnly(getChecked(form.getViewOnly()));
+        user.setAccountingInterface(getChecked(form.getAccountingInterface()));
+        user.setSpeedData(getChecked(form.getSpeedData()));
+        user.setAdjustFinancial(getChecked(form.isAdjustFinancial()));
+        user.setBank(getChecked(form.isBank()));
+        user.setDashboardReport(getChecked(form.isDashboardReport()));
+        user.setFdmsNetwork(getChecked(form.isFdmsNetwork()));
+        user.setFdmsDashboard(getChecked(form.isFdmsDashboard()));
+        user.setFdmsWebservice(getChecked(form.isFdmsWebservice()));
+        user.setFddeWebservice(getChecked(form.isFddeWebservice()));
+        user.setArrangerManager(getChecked(form.getArrangerManager()));
+        user.setFormsAvailable(getChecked(form.getFormsAvailable()));
+        user.setGlSalesAccount(getChecked(form.getGlSalesAccount()));
+        user.setDbUrl(form.getDbUrl());
+        user.setFirstName(form.getFirstName());
+        user.setLastName(form.getLastName());
+        user.setEmail(form.getEmail());
+        user.setDbUsername(form.getDbUsername());
+        user.setDbPassword(form.getDbPassword());
+        user.setCaseListOrder(form.getCaseListOrder());
+        user.setLocationIds(form.getLocationIds());
+        user.setUserLocked(form.getUserLocked());
+        user.setFdmsAdmin(getChecked(form.isFdmsAdmin()));
+        user.setCompanyID(form.getCompanyID());
+        user.setEasyPayment(getChecked(form.isEasyPayment()));
+      //added by haranesh
+        user.setEregisterbook(getChecked(form.isEregisterbook()));
+         
+        
+        CompanyManagerBean cmBean = new CompanyManagerBean ();
+        CompanyDTO company = cmBean.getCompany(user.getCompanyID());
+        user.setDbLookup(company.getDbLookup());
+        user.setDbUrl(company.getDataURL());
+        user.setDbUsername(company.getSqlUser());
+        user.setDbPassword(company.getSqlPass());
+        
+        if ( form.isUserLockedState() != user.isUserLocked() ) {
+        	
+        	if ( user.isUserLocked() ) {
+        		user.setLockoutTmstmp(new Timestamp(System.currentTimeMillis()));
+        	} 
+        	else {
+        		
+        		try {
+        			SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+                	Date date = sdf.parse("01/01/1980");
+                	
+                	/*
+                	 * Setting timestamp to null on MySQL will result in the 
+                	 * current time being set.  Instead I'm setting it to 1980 
+                	 * to ensure that the user will be allowed back in. 
+                	 */
+                	
+                	user.setLockoutTmstmp(new Timestamp(date.getTime()));
+                	
+                	LoginLogger loginLog = new LoginLogger( (int) user.getUserId(), 
+                			user.getCompanyID(), user.getRegionId() );        
+                    
+                	String ip = request.getRemoteAddr();
+            		String browser = null;
+                    String userAgent = null;
+                    
+                    loginLog.logUser( user.getName(), (int) user.getUserId(), 
+                    		user.getRegionId(), System.currentTimeMillis(), ip, browser, 
+                    		userAgent, "A" );
+        		} 
+        		catch ( ParseException pe )
+        		{
+        			logger.error("Parse Exception", pe);
+        		}
+        		
+        		
+        	}
+        	
+        }
+
+        int caseListLimit = 0;
+        if (form.getCaseListLimit() != null) {
+            try {
+                caseListLimit = Integer.parseInt(form.getCaseListLimit());
+            } catch (NumberFormatException e) {
+                // unable to parse int from String
+            }
+        }
+        user.setCaseListLimit(caseListLimit);
+        
+        return user;
+    }
+    
+    /**
+     * 
+     * @param user
+     * @param form
+     * @throws ServletException
+     */
+    private void saveUserRoles (UserDTO user, UserForm form) throws ServletException {
+
+    	if ( user.getUserId() <= 0) {
+    		throw new ServletException ( "UserID cannot be Zero" );
+    	}
+        
+        ArrayList <RolesDTO> saveRoles = new ArrayList <RolesDTO> ();
+        String [] roleIds  = form.getUserRoles();
+        RolesMembershipManager userRoleMgr = RolesMembershipManager.getInstance();
+        RolesManager roleMgr = RolesManager.getInstance();
+        ArrayList roles = roleMgr.getAllRoles();
+        
+        if ( roleIds != null && roleIds.length > 0 ) {
+	        for ( int i=0; i < roles.size(); i++ ) {
+	        	RolesDTO role = (RolesDTO) roles.get(i);
+	        	
+	        	long roleID = role.getRoleID();
+	        	
+	        	for ( int x = 0; x < roleIds.length; x++ ) {
+	        		int aRoleID = Integer.parseInt(roleIds[x]);
+	        		
+	        		if ( aRoleID == roleID ) {
+	        			saveRoles.add( role );
+	        		}
+	        	}
+	        }
+        }
+        
+        ArrayList userRoles = userRoleMgr.getRoleMembershipByUser( user.getUserId() );
+        
+        ArrayList <RolesDTO> newRoles = new ArrayList <RolesDTO> ();
+        
+        for ( int x = 0; x < saveRoles.size(); x++ ) {
+        	RolesDTO role = saveRoles.get(x);
+        	long roleID = role.getRoleID();
+        	boolean roleFound = false;
+        	
+        	for ( int y = 0; y < userRoles.size(); y++ ) {
+        		RolesMembershipDTO userRole = (RolesMembershipDTO) userRoles.get(y);
+        		
+        		long aRoleID = userRole.getRoleID();
+        		
+        		if ( aRoleID == roleID ) {
+        			roleFound = true;
+        			break;
+        		}
+            }
+        	
+        	if ( roleFound == false )  {
+        		newRoles.add(role);
+        	}
+        	
+    	}
+        
+        ArrayList <RolesMembershipDTO> deleteRoles = new ArrayList <RolesMembershipDTO> ();
+        
+        for ( int y = 0; y < userRoles.size(); y++ ) {
+    		RolesMembershipDTO userRole = (RolesMembershipDTO) userRoles.get(y);
+    		boolean roleFound = false;
+    		long aRoleID = userRole.getRoleID();
+    		
+    		for ( int x = 0; x < saveRoles.size(); x++ ) {
+    			RolesDTO role = saveRoles.get(x);
+            	long roleID = role.getRoleID();
+            	
+        		if ( aRoleID == roleID ) {
+        			roleFound = true;
+        			break;
+        		}
+            	
+        	}
+    		
+        	if ( roleFound == false )  {
+        		deleteRoles.add(userRole);
+        	}
+        	
+        }
+        
+        userRoleMgr.addRoleMembership(user.getUserId(), newRoles );
+        userRoleMgr.removeRoleMembership(user.getUserId(), deleteRoles );
+        
+    }
+    
+    
+    /**
+     * 
+     * @param checkbox
+     * @return
+     */
+    private int getChecked(boolean checkbox) {
+        return (checkbox) ? 1 : 0;
+    }
+
+    /**
+     * 
+     * @param locations
+     * @param locationIds
+     * @return
+     */
+    private String createLocaleJavascript ( ArrayList locations, String [] locationIds ) {
+    	
+    	StringBuffer js = new StringBuffer ("\n");
+    	
+    	StringBuffer resetStr = new StringBuffer("\nfunction resetScript () { \n");
+    	resetStr.append("\tif ( confirm ( \"Are you sure you want to reset your locations?\" ) ) {\n");
+    	
+    	js.append("\tlocList = new Array(" + locations.size() + ");\n");
+    	
+    	for ( int j = 0; j < locations.size(); j++ ) {
+    		UserLocationDTO location = (UserLocationDTO) locations.get(j);
+    		
+    		long localeID = location.getRegionId();
+    		long locationID = location.getLocationId();
+    		String locName = location.getName();
+    		boolean selected = false;
+    		
+    		if ( locationIds != null ) {
+				for ( int x = 0; x < locationIds.length; x++ ) {
+					int aLocID = Integer.parseInt( locationIds[x] );
+					
+					if ( aLocID == locationID ) {
+						selected = true;
+					}
+				}
+    		}	
+			
+    		String arrayLine = "\tlocList[" + j + "] = new locations("+ localeID + ", "+ 
+					locationID + ", \"" + locName + "\", " + selected +");\n";
+				
+    		resetStr.append(arrayLine);
+    		js.append(arrayLine);
+    		
+    	}
+    	
+    	resetStr.append("\tselectLocale();\n");
+    	resetStr.append("\t}\n");
+    	resetStr.append("}\n");
+    	
+    	js.append(resetStr);
+    	
+    	return ( js.toString() );
+			
+	}
+    
+}

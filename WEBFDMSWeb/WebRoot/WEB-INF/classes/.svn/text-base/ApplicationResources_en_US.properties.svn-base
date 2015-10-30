@@ -1,0 +1,21 @@
+error.registration.nullZipCode=Funeral Home Zip Code must have a value.
+error.registration.invalidZipCode=Invalid Funeral Home Zip Code.
+error.location.setZipCode=Error setting Zip Code
+error.arranger.nullSSN=Social Security Number must have a value.
+error.arranger.invalidSSN=Invalid Social Security Number.
+error.arranger.setSocialSecurityNumber=Error setting Social Security Number.
+error.va.nullBurialZipCode=Place of Burial Zip Code must have a value.
+error.va.nullSSN=Veteran Social Security Number must have a value.
+app.state=State
+app.zip=Zip Code
+app.ssn=Social Security Number
+error.registration.nullState=Funeral Home State must have a value.
+error.location.setState=Error setting State
+error.va.nullBurialState=Place of Burial State must have a value..
+caseList.preNeedCaseDesc=Case #
+caseList.atNeedCaseDesc=At-Need Contract #
+localeForm.preneedLicense=Abbit Management
+services.SectionDescription=Section
+services.LotDescription=Lot
+services.GraveDescription=Grave No.
+

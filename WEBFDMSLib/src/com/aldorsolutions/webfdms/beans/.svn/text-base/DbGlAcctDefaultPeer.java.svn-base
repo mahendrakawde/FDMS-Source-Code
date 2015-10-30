@@ -1,0 +1,124 @@
+package com.aldorsolutions.webfdms.beans;
+
+/**
+ * DbGlAcctPeer supplies constants and SQL for Persistent Class.
+ * Creation date: (5/27/2003 4:13:09 PM)
+ * @author: 
+ */
+public class DbGlAcctDefaultPeer extends com.aldorsolutions.webfdms.database.DatabasePeer {
+
+	static public final String IDENTITY    	= "glacctID";
+	static public final String LOCALE		= "locale";
+	static public final String DELETECODE  	= "deleteCode";
+	static public final String LOCATIONID	= "location";
+	static public final String CATEGORY		= "category";
+	static public final String DISPOSITION	= "disposition";
+	static public final String SALETYPE		= "saleType";
+	static public final String REVACCT		= "revenueAcct";
+	static public final String ASSETACCT	= "invAssetAcct";
+	static public final String COGSACCT		= "InvCogsAcct";
+/**
+ * getInsertSql method comment.
+ */
+protected java.sql.PreparedStatement getInsertSql(com.aldorsolutions.webfdms.database.DatabaseTransaction t, com.aldorsolutions.webfdms.database.Persistent p) throws com.aldorsolutions.webfdms.database.PersistenceException {
+	java.sql.Connection connection = null;
+	try {
+		DbGlAcctDefault rec=(DbGlAcctDefault)p;
+		connection = t.getConnection();
+		java.sql.PreparedStatement pstmt = connection.prepareStatement(
+		"INSERT INTO glacctdefault ("+
+					IDENTITY +","+
+					DELETECODE +","+
+					LOCALE	+","+
+					LOCATIONID +","+
+					CATEGORY +","+
+					DISPOSITION +","+
+					SALETYPE +","+
+					REVACCT +","+
+					ASSETACCT +","+
+					COGSACCT +" "+
+					") VALUES (0,?,?,?,?,?,?,?,?,?)"
+		);
+		pstmt.setString(1, rec.getDeleteCode());	
+		pstmt.setInt(	2, rec.getLocale());
+		pstmt.setInt(	3, rec.getLocationID());
+		pstmt.setString(4, rec.getCategory());
+		pstmt.setString(5, rec.getDisposition());
+		pstmt.setString(6, rec.getSaleType());
+		pstmt.setString(7, rec.getRevenueAcct());
+		pstmt.setString(8, rec.getInvAssetAcct());
+		pstmt.setString(9, rec.getInvCogsAcct());
+
+		return pstmt;
+	}
+	catch (java.sql.SQLException e){
+		throw new com.aldorsolutions.webfdms.database.PersistenceException("DbGlAcctDefaultPeer.Insert:"+e.getMessage(),e);
+	}
+}
+/**
+ * getRemoveSql method comment.
+ */
+protected java.sql.PreparedStatement getRemoveSql(com.aldorsolutions.webfdms.database.DatabaseTransaction t, com.aldorsolutions.webfdms.database.Persistent p) throws com.aldorsolutions.webfdms.database.PersistenceException {
+		java.sql.PreparedStatement pstmt=null;
+		java.sql.Connection connection = null;
+		try {
+			connection = t.getConnection();
+			//pstmt = connection.prepareStatement("DELETE FROM Obituary WHERE VitalsId=?");
+			//pstmt.setInt(1,p.getId());
+			pstmt = connection.prepareStatement(
+			"UPDATE glacctdefault SET deleteCode=? where glacctID=?");
+			pstmt.setString(1, "D");	
+			pstmt.setInt(2,p.getId());
+
+			return pstmt;
+		}
+		catch (java.sql.SQLException e){
+			throw new com.aldorsolutions.webfdms.database.PersistenceException("DbGlAcctDefault.Remove",e);
+		}
+}
+/**
+ * getRestoreSql method comment.
+ */
+protected String getRestoreSql(com.aldorsolutions.webfdms.database.Persistent p) {
+		return
+		"SELECT * from glacctdefault  WHERE glacctID = "
+		+ p.getId();
+}
+/**
+ * getUpdateSql method comment.
+ */
+protected java.sql.PreparedStatement getUpdateSql(com.aldorsolutions.webfdms.database.DatabaseTransaction t, com.aldorsolutions.webfdms.database.Persistent p) throws com.aldorsolutions.webfdms.database.PersistenceException {
+		java.sql.Connection connection = null;
+		try {
+			DbGlAcctDefault rec=(DbGlAcctDefault)p;
+			connection = t.getConnection();
+			java.sql.PreparedStatement pstmt = connection.prepareStatement(
+			"UPDATE glacctdefault SET "+
+						DELETECODE +"=?,"+
+						LOCALE +"=?,"+
+						LOCATIONID +"=?,"+
+						CATEGORY +"=?,"+
+						DISPOSITION +"=?,"+
+						SALETYPE +"=?,"+
+						REVACCT +"=?,"+
+						ASSETACCT +"=?,"+
+						COGSACCT +"=? "+
+						"WHERE "+IDENTITY+" = ?"
+			);
+			pstmt.setString(1, rec.getDeleteCode());
+			pstmt.setInt(	2, rec.getLocale());
+			pstmt.setInt(	3, rec.getLocationID());
+			pstmt.setString(4, rec.getCategory());
+			pstmt.setString(5, rec.getDisposition());
+			pstmt.setString(6, rec.getSaleType());
+			pstmt.setString(7, rec.getRevenueAcct());
+			pstmt.setString(8, rec.getInvAssetAcct());
+			pstmt.setString(9, rec.getInvCogsAcct());
+			pstmt.setInt   (10, rec.getId());
+			return pstmt;
+		}
+		catch (java.sql.SQLException e){
+			throw new com.aldorsolutions.webfdms.database.PersistenceException("DbGlAcctDefaultPeer.Update:"+e.getMessage(),e);
+		}
+}
+}

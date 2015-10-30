@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/callfire/SMSService
+END
+SMSService.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/callfire/SMSService/SMSService.java
+END
+package-info.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/callfire/SMSService/package-info.java
+END
+ArrayOfString.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/callfire/SMSService/ArrayOfString.java
+END
+SMSServicePortType.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/callfire/SMSService/SMSServicePortType.java
+END
+SendSMSCampaignResponse.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/callfire/SMSService/SendSMSCampaignResponse.java
+END
+SendSMSCampaign.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/callfire/SMSService/SendSMSCampaign.java
+END
+ObjectFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/callfire/SMSService/ObjectFactory.java
+END

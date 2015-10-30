@@ -1,0 +1,83 @@
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/beans/custom
+END
+FinancialInformationBillToPartiesLineItem.java
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/beans/custom/FinancialInformationBillToPartiesLineItem.java
+END
+QtyFinancialInformationLineItem.java
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/beans/custom/QtyFinancialInformationLineItem.java
+END
+InventoryMasterLineItem.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/beans/custom/InventoryMasterLineItem.java
+END
+ComponentItem.java
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/beans/custom/ComponentItem.java
+END
+FinancialInformationLineItem.java
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/beans/custom/FinancialInformationLineItem.java
+END
+CustomDataItem.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/beans/custom/CustomDataItem.java
+END
+HistoricalPaymentLineItem.java
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/beans/custom/HistoricalPaymentLineItem.java
+END
+FinancialAddServicesLineItem.java
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/beans/custom/FinancialAddServicesLineItem.java
+END
+AccountDistributionItem.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/beans/custom/AccountDistributionItem.java
+END
+AcctInterfaceFile.java
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/beans/custom/AcctInterfaceFile.java
+END
+PaymentComponentListItem.java
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/beans/custom/PaymentComponentListItem.java
+END
+FinanceCharge.java
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/beans/custom/FinanceCharge.java
+END
+FinancialInformationAddMerchandiseLineItem.java
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/beans/custom/FinancialInformationAddMerchandiseLineItem.java
+END

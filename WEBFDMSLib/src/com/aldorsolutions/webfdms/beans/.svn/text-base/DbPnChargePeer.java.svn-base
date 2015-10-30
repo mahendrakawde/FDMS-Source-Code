@@ -1,0 +1,129 @@
+package com.aldorsolutions.webfdms.beans;
+
+
+/**
+ * DB Specific constants and SQL for DbPnCharge.
+ * Creation date: (11/14/2001 4:13:09 PM)
+ * @author: 
+ */
+public class DbPnChargePeer extends com.aldorsolutions.webfdms.database.DatabasePeer {
+
+//    private Logger logger = Logger.getLogger(DbPnChargePeer.class.getName());
+	static public final String IDENTITY    	= "AutoIndex";
+	static public final String CONTRACTID 	= "ContractID";
+	static public final String CHARGETYPE 	= "ChargeType";
+	static public final String DESCRIPTION 	= "Description";
+	static public final String AMOUNT		= "Amount";
+	static public final String SEQUENCE		= "Sequence";
+	static public final String SPFCODE		= "SPFcode";
+	static public final String PRICELISTID  = "PriceListId";
+	static public final String INVMASTERKEY	= "InvMasterKey";
+	static public final String CATEGORYCODE = "CategoryCode";
+	static public final String TAXCODE 		= "TaxCode";
+	static public final String TAXEXEMPT 	= "TaxExemptAmt";
+/**
+ * getInsertSql method comment.
+ */
+protected java.sql.PreparedStatement getInsertSql(com.aldorsolutions.webfdms.database.DatabaseTransaction t, com.aldorsolutions.webfdms.database.Persistent p) throws com.aldorsolutions.webfdms.database.PersistenceException {
+
+		java.sql.Connection connection = null;
+		try {
+			DbPnCharge rec=(DbPnCharge)p;
+			connection = t.getConnection();
+			java.sql.PreparedStatement pstmt = connection.prepareStatement(
+			"INSERT INTO pncharges ("+
+						IDENTITY +","+
+						CONTRACTID +","+
+						CHARGETYPE +","+
+						DESCRIPTION +","+
+						AMOUNT +","+
+						SEQUENCE +","+
+						SPFCODE +","+
+						PRICELISTID +","+
+						INVMASTERKEY +","+
+						CATEGORYCODE +","+
+						TAXCODE + ","+
+						TAXEXEMPT +" "+
+						") VALUES (0,?,?,?,?,?,?,?,?,?,?,?)");
+			pstmt.setInt   (1, rec.getContractID());	
+			pstmt.setShort (2, (short)rec.getType());
+			pstmt.setString(3, rec.getDescription());
+			pstmt.setInt   (4, rec.getAmount());
+			pstmt.setInt   (5, rec.getSequenceNumber());
+			pstmt.setString(6, com.aldorsolutions.webfdms.util.FormatString.charToString( rec.getSpfCode()) );
+			pstmt.setInt   (7, rec.getPriceListId());
+			pstmt.setInt   (8, rec.getInvSeqNo());
+			pstmt.setString(9, com.aldorsolutions.webfdms.util.FormatString.charToString( rec.getItemCategoryType()) );
+			pstmt.setString(10,rec.getTaxCode());
+			pstmt.setInt   (11,rec.getTaxExempt());
+			return pstmt;
+		}
+		catch (java.sql.SQLException e){
+			throw new com.aldorsolutions.webfdms.database.PersistenceException("DbPnChargePeer.Update:"+e.getMessage(),e);
+		}
+}
+/**
+ * getRemoveSql method comment.
+ */
+protected java.sql.PreparedStatement getRemoveSql(com.aldorsolutions.webfdms.database.DatabaseTransaction t, com.aldorsolutions.webfdms.database.Persistent p) throws com.aldorsolutions.webfdms.database.PersistenceException {
+		java.sql.PreparedStatement pstmt=null;
+		java.sql.Connection connection = null;
+		try {
+			connection = t.getConnection();
+			pstmt = connection.prepareStatement("DELETE FROM pncharges WHERE AutoIndex=?");
+			pstmt.setInt(1,p.getId());
+			return pstmt;
+		}
+		catch (java.sql.SQLException e){
+			throw new com.aldorsolutions.webfdms.database.PersistenceException("DbPnChargesPeer.Remove",e);
+		}
+}
+/**
+ * getRestoreSql method comment.
+ */
+protected String getRestoreSql(com.aldorsolutions.webfdms.database.Persistent p) {
+		return "SELECT * from pncharges WHERE AutoIndex = "
+		+ p.getId();
+}
+/**
+ * getUpdateSql method comment.
+ */
+protected java.sql.PreparedStatement getUpdateSql(com.aldorsolutions.webfdms.database.DatabaseTransaction t, com.aldorsolutions.webfdms.database.Persistent p) throws com.aldorsolutions.webfdms.database.PersistenceException {
+		java.sql.Connection connection = null;
+		try {
+			DbPnCharge rec=(DbPnCharge)p;
+			connection = t.getConnection();
+			java.sql.PreparedStatement pstmt = connection.prepareStatement(
+			"UPDATE pncharges SET "+
+						CONTRACTID +"=?,"+
+						CHARGETYPE +"=?,"+
+						DESCRIPTION +"=?,"+
+						AMOUNT +"=?,"+
+						SEQUENCE +"=?,"+
+						SPFCODE +"=?,"+
+						PRICELISTID +"=?,"+
+						INVMASTERKEY +"=?,"+
+						CATEGORYCODE +"=?,"+
+						TAXCODE + "=?,"+
+						TAXEXEMPT +"=? "+
+						"WHERE "+IDENTITY+" = ?"
+			);		
+			pstmt.setInt   (1, rec.getContractID());	
+			pstmt.setShort (2, (short)rec.getType());
+			pstmt.setString(3, rec.getDescription());
+			pstmt.setInt   (4, rec.getAmount());
+			pstmt.setInt   (5, rec.getSequenceNumber());
+			pstmt.setString(6, com.aldorsolutions.webfdms.util.FormatString.charToString( rec.getSpfCode()) );
+			pstmt.setInt   (7, rec.getPriceListId());
+			pstmt.setInt   (8, rec.getInvSeqNo());
+			pstmt.setString(9, com.aldorsolutions.webfdms.util.FormatString.charToString( rec.getItemCategoryType()) );
+			pstmt.setString(10,rec.getTaxCode());
+			pstmt.setInt   (11,rec.getTaxExempt());
+			pstmt.setInt   (12,rec.getId());
+			return pstmt;
+		}
+		catch (java.sql.SQLException e){
+			throw new com.aldorsolutions.webfdms.database.PersistenceException("DbPnChargePeer.Update:"+e,e);
+		}
+}
+}

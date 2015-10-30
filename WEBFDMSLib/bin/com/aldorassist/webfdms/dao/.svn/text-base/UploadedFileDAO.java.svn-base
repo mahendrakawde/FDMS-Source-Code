@@ -1,0 +1,254 @@
+package com.aldorassist.webfdms.dao;
+
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.log4j.Logger;
+
+import com.aldorassist.webfdms.model.UploadedFileDTO;
+import com.aldorsolutions.webfdms.beans.DbUserSession;
+import com.aldorsolutions.webfdms.util.DAO;
+
+public class UploadedFileDAO extends DAO {
+	
+	private Logger logger = Logger.getLogger(PresentationImageDAO.class
+			.getName());
+	
+	/**
+	 * 
+	 * @param usersLookup
+	 */
+	public UploadedFileDAO(String usersLookup) {
+		super(usersLookup);
+	}
+
+	/**
+	 * 
+	 * @param user
+	 */
+	public UploadedFileDAO(DbUserSession user) {
+		super(user);
+	}
+
+	/**
+	 * 
+	 * @param companyID
+	 * @param userID
+	 */
+	public UploadedFileDAO(long companyID, long userID) {
+		super(companyID, userID);
+	}
+	
+	private static String selectFields() {
+		return ("FileId, CaseId, CompanyId, ParentId, FileName, FilePath, FileType, ParentTableName");
+	}
+	
+	public UploadedFileDTO getFileById(long fileid) {
+		UploadedFileDTO fileDto = null;
+		
+		try {
+			StringBuffer sql = new StringBuffer();
+			
+			sql.append("SELECT ").append(selectFields());
+			sql.append(" FROM uploaded_files WHERE FileId = ?");
+			
+			makeConnection(getDbLookup());
+			
+			statement = conn.prepareStatement(sql.toString());
+			
+			statement.setLong(1, fileid);
+			
+			rs = statement.executeQuery();
+			
+			int col = 0;
+			
+			while (rs.next()) {
+				fileDto = new UploadedFileDTO();
+				
+				fileDto.setFileId(rs.getLong(++col));
+				fileDto.setCaseId(rs.getLong(++col));
+				fileDto.setCompanyId(rs.getLong(++col));
+				fileDto.setParentId(rs.getLong(++col));
+				fileDto.setFileName(rs.getString(++col));
+				fileDto.setFilePath(rs.getString(++col));
+				fileDto.setFileType(rs.getString(++col));
+				fileDto.setParentTableName(rs.getString(++col));
+				
+				col = 0;
+			}
+		} catch (SQLException e) {
+			logger.error("SQLException in UploadedFileDAO:getFileByCaseAndCompany() : ", e);
+		} catch (Exception e) {
+			logger.error("Exception in UploadedFileDAO:getFileByCaseAndCompany() : ", e);
+		} finally {
+			closeConnection();
+		}
+		
+		return fileDto;
+	}
+
+	/**
+	 * Method will return list of UploadedFileDTO based on the caseId &
+	 * companyId passed to the method.
+	 * 
+	 * @param caseId
+	 * @param companyId
+	 * @return
+	 */
+	public List<UploadedFileDTO> getFileByCaseAndCompany(long caseId, long companyId) {
+		List<UploadedFileDTO> files = null;
+		
+		try {
+			StringBuffer sql = new StringBuffer();
+
+			sql.append("SELECT ").append(selectFields());
+			sql.append(" FROM uploaded_files WHERE CaseId=? AND CompanyId=?");
+
+			makeConnection(getDbLookup());
+			
+			int col = 0;
+
+			statement = conn.prepareStatement(sql.toString());
+			statement.setLong(++col, caseId);
+			statement.setLong(++col, companyId);
+
+			rs = statement.executeQuery();
+
+			UploadedFileDTO fileDto = null;
+
+			int column = 0;
+
+			while (rs.next()) {
+				fileDto = new UploadedFileDTO();
+				
+				fileDto.setFileId(rs.getLong(++column));
+				fileDto.setCaseId(rs.getLong(++column));
+				fileDto.setCompanyId(rs.getLong(++column));
+				fileDto.setParentId(rs.getLong(++column));
+				
+				fileDto.setFileName(rs.getString(++column));
+				fileDto.setFilePath(rs.getString(++column));
+				fileDto.setFileType(rs.getString(++column));
+				fileDto.setParentTableName(rs.getString(++column));
+
+				if (files == null) {
+					files = new ArrayList<UploadedFileDTO>();
+				}
+
+				files.add(fileDto);
+				
+				column = 0;
+			}
+		} catch (SQLException e) {
+			logger.error("SQLException in UploadedFileDAO:getFileByCaseAndCompany() : ", e);
+		} catch (Exception e) {
+			logger.error("Exception in UploadedFileDAO:getFileByCaseAndCompany() : ", e);
+		} finally {
+			closeConnection();
+		}
+		
+		return files;
+	}
+
+	/**
+	 * Adds entry of uploaded file in database table. This method will store
+	 * information of the file being uploaded including file type.
+	 * 
+	 * @param data
+	 * @return
+	 */
+	public boolean addUploadedFile(UploadedFileDTO data) {
+		boolean inserted = false;
+		
+		try {
+			StringBuffer sql = new StringBuffer();
+
+			sql.append("INSERT INTO uploaded_files ");
+			sql.append("(CaseId, CompanyId, ParentId, FileName, FilePath, FileType, ParentTableName) ");
+
+			sql.append("VALUES (?, ?, ?, ?, ?, ?, ?)");
+
+			int column = 0;
+
+			makeConnection(getDbLookup());
+
+			statement = conn.prepareStatement(sql.toString());
+
+			statement.setLong(++column, data.getCaseId());
+			statement.setLong(++column, data.getCompanyId());
+			statement.setLong(++column, data.getParentId());
+			statement.setString(++column, data.getFileName());
+			statement.setString(++column, data.getFilePath());
+			statement.setString(++column, data.getFileType());
+			statement.setString(++column, data.getParentTableName());
+			
+			statement.executeUpdate();
+
+			inserted = true;
+
+			if (inserted) {
+				rs = statement.getGeneratedKeys();
+				if (rs.next()) {
+					data.setFileId(rs.getLong(1));
+				}
+			}
+		} catch (SQLException e) {
+			logger.error("SQLException in UploadedFileDAO:addUploadedFile() : ", e);
+		} catch (Exception e) {
+			logger.error("Exception in UploadedFileDAO:addUploadedFile() : ", e);
+		} finally {
+			closeConnection();
+		}
+		
+		return inserted;
+	}
+
+	/**
+	 * This method will be called at the time a presentation image will be
+	 * uploaded from Admin panel. This entry is necessary as the presentation
+	 * image is also an uploaded image.
+	 * 
+	 * @param data
+	 * @return
+	 */
+	public boolean addPresentationImageFile(UploadedFileDTO data) {
+		boolean added = false;
+		
+		try {
+			StringBuffer sql = new StringBuffer();
+			
+			sql.append("INSERT INTO uploaded_files ");
+			sql.append("(FileName, FilePath, FileType) VALUES (?, ?, ?)");
+			
+			makeConnection(getDbLookup());
+			
+			statement = conn.prepareStatement(sql.toString());
+			
+			statement.setString(1, data.getFileName());
+			statement.setString(2, data.getFilePath());
+			statement.setString(3, data.getFileType());
+			
+			statement.executeUpdate();
+			
+			added = true;
+			
+			if(added) {
+				rs = statement.getGeneratedKeys();
+				
+				if(rs.next()) {
+					data.setFileId(rs.getLong(1));
+				}
+			}
+		} catch (SQLException e) {
+			logger.error("SQLException in UploadedFileDAO:addUploadedFile() : ", e);
+		} catch (Exception e) {
+			logger.error("Exception in UploadedFileDAO:addUploadedFile() : ", e);
+		} finally {
+			closeConnection();
+		}
+		
+		return added;
+	}
+
+}

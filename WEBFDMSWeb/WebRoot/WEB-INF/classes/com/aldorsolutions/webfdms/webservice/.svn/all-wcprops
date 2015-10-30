@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSWeb/src/com/aldorsolutions/webfdms/webservice
+END
+undeploy.wsdd
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSWeb/src/com/aldorsolutions/webfdms/webservice/undeploy.wsdd
+END
+QBVitalsRecordInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSWeb/src/com/aldorsolutions/webfdms/webservice/QBVitalsRecordInfo.java
+END
+QBWebConnectorSvc.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSWeb/src/com/aldorsolutions/webfdms/webservice/QBWebConnectorSvc.java
+END
+QBWebConnectorSvcSoapStub.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSWeb/src/com/aldorsolutions/webfdms/webservice/QBWebConnectorSvcSoapStub.java
+END
+QBWebConnectorSvcSoap.java
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSWeb/src/com/aldorsolutions/webfdms/webservice/QBWebConnectorSvcSoap.java
+END
+QBWebConnectorSvcLocator.java
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSWeb/src/com/aldorsolutions/webfdms/webservice/QBWebConnectorSvcLocator.java
+END
+QBWebConnectorSvcSoapImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSWeb/src/com/aldorsolutions/webfdms/webservice/QBWebConnectorSvcSoapImpl.java
+END
+deploy.wsdd
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSWeb/src/com/aldorsolutions/webfdms/webservice/deploy.wsdd
+END
+QBSessionDTO.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSWeb/src/com/aldorsolutions/webfdms/webservice/QBSessionDTO.java
+END
+QBResponseParser.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSWeb/src/com/aldorsolutions/webfdms/webservice/QBResponseParser.java
+END

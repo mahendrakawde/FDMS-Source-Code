@@ -1,0 +1,327 @@
+/*
+ * SecurityConfigDAO.java
+ *
+ * Created on June 19, 2006
+ */
+
+package com.aldorsolutions.webfdms.security.dao;
+
+/**
+ *
+ * @author drollins
+ */
+
+import java.sql.SQLException;
+
+import org.apache.log4j.Logger;
+
+import com.aldorsolutions.webfdms.security.model.SecurityConfigDTO;
+import com.aldorsolutions.webfdms.util.DAO;
+
+
+
+public class SecurityConfigDAO extends DAO {
+    
+    private Logger logger = Logger.getLogger(SecurityConfigDAO.class.getName());
+    
+    public SecurityConfigDAO(String dbLookup) {
+    	this.dbLookup = dbLookup;
+    }
+    
+    public SecurityConfigDAO(long companyID, long userID) {
+    	super(companyID, userID);
+    }
+    
+    public SecurityConfigDTO getSecurityConfig ( long companyID ) {
+    	SecurityConfigDTO settings = null;
+        
+        try {
+            StringBuffer sql = new StringBuffer();
+            sql.append("SELECT securityconfigID, companyID, minPasswordLength, ");
+            sql.append("maxPasswordLength, numberRequired, symbolRequired, mixedCaseRequired, ");
+            sql.append("adjacentNumberAllowed, failedLoginLockout, passwordContainsUserNameAllowed, ");
+            sql.append("passwordExpirationEnforced, passwordExpirationInDays, ");
+            sql.append("passwordExpirationWarning, failedLoginAttemptsAllowed, ");
+            sql.append("lockoutDuration, passwordNotRepeated, vendorCodeLength, CommissionLevel, FuneralSyncId, ");
+            sql.append("SMSNumberOfTime, SMSFirstname, SMSLastname, SMSAreaCode, SMSPhone, SMSGreeting, ");
+            sql.append("TTVNumberOfTime, TTVFirstname, TTVLastname, TTVAreaCode, TTVPhone, TTVGreeting, ERegisterBookURL, ObitConnectURL, lifefilesUserName ");
+            sql.append("FROM securityconfig where companyID = ?");
+            
+            makeConnection(this.dbLookup);
+            statement = conn.prepareStatement(sql.toString());
+            statement.setLong(1, companyID);
+            
+            rs = statement.executeQuery();
+            
+            if (rs.next()) {
+            	int col = 0;
+            	settings = new SecurityConfigDTO();
+            	settings.setSecurityConfigID(rs.getLong(++col));
+            	settings.setCompanyID(rs.getInt(++col));
+            	settings.setMinPasswordLength(rs.getInt(++col));
+            	settings.setMaxPasswordLength(rs.getInt(++col));
+            	settings.setNumberRequired( rs.getBoolean(++col) );
+            	settings.setSymbolRequired( rs.getBoolean(++col) );
+            	settings.setMixedCaseRequired( rs.getBoolean(++col) );
+            	settings.setAdjacentNumberAllowed( rs.getBoolean(++col) );
+            	settings.setFailedLoginLockout( rs.getBoolean(++col) );
+            	settings.setPasswordContainsUserNameAllowed( rs.getBoolean(++col) );
+            	settings.setPasswordExpirationEnforced( rs.getBoolean(++col) );
+            	settings.setPasswordExpirationInDays( rs.getInt(++col) );
+            	settings.setPasswordExpirationWarningInDays( rs.getInt(++col) );
+            	settings.setFailedLoginAttemptsAllowed( rs.getInt(++col) );
+            	settings.setLockoutDuration( rs.getInt(++col) );      
+            	settings.setPasswordNotRepeated( rs.getBoolean(++col));
+            	settings.setVendorCodeLength(rs.getInt(++col));
+            	settings.setCommissionLevel(rs.getInt(++col));
+            	settings.setFuneralSyncId(rs.getInt(++col));
+            	settings.setSmsNumberOfTime(rs.getInt(++col));
+            	settings.setSmsFirstname(rs.getString(++col));
+            	settings.setSmsLastname(rs.getString(++col));
+            	settings.setSmsAreaCode(rs.getString(++col));
+            	settings.setSmsPhone(rs.getString(++col));
+            	settings.setSmsGreeting(rs.getString(++col));
+            	settings.setTtvNumberOfTime(rs.getInt(++col));
+            	settings.setTtvFirstname(rs.getString(++col));
+            	settings.setTtvLastname(rs.getString(++col));
+            	settings.setTtvAreaCode(rs.getString(++col));
+            	settings.setTtvPhone(rs.getString(++col));
+            	settings.setTtvGreeting(rs.getString(++col));
+            	settings.setERegisterBookURL(rs.getString(++col));
+            	settings.setObitConnectURL(rs.getString(++col));
+            	settings.setLifefilesUserName(rs.getString(++col));
+            }
+            
+        } catch (SQLException e) {
+            logger.error("SQLException in getLocale() : ", e);
+        } catch (Exception e) {
+            logger.error("Exception in getLocale() : ", e);
+        } finally {
+            closeConnection();
+        }
+        
+        return settings;
+    }
+    public boolean addSecurityConfig( SecurityConfigDTO settings) throws Exception{
+    	return addSecurityConfig(settings, false);
+    }
+    
+    public boolean addSecurityConfig( SecurityConfigDTO settings, boolean isGlobal)throws Exception {
+        boolean added = false;
+        
+        try {
+            StringBuffer sql = new StringBuffer();
+            sql.append("INSERT INTO securityconfig (companyID, minPasswordLength, ");
+            sql.append("maxPasswordLength, numberRequired, symbolRequired, mixedCaseRequired, ");
+            sql.append("adjacentNumberAllowed, failedLoginLockout, passwordContainsUserNameAllowed, ");
+            sql.append("passwordExpirationEnforced, passwordExpirationInDays, ");
+            sql.append("passwordExpirationWarning, failedLoginAttemptsAllowed, ");
+            sql.append("lockoutDuration, passwordNotRepeated, vendorCodeLength, CommissionLevel, FuneralSyncId,  ");
+            sql.append("SMSNumberOfTime, SMSFirstname, SMSLastname, SMSAreaCode, SMSPhone, SMSGreeting, ");
+            sql.append("TTVNumberOfTime, TTVFirstname, TTVLastname, TTVAreaCode, TTVPhone, TTVGreeting, ERegisterBookURL, ");
+            sql.append("ObitConnectURL, lifefilesUserName) ");
+            sql.append("VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, " );
+            sql.append("?, ?, ?, ?, ?, ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+            
+            int col = 0;
+            makeConnection(this.dbLookup, isGlobal);
+            statement = conn.prepareStatement(sql.toString());
+            statement.setLong(++col, settings.getCompanyID());
+            statement.setInt(++col, settings.getMinPasswordLength());
+            statement.setInt(++col, settings.getMaxPasswordLength());
+            statement.setBoolean(++col, settings.isNumberRequired());
+            statement.setBoolean(++col, settings.isSymbolRequired());
+            statement.setBoolean(++col, settings.isMixedCaseRequired());
+            statement.setBoolean(++col, settings.isAdjacentNumberAllowed());
+            statement.setBoolean(++col, settings.isFailedLoginLockout());
+            statement.setBoolean(++col, settings.isPasswordContainsUserNameAllowed());
+            statement.setBoolean(++col, settings.isPasswordExpirationEnforced());
+            statement.setInt(++col, settings.getPasswordExpirationInDays());
+            statement.setInt(++col, settings.getPasswordExpirationWarningInDays());
+            statement.setInt(++col, settings.getFailedLoginAttemptsAllowed());
+            statement.setInt(++col, settings.getLockoutDuration());
+            statement.setBoolean(++col, settings.isPasswordNotRepeated() );
+            statement.setInt(++col, settings.getVendorCodeLength() );
+            statement.setInt(++col, settings.getCommissionLevel() );
+            statement.setInt(++col, settings.getFuneralSyncId() );
+            statement.setInt(++col, settings.getSmsNumberOfTime());
+            statement.setString(++col, settings.getSmsFirstname());
+            statement.setString(++col, settings.getSmsLastname());
+            statement.setString(++col, settings.getSmsAreaCode());
+            statement.setString(++col, settings.getSmsPhone());
+            statement.setString(++col, settings.getSmsGreeting());
+        	statement.setInt(++col, settings.getTtvNumberOfTime());
+        	statement.setString(++col, settings.getTtvFirstname());
+        	statement.setString(++col, settings.getTtvLastname());
+        	statement.setString(++col, settings.getTtvAreaCode());
+        	statement.setString(++col, settings.getTtvPhone());
+        	statement.setString(++col, settings.getTtvGreeting());	
+            statement.setString(++col, settings.getERegisterBookURL());
+            statement.setString(++col, settings.getObitConnectURL());
+            statement.setString(++col, settings.getLifefilesUserName());
+            		
+            statement.executeUpdate();
+            added = true;
+            
+            if (added) {
+            	rs = statement.getGeneratedKeys();
+                if (rs.next()) {
+                	settings.setSecurityConfigID(rs.getLong(1));
+                }
+                
+                auditDTO.setCompanyId(settings.getCompanyID());
+                
+                insertAudit(settings);
+            }
+            
+        } catch (SQLException e) {
+            logger.error("SQLException in addSecurityConfig() : ", e);
+            throw e;
+        } catch (Exception e) {
+            logger.error("Exception in addSecurityConfig() : ", e);
+            throw e;
+        } finally {
+            closeConnection();
+        }
+        
+        return added;
+    }
+    
+    public boolean updateSecurityConfig( SecurityConfigDTO settings) {
+        boolean updated = false;
+        
+        try {
+        	SecurityConfigDTO oldSettings = getSecurityConfig(settings.getCompanyID());
+        	
+            StringBuffer sql = new StringBuffer();
+            sql.append("UPDATE securityconfig SET companyID = ?, minPasswordLength = ?, ");
+            sql.append("maxPasswordLength = ?, numberRequired = ?, symbolRequired = ?, mixedCaseRequired = ?, ");
+            sql.append("adjacentNumberAllowed = ?, failedLoginLockout = ?, passwordContainsUserNameAllowed = ?, ");
+            sql.append("passwordExpirationEnforced = ?, passwordExpirationInDays = ?, ");
+            sql.append("passwordExpirationWarning =?, failedLoginAttemptsAllowed = ?, ");
+            sql.append("lockoutDuration = ?, passwordNotRepeated = ?, vendorCodeLength = ?, CommissionLevel = ?, FuneralSyncId = ?, ");
+            sql.append("SMSNumberOfTime = ?, SMSFirstname = ?, SMSLastname = ?, SMSAreaCode = ?, SMSPhone = ?, SMSGreeting = ?, ");
+            sql.append("TTVNumberOfTime = ?, TTVFirstname = ?, TTVLastname = ?, TTVAreaCode = ?, TTVPhone = ?, TTVGreeting = ?, ");
+            sql.append("ERegisterBookURL = ?, ObitConnectURL = ?, lifefilesUserName = ? ");      
+            sql.append("WHERE (securityconfigID = ?)");
+            
+            int col = 0;
+            makeConnection(this.dbLookup);
+            statement = conn.prepareStatement(sql.toString());
+            statement.setLong(++col, settings.getCompanyID());
+            statement.setInt(++col, settings.getMinPasswordLength());
+            statement.setInt(++col, settings.getMaxPasswordLength());
+            statement.setBoolean(++col, settings.isNumberRequired());
+            statement.setBoolean(++col, settings.isSymbolRequired());
+            statement.setBoolean(++col, settings.isMixedCaseRequired());
+            statement.setBoolean(++col, settings.isAdjacentNumberAllowed());
+            statement.setBoolean(++col, settings.isFailedLoginLockout());
+            statement.setBoolean(++col, settings.isPasswordContainsUserNameAllowed());
+            statement.setBoolean(++col, settings.isPasswordExpirationEnforced());
+            statement.setInt(++col, settings.getPasswordExpirationInDays());
+            statement.setInt(++col, settings.getPasswordExpirationWarningInDays());
+            statement.setInt(++col, settings.getFailedLoginAttemptsAllowed());
+            statement.setInt(++col, settings.getLockoutDuration());
+            statement.setBoolean(++col, settings.isPasswordNotRepeated() );
+            statement.setInt(++col, settings.getVendorCodeLength());
+            statement.setInt(++col, settings.getCommissionLevel());
+            statement.setInt(++col, settings.getFuneralSyncId()); 
+            statement.setInt(++col, settings.getSmsNumberOfTime());
+            statement.setString(++col, settings.getSmsFirstname());
+            statement.setString(++col, settings.getSmsLastname());
+            statement.setString(++col, settings.getSmsAreaCode());
+            statement.setString(++col, settings.getSmsPhone());
+            statement.setString(++col, settings.getSmsGreeting());
+        	statement.setInt(++col, settings.getTtvNumberOfTime());
+        	statement.setString(++col, settings.getTtvFirstname());
+        	statement.setString(++col, settings.getTtvLastname());
+        	statement.setString(++col, settings.getTtvAreaCode());
+        	statement.setString(++col, settings.getTtvPhone());
+        	statement.setString(++col, settings.getTtvGreeting());
+        	statement.setString(++col, settings.getERegisterBookURL());
+        	statement.setString(++col, settings.getObitConnectURL());
+        	statement.setString(++col, settings.getLifefilesUserName());
+            statement.setLong(++col, settings.getSecurityConfigID());
+            
+            statement.executeUpdate();
+            
+            auditDTO.setCompanyId(settings.getCompanyID());
+            
+            updateAudit(oldSettings, settings);
+            
+            updated = true;
+        } catch (SQLException e) {
+            logger.error("SQLException in updateSecurityConfig() : ", e);
+        } catch (Exception e) {
+            logger.error("Exception in updateSecurityConfig() : ", e);
+        } finally {
+            closeConnection();
+        }
+        
+        return updated;
+    }
+    
+    public boolean updateCompanyIdLocales( int companyId) {
+        boolean updated = false;
+        
+        try {
+        	
+        	
+            StringBuffer sql = new StringBuffer();
+            sql.append("UPDATE locales SET CompanyID = ? ");
+            
+            int col = 0;
+            makeConnection(this.dbLookup);
+            statement = conn.prepareStatement(sql.toString());
+            statement.setLong(++col, companyId);
+            
+            statement.executeUpdate();
+            
+            auditDTO.setCompanyId(companyId);
+            
+            
+            updated = true;
+        } catch (SQLException e) {
+            logger.error("SQLException in updateCompanyIdLocales() : ", e);
+        } catch (Exception e) {
+            logger.error("Exception in updateCompanyIdLocales() : ", e);
+        } finally {
+            closeConnection();
+        }
+        
+        return updated;
+    }
+    
+    public boolean updateCompanyNumberLocations( int companyNumber) {
+        boolean updated = false;
+        
+        try {
+        	
+        	
+            StringBuffer sql = new StringBuffer();
+            sql.append("UPDATE locations SET CompanyNumber = ? ");
+            
+            int col = 0;
+            makeConnection(this.dbLookup);
+            statement = conn.prepareStatement(sql.toString());
+            statement.setLong(++col, companyNumber);
+            
+            statement.executeUpdate();
+            
+            auditDTO.setCompanyId(companyNumber);
+            
+            
+            updated = true;
+        } catch (SQLException e) {
+            logger.error("SQLException in updateCompanyNumberLocations() : ", e);
+        } catch (Exception e) {
+            logger.error("Exception in updateCompanyNumberLocations() : ", e);
+        } finally {
+            closeConnection();
+        }
+        
+        return updated;
+    }
+    
+    
+}

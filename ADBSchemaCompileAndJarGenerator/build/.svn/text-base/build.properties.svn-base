@@ -1,0 +1,9 @@
+# list all schema files with ',' (comma) separated.
+schemasList=FdmsService.xsd
+libSchemasList=FddeService.xsd
+# Name of the Jar to generate and backup file name
+jarName=WsFdms-xmlBean.jar
+backupJarName=WsFdms-xmlBean.jar.bak
+
+libJarName=WsFdde-ADB.jar
+backupLibJarName=WsFdde-ADB.jar.bak

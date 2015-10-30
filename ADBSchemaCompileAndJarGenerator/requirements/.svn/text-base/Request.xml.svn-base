@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ************************************************ -->
+	<!--get funeral home list-->
+	<this:getDataRequest xmlns:this="http://aldorsolutions.com/webservice/services/fddeservice" xmlns:this1="http://aldorsolutions.com/webservice/xsd/fdde/service" xmlns:this2="http://aldorsolutions.com/webservice/xsd/comm/fdde" xmlns:this3="http://aldorsolutions.com/webservice/xsd/comm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://aldorsolutions.com/webservice/services/fddeservice ../build/FddeService.xsd ">
+	  <this:userName>this:userName</this:userName>
+	  <this:passWord>this:passWord</this:passWord>
+	  <this:dataRequest>
+	    <this1:dataInterest>funeralHomes</this1:dataInterest>
+	    <!-- isVoid and isPreNeedoptional -->
+	  </this:dataRequest>
+	</this:getDataRequest>
+<!-- ************************************************ -->	
+	<!-- atNeed with required caseData -->
+	<this:getDataRequest xmlns:this="http://aldorsolutions.com/webservice/services/fddeservice" xmlns:this1="http://aldorsolutions.com/webservice/xsd/fdde/service" xmlns:this2="http://aldorsolutions.com/webservice/xsd/comm/fdde" xmlns:this3="http://aldorsolutions.com/webservice/xsd/comm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://aldorsolutions.com/webservice/services/fddeservice ../build/FddeService.xsd ">
+	  <this:userName>this:userName</this:userName>
+	  <this:passWord>this:passWord</this:passWord>
+	  <this:dataRequest>
+	    <this1:dataInterest>casesByFuneralHome</this1:dataInterest>
+	    <this1:criteria>
+	    	<this1:funeralHomeId>L1FH1</this1:funeralHomeId>
+	    </this1:criteria>
+	    <this1:filter>
+	    	<this1:caseFilter>
+	    		<!-- isVoid and isPreNeed optional -->
+	    		<this1:isVoid>false</this1:isVoid>
+	    		<this1:isAtNeed>true</this1:isAtNeed>
+	    		<this1:isPreNeed>false</this1:isPreNeed>
+	    		<this1:caseData>callInfo</this1:caseData>
+	    		<this1:caseData>vitals</this1:caseData>
+	    		<this1:caseData>services</this1:caseData></this1:caseFilter></this1:filter>
+	  </this:dataRequest>
+	</this:getDataRequest>
+	
+	<!-- preNeed with required caseData -->
+	<this:getDataRequest xmlns:this="http://aldorsolutions.com/webservice/services/fddeservice" xmlns:this1="http://aldorsolutions.com/webservice/xsd/fdde/service" xmlns:this2="http://aldorsolutions.com/webservice/xsd/comm/fdde" xmlns:this3="http://aldorsolutions.com/webservice/xsd/comm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://aldorsolutions.com/webservice/services/fddeservice ../build/FddeService.xsd ">
+	  <this:userName>this:userName</this:userName>
+	  <this:passWord>this:passWord</this:passWord>
+	  <this:dataRequest>
+	    <this1:dataInterest>casesByfuneralHome</this1:dataInterest>
+	    <this1:criteria>
+	    	<this1:funeralHomeId>L1FH1</this1:funeralHomeId>
+	    </this1:criteria>
+	    <this1:filter>
+	    	<this1:caseFilter>
+	    		<!-- isVoid and isAtNeed optional -->
+	    		<this1:isVoid>false</this1:isVoid>
+	    		<this1:isAtNeed>false</this1:isAtNeed>
+	    		<this1:isPreNeed>true</this1:isPreNeed>
+	    		<this1:caseData>callInfo</this1:caseData>
+	    		<this1:caseData>vitals</this1:caseData>
+	    		<this1:caseData>services</this1:caseData></this1:caseFilter></this1:filter>
+	  </this:dataRequest>
+	</this:getDataRequest>
+	
+	<!-- voided cases  -->
+	<this:getDataRequest xmlns:this="http://aldorsolutions.com/webservice/services/fddeservice" xmlns:this1="http://aldorsolutions.com/webservice/xsd/fdde/service" xmlns:this2="http://aldorsolutions.com/webservice/xsd/comm/fdde" xmlns:this3="http://aldorsolutions.com/webservice/xsd/comm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://aldorsolutions.com/webservice/services/fddeservice ../build/FddeService.xsd ">
+	  <this:userName>this:userName</this:userName>
+	  <this:passWord>this:passWord</this:passWord>
+	  <this:dataRequest>
+	    <this1:dataInterest>casesByfuneralHome</this1:dataInterest>
+	    <this1:criteria>
+	    	<this1:funeralHomeId>L1FH1</this1:funeralHomeId>
+	    </this1:criteria>
+	    <this1:filter>
+	    	<this1:caseFilter>
+	    		<this1:isVoid>true</this1:isVoid>
+	    		<!-- isAtNeed and isPreNeed not required -->
+	    	</this1:caseFilter>
+	    </this1:filter>
+	  </this:dataRequest>
+	</this:getDataRequest>
+	
+	<!-- all non voided cases (atNeed and preNeed non voided cases) -->
+	<this:getDataRequest xmlns:this="http://aldorsolutions.com/webservice/services/fddeservice" xmlns:this1="http://aldorsolutions.com/webservice/xsd/fdde/service" xmlns:this2="http://aldorsolutions.com/webservice/xsd/comm/fdde" xmlns:this3="http://aldorsolutions.com/webservice/xsd/comm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://aldorsolutions.com/webservice/services/fddeservice ../build/FddeService.xsd ">
+	  <this:userName>this:userName</this:userName>
+	  <this:passWord>this:passWord</this:passWord>
+	  <this:dataRequest>
+	    <this1:dataInterest>casesByfuneralHome</this1:dataInterest>
+	    <this1:criteria>
+	    	<this1:funeralHomeId>L1FH1</this1:funeralHomeId>
+	    </this1:criteria>
+	    <this1:filter>
+	    	<this1:caseFilter>
+	    		<!-- isVoid optional -->
+	    		<this1:isVoid>false</this1:isVoid>
+	    		<this1:isAtNeed>true</this1:isAtNeed>
+	    		<this1:isPreNeed>true</this1:isPreNeed>
+	    		<this1:caseData>callInfo</this1:caseData>
+	    	</this1:caseFilter>
+	   </this1:filter>
+	  </this:dataRequest>
+	</this:getDataRequest>
+	
+	<!-- all cases (including void cases) -->
+	<this:getDataRequest xmlns:this="http://aldorsolutions.com/webservice/services/fddeservice" xmlns:this1="http://aldorsolutions.com/webservice/xsd/fdde/service" xmlns:this2="http://aldorsolutions.com/webservice/xsd/comm/fdde" xmlns:this3="http://aldorsolutions.com/webservice/xsd/comm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://aldorsolutions.com/webservice/services/fddeservice ../build/FddeService.xsd ">
+	  <this:userName>this:userName</this:userName>
+	  <this:passWord>this:passWord</this:passWord>
+	  <this:dataRequest>
+	    <this1:dataInterest>casesByfuneralHome</this1:dataInterest>
+	    <this1:criteria>
+	    	<this1:funeralHomeId>L1FH1</this1:funeralHomeId>
+	    </this1:criteria>
+	    <this1:filter>
+	    	<this1:caseFilter>
+	    		<this1:isVoid>true</this1:isVoid>
+	    		<this1:isAtNeed>true</this1:isAtNeed>
+	    		<this1:isPreNeed>true</this1:isPreNeed>
+	    		<this1:caseData>callInfo</this1:caseData>
+	    	</this1:caseFilter>
+	   </this1:filter>
+	  </this:dataRequest>
+	</this:getDataRequest>
+	
+<!-- ************************************************ -->
+	<!-- case sales -->
+	<this:getDataRequest xmlns:this="http://aldorsolutions.com/webservice/services/fddeservice" xmlns:this1="http://aldorsolutions.com/webservice/xsd/fdde/service" xmlns:this2="http://aldorsolutions.com/webservice/xsd/comm/fdde" xmlns:this3="http://aldorsolutions.com/webservice/xsd/comm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://aldorsolutions.com/webservice/services/fddeservice ../build/FddeService.xsd ">
+	  <this:userName>this:userName</this:userName>
+	  <this:passWord>this:passWord</this:passWord>
+	  <this:dataRequest>
+	    <this1:dataInterest>financialInfoByFuneralHome</this1:dataInterest>
+	    <this1:criteria>
+	    	<this1:funeralHomeId>L1FH1</this1:funeralHomeId>
+	    </this1:criteria>
+	    <this1:filter>
+	    	<this1:financialFilter>
+	    		<this1:saleInterest>caseSales</this1:saleInterest>
+	    	</this1:financialFilter>
+	   </this1:filter>
+	  </this:dataRequest>
+	</this:getDataRequest>
+	
+	<!-- miscellaneous sales -->
+	<this:getDataRequest xmlns:this="http://aldorsolutions.com/webservice/services/fddeservice" xmlns:this1="http://aldorsolutions.com/webservice/xsd/fdde/service" xmlns:this2="http://aldorsolutions.com/webservice/xsd/comm/fdde" xmlns:this3="http://aldorsolutions.com/webservice/xsd/comm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://aldorsolutions.com/webservice/services/fddeservice ../build/FddeService.xsd ">
+	  <this:userName>this:userName</this:userName>
+	  <this:passWord>this:passWord</this:passWord>
+	  <this:dataRequest>
+	    <this1:dataInterest>financialInfoByFuneralHome</this1:dataInterest>
+	    <this1:criteria>
+	    	<this1:funeralHomeId>L1FH1</this1:funeralHomeId>
+	    </this1:criteria>
+	    <this1:filter>
+	    	<this1:financialFilter>
+	    		<this1:saleInterest>miscSales</this1:saleInterest>
+	    	</this1:financialFilter>
+	   </this1:filter>
+	  </this:dataRequest>
+	</this:getDataRequest>
+	
+	<!-- all sales -->
+	<this:getDataRequest xmlns:this="http://aldorsolutions.com/webservice/services/fddeservice" xmlns:this1="http://aldorsolutions.com/webservice/xsd/fdde/service" xmlns:this2="http://aldorsolutions.com/webservice/xsd/comm/fdde" xmlns:this3="http://aldorsolutions.com/webservice/xsd/comm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://aldorsolutions.com/webservice/services/fddeservice ../build/FddeService.xsd ">
+	  <this:userName>this:userName</this:userName>
+	  <this:passWord>this:passWord</this:passWord>
+	  <this:dataRequest>
+	    <this1:dataInterest>financialInfoByFuneralHome</this1:dataInterest>
+	    <this1:criteria>
+	    	<this1:funeralHomeId>L1FH1</this1:funeralHomeId>
+	    </this1:criteria>
+	    <this1:filter>
+	    	<this1:financialFilter>
+	    		<this1:saleInterest>caseSales</this1:saleInterest>
+	    		<this1:saleInterest>miscSales</this1:saleInterest>
+	    	</this1:financialFilter>
+	   </this1:filter>
+	  </this:dataRequest>
+	</this:getDataRequest>

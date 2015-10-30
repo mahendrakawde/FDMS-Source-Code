@@ -1,0 +1,374 @@
+package com.aldorsolutions.webfdms.beans;
+
+/**
+ * DbPreneedPeer supplies constants and SQL for Persistent Class.
+ * Creation date: (1/21/2002 4:13:09 PM)
+ * @author: 
+ */
+public class DbPreneedPeer extends com.aldorsolutions.webfdms.database.DatabasePeer {
+
+	static public final String IDENTITY    	= "VitalsMasterKey";
+	static public final String BUYERFIRST 	= "PNBuyerFirstName";
+	static public final String BUYERMIDDLE 	= "PNBuyerMidName";
+	static public final String BUYERLAST 	= "PNBuyerLastName";
+	static public final String BUYERSTREET	= "PNBuyerStreet";
+	static public final String BUYERCITY 	= "PNBuyerCity";
+	static public final String BUYERSTATE 	= "PNBuyerState";
+	static public final String BUYERZIP 	= "PNBuyerZip";
+	static public final String COBUYER 		= "PNCobuyer";
+	static public final String BUYERSSNO 	= "PNBuyerSSno";
+	static public final String COUNSELOR 	= "PNCounselor";
+	static public final String PNSTATUS 	= "PNPreneedStatus";
+	static public final String FUNDTYPE 	= "PNFundType";
+	static public final String DEPOSITORY 	= "PNDepository";
+	static public final String FUNDSSTREET 	= "PNFundsStreet";
+	static public final String FUNDSCITY 	= "PNFundsCity";
+	static public final String FUNDSSTATE 	= "PNFundsState";
+	static public final String FUNDSZIP 	= "PNFundsZip";
+	static public final String FUNDSDEPOSITEDDATE 	= "PNFundsDepositedDate";
+	static public final String CONTRACTDATE = "PNContractDate";
+	static public final String MATURITYDATE = "PNMaturityDate";
+	static public final String FUNDACCTNO 	= "PNFundAcctNo";
+	static public final String INTERESTRATE = "PNInterestRate";
+	static public final String FUNDSACCESS 	= "PNFundsAccessable";
+	static public final String CONTRACTAMT 	= "PNContractAmount";
+	static public final String PAIDYTD 		= "PNPaidYTD";
+	static public final String PAIDTOTAL 	= "PNPaidTotal";
+	static public final String YTDINT 		= "PNYTDInterest";
+	static public final String TOTALINT 	= "PNTotalInterest";
+	static public final String MGMTFEE 		= "PNMgmtFee";
+	static public final String COMMISSION 	= "PNCommission";
+	static public final String FACEVALUE 	= "PNFaceValue";
+	static public final String LASTPMTAMT 	= "PNLastPmtAmount";
+	static public final String LASTPMTDATE 	= "PNLastPmtDate";
+	static public final String SOURCE	 	= "PNSource";
+	static public final String CASKETNAME 	= "PreneedCasketName";
+	static public final String VAULTNAME 	= "PreneedVaultName";
+	static public final String URNNAME	 	= "PreneedUrnName";
+	static public final String SERVICETYPE	= "PreneedServiceType";
+	static public final String SERVICEAMT	= "PNServiceAmt";
+	static public final String CASKETAMT	= "PNCasketAmt";
+	static public final String VAULTAMT		= "PNVaultAmt";
+	static public final String URNAMT		= "PNUrnAmt";
+	static public final String GSTAMT		= "GSTAmt";
+	static public final String OTHERAMT		= "PNOtherAmt";
+	static public final String ARRNGDATE	= "PreneedArrngDate";
+	static public final String BENESAME		= "PNBeneSameBuyer";
+	static public final String BUYERTITLE	= "PNBuyerTitle";
+	static public final String BUYERAPT		= "PNBuyerAptNo";
+	static public final String BUYERPHONE	= "PNBuyerPhone";
+    static public final String COMMENTS = "Comments";
+
+	/**
+	 * getInsertSql method comment.
+	 */
+	protected java.sql.PreparedStatement getInsertSql(
+			com.aldorsolutions.webfdms.database.DatabaseTransaction t, com.aldorsolutions.webfdms.database.Persistent p)
+			throws com.aldorsolutions.webfdms.database.PersistenceException {
+	
+		//AppLog.trace("DbPreneedPeer.getInsertSql");
+		java.sql.Connection connection = null;
+		try {                    
+                    
+			DbPreneed pn=(DbPreneed)p;                                                
+                        
+			connection = t.getConnection();
+			java.sql.PreparedStatement pstmt = connection.prepareStatement(
+			"INSERT INTO vitalstats ("+
+						BUYERFIRST+","+
+						BUYERMIDDLE+","+
+						BUYERLAST+","+
+						BUYERSTREET+","+
+						BUYERCITY+","+
+						BUYERSTATE+","+
+						BUYERZIP+","+
+						COBUYER+","+
+						BUYERSSNO+","+
+						COUNSELOR+","+
+						PNSTATUS+","+
+						FUNDTYPE+","+
+						DEPOSITORY+","+
+						CONTRACTDATE+","+
+						MATURITYDATE+","+
+						FUNDACCTNO+","+
+						INTERESTRATE+","+
+						FUNDSACCESS+","+
+						CONTRACTAMT+","+
+						PAIDYTD+","+
+						PAIDTOTAL+","+
+						YTDINT+","+
+						TOTALINT+","+
+						MGMTFEE+","+
+						COMMISSION+","+
+						FACEVALUE+","+
+						LASTPMTAMT+","+
+						LASTPMTDATE+","+
+						SOURCE+","+
+						CASKETNAME+","+
+						VAULTNAME+","+
+						URNNAME+","+
+						SERVICETYPE+","+
+						SERVICEAMT+","+
+						CASKETAMT+","+
+						VAULTAMT+","+
+						URNAMT+","+
+						GSTAMT+","+
+						OTHERAMT+","+
+						ARRNGDATE+","+
+						BENESAME+","+
+						BUYERTITLE+","+
+						BUYERAPT+","+
+                        COMMENTS+","+
+						BUYERPHONE+", "+
+						FUNDSSTREET+", "+
+						FUNDSCITY+", "+
+						FUNDSSTATE+", "+
+						FUNDSZIP+", "+
+						FUNDSDEPOSITEDDATE+" "+
+						") VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"
+			);
+			pstmt.setString(1, pn.getBuyerFirst());
+			pstmt.setString(2, pn.getBuyerMiddle());
+			pstmt.setString(3, pn.getBuyerLast());
+			pstmt.setString(4, pn.getBuyerStreet());
+			pstmt.setString(5, pn.getBuyerCity());
+			pstmt.setString(6, pn.getBuyerState());
+			pstmt.setString(7, pn.getBuyerZip());
+			pstmt.setString(8, pn.getCobuyer());
+			pstmt.setString(9, pn.getBuyerSsNo());
+			pstmt.setString(10, pn.getCounselor());
+			pstmt.setString(11, pn.getStatus());
+			pstmt.setString(12, pn.getFundType());
+			pstmt.setString(13, pn.getDepository());
+			pstmt.setString(14, pn.getContractDate());
+			pstmt.setString(15, pn.getMaturityDate());
+			pstmt.setString(16, pn.getFundAcctNo());
+			pstmt.setFloat(17, pn.getInterestRate());
+			pstmt.setString(18, pn.getAccessable());
+			pstmt.setInt(19, pn.getContractAmt());
+			pstmt.setInt(20, pn.getPaidYTD());
+			pstmt.setInt(21, pn.getPaidTotal());
+			pstmt.setInt(22, pn.getInterestYtd());
+			pstmt.setInt(23, pn.getInterestTotal());
+			pstmt.setInt(24, pn.getMgmtFee());
+			pstmt.setInt(25, pn.getCommission());
+			pstmt.setInt(26, pn.getFaceValue());
+			pstmt.setInt(27, pn.getLastPmtAmt());
+			pstmt.setString(28, pn.getLastPmtDate());
+			pstmt.setString(29, pn.getSource());
+			pstmt.setString(30, pn.getCasketName());
+			pstmt.setString(31, pn.getVaultName());
+			pstmt.setString(32, pn.getUrnName());
+			pstmt.setString(33, pn.getServiceType());
+			pstmt.setInt(34, pn.getServiceAmt());
+			pstmt.setInt(35, pn.getCasketAmt());
+			pstmt.setInt(36, pn.getVaultAmt());
+			pstmt.setInt(37, pn.getUrnAmt());
+			pstmt.setInt(38, pn.getGSTAmt());
+			pstmt.setInt(39, pn.getOtherAmt());
+			pstmt.setString(40, pn.getArrangeDate());
+			pstmt.setString(41, pn.getBeneSameAsBuyer());
+			pstmt.setString(42, pn.getBuyerTitle());
+			pstmt.setString(43, pn.getBuyerAptNo());
+            pstmt.setString(44, pn.getComments());
+            pstmt.setString(45, pn.getBuyerPhone());
+            pstmt.setString(46, pn.getFundsStreet());
+            pstmt.setString(47, pn.getFundsCity());
+            pstmt.setString(48, pn.getFundsState());
+            pstmt.setString(49, pn.getFundsZip());
+            pstmt.setString(50, pn.getFundsDepositedDate());
+			return pstmt;
+		}
+		catch (java.sql.SQLException e){
+			throw new com.aldorsolutions.webfdms.database.PersistenceException("DbPreneedPeer.Insert:"+e.getMessage(),e);
+		}
+}
+/**
+ * getRemoveSql method comment.
+ */
+protected java.sql.PreparedStatement getRemoveSql(com.aldorsolutions.webfdms.database.DatabaseTransaction t, com.aldorsolutions.webfdms.database.Persistent p) throws com.aldorsolutions.webfdms.database.PersistenceException {
+	throw new com.aldorsolutions.webfdms.database.PersistenceException("DbPreneedPeer.Remove Not Implimented");
+}
+/**
+ * getRestoreSql method comment.
+ */
+protected String getRestoreSql(com.aldorsolutions.webfdms.database.Persistent p) {
+		
+	String sql = "SELECT 	"+ IDENTITY +","+
+						BUYERFIRST+","+
+						BUYERMIDDLE+","+
+						BUYERLAST+","+
+						BUYERSTREET+","+
+						BUYERCITY+","+
+						BUYERSTATE+","+
+						BUYERZIP+","+
+						COBUYER+","+
+						BUYERSSNO+","+
+						COUNSELOR+","+
+						PNSTATUS+","+
+						FUNDTYPE+","+
+						DEPOSITORY+","+
+						CONTRACTDATE+","+
+						MATURITYDATE+","+
+						FUNDACCTNO+","+
+						INTERESTRATE+","+
+						FUNDSACCESS+","+
+						CONTRACTAMT+","+
+						PAIDYTD+","+
+						PAIDTOTAL+","+
+						YTDINT+","+
+						TOTALINT+","+
+						MGMTFEE+","+
+						COMMISSION+","+
+						FACEVALUE+","+
+						LASTPMTAMT+","+
+						LASTPMTDATE+","+
+						SOURCE+","+
+						CASKETNAME+","+
+						VAULTNAME+","+
+						URNNAME+","+
+						SERVICETYPE+","+
+						SERVICEAMT+","+
+						CASKETAMT+","+
+						VAULTAMT+","+
+						URNAMT+","+
+						GSTAMT+","+
+						OTHERAMT+","+
+						BENESAME+","+
+						BUYERTITLE+","+
+						BUYERAPT+","+
+						ARRNGDATE+","+
+						COMMENTS+","+
+						BUYERPHONE+", "+
+						FUNDSSTREET+", "+
+						FUNDSCITY+", "+
+						FUNDSSTATE+", "+
+						FUNDSZIP+", "+
+						FUNDSDEPOSITEDDATE+" "+
+						"from vitalstats WHERE VitalsMasterKey = "
+		+ p.getId();
+	
+	return ( sql );
+}
+/**
+ * getUpdateSql method comment.
+ */
+protected java.sql.PreparedStatement getUpdateSql(com.aldorsolutions.webfdms.database.DatabaseTransaction t, com.aldorsolutions.webfdms.database.Persistent p) throws com.aldorsolutions.webfdms.database.PersistenceException {
+		//AppLog.trace("DbPreneedPeer.getUpdateSql");
+		java.sql.Connection connection = null;
+		try {
+			DbPreneed pn=(DbPreneed)p;
+			connection = t.getConnection();
+			java.sql.PreparedStatement pstmt = connection.prepareStatement(
+			"UPDATE vitalstats SET "+
+						BUYERFIRST+"=?,"+
+						BUYERMIDDLE+"=?,"+
+						BUYERLAST+"=?,"+
+						BUYERSTREET+"=?,"+
+						BUYERCITY+"=?,"+
+						BUYERSTATE+"=?,"+
+						BUYERZIP+"=?,"+
+						COBUYER+"=?,"+
+						BUYERSSNO+"=?,"+
+						COUNSELOR+"=?,"+
+						PNSTATUS+"=?,"+
+						FUNDTYPE+"=?,"+
+						DEPOSITORY+"=?,"+
+						CONTRACTDATE+"=?,"+
+						MATURITYDATE+"=?,"+
+						FUNDACCTNO+"=?,"+
+						INTERESTRATE+"=?,"+
+						FUNDSACCESS+"=?,"+
+						CONTRACTAMT+"=?,"+
+						PAIDYTD+"=?,"+
+						PAIDTOTAL+"=?,"+
+						YTDINT+"=?,"+
+						TOTALINT+"=?,"+
+						MGMTFEE+"=?,"+
+						COMMISSION+"=?,"+
+						FACEVALUE+"=?,"+
+						LASTPMTAMT+"=?,"+
+						LASTPMTDATE+"=?,"+
+						SOURCE+"=?,"+
+						CASKETNAME+"=?,"+
+						VAULTNAME+"=?,"+
+						URNNAME+"=?,"+
+						SERVICETYPE+"=?,"+
+						SERVICEAMT+"=?,"+
+						CASKETAMT+"=?,"+
+						VAULTAMT+"=?,"+
+						URNAMT+"=?,"+
+						GSTAMT+"=?,"+
+						OTHERAMT+"=?,"+
+						ARRNGDATE+"=?,"+
+						BENESAME+"=?,"+
+						BUYERTITLE+"=?,"+
+						BUYERAPT+"=?,"+
+						COMMENTS+"=?,"+
+						BUYERPHONE+"=?, "+
+						FUNDSSTREET+"=?,"+
+						FUNDSCITY+"=?,"+
+						FUNDSSTATE+"=?,"+
+						FUNDSZIP+"=?,"+
+						FUNDSDEPOSITEDDATE+"=? "+
+						"WHERE VitalsMasterKey = ?"
+			);
+			pstmt.setString(1, pn.getBuyerFirst());
+			pstmt.setString(2, pn.getBuyerMiddle());
+			pstmt.setString(3, pn.getBuyerLast());
+			pstmt.setString(4, pn.getBuyerStreet());
+			pstmt.setString(5, pn.getBuyerCity());
+			pstmt.setString(6, pn.getBuyerState());
+			pstmt.setString(7, pn.getBuyerZip());
+			pstmt.setString(8, pn.getCobuyer());
+			pstmt.setString(9, pn.getBuyerSsNo());
+			pstmt.setString(10, pn.getCounselor());
+			pstmt.setString(11, pn.getStatus());
+			pstmt.setString(12, pn.getFundType());
+			pstmt.setString(13, pn.getDepository());
+			pstmt.setString(14, pn.getContractDate());
+			pstmt.setString(15, pn.getMaturityDate());
+			pstmt.setString(16, pn.getFundAcctNo());
+			pstmt.setFloat(17, pn.getInterestRate());
+			pstmt.setString(18, pn.getAccessable());
+			pstmt.setInt(19, pn.getContractAmt());
+			pstmt.setInt(20, pn.getPaidYTD());
+			pstmt.setInt(21, pn.getPaidTotal());
+			pstmt.setInt(22, pn.getInterestYtd());
+			pstmt.setInt(23, pn.getInterestTotal());
+			pstmt.setInt(24, pn.getMgmtFee());
+			pstmt.setInt(25, pn.getCommission());
+			pstmt.setInt(26, pn.getFaceValue());
+			pstmt.setInt(27, pn.getLastPmtAmt());
+			pstmt.setString(28, pn.getLastPmtDate());
+			pstmt.setString(29, pn.getSource());
+			pstmt.setString(30, pn.getCasketName());
+			pstmt.setString(31, pn.getVaultName());
+			pstmt.setString(32, pn.getUrnName());
+			pstmt.setString(33, pn.getServiceType());
+			pstmt.setInt(34, pn.getServiceAmt());
+			pstmt.setInt(35, pn.getCasketAmt());
+			pstmt.setInt(36, pn.getVaultAmt());
+			pstmt.setInt(37, pn.getUrnAmt());
+			pstmt.setInt(38, pn.getGSTAmt());
+			pstmt.setInt(39, pn.getOtherAmt());
+			pstmt.setString(40, pn.getArrangeDate());
+			pstmt.setString(41, pn.getBeneSameAsBuyer());
+			pstmt.setString(42, pn.getBuyerTitle());
+			pstmt.setString(43, pn.getBuyerAptNo());
+			pstmt.setString(44, pn.getComments());
+			pstmt.setString(45, pn.getBuyerPhone());
+			pstmt.setString(46, pn.getFundsStreet());
+	        pstmt.setString(47, pn.getFundsCity());
+	        pstmt.setString(48, pn.getFundsState());
+	        pstmt.setString(49, pn.getFundsZip());
+	        pstmt.setString(50, pn.getFundsDepositedDate());
+			pstmt.setInt(51,pn.getId());                        
+                        
+			return pstmt;
+		}
+		catch (java.sql.SQLException e){
+			throw new com.aldorsolutions.webfdms.database.PersistenceException("DbPreneedPeer.Update:"+e.getMessage(),e);
+		}
+}
+}

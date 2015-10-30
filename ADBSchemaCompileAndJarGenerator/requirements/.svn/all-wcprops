@@ -1,0 +1,101 @@
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/ADBSchemaCompileAndJarGenerator/requirements
+END
+arResponse.xml
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/ADBSchemaCompileAndJarGenerator/requirements/arResponse.xml
+END
+Case_callInfo.xml
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/ADBSchemaCompileAndJarGenerator/requirements/Case_callInfo.xml
+END
+InventoryOnHand.xml
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/ADBSchemaCompileAndJarGenerator/requirements/InventoryOnHand.xml
+END
+sciRequest.xml
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/ADBSchemaCompileAndJarGenerator/requirements/sciRequest.xml
+END
+sciStateRequest.xml
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/ADBSchemaCompileAndJarGenerator/requirements/sciStateRequest.xml
+END
+sciLineItems.xml
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/ADBSchemaCompileAndJarGenerator/requirements/sciLineItems.xml
+END
+Request.xml
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/ADBSchemaCompileAndJarGenerator/requirements/Request.xml
+END
+Case_servicesInfo.xml
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/ADBSchemaCompileAndJarGenerator/requirements/Case_servicesInfo.xml
+END
+MiscellaneousSales.xml
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/ADBSchemaCompileAndJarGenerator/requirements/MiscellaneousSales.xml
+END
+sciContracts.xml
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/ADBSchemaCompileAndJarGenerator/requirements/sciContracts.xml
+END
+CaseSales.xml
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/ADBSchemaCompileAndJarGenerator/requirements/CaseSales.xml
+END
+sciGlobalRequest.xml
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/ADBSchemaCompileAndJarGenerator/requirements/sciGlobalRequest.xml
+END
+Case_vitalsInfo.xml
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/ADBSchemaCompileAndJarGenerator/requirements/Case_vitalsInfo.xml
+END
+arRequest.xml
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/ADBSchemaCompileAndJarGenerator/requirements/arRequest.xml
+END
+sciCash.xml
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/ADBSchemaCompileAndJarGenerator/requirements/sciCash.xml
+END
+sciARDetailData.xml
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/ADBSchemaCompileAndJarGenerator/requirements/sciARDetailData.xml
+END

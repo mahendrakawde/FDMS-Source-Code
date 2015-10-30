@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:this="http://aldorsolutions.com/webservice/xsd/comm" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://aldorsolutions.com/webservice/xsd/comm">
+    <xs:simpleType name="StrMax03Len">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="3"/>
+            <xs:minLength value="0"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="StrMax08Len">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="8"/>
+            <xs:minLength value="0"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="StrMax10Len">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="0"/>
+            <xs:maxLength value="10"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="StrMax100Len">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="0"/>
+            <xs:maxLength value="100"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="StrMax14Len">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="14"/>
+            <xs:minLength value="0"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="StrMax15Len">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="15"/>
+            <xs:minLength value="0"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="StrMax16Len">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="16"/>
+            <xs:minLength value="0"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="StrMax20Len">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="0"/>
+            <xs:maxLength value="20"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="StrMax200Len">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="0"/>
+            <xs:maxLength value="200"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="StrMax24Len">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="0"/>
+            <xs:maxLength value="24"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="StrMax25Len">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="0"/>
+            <xs:maxLength value="25"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="StrMax27Len">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="0"/>
+            <xs:maxLength value="27"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="StrMax29Len">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="0"/>
+            <xs:maxLength value="29"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="StrMax30Len">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="0"/>
+            <xs:maxLength value="30"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="StrMax35Len">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="0"/>
+            <xs:maxLength value="35"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="StrMax40Len">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="0"/>
+            <xs:maxLength value="40"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="StrMax49Len">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="0"/>
+            <xs:maxLength value="49"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="StrMax50Len">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="0"/>
+            <xs:maxLength value="50"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="StrMax60Len">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="0"/>
+            <xs:maxLength value="60"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="StrMax150Len">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="0"/>
+            <xs:maxLength value="150"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="StrMax500Len">
+    	<xs:restriction base="xs:string">
+            <xs:minLength value="0"/>
+            <xs:maxLength value="500"/>
+    	</xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="GenderType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Male"/>
+            <xs:enumeration value="Female"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DispositionPlaceType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Cemetery"/>
+            <xs:enumeration value="Crematory"/>
+            <xs:enumeration value="Other"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="SimpleAnswerType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Yes"/>
+            <xs:enumeration value="No"/>
+            <xs:enumeration value="Unknown"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="AgeType">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="year" type="xs:int"/>
+            <xs:element minOccurs="0" name="month" type="xs:int"/>
+            <xs:element minOccurs="0" name="day" type="xs:int"/>
+            <xs:element minOccurs="0" name="hour" type="xs:int"/>
+            <xs:element minOccurs="0" name="minutes" type="xs:int"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:simpleType name="ProbablyAnswerType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Yes"/>
+            <xs:enumeration value="No"/>
+            <xs:enumeration value="Unknown"/>
+            <xs:enumeration value="Probably"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="OccupationalHistoryType">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="wasDecedentEverInUSArmedForces" type="this:YesNoType"/>
+            <xs:element minOccurs="0" name="armedForcesEntryDate" type="xs:date"/>
+            <xs:element minOccurs="0" name="armedForcesDepartureDate" type="xs:date"/>
+            <xs:element minOccurs="0" name="usualOccupation" type="this:StrMax100Len"/>
+            <xs:element minOccurs="0" name="kindOfBusinessOrIndustry" type="this:StrMax49Len"/>
+            <xs:element minOccurs="0" name="currentEmployer" type="this:StrMax100Len"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:simpleType name="CompleteAnswerType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Yes"/>
+            <xs:enumeration value="No"/>
+            <xs:enumeration value="Probably"/>
+            <xs:enumeration value="Unknown"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="YesNoType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Yes"/>
+            <xs:enumeration value="No"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="ComboServicetype">
+        <xs:sequence>
+            <xs:element name="Name" type="this:StrMax50Len"/>
+            <xs:element name="Code" type="xs:int"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:simpleType name="LocalityType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Inside City"/>
+            <xs:enumeration value="Inside Village"/>
+            <xs:enumeration value="TWP"/>
+            <xs:enumeration value="Unincorporated Place"/>
+            <xs:enumeration value="Unknown"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="CVTType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="City"/>
+			<xs:enumeration value="Village"/>
+			<xs:enumeration value="Township"/>
+			<xs:enumeration value="Unknown"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="StateCodeType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[A-Z][A-Z]"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:comm="http://aldorsolutions.com/wsfdms/to/xsd/comm" xmlns:self="http://aldorsolutions.com/wsfdms/to/xsd/fdmsinfo" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://aldorsolutions.com/wsfdms/to/xsd/fdmsinfo">
+    <xs:import namespace="http://aldorsolutions.com/wsfdms/to/xsd/comm" schemaLocation="Common.xsd"/>
+    <xs:complexType name="UserInfo">
+        <xs:sequence>
+            <xs:element name="id" type="xs:int"/>
+            <xs:element name="userName" type="xs:string"/>
+            <xs:element name="firstName" type="xs:string"/>
+            <xs:element name="lastame" type="xs:string"/>
+            <xs:element name="regionId" type="xs:int"/>
+            <xs:element name="locationId" type="xs:int"/>
+            <xs:element name="companyId" type="xs:int"/>
+            <xs:element minOccurs="0" name="locales" nillable="true" type="comm:LocalesType"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="FdmsInfo">
+        <xs:choice>
+        	<xs:element name="userInfo" type="self:UserInfo" />
+        	<xs:element name="options" type="self:optionsType"></xs:element>
+        	<xs:element name="vitalsIds" type="self:vitalsIdListInfo"></xs:element>
+        </xs:choice>
+    </xs:complexType>
+    <xs:simpleType name="infoType">
+    	<xs:annotation>
+    		<xs:appinfo>
+    			Available Service Types: atNeed , atNeedFinance
+    		</xs:appinfo>
+    		<xs:documentation>
+    			Informs Request or Response Service Type.
+    		</xs:documentation>
+    	</xs:annotation>
+    	<xs:restriction base="xs:string">
+    		<xs:enumeration value="userInfo" />
+    		<xs:enumeration value="directorsInfoByLocaleId" />
+
+
+
+    		<xs:enumeration value="comboServiceType"></xs:enumeration>
+    		<xs:enumeration value="vitalsByDecedentVitalsId"></xs:enumeration>
+    		<xs:enumeration value="vitalsIdByContractCodeAndLocationId"></xs:enumeration>
+    		<xs:enumeration value="vitalsIdByLastnameAndLocationId"></xs:enumeration>
+    		<xs:enumeration value="vitalsIdByCaseCodeAndLocationId"></xs:enumeration>
+    	</xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="InfoContextType">
+        <xs:sequence>
+        	<xs:element minOccurs="0" name="localeId" type="xs:int" />
+        	<xs:element minOccurs="0" name="locationId" type="xs:int" />
+
+        	<xs:element minOccurs="0" name="vitalsId" type="xs:int" />
+        	<xs:element name="contractCode" type="comm:StrMax20Len" minOccurs="0" maxOccurs="1"></xs:element>
+        	<xs:element name="caseCode" type="comm:StrMax20Len" minOccurs="0" maxOccurs="1"></xs:element>
+        	<xs:element name="deceasedLastname" type="comm:StrMax50Len" minOccurs="0" maxOccurs="1"></xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="stringOptionType">
+    	<xs:sequence>
+    		<xs:element name="option" type="xs:string"></xs:element>
+    		<xs:element name="value" type="xs:string"></xs:element>
+    	</xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="intOptionType">
+    	<xs:sequence>
+    		<xs:element name="option" type="xs:string"></xs:element>
+    		<xs:element name="value" type="xs:int"></xs:element>
+    	</xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="optionsType">
+    	<xs:choice minOccurs="0">
+    		<xs:element name="stringOption"
+    			type="self:stringOptionType" minOccurs="1" maxOccurs="unbounded">
+    		</xs:element>
+    		<xs:element name="intOption" type="self:intOptionType" minOccurs="1" maxOccurs="unbounded"></xs:element>
+    	</xs:choice>
+    </xs:complexType>
+
+    <xs:complexType name="vitalsIdInfo">
+    	<xs:sequence>
+    		<xs:element name="firstName" type="comm:StrMax50Len" minOccurs="1" maxOccurs="1"></xs:element>
+    		<xs:element name="middleName" type="comm:StrMax50Len" minOccurs="0" maxOccurs="1"></xs:element>
+    		<xs:element name="lastName" type="comm:StrMax50Len" minOccurs="1" maxOccurs="1"></xs:element>
+    		<xs:element name="vitalsmasterkey" type="xs:int" minOccurs="1" maxOccurs="1"></xs:element>
+    		<xs:element name="contractCode" type="comm:StrMax20Len" minOccurs="0" maxOccurs="1"></xs:element>
+    		<xs:element name="caseCode" type="comm:StrMax20Len" minOccurs="0" maxOccurs="1"></xs:element>
+    		<xs:element name="localeId" type="xs:int" minOccurs="1" maxOccurs="1"></xs:element>
+    		<xs:element name="locationId" type="xs:int" minOccurs="1" maxOccurs="1"></xs:element>
+    	</xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="vitalsIdListInfo">
+    	<xs:sequence>
+    		<xs:element name="vitals" type="self:vitalsIdInfo" minOccurs="0" maxOccurs="unbounded"></xs:element>
+    	</xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="introduction">
+    	<xs:restriction base="xs:string">
+    		<xs:enumeration value="FdmsIntroduction"></xs:enumeration>
+    	</xs:restriction>
+    </xs:simpleType>
+</xs:schema>

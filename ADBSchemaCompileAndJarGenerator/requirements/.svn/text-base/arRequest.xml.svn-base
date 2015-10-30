@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Request for getting SCI contracts -->
+<this:getDataRequest xmlns:this="http://aldorsolutions.com/webservice/services/fddeservice" 
+xmlns:this1="http://aldorsolutions.com/webservice/xsd/fdde/service" 
+xmlns:this2="http://aldorsolutions.com/webservice/xsd/comm/fdde" 
+xmlns:this3="http://aldorsolutions.com/webservice/xsd/comm" 
+xmlns:this4="http://aldorsolutions.com/webservice/xsd/comm/fdde/ar" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://aldorsolutions.com/webservice/services/fddeservice ../build/FddeService.xsd ">
+  <this:userName>this:userName</this:userName>
+  <this:passWord>this:passWord</this:passWord>
+  <this:dataRequest>
+    <this1:dataInterest>accountsReceivable</this1:dataInterest>
+    <this1:criteria>
+    	<this1:funeralHomeId>L40FH100</this1:funeralHomeId>
+    </this1:criteria>
+  </this:dataRequest>
+</this:getDataRequest>
+

@@ -1,0 +1,437 @@
+<!doctype HTML public "-//W3C//DTD HTML 4.0 Frameset//EN">
+
+<html>
+
+<!--(==============================================================)-->
+<!--(Document created with RoboEditor. )============================-->
+<!--(==============================================================)-->
+
+<head>
+
+<title>Speed Data Formatting</title>
+
+<!--(Meta)==========================================================-->
+
+<meta http-equiv=content-type content="text/html; charset=windows-1252">
+<meta name=generator content="RoboHELP by eHelp Corporation - www.ehelp.com">
+<meta name=generator-major-version content=0.1>
+<meta name=generator-minor-version content=1>
+<meta name=filetype content=kadov>
+<meta name=filetype-version content=1>
+<meta name=page-count content=1>
+<meta name=layout-height content=3626>
+<meta name=layout-width content=742>
+<meta name=x-ignored-words content="WebFDMS;FDMS;Davidson;www.webfdms.com.;login;GL;YYYY;Unposted;GPL;Misc;Peachtree;general.csv;QuickBooks;iif;journal.csv;G;L;Restland;Home.iif;C;Quickbooks;link(s;Financials;Accts;Login;Admin;ACCSUICD.TAB;ANCESTRY.TAB;ATSOURCE.TAB;BRANCH.TAB;BUSNCODE.TAB;CASHTYPE.TAB;CASKETS.TAB;CASKTYPE.TAB;CASKUSE.TAB;CEMETERY.TAB;CHAPEL.TAB;CHARITY.TAB;CHECKLST.TAB;CHURCH.TAB;CITIZEN.TAB;CITYSTAT.TAB;COUNSLER.TAB;COUNTY.TAB;CRDSTYLE.TAB;DAYWEEK.TAB;DEPOSITY.TAB;Preneed;DISPCODE.TAB;DISPOSTN.TAB;DISPPLAC.TAB;DOCTOR.TAB;DONATTYP.TAB;misc;EMBALM.TAB;EXTERIOR.TAB;EYECOLOR.TAB;FIRMS.TAB;FUNDTYPE.TAB;preneed;HAIRCOLR.TAB;HISPANIC.TAB;INPATDOA.TAB;emer;rm;INTERIOR.TAB;INVASSET.TAB;INVCOST.TAB;INVLOCTN.TAB;INVOICES.TAB;FORMNAME.RPT;INVSALES.TAB;KINDBUS.TAB;LOCDEATH.TAB;MARITAL.TAB;MEMSTYLE.TAB;MINISTER.TAB;MULTICMP.TAB;OCCUPATN.TAB;ORGANIST.TAB;PAYMETH.TAB;FN-financed;PAYTYPE.TAB;PLACEDTH.TAB;PLCATGRY.TAB;PMTCOLL.TAB;Y;N;PNCASKET.TAB;PNSOURCE.TAB;PNURN.TAB;PNVAULT.TAB;PRICEHDR.TAB;header-file-name.doc.;PRICERPT.TAB;report-name.RPT;PRODLINE.TAB;RACE.TAB;RELATION.TAB;REPDONAT.TAB;name.rpt;REPORTPN.TAB;REPORTS.TAB;REPRTINV.TAB;report-name.rpt;REPRTSTD.TAB;RESPNSBY.TAB;REVTYPE.TAB;SALETYPE.TAB;SEX.TAB;SOLOIST.TAB;SRVPLACE.TAB;STATES.TAB;SUPPLIER.TAB;TAX.TAB;GST;TITLE.TAB;TOWNSHIP.TAB;VAULTS.TAB;WAR.TAB;YESNO.TAB;ZIP.TAB">
+
+
+<!--(Links)=========================================================-->
+
+ <link rel='stylesheet' href='webfdms_ns.css'>
+<script type="text/javascript" language="JavaScript" title="WebHelpSplitCss">
+<!--
+if (navigator.appName !="Netscape")
+{   document.write("<link rel='stylesheet' href='webfdms.css'>");}
+//-->
+</script>
+<!--(Scripts)=======================================================-->
+
+<script LANGUAGE="JavaScript" TITLE="BSSC Special Effects" src="./ehlpdhtm.js" name="EHELP_DHTM"></script>
+
+<script type="text/javascript" language="JavaScript" title="WebHelpInlineScript">
+<!--
+function reDo() {
+  if (innerWidth != origWidth || innerHeight != origHeight)
+     location.reload();
+}
+if ((parseInt(navigator.appVersion) == 4) && (navigator.appName == "Netscape")) {
+	origWidth = innerWidth;
+	origHeight = innerHeight;
+	onresize = reDo;
+}
+onerror = null; 
+//-->
+</script>
+<style type="text/css">
+<!--
+  div.WebHelpPopupMenu {position:absolute; left:0px; top:0px; z-index:4; visibility:hidden;}
+  p.WebHelpNavBar {text-align:right;}
+-->
+</style>
+<script type="text/javascript" language="javascript1.2" src="whmsg.js"></script>
+<script type="text/javascript" language="javascript" src="whver.js"></script>
+<script type="text/javascript" language="javascript1.2" src="whproxy.js"></script>
+<script type="text/javascript" language="javascript1.2" src="whutils.js"></script>
+<script type="text/javascript" language="javascript1.2" src="whtopic.js"></script>
+<script type="text/javascript" language="javascript1.2">
+<!--
+if (window.gbWhTopic)
+{
+	if (window.setRelStartPage)
+	{
+	setRelStartPage("webfdms.htm");
+addTocInfo("Setup Menu\nEdit Speed Data\nSpeed Data Formatting");
+addAvenueInfo("MAIN","edit_speed_data.htm","edit_expense_accounts.htm");
+addSearchFormHref("javascript:document.ehelpform.submit()");
+
+	}
+}
+else
+	document.location.reload();
+//-->
+</script>
+</head>
+
+<!--(Body)==========================================================-->
+
+
+<body>
+
+<script type="text/javascript" language="javascript1.2">
+<!--
+if (window.writeIntopicBar)
+	writeIntopicBar(4);
+//-->
+</script>
+<h1>Speed Data Formatting</h1>
+
+<p class=Body-Text><span style="font-weight: bold;"><B>ACCSUICD.TAB</B></span><br>
+Vital Stats window. Contents include Accident/Suicide/Natural. </p>
+
+<p class=Body-Text><span style="font-weight: bold;"><B>ANCESTRY.TAB</B></span><br>
+Vital Stats window. Ethnic origin. </p>
+
+<p class=Body-Text><span style="font-weight: bold;"><B>ATSOURCE.TAB</B></span><br>
+For at-need, first call information, and in the Financial Window, this 
+ table contains the possible sources of an at-need lead resulting in this 
+ contract. The format is: Lead-source, sale-type-table-name. The second 
+ parameter allows you to have differing sale categories and G/L accounts 
+ depending on the source of the sale. </p>
+
+<p class=Body-Text><span style="font-weight: bold;"><B>BRANCH.TAB</B></span><br>
+Vital Stats. Branch of military service. </p>
+
+<p class=Body-Text><span style="font-weight: bold;"><B>BUSNCODE.TAB</B></span><br>
+Business categories required for New Hampshire death certificate. </p>
+
+<p class=Body-Text><span style="font-weight: bold;"><B>CASHTYPE.TAB</B></span><br>
+Miscellaneous Cash Receipts. List various G/L cash accounts available. 
+ Format is: description, G/L account number. </p>
+
+<p class=Body-Text><span style="font-weight: bold;"><B>CASKETS.TAB</B></span><br>
+Services window. Types of caskets available. Format: manufacturer, model, 
+ color, material, interior. </p>
+
+<p class=Body-Text><span style="font-weight: bold;"><B>CASKTYPE.TAB</B></span><br>
+Inventory. Specifies if the casket is for adults or infants. </p>
+
+<p class=Body-Text><span style="font-weight: bold;"><B>CASKUSE.TAB</B></span><br>
+Inventory. Specifies if the casket is for burial, cremation, or both. </p>
+
+<p class=Body-Text><span style="font-weight: bold;"><B>CEMETERY.TAB</B></span><br>
+Vital Stats window. Contains cemeteries and crematories. Format: name, 
+ street, city, state (2 Char), zip, county, phone. </p>
+
+<p class=Body-Text><span style="font-weight: bold;"><B>CHAPEL.TAB</B></span><br>
+First call window. Enter one line for each branch chapel location. Format: 
+ Chapel name, company number, standard service charge dollar amount, default 
+ price list (version) table, default package table (not used in version 
+ 5). The standard service charge amount is compared to the actual contract 
+ amount when entering contract items. A warning message is displayed if 
+ the actual is less than the standard. When entering contract information, 
+ the default price list version provides the initial list of services for 
+ the operator to choose from. </p>
+
+<p class=Body-Text><span style="font-weight: bold;"><B>CHARITY.TAB</B></span><br>
+Donations Window. Contains the names of charities for who you collect donations. 
+ Format is: name, street, city, state (2 char), zip, phone, administrator 
+ name, administrator salutation. </p>
+
+<p class=Body-Text><span style="font-weight: bold;"><B>CHECKLST.TAB</B></span><br>
+FDMS Status window. Contains the default headings for your custom check 
+ list. The first eight headings apply to the at-need check list. The next 
+ eight headings apply to the after-care check list. The format is: activity 
+ description, number of days when activity is due (applies to after-care 
+ only). </p>
+
+<p class=Body-Text><span style="font-weight: bold;"><B>CHARITY.TAB</B></span><br>
+Donations window. Contains a list of charities to which contributions can 
+ be accepted. </p>
+
+<p class=Body-Text><span style="font-weight: bold;"><B>CHURCH.TAB</B></span><br>
+Services window. Format: church name, street address, city, state (2 char), 
+ zip. </p>
+
+<p class=Body-Text><span style="font-weight: bold;"><B>CITIZEN.TAB</B></span><br>
+Vital Stats window. Citizen of what country. </p>
+
+<p class=Body-Text><span style="font-weight: bold;"><B>CITYSTAT.TAB</B></span><br>
+Used in several windows. Format: city name, state (spelled out), zip, county, 
+ 2 char state abbreviation. </p>
+
+<p class=Body-Text><span style="font-weight: bold;"><B>COUNSLER.TAB</B></span><br>
+Pre-Need window. Counselor names. </p>
+
+<p class=Body-Text><span style="font-weight: bold;"><B>COUNTY.TAB</B></span><br>
+Vital Stats window. County names. </p>
+
+<p class=Body-Text><span style="font-weight: bold;"><B>CRDSTYLE.TAB</B></span><br>
+Services window. Contains thank you card styles. </p>
+
+<p class=Body-Text><span style="font-weight: bold;"><B>DAYWEEK.TAB</B></span><br>
+Services window. Names of the days of the week. </p>
+
+<p class=Body-Text><span style="font-weight: bold;"><B>DEPOSITY.TAB</B></span><br>
+Preneed window. List of fund depositories such as trust company, banks, 
+ etc. </p>
+
+<p class=Body-Text><span style="font-weight: bold;"><B>DISPCODE.TAB</B></span><br>
+Financial window. Contains the possible methods of disposition to be tracked 
+ for financial analysis. </p>
+
+<p class=Body-Text><span style="font-weight: bold;"><B>DISPOSTN.TAB</B></span><br>
+Vital Stats window. Methods of disposition. </p>
+
+<p class=Body-Text><span style="font-weight: bold;"><B>DISPPLAC.TAB</B></span><br>
+Vital Stats window. Place of disposition. Format: Street Address, City, 
+ State (2 Char), Zip, Phone # </p>
+
+<p class=Body-Text><span style="font-weight: bold;"><B>DOCTOR.TAB</B></span><br>
+Vital Stats window. Doctors' names. Format: doctor's name, street, city, 
+ state (2 Char), zip, phone, license #. </p>
+
+<p class=Body-Text><span style="font-weight: bold;"><B>DONATTYP.TAB</B></span><br>
+Donations window. Contains donation payment methods. Format is: description, 
+ misc. cash receipt A/R account, misc. cash receipt revenue account. </p>
+
+<p class=Body-Text><span style="font-weight: bold;"><B>EMBALM.TAB</B></span><br>
+Add Case Information window. Reason for embalming. </p>
+
+<p class=Body-Text><span style="font-weight: bold;"><B>EXTERIOR.TAB</B></span><br>
+Inventory. Contains default exterior material descriptions. </p>
+
+<p class=Body-Text><span style="font-weight: bold;"><B>EYECOLOR.TAB</B></span><br>
+Vital Stats window. Color of eyes. </p>
+
+<p class=Body-Text><span style="font-weight: bold;"><B>FIRMS.TAB</B></span><br>
+Vital Stats window. Firm deceased worked for. Format: name, street, city, 
+ state (2 Char), zip. </p>
+
+<p class=Body-Text><span style="font-weight: bold;"><B>FUNDTYPE.TAB</B></span><br>
+Preneed window. List of categories of preneed funding. </p>
+
+<p class=Body-Text><span style="font-weight: bold;"><B>HAIRCOLR.TAB</B></span><br>
+Vital Stats window. Color of hair. </p>
+
+<p class=Body-Text><span style="font-weight: bold;"><B>HISPANIC.TAB</B></span><br>
+Vital Stats window. Type of origin if Hispanic. </p>
+
+<p class=Body-Text><span style="font-weight: bold;"><B>INPATDOA.TAB</B></span><br>
+Vital Stats window. For deaths in hospitals or institutions. Format: Inpatient, 
+ DOA, Op/emer rm, etc. </p>
+
+<p class=Body-Text><span style="font-weight: bold;"><B>INTERIOR.TAB</B></span><br>
+Inventory. Default list of interior materials and colors. </p>
+
+<p class=Body-Text><span style="font-weight: bold;"><B>INVASSET.TAB</B></span><br>
+Inventory Catalog window. List of inventory asset G/L account numbers available. 
+ </p>
+
+<p class=Body-Text><span style="font-weight: bold;"><B>INVCOST.TAB</B></span><br>
+Inventory Catalog window. List of inventory cost-of-sale G/L accounts available. 
+ </p>
+
+<p class=Body-Text><span style="font-weight: bold;"><B>INVLOCTN.TAB</B></span><br>
+Inventory Catalog window. Contains various locations where you may actually 
+ store inventory items. </p>
+
+<p class=Body-Text><span style="font-weight: bold;"><B>INVOICES.TAB </B></span><br>
+Contains list of invoice forms available when the operator selects &quot;print&quot; 
+ and &quot;Invoice&quot;. The format is: Description, FORMNAME.RPT </p>
+
+<p class=Body-Text><span style="font-weight: bold;"><B>INVSALES.TAB</B></span><br>
+Inventory Catalog window. List of inventory sale G/L account numbers available. 
+ </p>
+
+<p class=Body-Text><span style="font-weight: bold;"><B>KINDBUS.TAB</B></span><br>
+Vital Stats window. List categories of businesses such as &quot;Manufacturing&quot; 
+ or &quot;Own Home&quot;. </p>
+
+<p class=Body-Text><span style="font-weight: bold;"><B>LOCDEATH.TAB</B></span><br>
+Vital Stats window. Location of death. Format: name (of hospital), street, 
+ city, state (spelled out), county, 2-char state abbreviation, zip code. 
+ </p>
+
+<p class=Body-Text><span style="font-weight: bold;"><B>MARITAL.TAB</B></span><br>
+Vital Stats window. Marital status. </p>
+
+<p class=Body-Text><span style="font-weight: bold;"><B>MEMSTYLE.TAB</B></span><br>
+Services window. Memorial folder styles. </p>
+
+<p class=Body-Text><span style="font-weight: bold;"><B>MINISTER.TAB</B></span><br>
+Services window. Ministers' names. </p>
+
+<p class=Body-Text><span style="font-weight: bold;"><B>MULTICMP.TAB</B></span><br>
+Financial window. Holds the version names of price lists and package list 
+ tables available to the operator when wanting to use a different price 
+ list. Format: Description, table name for price list, table name for package 
+ list, accounts receivable number, cash account number, finance charge 
+ account number. </p>
+
+<p class=Body-Text><span style="font-weight: bold;"><B>OCCUPATN.TAB</B></span><br>
+Vital Stats window. Format: occupation, kind of business. </p>
+
+<p class=Body-Text><span style="font-weight: bold;"><B>ORGANIST.TAB</B></span><br>
+Services window. Organists' names. </p>
+
+<p class=Body-Text><span style="font-weight: bold;"><B>PAYMETH.TAB</B></span><br>
+Used in Payment Entry Window to identify the method of payment. Only first 
+ two characters are stored in the transaction history for analysis, so, 
+ typical entries are: CA-cash, CC-credit card, FN-financed. </p>
+
+<p class=Body-Text><span style="font-weight: bold;"><B>PAYTYPE.TAB</B></span><br>
+Payment entry window. Contains various G/L accounts to which a &quot;payment 
+ on account&quot; may be applied. Format is: Description, G/L account number. 
+ The first line in this table should be the normal, default cash account. 
+ Other entries might include discounts and bad debt. </p>
+
+<p class=Body-Text><span style="font-weight: bold;"><B>PLACEDTH.TAB</B></span><br>
+Vital Stats window. List of actual places of death. </p>
+
+<p class=Body-Text><span style="font-weight: bold;"><B>PLCATGRY.TAB</B></span><br>
+Supplies price list category codes on the price list edit window. These 
+ codes are used in sales reports. </p>
+
+<p class=Body-Text><span style="font-weight: bold;"><B>PMTCOLL.TAB</B></span><br>
+All financial windows. Contains valid components into which you can receive 
+ payments. Allows you to break down a contract into billing categories. 
+ Format is: 3-character component code, description, financed component 
+ Y/N, assignment fee percentage, assignment fee rate, assignment fee maximum, 
+ assignment fee minimum, charge line modifiable Y/N, can payments be applied 
+ Y/N, default component Y/N, finance charges applicable Y/N </p>
+
+<p class=Body-Text><span style="font-weight: bold;"><B>PNCASKET.TAB</B></span><br>
+Preneed window. List of caskets to select for preneed cases. </p>
+
+<p class=Body-Text><span style="font-weight: bold;"><B>PNSOURCE.TAB</B></span><br>
+Preneed window. Allows storing the source of a lead. </p>
+
+<p class=Body-Text><span style="font-weight: bold;"><B>PNURN.TAB</B></span><br>
+Preneed window. List of urns to select for preneed cases. </p>
+
+<p class=Body-Text><span style="font-weight: bold;"><B>PNVAULT.TAB</B></span><br>
+Preneed window. List of vaults to select for preneed cases. </p>
+
+<p class=Body-Text><span style="font-weight: bold;"><B>PRICEHDR.TAB</B></span><br>
+Printing general price lists: List of company logo header files: Format: 
+ description, header-file-name.doc. </p>
+
+<p class=Body-Text><span style="font-weight: bold;"><B>PRICERPT.TAB</B></span><br>
+Printing general price lists: List of price list reports available to print 
+ such as services, casket, outer burial container, etc. Format: report 
+ description, report-name.RPT </p>
+
+<p class=Body-Text><span style="font-weight: bold;"><B>PRODLINE.TAB</B></span><br>
+Inventory catalog window. Contains table of product categories. Format 
+ is: category name, sale G/L account, cost G/L account, Asset G/L account. 
+ </p>
+
+<p class=Body-Text><span style="font-weight: bold;"><B>RACE.TAB</B></span><br>
+Vital Stats window. Names of races. </p>
+
+<p class=Body-Text><span style="font-weight: bold;"><B>RELATION.TAB</B></span><br>
+Add Case Information window. Relationship of informant to deceased. </p>
+
+<p class=Body-Text><span style="font-weight: bold;"><B>REPDONAT.TAB</B></span><br>
+Donations window. Contains list of contribution reports and forms. Format 
+ is: description, name.rpt, selection code. The selection code can be 1, 
+ All, Informant to indicate if printing a letter for 1 donation, all donations, 
+ or all donations to informant. </p>
+
+<p class=Body-Text><span style="font-weight: bold;"><B>REPORTPN.TAB</B></span><br>
+Pre-Need Window. Available pre-need reports. Format: report name, program 
+ file. </p>
+
+<p class=Body-Text><span style="font-weight: bold;"><B>REPORTS.TAB</B></span><br>
+Status Window. Misc. Reports. Format: report name, program file </p>
+
+<p class=Body-Text><span style="font-weight: bold;"><B>REPRTINV.TAB</B></span><br>
+Inventory Report window. Selection list of inventory analysis related reports 
+ available to the operator. Format is: description, report-name.rpt </p>
+
+<p class=Body-Text><span style="font-weight: bold;"><B>REPRTSTD.TAB</B></span><br>
+Status window. Standard reports. Format: report name, program file. </p>
+
+<p class=Body-Text><span style="font-weight: bold;"><B>RESPNSBY.TAB</B></span><br>
+Payment window. Default responsibility categories. </p>
+
+<p class=Body-Text><span style="font-weight: bold;"><B>REVTYPE.TAB</B></span><br>
+Miscellaneous Cash Receipts window. Selection list of G/L income categories 
+ available to the operator. Format is: description, G/L income account 
+ number. </p>
+
+<p class=Body-Text><span style="font-weight: bold;"><B>SALETYPE.TAB</B></span><br>
+Financial window. Names for categories of sales. </p>
+
+<p class=Body-Text><span style="font-weight: bold;"><B>SEX.TAB</B></span><br>
+Vital Stats window. Male, Female. </p>
+
+<p class=Body-Text><span style="font-weight: bold;"><B>SOLOIST.TAB</B></span><br>
+Services window. Names of soloists. </p>
+
+<p class=Body-Text><span style="font-weight: bold;"><B>SRVPLACE.TAB</B></span><br>
+Services window. Possible places of services. Format: name (church or funeral 
+ home), street address, city, state (2 Char), zip. </p>
+
+<p class=Body-Text><span style="font-weight: bold;"><B>STATES.TAB</B></span><br>
+Vital Stats window. State names. </p>
+
+<p class=Body-Text><span style="font-weight: bold;"><B>SUPPLIER.TAB</B></span><br>
+Inventory Catalog window. Table of merchandise supplier names. </p>
+
+<p class=Body-Text><span style="font-weight: bold;"><B>TAX.TAB</B></span><br>
+Tax codes for automatic sales tax calculation. format is: Tax Code, Description, 
+ local (PST) rate, state (GST) rate, local limit, state limit. The &quot;Code&quot; 
+ field must be 4 or less characters. The description field can be any length 
+ since it is not stored with the case; however, a brief description is 
+ better so that the operator can easily see what the meaning of that particular 
+ tax method. The rate fields are entered as percentages, e.g., 4.5% is 
+ entered as &quot;4.5&quot;. The limit fields are money fields with up 
+ to two decimal places for cents. </p>
+
+<p class=Body-Text><span style="font-weight: bold;"><B>TITLE.TAB</B></span><br>
+Bill-to window. Contains list of titles like: Mr. Mrs. Dr. Miss etc. </p>
+
+<p class=Body-Text><span style="font-weight: bold;"><B>TOWNSHIP.TAB</B></span><br>
+Vital Stats window. Township names. </p>
+
+<p class=Body-Text><span style="font-weight: bold;"><B>VAULTS.TAB</B></span><br>
+Services window. Format: manufacturer, model, color, material. </p>
+
+<p class=Body-Text><span style="font-weight: bold;"><B>WAR.TAB</B></span><br>
+Vital Statistics window. War deceased served in. </p>
+
+<p class=Body-Text><span style="font-weight: bold;"><B>YESNO.TAB</B></span><br>
+Used in several windows. Contains yes, no. </p>
+
+<p class=Body-Text><span style="font-weight: bold;"><B>ZIP.TAB</B></span><br>
+Used in several windows. Contains zip codes </p>
+
+<hr></hr>
+<form name="firstCallInformation" method="POST" action="">
+<input type="image" name="" src="icon_print.gif" alt="Print" onclick="window.print()"> Print Topic
+</form>
+
+<script type="text/javascript" language="javascript1.2">
+<!--
+if (window.autoSync)
+	autoSync(1);
+if (window.writeIntopicBar)
+	writeIntopicBar(0);
+//-->
+</script>
+<form method="POST" action="http://www.helpcommunity.com/ehelpapi.asp?cmd=WebSave" name="ehelpform" target="_top" style="display:'none';">
+<input type="hidden" name="data" value="2A0C02150000005370656564204461746120466F726D617474696E670D02150000005370656564204461746120466F726D617474696E6711020F0000004564697420537065656420446174611202150000005370656564204461746120466F726D617474696E6713020700000057656246444D5315020B00000077656266646D732E68746D1703A10100003C3F786D6C2076657273696F6E3D22312E30223F3E0D0A3C21444F43545950452053595354454D20226568656C706F70742E647464223E0D0A3C46494C452D4F5054494F4E532046494C452D56455253494F4E3D2232222047454E455241544F523D22526F626F48454C5020666F722057696E48656C7020392E3220392E32302E353334222046494C452D4B45593D2237663337336665345F303535615F346239395F616634395F316139623538346263653435223E0D0A3C2F46494C452D4F5054494F4E533E0D0A3C4548454C502D4F5054494F4E5320464F524D41542D56455253494F4E3D22312E30223E0D0A203C4F5054494F4E5320454E41424C45443D224E4F2220454D4245444445443D2259455322204D41494E2D57494E444F572D4F4E4C593D224E4F2220434F4D4D554E4954592D4E4F544946593D224E4F222046495253542D504147453D224E4F542D534554223E0D0A203C2F4F5054494F4E533E0D0A203C425554544F4E2D4C4142454C3E5765625365617263680D0A203C2F425554544F4E2D4C4142454C3E0D0A3C2F4548454C502D4F5054494F4E533E18010400000002000000702A">
+</form>
+</body>
+
+</html>

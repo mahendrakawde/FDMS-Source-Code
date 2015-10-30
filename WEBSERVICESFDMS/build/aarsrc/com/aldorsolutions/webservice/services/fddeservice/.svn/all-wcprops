@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBSERVICESFDMS/build/aarsrc/com/aldorsolutions/webservice/services/fddeservice
+END
+ExtensionMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBSERVICESFDMS/build/aarsrc/com/aldorsolutions/webservice/services/fddeservice/ExtensionMapper.java
+END
+FddeServiceStub.java
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBSERVICESFDMS/build/aarsrc/com/aldorsolutions/webservice/services/fddeservice/FddeServiceStub.java
+END
+GetDataRequest.java
+K 25
+svn:wc:ra_dav:version-url
+V 150
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBSERVICESFDMS/build/aarsrc/com/aldorsolutions/webservice/services/fddeservice/GetDataRequest.java
+END
+FddeServiceSkeleton.java
+K 25
+svn:wc:ra_dav:version-url
+V 155
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBSERVICESFDMS/build/aarsrc/com/aldorsolutions/webservice/services/fddeservice/FddeServiceSkeleton.java
+END
+GetDataResponse.java
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBSERVICESFDMS/build/aarsrc/com/aldorsolutions/webservice/services/fddeservice/GetDataResponse.java
+END
+FddeServiceMessageReceiverInOut.java
+K 25
+svn:wc:ra_dav:version-url
+V 167
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBSERVICESFDMS/build/aarsrc/com/aldorsolutions/webservice/services/fddeservice/FddeServiceMessageReceiverInOut.java
+END
+FddeFaultException0.java
+K 25
+svn:wc:ra_dav:version-url
+V 155
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBSERVICESFDMS/build/aarsrc/com/aldorsolutions/webservice/services/fddeservice/FddeFaultException0.java
+END
+FddeFault.java
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBSERVICESFDMS/build/aarsrc/com/aldorsolutions/webservice/services/fddeservice/FddeFault.java
+END
+FddeFaultException1.java
+K 25
+svn:wc:ra_dav:version-url
+V 155
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBSERVICESFDMS/build/aarsrc/com/aldorsolutions/webservice/services/fddeservice/FddeFaultException1.java
+END
+FddeServiceCallbackHandler.java
+K 25
+svn:wc:ra_dav:version-url
+V 162
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBSERVICESFDMS/build/aarsrc/com/aldorsolutions/webservice/services/fddeservice/FddeServiceCallbackHandler.java
+END

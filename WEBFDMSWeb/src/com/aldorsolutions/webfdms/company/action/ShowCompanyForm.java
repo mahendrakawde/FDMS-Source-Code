@@ -91,7 +91,8 @@ public class ShowCompanyForm extends Action {
             	form.setDatabaseStatus("Y");
             	
 //            	String dbURL = UtilSingleton.getInstance().getProperty("db.url");
-            	String dbJndi = "java:jdbc/FDMS_[companyName]";
+            	//String dbJndi = "java:jdbc/FDMS_[companyName]";
+            	String dbJndi = "java:jboss/datasources/FDMS_[companyName]";
 //            	String dbUser = UtilSingleton.getInstance().getProperty("db.username");
 //            	String dbPass = UtilSingleton.getInstance().getProperty("db.password");
             	

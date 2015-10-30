@@ -1,0 +1,153 @@
+<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="/WEB-INF/struts-form.tld" prefix="form" %>
+<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+
+<%@ taglib uri="http://www.webfdms.com/taglibs/fdms" prefix="fdms" %>
+<%@ taglib uri="/WEB-INF/struts-template.tld" prefix="template" %>
+<%@ taglib uri="/WEB-INF/form-errors.tld" prefix="formFieldErrors" %>
+<%@ taglib uri="http://www.webfdms.com/taglibs/alert-message" prefix="alert" %>
+
+<html>
+<head>
+<title>Payment Entry</title>
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type" />
+<SCRIPT language="JavaScript" src="webfdmslib.js">
+window.status='';
+</script>
+<script language="JavaScript">
+function set(target) {
+	formConfirmOff();
+	document.forms[0].directive.value=target;
+}
+function stopRKey(evt) {
+	  var evt = (evt) ? evt : ((event) ? event : null);
+	  var node = (evt.target) ? evt.target : ((evt.srcElement) ? evt.srcElement : null);
+	  if ((evt.keyCode == 13) && (node.type=="text"))  {return false;}
+	}
+document.onkeypress = stopRKey;
+</script>
+<script language="JavaScript" type="text/javascript" src="jsScripts/CalendarPopup.js"></script>
+
+<SCRIPT LANGUAGE="JavaScript" ID="jscal1x">
+	var calPopUp = new CalendarPopup("calendardiv", "calendardivfrm");
+</SCRIPT>
+		
+<SCRIPT LANGUAGE="JavaScript">document.write(getCalendarStyles());</SCRIPT>
+<script language="JavaScript" type="text/javascript" src="jsScripts/formSaveWarning.js" ></script>
+<html:base />
+<link href="css/fdmsnet.css" rel="stylesheet" type="text/css">
+<formFieldErrors:formErrors form="paymentAddChange"/>
+</head>
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onload="formErrors();">
+<DIV ID="calendardiv" 
+	STYLE="position:absolute;visibility:hidden;background-color:white;layer-background-color:white;z-index: 700;">
+</DIV>
+<iframe id="calendardivfrm" src="javascript:false;" frameBorder="0" scrolling="no" 
+	STYLE="position:absolute; top:0px; left:0px; display:none;z-index: 599;">
+</iframe>
+<alert:alertMessage messageType="R"/>
+<html:errors />
+<html:form scope="session" action="/processPaymentAddChange" name="paymentAddChange" type="fdms.ui.struts.form.PaymentAddChangeForm">
+<html:hidden property="directive" /> 
+<html:hidden property="paymentId" />
+<table width="98%" BORDER="0" align="center" CELLPADDING="0" cellspacing="0">
+  <tr>
+    <td height="30" colspan="3" align="left" valign="middle" bordercolorlight="#FFFFCC" bordercolordark="#FFFFCC" class="pageTitle" style="margin-top: 13">Payment
+    Entry</td>
+  </tr>
+  <tr>
+    <td bordercolorlight="#FFFFCC" bordercolordark="#FFFFCC" height="2" align="right" valign="middle" style="margin-top: 13" colspan="3"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right">&nbsp;</td>
+        <td width="250" height="40" align="right" valign="top">
+		<fieldset><legend class="tahoma12bMaroon">Actions</legend>
+		<html:image alt="Save" src="images-old/buttonsave.gif" onclick="set('save');" />
+	   <html:image alt="Cancel" src="images-old/buttoncancel.gif" onclick="set('cancel');" />
+	   <html:image alt="Help" src="images-old/buttonhelp.gif" onclick="set('help');" />
+	   </fieldset>
+		</td>
+      </tr>
+    </table>
+	</td>
+  </tr>
+  <tr>
+    <td bordercolorlight="#FFFFCC" bordercolordark="#FFFFCC" height="2" align="left" valign="top" style="margin-top: 13" colspan="3">
+	<fieldset><legend class="tahoma12bBlue">Source &amp; Component</legend>
+	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right" valign="top" class="verdana12">Select Payment Component&nbsp;&nbsp;</td>
+        <td>
+		<html:select property="payment" size="3" onchange="set('selectcomponent');this.form.submit();">
+			<html:options collection="paymentAddChangeDisplayList" property="listValue" labelProperty="listLabel" />
+		</html:select>
+		</td>
+      </tr>
+      <tr>
+        <td width="190" height="28" align="right" valign="middle" class="verdana12">Payment Source&nbsp;&nbsp;</td>
+        <td><html:text maxlength="50" size="30" style="font-family: Arial; text-align: Left" property="paymentSource" /></td>
+      </tr>
+    </table></fieldset></td>
+  </tr>
+  <tr>
+    <td bordercolorlight="#FFFFCC" bordercolordark="#FFFFCC" height="2" align="left" valign="top" style="margin-top: 13" colspan="3">
+	<fieldset><legend class="tahoma12bBlue">Payment Details</legend>
+	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="190" height="28" align="right" valign="middle" class="verdana12">Amount
+          Paid&nbsp;&nbsp; </td>
+        <td><html:text maxlength="15" size="11" style="font-family: Arial; text-align: Right" name="paymentAddChange" property="amountPaid" />
+</td>
+      </tr>
+      <tr>
+        <td height="28" align="right" valign="middle" class="verdana12">Deposit
+          Date&nbsp;&nbsp;</td>
+        <td><html:text maxlength="15" size="11" style="font-family: Arial; text-align: Left" name="paymentAddChange" property="dateOfDeposit" onfocus="focusDateEdit(this);"/>
+          <fdms:FDMSDate fieldID="dateOfDeposit1" javascriptFormField="document.forms[0].dateOfDeposit"></fdms:FDMSDate>
+        </td>
+      </tr>
+      <tr>
+        <td height="28" align="right" valign="middle" class="verdana12">Date
+          Paid&nbsp;&nbsp;</td>
+        <td><html:text maxlength="15" size="11" style="font-family: Arial; text-align: Left" name="paymentAddChange" property="dateOfPayment" onfocus="focusDateEdit(this);"/>
+          <fdms:FDMSDate fieldID="dateOfPayment1" javascriptFormField="document.forms[0].dateOfPayment"></fdms:FDMSDate>
+         </td>
+      </tr>
+      <tr>
+        <td height="28" align="right" valign="middle" class="verdana12">Receipt
+          No.&nbsp;&nbsp;</td>
+        <td><html:text disabled="true" size="8" style="font-family: Arial; text-align: Left" name="paymentAddChange" property="receiptNumber" /></td>
+      </tr>
+      <tr>
+        <td height="28" align="right" valign="middle" class="verdana12">Manual
+          Receipt No&nbsp;&nbsp;</td>
+        <td><html:text maxlength="15" size="11" style="font-family: Arial; text-align: Left" name="paymentAddChange" property="manualReceiptNumber" /></td>
+      </tr>
+      <tr>
+        <td height="28" align="right" valign="middle" class="verdana12">
+          Adjustment Type&nbsp;&nbsp;</td>
+        <td>
+		<html:select size="1" name="paymentAddChange" property="nonCashAdjustment">
+			<html:options collection="paytypes" property="listValue" labelProperty="listLabel" />
+		</html:select>
+		</td>
+      </tr>
+      <tr>
+        <td height="28" align="right" valign="middle" class="verdana12">Payment Method&nbsp;&nbsp;</td>
+        <td>
+		<html:select size="1" property="methodOfPayment">
+			<html:options collection="paymethods" property="listValue" labelProperty="listLabel" />
+		</html:select>
+		</td>
+      </tr>
+    </table></fieldset></td>
+  </tr>
+  <tr>
+    <td bordercolor="#FFFFCC" bordercolorlight="#FFFFCC" bordercolordark="#FFFFCC" height="40" align="center">&nbsp;    </td>
+  </tr>
+</table>
+<script language="JavaScript" type="text/javascript">
+    populateArrays();
+    formConfirmOn();
+</script>	
+</html:form></body></html>

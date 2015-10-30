@@ -1,0 +1,740 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:this="http://aldorsolutions.com/webservice/xsd/comm/fdde" xmlns:comm="http://aldorsolutions.com/webservice/xsd/comm" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://aldorsolutions.com/webservice/xsd/comm/fdde">
+	
+	<xs:import namespace="http://aldorsolutions.com/webservice/xsd/comm" schemaLocation="Common.xsd"/>
+	
+    <xs:complexType name="funeralHomeType">
+    	<xs:sequence>
+    		<xs:element name="name" type="comm:StrMax50Len"
+    			minOccurs="0" />
+            <xs:element name="number" type="comm:StrMax10Len" minOccurs="0"/>
+            <xs:element name="managerName" type="comm:StrMax150Len"
+    			minOccurs="0" />
+    		<xs:element name="address" type="this:AddressType"
+    			minOccurs="0" />
+    		<xs:element name="phone" type="comm:StrMax20Len"
+    			minOccurs="0" />
+    		<xs:element name="otherPhone" type="comm:StrMax20Len"
+    			minOccurs="0" />
+    		<xs:element name="licenseNumber" type="comm:StrMax10Len"
+    			minOccurs="0" />
+    		<xs:element name="website" type="comm:StrMax200Len"
+    			minOccurs="0" />
+    		<xs:element name="email" type="comm:StrMax100Len"
+    			minOccurs="0" />
+
+    	</xs:sequence>
+    	<xs:attribute name="id" type="this:funeralHomeIdType"/>
+    </xs:complexType>
+
+    <xs:simpleType name="funeralHomeIdType">
+    	<xs:restriction base="xs:string">
+    		<xs:pattern value="L[0-9][0-9]*FH[0-9][0-9]*"/>
+    	</xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="AddressType">
+        <xs:sequence>
+            <xs:element maxOccurs="3" minOccurs="0" name="street" type="comm:StrMax50Len"/>
+            <xs:element minOccurs="0" name="city" type="comm:StrMax50Len"/>
+            <xs:element minOccurs="0" name="county" type="comm:StrMax40Len"/>
+            <xs:element minOccurs="0" name="stateAbbreviation" type="comm:StrMax40Len"/>
+            <xs:element minOccurs="0" name="zipCode" type="comm:StrMax40Len"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="caseInfoType">
+    	<xs:sequence>
+    		<xs:element name="caseCode" type="comm:StrMax20Len" minOccurs="0" />
+    		<xs:element name="contractCode" type="comm:StrMax20Len" minOccurs="0" />
+    		<xs:element name="contractNumber" type="xs:int" minOccurs="0" />
+    		<xs:element name="caseType" type="this:caseTypeInfo" minOccurs="0" />
+    	</xs:sequence>
+    	<xs:attribute name="id" type="this:caseIdType" use="required" />
+    	<xs:attribute name="void" type="xs:boolean" use="optional" />
+    	<xs:attribute name="funeralHomeId" type="this:funeralHomeIdType" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="caseType">
+    	<xs:complexContent>
+    		<xs:extension base="this:caseInfoType">
+    			<xs:sequence>
+		    		<xs:element name="callInfo" type="this:callInfoType" minOccurs="0" />
+		    		<xs:element name="VitalsInformation" type="this:VitalsInformationType" minOccurs="0" />
+		    		<xs:element name="services" type="this:servicesType" minOccurs="0"/>
+    			</xs:sequence>
+    		</xs:extension>
+    	</xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="callInfoType">
+    	<xs:sequence>
+    		<xs:element name="preNeedInfo" type="this:preNeedInfoType" minOccurs="0"/>
+    		<xs:element name="arranger" type="this:arrangerType" minOccurs="0"/>
+    		<xs:element name="counselor" type="comm:StrMax40Len" minOccurs="0" />
+    		<xs:element name="marketingPlan" type="comm:StrMax30Len" minOccurs="0" />
+    		<xs:element name="firstCall" minOccurs="0" type="this:FirstCallType" />
+    		<xs:element name="deceased" minOccurs="0" type="this:DeceasedType" />
+    		<xs:element minOccurs="0" name="informant" type="this:InformantPerson" />
+    		<xs:element minOccurs="0" name="nextOfKin" type="this:DeRelatedPersonType" />
+    		<xs:element minOccurs="0" name="executor" type="this:DeRelatedPersonType" />
+    		<xs:element minOccurs="0" name="shipAndAirlineInfo" type="comm:StrMax150Len" />
+    		<xs:element minOccurs="0" name="callInfoNote" type="comm:StrMax500Len" />
+    		<xs:element minOccurs="0" name="source" type="comm:StrMax40Len" />
+    		<xs:element name="financialdata" type="this:financialdataType" minOccurs="0" />
+    		<xs:element name="family" type="this:familyType" minOccurs="0"></xs:element>
+    	</xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="VitalsInformationType">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="idTagNumber" type="comm:StrMax30Len"/>
+            <xs:element minOccurs="0" name="locationOfDeath" type="this:LocationOfDeathType"/>
+            <xs:element minOccurs="0" name="generalHistory" type="this:GeneralHistoryType"/>
+            <xs:element minOccurs="0" name="ethnicity" type="this:EthnicityType"/>
+            <xs:element minOccurs="0" name="occupationalHistory" type="comm:OccupationalHistoryType"/>
+            <xs:element minOccurs="0" name="dispositionInfo" type="this:DispositionInfoType"/>
+            <xs:element minOccurs="0" name="certification" type="this:CertificationInfoType"/>
+            <xs:element minOccurs="0" name="causeOfDeath" type="this:CauseOfDeathType"/>
+            <xs:element minOccurs="0" name="medicalExaminer" type="this:MedicalExaminerType"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="LocationOfDeathType">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="placeOfDeath" type="comm:StrMax100Len"/>
+            <xs:element minOccurs="0" name="Address" type="this:DeStandardAddressType" />
+            <xs:element minOccurs="0" name="licenseNumber" type="comm:StrMax30Len"/>
+
+            <xs:element name="deathInsideCity" type="xs:boolean"
+        		minOccurs="0" />
+        	<xs:element name="deathOccurredIn" minOccurs="0" type="comm:CVTType"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="GeneralHistoryType">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="birthplace" type="this:DeStandardAddressType"/>
+            <xs:element minOccurs="0" name="decedentsEducation" type="this:DecedentsEducationType"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="EthnicityType">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="race" type="xs:string"/>
+            <xs:element minOccurs="0" name="ancestry" type="xs:string"/>
+            <xs:element minOccurs="0" name="tribal" type="this:TribalType"/>
+            <xs:element minOccurs="0" name="hispanicOrigin" type="comm:YesNoType"/>
+            <xs:element minOccurs="0" name="citizenship" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DispositionInfoType">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="dateOfNotifyToDirector" type="xs:date"/>
+            <xs:element minOccurs="0" name="timeOfNotifyToDirector" type="comm:StrMax08Len"/>
+            <xs:element minOccurs="0" name="embalmer" type="xs:string"/>
+            <xs:element minOccurs="0" name="methodOfDisposition" type="comm:StrMax27Len"/>
+            <xs:element minOccurs="0" name="dispositionPlace" type="comm:StrMax40Len"/>
+            <xs:element minOccurs="0" name="dispositionPlaceType" type="xs:string"/>
+            <xs:element minOccurs="0" name="address" type="this:DeStandardAddressType"/>
+            <xs:element minOccurs="0" name="dateEmbalmed" type="xs:date"/>
+            <xs:element minOccurs="0" name="dateOfDisposition" type="xs:date"/>
+            <xs:element minOccurs="0" name="authorizingCoroner" type="comm:StrMax150Len"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="CertificationInfoType">
+        <xs:sequence>
+            <xs:element name="notificationOfExaminerRequired" type="xs:boolean" minOccurs="0"/>
+            <xs:choice minOccurs="0">
+                <xs:element name="physician" type="this:MedicalCertifierInfoType" minOccurs="0"/>
+                <xs:element name="medicalExaminer" type="this:MedicalCertifierInfoType" minOccurs="0"/>
+                <xs:element name="nursePractitioner" type="this:NonPracticeCertifierInfoType" minOccurs="0"/>
+            </xs:choice>
+            <xs:element name="atTimeOfDeath" type="this:AtTimeOfDeathInfoType" minOccurs="0"/>
+            <xs:element minOccurs="0" name="certifyingPhysician" type="this:CertifyingPhysicianInofType"/>
+            <xs:element name="registrarFileDate" type="xs:date" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="CauseOfDeathType">
+        <xs:sequence>
+            <xs:element maxOccurs="4" minOccurs="0" name="cause" type="this:CauseType"/>
+            <xs:element name="tobaccoUser" type="comm:CompleteAnswerType" minOccurs="0"/>
+            <xs:element minOccurs="0" name="pregnantAtDeath" type="xs:string"/>
+            <xs:element minOccurs="0" name="otherCondition" type="comm:StrMax50Len"/>
+            <xs:element name="typeOfDeath" type="comm:StrMax50Len" minOccurs="0"/>
+            <xs:element name="wasBodyFoundMore24Hr" type="xs:boolean" minOccurs="0"/>
+            <xs:element name="wasAnAutopsyPerformed" type="xs:boolean" minOccurs="0"/>
+            <xs:element minOccurs="0" name="wereAutopsyFindingsAvailablePriorToCauseOfDeath" type="comm:YesNoType"/>
+            <xs:element minOccurs="0" name="hospiceStatus" type="comm:YesNoType"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="MedicalExaminerType">
+        <xs:sequence>
+            <xs:element name="injuryDate" type="xs:date" minOccurs="0"/>
+            <xs:element name="injuryTime" type="comm:StrMax10Len" minOccurs="0"/>
+            <xs:element name="injuryDescription" type="comm:StrMax60Len" minOccurs="0"/>
+            <xs:element name="injuryAtWork" type="xs:boolean" minOccurs="0"/>
+            <xs:element name="injuryPlace" type="comm:StrMax50Len" minOccurs="0"/>
+            <xs:element minOccurs="0" name="decedentPositionForTransportInjury" type="comm:StrMax100Len"/>
+            <xs:element name="injuryLocation" type="this:DeStandardAddressType" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DecedentsEducationType">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="highestGradeCompleted" type="comm:StrMax200Len"/>
+            <xs:element minOccurs="0" name="yearsOfElementaryOrSecondary" type="comm:StrMax03Len"/>
+            <xs:element minOccurs="0" name="yearsOfColege" type="comm:StrMax03Len"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="MedicalCertifierInfoType">
+        <xs:sequence>
+            <xs:element name="certifierDateSigned" type="xs:date" minOccurs="0"/>
+            <xs:element name="licenseNumber" type="comm:StrMax15Len" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="NonPracticeCertifierInfoType">
+        <xs:sequence>
+            <xs:element name="certifierDateSigned" type="xs:date" minOccurs="0"/>
+            <xs:element name="licenseNumber" type="comm:StrMax25Len" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="AtTimeOfDeathInfoType">
+        <xs:sequence>
+            <xs:element name="actualOrPresumedTimeOfDeath" type="comm:StrMax10Len" minOccurs="0"/>
+            <xs:element name="pronouncedDeadOn" type="xs:date" minOccurs="0"/>
+            <xs:element name="timePronounced" type="comm:StrMax10Len" minOccurs="0"/>
+            <xs:element name="medicalExaminerContacted" type="xs:boolean" minOccurs="0"/>
+            <xs:element name="placeOfDeath" type="comm:StrMax60Len" minOccurs="0"/>
+            <xs:element minOccurs="0" name="hospital" type="this:HospitalDetailType"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="HospitalDetailType">
+        <xs:sequence>
+            <xs:element name="hospitalAccessType" type="comm:StrMax20Len" minOccurs="0"/>
+            <xs:element name="caseNumber" type="comm:StrMax15Len" minOccurs="0"/>
+            <xs:element name="attendingPhysician" type="comm:StrMax49Len" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="CertifyingPhysicianInofType">
+        <xs:sequence>
+            <xs:element name="name" type="comm:StrMax150Len" minOccurs="0"/>
+            <xs:element name="address" type="this:DeStandardAddressType" minOccurs="0"/>
+            <xs:element name="phone" type="comm:StrMax20Len" minOccurs="0"/>
+            <xs:element name="certifierTitle" type="comm:StrMax10Len" minOccurs="0"/>
+            <xs:element minOccurs="0" name="datesPhysicianAttended" type="this:PhysicianAttendedDateType"/>
+            <xs:element name="physicianViewedTheBody" type="xs:boolean" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="PhysicianAttendedDateType">
+        <xs:sequence>
+            <xs:element name="fromDate" type="xs:date" minOccurs="0"/>
+            <xs:element name="toDate" type="xs:date" minOccurs="0"/>
+            <xs:element name="lastDate" type="xs:date" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TribalType">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="member" type="comm:SimpleAnswerType"/>
+            <xs:element minOccurs="0" name="name" type="comm:StrMax30Len"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="CauseType">
+        <xs:sequence>
+            <xs:element name="dueTo" type="comm:StrMax49Len" minOccurs="0"/>
+            <xs:element name="interval" type="comm:StrMax14Len" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="FirstCallType">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="arrangeDate" type="xs:date"/>
+            <xs:element minOccurs="0" name="arrangeTime" type="comm:StrMax08Len"/>
+            <xs:element minOccurs="0" name="originalPreneedDate" type="xs:date"/>
+            <xs:element name="facility" type="this:FaciltyType" minOccurs="0"/>
+            <xs:element minOccurs="0" name="embalming" type="comm:StrMax60Len"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DeceasedType">
+        <xs:sequence>
+        	<xs:element name="name" minOccurs="0" type="this:DeCompleteNameType" />
+        	<xs:element name="otherName" type="this:DeCompleteNameType" minOccurs="0" />
+        	<xs:element name="memorialName" minOccurs="0" type="comm:StrMax150Len" />
+        	<xs:element name="residence" type="this:DeResidenceType" minOccurs="0" />
+        	<xs:element name="ssn" type="comm:StrMax14Len" minOccurs="0" />
+        	<xs:element name="gender" minOccurs="0" type="comm:GenderType"/>
+        	<xs:element minOccurs="0" name="birthDate" type="xs:date" />
+        	<xs:element minOccurs="0" name="deathDate" type="xs:date" />
+        	<xs:element name="age" type="comm:AgeType" minOccurs="0" />
+        	<xs:element minOccurs="0" name="maritalStatus" type="comm:StrMax14Len"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="InformantPerson">
+        <xs:complexContent>
+            <xs:extension base="this:DeRelatedPersonType">
+                <xs:attribute name="billToParty" type="xs:boolean" use="required"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="FaciltyType">
+    	<xs:sequence>
+    		<xs:element name="name" minOccurs="0"
+    			type="comm:StrMax50Len" />
+    		<xs:element name="address" minOccurs="0"
+    			type="this:AddressType" />
+    		<xs:element name="phone" type="comm:StrMax20Len"
+    			minOccurs="0">
+    		</xs:element>
+    		<xs:element name="license" type="comm:StrMax15Len" minOccurs="0"></xs:element>
+    	</xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="preNeedInfoType">
+    	<xs:sequence>
+    		<xs:element name="buyer" type="this:buyerType" minOccurs="0"/>
+    		<xs:element name="salesInfo" type="this:salesInfoType" minOccurs="0"/>
+    		<xs:element minOccurs="0" name="fundDepository" type="this:fundDepositoryType" />
+    		<xs:element minOccurs="0" name="notes" type="xs:string" />
+    	</xs:sequence>
+    </xs:complexType>
+    <xs:simpleType name="preNeedStatusType">
+    	<xs:restriction base="xs:string">
+	    	<xs:enumeration value="active"/>
+	    	<xs:enumeration value="serviced"/>
+	    	<xs:enumeration value="canceled"/>
+    	</xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="caseIdType">
+    	<xs:restriction base="xs:string">
+    		<xs:pattern value="L[0-9][0-9]*FH[0-9][0-9]*C[0-9][0-9]*"/>
+    	</xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="buyerType">
+	<xs:sequence>
+		<xs:element name="name" type="this:DeNameType" minOccurs="0" />
+		<xs:element name="address" type="this:AddressType" minOccurs="0" />
+		<xs:element name="phone" type="comm:StrMax20Len" minOccurs="0" />
+		<xs:element name="ssn" type="comm:StrMax14Len" minOccurs="0" />
+		<xs:element minOccurs="0" name="coBuyer" type="comm:StrMax150Len" />
+		</xs:sequence>
+	</xs:complexType>
+
+    <xs:complexType name="salesInfoType">
+        <xs:sequence>
+        	<xs:element name="saleDate" type="xs:date" minOccurs="0"/>
+        	<xs:element minOccurs="0" name="service" type="comm:StrMax29Len" />
+        	<xs:element minOccurs="0" name="casket" type="comm:StrMax40Len" />
+        	<xs:element minOccurs="0" name="vault" type="comm:StrMax29Len" />
+        	<xs:element minOccurs="0" name="urn" type="comm:StrMax29Len" />
+        	<xs:element minOccurs="0" name="serviceSaleAmount" type="this:DeAmountType" />
+        	<xs:element minOccurs="0" name="casketSaleAmount" type="this:DeAmountType" />
+        	<xs:element minOccurs="0" name="urnSaleAmount" type="this:DeAmountType" />
+        	<xs:element minOccurs="0" name="vaultSaleAmount" type="this:DeAmountType" />
+        	<xs:element minOccurs="0" name="otherSaleAmount" type="this:DeAmountType" />
+        	<xs:element minOccurs="0" name="GSTAmount" type="this:DeAmountType" />
+            <xs:element name="totalSale" type="this:DeAmountType" minOccurs="0"/>
+            <xs:element minOccurs="0" name="disbursements">
+            	<xs:complexType>
+            		<xs:sequence>
+            			<xs:element name="entry" type="this:disbursementType" minOccurs="0" maxOccurs="unbounded"/>
+            		</xs:sequence>
+            	</xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="disbursementType">
+        <xs:sequence>
+            <xs:element name="disbursement" type="comm:StrMax30Len" minOccurs="0"/>
+            <xs:element name="amount" type="this:DeAmountType" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="fundDepositoryType">
+        <xs:sequence>
+        	<xs:element minOccurs="0" name="fundType" type="comm:StrMax24Len" />
+        	<xs:element minOccurs="0" name="fundWith" type="comm:StrMax40Len" />
+        	<xs:element minOccurs="0" name="startedDate" type="xs:date" />
+        	<xs:element minOccurs="0" name="maturityDate" type="xs:date" />
+        	<xs:element minOccurs="0" name="accountNumber" type="comm:StrMax24Len" />
+        	<xs:element minOccurs="0" name="EstimateInterestRate" type="this:DeAmountType" />
+            <xs:element name="dateFundsDeposited" type="xs:date" minOccurs="0"/>
+            <xs:element minOccurs="0" name="faceValue" type="this:DeAmountType" />
+        	<xs:element minOccurs="0" name="contractAmount" type="this:DeAmountType" />
+        	<xs:element minOccurs="0" name="YTDPaid" type="this:DeAmountType" />
+        	<xs:element minOccurs="0" name="totalPaid" type="this:DeAmountType" />
+        	<xs:element minOccurs="0" name="YTDInterest" type="this:DeAmountType" />
+        	<xs:element minOccurs="0" name="managementFee" type="this:DeAmountType" />
+        	<xs:element minOccurs="0" name="commission" type="this:DeAmountType" />
+        	<xs:element minOccurs="0" name="lastPaymentDate" type="xs:date" />
+        	<xs:element minOccurs="0" name="lastPaymentAmount" type="this:DeAmountType" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="financialdataType">
+    	<xs:sequence>
+    		<xs:element name="SaleType" type="comm:StrMax50Len" minOccurs="0"/>
+    		<xs:element name="FinanceChargeRate" type="xs:double" minOccurs="0"/>
+    		<xs:element name="AmountFinanced" type="this:DeAmountType" minOccurs="0"/>
+    		<xs:element name="TotalPaidToDate" type="this:DeAmountType" minOccurs="0"/>
+    		<xs:element name="SentToAccounting" type="xs:boolean" minOccurs="0"/>
+    		<xs:element name="TotalCharges" type="this:DeAmountType" minOccurs="0"/>
+    	</xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="caseTypeInfo">
+    	<xs:choice>
+   			<xs:element name="atNeed" type="this:atNeedType" nillable="true"/>
+   			<xs:element name="preNeed" type="this:preNeedStatusType" />
+   		</xs:choice>
+    </xs:complexType>
+
+    <xs:simpleType name="atNeedType">
+    	<xs:restriction base="xs:string">
+    		<xs:maxLength value="0"/>
+    	</xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="arrangerType">
+    	<xs:sequence>
+    		<xs:element name="name" type="comm:StrMax150Len" minOccurs="0"/>
+    		<xs:element name="licenseNo" type="comm:StrMax15Len" minOccurs="0"/>
+    	</xs:sequence>
+    	<xs:attribute name="id" type="comm:StrMax14Len" use="optional"/>
+    </xs:complexType>
+
+    <xs:complexType name="familyType">
+    	<xs:sequence>
+    		<xs:element minOccurs="0" name="survivingSpouseName" type="this:DeNameType"/>
+            <xs:element minOccurs="0" name="father" type="this:DeParentType"/>
+            <xs:element minOccurs="0" name="mother" type="this:DeParentType"/>
+    	</xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="serviceInfoType">
+    	<xs:sequence>
+    		<xs:element name="dateTimeOfService" type="this:dateTimeOfServiceType" minOccurs="0"/>
+    		<xs:element name="placeOfService" type="this:AddressType" minOccurs="0"/>
+    	</xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="servicesType">
+    	<xs:sequence>
+    		<xs:element name="service" type="this:serviceInfoType" minOccurs="0" maxOccurs="1"/>
+    		<xs:element name="additionalService" minOccurs="0" type="this:additionalServiceType"/>
+    		<xs:element name="cemetery" type="this:cemeteryType" minOccurs="0"/>
+    		<xs:element name="crematory" type="this:crematoryType" minOccurs="0"/>
+    		<xs:element name="church" type="this:churchType" minOccurs="0"/>
+    		<xs:element name="ministers" type="this:ministersType" minOccurs="0"/>
+    		<xs:element name="flowerArrangements" minOccurs="0">
+    			<xs:complexType>
+    				<xs:sequence>
+    					<xs:element name="description" type="comm:StrMax200Len" minOccurs="0"/>
+    					<xs:element name="supplierInfo" type="comm:StrMax200Len" minOccurs="0"/>
+    					<xs:element name="isDelivery" type="xs:boolean" minOccurs="0"/>
+    				</xs:sequence>
+    			</xs:complexType>
+    		</xs:element>
+    		<xs:element name="otherInfo" type="this:otherInfoType" minOccurs="0"/>
+    	</xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="dateTimeOfServiceType">
+    	<xs:sequence>
+    		<xs:element name="time" type="comm:StrMax14Len" minOccurs="0"/>
+    		<xs:element name="date" type="xs:date" minOccurs="0"/>
+    		<xs:element name="dayOfweek" type="comm:StrMax10Len" minOccurs="0"/>
+    	</xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="additionalServiceType">
+    	<xs:complexContent>
+    		<xs:extension base="this:serviceInfoType">
+    			<xs:sequence>
+    				<xs:element name="serviceName" type="comm:StrMax30Len" minOccurs="0"/>
+    			</xs:sequence>
+    		</xs:extension>
+    	</xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="cemeteryType">
+    	<xs:sequence>
+    		<xs:element name="name" type="comm:StrMax49Len" minOccurs="0"/>
+    		<xs:element name="address" type="this:AddressType" minOccurs="0"/>
+    		<xs:element name="phone" type="comm:StrMax20Len" minOccurs="0"/>
+    		<xs:element name="vault" type="comm:StrMax30Len" minOccurs="0"/>
+    		<xs:element name="section" type="comm:StrMax29Len" minOccurs="0"/>
+    		<xs:element name="block" type="comm:StrMax30Len" minOccurs="0"/>
+    		<xs:element name="lot" type="comm:StrMax20Len" minOccurs="0"/>
+    		<xs:element name="graveNo" type="comm:StrMax10Len" minOccurs="0"/>
+    		<xs:element name="tentEquipment" type="xs:boolean" minOccurs="0"/>
+    		<xs:element name="setSeal" type="xs:boolean" minOccurs="0"/>
+    		<xs:element name="openClose" type="xs:boolean" minOccurs="0"/>
+    		<xs:element name="time" type="comm:StrMax10Len" minOccurs="0"/>
+    	</xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="crematoryType">
+    	<xs:sequence>
+    		<xs:element name="dateOfService" type="xs:date" minOccurs="0"/>
+    		<xs:element name="name" type="comm:StrMax49Len" minOccurs="0"/>
+    		<xs:element name="address" type="this:AddressType" minOccurs="0"/>
+    	</xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="churchType">
+    	<xs:sequence>
+    		<xs:element name="name" type="comm:StrMax49Len" minOccurs="0"/>
+    		<xs:element name="address" type="this:AddressType" minOccurs="0"/>
+    	</xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="ministersType">
+    	<xs:sequence>
+    		<xs:element name="minister1" type="comm:StrMax29Len" minOccurs="0"/>
+    		<xs:element name="minister2" type="comm:StrMax29Len" minOccurs="0"/>
+    		<xs:element name="organist" type="comm:StrMax49Len" minOccurs="0"/>
+    		<xs:element name="soloist" type="comm:StrMax49Len" minOccurs="0"/>
+    		<xs:element name="jewelry" type="comm:StrMax100Len" minOccurs="0"/>
+    		<xs:element name="songs" type="comm:StrMax150Len" minOccurs="0"/>
+    		<xs:element name="hairStyle" type="comm:StrMax29Len" minOccurs="0"/>
+    	</xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="otherInfoType">
+    	<xs:sequence>
+    		<xs:element name="visitationDetails" type="comm:StrMax200Len" minOccurs="0"/>
+    		<xs:element name="staffAuto" type="comm:StrMax150Len" minOccurs="0"/>
+    		<xs:element name="donations" type="comm:StrMax200Len" minOccurs="0"/>
+    		<xs:element name="specialInstructions" type="comm:StrMax200Len" minOccurs="0"/>
+    		<xs:element name="notes" type="comm:StrMax200Len" minOccurs="0"/>
+    	</xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="financialInfoType">
+    	<xs:sequence>
+    		<xs:element name="caseSale" type="this:caseSaleType" minOccurs="0" maxOccurs="unbounded"/>
+    		<xs:element name="miscSale" type="this:miscSaleType" minOccurs="0" maxOccurs="unbounded"/>
+    	</xs:sequence>
+
+    </xs:complexType>
+    <xs:complexType name="transactionType">
+    	<xs:sequence>
+    		<xs:element name="description" type="comm:StrMax50Len" minOccurs="0" />
+    		<xs:element name="amount" type="this:DeAmountType" minOccurs="0" />
+    		<xs:element name="ARAccount" type="comm:StrMax30Len" minOccurs="0"/>
+    		<xs:element name="GLAccount" type="comm:StrMax30Len" minOccurs="0"/>
+    		<xs:element name="taxStatus" type="comm:StrMax08Len" minOccurs="0"/>
+    		<xs:element name="transactionDate" type="xs:date" minOccurs="0"/>
+    		<xs:element name="transactionType" type="this:transactionTypeType" minOccurs="0"/>
+    		<xs:element name="itemCode" type="comm:StrMax50Len" minOccurs="0"/>
+    		<xs:element name="initialSaleflag" type="xs:boolean" minOccurs="0"/>
+    		<xs:element name="costOfItem" type="this:DeAmountType" minOccurs="0"/>
+    		<xs:element name="payMethod" type="comm:StrMax30Len" minOccurs="0"/>
+    		<xs:element name="receiptNo" type="xs:int" minOccurs="0"/>
+    		<xs:element name="dateStamped" type="xs:date" minOccurs="0"/>
+    	</xs:sequence>
+    	<xs:attribute name="tranId" type="xs:int"/>
+    </xs:complexType>
+    <xs:complexType name="chargeType">
+    	<xs:sequence>
+    		<xs:element name="description" type="comm:StrMax50Len" minOccurs="0" />
+    		<xs:element name="amount" type="this:DeAmountType" minOccurs="0" />
+    		<xs:element name="ARAccount" type="comm:StrMax30Len" minOccurs="0"/>
+    		<xs:element name="GLAccount" type="comm:StrMax30Len" minOccurs="0"/>
+    		<xs:element name="taxStatus" type="comm:StrMax10Len" minOccurs="0"/>
+    		<xs:element name="transactionType" type="this:transactionTypeType" minOccurs="0"/>
+    		<xs:element name="itemCode" type="comm:StrMax50Len" minOccurs="0"/>
+    		<xs:element name="costOfItem" type="this:DeAmountType" minOccurs="0"/>
+    	</xs:sequence>
+    	<xs:attribute name="saleId" type="xs:int"/>
+    </xs:complexType>
+    
+    <xs:complexType name="caseSaleType">
+    	<xs:complexContent>
+    		<xs:extension base="this:caseInfoType">
+    			<xs:choice minOccurs="0">
+		    		<xs:element name="transaction" type="this:transactionType" maxOccurs="unbounded" minOccurs="0"/>
+		    		<xs:element name="unPostedCharge" type="this:chargeType" maxOccurs="unbounded" minOccurs="0"/>
+    			</xs:choice>
+    		</xs:extension>
+    	</xs:complexContent>
+    </xs:complexType>
+    
+    <xs:complexType name="miscSaleType">
+    	<xs:complexContent>
+    		<xs:extension base="this:transactionType">
+    			<xs:sequence>
+    				<xs:element name="manualReceiptNo"
+    					type="comm:StrMax10Len" minOccurs="0" />
+    			</xs:sequence>
+    			<xs:attribute name="funeralHomeId" type="this:funeralHomeIdType"/>
+    		</xs:extension>
+    	</xs:complexContent>
+    </xs:complexType>
+
+    <xs:simpleType name="transactionTypeType">
+    	<xs:restriction base="xs:string">
+    		<xs:enumeration value="Sale" />
+    		<xs:enumeration value="Payment" />
+    		<xs:enumeration value="Finance" />
+    		<xs:enumeration value="Miscellaneous"/>
+    	</xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="DeStandardAddressType">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="street" type="comm:StrMax30Len"/>
+            <xs:element minOccurs="0" name="city" type="comm:StrMax50Len"/>
+            <xs:element minOccurs="0" name="county" type="comm:StrMax30Len"/>
+            <xs:element minOccurs="0" name="stateAbbreviation" type="comm:StrMax50Len"/>
+            <xs:element minOccurs="0" name="zipCode" type="comm:StrMax14Len"/>
+            <xs:element minOccurs="0" name="country" type="comm:StrMax50Len"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DeExtendedAddressType">
+        <xs:sequence>
+            <xs:element maxOccurs="3" minOccurs="0" name="street" type="comm:StrMax35Len"/>
+            <xs:element minOccurs="0" name="city" type="comm:StrMax30Len"/>
+            <xs:element minOccurs="0" name="stateAbbreviation" type="comm:StrMax30Len"/>
+            <xs:element minOccurs="0" name="zipCode" type="comm:StrMax14Len"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DeResidenceType">
+        <xs:complexContent>
+            <xs:extension base="this:DeStandardAddressType">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="locality" type="comm:LocalityType"/>
+                    <xs:element minOccurs="0" name="residenceLengthOfTime" type="comm:StrMax15Len"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="DeNameType">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="salutation" type="comm:StrMax30Len"/>
+            <xs:element minOccurs="0" name="firstName" type="comm:StrMax50Len"/>
+            <xs:element minOccurs="0" name="middleName" type="comm:StrMax50Len"/>
+            <xs:element minOccurs="0" name="lastName" type="comm:StrMax50Len"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DeCompleteNameType">
+        <xs:complexContent>
+            <xs:extension base="this:DeNameType">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="prefix" type="comm:StrMax15Len"/>
+                    <xs:element minOccurs="0" name="suffix" type="comm:StrMax30Len"/>
+                    <xs:element minOccurs="0" name="maidenName" type="comm:StrMax60Len"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="DeContactType">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="phone" type="comm:StrMax20Len"/>
+            <xs:element minOccurs="0" name="cellPhone" type="comm:StrMax20Len"/>
+            <xs:element minOccurs="0" name="email" type="comm:StrMax50Len"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DeRelatedPersonType">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="name" type="this:DeNameType"/>
+            <xs:element minOccurs="0" name="address" type="this:DeExtendedAddressType"/>
+            <xs:element minOccurs="0" name="contact" type="this:DeContactType"/>
+            <xs:element minOccurs="0" name="Relation" type="comm:StrMax30Len"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:simpleType name="DeAmountType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[-]?[0-9]*[.]?[0-9]*"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="DeParentType">
+        <xs:sequence>
+            <xs:element name="name" type="this:DeNameType" minOccurs="0"/>
+            <xs:element name="birthPlace" type="this:DeStandardAddressType" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="invItemType">
+    	<xs:sequence>
+    		<xs:element name="name" type="comm:StrMax40Len"
+    			minOccurs="0">
+    		</xs:element>
+    		<xs:element name="serialNumber" type="comm:StrMax25Len"
+    			minOccurs="0">
+    		</xs:element>
+    		<xs:element name="inShowRoom" type="comm:YesNoType"
+    			minOccurs="0">
+    		</xs:element>
+    		<xs:element name="location" type="comm:StrMax24Len"
+    			minOccurs="0">
+    		</xs:element>
+    		<xs:element name="dateIn" type="xs:date" minOccurs="0"></xs:element>
+    		<xs:element name="invoiceNo" type="comm:StrMax10Len"
+    			minOccurs="0">
+    		</xs:element>
+    		<xs:element name="quantity" type="xs:int" minOccurs="0"></xs:element>
+    		<xs:element name="cost" type="this:DeAmountType"
+    			minOccurs="0">
+    		</xs:element>
+    		<xs:element name="notes" type="comm:StrMax100Len"
+    			minOccurs="0">
+    		</xs:element>
+    	</xs:sequence>
+    	<xs:attribute name="id" type="xs:int"></xs:attribute>
+    	<xs:attribute name="funeralHomeId" type="this:funeralHomeIdType"></xs:attribute>
+    </xs:complexType>
+    
+    <xs:complexType name="accountsRecievable">
+    	<xs:sequence>
+    		<xs:element name="contractNumber" type="comm:StrMax20Len"
+    			minOccurs="0" />
+    		<xs:element name="locationNumber" type="comm:StrMax10Len"
+    			minOccurs="0" />
+    		<xs:element name="salesType" type="comm:StrMax50Len"
+    			minOccurs="0" />
+    		<xs:element name="salesTypeDescription"
+    			type="comm:StrMax50Len" minOccurs="0" />
+    		<xs:element name="salesNeedType" type="xs:string"
+    			minOccurs="0" />
+    		<xs:element name="creditRating" type="xs:string"
+    			minOccurs="0" />
+    		<xs:element name="paymentTerms" type="xs:string"
+    			minOccurs="0" />
+    		<xs:element name="purchaser" type="this:arPurchaserType"
+    			minOccurs="0" />
+    		<xs:element name="paymentAmount" type="this:DeAmountType"
+    			minOccurs="0" />
+    		<xs:element name="nextPaymentDate" type="xs:date"
+    			minOccurs="0" />
+    		<xs:element name="totalContractSaleAmount"
+    			type="this:DeAmountType" minOccurs="0" />
+    		<xs:element name="balanceDue" type="this:DeAmountType"
+    			minOccurs="0" />
+    		<xs:element name="downPayment" type="this:DeAmountType"
+    			minOccurs="0" />
+    		<xs:element name="paidInAmount" type="this:DeAmountType"
+    			minOccurs="0" />
+    		<xs:element name="salesDate" type="xs:date" minOccurs="0" />
+    		<xs:element name="deathDate" type="xs:date" minOccurs="0" />
+    		<xs:element name="locationState" type="xs:string"
+    			minOccurs="0" />
+    		<xs:element name="lastPaymentDate" type="xs:date"
+    			minOccurs="0">
+    		</xs:element>
+    		<xs:element name="lastPaymentAmount" type="this:DeAmountType" minOccurs="0"></xs:element>
+    		<xs:element name="numberOfPmnts"
+    			type="xs:int" minOccurs="0">
+    		</xs:element>
+    	</xs:sequence>
+    	<xs:attribute name="caseId" type="this:caseIdType"></xs:attribute>
+    	<xs:attribute name="locationId" type="xs:int" />
+    </xs:complexType>
+
+    <xs:complexType name="arPurchaserType">
+		<xs:sequence>
+			<xs:element name="name" type="this:DeNameType" minOccurs="0"/>
+			
+			<xs:element name="phone" type="comm:StrMax20Len" minOccurs="0"/>
+			<xs:element name="ssnumber" type="comm:StrMax14Len" minOccurs="0"/>
+			<xs:element name="address" type="this:AddressType" minOccurs="0"/>
+			</xs:sequence>
+		<xs:attribute name="purchaserId" type="xs:string"/>
+	</xs:complexType>
+    
+</xs:schema>

@@ -1,0 +1,37 @@
+<html>
+<head>
+<title>FDMS Network Print Error</title>
+<style type="text/css">
+body {
+	font-family: Arial, Helvetica;
+	margin: 0px;
+}
+
+a:link,a:visited {
+	color: #000066;
+}
+
+a:hover {
+	color: #FF0000;
+}
+</style>
+</head>
+
+<body>
+	<table width="100%" cellpadding="20" cellspacing="20" border="0"
+		style="position: absolute; z-index: 200;">
+		<tr>
+			<td height="100">&nbsp;</td>
+		</tr>
+		<tr>
+			<td
+				style="font-size: 13px; color: #990000; font-weight: bold; border: solid 1px #666666; background-color: #FFFFCC;"
+				align="center">Print operation could not be performed due to an
+				internal server error. Should you continue to see this message,
+				please contact the system administrator at <a
+				href="mailto:info@davidsonsoftware.com">info@davidsonsoftware.com</a>
+				or call us at 1-866-230-0800.</td>
+		</tr>
+	</table>
+</body>
+</html>

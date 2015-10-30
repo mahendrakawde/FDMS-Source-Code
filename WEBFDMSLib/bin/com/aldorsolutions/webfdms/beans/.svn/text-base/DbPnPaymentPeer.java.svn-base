@@ -1,0 +1,113 @@
+package com.aldorsolutions.webfdms.beans;
+
+/**
+ * DB Specific constants and SQL for DbPnCharge.
+ * Creation date: (11/14/2001 4:13:09 PM)
+ * @author: 
+ */
+public class DbPnPaymentPeer extends com.aldorsolutions.webfdms.database.DatabasePeer {
+
+	static public final String IDENTITY    	= "RecordID";
+	static public final String CONTRACTID 	= "ContractID";
+	static public final String DATE		 	= "PmtDate";
+	static public final String AMOUNT	 	= "PmtAmount";
+	static public final String COMMAMOUNT	= "PmtCommAmount";
+	static public final String MEMO			= "PmtMemo";
+	static public final String FUNDSCODE	= "PmtFundsForCode";
+	static public final String COMMCODE		= "PmtCommBox";
+/**
+ * getInsertSql method comment.
+ */
+protected java.sql.PreparedStatement getInsertSql(com.aldorsolutions.webfdms.database.DatabaseTransaction t, com.aldorsolutions.webfdms.database.Persistent p) throws com.aldorsolutions.webfdms.database.PersistenceException {
+
+		java.sql.Connection connection = null;
+		try {
+			DbPnPayment rec=(DbPnPayment)p;
+			connection = t.getConnection();
+			java.sql.PreparedStatement pstmt = connection.prepareStatement(
+			"INSERT INTO pnpayments ("+
+						IDENTITY +","+
+						CONTRACTID +","+
+						DATE +","+
+						AMOUNT +","+
+						COMMAMOUNT +","+
+						MEMO +","+
+						FUNDSCODE +","+
+						COMMCODE +" "+
+						") VALUES (0,?,?,?,?,?,?,?)");
+			pstmt.setInt   (1, rec.getContractID());	
+			if (rec.getDate()!=null){
+				pstmt.setDate	(2, new java.sql.Date(rec.getDate().getTime()));
+			}
+			else { pstmt.setDate(2, null);}
+			pstmt.setInt   (3, rec.getAmount());
+			pstmt.setInt   (4, rec.getCommissionAmount());
+			pstmt.setString(5, rec.getMemo());
+			pstmt.setString(6, rec.getFundsForCode());
+			pstmt.setString(7, rec.getCommissionSentBox());
+			return pstmt;
+		}
+		catch (java.sql.SQLException e){
+			throw new com.aldorsolutions.webfdms.database.PersistenceException("DbPnPaymentPeer.Update:"+e.getMessage(),e);
+		}
+}
+/**
+ * getRemoveSql method comment.
+ */
+protected java.sql.PreparedStatement getRemoveSql(com.aldorsolutions.webfdms.database.DatabaseTransaction t, com.aldorsolutions.webfdms.database.Persistent p) throws com.aldorsolutions.webfdms.database.PersistenceException {
+		java.sql.PreparedStatement pstmt=null;
+		java.sql.Connection connection = null;
+		try {
+			connection = t.getConnection();
+			pstmt = connection.prepareStatement("DELETE FROM pnpayments WHERE RecordID=?");
+			pstmt.setInt(1,p.getId());
+			return pstmt;
+		}
+		catch (java.sql.SQLException e){
+			throw new com.aldorsolutions.webfdms.database.PersistenceException("DbPnPaymentPeer.Remove",e);
+		}
+}
+/**
+ * getRestoreSql method comment.
+ */
+protected String getRestoreSql(com.aldorsolutions.webfdms.database.Persistent p) {
+		return "SELECT * from pnpayments WHERE RecordID = "
+		+ p.getId();
+}
+/**
+ * getUpdateSql method comment.
+ */
+protected java.sql.PreparedStatement getUpdateSql(com.aldorsolutions.webfdms.database.DatabaseTransaction t, com.aldorsolutions.webfdms.database.Persistent p) throws com.aldorsolutions.webfdms.database.PersistenceException {
+		java.sql.Connection connection = null;
+		try {
+			DbPnPayment rec=(DbPnPayment)p;
+			connection = t.getConnection();
+			java.sql.PreparedStatement pstmt = connection.prepareStatement(
+			"UPDATE pnpayments SET "+
+						CONTRACTID +"=?,"+
+						DATE +"=?,"+
+						AMOUNT +"=?,"+
+						COMMAMOUNT +"=?,"+
+						MEMO +"=?,"+
+						FUNDSCODE +"=?,"+
+						COMMCODE +"=? "+
+						"WHERE "+IDENTITY+" = ?"
+			);		
+			pstmt.setInt   (1, rec.getContractID());	
+			if (rec.getDate()!=null){
+				pstmt.setDate	(2, new java.sql.Date(rec.getDate().getTime()));
+			}
+			else { pstmt.setDate(2, null);}
+			pstmt.setInt   (3, rec.getAmount());
+			pstmt.setInt   (4, rec.getCommissionAmount());
+			pstmt.setString(5, rec.getMemo());
+			pstmt.setString(6, rec.getFundsForCode());
+			pstmt.setString(7, rec.getCommissionSentBox());
+			pstmt.setInt   (8,rec.getId());
+			return pstmt;
+		}
+		catch (java.sql.SQLException e){
+			throw new com.aldorsolutions.webfdms.database.PersistenceException("DbPnPaymentPeer.Update:"+e,e);
+		}
+}
+}

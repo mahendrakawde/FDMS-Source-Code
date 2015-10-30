@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/src/com/aldorsolutions/dashboard/struts/form
+END
+SendSMSForm.java
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/src/com/aldorsolutions/dashboard/struts/form/SendSMSForm.java
+END
+ReportsForm.java
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/src/com/aldorsolutions/dashboard/struts/form/ReportsForm.java
+END
+DashboardLoginForm.java
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/src/com/aldorsolutions/dashboard/struts/form/DashboardLoginForm.java
+END
+LostPasswordForm.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/src/com/aldorsolutions/dashboard/struts/form/LostPasswordForm.java
+END
+MainForm.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/src/com/aldorsolutions/dashboard/struts/form/MainForm.java
+END
+InvoiceAddMerchandiseForm.java
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/src/com/aldorsolutions/dashboard/struts/form/InvoiceAddMerchandiseForm.java
+END
+InvoiceAddServicesForm.java
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/src/com/aldorsolutions/dashboard/struts/form/InvoiceAddServicesForm.java
+END
+SendTextToSpeechForm.java
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/src/com/aldorsolutions/dashboard/struts/form/SendTextToSpeechForm.java
+END

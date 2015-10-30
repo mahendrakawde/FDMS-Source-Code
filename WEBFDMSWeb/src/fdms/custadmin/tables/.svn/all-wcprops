@@ -1,0 +1,167 @@
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSWeb/src/fdms/custadmin/tables
+END
+DBTDivisions.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSWeb/src/fdms/custadmin/tables/DBTDivisions.java
+END
+DBTASServices.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSWeb/src/fdms/custadmin/tables/DBTASServices.java
+END
+DBTFailsafe.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSWeb/src/fdms/custadmin/tables/DBTFailsafe.java
+END
+DBTASLogTable.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSWeb/src/fdms/custadmin/tables/DBTASLogTable.java
+END
+DBTContacts.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSWeb/src/fdms/custadmin/tables/DBTContacts.java
+END
+DBTCompanies.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSWeb/src/fdms/custadmin/tables/DBTCompanies.java
+END
+DBTUserGroups.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSWeb/src/fdms/custadmin/tables/DBTUserGroups.java
+END
+DBVContract.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSWeb/src/fdms/custadmin/tables/DBVContract.java
+END
+DBTContractServices.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSWeb/src/fdms/custadmin/tables/DBTContractServices.java
+END
+DBTContractActivations.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSWeb/src/fdms/custadmin/tables/DBTContractActivations.java
+END
+DBTASEmployeeAccess.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSWeb/src/fdms/custadmin/tables/DBTASEmployeeAccess.java
+END
+DBTASEmployees.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSWeb/src/fdms/custadmin/tables/DBTASEmployees.java
+END
+DBTASAccessLog.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSWeb/src/fdms/custadmin/tables/DBTASAccessLog.java
+END
+DBVASSalesReps.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSWeb/src/fdms/custadmin/tables/DBVASSalesReps.java
+END
+DBTLogTable.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSWeb/src/fdms/custadmin/tables/DBTLogTable.java
+END
+DBTASDivisions.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSWeb/src/fdms/custadmin/tables/DBTASDivisions.java
+END
+DBVContractedServices.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSWeb/src/fdms/custadmin/tables/DBVContractedServices.java
+END
+DBTASFailsafe.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSWeb/src/fdms/custadmin/tables/DBTASFailsafe.java
+END
+DBTUserSettings.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSWeb/src/fdms/custadmin/tables/DBTUserSettings.java
+END
+DBTContracts.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSWeb/src/fdms/custadmin/tables/DBTContracts.java
+END
+DBTPaymentLedger.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSWeb/src/fdms/custadmin/tables/DBTPaymentLedger.java
+END
+DBTUserAccess.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSWeb/src/fdms/custadmin/tables/DBTUserAccess.java
+END
+DBTUsers.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSWeb/src/fdms/custadmin/tables/DBTUsers.java
+END
+DBVDivisionInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSWeb/src/fdms/custadmin/tables/DBVDivisionInfo.java
+END
+DBTContractPeriods.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSWeb/src/fdms/custadmin/tables/DBTContractPeriods.java
+END
+DBTAccessLog.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSWeb/src/fdms/custadmin/tables/DBTAccessLog.java
+END
+DBTASEmployeeGroups.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSWeb/src/fdms/custadmin/tables/DBTASEmployeeGroups.java
+END

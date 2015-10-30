@@ -1,0 +1,142 @@
+div.invoiceList {
+	width: 100%;
+	height: auto;
+	overflow: auto;
+}
+
+table.displaytag {
+	
+	width: 98%;
+}
+
+thead tr {
+	background : url(../images/navbg.png) repeat-x;
+	height: 30px;
+	text-align: center;
+}
+
+thead th {
+	background:url(../images/navspe.png) right no-repeat; 
+	height:30px;
+}
+
+th.sorted {
+	/* background-color: orange; */
+}
+
+th a,th a:visited {
+	background:url(../images/arrow-dsp-up.png) right no-repeat;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11px;
+	color:#203a87;
+	text-decoration:none;
+	padding:0px 30px 0px 10px;
+	line-height: 13px;
+	
+}
+
+th a:hover {
+	text-decoration: none;
+	color: #ffffff;
+}
+
+th.sorted a,th.sortable a {
+	padding-right: 15px;
+	background-position: right;
+	width: 100%;
+}
+
+th.sortable a {
+	padding-right: 15px;
+	background-image: url(../images/arrow_updown.png);
+	background-repeat: no-repeat;
+}
+
+th.order1 a {
+	padding-right: 15px;
+	background-image: url(../images/arrow-dsp-down.png);
+	background-repeat: no-repeat;
+}
+
+th.order2 a {
+	padding-right: 15px;
+	background-image: url(../images/arrow-dsp-up.png);
+	background-repeat: no-repeat;
+}
+
+tr a{
+	font-weight: bold;
+	color:#203a87;
+	padding-left: 5px;
+}
+
+tr.odd {
+	font-family:Verdana,Helvetica,sans-serif;
+	font-size:10px;
+	line-`20px;
+	background-color: #f2f2f2;
+}
+
+tr.tableRowEven,tr.even {
+	font-family:Verdana,Helvetica,sans-serif;
+	font-size:10px;
+	line-height:20px;
+	background-color: #DDDDDD;
+}
+
+div.exportlinks {
+	background-color: #eee;
+	border: 1px dotted #999;
+	padding: 2px 4px 2px 4px;
+	margin: 2px 0 10px 0;
+	width: 79%;
+}
+
+span.export {
+	padding: 0 4px 1px 20px;
+	display: inline;
+	display: inline-block;
+	cursor: pointer;
+}
+
+span.excel {
+	background-image: url(../images/ico_file_excel.png);
+}
+
+span.csv {
+	background-image: url(../images/ico_file_csv.png);
+}
+
+span.xml {
+	background-image: url(../images/ico_file_xml.png);
+}
+
+span.pdf {
+	background-image: url(../images/ico_file_pdf.png);
+}
+
+span.rtf {
+	background-image: url(../images/ico_file_rtf.png);
+}
+
+span.pagebanner {
+	background-color: #edf7fa;
+	padding: 2px 4px 2px 4px; 
+	width: 97%;
+	margin-top: 10px;
+	display: block;
+	border-bottom: none;
+	line-height: 20px;
+	font-weight: bold;
+	color: #334455;
+}
+
+span.pagelinks {
+	background-color: #dbe5f1;
+	padding: 2px 4px 2px 4px;
+	width: 97%;
+	display: block;
+	border-top: none;
+	margin-bottom: 0px;
+	line-height: 20px;
+}

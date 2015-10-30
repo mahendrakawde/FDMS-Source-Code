@@ -43,7 +43,6 @@ parent.window.location="openCase.do?vitalsId=<bean:write name="vitalsId"/>";
 		</SCRIPT>
 		<SCRIPT LANGUAGE="JavaScript">document.write(getCalendarStyles());</SCRIPT>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-		<!-- <script type="text/javascript" src="facility.js"></script> -->
 		<SCRIPT language="javascript">
    
        function cancelConfirmation() {

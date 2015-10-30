@@ -1,0 +1,131 @@
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSWeb/WebRoot/WEB-INF
+END
+struts-logic.tld
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSWeb/WebRoot/WEB-INF/struts-logic.tld
+END
+sql.tld
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSWeb/WebRoot/WEB-INF/sql.tld
+END
+fn.tld
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSWeb/WebRoot/WEB-INF/fn.tld
+END
+permittedTaglibs.tld
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSWeb/WebRoot/WEB-INF/permittedTaglibs.tld
+END
+struts.tld
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSWeb/WebRoot/WEB-INF/struts.tld
+END
+struts-form.tld
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSWeb/WebRoot/WEB-INF/struts-form.tld
+END
+struts-html.tld
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSWeb/WebRoot/WEB-INF/struts-html.tld
+END
+scriptfree.tld
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSWeb/WebRoot/WEB-INF/scriptfree.tld
+END
+x.tld
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSWeb/WebRoot/WEB-INF/x.tld
+END
+struts-bean.tld
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSWeb/WebRoot/WEB-INF/struts-bean.tld
+END
+dwr.xml
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSWeb/WebRoot/WEB-INF/dwr.xml
+END
+struts-template.tld
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSWeb/WebRoot/WEB-INF/struts-template.tld
+END
+form-errors.tld
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSWeb/WebRoot/WEB-INF/form-errors.tld
+END
+nested-tags.tld
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSWeb/WebRoot/WEB-INF/nested-tags.tld
+END
+c.tld
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSWeb/WebRoot/WEB-INF/c.tld
+END
+companyOptions.tld
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSWeb/WebRoot/WEB-INF/companyOptions.tld
+END
+struts-config.xml
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn_webfdms/!svn/ver/53/Source%20Code/FDMS%20v3.1/WEBFDMSWeb/WebRoot/WEB-INF/struts-config.xml
+END
+locationOptions.tld
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn_webfdms/!svn/ver/53/Source%20Code/FDMS%20v3.1/WEBFDMSWeb/WebRoot/WEB-INF/locationOptions.tld
+END
+fmt.tld
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSWeb/WebRoot/WEB-INF/fmt.tld
+END
+server-config.wsdd
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSWeb/WebRoot/WEB-INF/server-config.wsdd
+END
+web.xml
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSWeb/WebRoot/WEB-INF/web.xml
+END

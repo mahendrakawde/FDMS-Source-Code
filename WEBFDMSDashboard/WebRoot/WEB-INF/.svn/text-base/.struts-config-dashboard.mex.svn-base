@@ -1,0 +1,1274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/dashboardLogin.do" location="390,1350" dimension="359,88" />
+  <StrutsActivity path="/showMain.do" location="0,1021" dimension="330,88" />
+  <StrutsActivity path="/showReport.do" location="2150,50" dimension="375,88" />
+  <StrutsActivity path="/printReport.do" location="50,150" dimension="371,88" />
+  <StrutsActivity path="/showReportScheduling.do" location="1850,250" dimension="426,88" />
+  <StrutsActivity path="/reportSchedulingList.do" location="2450,250" dimension="442,88" />
+  <StrutsActivity path="/deleteRptSche.do" location="2450,450" dimension="387,88" />
+  <StrutsActivity path="/updateRptSche.do" location="2450,650" dimension="391,88" />
+  <StrutsActivity path="/processUpdateRptSche.do" location="2150,850" dimension="428,88" />
+  <StrutsActivity path="/showReportPrintedList.do" location="50,2050" dimension="425,88" />
+  <StrutsActivity path="/reports.do" location="315,720" dimension="320,88" />
+  <StrutsActivity path="/acctCheckListing.do" location="1300,525" dimension="386,88" />
+  <StrutsActivity path="/acctCheckApprovalEdit.do" location="1186,0" dimension="417,88" />
+  <StrutsActivity path="/acctCheckApprovalSave.do" location="1161,337" dimension="423,88" />
+  <StrutsActivity path="/userEdit.do" location="811,846" dimension="352,88" />
+  <StrutsActivity path="/userSave.do" location="1740,1320" dimension="358,88" />
+  <StrutsActivity path="/userList.do" location="695,1034" dimension="350,88" />
+  <StrutsActivity path="/myAccount.do" location="1283,846" dimension="383,88" />
+  <StrutsActivity path="/sendSMS.do" location="50,2250" dimension="348,88" />
+  <StrutsActivity path="/sendTextToSpeech.do" location="1550,2350" dimension="375,88" />
+  <StrutsActivity path="/startSMSScheduler.do" location="2450,2250" dimension="343,88" />
+  <StrutsActivity path="/startTTVScheduler.do" location="2750,850" dimension="341,88" />
+  <StrutsActivity path="/processSendSMS.do" location="950,2250" dimension="363,88" />
+  <StrutsActivity path="/processSendTextToSpeech.do" location="50,2450" dimension="412,88" />
+  <StrutsActivity path="/acctLocationList.do" location="0,525" dimension="383,88" />
+  <StrutsActivity path="/acctLocationEdit.do" location="357,0" dimension="385,88" />
+  <StrutsActivity path="/acctLocationSave.do" location="109,337" dimension="391,88" />
+  <StrutsActivity path="/acctLocationEmail.do" location="600,337" dimension="391,88" />
+  <StrutsActivity path="/acctLocationEmailSave.do" location="701,713" dimension="415,88" />
+  <StrutsActivity path="/myAccountSave.do" location="1305,1155" dimension="389,88" />
+  <StrutsActivity path="/userLogout.do" location="-15,1350" dimension="337,88" />
+  <StrutsActivity path="/lostPassword.do" location="825,1350" dimension="348,88" />
+  <StrutsActivity path="/runReports.do" location="1320,1260" dimension="339,88" />
+  <StrutsActivity path="/acctListVendors.do" location="30,1575" dimension="382,88" />
+  <StrutsActivity path="/acctListVendorsSearch.do" location="2450,1050" dimension="415,88" />
+  <StrutsActivity path="/smartFile.do" location="950,2050" dimension="350,88" />
+  <StrutsActivity path="/dashAcctIntf.do" location="3050,1450" dimension="379,88" />
+  <StrutsActivity path="/underDevelopment.do" location="2450,2050" dimension="408,88" />
+  <StrutsActivity path="/acctEditVendors.do" location="1550,1750" dimension="384,88" />
+  <StrutsActivity path="/acctSaveVendors.do" location="225,1695" dimension="390,88" />
+  <StrutsActivity path="/smsTTVRecipient.do" location="650,2450" dimension="356,88" />
+  <StrutsActivity path="/smsTTVSaveRecipient.do" location="2750,1250" dimension="410,88" />
+  <StrutsActivity path="/recipientEdit.do" location="2750,1850" dimension="386,88" />
+  <StrutsActivity path="/recipientEditSave.do" location="50,2650" dimension="410,88" />
+  <StrutsActivity path="/smsTTVList.do" location="2150,2450" dimension="384,88" />
+  <StrutsActivity path="/smsTTVManageSchedule.do" location="2750,2450" dimension="423,88" />
+  <StrutsActivity path="/showSMSTTVEdit.do" location="650,2650" dimension="403,88" />
+  <StrutsActivity path="/smsTTVSaveEdit.do" location="2150,2650" dimension="410,88" />
+  <StrutsActivity path="/vendorLocEdit.do" location="1005,1470" dimension="350,88" />
+  <StrutsActivity path="/vendorLocSave.do" location="1550,1550" dimension="380,88" />
+  <StrutsActivity path="/vendorLocRemove.do" location="960,1695" dimension="371,88" />
+  <StrutsActivity path="/invoiceList.do" location="1635,15" dimension="333,88" />
+  <StrutsActivity path="/invoiceConfirmPaymentSubmit.do" location="1710,420" dimension="396,88" />
+  <StrutsActivity path="/invoiceConfirmPayment.do" location="1740,525" dimension="422,88" />
+  <StrutsActivity path="/invoiceEditDisplay.do" location="1725,645" dimension="369,88" />
+  <StrutsActivity path="/invoiceShowDisplay.do" location="1550,2150" dimension="401,88" />
+  <StrutsActivity path="/invoiceEditSave.do" location="1725,840" dimension="359,88" />
+  <StrutsActivity path="/invoiceAddVendor.do" location="650,2850" dimension="394,88" />
+  <StrutsActivity path="/saveVendor.do" location="50,2850" dimension="364,88" />
+  <StrutsActivity path="/invoiceInvItemEdit.do" location="50,1850" dimension="397,88" />
+  <StrutsActivity path="/invoiceInvItemSave.do" location="1550,1950" dimension="403,88" />
+  <StrutsActivity path="/localeLocationEdit.do" location="2150,1250" dimension="394,88" />
+  <StrutsActivity path="/localeLocationSave.do" location="2150,1450" dimension="400,88" />
+  <StrutsActivity path="MainPage;6" location="111,846" dimension="106,75" />
+  <StrutsActivity path="ReportPage;6" location="2150,1650" dimension="117,75" />
+  <StrutsActivity path="dashboardLogin;6" location="430,1027" dimension="119,75" />
+  <StrutsActivity path="showRptSche;6" location="2450,1750" dimension="168,75" />
+  <StrutsActivity path="smsTTVEdit;6" location="2750,1550" dimension="156,75" />
+  <StrutsActivity path="/login.jsp" location="434,1209" dimension="73,49" />
+  <StrutsActivity path="dashboard.home" location="120,1200" dimension="110,49" />
+  <StrutsActivity path="dashboard.report" location="950,1850" dimension="114,49" />
+  <StrutsActivity path="dashboard.reportScheduling" location="2150,1850" dimension="165,49" />
+  <StrutsActivity path="dashboard.reportSchedulingList" location="950,1950" dimension="181,49" />
+  <StrutsActivity path="/showReportScheduling" location="2150,1950" dimension="142,49" />
+  <StrutsActivity path="dashboard.updateRptSche" location="2450,1950" dimension="158,49" />
+  <StrutsActivity path="dashboard.reportPrintedList" location="2150,1050" dimension="164,49" />
+  <StrutsActivity path="dashboard.reports" location="510,870" dimension="119,49" />
+  <StrutsActivity path="/MainPage.do" location="1288,713" dimension="105,75" />
+  <StrutsActivity path="acct.checkList" location="1493,726" dimension="96,49" />
+  <StrutsActivity path="acct.checkEdit" location="1317,188" dimension="98,49" />
+  <StrutsActivity path="user.userEdit" location="1145,1053" dimension="93,49" />
+  <StrutsActivity path="user.userList" location="825,1222" dimension="91,49" />
+  <StrutsActivity path="user.myAccount" location="1421,1034" dimension="107,49" />
+  <StrutsActivity path="sms.sendSMS" location="650,2250" dimension="94,49" />
+  <StrutsActivity path="sms.sendTextToSpeech" location="2150,2350" dimension="143,49" />
+  <StrutsActivity path="acct.locationList" location="138,732" dimension="106,49" />
+  <StrutsActivity path="acct.locationEdit" location="496,188" dimension="108,49" />
+  <StrutsActivity path="acct.locationEmail" location="738,544" dimension="114,49" />
+  <StrutsActivity path="/lostPassword.jsp" location="1035,1215" dimension="114,49" />
+  <StrutsActivity path="dashboard.reportsFilter" location="1410,1410" dimension="143,49" />
+  <StrutsActivity path="acct.vendorList" location="390,1455" dimension="103,49" />
+  <StrutsActivity path="acct.vendorListSearch" location="2150,2150" dimension="136,49" />
+  <StrutsActivity path="dashboard.smartFile" location="2150,2050" dimension="127,49" />
+  <StrutsActivity path="dashboard.dashAcctIntfPage" location="3050,1150" dimension="170,49" />
+  <StrutsActivity path="dashboard.underDevelopment" location="650,2150" dimension="175,49" />
+  <StrutsActivity path="acct.vendorEdit" location="720,1710" dimension="105,49" />
+  <StrutsActivity path="sms.smsTTVRecipientEdit" location="2750,1450" dimension="149,49" />
+  <StrutsActivity path="sms.recipientEdit" location="2750,1750" dimension="110,49" />
+  <StrutsActivity path="sms.smsTTVList" location="650,2350" dimension="103,49" />
+  <StrutsActivity path="smsTTVListForm" location="1850,2550" dimension="105,49" />
+  <StrutsActivity path="sms.smsTTVEditJsp" location="1850,2650" dimension="121,49" />
+  <StrutsActivity path="acct.vendorLocEdit" location="1215,1620" dimension="121,49" />
+  <StrutsActivity path="/acct/vendorLocEdit.jsp" location="1065,1620" dimension="143,49" />
+  <StrutsActivity path="acct.invoiceList" location="1850,1050" dimension="102,49" />
+  <StrutsActivity path="acct.invoiceConfirm" location="1850,1150" dimension="123,49" />
+  <StrutsActivity path="acct.invoiceEdit" location="650,1250" dimension="104,49" />
+  <StrutsActivity path="acct.vendorAdd" location="1850,2750" dimension="106,49" />
+  <StrutsActivity path="/invoiceEditSave" location="1550,2750" dimension="108,49" />
+  <StrutsActivity path="acct.invoiceInvItemEdit" location="1250,1950" dimension="142,49" />
+  <StrutsActivity path="/invoiceSave.do" location="650,1850" dimension="116,75" />
+  <StrutsActivity path="acct.localeLocationEdit" location="2150,2250" dimension="138,49" />
+  <StrutsActivity path="/smsTTVEditSchedule.do" location="2750,2650" dimension="156,75" />
+  <StrutsActivity path="/smsTTVEditSchedule" location="1250,2550" dimension="403,88" />
+  <StrutsActivity path="sms.smsTTVManage" location="1250,2450" dimension="125,49" />
+  <StrutsActivity path="/showMain" location="2150,1150" dimension="80,49" />
+  <StrutsActivity path="acct.invoiceGLItemEdit" location="2150,750" dimension="138,49" />
+  <StrutsActivity path="acct.invoiceAddMerchandise" location="650,1550" dimension="165,49" />
+  <StrutsActivity path="acct.invoiceAddService" location="1250,1850" dimension="140,49" />
+  <StrutsActivity path="acct.invoiceItemEdit" location="650,2050" dimension="126,49" />
+  <StrutsActivity path="showMain" location="2450,1650" dimension="76,49" />
+  <StrutsActivity path="MainPage" location="50,1750" dimension="75,49" />
+  <StrutsActivity path="/invoiceShowDisplay" location="3050,1050" dimension="126,49" />
+  <StrutsActivity path="/chartList.do" location="3050,1650" dimension="354,88" />
+  <StrutsActivity path="chart.chartList" location="3050,2050" dimension="99,49" />
+  <StrutsTransition id="/saveVendor.do,invoiceEdit,/invoiceShowDisplay.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="232,2894" />
+      <AbsolutePoint location="1750,2194" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="sms.smsTTVRecipientEdit,null,/smsTTVSaveRecipient.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2854,1450" />
+      <AbsolutePoint location="2854,1338" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/smsTTVList.do,smsTTVList,sms.smsTTVList,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2150,2484" />
+      <AbsolutePoint location="1763,2484" />
+      <AbsolutePoint location="1763,2665" />
+      <AbsolutePoint location="1218,2665" />
+      <AbsolutePoint location="1218,2795" />
+      <AbsolutePoint location="630,2795" />
+      <AbsolutePoint location="630,2374" />
+      <AbsolutePoint location="650,2374" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="sms.recipientEdit,null,/recipientEditSave.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2805,1750" />
+      <AbsolutePoint location="2805,1714" />
+      <AbsolutePoint location="2338,1714" />
+      <AbsolutePoint location="2338,2314" />
+      <AbsolutePoint location="1515,2314" />
+      <AbsolutePoint location="1515,2214" />
+      <AbsolutePoint location="580,2214" />
+      <AbsolutePoint location="580,2694" />
+      <AbsolutePoint location="460,2694" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/showReportScheduling.do,success,dashboard.reportScheduling,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2177,338" />
+      <AbsolutePoint location="2177,695" />
+      <AbsolutePoint location="2113,695" />
+      <AbsolutePoint location="2113,1874" />
+      <AbsolutePoint location="2150,1874" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="acct.invoiceInvItemEdit,null,/invoiceInvItemEdit.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1250,1988" />
+      <AbsolutePoint location="1152,1988" />
+      <AbsolutePoint location="1152,1845" />
+      <AbsolutePoint location="262,1845" />
+      <AbsolutePoint location="262,1850" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="acct.vendorAdd,null,/saveVendor.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1903,2750" />
+      <AbsolutePoint location="1903,2736" />
+      <AbsolutePoint location="1104,2736" />
+      <AbsolutePoint location="1104,2771" />
+      <AbsolutePoint location="210,2771" />
+      <AbsolutePoint location="210,2850" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/invoiceShowDisplay.do,showEdit,acct.invoiceEdit,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1550,2236" />
+      <AbsolutePoint location="1399,2236" />
+      <AbsolutePoint location="1399,1417" />
+      <AbsolutePoint location="1290,1417" />
+      <AbsolutePoint location="1290,1278" />
+      <AbsolutePoint location="754,1278" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/acctSaveVendors.do,vendorList,/acctListVendors.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="397,1695" />
+      <AbsolutePoint location="397,1663" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="dashboard.report,null,/printReport.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1064,1874" />
+      <AbsolutePoint location="1176,1874" />
+      <AbsolutePoint location="1176,2014" />
+      <AbsolutePoint location="-150,2014" />
+      <AbsolutePoint location="-150,194" />
+      <AbsolutePoint location="50,194" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/showReportScheduling.do,failed,/login.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1850,294" />
+      <AbsolutePoint location="-30,294" />
+      <AbsolutePoint location="-30,1170" />
+      <AbsolutePoint location="470,1170" />
+      <AbsolutePoint location="470,1209" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/userEdit.do,userList,/userList.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="870,934" />
+      <AbsolutePoint location="870,1034" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sendSMS.do,success,sms.sendSMS,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="398,2274" />
+      <AbsolutePoint location="650,2274" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/userSave.do,userList,/userList.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1835,1320" />
+      <AbsolutePoint location="1835,953" />
+      <AbsolutePoint location="1017,953" />
+      <AbsolutePoint location="1017,1034" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/acctCheckApprovalSave.do,checkList,/acctCheckListing.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1493,425" />
+      <AbsolutePoint location="1493,525" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sendTextToSpeech.do,success,sms.sendTextToSpeech,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1925,2374" />
+      <AbsolutePoint location="2150,2374" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="smsTTVEdit;6,null,/smsTTVEditSchedule.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2750,1578" />
+      <AbsolutePoint location="1961,1578" />
+      <AbsolutePoint location="1961,2617" />
+      <AbsolutePoint location="2828,2617" />
+      <AbsolutePoint location="2828,2650" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/myAccount.do,success,user.myAccount,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1474,934" />
+      <AbsolutePoint location="1474,1034" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/showReportPrintedList.do,success,dashboard.reportPrintedList,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="50,2094" />
+      <AbsolutePoint location="-30,2094" />
+      <AbsolutePoint location="-30,1314" />
+      <AbsolutePoint location="1218,1314" />
+      <AbsolutePoint location="1218,1117" />
+      <AbsolutePoint location="2245,1117" />
+      <AbsolutePoint location="2245,1099" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="sms.sendSMS,null,/processSendSMS.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="744,2274" />
+      <AbsolutePoint location="950,2274" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="dashboard.updateRptSche,null,/processUpdateRptSche.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2529,1950" />
+      <AbsolutePoint location="2529,1865" />
+      <AbsolutePoint location="2633,1865" />
+      <AbsolutePoint location="2633,1214" />
+      <AbsolutePoint location="2364,1214" />
+      <AbsolutePoint location="2364,938" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="acct.checkEdit,null,/acctCheckApprovalEdit.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1336,188" />
+      <AbsolutePoint location="1336,88" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/login.jsp,null,/dashboardLogin.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="500,1258" />
+      <AbsolutePoint location="500,1350" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/userEdit.do,success,user.userEdit,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1148,934" />
+      <AbsolutePoint location="1148,1053" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/acctListVendors.do,vendorList,acct.vendorList,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="397,1575" />
+      <AbsolutePoint location="397,1504" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="MainPage;6,null,/showMain.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="135,921" />
+      <AbsolutePoint location="135,1021" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/userSave.do,success,/userList.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1740,1365" />
+      <AbsolutePoint location="1253,1365" />
+      <AbsolutePoint location="1253,1170" />
+      <AbsolutePoint location="900,1170" />
+      <AbsolutePoint location="900,1122" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/acctEditVendors.do,vendorListSearch,acct.vendorListSearch,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1934,1764" />
+      <AbsolutePoint location="2398,1764" />
+      <AbsolutePoint location="2398,2214" />
+      <AbsolutePoint location="2218,2214" />
+      <AbsolutePoint location="2218,2199" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/vendorLocEdit.do,showVendorEdit,/acctEditVendors.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1351,1558" />
+      <AbsolutePoint location="1351,1665" />
+      <AbsolutePoint location="1772,1665" />
+      <AbsolutePoint location="1772,1750" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/acctLocationEmailSave.do,success,/acctLocationEdit.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1096,713" />
+      <AbsolutePoint location="1096,44" />
+      <AbsolutePoint location="742,44" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/acctLocationEmail.do,success,acct.locationEmail,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="795,425" />
+      <AbsolutePoint location="795,544" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/invoiceInvItemEdit.do,invoiceEdit,/invoiceShowDisplay.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="248,1938" />
+      <AbsolutePoint location="248,2041" />
+      <AbsolutePoint location="1750,2041" />
+      <AbsolutePoint location="1750,2150" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/acctLocationEdit.do,locationList,/acctLocationList.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="357,44" />
+      <AbsolutePoint location="35,44" />
+      <AbsolutePoint location="35,525" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/invoiceEditSave.do,invoiceAddVendor,/invoiceAddVendor.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1733,928" />
+      <AbsolutePoint location="1733,1545" />
+      <AbsolutePoint location="1537,1545" />
+      <AbsolutePoint location="1537,2387" />
+      <AbsolutePoint location="1134,2387" />
+      <AbsolutePoint location="1134,2865" />
+      <AbsolutePoint location="1044,2865" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/invoiceShowDisplay.do,showList,/invoiceList.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1932,2238" />
+      <AbsolutePoint location="1932,2417" />
+      <AbsolutePoint location="3570,2417" />
+      <AbsolutePoint location="3570,171" />
+      <AbsolutePoint location="1857,171" />
+      <AbsolutePoint location="1857,103" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/processUpdateRptSche.do,success,/reportSchedulingList.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2367,850" />
+      <AbsolutePoint location="2367,294" />
+      <AbsolutePoint location="2450,294" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/invoiceEditSave.do,approvedList,/invoiceList.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1785,928" />
+      <AbsolutePoint location="1785,1005" />
+      <AbsolutePoint location="-8,1005" />
+      <AbsolutePoint location="-8,95" />
+      <AbsolutePoint location="1635,95" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="user.myAccount,null,/myAccountSave.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1499,1083" />
+      <AbsolutePoint location="1499,1155" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/invoiceEditSave.do,deniedList,/invoiceList.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1725,884" />
+      <AbsolutePoint location="1709,884" />
+      <AbsolutePoint location="1709,103" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/userEdit.do,failed,/userList.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="840,934" />
+      <AbsolutePoint location="840,1034" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="acct.locationEdit,null,/acctLocationSave.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="550,237" />
+      <AbsolutePoint location="550,381" />
+      <AbsolutePoint location="500,381" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/acctEditVendors.do,vendorList,acct.vendorList,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1742,1750" />
+      <AbsolutePoint location="1742,1710" />
+      <AbsolutePoint location="1455,1710" />
+      <AbsolutePoint location="1455,2365" />
+      <AbsolutePoint location="870,2365" />
+      <AbsolutePoint location="870,1635" />
+      <AbsolutePoint location="441,1635" />
+      <AbsolutePoint location="441,1504" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/acctSaveVendors.do,vendorListSearch,acct.vendorListSearch,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="520,1783" />
+      <AbsolutePoint location="520,2983" />
+      <AbsolutePoint location="1986,2983" />
+      <AbsolutePoint location="1986,2214" />
+      <AbsolutePoint location="2188,2214" />
+      <AbsolutePoint location="2188,2199" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/chartList.do,failed,chart.chartList,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3227,1738" />
+      <AbsolutePoint location="3227,2075" />
+      <AbsolutePoint location="3149,2075" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/showReport.do,failed,/login.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2337,138" />
+      <AbsolutePoint location="2337,628" />
+      <AbsolutePoint location="665,628" />
+      <AbsolutePoint location="665,1237" />
+      <AbsolutePoint location="507,1237" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/acctCheckApprovalEdit.do,failed,acct.checkEdit,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1366,88" />
+      <AbsolutePoint location="1366,188" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/acctEditVendors.do,vendorEdit,acct.vendorEdit,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1550,1768" />
+      <AbsolutePoint location="1425,1768" />
+      <AbsolutePoint location="1425,1573" />
+      <AbsolutePoint location="930,1573" />
+      <AbsolutePoint location="930,1734" />
+      <AbsolutePoint location="825,1734" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="acct.invoiceInvItemEdit,null,/invoiceInvItemSave.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1392,1974" />
+      <AbsolutePoint location="1550,1974" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/invoiceEditSave.do,savedList,/invoiceList.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2084,841" />
+      <AbsolutePoint location="3010,841" />
+      <AbsolutePoint location="3010,35" />
+      <AbsolutePoint location="1968,35" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/invoiceList.do,showList,acct.invoiceList,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1968,17" />
+      <AbsolutePoint location="3106,17" />
+      <AbsolutePoint location="3106,953" />
+      <AbsolutePoint location="1901,953" />
+      <AbsolutePoint location="1901,1050" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="chart.chartList,null,/chartList.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3069,2099" />
+      <AbsolutePoint location="3069,2295" />
+      <AbsolutePoint location="2838,2295" />
+      <AbsolutePoint location="2838,2214" />
+      <AbsolutePoint location="3308,2214" />
+      <AbsolutePoint location="3308,1738" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="dashboard.reportScheduling,null,/reportSchedulingList.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2308,1899" />
+      <AbsolutePoint location="2308,2014" />
+      <AbsolutePoint location="3504,2014" />
+      <AbsolutePoint location="3504,294" />
+      <AbsolutePoint location="2892,294" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/acctCheckListing.do,failed,/MainPage.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1340,613" />
+      <AbsolutePoint location="1340,713" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="acct.checkList,null,/acctCheckListing.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1571,726" />
+      <AbsolutePoint location="1571,613" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/userList.do,userEdit,/userEdit.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="987,1034" />
+      <AbsolutePoint location="987,934" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/chartList.do,success,chart.chartList,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3338,1738" />
+      <AbsolutePoint location="3338,2295" />
+      <AbsolutePoint location="3099,2295" />
+      <AbsolutePoint location="3099,2099" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/reports.do,reportsJSP,dashboard.reports,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="569,808" />
+      <AbsolutePoint location="569,870" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/acctCheckApprovalEdit.do,success,acct.checkEdit,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1396,88" />
+      <AbsolutePoint location="1396,188" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/localeLocationSave.do,home,/MainPage.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2150,1467" />
+      <AbsolutePoint location="1277,1467" />
+      <AbsolutePoint location="1277,750" />
+      <AbsolutePoint location="1288,750" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/acctCheckApprovalEdit.do,checkList,/acctCheckListing.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1599,88" />
+      <AbsolutePoint location="1599,525" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/invoiceEditSave.do,invoiceInvItemEdit,/invoiceInvItemEdit.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1923,928" />
+      <AbsolutePoint location="1923,1041" />
+      <AbsolutePoint location="2914,1041" />
+      <AbsolutePoint location="2914,1220" />
+      <AbsolutePoint location="2729,1220" />
+      <AbsolutePoint location="2729,1936" />
+      <AbsolutePoint location="447,1936" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="acct.localeLocationEdit,null,/localeLocationSave.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2288,2252" />
+      <AbsolutePoint location="2360,2252" />
+      <AbsolutePoint location="2360,1538" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/invoiceEditDisplay.do,showEdit,acct.invoiceEdit,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1725,668" />
+      <AbsolutePoint location="688,668" />
+      <AbsolutePoint location="688,1250" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="smsTTVListForm,null,/smsTTVManageSchedule.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1955,2574" />
+      <AbsolutePoint location="2828,2574" />
+      <AbsolutePoint location="2828,2538" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="sms.smsTTVEditJsp,null,/smsTTVSaveEdit.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1971,2674" />
+      <AbsolutePoint location="2150,2674" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="sms.sendTextToSpeech,null,/processSendTextToSpeech.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2293,2395" />
+      <AbsolutePoint location="2681,2395" />
+      <AbsolutePoint location="2681,2953" />
+      <AbsolutePoint location="550,2953" />
+      <AbsolutePoint location="550,2494" />
+      <AbsolutePoint location="462,2494" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/acctListVendorsSearch.do,vendorListSearch,acct.vendorListSearch,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2663,1138" />
+      <AbsolutePoint location="2663,1817" />
+      <AbsolutePoint location="3278,1817" />
+      <AbsolutePoint location="3278,2174" />
+      <AbsolutePoint location="2286,2174" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/smsTTVSaveEdit.do,ShowSMSTTVEdit,/smsTTVList.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2342,2650" />
+      <AbsolutePoint location="2342,2538" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/userSave.do,failed,user.userEdit,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1740,1395" />
+      <AbsolutePoint location="1188,1395" />
+      <AbsolutePoint location="1188,1102" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="acct.vendorEdit,null,/acctSaveVendors.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="720,1739" />
+      <AbsolutePoint location="615,1739" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/showSMSTTVEdit.do,smsTTVEditJsp,sms.smsTTVEditJsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1021,2650" />
+      <AbsolutePoint location="1021,2414" />
+      <AbsolutePoint location="1455,2414" />
+      <AbsolutePoint location="1455,2465" />
+      <AbsolutePoint location="1823,2465" />
+      <AbsolutePoint location="1823,2665" />
+      <AbsolutePoint location="1850,2665" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/vendorLocSave.do,showLocEdit,acct.vendorLocEdit,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1550,1623" />
+      <AbsolutePoint location="1336,1623" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/userList.do,failed,user.userList,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="870,1122" />
+      <AbsolutePoint location="870,1222" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/reportSchedulingList.do,success,dashboard.reportSchedulingList,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2671,250" />
+      <AbsolutePoint location="2671,-75" />
+      <AbsolutePoint location="-120,-75" />
+      <AbsolutePoint location="-120,1974" />
+      <AbsolutePoint location="950,1974" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/invoiceEditSave.do,invoiceEdit,/invoiceShowDisplay.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2084,884" />
+      <AbsolutePoint location="2145,884" />
+      <AbsolutePoint location="2145,2194" />
+      <AbsolutePoint location="1951,2194" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/dashAcctIntf.do,dashAcctIntfPage,dashboard.dashAcctIntfPage,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3205,1450" />
+      <AbsolutePoint location="3205,1199" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/invoiceAddVendor.do,invoiceEdit,/invoiceEditSave,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1044,2894" />
+      <AbsolutePoint location="1618,2894" />
+      <AbsolutePoint location="1618,2799" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/underDevelopment.do,underDevelopmentPage,dashboard.underDevelopment,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2450,2114" />
+      <AbsolutePoint location="1515,2114" />
+      <AbsolutePoint location="1515,2174" />
+      <AbsolutePoint location="825,2174" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/recipientEditSave.do,showSMSTTVRecipientEditForSMS,/smsTTVRecipient.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="285,2650" />
+      <AbsolutePoint location="285,2595" />
+      <AbsolutePoint location="858,2595" />
+      <AbsolutePoint location="858,2538" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="acct.locationEmail,null,/acctLocationEmailSave.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="795,593" />
+      <AbsolutePoint location="795,713" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/smsTTVManageSchedule.do,showSMSTTVListForSMS,/smsTTVList.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2750,2524" />
+      <AbsolutePoint location="2534,2524" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/invoiceList.do,invoiceList,/invoiceList.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1801,15" />
+      <AbsolutePoint location="1801,-135" />
+      <AbsolutePoint location="2073,-135" />
+      <AbsolutePoint location="2073,65" />
+      <AbsolutePoint location="1968,65" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/invoiceList.do,addInvoice,/invoiceEditDisplay.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1771,103" />
+      <AbsolutePoint location="1771,383" />
+      <AbsolutePoint location="2237,383" />
+      <AbsolutePoint location="2237,665" />
+      <AbsolutePoint location="2094,665" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/processSendSMS.do,success,/showMain.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="950,2314" />
+      <AbsolutePoint location="630,2314" />
+      <AbsolutePoint location="630,1565" />
+      <AbsolutePoint location="375,1565" />
+      <AbsolutePoint location="375,953" />
+      <AbsolutePoint location="165,953" />
+      <AbsolutePoint location="165,1021" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/dashAcctIntf.do,home,dashboard.home,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3239,1494" />
+      <AbsolutePoint location="175,1224" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="acct.checkEdit,null,/acctCheckApprovalSave.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1396,237" />
+      <AbsolutePoint location="1396,337" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/invoiceAddVendor.do,vendorEdit,acct.vendorAdd,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1044,2917" />
+      <AbsolutePoint location="1903,2917" />
+      <AbsolutePoint location="1903,2799" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/smsTTVSaveRecipient.do,showSMSTTVRecipientEditForTTV,/smsTTVRecipient.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3160,1294" />
+      <AbsolutePoint location="3444,1294" />
+      <AbsolutePoint location="3444,2542" />
+      <AbsolutePoint location="810,2542" />
+      <AbsolutePoint location="810,2538" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="acct.invoiceEdit,null,/invoiceEditSave.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="650,1274" />
+      <AbsolutePoint location="570,1274" />
+      <AbsolutePoint location="570,1019" />
+      <AbsolutePoint location="1879,1019" />
+      <AbsolutePoint location="1879,928" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/invoiceEditSave.do,invoiceList,/invoiceList.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1904,840" />
+      <AbsolutePoint location="1904,745" />
+      <AbsolutePoint location="2213,745" />
+      <AbsolutePoint location="2213,405" />
+      <AbsolutePoint location="1741,405" />
+      <AbsolutePoint location="1741,103" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/userList.do,success,user.userList,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="840,1122" />
+      <AbsolutePoint location="840,1222" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/deleteRptSche.do,success,/showReportScheduling,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2837,464" />
+      <AbsolutePoint location="3464,464" />
+      <AbsolutePoint location="3464,2045" />
+      <AbsolutePoint location="2221,2045" />
+      <AbsolutePoint location="2221,1999" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/invoiceInvItemEdit.do,invoiceItemSave,/invoiceSave.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="447,1887" />
+      <AbsolutePoint location="650,1887" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/runReports.do,reportFilterJSP,dashboard.reportsFilter,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1481,1348" />
+      <AbsolutePoint location="1481,1410" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/vendorLocSave.do,showVendorEdit,/acctEditVendors.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1794,1638" />
+      <AbsolutePoint location="1794,1750" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="user.userEdit,null,/userEdit.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1191,1053" />
+      <AbsolutePoint location="1191,890" />
+      <AbsolutePoint location="1163,890" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/localeLocationSave.do,invoiceList,/invoiceList.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2547,1450" />
+      <AbsolutePoint location="2547,1246" />
+      <AbsolutePoint location="1271,1246" />
+      <AbsolutePoint location="1271,492" />
+      <AbsolutePoint location="1691,492" />
+      <AbsolutePoint location="1691,103" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="acct.invoiceList,null,/invoiceShowDisplay.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1850,1068" />
+      <AbsolutePoint location="1785,1068" />
+      <AbsolutePoint location="1785,1275" />
+      <AbsolutePoint location="1674,1275" />
+      <AbsolutePoint location="1674,1485" />
+      <AbsolutePoint location="1986,1485" />
+      <AbsolutePoint location="1986,2174" />
+      <AbsolutePoint location="1951,2174" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/smsTTVManageSchedule.do,showSMSTTVListForTTV,/smsTTVList.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2750,2494" />
+      <AbsolutePoint location="2534,2494" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="ReportPage;6,null,/showReport.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2150,1687" />
+      <AbsolutePoint location="2140,1687" />
+      <AbsolutePoint location="2140,94" />
+      <AbsolutePoint location="2150,94" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/startSMSScheduler.do,success,/showMain.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2621,2338" />
+      <AbsolutePoint location="2621,3013" />
+      <AbsolutePoint location="0,3013" />
+      <AbsolutePoint location="0,1470" />
+      <AbsolutePoint location="345,1470" />
+      <AbsolutePoint location="345,1065" />
+      <AbsolutePoint location="330,1065" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="dashboard.reportSchedulingList,null,/updateRptSche.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1079,1950" />
+      <AbsolutePoint location="1079,1814" />
+      <AbsolutePoint location="1485,1814" />
+      <AbsolutePoint location="1485,1515" />
+      <AbsolutePoint location="1709,1515" />
+      <AbsolutePoint location="1709,983" />
+      <AbsolutePoint location="2645,983" />
+      <AbsolutePoint location="2645,738" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/acctListVendors.do,vendorListSearch,acct.vendorListSearch,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="35,1663" />
+      <AbsolutePoint location="35,3043" />
+      <AbsolutePoint location="2046,3043" />
+      <AbsolutePoint location="2046,2174" />
+      <AbsolutePoint location="2150,2174" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="dashboardLogin;6,null,/login.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="489,1102" />
+      <AbsolutePoint location="489,1209" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/recipientEdit.do,showEdit,sms.recipientEdit,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2805,1850" />
+      <AbsolutePoint location="2805,1799" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/acct/vendorLocEdit.jsp,null,/vendorLocSave.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1136,1620" />
+      <AbsolutePoint location="1136,1595" />
+      <AbsolutePoint location="1550,1595" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/showReport.do,success,dashboard.report,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2150,118" />
+      <AbsolutePoint location="-90,118" />
+      <AbsolutePoint location="-90,1814" />
+      <AbsolutePoint location="1007,1814" />
+      <AbsolutePoint location="1007,1850" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/vendorLocEdit.do,showLocEdit,acct.vendorLocEdit,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1275,1558" />
+      <AbsolutePoint location="1275,1620" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="acct.locationList,null,/acctLocationList.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="161,732" />
+      <AbsolutePoint location="161,613" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/invoiceInvItemSave.do,invoiceEdit,/invoiceShowDisplay.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1768,2038" />
+      <AbsolutePoint location="1768,2150" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/acctLocationList.do,success,acct.locationList,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="221,613" />
+      <AbsolutePoint location="221,732" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/invoiceConfirmPayment.do,showConfirmPage,acct.invoiceConfirm,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2135,613" />
+      <AbsolutePoint location="2135,1174" />
+      <AbsolutePoint location="1973,1174" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/invoiceConfirmPaymentSubmit.do,invoiceList,/invoiceList.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1719,420" />
+      <AbsolutePoint location="1719,103" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/processSendTextToSpeech.do,success,/showMain.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="256,2450" />
+      <AbsolutePoint location="256,2414" />
+      <AbsolutePoint location="840,2414" />
+      <AbsolutePoint location="840,1485" />
+      <AbsolutePoint location="799,1485" />
+      <AbsolutePoint location="799,1170" />
+      <AbsolutePoint location="594,1170" />
+      <AbsolutePoint location="594,983" />
+      <AbsolutePoint location="195,983" />
+      <AbsolutePoint location="195,1021" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="user.userEdit,null,/userSave.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1238,1090" />
+      <AbsolutePoint location="1763,1090" />
+      <AbsolutePoint location="1763,1320" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/acctLocationSave.do,success,/acctLocationList.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="191,425" />
+      <AbsolutePoint location="191,525" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/acctCheckListing.do,success,acct.checkList,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1541,613" />
+      <AbsolutePoint location="1541,726" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/printReport.do,localeChange,dashboard.report,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="50,224" />
+      <AbsolutePoint location="-60,224" />
+      <AbsolutePoint location="-60,1519" />
+      <AbsolutePoint location="900,1519" />
+      <AbsolutePoint location="900,1874" />
+      <AbsolutePoint location="950,1874" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/invoiceConfirmPayment.do,invoiceList,/invoiceList.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2162,569" />
+      <AbsolutePoint location="2427,569" />
+      <AbsolutePoint location="2427,203" />
+      <AbsolutePoint location="1831,203" />
+      <AbsolutePoint location="1831,103" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/lostPassword.jsp,null,/lostPassword.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1092,1264" />
+      <AbsolutePoint location="1092,1350" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/invoiceEditSave.do,submittedList,/invoiceList.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1725,894" />
+      <AbsolutePoint location="1703,894" />
+      <AbsolutePoint location="1703,103" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/smartFile.do,smartFilePage,dashboard.smartFile,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1300,2074" />
+      <AbsolutePoint location="2150,2074" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="showRptSche;6,null,/showReportScheduling.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2618,1787" />
+      <AbsolutePoint location="2628,1787" />
+      <AbsolutePoint location="2628,348" />
+      <AbsolutePoint location="2063,348" />
+      <AbsolutePoint location="2063,338" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="dashboard.reportSchedulingList,null,/deleteRptSche.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1040,1950" />
+      <AbsolutePoint location="1040,1906" />
+      <AbsolutePoint location="2699,1906" />
+      <AbsolutePoint location="2699,1373" />
+      <AbsolutePoint location="3325,1373" />
+      <AbsolutePoint location="3325,494" />
+      <AbsolutePoint location="2837,494" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="acct.invoiceConfirm,null,/invoiceConfirmPaymentSubmit.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1911,1150" />
+      <AbsolutePoint location="1911,1145" />
+      <AbsolutePoint location="1259,1145" />
+      <AbsolutePoint location="1259,464" />
+      <AbsolutePoint location="1710,464" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/showMain.do,success,dashboard.home,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="175,1109" />
+      <AbsolutePoint location="175,1200" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/recipientEditSave.do,showSMSTTVRecipientEditForTTV,/smsTTVRecipient.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="255,2650" />
+      <AbsolutePoint location="255,2565" />
+      <AbsolutePoint location="828,2565" />
+      <AbsolutePoint location="828,2538" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/acctCheckApprovalSave.do,failed,acct.checkEdit,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1366,337" />
+      <AbsolutePoint location="1366,237" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/smsTTVSaveRecipient.do,showSMSTTVRecipientEditForSMS,/smsTTVRecipient.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3160,1276" />
+      <AbsolutePoint location="3482,1276" />
+      <AbsolutePoint location="3482,2441" />
+      <AbsolutePoint location="828,2441" />
+      <AbsolutePoint location="828,2450" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/smsTTVManageSchedule.do,smsTTVEdit,/showSMSTTVEdit.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2961,2538" />
+      <AbsolutePoint location="2961,2865" />
+      <AbsolutePoint location="1188,2865" />
+      <AbsolutePoint location="1188,2665" />
+      <AbsolutePoint location="1053,2665" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="acct.invoiceList,null,/invoiceEditDisplay.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1952,1074" />
+      <AbsolutePoint location="2091,1074" />
+      <AbsolutePoint location="2091,733" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/localeLocationEdit.do,localeLocationList,acct.localeLocationEdit,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2544,1294" />
+      <AbsolutePoint location="2595,1294" />
+      <AbsolutePoint location="2595,1595" />
+      <AbsolutePoint location="2428,1595" />
+      <AbsolutePoint location="2428,2274" />
+      <AbsolutePoint location="2288,2274" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/acctLocationEdit.do,success,acct.locationEdit,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="550,88" />
+      <AbsolutePoint location="550,188" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/smsTTVRecipient.do,smsTTVRecipientEdit,sms.smsTTVRecipientEdit,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1006,2514" />
+      <AbsolutePoint location="2016,2514" />
+      <AbsolutePoint location="2016,1425" />
+      <AbsolutePoint location="2824,1425" />
+      <AbsolutePoint location="2824,1450" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/startTTVScheduler.do,success,/showMain.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2920,850" />
+      <AbsolutePoint location="2920,-45" />
+      <AbsolutePoint location="1066,-45" />
+      <AbsolutePoint location="1066,690" />
+      <AbsolutePoint location="259,690" />
+      <AbsolutePoint location="259,1021" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/acctLocationList.do,failed,acct.locationList,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="191,613" />
+      <AbsolutePoint location="191,732" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/userLogout.do,login,/login.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="153,1350" />
+      <AbsolutePoint location="153,1273" />
+      <AbsolutePoint location="470,1273" />
+      <AbsolutePoint location="470,1258" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="user.userList,null,/userList.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="916,1246" />
+      <AbsolutePoint location="931,1246" />
+      <AbsolutePoint location="931,1122" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="acct.locationEdit,null,/acctLocationEmail.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="580,237" />
+      <AbsolutePoint location="580,381" />
+      <AbsolutePoint location="600,381" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/updateRptSche.do,success,dashboard.updateRptSche,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2841,694" />
+      <AbsolutePoint location="3534,694" />
+      <AbsolutePoint location="3534,1974" />
+      <AbsolutePoint location="2608,1974" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/vendorLocRemove.do,showVendorEdit,/acctEditVendors.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1331,1739" />
+      <AbsolutePoint location="1712,1739" />
+      <AbsolutePoint location="1712,1750" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/acctSaveVendors.do,showVendorEdit,/acctEditVendors.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="490,1783" />
+      <AbsolutePoint location="490,3073" />
+      <AbsolutePoint location="2076,3073" />
+      <AbsolutePoint location="2076,1794" />
+      <AbsolutePoint location="1934,1794" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/showMain.do,failed,/login.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="245,1109" />
+      <AbsolutePoint location="245,1233" />
+      <AbsolutePoint location="434,1233" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/invoiceInvItemEdit.do,invoiceItemEdit,acct.invoiceInvItemEdit,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="248,1850" />
+      <AbsolutePoint location="248,1790" />
+      <AbsolutePoint location="1226,1790" />
+      <AbsolutePoint location="1226,1974" />
+      <AbsolutePoint location="1250,1974" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/invoiceEditDisplay.do,showList,/invoiceList.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1725,690" />
+      <AbsolutePoint location="1131,690" />
+      <AbsolutePoint location="1131,165" />
+      <AbsolutePoint location="1683,165" />
+      <AbsolutePoint location="1683,103" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/invoiceList.do,showConfirmPage,/invoiceConfirmPayment.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1801,103" />
+      <AbsolutePoint location="1801,353" />
+      <AbsolutePoint location="2121,353" />
+      <AbsolutePoint location="2121,525" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/acctSaveVendors.do,vendorListSearchJsp,/acctListVendors.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="240,1695" />
+      <AbsolutePoint location="240,1663" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

@@ -1,0 +1,668 @@
+package com.aldorsolutions.dashboard.struts.action.chart;
+
+
+
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Locale;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+
+import org.apache.log4j.Logger;
+import org.apache.struts.action.Action;
+import org.apache.struts.action.ActionForm;
+import org.apache.struts.action.ActionForward;
+import org.apache.struts.action.ActionMapping;
+
+
+
+import com.aldorsolutions.dashboard.struts.form.chart.ChartListForm;
+import com.aldorsolutions.webfdms.beans.DbUserSession;
+import com.aldorsolutions.webfdms.chart.dao.ChartFXDAO;
+import com.aldorsolutions.webfdms.util.FormatCurrency;
+import com.aldorsolutions.webfdms.util.FormatDate;
+import com.aldorsolutions.webfdms.util.FormatNumber;
+import com.aldorsolutions.webfdms.util.SessionValueKeys;
+import com.softwarefx.chartfx.server.dataproviders.ListProvider;
+
+
+public class ChartListAction extends Action {
+	
+	
+	Logger logger = Logger.getLogger(ChartListAction.class);
+	ChartFXDAO chartDAO;
+	
+	
+	private double totalBurCurrCall=0.0;
+	private double totalBurLastCall=0.0;
+	private double totalCremCurrCall=0.0;
+	private double totalCremLastCall=0.0;
+	private double totalBurCurrAvg=0.0;
+	private double totalBurLastAvg=0.0;
+	private double totalCremCurrAvg=0.0;
+	private double totalCremLastAvg=0.0;
+	/** 
+	 * Method execute
+	 * @param mapping
+	 * @param form
+	 * @param request
+	 * @param response
+	 * @return ActionForward
+	 */
+	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
+			HttpServletResponse response) {
+		
+		HttpSession session =  request.getSession();
+        DbUserSession user = (DbUserSession) session.getAttribute(SessionValueKeys.DB_USER);
+        System.out.println("User ::: "+ user.getDataUrl());
+		ChartListForm chartListForm = (ChartListForm)form;
+		
+		chartDAO= new ChartFXDAO(user);
+		
+		if(chartListForm.getFromDate()==null && chartListForm.getToDate() == null){
+			    Date aDate= new Date();
+				chartListForm.setFromDate("01/01/"+FormatDate.convertDateToYYYYString(aDate));
+				//chartListForm.setFromDate("01/01/2011");
+				chartListForm.setToDate(FormatDate.getCurrentDateFormatedMMDDYYYY());
+				//chartListForm.setToDate("12/31/2011");
+				//System.out.println("current Date " + chartListForm.getToDate());
+				System.out.println("current Year " + chartListForm.getCurrentYear());
+				System.out.println("last Year " + chartListForm.getLastYear());
+				setCallVolumeChartTab1Data(chartListForm,session);
+				
+				setBurialCrmationTab2Data(chartListForm);
+				setArAgingTab3Data(chartListForm);
+				setMarketingTab3Data(chartListForm, "Age");
+				setMarketingTab3Data(chartListForm, "Gender");
+				setMarketingTab3Data(chartListForm, "Race");
+				setSalesAccountTab6(chartListForm,"bur");
+				setSalesAccountTab6(chartListForm,"crem");
+				setSalesAccountTab6(chartListForm,"total");
+				setDirectorTab4Data(chartListForm);
+				
+				
+				
+		}else{
+			//System.out.println("Start Date ::: "+ chartListForm.getFromDate());
+			//System.out.println("To Date ::: "+ chartListForm.getToDate());
+			//System.out.println("Sales Type ::: "+ chartListForm.getSaleType());
+			setCallVolumeChartTab1Data(chartListForm,session);
+			
+		}
+		
+		request.setAttribute("chartListForm", chartListForm);
+		
+		return (mapping.findForward("success"));
+	}
+	
+	 @SuppressWarnings("unchecked")
+	public void setCallVolumeChartTab1Data(ChartListForm chartListForm,HttpSession session){
+		 try{
+			 /*
+			 ArrayList chartData = chartDAO.getCallVolumeChart( FormatDate.convertToDateYYYYMMDD( chartListForm.getFromDate()), FormatDate.convertToDateYYYYMMDD( chartListForm.getToDate()));
+			 
+				ArrayList<String> listLabels= (ArrayList<String>) chartData.get(0);
+				ArrayList<Integer> listCallVolume= (ArrayList<Integer>) chartData.get(1);
+				ArrayList<Double> listCallRevenue= (ArrayList<Double>) chartData.get(2);
+				ArrayList<Double> listCallAverage= (ArrayList<Double>) chartData.get(3);
+			 
+			 	
+				
+		        
+		        String [] labels = listLabels.toArray(new String[listLabels.size()]);
+				
+				// call volume convert from Integer object to int 
+		        int[] callVolume = new int[listCallVolume.size()]; 
+		        for(int i=0; i<listCallVolume.size();i++){
+		        	callVolume[i] = listCallVolume.get(i).intValue();
+		        }
+		        
+		        double[] callRevenue = new double[listCallRevenue.size()]; 
+		        for(int i=0; i<listCallRevenue.size();i++){
+		        	callRevenue[i] = listCallRevenue.get(i).doubleValue();
+		        }
+
+		        double[] callAvg = new double[listCallAverage.size()]; 
+		        for(int i=0; i<listCallAverage.size();i++){
+		        	callAvg[i] = listCallAverage.get(i).doubleValue();
+		        }
+
+		       // set call # volume data
+		        ListProvider lstProvider = new ListProvider();
+		        lstProvider.add(labels);
+		        lstProvider.add(callVolume);
+		        chartListForm.getCallVolumeChart().setListDataProvider(lstProvider);
+
+			    // set call $ revenue data
+		        lstProvider= new ListProvider();
+		        lstProvider.add(labels);
+		        lstProvider.add(callRevenue);
+		        chartListForm.getTotalRevenuChart().setListDataProvider(lstProvider);
+
+		        // set call Average data
+		        lstProvider= new ListProvider();
+		        lstProvider.add(labels);
+		        lstProvider.add(callAvg);
+		        chartListForm.getAverageRevenuChart().setListDataProvider(lstProvider);
+		        
+		*/
+			 
+			 
+			 ArrayList chartBurialData = chartDAO.getCallRevAvgForCompanyYearlyBySale(FormatDate.convertToDateYYYYMMDD( chartListForm.getFromDate()), FormatDate.convertToDateYYYYMMDD( chartListForm.getToDate()),"%bur%",chartListForm.getCurrentYear(),chartListForm.getLastYear());
+			 
+			 	ArrayList<Double> currentYearBurData = (ArrayList<Double>) chartBurialData.get(0);
+				ArrayList<String> currentYearBurSaleType= (ArrayList<String>) chartBurialData.get(1);
+				ArrayList<Double> lastYearBurData = (ArrayList<Double>) chartBurialData.get(2);
+				ArrayList<String> lastYearBurSaleType= (ArrayList<String>) chartBurialData.get(3);
+				
+				ArrayList<Double> currentYearBurRevData = (ArrayList<Double>) chartBurialData.get(4);
+				ArrayList<Double> lastYearBurRevData = (ArrayList<Double>) chartBurialData.get(6);
+				
+				ArrayList<Double> currentYearBurAvgData = (ArrayList<Double>) chartBurialData.get(5);
+				ArrayList<Double> lastYearBurAvgData = (ArrayList<Double>) chartBurialData.get(7);
+				
+				
+			ArrayList chartCremData = chartDAO.getCallRevAvgForCompanyYearlyBySale(FormatDate.convertToDateYYYYMMDD( chartListForm.getFromDate()), FormatDate.convertToDateYYYYMMDD( chartListForm.getToDate()),"%crem%",chartListForm.getCurrentYear(),chartListForm.getLastYear());
+			 	ArrayList<Double> currentYearCremData = (ArrayList<Double>) chartCremData.get(0);
+				ArrayList<String> currentYearCremSaleType= (ArrayList<String>) chartCremData.get(1);
+				ArrayList<Double> lastYearCremData = (ArrayList<Double>) chartCremData.get(2);
+				ArrayList<String> lastYearCremSaleType= (ArrayList<String>) chartCremData.get(3);	
+				
+				ArrayList<Double> currentYearCremRevData = (ArrayList<Double>) chartCremData.get(4);
+				ArrayList<Double> lastYearCremRevData = (ArrayList<Double>) chartCremData.get(6);
+				
+				ArrayList<Double> currentYearCremAvgData = (ArrayList<Double>) chartCremData.get(5);
+				ArrayList<Double> lastYearCremAvgData = (ArrayList<Double>) chartCremData.get(7);
+				
+				
+				
+				
+				
+				session.setAttribute("lastYearBurSaleType",lastYearBurSaleType);
+				session.setAttribute("currentYearBurSaleType", currentYearBurSaleType);
+				session.setAttribute("lastYearCremSaleType",lastYearCremSaleType);
+				session.setAttribute("currentYearCremSaleType",currentYearCremSaleType);
+				
+				// call Data #
+				ListProvider lstProvider = getSaletypeCallRevenueAverageVolumes(currentYearBurData, lastYearBurData, currentYearCremData, lastYearCremData,"call" ,chartListForm);
+				chartListForm.getCallVolumeChart().setListDataProvider(lstProvider);
+				
+				
+				//revenue data $
+				lstProvider = getSaletypeCallRevenueAverageVolumes(currentYearBurRevData, lastYearBurRevData, currentYearCremRevData, lastYearCremRevData,"revenue",chartListForm);
+				chartListForm.getTotalRevenuChart().setListDataProvider(lstProvider);
+				
+				
+				// average data call/revenue 
+				 
+				 lstProvider = getSaletypeCallRevenueAverageVolumes(currentYearBurAvgData, lastYearBurAvgData, currentYearCremAvgData, lastYearCremAvgData,"average",chartListForm);
+				chartListForm.getAverageRevenuChart().setListDataProvider(lstProvider);
+				
+				
+		 }catch(Exception ex){
+			 logger.error("Error : ", ex);
+		 }
+	 }
+	 
+	 public ListProvider getSaletypeCallRevenueAverageVolumes( ArrayList<Double> currentYearBurData ,ArrayList<Double> lastYearBurData,ArrayList<Double> currentYearCremData,ArrayList<Double>lastYearCremData , String chartType ,ChartListForm chartListForm){
+		 double currentYearBurCallTotal=0.0;
+		 double lastYearBurCallTotal=0.0;
+		 double currentYearCremCallTotal=0.0;
+		 double lastYearCremCallTotal=0.0;
+		 
+			
+		 int maxSize= 0;
+			if(currentYearBurData.size()==currentYearCremData.size() && lastYearBurData.size()== lastYearCremData.size()){
+				maxSize=currentYearBurData.size();
+			}else if(currentYearBurData.size() >currentYearCremData.size() && currentYearBurData.size() >lastYearBurData.size() && currentYearBurData.size() > lastYearCremData.size()){
+				maxSize= currentYearBurData.size();
+			}else if(currentYearCremData.size()>currentYearBurData.size() && currentYearCremData.size() >lastYearBurData.size() && currentYearCremData.size() > lastYearCremData.size()){
+				maxSize=currentYearCremData.size();
+			}else if(lastYearBurData.size()>currentYearBurData.size() && lastYearBurData.size() >currentYearBurData.size() && lastYearBurData.size() > lastYearCremData.size()){
+				maxSize= lastYearBurData.size();
+			}else{
+				maxSize=lastYearCremData.size();
+			}
+			chartListForm.setMaxSize(maxSize);
+			//System.out.println("Max Size of Series :: "+maxSize);
+			
+			ListProvider lstProvider = new ListProvider();
+		 
+			for(int i=0;i<maxSize;i++){
+				double[] series = new double[4];
+				series[1]= i < lastYearBurData.size()?lastYearBurData.get(i).doubleValue():0;
+				series[0]= i < currentYearBurData.size()?currentYearBurData.get(i).doubleValue():0;
+				series[3]= i < lastYearCremData.size()?lastYearCremData.get(i).doubleValue():0;
+				series[2]= i < currentYearCremData.size()?currentYearCremData.get(i).doubleValue():0;
+				lstProvider.add(series);
+				
+				currentYearBurCallTotal= currentYearBurCallTotal+( i < currentYearBurData.size()?currentYearBurData.get(i).doubleValue() :0);
+				lastYearBurCallTotal=lastYearBurCallTotal+( i < lastYearBurData.size() ? lastYearBurData.get(i).doubleValue():0);
+				currentYearCremCallTotal=currentYearCremCallTotal+ (  i < currentYearCremData.size() ? currentYearCremData.get(i).doubleValue() : 0);
+				lastYearCremCallTotal=lastYearCremCallTotal+ (i< lastYearCremData.size() ? lastYearCremData.get(i).doubleValue() : 0);
+				
+			}
+			
+		/*	System.out.println("B'10 call total :: "+ lastYearBurCallTotal );
+			System.out.println("B'11 call total :: "+ currentYearBurCallTotal );
+			System.out.println("C'10 call total :: "+ lastYearCremCallTotal );
+			System.out.println("2011 C call total :: "+ currentYearCremCallTotal ); */
+			
+			NumberFormat numFormat= NumberFormat.getNumberInstance();
+			//NumberFormat currFormat= NumberFormat.getCurrencyInstance();
+			
+			
+			String[] labels= new String[4];
+			String currYear= chartListForm.getCurrentYear();
+			String lastYear = chartListForm.getLastYear();
+			if(chartType.equalsIgnoreCase("call")){
+				totalBurCurrCall=currentYearBurCallTotal;
+				totalBurLastCall=lastYearBurCallTotal;
+				totalCremCurrCall=currentYearCremCallTotal;
+				totalCremLastCall=lastYearCremCallTotal;
+				
+				
+				
+				labels[0] = "B'"+currYear.substring(2, 4);//+"\n"+  numFormat.format(lastYearBurCallTotal); // \nBurial";
+				labels[1] = "B'"+lastYear.substring(2, 4);//+"\n"+  numFormat.format(currentYearBurCallTotal); //\nBurial";
+				labels[2] = "C'"+currYear.substring(2, 4);//+"\n"+  numFormat.format(lastYearCremCallTotal); // \nCremation";
+				labels[3] = "C'"+lastYear.substring(2, 4);//+"\n"+  numFormat.format(currentYearCremCallTotal); // \n Cremation" ;
+				
+			}else if(chartType.equalsIgnoreCase("revenue")){
+				totalBurCurrAvg=currentYearBurCallTotal;
+				totalBurLastAvg=lastYearBurCallTotal;
+				totalCremCurrAvg=currentYearCremCallTotal;
+				totalCremLastAvg=lastYearCremCallTotal;
+				
+				labels[0] = "B'"+currYear.substring(2, 4);//+"\n $"+numFormat.format(Math.round(lastYearBurCallTotal)); // \nBurial";
+				labels[1] = "B'"+lastYear.substring(2, 4);//+"\n $"+numFormat.format(Math.round(currentYearBurCallTotal)); // \nBurial";
+				labels[2] = "C'"+currYear.substring(2, 4);//+"\n $"+numFormat.format(Math.round(lastYearCremCallTotal)); // \nCremation";
+				labels[3] = "C'"+lastYear.substring(2, 4);//+"\n $"+numFormat.format(Math.round(currentYearCremCallTotal)); //  \n Cremation" ;
+				
+			}else if(chartType.equalsIgnoreCase("average")){
+				labels[0] = "B'"+lastYear.substring(2, 4)+"\n $"+numFormat.format(Math.round(totalBurLastAvg/totalBurLastCall)); // \nBurial";
+				labels[1] = "B'"+currYear.substring(2, 4)+"\n $"+numFormat.format(Math.round(totalBurCurrAvg/totalBurCurrCall)); // \nBurial";
+				labels[2] = "C'"+lastYear.substring(2, 4)+"\n $"+numFormat.format(Math.round(totalCremLastAvg/totalCremLastCall)); // \nCremation";
+				labels[3] = "C'"+currYear.substring(2, 4)+"\n $"+numFormat.format(Math.round(totalCremCurrAvg/totalCremCurrCall)); //  \n Cremation" ;
+			}
+
+			lstProvider.add(labels);
+		
+			return lstProvider;
+		
+	 }
+	 @SuppressWarnings("unchecked")
+	public void setBurialCrmationTab2Data(ChartListForm chartListForm){
+		 try{
+			 ArrayList chartData =chartDAO.getCallRevAvgBurialCremationChart(FormatDate.convertToDateYYYYMMDD(chartListForm.getFromDate()), FormatDate.convertToDateYYYYMMDD(chartListForm.getToDate()));
+			 	
+				ArrayList<Double> listCBTCall= (ArrayList<Double>) chartData.get(0);
+				ArrayList<Double> listCBTRevenue= (ArrayList<Double>) chartData.get(1);
+				ArrayList<Double> listCBTAverage= (ArrayList<Double>) chartData.get(2);
+				// NumberFormat formatter = new DecimalFormat();
+				// formatter = new DecimalFormat("00.00");
+				if(listCBTCall != null && listCBTRevenue !=null && listCBTAverage !=null ){
+					
+					
+					 double[] call = new double[listCBTCall.size()+2]; 
+					 for(int i=0;i<listCBTCall.size();i++){
+						 call[i]= listCBTCall.get(i).doubleValue();
+						// System.out.println("listCBTCall["+i+"] ::" +call[i]);
+					 }
+					 call[4]= call[0]+call[2];
+					 call[5]= call[1]+call[3];
+					 chartListForm.setCBTCallVolume(call);
+					
+					 double[]  revenue = new double[listCBTRevenue.size()+2]; 
+					 for(int i=0;i<listCBTRevenue.size();i++){
+						 revenue[i]= listCBTRevenue.get(i).doubleValue();
+						// System.out.println("listCBTRevenue["+i+"] ::" +revenue[i]);
+					 }
+					 revenue[4]=( revenue[0]+revenue[2])/10000000;
+					 revenue[5]= (revenue[1]+revenue[3])/10000000;
+					 
+					 revenue[0]=FormatNumber.roundDouble((call[0]/call[4])*100,2);  
+					 revenue[1]=FormatNumber.roundDouble((call[1]/call[5])*100,2);  
+					 revenue[2]=FormatNumber.roundDouble((call[2]/call[4])*100,2);  
+					 revenue[3]=FormatNumber.roundDouble((call[3]/call[5])*100,2);  
+					 chartListForm.setCBTRevnueVolume(revenue);
+					 
+					 double[] average = new double[listCBTAverage.size()+2]; 
+					 for(int i=0;i<listCBTAverage.size();i++){
+						 average[i]=( listCBTAverage.get(i).doubleValue())/1000;
+						 //System.out.println("listCBTAverage["+i+"] ::" +average[i]);
+					 }
+					 average[4]= (average[0]+average[2])/2;
+					 average[5]= (average[1]+average[3])/2;
+					  
+					 chartListForm.setCBTAverageVolume(average);
+				}
+				/*
+			 
+ 			 	double[] callRevenueAvg = new double[6]; 
+			 	callRevenueAvg[0]=1271.0;
+			 	callRevenueAvg[1]=673.0;
+			 	callRevenueAvg[2]=1192.0;
+			 	callRevenueAvg[3]=748.0;
+			 	callRevenueAvg[4]=callRevenueAvg[0]+callRevenueAvg[2];
+			 	callRevenueAvg[5]=callRevenueAvg[1]+callRevenueAvg[3];
+			 	chartListForm.setCBTCallVolume(callRevenueAvg);
+			 	
+			 	//callRevenueAvg = new double[6];
+			 	callRevenueAvg[0]= Math.round((callRevenueAvg[0]/callRevenueAvg[4])*100);   //3435412.04;
+			 	callRevenueAvg[1]= Math.round((callRevenueAvg[1]/callRevenueAvg[5])*100);   //3435412.04;
+			 	callRevenueAvg[2]= Math.round((callRevenueAvg[2]/callRevenueAvg[4])*100);   //3435412.04;
+			 	callRevenueAvg[3]= Math.round((callRevenueAvg[3]/callRevenueAvg[5])*100);   //3435412.04;
+			 	callRevenueAvg[4]= 13731084.04/10000000;
+			 	callRevenueAvg[5]= 8274107.84/10000000;
+			 	chartListForm.setCBTRevnueVolume(callRevenueAvg);
+			 	
+			 	
+			 	callRevenueAvg = new double[6];
+			 	callRevenueAvg[0]=Math.round(2702.92056648/1000);
+			 	callRevenueAvg[1]=Math.round(2804.31497771/1000);
+			 	callRevenueAvg[2]=Math.round(8637.30872483/1000);
+			 	callRevenueAvg[3]=Math.round(8630.02891711/1000);
+			 	callRevenueAvg[4]=Math.round(callRevenueAvg[0]+callRevenueAvg[2]/2);
+			 	callRevenueAvg[5]=Math.round(callRevenueAvg[1]+callRevenueAvg[3]/2);
+			 	chartListForm.setCBTAverageVolume(callRevenueAvg);
+			 */
+				
+		 }catch(Exception ex){
+			 
+			 logger.error("Error : ", ex);
+		 }
+		 
+	 }
+
+	 @SuppressWarnings("unchecked")
+	public void setArAgingTab3Data(ChartListForm chartListForm){
+		 try{
+			 ArrayList arAgingChart1= chartDAO.getARagingByDateBucketAll(FormatDate.convertToDateYYYYMMDD(chartListForm.getToDate()));
+			 
+			 //System.out.println("arAgingChart1 size -- "+arAgingChart1.size());
+			 ArrayList<Double> totalCharges= (ArrayList<Double>) arAgingChart1.get(0);
+			 ArrayList<String> payCode= (ArrayList<String>) arAgingChart1.get(1);
+			 ArrayList<String> bucket= (ArrayList<String>) arAgingChart1.get(2);
+			 
+			 //String[] labels = new String[bucket.size()];
+			 double[] serise1CR= {0.0,0.0,0.0,0.0};  // Current Receivables CR
+			 double[] serise2TR= {0.0,0.0,0.0,0.0};	 //	Total Revenue TR
+			 
+			 double s=0.0;
+			 double p=0.0;
+			 double f=0.0;
+			 
+			 for(int i=0; i<bucket.size();i++){
+				 s=0.0;
+				 p=0.0;
+				 f=0.0;
+				 
+				 if(bucket.get(i).equals("00-30")){
+					 if(payCode.get(i).equals("S")){
+						 s= totalCharges.get(i);
+					 }else if(payCode.get(i).equals("P")){
+						 p=totalCharges.get(i);
+					 }else if(payCode.get(i).equals("F")){
+						 f=totalCharges.get(i);
+					 }
+					 serise1CR[0]= serise1CR[0]+s+f-p;
+					 serise2TR[0]= serise2TR[0]+s+f;
+					 
+				 }else if(bucket.get(i).equals("30-60")){
+					 if(payCode.get(i).equals("S")){
+						 s= totalCharges.get(i);
+					 }else if(payCode.get(i).equals("P")){
+						 p=totalCharges.get(i);
+					 }else if(payCode.get(i).equals("F")){
+						 f=totalCharges.get(i);
+					 }
+					 serise1CR[1]= serise1CR[1]+s+f-p;
+					 serise2TR[1]= serise2TR[1]+s+f;
+				 }else if(bucket.get(i).equals("60-90")) {
+					 if(payCode.get(i).equals("S")){
+						 s= totalCharges.get(i);
+					 }else if(payCode.get(i).equals("P")){
+						 p=totalCharges.get(i);
+					 }else if(payCode.get(i).equals("F")){
+						 f=totalCharges.get(i);
+					 }
+					 serise1CR[2]= serise1CR[2]+s+f-p;
+					 serise2TR[2]= serise2TR[2]+s+f;
+				 }else if(bucket.get(i).equals("90 ++")) {
+					 if(payCode.get(i).equals("S")){
+						 s= totalCharges.get(i);
+					 }else if(payCode.get(i).equals("P")){
+						 p=totalCharges.get(i);
+					 }else if(payCode.get(i).equals("F")){
+						 f=totalCharges.get(i);
+					 }
+					 serise1CR[3]= serise1CR[3]+s+f-p;
+					 serise2TR[3]= serise2TR[3]+s+f;
+				 }
+				 
+			 }
+			/* 
+			 for(int j=0;j<4;j++){
+				 System.out.println("Current Receivable  "+j+":: " + serise1CR[j]);
+				 System.out.println("Total Revenue  "+j+":: " + serise2TR[j]);
+			 }*/
+			 
+			 chartListForm.setArCurrentReceivables(serise1CR);
+			 chartListForm.setArTotalRevenue(serise2TR);
+			 
+			 ArrayList arAgingChart2= chartDAO.getARagingByDirector(FormatDate.convertToDateYYYYMMDD(chartListForm.getToDate()));
+			 
+			 ArrayList<String> directorName= (ArrayList<String>) arAgingChart2.get(0);
+			 ArrayList<Double> revenueTotalCharges= (ArrayList<Double>) arAgingChart2.get(1);
+			 ArrayList<Double> arTotalCharges= (ArrayList<Double>) arAgingChart2.get(2);
+			 
+			 
+			 
+			 if(directorName!=null && revenueTotalCharges !=null && arTotalCharges!=null){
+				 
+				 String[] director = new String[directorName.size()]; 
+				 for(int i=0;i<directorName.size();i++){
+					 if(directorName.get(i)== null ||directorName.get(i).equals("")  )
+					 {
+						 director[i]="No Name";
+					 }else{
+						 director[i]= directorName.get(i).toString();
+					 }
+					// System.out.println("director["+i+"] ::" +director[i]);
+				 }
+				 
+				 double[] ar = new double[arTotalCharges.size()]; 
+				 for(int i=0;i<arTotalCharges.size();i++){
+					 //payment[i]= revenueTotalCharges.get(i).doubleValue() - paymentTotalCharges.get(i).doubleValue();
+					 ar[i]= arTotalCharges.get(i).doubleValue();
+					// System.out.println("payment["+i+"] ::" +payment[i]);
+				 }
+				 
+				 double[] revenue = new double[revenueTotalCharges.size()]; 
+				 for(int i=0;i<arTotalCharges.size();i++){
+					 revenue[i]= revenueTotalCharges.get(i).doubleValue();
+					// System.out.println("revenue["+i+"] ::" +revenue[i]);
+				 }
+				 
+				 chartListForm.setDirectorName(director);
+				 chartListForm.setArDirectorPayment(ar);
+				 chartListForm.setArDirectorRevenue(revenue);
+				 
+			 }
+			 
+			 double[] receivable= chartDAO.getARagingByDatetDirectorRevColBal(FormatDate.convertToDateYYYYMMDD(chartListForm.getToDate()));
+			 chartListForm.setReceivable(receivable);
+			 
+		 }catch(Exception ex){
+			 
+			 logger.error("Error : ", ex);
+		 }
+	}
+	 
+	 @SuppressWarnings("unchecked")
+	public void setMarketingTab3Data(ChartListForm chartListForm, String data){
+		 
+		 try{
+			 ArrayList marketingData;
+			 
+			 if(data.equals("Age")){
+				 marketingData = chartDAO.getMarketingOneAgeAmountSpent(FormatDate.convertToDateYYYYMMDD(chartListForm.getFromDate()), FormatDate.convertToDateYYYYMMDD(chartListForm.getToDate()),chartListForm.getCurrentYear(),chartListForm.getLastYear());
+			 }else if(data.equals("Gender")){
+				 marketingData = chartDAO.getMarketingOneGender(FormatDate.convertToDateYYYYMMDD(chartListForm.getFromDate()), FormatDate.convertToDateYYYYMMDD(chartListForm.getToDate()),chartListForm.getCurrentYear(),chartListForm.getLastYear());
+			 }else{
+				 marketingData = chartDAO.getMarketingOneRace(FormatDate.convertToDateYYYYMMDD(chartListForm.getFromDate()), FormatDate.convertToDateYYYYMMDD(chartListForm.getToDate()),chartListForm.getCurrentYear(),chartListForm.getLastYear());
+			 }
+				 
+			 ArrayList<Double> currentYearCalls= (ArrayList<Double>)marketingData.get(0);
+			 ArrayList<Double> lastYearCalls= (ArrayList<Double>)marketingData.get(1);
+			 
+			 
+			 ArrayList<Double> currentYearAvg = (ArrayList<Double>)marketingData.get(2);
+			 ArrayList<Double> lastYearAvg = (ArrayList<Double>)marketingData.get(3);
+			 
+			 double[] callsC= new double[currentYearCalls.size()];
+			 for(int i=0;i<currentYearCalls.size();i++){
+				 callsC[i]=currentYearCalls.get(i);
+			 }
+			 double[] callsL= new double[lastYearCalls.size()];
+			 for(int i=0;i<lastYearCalls.size();i++){
+				 callsL[i]=lastYearCalls.get(i);
+			 }
+					 
+			 
+			 double[] avgC= new double[currentYearAvg.size()];
+			 for(int i=0;i<currentYearAvg.size();i++){
+				 avgC[i]=currentYearAvg.get(i);
+			 }
+			 
+			 double[] avgL= new double[lastYearAvg.size()];
+			 for(int i=0;i<lastYearAvg.size();i++){
+				 avgL[i]=lastYearAvg.get(i);
+			 }
+			 
+			 
+			 
+			 
+			 if(data.equals("Age")){
+				 chartListForm.setMcyAgeCall(callsC);
+				 chartListForm.setMlyAgeCall(callsL);
+				 chartListForm.setMcyAgeAvg(avgC);
+				 chartListForm.setMlyAgeAvg(avgL);
+			 }else if(data.equals("Gender")){
+				 chartListForm.setMcyGenCall(callsC);
+				 chartListForm.setMlyGenCall(callsL);
+				 chartListForm.setMcyGenAvg(avgC);
+				 chartListForm.setMlyGenAvg(avgL);
+				 
+			 }else{
+				 chartListForm.setMcyRaceCall(callsC);
+				 chartListForm.setMlyRaceCall(callsL);
+				 chartListForm.setMcyRaceAvg(avgC);
+				 chartListForm.setMlyRaceAvg(avgL);
+			 }
+			 
+		 }catch(Exception ex){
+			 logger.error("Error : setMarketingTab3Data :", ex);
+		 }
+		 
+	 }
+	
+	 @SuppressWarnings("unchecked")
+	public void setDirectorTab4Data(ChartListForm chartListForm){
+		 try{
+			 ArrayList directorData = chartDAO.getCallAverageRevenueByDirector(FormatDate.convertToDateYYYYMMDD(chartListForm.getFromDate()), FormatDate.convertToDateYYYYMMDD(chartListForm.getToDate()),chartListForm.getCurrentYear(),chartListForm.getLastYear());
+			 
+			 ArrayList<String> currentYearDirectorName= (ArrayList<String>)directorData.get(0);
+			 ArrayList<String> lastYearDirectorName= (ArrayList<String>)directorData.get(1);
+			 
+			 ArrayList<Double> currentYearCalls = (ArrayList<Double>)directorData.get(2);
+			 ArrayList<Double> lastYearCalls = (ArrayList<Double>)directorData.get(3);
+			 
+			 ArrayList<Double> currentYearAvg = (ArrayList<Double>)directorData.get(4);
+			 ArrayList<Double> lastYearAvg = (ArrayList<Double>)directorData.get(5);
+			 
+			 String[] directorName = new String[currentYearDirectorName.size()];
+			 for(int i=0;i<currentYearDirectorName.size();i++){
+				 directorName[i]=currentYearDirectorName.get(i);
+			 }
+			 chartListForm.setDirectorNameTab4(directorName);
+			 
+			 double[] calls= new double[currentYearCalls.size()];
+			 for(int i=0;i<currentYearCalls.size();i++){
+				 calls[i]=currentYearCalls.get(i);
+			 }
+			 chartListForm.setDirectorCurrentYearCalls(calls);
+			 
+			 calls= new double[lastYearCalls.size()];
+			 for(int i=0;i<lastYearCalls.size();i++){
+				 calls[i]=lastYearCalls.get(i);
+			 }
+			 chartListForm.setDirectorLastYearCalls(calls);
+			 
+			 double[] avgs= new double[currentYearAvg.size()];
+			 for(int i=0;i<currentYearAvg.size();i++){
+				 avgs[i]=currentYearAvg.get(i);
+			 }
+			 chartListForm.setDirectorCurrentYearAvg(avgs);
+			 
+			 avgs= new double[lastYearAvg.size()];
+			 for(int i=0;i<lastYearAvg.size();i++){
+				 avgs[i]=lastYearAvg.get(i);
+			 }
+			 chartListForm.setDirectorlastYearAvg(avgs);
+			 
+			 
+		 		 
+		 }catch(Exception ex){
+			 logger.error("Error : setDirectorTab4Data ", ex);
+		 }
+	 }
+	 
+	 public void setSalesAccountTab6(ChartListForm chartListForm,String salesType){
+		 try{
+			 ArrayList<Double> psrData;
+			 double[] data;
+			 
+				 if(salesType.equalsIgnoreCase("bur")){
+					 psrData= chartDAO.getSalesAccountType(FormatDate.convertToDateYYYYMMDD(chartListForm.getFromDate()), FormatDate.convertToDateYYYYMMDD(chartListForm.getToDate()), "'%bur%'");
+					
+				 }else if(salesType.equalsIgnoreCase("crem")){
+					 psrData= chartDAO.getSalesAccountType(FormatDate.convertToDateYYYYMMDD(chartListForm.getFromDate()), FormatDate.convertToDateYYYYMMDD(chartListForm.getToDate()), "'%crem%'");
+				 }else{
+					 psrData= chartDAO.getSalesAccountType(FormatDate.convertToDateYYYYMMDD(chartListForm.getFromDate()), FormatDate.convertToDateYYYYMMDD(chartListForm.getToDate()), "'% %'");
+				 }
+				 if(psrData!=null && psrData.size()>0){
+					 data = new double[psrData.size()-2];
+					 for(int i=0;i<psrData.size();i++){
+						 if(i==5){
+							 data[5]=psrData.get(7)-psrData.get(5);
+							 break;
+						 }else{
+							 data[i]=psrData.get(i);
+						 }
+					 }
+					 if(salesType.equalsIgnoreCase("bur")){
+						 chartListForm.setSalesBurial(data);
+					 }else if(salesType.equalsIgnoreCase("crem")){
+						 chartListForm.setSalesCrem(data);
+					 }else{
+						 chartListForm.setSalesTotal(data);
+					 }
+				 
+				 }
+				 
+			 
+			 
+		 }catch(Exception ex){
+			 logger.error("Error : setSalesAccountTab6 ", ex);
+		 }
+	 }
+}

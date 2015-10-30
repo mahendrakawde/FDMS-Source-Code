@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/fdms/to/financial
+END
+FinancialInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/fdms/to/financial/FinancialInfo.java
+END
+DepositInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/fdms/to/financial/DepositInfo.java
+END
+FinanceChargeOption.java
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/fdms/to/financial/FinanceChargeOption.java
+END
+Charge.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/fdms/to/financial/Charge.java
+END
+InventoryItem.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/fdms/to/financial/InventoryItem.java
+END

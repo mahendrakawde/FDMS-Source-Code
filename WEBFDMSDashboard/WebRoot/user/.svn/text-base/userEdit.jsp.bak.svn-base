@@ -1,0 +1,154 @@
+<%@ taglib uri="http://jakarta.apache.org/struts/tags-bean" prefix="bean"%>
+<%@ taglib uri="http://jakarta.apache.org/struts/tags-html" prefix="html"%>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic"%>
+<%@ taglib uri="/WEB-INF/tld/security.tld" prefix="security"%>
+
+		<security:token hasRole="Admin Menu: Edit">
+<h1>Edit User</h1>	
+
+<html:errors/> 
+<html:form action="/userSave" >
+			
+	<table>
+		<tr>
+			<td>Company: </td>
+			<td><html:text property="companyName" /> </td>
+		</tr>
+		<tr>
+			<td>User Name: </td>
+			<td><html:text property="userName" /> </td>
+		</tr>
+		<tr>
+			<td>First Name: </td>
+			<td><html:text property="firstName" /> </td>
+		</tr>
+		
+		<tr>
+			<td>Last Name: </td>
+			<td><html:text property="lastName" /> </td>
+		</tr>
+		<tr>
+			<td>Initials: </td>
+			<td><html:text property="initials" /> </td>
+		</tr>
+		<tr>
+			<td>Email: </td>
+			<td><html:text property="email" /> </td>
+		</tr>
+		
+		<tr>
+			<td>User Limits Override: </td>
+			<td>
+				<html:checkbox property="userLimitOverride" onclick="javascript:toggle('intVendorLimitDiv');" /> 
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<div id='intVendorLimitDiv' style="display: none;">
+					<table>
+						<tr>
+							<td>External Vendor Limit: </td>
+							<td><html:text property="externalVendorLimit" /></td>
+						</tr>
+						<tr>
+							<td>Internal Vendor Limit: </td>
+							<td><html:text property="internalVendorLimit" /></td>
+						</tr>
+					</table>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td>User Roles: </td>
+			<td>
+				<ul>
+					<logic:iterate id="userRole" property="assignedRoles" name="userEditForm">
+						<li>${userRole.name}</li>
+					</logic:iterate>
+				</ul>
+			</td>
+		</tr>
+	</table>
+	
+	
+	<fieldset>
+		<legend>Accounting</legend>
+		
+		<table>
+		<tr>
+			<td>Assigned Locations: </td>
+			<td>
+				<ul>
+					<logic:iterate id="loc" property="acctLocations" name="userEditForm">
+						<li><bean:write name="loc" property="name"/></li>
+					</logic:iterate>
+				</ul>
+			</td>
+		</tr>
+		<tr>
+			<td>Vacation: </td>
+			<td><html:checkbox property="vacationFlag" onclick="javascript:toggle('vacationUserDiv');" /> </td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<div id='vacationUserDiv' style="display: none;">
+					<table>
+						<tr>
+							<td>Vacation User: </td>
+							<td>
+								<html:select property="vacationUserID">
+					            	<logic:iterate id="acctUser" property="acctUsers" name="userEditForm">            		
+		        			    		<html:option value="${acctUser.userId}">${acctUser.name}</html:option>
+					            	</logic:iterate>
+	            			    </html:select>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</td>
+		</tr>
+		</table>
+	
+	</fieldset>
+	
+	
+	
+	<html:hidden property="userID" />
+	<html:hidden property="companyID" />
+	
+	<html:submit property="submitButton" value="Submit" />
+	<html:cancel property="submitButton" value="Cancel" />
+</html:form>
+		</security:token>
+
+<script type="text/javascript">
+<!--
+	function toggle(obj) {
+	  var el = document.getElementById(obj);
+	  el.style.display = (el.style.display != 'none' ? 'none' : '' );
+	}
+	
+	function loadPage () {
+		var userLimitOverride = document.forms[0].userLimitOverride;
+		var el = document.getElementById('intVendorLimitDiv');
+		
+		if ( userLimitOverride.checked == true ) {
+			el.style.display = '';
+		} else {
+			el.style.display = 'none';
+		}
+		
+		var vacationFlag = document.forms[0].vacationFlag;
+		el = document.getElementById('vacationUserDiv');
+		
+		if ( vacationFlag.checked == true ) {
+			el.style.display = '';
+		} else {
+			el.style.display = 'none';
+		}
+	}
+	
+	loadPage();
+	
+//-->
+</script>

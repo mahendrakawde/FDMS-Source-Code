@@ -1,0 +1,107 @@
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/src/com/aldorsolutions/dashboard/struts/form/acct
+END
+AcctLocationEmailForm.java
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/src/com/aldorsolutions/dashboard/struts/form/acct/AcctLocationEmailForm.java
+END
+AcctEditVendorsForm.java
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/src/com/aldorsolutions/dashboard/struts/form/acct/AcctEditVendorsForm.java
+END
+AcctCheckApprovalEditForm.java
+K 25
+svn:wc:ra_dav:version-url
+V 148
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/src/com/aldorsolutions/dashboard/struts/form/acct/AcctCheckApprovalEditForm.java
+END
+AcctLocationDisplayListForm.java
+K 25
+svn:wc:ra_dav:version-url
+V 150
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/src/com/aldorsolutions/dashboard/struts/form/acct/AcctLocationDisplayListForm.java
+END
+InvoiceEditDisplayForm.java
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/src/com/aldorsolutions/dashboard/struts/form/acct/InvoiceEditDisplayForm.java
+END
+InvoiceListForm.java
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/src/com/aldorsolutions/dashboard/struts/form/acct/InvoiceListForm.java
+END
+AcctListVendorsSearchForm.java
+K 25
+svn:wc:ra_dav:version-url
+V 148
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/src/com/aldorsolutions/dashboard/struts/form/acct/AcctListVendorsSearchForm.java
+END
+VendorForm.java
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/src/com/aldorsolutions/dashboard/struts/form/acct/VendorForm.java
+END
+InvoiceInvItemEditForm.java
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/svn_webfdms/!svn/ver/54/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/src/com/aldorsolutions/dashboard/struts/form/acct/InvoiceInvItemEditForm.java
+END
+LocaleLocationEditForm.java
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/src/com/aldorsolutions/dashboard/struts/form/acct/LocaleLocationEditForm.java
+END
+AcctLocationListForm.java
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/src/com/aldorsolutions/dashboard/struts/form/acct/AcctLocationListForm.java
+END
+VendorLocEditForm.java
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/src/com/aldorsolutions/dashboard/struts/form/acct/VendorLocEditForm.java
+END
+AcctCheckListingForm.java
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/src/com/aldorsolutions/dashboard/struts/form/acct/AcctCheckListingForm.java
+END
+AcctListVendorsForm.java
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/src/com/aldorsolutions/dashboard/struts/form/acct/AcctListVendorsForm.java
+END
+InvoiceConfirmPaymentForm.java
+K 25
+svn:wc:ra_dav:version-url
+V 148
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/src/com/aldorsolutions/dashboard/struts/form/acct/InvoiceConfirmPaymentForm.java
+END
+AcctLocationEditForm.java
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/src/com/aldorsolutions/dashboard/struts/form/acct/AcctLocationEditForm.java
+END
+VendorLocRemoveForm.java
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/src/com/aldorsolutions/dashboard/struts/form/acct/VendorLocRemoveForm.java
+END

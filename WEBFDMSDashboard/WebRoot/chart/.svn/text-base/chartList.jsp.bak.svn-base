@@ -1,0 +1,153 @@
+<%@ page language="java" pageEncoding="ISO-8859-1"%>
+
+<%@page import="com.softwarefx.chartfx.server.*"%>
+<%@page import="java.awt.Color"%>
+<%@page import="com.softwarefx.chartfx.server.adornments.*" %>
+
+<%@page import="java.util.Date"%>
+<%@page import="com.aldorsolutions.dashboard.struts.form.chart.ChartListForm"%>
+
+<%@ taglib uri="http://jakarta.apache.org/struts/tags-bean" prefix="bean"%>
+<%@ taglib uri="http://jakarta.apache.org/struts/tags-html" prefix="html"%>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic"%>
+<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles"%>
+<%@ taglib uri="/WEB-INF/tld/security.tld" prefix="security"%>
+<%@ taglib uri="http://www.webfdms.com/taglibs/fdms" prefix="fdms"%>
+<script language="JavaScript" type="text/javascript" src="jsScripts/CalendarPopup.js"></script>
+
+<h1>
+	Analytical Charts
+</h1>
+
+<html:form action="/chartList">
+	<table border="0" width="80%" cellpadding="0"
+		cellspacing="4">
+
+		<tr>
+			<td height="24" colspan="2" align="center">
+				<span class="verdana12b">Select the Dates From:&nbsp;</span>
+			<html:text size="10" name="chartListForm" property="fromDate" 
+					onchange="checkDisabled();" onfocus="focusDateEdit(this);" />
+				<fdms:FDMSDate fieldID="fromDate1"
+					javascriptFormField="document.forms['chartListForm'].fromDate"
+					image="/dashboard/images/calendar.gif"></fdms:FDMSDate>
+				<span class="verdana12b">To:&nbsp;</span>
+				<html:text size="10" name="chartListForm" property="toDate"
+					onchange="checkDisabled();" onfocus="focusDateEdit(this);"   />
+				<fdms:FDMSDate fieldID="toDate1"
+					javascriptFormField="document.forms['chartListForm'].toDate"
+					image="/dashboard/images/calendar.gif"></fdms:FDMSDate>
+			</td>
+			<!--
+			<td>
+				Sales type:
+			</td>
+			<td>
+				<html:select name="chartListForm" property="saleType">
+					<html:option value="none">Select Sales Type</html:option>
+					
+					<html:option value="Deluxe Package">Deluxe Package</html:option>
+					<html:option value="Atneed Burial">Atneed Burial</html:option>
+					<html:option value="Silver Package">Silver Package</html:option>
+				</html:select>
+			</td>-->
+			<td>
+				<html:submit value="Genrate Graph"></html:submit>
+			</td>
+		</tr>
+	</table>
+</html:form>
+<br />
+<hr />
+<table border="0" width="100%" cellpadding="5">
+
+<tr>
+<td align="center"> Call Volume Chart </td>
+<td align="center">Total Revenue Chart </td>
+<td align="center"> Average Revenue/Call  </td>
+</tr>
+	<tr>
+		<td>
+			<%
+				ChartListForm clf = (ChartListForm)request.getAttribute("chartListForm");
+				
+					ChartServer chart1 = new ChartServer(pageContext, request, response);
+					// Your code here...
+					int nSeries;
+					nSeries = 2;
+					int nPoints;
+					nPoints = 4;
+
+					chart1.setGallery(Gallery.BAR);
+					/*chart1.getData().setSeries(nSeries);
+					chart1.getData().setPoints(nPoints);
+					
+					chart1.getData().set(0, 0, ((double) 45));
+					chart1.getData().set(0, 1, ((double) 75));
+					chart1.getData().set(0, 2, ((double) 60));
+					chart1.getData().set(0, 3, ((double) 30));
+					chart1.getData().set(1, 0, ((double) 50));
+					chart1.getData().set(1, 1, ((double) 66));
+					chart1.getData().set(1, 2, ((double) 80));
+					chart1.getData().set(1, 3, ((double) 70));
+			*/
+			
+					chart1.setWidth(300);
+					chart1.setHeight(300);
+					Title tl = new Title();
+					tl.setText("Sales Type");
+					chart1.getAxisX().setTitle(tl);
+					
+					chart1.setDataSource(clf.getCallVolumeChart().getListDataProvider());
+					chart1.setBorder(new ImageBorder(ImageBorderType.EMBED,
+							java.awt.Color.GRAY)); 
+					chart1.renderControl();
+			%>
+		</td>
+		<td>
+			<%
+				ChartServer chart2 = new ChartServer(pageContext, request, response);
+				// Your code here...
+
+				nSeries = 1;
+				nPoints = 2;
+
+				chart2.setGallery(Gallery.BAR);
+				/*chart2.getData().setSeries(nSeries);
+				chart2.getData().setPoints(nPoints);
+				chart2.getData().set(0, 0, ((double) 45));
+				chart2.getData().set(0, 1, ((double) 75));*/
+				chart2.setWidth(300);
+				chart2.setHeight(300);
+				chart2.setDataSource(clf.getTotalRevenuChart().getListDataProvider());
+				chart2.setBorder(new ImageBorder(ImageBorderType.EMBED,	java.awt.Color.BLUE));
+				chart2.renderControl();
+
+				
+			%>
+		</td>
+		<td>
+			<%
+				ChartServer chart3 = new ChartServer(pageContext, request, response);
+				// Your code here...
+				
+				nSeries = 1;
+				nPoints = 2;
+
+				/*
+				chart3.getData().setSeries(nSeries);
+				chart3.getData().setPoints(nPoints);
+				chart3.getData().set(0, 0, ((double) 45));
+				chart3.getData().set(0, 1, ((double) 75));*/
+				chart3.setGallery(Gallery.BAR);
+				chart3.setDataSource(clf.getAverageRevenuChart().getListDataProvider());
+				chart3.setWidth(300);
+				chart3.setHeight(300);
+				chart3.setBorder(new ImageBorder(ImageBorderType.EMBED,
+						java.awt.Color.CYAN));
+				chart3.renderControl();
+			
+			%>
+		</td>
+	</tr>
+</table>

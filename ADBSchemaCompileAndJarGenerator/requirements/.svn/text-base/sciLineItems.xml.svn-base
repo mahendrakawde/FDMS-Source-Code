@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<this:getDataResponse xmlns:this="http://aldorsolutions.com/webservice/services/fddeservice" xmlns:this1="http://aldorsolutions.com/webservice/xsd/fdde/service" xmlns:this2="http://aldorsolutions.com/webservice/xsd/comm/fdde" xmlns:this3="http://aldorsolutions.com/webservice/xsd/comm" xmlns:this4="http://aldorsolutions.com/webservice/xsd/comm/fdde/sci" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://aldorsolutions.com/webservice/services/fddeservice ../build/FddeService.xsd ">
+  <this1:dataReturned>sciLineItem</this1:dataReturned>
+  <this1:results>
+  	<this1:sciContractLineItem>
+  		<this4:active>Y</this4:active>
+  		<this4:id>this4:id</this4:id>
+  		<this4:testRun>this4:testRun</this4:testRun>
+  		<this4:mch>this4:mch</this4:mch>
+  		<this4:caseName>this4:caseName</this4:caseName>
+  		<this4:locCd>0</this4:locCd>
+  		<this4:contractNo>this4:contractNo</this4:contractNo>
+  		<this4:lineItemCnt>0</this4:lineItemCnt>
+  		<this4:lineItem>
+  			<this4:seq>0</this4:seq>
+  			<this4:qty>0</this4:qty>
+  			<this4:itemCode>this4:itemCode</this4:itemCode>
+  			<this4:description>this4:description</this4:description>
+  			<this4:price>10.0</this4:price>
+  			<this4:cost>10.0</this4:cost>
+  			<this4:dscnt>2.0</this4:dscnt>
+  			<this4:dscntReason>dscntReason</this4:dscntReason>
+  			<this4:srvType>this4:srvType</this4:srvType>
+  		</this4:lineItem>
+  		<this4:lineItem>
+  			<this4:seq>0</this4:seq>
+  			<this4:qty>0</this4:qty>
+  			<this4:itemCode>this4:itemCode</this4:itemCode>
+  			<this4:description>this4:description</this4:description>
+  			<this4:price>10.0</this4:price>
+  			<this4:cost>10.0</this4:cost>
+  			<this4:dscnt>2.0</this4:dscnt>
+  			<this4:dscntReason>dscntReason</this4:dscntReason>
+  			<this4:srvType>this4:srvType</this4:srvType>
+  		</this4:lineItem>
+  	</this1:sciContractLineItem>
+  </this1:results>
+</this:getDataResponse>

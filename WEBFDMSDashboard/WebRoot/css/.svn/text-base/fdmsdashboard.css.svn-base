@@ -1,0 +1,374 @@
+html {
+	padding: 0px;
+	margin: 0px;
+}
+
+body {
+	padding: 0px;
+	margin: 0px;
+	background: #d8d8d8; /* #e5e5e5; */
+}
+
+a{
+text-decoration: none;
+}
+
+#tabnav p {
+	padding: 0px;
+	margin: 0px auto;
+}
+
+div#maintop {
+	padding: 0px;
+	margin: 0px 10px 0px 10px;
+	float: left;
+	width: 98%; /*it was 1000px*/
+	height: 17px;
+	background: #fff url(../images/maintopBg.jpg) repeat-x;
+}
+
+div#maintop img.left {
+	float: left;
+}
+
+div#maintop img.right {
+	float: right;
+	
+}
+
+div#mainbottom {
+	padding: 0px;
+	margin: 0px;
+	float: left;
+	height: 17px;
+	width: 100%; /*it was 1000px*/
+	background: #fff url(../images/mainbottomBg.jpg) repeat-x bottom;
+}
+
+div#mainbottom img.left {
+	float: left;
+	
+}
+
+div#mainbottom img.right {
+	float: right;
+	
+}
+
+div#main {
+	position: relative;
+	float: left;
+	padding: 0px;
+	width: 98%; /*it was 1000px*/
+	margin: 0px 0px 10px 10px;
+	background: #fff url(../images/mainBg.jpg) repeat-y;
+	font: normal 10px/10px Verdana;
+	color: #000;
+	z-index:-20;
+}
+
+div#main div#content {
+	/*padding: 0px 10px;*/ /*it was padding: 0px 10px;*/
+	margin: 1px 0px 10px 10px
+	float: left;
+	width: 100%; /*it was 980px*/
+	background: url(../images/contentrightBg.jpg) repeat-y right;
+	
+}
+
+div#content div#text {
+	padding: 0px 10px; /*it was 0px*/
+	margin: 0px;
+	width: 98%; /*it was 880px*/
+}
+
+
+div.invoiceList {
+	padding: 0px 0px 25px 0px;
+	margin: 0px;
+	width: 975px; /*it was 875*/
+	overflow: auto;
+	overflow-y: hidden;
+}
+
+
+div#user{
+	height: 1px;
+	
+}
+.userMenu
+{
+	color: #334455;
+    font-family: Arial,sans-serif;
+    font-size: 14px;
+    text-decoration: none;
+    font-weight: bolder;
+}
+
+/*
+div#menu
+{
+	color:#000;
+	top:0px;
+	width: 100%;
+
+}
+div#user
+{
+	
+	margin-left:20px;
+	margin-right:20px;
+	margin-top:10px;
+	vertical-align:middle;
+		
+}
+
+div#content
+{
+	width:100%;
+	margin-top:10px;
+	vertical-align:middle;
+
+}
+*/
+
+.pageTitle {
+    color: #3b5998; /*#0000FF;*/
+    font-family: Arial,Verdana,Helvetica,sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: bold;
+    line-height: 25px;
+    text-align: left;
+    text-decoration: none;
+    text-transform: none;
+    vertical-align: middle;
+}
+
+h1 {
+	color:#3b5998; /* #0000FF; */
+    font-family:Arial,Verdana,Helvetica,sans-serif;
+    font-size: medium;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: bold;
+    line-height: 10px;
+    text-align: left;
+    text-decoration: none;
+    text-transform: none;
+    vertical-align: middle;
+    border-bottom: 1px solid #010011;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    margin-top: 0px;
+    margin-left: 6px;
+}
+
+
+.tahoma12 {
+    color: #000000;
+    font: 14px Arial,Tahoma,sans-serif;
+    text-decoration: none;
+}
+
+.tahoma12bBlue {
+    color:#3b5998; /* #0033CC;*/ 
+    font: bold 12px Tahoma,Arial,sans-serif;
+    margin: 0;
+    padding: 2px;
+    text-decoration: none;
+    text-indent: 2pt;
+    vertical-align: middle;
+}
+
+.tahoma12bMaroon {
+    color: #990000;
+    font: bold 12px/24px Tahoma,Arial,sans-serif;
+    text-decoration: none;
+}
+
+.actionFieldset{
+	
+	width:200px;
+	text-align: right;
+}
+
+.verdana12 {
+    color: #000000;
+    font-family: Verdana,Arial,sans-serif;
+    font-size: 12px;
+    text-decoration: none;
+    font-weight: normal;
+}
+
+
+.verdana12b {
+	font: bold normal 12px Verdana, Arial, sans-serif;
+	color: #000000;
+	text-decoration: none;
+	
+}
+
+
+TABLE {
+    border-collapse: collapse;
+}
+
+TD {
+    border: medium none;
+    margin: 0px;
+    padding: 2px;
+}
+
+
+/*Check css */
+
+a#tabCheck {
+	float: left;
+	padding: 0px;
+	margin: 0px;
+	display: block;
+	height: 23px;
+	width: 138px;
+	background: url(../images/tabCheck.jpg) no-repeat;
+	text-decoration: none;
+}
+
+
+div#checkTop {
+	margin: 0px;
+	position: relative;
+	width: 510px;
+	text-align: right;
+	background-color: #DADADA;
+	padding: 5px;
+}
+
+div#checkBody {
+	margin: 0px;
+	position: relative;
+	width: 510px;
+	text-align: left;
+	background-color: #EEEEEE;
+	padding: 5px;
+}
+
+div#checkBottom {
+	position: relative;
+	width: 510px;
+	text-align: left;
+	font: monospace;
+	background-color: #DADADA;
+	padding: 5px;
+}
+
+td#checkAmount {
+	clear: both;
+	background-color: #FFFFFF;
+	text-align: right;
+}
+
+div#checkDate {
+	text-align: right;
+	float: right;
+	font-size: 1em;
+}
+
+div#checkAddr {
+	text-align: left;
+	float: left;
+	font-size: 1em;
+}
+
+div#check {
+	padding-top: 5em;
+	text-align: left;
+	float: none;
+}
+
+#underline {
+	border-bottom-color: black;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+}
+
+
+#normalRight {
+	text-align: right;
+}
+
+#smallFont {
+	font-size: .75em;
+}
+
+#smallFontBottom {
+	font-size: .75em;
+	vertical-align: bottom;
+}
+
+
+
+
+/* table css*/ 
+
+
+.trHead{ 
+	background:url(../images/newtabbg.png) repeat-x; 
+	height:34px;
+	font-family: Verdana,Arial,sans-serif;
+    font-size: 11px;
+    color: #334455;
+     font-weight: normal;
+     padding-right: 10px;
+}
+.trSep{ 
+	background:url(../images/newtabspe.png) no-repeat right; 
+	height:34px;
+}
+
+.tdTable{
+	 background-color: #FAFAFA;
+    font-family: Verdana,Arial,sans-serif;
+    font-size: 11px;
+    text-decoration: none;
+    font-weight: normal;
+    border-right: 1px solid #ffffff; 
+    text-align: center;
+    
+}
+
+.removeImage{
+		background:url(../images/delete.png) no-repeat; 
+		height: 15px;
+		width:  15px;
+		border: 0px;
+		cursor: pointer;
+		font-size: 0px;
+	
+}
+
+.editImage{
+		background:url(../images/edit.png) no-repeat; 
+		height: 15px;
+		width:  15px;
+		border: 0px;
+		cursor: pointer;
+		font-size: 0px;
+		float: left;
+		margin-left: 15px;
+	 	 text-align: center;
+		
+		
+}
+/* Display tag css 
+
+.nav{ height:37px; float:left; background:url(../images/navbg.png) repeat-x; margin:0px 0px 0px 0px;}
+
+.navlink:hover{ background:url(../images/arrow_down.png) right no-repeat; font-family:Arial, Helvetica, sans-serif; font-size:18px; color:#FFFFFF; text-decoration:none;}
+
+.navlink{ background:url(../images/aroow_up.png) right no-repeat; font-family:Arial, Helvetica, sans-serif; font-size:18px; color:#FFFFFF; text-decoration:none; padding:0px 30px 0px 10px; line-height:37px;}
+
+.navlink:hover{ background:url(../images/arrow_down.png) right no-repeat; font-family:Arial, Helvetica, sans-serif; font-size:18px; color:#FFFFFF; text-decoration:none;}
+
+*/

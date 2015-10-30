@@ -1,0 +1,104 @@
+<%@ page language="java" pageEncoding="ISO-8859-1"%>
+
+<%@page import="com.softwarefx.chartfx.server.*"%>
+<%@page import="java.awt.Color"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.softwarefx.chartfx.server.adornments.*" %>
+
+<%@page import="java.util.Date"%>
+<%@page import="com.aldorsolutions.dashboard.struts.form.chart.ChartListForm"%>
+<%@page import="com.softwarefx.chartfx.server.dataproviders.ListProvider" %>
+
+<%@ taglib uri="http://jakarta.apache.org/struts/tags-bean" prefix="bean"%>  
+<%@ taglib uri="http://jakarta.apache.org/struts/tags-html" prefix="html"%>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic"%>
+<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles"%>
+<%@ taglib uri="/WEB-INF/tld/security.tld" prefix="security"%>
+<%@ taglib uri="http://www.webfdms.com/taglibs/fdms" prefix="fdms"%>
+
+<link rel="stylesheet" type="text/css" href="css/jquery-ui.css">
+<script language="JavaScript" type="text/javascript" src="jsScripts/jquery.min.js"></script>
+<script language="JavaScript" type="text/javascript" src="jsScripts/jquery-ui.min.js"></script>
+
+
+	
+<html:form action="/chartList">
+	<!-- <table border="0" width="50%" cellpadding="0" cellspacing="4">
+		
+		<tr>
+		
+		<td>
+			<h1>Report Dashboard </h1>
+		</td>
+		<td> <span>Selected Dates from <bean:write name="chartListForm" property="fromDate" /> to <bean:write name="chartListForm" property="toDate" /> </span> </td>
+			<td height="24" colspan="2" align="center">
+				<span class="verdana12b">Select the Dates From:&nbsp;</span>
+			<html:text size="10" name="chartListForm" property="fromDate" 
+					onchange="checkDisabled();" onfocus="focusDateEdit(this);" />
+				<fdms:FDMSDate fieldID="fromDate1"
+					javascriptFormField="document.forms['chartListForm'].fromDate"
+					image="/dashboard/images/calendar.gif"></fdms:FDMSDate>
+				<span class="verdana12b">To:&nbsp;</span>
+				<html:text size="10" name="chartListForm" property="toDate"
+					onchange="checkDisabled();" onfocus="focusDateEdit(this);"   />
+				<fdms:FDMSDate fieldID="toDate1"
+					javascriptFormField="document.forms['chartL	istForm'].toDate"
+					image="/dashboard/images/calendar.gif"></fdms:FDMSDate>
+			</td>
+			
+			<td>
+				Sales type:
+			</td>
+			<td>
+				<html:select name="chartListForm" property="saleType">
+					<html:option value="none">Select Sales Type</html:option>
+					
+					<html:option value="Deluxe Package">Deluxe Package</html:option>
+					<html:option value="Atneed Burial">Atneed Burial</html:option>
+					<html:option value="Silver Package">Silver Package</html:option>
+				</html:select>
+			</td> 
+			<td>
+				<html:submit value="Genrate Graph"></html:submit>
+			</td>
+		</tr>
+	</table>  -->
+</html:form>
+<script>
+	$(function() {
+		$( "#tabs" ).tabs();
+	});
+</script>
+
+	<div id="tabs">
+		<ul>
+			<li><a href="#tabs-1">Burial & Cremation I</a></li>
+			<li><a href="#tabs-2">Burial & Cremation II </a></li>
+			<li><a href="#tabs-3">Marketing Report </a></li>
+			<li><a href="#tabs-4">Director Report</a> </li>
+			<li><a href="#tabs-5">Company Report</a> </li>
+			<li><a href="#tabs-6">Sales by Account</a> </li>
+		</ul>
+		<div id="tabs-1">
+			 <jsp:include page="callVolumeTab1.jsp" flush="false" />
+			 
+		</div>
+		<div id="tabs-2">
+			<%--<jsp:include page="chartBurialCremation.jsp" flush="false" />
+		--%>
+			 <jsp:include page="burialCremationTab2.jsp" flush="false" /> 
+		</div>
+		<div id="tabs-3">
+			<%-- <jsp:include page="arAgingTab3.jsp" flush="false" />--%>
+			 <jsp:include page="marketingTab3.jsp" flush="false" /> 
+			</div>
+		<div id="tabs-4">
+			 <jsp:include page="directorTab4.jsp" flush="false" />  
+		</div>
+		<div id="tabs-5">
+			 <jsp:include page="localeTab5.jsp" flush="false" />  
+		</div>
+		<div id="tabs-6">
+			 <jsp:include page="psr1Tab6.jsp" flush="false" />
+		</div>
+	</div>

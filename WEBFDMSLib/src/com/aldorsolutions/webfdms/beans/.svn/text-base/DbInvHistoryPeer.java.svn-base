@@ -1,0 +1,164 @@
+package com.aldorsolutions.webfdms.beans;
+
+/**
+ * DbInvHistoryPeer supplies SQL for Persistent Class
+ * Creation date: (12/30/2001 4:13:09 PM)
+ * @author: 
+ */
+public class DbInvHistoryPeer extends com.aldorsolutions.webfdms.database.DatabasePeer {
+
+	static public final String IDENTITY    	= "Identity";
+	static public final String ITEMNAME	 	= "ItemName";
+	static public final String SEQUENCENO	= "ItemSequenceNo";
+	static public final String SERIALNO     = "SerialNumber";
+	static public final String TRANTYPE		= "TransactionType";
+	static public final String TRANDATE		= "TransactionDate";
+	static public final String REFERENCENO	= "ReferenceNumber";
+	static public final String VITALSKEY	= "VitalsMasterKey";
+	static public final String LOCATION		= "Location";
+	static public final String QUANTITY		= "Quantity";
+	static public final String PRICE		= "SellingPrice";
+	static public final String COST			= "WholesaleCost";
+	static public final String SALESACCT	= "SalesAcct";
+	static public final String ASSETACCT	= "AssetAcct";
+	static public final String COSTACCT		= "CostAcct";
+	static public final String DESCRIPTION	= "Description";
+	static public final String USERINITIALS	= "UserInitials";
+	static public final String DATEMODIFIED	= "DateModified";
+	static public final String TIMEMODIFIED	= "TimeModified";
+	static public final String MASTERID		= "MasterID";
+	static public final String REASON = "Reason";
+/**
+ * getInsertSql method comment.
+ */
+protected java.sql.PreparedStatement getInsertSql(com.aldorsolutions.webfdms.database.DatabaseTransaction t, com.aldorsolutions.webfdms.database.Persistent p) throws com.aldorsolutions.webfdms.database.PersistenceException {
+		java.sql.Connection connection = null;
+		try {
+			DbInvHistory rec=(DbInvHistory)p;
+			connection = t.getConnection();
+			java.sql.PreparedStatement pstmt = connection.prepareStatement(
+			"INSERT INTO invhistory ("+
+				ITEMNAME	+","+
+				SEQUENCENO+","+
+				SERIALNO	+","+
+				TRANTYPE	+","+
+				TRANDATE	+","+
+				REFERENCENO	+","+
+				VITALSKEY	+","+
+				LOCATION	+","+
+				QUANTITY	+","+
+				PRICE	+","+
+				COST	+","+
+				SALESACCT	+","+
+				ASSETACCT	+","+
+				COSTACCT	+","+
+				DESCRIPTION	+","+
+				USERINITIALS	+","+
+				MASTERID	+", "+
+				REASON +" "+
+				") VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"
+			);		
+			pstmt.setString(1, rec.getCItemName());	
+			pstmt.setInt   (2, rec.getLSequenceNumber());
+			pstmt.setString(3, rec.getCSerialNumber());
+			pstmt.setString(4, rec.getCTranType());
+			pstmt.setString(5, rec.getCTransactionDate());
+			pstmt.setString(6, rec.getCReferenceNumber());
+			pstmt.setInt   (7, rec.getLVitalsNumber());
+			pstmt.setString(8, rec.getCLocation());
+			pstmt.setInt   (9, rec.getLQuantity());
+			pstmt.setInt   (10,rec.getLSellingPrice());
+			pstmt.setInt   (11,rec.getLPurchaseCost());
+			pstmt.setString(12,rec.getCGLsalesAcct());
+			pstmt.setString(13,rec.getCGLassetAcct());
+			pstmt.setString(14,rec.getCGLcostAcct());
+			pstmt.setString(15,rec.getCDescription());
+			pstmt.setString(16,rec.getCUserInit());
+			pstmt.setInt   (17,rec.getMasterId());
+			pstmt.setString(18, rec.getReason());
+			return pstmt;
+		}
+		catch (java.sql.SQLException e){
+			throw new com.aldorsolutions.webfdms.database.PersistenceException("DbInvHistoryPeer.Insert:"+e.getMessage(),e);
+		}
+}
+/**
+ * getRemoveSql method comment.
+ */
+protected java.sql.PreparedStatement getRemoveSql(com.aldorsolutions.webfdms.database.DatabaseTransaction t, com.aldorsolutions.webfdms.database.Persistent p) throws com.aldorsolutions.webfdms.database.PersistenceException {
+		java.sql.PreparedStatement pstmt=null;
+		java.sql.Connection connection = null;
+		try {
+			connection = t.getConnection();
+			pstmt = connection.prepareStatement("DELETE FROM invhistory WHERE Identity=?");
+			pstmt.setInt(1,p.getId());
+			return pstmt;
+		}
+		catch (java.sql.SQLException e){
+			throw new com.aldorsolutions.webfdms.database.PersistenceException("DbInvHistoryPeer.Remove",e);
+		}
+}
+/**
+ * getRestoreSql method comment.
+ */
+protected String getRestoreSql(com.aldorsolutions.webfdms.database.Persistent p) {
+		return 
+		"SELECT * FROM invhistory WHERE Identity = "
+		+ p.getId();
+}
+/**
+ * getUpdateSql method comment.
+ */
+protected java.sql.PreparedStatement getUpdateSql(com.aldorsolutions.webfdms.database.DatabaseTransaction t, com.aldorsolutions.webfdms.database.Persistent p) throws com.aldorsolutions.webfdms.database.PersistenceException {
+		java.sql.Connection connection = null;
+		try {
+			DbInvHistory rec=(DbInvHistory)p;
+			connection = t.getConnection();
+			java.sql.PreparedStatement pstmt = connection.prepareStatement(
+			"UPDATE invhistory SET "+
+				ITEMNAME	+"=?,"+
+				SEQUENCENO	+"=?,"+
+				SERIALNO	+"=?,"+
+				TRANTYPE	+"=?,"+
+				TRANDATE	+"=?,"+
+				REFERENCENO	+"=?,"+
+				VITALSKEY	+"=?,"+
+				LOCATION	+"=?,"+
+				QUANTITY	+"=?,"+
+				PRICE	+"=?,"+
+				COST	+"=?,"+
+				SALESACCT	+"=?,"+
+				ASSETACCT	+"=?,"+
+				COSTACCT	+"=?,"+
+				DESCRIPTION	+"=?,"+
+				USERINITIALS	+"=?,"+
+				MASTERID	+"=?, "+
+				REASON	+"=? "+
+				" WHERE "+IDENTITY+" = ?"
+			);		
+			pstmt.setString(1, rec.getCItemName());	
+			pstmt.setInt   (2, rec.getLSequenceNumber());
+			pstmt.setString(3, rec.getCSerialNumber());
+			pstmt.setString(4, rec.getCTranType());
+			pstmt.setString(5, rec.getCTransactionDate());
+			pstmt.setString(6, rec.getCReferenceNumber());
+			pstmt.setInt   (7, rec.getLVitalsNumber());
+			pstmt.setString(8, rec.getCLocation());
+			pstmt.setInt   (9, rec.getLQuantity());
+			pstmt.setInt   (10,rec.getLSellingPrice());
+			pstmt.setInt   (11,rec.getLPurchaseCost());
+			pstmt.setString(12,rec.getCGLsalesAcct());
+			pstmt.setString(13,rec.getCGLassetAcct());
+			pstmt.setString(14,rec.getCGLcostAcct());
+			pstmt.setString(15,rec.getCDescription());
+			pstmt.setString(16,rec.getCUserInit());
+			pstmt.setInt   (17,rec.getMasterId());
+			pstmt.setString(18,rec.getReason());
+			pstmt.setInt   (19,rec.getId());
+			return pstmt;
+		}
+		catch (java.sql.SQLException e){
+			throw new com.aldorsolutions.webfdms.database.PersistenceException("DbInvHistoryPeer.Update:"+e.getMessage(),e);
+		}
+}
+}

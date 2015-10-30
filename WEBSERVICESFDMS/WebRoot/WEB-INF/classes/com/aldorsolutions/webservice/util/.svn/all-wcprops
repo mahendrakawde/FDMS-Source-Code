@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBSERVICESFDMS/src/com/aldorsolutions/webservice/util
+END
+InvalidDataException.java
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBSERVICESFDMS/src/com/aldorsolutions/webservice/util/InvalidDataException.java
+END
+RequestConverter.java
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBSERVICESFDMS/src/com/aldorsolutions/webservice/util/RequestConverter.java
+END
+WebServiceValidator.java
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBSERVICESFDMS/src/com/aldorsolutions/webservice/util/WebServiceValidator.java
+END
+DBDataValidator.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBSERVICESFDMS/src/com/aldorsolutions/webservice/util/DBDataValidator.java
+END
+ResponseConverter.java
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBSERVICESFDMS/src/com/aldorsolutions/webservice/util/ResponseConverter.java
+END
+SoapFaultFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBSERVICESFDMS/src/com/aldorsolutions/webservice/util/SoapFaultFactory.java
+END
+FdmsConvertorUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBSERVICESFDMS/src/com/aldorsolutions/webservice/util/FdmsConvertorUtil.java
+END
+InvalidRequestException.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBSERVICESFDMS/src/com/aldorsolutions/webservice/util/InvalidRequestException.java
+END

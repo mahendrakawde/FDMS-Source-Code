@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This file was auto-generated from WSDL -->
+<!-- by the Apache Axis2 version: 1.4.1  Built on : Aug 13, 2008 (05:03:35 LKT) -->
+<serviceGroup name="AldorServices">
+    <service name="HelloAldorService">
+        <messageReceivers>
+            <messageReceiver mep="http://www.w3.org/ns/wsdl/in-out" class="com.aldorsolutions.webservice.services.helloaldorservice.HelloAldorServiceMessageReceiverInOut"/>
+        </messageReceivers>
+        <parameter name="ServiceClass">com.aldorsolutions.webservice.services.helloaldorservice.HelloAldorServiceSkeleton</parameter>
+        <parameter name="useOriginalwsdl">true</parameter>
+        <parameter name="modifyUserWSDLPortAddress">true</parameter>
+        <operation name="helloAldor" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://aldorsolutions.com/webservice/services/helloaldorservice">
+            <actionMapping>urn:helloAldor</actionMapping>
+            <outputActionMapping>urn:helloAldorResponse</outputActionMapping>
+        </operation>
+    </service>
+	<service name="FdmsService">
+        <messageReceivers>
+            <messageReceiver mep="http://www.w3.org/ns/wsdl/in-out" class="com.aldorsolutions.webservice.services.fdmsservice.FdmsServiceMessageReceiverInOut"/>
+        </messageReceivers>
+        <parameter name="ServiceClass">com.aldorsolutions.webservice.services.fdmsservice.FdmsServiceSkeleton</parameter>
+        <parameter name="useOriginalwsdl">true</parameter>
+        <parameter name="modifyUserWSDLPortAddress">true</parameter>
+        <operation name="getService" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://aldorsolutions.com/webservice/services/fdmsservice">
+            <actionMapping>urn:getService</actionMapping>
+            <outputActionMapping>urn:getServiceResponse</outputActionMapping>
+            <faultActionMapping faultName="fdmsFault">urn:fdmsFault</faultActionMapping>
+        </operation>
+        <operation name="getFdmsInfo" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://aldorsolutions.com/webservice/services/fdmsservice">
+            <actionMapping>urn:getFdmsInfo</actionMapping>
+            <outputActionMapping>urn:getFdmsInfoResponse</outputActionMapping>
+            <faultActionMapping faultName="fdmsFault">urn:fdmsFault</faultActionMapping>
+        </operation>
+    </service>
+	<service name="FddeService">
+        <messageReceivers>
+            <messageReceiver mep="http://www.w3.org/ns/wsdl/in-out" class="com.aldorsolutions.webservice.services.fddeservice.FddeServiceMessageReceiverInOut"/>
+        </messageReceivers>
+        <parameter name="ServiceClass">com.aldorsolutions.webservice.services.fddeservice.FddeServiceSkeleton</parameter>
+        <parameter name="useOriginalwsdl">true</parameter>
+        <parameter name="modifyUserWSDLPortAddress">true</parameter>
+        <operation name="getData" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://aldorsolutions.com/webservice/services/fddeservice">
+            <actionMapping>urn:getData</actionMapping>
+            <outputActionMapping>urn:getDataResponse</outputActionMapping>
+            <faultActionMapping faultName="fddeFault">urn:fddeFault</faultActionMapping>
+        </operation>
+    </service>
+</serviceGroup>

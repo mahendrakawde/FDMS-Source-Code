@@ -1,0 +1,543 @@
+package com.aldorsolutions.webfdms.checkwriter.dao;
+
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+import org.apache.log4j.Logger;
+
+import com.aldorsolutions.webfdms.beans.DbUserSession;
+import com.aldorsolutions.webfdms.checkwriter.model.ApVendorLocationDTO;
+import com.aldorsolutions.webfdms.util.DAO;
+
+
+/**
+ * 
+ * @author David Rollins
+ * Date: 02-16-09
+ * File: ApVendorLocationDAO.java	
+ *
+ */
+public class ApVendorLocationDAO extends DAO {
+    
+    /** Creates a new instance of ApVendorLocationDAO */
+    public ApVendorLocationDAO(DbUserSession user) {
+    	super(user);
+    }
+
+    /** Creates a new instance of ApVendorLocationDAO */
+    public ApVendorLocationDAO ( long companyID, long userId ) {
+    	super(companyID, userId);
+    }
+    
+    private Logger logger = Logger.getLogger(ApVendorLocationDAO.class.getName());
+    
+    public ApVendorLocationDTO getApVendorLocation(long vendorLocationID) {
+        ApVendorLocationDTO version = null;
+        
+        try {
+            StringBuffer sql = new StringBuffer();
+            sql.append("select vendorLocationID, vendorID, locationID, " +
+            		"localeID, defaultAcctID,companyID from apvendorlocations " +
+            		"where vendorLocationID = ? ");
+            
+            makeConnection(this.dbLookup);
+            statement = conn.prepareStatement(sql.toString());
+            statement.setLong(1, vendorLocationID);
+            
+            rs = statement.executeQuery();
+            
+            if (rs.next()) {
+            	int col = 1;
+                version = new ApVendorLocationDTO();
+                version.setVendorLocationID(rs.getLong(col++));
+                version.setVendorID(rs.getLong(col++));
+                version.setLocationID(rs.getLong(col++));
+                version.setLocaleID(rs.getLong(col++));
+                version.setDefaultAcctID(rs.getInt(col++));
+                version.setCompanyID(rs.getLong(col++));
+                
+                return(version);
+            }
+            
+        } catch (SQLException e) {
+            logger.error("SQLException in getApVendorLocation() : ", e);
+        } catch (Exception e) {
+            logger.error("Exception in getApVendorLocation() : ", e);
+        } finally {
+            closeConnection();
+        }
+        
+        return null;
+    }
+    
+    public ApVendorLocationDTO getApVendorLocationByVendorIDLocaleIDLocationID(long vendorID, long localeID, long locationID) {
+        ApVendorLocationDTO version = null;
+        
+        try {
+            StringBuffer sql = new StringBuffer();
+            sql.append("select vendorLocationID, vendorID, locationID, " +
+            		"localeID, defaultAcctID,companyID from apvendorlocations " +
+            		"where vendorID = ? and localeID = ? and locationID = ? ");
+            
+            makeConnection(this.dbLookup);
+            statement = conn.prepareStatement(sql.toString());
+            statement.setLong(1, vendorID);
+            statement.setLong(2, localeID);
+            statement.setLong(3, locationID);
+            
+            rs = statement.executeQuery();
+            
+            if (rs.next()) {
+            	int col = 1;
+                version = new ApVendorLocationDTO();
+                version.setVendorLocationID(rs.getLong(col++));
+                version.setVendorID(rs.getLong(col++));
+                version.setLocationID(rs.getLong(col++));
+                version.setLocaleID(rs.getLong(col++));
+                version.setDefaultAcctID(rs.getInt(col++));
+                version.setCompanyID(rs.getLong(col++));
+                
+                return(version);
+            }
+            
+        } catch (SQLException e) {
+            logger.error("SQLException in getApVendorLocation() : ", e);
+        } catch (Exception e) {
+            logger.error("Exception in getApVendorLocation() : ", e);
+        } finally {
+            closeConnection();
+        }
+        
+        return null;
+    }   
+    
+    public ArrayList <ApVendorLocationDTO> getApVendorLocationByVendorID(long vendorID) {
+        ArrayList <ApVendorLocationDTO> versions = new ArrayList <ApVendorLocationDTO> ();
+        ApVendorLocationDTO version = null;
+        
+        try {
+            StringBuffer sql = new StringBuffer();
+            sql.append("select vendorLocationID, vendorID, locationID, " +
+            		"localeID, defaultAcctID, companyID from apvendorlocations " +
+            		"where vendorID = ?");
+            
+            makeConnection(this.dbLookup);
+            statement = conn.prepareStatement(sql.toString());
+            statement.setLong(1, vendorID);
+            
+            rs = statement.executeQuery();
+            
+            while (rs.next()) {
+            	int col = 1;
+            	version = new ApVendorLocationDTO();
+                version.setVendorLocationID(rs.getLong(col++));
+                version.setVendorID(rs.getLong(col++));
+                version.setLocationID(rs.getLong(col++));
+                version.setLocaleID(rs.getLong(col++));
+                version.setDefaultAcctID(rs.getInt(col++));
+                version.setCompanyID(rs.getLong(col++));
+                
+                versions.add(version);
+            }
+            
+        } catch (SQLException e) {
+            logger.error("SQLException in getApVendorLocationByVendorID() : ", e);
+        } catch (Exception e) {
+            logger.error("Exception in getApVendorLocationByVendorID() : ", e);
+        } finally {
+            closeConnection();
+        }
+        
+        return versions;
+    }
+    
+    public ArrayList <ApVendorLocationDTO> getApVendorLocationByLocationID(long localeID, long locationID) {
+        ArrayList <ApVendorLocationDTO> versions = new ArrayList <ApVendorLocationDTO> ();
+        ApVendorLocationDTO version = null;
+        
+        try {
+            StringBuffer sql = new StringBuffer();
+            sql.append("select vendorLocationID, vendorID, locationID, " +
+            		"localeID, defaultAcctID, companyID from apvendorlocations " +
+            		"where localeID = ? and locationID = ? ");
+            
+            makeConnection(this.dbLookup);
+            statement = conn.prepareStatement(sql.toString());
+            statement.setLong(1, localeID);
+            statement.setLong(2, locationID);
+            
+            rs = statement.executeQuery();
+            
+            while (rs.next()) {
+            	int col = 1;
+            	version = new ApVendorLocationDTO();
+                version.setVendorLocationID(rs.getLong(col++));
+                version.setVendorID(rs.getLong(col++));
+                version.setLocationID(rs.getLong(col++));
+                version.setLocaleID(rs.getLong(col++));
+                version.setDefaultAcctID(rs.getInt(col++));
+                version.setCompanyID(rs.getLong(col++));
+                
+                versions.add(version);
+            }
+            
+        } catch (SQLException e) {
+            logger.error("SQLException in getApVendorLocationByVendorID() : ", e);
+        } catch (Exception e) {
+            logger.error("Exception in getApVendorLocationByVendorID() : ", e);
+        } finally {
+            closeConnection();
+        }
+        
+        return versions;
+    }
+    
+    public ArrayList <ApVendorLocationDTO> getApVendorLocationByLocationIDs(ArrayList <Long> locationIDs) {
+        ArrayList <ApVendorLocationDTO> versions = new ArrayList <ApVendorLocationDTO> ();
+        ApVendorLocationDTO version = null;
+        
+        try {
+        	
+           	String sLocationIDs = "";
+        	for ( Long locationID: locationIDs){
+        		sLocationIDs = sLocationIDs+locationID+", ";
+        	}
+        	sLocationIDs = sLocationIDs.substring(0, sLocationIDs.length()-2);       
+        	
+            StringBuffer sql = new StringBuffer();
+//            sql.append("select vendorLocationID, vendorID, locationID, " +
+//            		"localeID, defaultAcct, companyID from apvendorlocations " +
+//            		"where locationID in ("+sLocationIDs+") group by vendorID");
+            
+          sql.append("select apvendorlocations.vendorLocationID as vendorLocationID, apvendorlocations.vendorID as vendorID, apvendorlocations.locationID as locationID, " +
+            			"apvendorlocations.localeID as localeID, apvendorlocations.defaultAcctID as defaultAcctID, apvendorlocations.companyID as companyID " +
+        		  		"from apvendorlocations, apvendors " + 
+        		  		"where apvendorlocations.vendorID = apvendors.vendorID " + 
+        		  			"and apvendorlocations.locationID in ("+sLocationIDs+") " +
+        		  			"and (apvendors.DeleteCode is null OR apvendors.DeleteCode <> 'D')" +
+        		  		"order by apvendors.name");
+            
+            makeConnection(this.dbLookup);
+            statement = conn.prepareStatement(sql.toString());
+            //statement.setString(1, locationIDs);
+            
+            rs = statement.executeQuery();
+            
+            while (rs.next()) {
+            	int col = 1;
+            	version = new ApVendorLocationDTO();
+                version.setVendorLocationID(rs.getLong(col++));
+                version.setVendorID(rs.getLong(col++));
+                version.setLocationID(rs.getLong(col++));
+                version.setLocaleID(rs.getLong(col++));
+                version.setDefaultAcctID(rs.getInt(col++));
+                version.setCompanyID(rs.getLong(col++));
+                
+                versions.add(version);
+            }
+            
+        } catch (SQLException e) {
+            logger.error("SQLException in getApVendorLocationByVendorID() : ", e);
+        } catch (Exception e) {
+            logger.error("Exception in getApVendorLocationByVendorID() : ", e);
+        } finally {
+            closeConnection();
+        }
+        
+        return versions;
+    }  
+    
+    public ArrayList <String> getApVendorIDsByLocationIDs(String[] locationIDs) {
+        
+    	ArrayList <String> vendorIds = new ArrayList <String>();
+        
+        try {
+        	
+           	String sLocationIDs = "";
+        	for ( String locationID: locationIDs){
+        		sLocationIDs = sLocationIDs+locationID+", ";
+        	}
+        	sLocationIDs = sLocationIDs.substring(0, sLocationIDs.length()-2);       
+        	
+            StringBuffer sql = new StringBuffer();
+            
+          sql.append("select distinct(vendorID) from apvendorlocations " + 
+        		  		"where apvendorlocations.locationID in ("+sLocationIDs+") " );
+            
+            makeConnection(this.dbLookup);
+            statement = conn.prepareStatement(sql.toString());
+            //statement.setString(1, locationIDs);
+            
+            rs = statement.executeQuery();
+
+            while (rs.next()) {
+            	vendorIds.add(String.valueOf(rs.getInt(1)));
+            }
+            
+        } catch (SQLException e) {
+            logger.error("SQLException in getApVendorLocationByVendorID() : ", e);
+        } catch (Exception e) {
+            logger.error("Exception in getApVendorLocationByVendorID() : ", e);
+        } finally {
+            closeConnection();
+        }
+        
+        return vendorIds;
+    }  
+    
+    public ArrayList <ApVendorLocationDTO> getApVendorLocationByLocationIDs(String vendorStatus, ArrayList <Long> locationIDs, String noLocation) {
+    	// vendorstatus : A = active only, D = Delete only, B = both.
+        ArrayList <ApVendorLocationDTO> versions = new ArrayList <ApVendorLocationDTO> ();
+        ApVendorLocationDTO version = null;
+        
+        try {
+        	
+           	String sLocationIDs = "";
+        	for ( Long locationID: locationIDs){
+        		sLocationIDs = sLocationIDs+locationID+", ";
+        	}
+        	sLocationIDs = sLocationIDs.substring(0, sLocationIDs.length()-2);       
+        	
+            StringBuffer sql = new StringBuffer();
+            
+          boolean includeUnassignedLocation = false; 
+          if (noLocation.compareToIgnoreCase("Y") == 0) {
+        	  includeUnassignedLocation = true;
+          } 
+          
+          if (includeUnassignedLocation) {
+        	  sql.append("(");
+          }
+          
+          sql.append("select apvendorlocations.vendorLocationID as vendorLocationID, apvendorlocations.vendorID as vendorID, apvendorlocations.locationID as locationID, " +
+            			"apvendorlocations.localeID as localeID, apvendorlocations.defaultAcctID as defaultAcctID, apvendorlocations.companyID as companyID " +
+        		  		"from apvendorlocations, apvendors " + 
+        		  		"where apvendorlocations.vendorID = apvendors.vendorID " + 
+        		  			"and apvendorlocations.locationID in ("+sLocationIDs+") ");
+        		  			
+        		  			
+//        		  			"and (apvendors.DeleteCode is null OR apvendors.DeleteCode <> 'D')" +
+//        		  		"order by apvendors.name");
+//            
+          if ( vendorStatus.compareToIgnoreCase("A") == 0 ) {
+          	sql.append(" AND (DeleteCode is null OR DeleteCode <> 'D') order by Name");
+          }
+          else if (vendorStatus.compareToIgnoreCase("D") == 0) {
+          	sql.append(" AND (DeleteCode = 'D') order by Name");
+          }
+          else {
+        	  sql.append(" order by Name");
+          }
+          
+          //we are going to union with the vendor that has no location assigned.
+          if (includeUnassignedLocation) {
+	          sql.append(" ) union ( select 0 as vendorLocationID, vendorID, 0 as locationID, 0 as localeID, " + 
+	        		  		" 0 as defaultAcctID, 0 as companyID from apvendors where VendorID not in (select distinct VendorID from apvendorlocations))");
+          }
+          
+          
+            makeConnection(this.dbLookup);
+            statement = conn.prepareStatement(sql.toString());
+            //statement.setString(1, locationIDs);
+            
+            rs = statement.executeQuery();
+            
+            while (rs.next()) {
+            	int col = 1;
+            	version = new ApVendorLocationDTO();
+                version.setVendorLocationID(rs.getLong(col++));
+                version.setVendorID(rs.getLong(col++));
+                version.setLocationID(rs.getLong(col++));
+                version.setLocaleID(rs.getLong(col++));
+                version.setDefaultAcctID(rs.getInt(col++));
+                version.setCompanyID(rs.getLong(col++));
+                
+                versions.add(version);
+            }
+            
+        } catch (SQLException e) {
+            logger.error("SQLException in getApVendorLocationByVendorID() : ", e);
+        } catch (Exception e) {
+            logger.error("Exception in getApVendorLocationByVendorID() : ", e);
+        } finally {
+            closeConnection();
+        }
+        
+        return versions;
+    }         
+    
+    public String[] getApVendorLocationIds(long vendorID) {
+        
+        logger.debug("Entering getApVendorLocationIds()");
+        
+        String[] locationIds = null;
+        
+        try {
+            ArrayList <ApVendorLocationDTO> vendorLocs = getApVendorLocationByVendorID(vendorID);
+            if (vendorLocs.size() > 0) {
+                locationIds = new String[vendorLocs.size()];
+                
+                int i = 0;
+                
+                for (ApVendorLocationDTO vendorLoc : vendorLocs) {
+                	locationIds[i++] = String.valueOf( vendorLoc.getLocationID() );
+                }
+                
+            }
+        } catch (Exception e) {
+            logger.error("Exception in getApVendorLocationIds() : ", e);
+        }
+        
+        return locationIds;
+    }
+    
+
+    public String[] getApVendorLocaleIds(long vendorID) {
+        
+        logger.debug("Entering getApVendorLocaleIds()");
+        
+        String[] localeIds = null;
+        
+        try {
+            ArrayList <ApVendorLocationDTO> vendorLocs = getApVendorLocationByVendorID(vendorID);
+            if (vendorLocs.size() > 0) {
+            	localeIds = new String[vendorLocs.size()];
+                
+                int i = 0;
+                
+                for (ApVendorLocationDTO vendorLoc : vendorLocs) {
+                	localeIds[i++] = String.valueOf( vendorLoc.getLocaleID() );
+                }
+                
+            }
+        } catch (Exception e) {
+            logger.error("Exception in getApVendorLocaleIds() : ", e);
+        }
+        
+        return localeIds;
+    }
+    
+    public boolean addApVendorLocation(ApVendorLocationDTO apVendorLocation) {
+        boolean added = false;
+        
+        try {
+            StringBuffer sql = new StringBuffer();
+            sql.append("INSERT INTO apvendorlocations ( " +
+            		"vendorID, locationID, localeID, defaultAcctID, companyID ) ");
+            sql.append("VALUES (?,?,?,?,?)");
+            
+            int col = 0;
+            makeConnection(this.dbLookup);
+            statement = conn.prepareStatement(sql.toString());
+            
+            statement.setLong(++col, apVendorLocation.getVendorID());
+            statement.setLong(++col, apVendorLocation.getLocationID());
+            statement.setLong(++col, apVendorLocation.getLocaleID());
+            statement.setInt(++col, apVendorLocation.getDefaultAcctID());
+            statement.setLong(++col, apVendorLocation.getCompanyID());
+
+            statement.executeUpdate();
+            added = true;
+            
+            if (added) {
+            	rs = statement.getGeneratedKeys();
+                if (rs.next()) {
+                	apVendorLocation.setVendorLocationID(rs.getLong(1));
+                }
+                
+                auditDTO.setCompanyId((int) this.companyID);
+                auditDTO.setLocaleId((int) apVendorLocation.getLocaleID());
+                auditDTO.setUserId((int) this.userID);
+                
+                insertAudit(apVendorLocation);
+            }
+            
+        } catch (SQLException e) {
+            logger.error("SQLException in addApVendorLocation() : ", e);
+        } catch (Exception e) {
+            logger.error("Exception in addApVendorLocation() : ", e);
+        } finally {
+            closeConnection();
+        }
+        
+        return added;
+    }
+    
+    /**
+     * 
+     * @param apVendor
+     * @return
+     */
+    public boolean updateApVendorLocation(ApVendorLocationDTO apVendorLocation) {
+        boolean added = false;
+        
+        try {
+        	ApVendorLocationDTO oldVer = getApVendorLocation(apVendorLocation.getVendorLocationID());
+        	
+            StringBuffer sql = new StringBuffer();
+            sql.append("UPDATE apvendorlocations set vendorID = ?, locationID = ?, " +
+            		"localeID = ?, defaultAcctID = ?, companyID = ? WHERE vendorLocationID = ? ");
+            
+            int col = 0;
+            makeConnection(this.dbLookup);
+            statement = conn.prepareStatement(sql.toString());
+            
+            statement.setLong(++col, apVendorLocation.getVendorID());
+            statement.setLong(++col, apVendorLocation.getLocationID());
+            statement.setLong(++col, apVendorLocation.getLocaleID());
+            statement.setInt(++col, apVendorLocation.getDefaultAcctID());
+            statement.setLong(++col, apVendorLocation.getCompanyID());
+            statement.setLong(++col, apVendorLocation.getVendorLocationID());            
+            
+            statement.executeUpdate();
+            added = true;
+            
+            auditDTO.setCompanyId((int) this.companyID);
+            auditDTO.setLocaleId((int) apVendorLocation.getLocaleID());
+            auditDTO.setUserId((int) this.userID);
+            
+            updateAudit(oldVer, apVendorLocation);
+            
+        } catch (SQLException e) {
+            logger.error("SQLException in updateApVendorLocation() : ", e);
+        } catch (Exception e) {
+            logger.error("Exception in updateApVendorLocation() : ", e);
+        } finally {
+            closeConnection();
+        }
+        
+        return added;
+    }
+    
+    /**
+     * @param versionId
+     */
+    public void deleteApVendorLocation(long vendorLocationID) {
+        
+        try {
+        	ApVendorLocationDTO oldVer = getApVendorLocation(vendorLocationID);
+        	
+            String sql = "delete from apvendorlocations WHERE (vendorLocationID = ?)";
+            makeConnection(this.dbLookup);
+            statement = conn.prepareStatement(sql);
+            statement.setLong(1, vendorLocationID);
+            statement.executeUpdate();     
+            
+            auditDTO.setCompanyId((int) companyID);
+            auditDTO.setUserId((int) userID);
+            auditDTO.setLocaleId((int) oldVer.getLocaleID());            
+            
+            deleteAudit(oldVer, null);
+            
+        } catch (SQLException e) {
+            logger.error("SQLException in deleteApVendorLocation() : ", e);
+        } catch (Exception e) {
+            logger.error("Exception in deleteApVendorLocation() : ", e);
+        } finally {
+            closeConnection();
+        }
+        
+    }
+    
+    
+}

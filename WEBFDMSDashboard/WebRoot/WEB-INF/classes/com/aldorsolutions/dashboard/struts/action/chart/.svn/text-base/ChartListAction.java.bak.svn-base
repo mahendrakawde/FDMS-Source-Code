@@ -1,0 +1,88 @@
+package com.aldorsolutions.dashboard.struts.action.chart;
+
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.apache.log4j.Logger;
+import org.apache.struts.action.Action;
+import org.apache.struts.action.ActionForm;
+import org.apache.struts.action.ActionForward;
+import org.apache.struts.action.ActionMapping;
+
+import com.aldorsolutions.dashboard.struts.form.chart.ChartListForm;
+import com.aldorsolutions.webfdms.beans.DbUserSession;
+import com.aldorsolutions.webfdms.util.SessionValueKeys;
+import com.softwarefx.chartfx.server.dataproviders.ListProvider;
+
+public class ChartListAction extends Action {
+	
+	
+	Logger logger = Logger.getLogger(ChartListAction.class);
+	
+	/** 
+	 * Method execute
+	 * @param mapping
+	 * @param form
+	 * @param request
+	 * @param response
+	 * @return ActionForward
+	 */
+	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
+			HttpServletResponse response) {
+		
+		HttpSession session =  request.getSession();
+        DbUserSession user = (DbUserSession) session.getAttribute(SessionValueKeys.DB_USER);
+        System.out.println("User ::: "+ user.getDataUrl());
+		ChartListForm chartListForm = (ChartListForm)form;
+		List <ArrayList> chartData ;  
+		//ChartFXDAO chartDAO= new ChartFXDAO(user);
+		if(chartListForm.getFromDate()==null && chartListForm.getToDate() == null){
+				chartListForm.setFromDate("01/01/2011");
+				chartListForm.setToDate("08/29/2011");
+				//chartData= chartDAO.getCallVolumeChart(chartListForm.getFromDate(), chartListForm.getToDate());
+				int[] totalCases = {3, 2,4};
+				int[] totalCharges = {14106,24534,12093};
+				int[] averageCaseAmount = {7053,12267,11345};
+		        String[] labels = {"Atneed Burial", "Deluxe Package","Silver Package"};
+		        ListProvider lstProvider1 = new ListProvider();
+		        //lstProvider.add(chartData);
+		        lstProvider1.add(totalCases);
+		        lstProvider1.add(labels);
+		        chartListForm.getCallVolumeChart().setListDataProvider(lstProvider1);
+		        chartListForm.getCallVolumeChart().setSetChartHeight(300);
+		        chartListForm.getCallVolumeChart().setSetChartWidth(300);
+		        
+		        
+		        ListProvider lstProvider2 = new ListProvider();
+		        //lstProvider.add(chartData);
+		        lstProvider2.add(totalCharges);
+		        lstProvider2.add(labels);
+		        chartListForm.getTotalRevenuChart().setListDataProvider(lstProvider2);
+		        chartListForm.getTotalRevenuChart().setSetChartHeight(300);
+		        chartListForm.getTotalRevenuChart().setSetChartWidth(300);
+		        
+		        
+		        
+		        ListProvider lstProvider3 = new ListProvider();
+		        //lstProvider.add(chartData);
+		        lstProvider3.add(averageCaseAmount);
+		        lstProvider3.add(labels);
+		        chartListForm.getAverageRevenuChart().setListDataProvider(lstProvider3);
+		        chartListForm.getAverageRevenuChart().setSetChartHeight(300);
+		        chartListForm.getAverageRevenuChart().setSetChartWidth(300);
+		        
+		}else{
+			System.out.println("Start Date ::: "+ chartListForm.getFromDate());
+			System.out.println("To Date ::: "+ chartListForm.getToDate());
+			System.out.println("Sales Type ::: "+ chartListForm.getSaleType());
+		}
+		
+		return (mapping.findForward("success"));
+	}
+			
+}

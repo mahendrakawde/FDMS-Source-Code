@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/reporting/dao
+END
+FormAvailableFilterTypeDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/reporting/dao/FormAvailableFilterTypeDAO.java
+END
+ReportSchedulingDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/reporting/dao/ReportSchedulingDAO.java
+END
+SMSStoreProcDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/reporting/dao/SMSStoreProcDAO.java
+END
+CreditcardDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/reporting/dao/CreditcardDAO.java
+END
+ERegisterBookDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/reporting/dao/ERegisterBookDAO.java
+END
+ReportSchedulingrealtimeDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/reporting/dao/ReportSchedulingrealtimeDAO.java
+END
+SMSSchedulingDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/reporting/dao/SMSSchedulingDAO.java
+END
+FormAvailableFilterDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/reporting/dao/FormAvailableFilterDAO.java
+END

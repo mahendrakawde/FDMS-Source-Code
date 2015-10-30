@@ -1,0 +1,173 @@
+package com.aldorsolutions.webfdms.beans;
+
+import java.sql.Date;
+import java.sql.PreparedStatement;
+
+import com.aldorsolutions.webfdms.database.DatabasePeer;
+import com.aldorsolutions.webfdms.database.DatabaseTransaction;
+import com.aldorsolutions.webfdms.database.PersistenceException;
+import com.aldorsolutions.webfdms.database.Persistent;
+
+public class DbBankAccountPeer extends DatabasePeer {
+
+	static public final String IDENTITY = "BankAccountID";
+	static public final String LOCALEID = "LocaleID";
+	static public final String LOCATIONID = "LocationID";
+	static public final String BANKNAME = "BankName";
+	static public final String ACCOUNTNAME = "AccountName";
+	static public final String ROUTINGNUMBER = "RoutingNumber";
+	static public final String ACCOUNTNUMBER = "AccountNumber";
+	static public final String STREET = "Street";
+	static public final String CITY = "City";
+	static public final String STATE = "State";
+	static public final String ZIP = "Zip";
+	static public final String PHONE = "PhoneNumber";
+	static public final String OTHERPHONE = "OtherPhone";
+	static public final String STARTDATE = "StartDate";
+	static public final String STATUS = "Status";
+	static public final String BALANCE = "Balance";
+	static public final String ACCOUNTINGCODE = "AccountingCode";
+	static public final String INITIALBALANCE = "InitialBalance";
+	
+	
+	@Override
+	protected PreparedStatement getInsertSql(DatabaseTransaction t, Persistent p)
+			throws PersistenceException {
+		java.sql.Connection connection = null;
+		java.sql.PreparedStatement pstmt = null;
+		try {
+			DbBankAccount rec=(DbBankAccount)p;
+			connection = t.getConnection();
+			pstmt = connection.prepareStatement(
+				"INSERT INTO bankaccount ("+
+				LOCALEID +","+
+				LOCATIONID +","+
+				BANKNAME +","+
+				ACCOUNTNAME +","+
+				ROUTINGNUMBER +","+
+				ACCOUNTNUMBER +","+
+				STREET +","+
+				CITY	 +","+
+				STATE	 +","+
+				ZIP +","+
+				PHONE +","+
+				OTHERPHONE +","+
+				STARTDATE +","+
+				STATUS +","+
+				BALANCE +","+
+				ACCOUNTINGCODE	+", "+
+				INITIALBALANCE +" "+
+				") VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"
+				);		
+			pstmt.setInt	(1, rec.getLocaleId());	
+			pstmt.setInt	(2, rec.getLocationId());	
+			pstmt.setString	(3, rec.getBankName());
+			pstmt.setString (4, rec.getAccountName());
+			pstmt.setString (5, rec.getRoutingNumber());
+			pstmt.setString	(6, rec.getAccountNumber());
+			pstmt.setString	(7, rec.getStreet());
+			pstmt.setString (8, rec.getCity());
+			pstmt.setString (9, rec.getState());
+			pstmt.setString	(10, rec.getZip());
+			pstmt.setString	(11, rec.getPhone());
+			pstmt.setString (12, rec.getOtherPhone());
+			if (rec.getStartDate()!=null){
+				pstmt.setDate(13, new java.sql.Date(rec.getStartDate().getTime()));
+			}
+			else { 
+				pstmt.setDate(13, null);
+			}
+			pstmt.setInt	(14, rec.getBalance());
+			pstmt.setString	(15, rec.getStatus());
+			pstmt.setString	(16, rec.getAccountingCode());
+			pstmt.setInt	(17, rec.getInitialBalance());
+			return pstmt;
+		}
+		catch (java.sql.SQLException e){
+			throw new PersistenceException("DbApAccountPeer.Insert:"+e.getMessage(),e);
+		}
+	}
+
+	@Override
+	protected PreparedStatement getRemoveSql(DatabaseTransaction t, Persistent p)
+			throws PersistenceException {
+		java.sql.PreparedStatement pstmt=null;
+		java.sql.Connection connection = null;
+		try {
+			connection = t.getConnection();
+			pstmt = connection.prepareStatement("DELETE FROM  bankaccount WHERE BankAccountID=?");
+			pstmt.setInt(1,p.getId());
+			return pstmt;
+		}
+		catch (java.sql.SQLException e){
+			throw new PersistenceException("DbBankAccountPeer.Remove",e);
+		}
+	}
+
+	@Override
+	protected String getRestoreSql(Persistent p) {
+		return 
+		"SELECT * from bankaccount WHERE BankAccountID = "
+		+ p.getId();
+	}
+
+	@Override
+	protected PreparedStatement getUpdateSql(DatabaseTransaction t, Persistent p)
+			throws PersistenceException {
+		java.sql.Connection connection = null;
+		java.sql.PreparedStatement pstmt = null;
+		try {
+			DbBankAccount rec=(DbBankAccount)p;
+			connection = t.getConnection();
+			pstmt = connection.prepareStatement(
+					"UPDATE bankaccount SET "+
+					LOCALEID +"=?,"+
+					LOCATIONID +"=?,"+
+					BANKNAME +"=?,"+
+					ACCOUNTNAME +"=?,"+
+					ROUTINGNUMBER +"=?,"+
+					ACCOUNTNUMBER +"=?,"+
+					STREET +"=?,"+
+					CITY	 +"=?,"+
+					STATE	 +"=?,"+
+					ZIP  +"=?,"+
+					PHONE  +"=?,"+
+					OTHERPHONE  +"=?,"+
+					STARTDATE  +"=?,"+
+					STATUS      +"=?,"+
+					BALANCE	 +"=?,"+
+					ACCOUNTINGCODE +"=?, "+
+					INITIALBALANCE +"=? "+
+					" WHERE "+IDENTITY+" = ?"
+				);		
+			pstmt.setInt	(1, rec.getLocaleId());	
+			pstmt.setInt	(2, rec.getLocationId());	
+			pstmt.setString	(3, rec.getBankName());
+			pstmt.setString (4, rec.getAccountName());
+			pstmt.setString (5, rec.getRoutingNumber());
+			pstmt.setString	(6, rec.getAccountNumber());
+			pstmt.setString	(7, rec.getStreet());
+			pstmt.setString (8, rec.getCity());
+			pstmt.setString (9, rec.getState());
+			pstmt.setString	(10, rec.getZip());
+			pstmt.setString	(11, rec.getPhone());
+			pstmt.setString (12, rec.getOtherPhone());
+			if (rec.getStartDate()!=null){
+				pstmt.setDate(13, new java.sql.Date(rec.getStartDate().getTime()));
+			}
+			else { 
+				pstmt.setDate(13, null);
+			}
+			pstmt.setString	(14, rec.getStatus());
+			pstmt.setInt	(15, rec.getBalance());
+			pstmt.setString	(16, rec.getAccountingCode());
+			pstmt.setInt	(17, rec.getInitialBalance());
+			pstmt.setInt   	(18, rec.getId());
+			return pstmt;
+		}
+		catch (java.sql.SQLException e){
+			throw new PersistenceException("DbApAccountPeer.Insert:"+e.getMessage(),e);
+		}
+	}
+
+}

@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorassist/webfdms/delegate
+END
+LocationOptionsManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn_webfdms/!svn/ver/52/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorassist/webfdms/delegate/LocationOptionsManager.java
+END
+LocationManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorassist/webfdms/delegate/LocationManager.java
+END
+InvoiceManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorassist/webfdms/delegate/InvoiceManager.java
+END
+CompanyOptionsManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorassist/webfdms/delegate/CompanyOptionsManager.java
+END

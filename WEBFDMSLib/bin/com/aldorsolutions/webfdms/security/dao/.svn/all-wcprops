@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/security/dao
+END
+SecurityConfigDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/security/dao/SecurityConfigDAO.java
+END
+SecurityConfigDAOCon.java
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/security/dao/SecurityConfigDAOCon.java
+END
+PasswordLogDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/security/dao/PasswordLogDAO.java
+END

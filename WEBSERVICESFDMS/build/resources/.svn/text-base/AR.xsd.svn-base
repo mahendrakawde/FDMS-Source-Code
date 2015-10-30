@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	targetNamespace="http://aldorsolutions.com/webservice/xsd/comm/fdde/ar" 
+	xmlns:this="http://aldorsolutions.com/webservice/xsd/comm/fdde/ar" 
+	xmlns:fddecomm="http://aldorsolutions.com/webservice/xsd/comm/fdde" 
+	xmlns:comm="http://aldorsolutions.com/webservice/xsd/comm" 
+	elementFormDefault="qualified">
+	
+	<xs:import namespace="http://aldorsolutions.com/webservice/xsd/comm/fdde" schemaLocation="FddeCommon.xsd"/>
+	<xs:import namespace="http://aldorsolutions.com/webservice/xsd/comm" schemaLocation="Common.xsd"/>
+	
+
+	<xs:complexType name="accountsRecievableType">
+				<xs:sequence>
+					<xs:element name="contractNumber" type="xs:string"	minOccurs="0"/>
+					<xs:element name="locationNumber"	type="comm:StrMax10Len" minOccurs="0"/>
+					<xs:element name="salesType" type="comm:StrMax50Len" minOccurs="0"/>
+					<xs:element name="salesTypeDescription" type="comm:StrMax50Len" minOccurs="0"/>
+					<xs:element name="salesNeedType" type="xs:string" minOccurs="0"/>
+					<xs:element name="creditRating" type="xs:string" minOccurs="0"/>
+					<xs:element name="lastPaymentDate" type="xs:date" minOccurs="0"/>
+					<xs:element name="paymentTerms" type="xs:string" minOccurs="0"/>
+					<xs:element name="numberofPayments" type="xs:int" minOccurs="0"/>
+					<xs:element name="purchaser" type="this:purchaserType" minOccurs="0"/>
+					<xs:element name="paymentAmount" type="fddecomm:DeAmountType" minOccurs="0"/>
+					<xs:element name="lastPaymentAmount" type="fddecomm:DeAmountType" minOccurs="0"/>
+					<xs:element name="nextPaymentDate" type="xs:date" minOccurs="0"/>
+					<xs:element name="totalContractSaleAmount" type="fddecomm:DeAmountType" minOccurs="0"/>
+					<xs:element name="balanceDue" type="fddecomm:DeAmountType" minOccurs="0"/>
+					<xs:element name="downPayment" type="fddecomm:DeAmountType" minOccurs="0"/>
+					<xs:element name="paidInAmount" type="fddecomm:DeAmountType" minOccurs="0"/>
+					<xs:element name="salesDate" type="xs:date" minOccurs="0"/>
+					<xs:element name="deathDate" type="xs:date" minOccurs="0"/>
+					<xs:element name="locationState" type="xs:string" minOccurs="0"/>
+				</xs:sequence>			
+	</xs:complexType>
+
+	<xs:complexType name="purchaserType">
+		<xs:sequence>
+			<xs:element name="name" type="fddecomm:DeNameType" minOccurs="0"/>
+			
+			<xs:element name="phone" type="comm:StrMax20Len" minOccurs="0"/>
+			<xs:element name="ssnumber" type="comm:StrMax14Len" minOccurs="0"/>
+			<xs:element name="areaCode" type="comm:StrMax40Len" minOccurs="0"/>
+			<xs:element name="address" type="this:arAddressType" minOccurs="0"/>
+			<xs:element name="countryCode" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="purchaserId" type="xs:string"/>
+	</xs:complexType>
+
+	<xs:complexType name="arAddressType">
+		<xs:complexContent>
+			<xs:extension base="fddecomm:AddressType" />				
+		</xs:complexContent>
+	</xs:complexType>
+		
+	
+</xs:schema>

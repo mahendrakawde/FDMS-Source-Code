@@ -1,0 +1,206 @@
+package com.aldorassist.webfdms.dao;
+
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+import org.apache.log4j.Logger;
+
+import com.aldorassist.webfdms.model.InvoiceRecurringHistDTO;
+import com.aldorsolutions.webfdms.beans.DbUserSession;
+import com.aldorsolutions.webfdms.util.DAO;
+
+/**
+ * 
+ * @author David Rollins
+ * Sep 6, 2007
+ * InvoiceRecurringHistDAO.java
+ *
+ */
+public class InvoiceRecurringHistDAO extends DAO {
+    
+    private Logger logger = Logger.getLogger(InvoiceRecurringHistDAO.class.getName());
+
+    public InvoiceRecurringHistDAO(DbUserSession user) {
+    	super (user);
+    }
+    
+    public InvoiceRecurringHistDAO(long companyID, long userID) {
+    	super (companyID, userID);
+    }
+    
+    public InvoiceRecurringHistDTO getInvoiceRecurringHist ( long invoiceRecurringHistID ) {
+    	InvoiceRecurringHistDTO hist = null;
+        
+        try {
+        	
+            String sql = "select invoiceRecurringHistID, invoiceID, invoiceDate, invoiceDueDate, invoicePaid, amountPaid " +
+            		"from invoicerecurringhist where InvoiceRecurringHistID = ?" ;
+            
+            makeConnection(getDbLookup());
+            statement = conn.prepareStatement(sql);
+            statement.setLong(1, invoiceRecurringHistID);
+            
+            rs = statement.executeQuery();
+            
+            if (rs.next()) {
+            	int col = 0;
+            	hist = new InvoiceRecurringHistDTO();
+            	hist.setInvoiceRecurringHistID(rs.getInt(++col));
+            	hist.setInvoiceID(rs.getInt(++col));
+            	hist.setInvoiceDate(rs.getDate(++col));
+            	hist.setInvoiceDueDate(rs.getDate(++col));
+            	hist.setInvoicePaid(rs.getBoolean(++col));
+            	hist.setAmountPaid(rs.getInt(++col));
+            }
+            
+        } catch (SQLException e) {
+            logger.error("SQLException in getInvoiceRecurringHist() : ", e);
+        } catch (Exception e) {
+            logger.error("Exception in getInvoiceRecurringHist() : ", e);
+        } finally {
+            closeConnection();
+        }
+        
+        return hist;
+    }
+    
+    public ArrayList <InvoiceRecurringHistDTO> getInvoiceRecurringHists ( long invoiceID ) {
+    	ArrayList <InvoiceRecurringHistDTO> list = new ArrayList <InvoiceRecurringHistDTO> ();
+        
+        try {
+            String sql = "select invoiceRecurringHistID, invoiceID, invoiceDate, invoiceDueDate, invoicePaid, amountPaid " +
+            		"from invoicerecurringhist where invoiceID = ?";
+            
+            makeConnection(getDbLookup());
+            statement = conn.prepareStatement(sql);
+            statement.setLong(1, invoiceID);
+            
+            rs = statement.executeQuery();
+            
+            while (rs.next()) {
+            	int col = 0;
+            	InvoiceRecurringHistDTO hist = new InvoiceRecurringHistDTO();
+            	hist.setInvoiceRecurringHistID(rs.getInt(++col));
+            	hist.setInvoiceID(rs.getInt(++col));
+            	hist.setInvoiceDate(rs.getDate(++col));
+            	hist.setInvoiceDueDate(rs.getDate(++col));
+            	hist.setInvoicePaid(rs.getBoolean(++col));
+            	hist.setAmountPaid(rs.getInt(++col));
+            	list.add(hist);
+            }
+            
+        } catch (SQLException e) {
+            logger.error("SQLException in getInvoiceRecurringHists() : ", e);
+        } catch (Exception e) {
+            logger.error("Exception in getInvoiceRecurringHists() : ", e);
+        } finally {
+            closeConnection();
+        }
+        
+        return list;
+    }
+        
+    public boolean addInvoiceRecurringHist(InvoiceRecurringHistDTO hist)throws Exception {
+        boolean added = false;
+        
+        try {
+            String sql = "insert into invoicerecurringhist (invoiceID, invoiceDate, invoiceDueDate, " +
+            		"invoicePaid, amountPaid) VALUES ( ?, ?, ?, ?, ? )";
+            
+            int col = 0;
+            makeConnection(getDbLookup());
+            statement = conn.prepareStatement(sql);
+            statement.setInt(++col, hist.getInvoiceID());
+            statement.setDate(++col, hist.getInvoiceDate());
+            statement.setDate(++col, hist.getInvoiceDueDate());
+            statement.setBoolean(++col, hist.isInvoicePaid());
+            statement.setDouble(++col, hist.getAmountPaid());
+            
+            statement.executeUpdate();
+            added = true;
+            
+            if (added) {
+            	rs = statement.getGeneratedKeys();
+                if (rs.next()) {
+                	hist.setInvoiceRecurringHistID(rs.getInt(1));
+                }
+                
+                insertAudit(hist);
+            }
+            
+        } catch (SQLException e) {
+            logger.error("SQLException in addInvoiceRecurringHist() : ", e);
+            throw e;
+        } catch (Exception e) {
+            logger.error("Exception in addInvoiceRecurringHist() : ", e);
+            throw e;
+        } finally {
+            closeConnection();
+        }
+        
+        return added;
+    }
+    
+    public boolean updateInvoiceRecurringHist(InvoiceRecurringHistDTO hist) {
+        boolean updated = false;
+        
+        try {
+        	
+        	InvoiceRecurringHistDTO oldComp = getInvoiceRecurringHist(hist.getInvoiceRecurringHistID());
+        	
+            String sql = "UPDATE invoicerecurringhist set invoiceRecurringHistID = ?, invoiceID = ?, invoiceDate = ?, " +
+            		"invoiceDueDate = ?, invoicePaid = ?, amountPaid = ? WHERE InvoiceRecurringHistID = ?";
+    
+            int col = 0;
+            makeConnection(getDbLookup());
+            statement = conn.prepareStatement(sql.toString());
+            statement.setInt(++col, hist.getInvoiceID());
+            statement.setDate(++col, hist.getInvoiceDate());
+            statement.setDate(++col, hist.getInvoiceDueDate());
+            statement.setBoolean(++col, hist.isInvoicePaid());
+            statement.setDouble(++col, hist.getAmountPaid());
+            statement.setInt(++col, hist.getInvoiceRecurringHistID());
+            statement.executeUpdate();
+            
+            updateAudit(hist, oldComp);
+            
+            updated = true;
+        } catch (SQLException e) {
+            logger.error("SQLException in updateInvoiceRecurringHist() : ", e);
+        } catch (Exception e) {
+            logger.error("Exception in updateInvoiceRecurringHist() : ", e);
+        } finally {
+            closeConnection();
+        }
+        
+        return updated;
+    }
+    
+    public boolean deleteInvoiceRecurringHist(int invoiceRecurringHistID) {
+        boolean deleted = false;
+        
+        try {
+        	InvoiceRecurringHistDTO oldComp = getInvoiceRecurringHist(invoiceRecurringHistID);
+        	
+        	String sql = "delete from invoicerecurringhist WHERE InvoiceRecurringHistID = ?";
+            
+            int col = 0;
+            makeConnection(getDbLookup());
+            statement = conn.prepareStatement(sql.toString());
+            statement.setLong(++col, invoiceRecurringHistID);
+            statement.executeUpdate();
+            
+            deleteAudit(oldComp);
+            
+            deleted = true;
+        } catch (SQLException e) {
+            logger.error("SQLException in deleteInvoiceRecurringHist() : ", e);
+        } catch (Exception e) {
+            logger.error("Exception in deleteInvoiceRecurringHist() : ", e);
+        } finally {
+            closeConnection();
+        }
+        
+        return deleted;
+    }
+}

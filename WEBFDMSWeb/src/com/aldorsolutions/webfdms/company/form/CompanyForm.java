@@ -70,7 +70,9 @@ public class CompanyForm extends ActionForm {
 
 	private String sqlPass = "";
 
-	private String dbLookup = "java:jdbc/";
+	//private String dbLookup = "java:jdbc/";
+	
+	private String dbLookup = "java:jboss/datasources/";
 
 	private boolean cemeteryClient = false;
 

@@ -1,0 +1,141 @@
+package fdms.ui.struts.action;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.log4j.Logger;
+import org.apache.struts.action.Action;
+import org.apache.struts.action.ActionError;
+import org.apache.struts.action.ActionErrors;
+import org.apache.struts.action.ActionForm;
+import org.apache.struts.action.ActionForward;
+import org.apache.struts.action.ActionMapping;
+
+import com.aldorsolutions.webfdms.beans.DbSpeedData;
+import com.aldorsolutions.webfdms.beans.DbUserSession;
+import com.aldorsolutions.webfdms.beans.FdmsDb;
+import com.aldorsolutions.webfdms.database.DatabaseTransaction;
+import com.aldorsolutions.webfdms.database.PersistenceException;
+import com.aldorsolutions.webfdms.util.CsvTable;
+import com.aldorsolutions.webfdms.util.FormatDate;
+import com.aldorsolutions.webfdms.util.OptionsList;
+
+import fdms.ui.struts.form.ReportCategory;
+
+public class ShowReportList extends Action {
+    
+    private Logger logger = Logger.getLogger(ShowReportList.class.getName());
+    
+    public ActionForward execute(ActionMapping mapping,
+    ActionForm actionForm,
+    HttpServletRequest request, HttpServletResponse response)
+    throws javax.servlet.ServletException, java.io.IOException {
+        
+        logger.debug("ShowReportList.doPerform");
+        
+        ReportCategory form = (ReportCategory) actionForm;
+        ActionErrors errors = new ActionErrors();
+        // get form selected
+        String selectedCategory = form.getSubmitbutton();
+        logger.debug("ShowReportList. category:"+selectedCategory);
+        
+        int category=-1;
+        if (selectedCategory.compareToIgnoreCase("atneed")==0){
+            category=1;
+        } else if (selectedCategory.compareToIgnoreCase("preneed")==0){
+            category=2;
+        } else if (selectedCategory.compareToIgnoreCase("financial")==0){
+            category=3;
+        } else if (selectedCategory.compareToIgnoreCase("donation")==0){
+            category=4;
+        } else if (selectedCategory.compareToIgnoreCase("pricelist")==0){
+            category=5;
+        } else if (selectedCategory.compareToIgnoreCase("inventory")==0){
+            category=6;
+        } else {
+            errors.add(ActionErrors.GLOBAL_ERROR, new ActionError("error.report.category"));
+        }
+        
+        // Get user
+        DbUserSession sessionUser = com.aldorsolutions.webfdms.util.SessionHelpers.getUserSession(request);
+        // vitals ID not needed for these reports
+        // Get Vitals Case ID
+        //int vitalsid = SessionHelpers.getVitalsIdFromSession(request, sessionUser);
+        //if (sessionUser==null || vitalsid==0){
+        //	 errors.add(ActionErrors.GLOBAL_ERROR, new ActionError("error.login.invalid"));
+        //}
+//        logger.debug("ShowReportList. CaseID:"+vitalsid);
+        
+        // Report any errors we have discovered back to the original form
+        if (!errors.isEmpty()) {
+            //AppLog.info("Invoking forward mapping getInput");
+            saveErrors(request, errors);
+            return (new ActionForward(mapping.getInput()));
+        }
+        
+        // Get list of reports for sepecified category
+        DatabaseTransaction t = null;
+        com.aldorsolutions.webfdms.beans.DbFormsAvailable[] list;
+        com.aldorsolutions.webfdms.beans.DbLocation[] chapels;
+        fdms.ui.struts.form.PrintReports reportForm = new fdms.ui.struts.form.PrintReports();
+        
+        fdms.ui.struts.form.ReportsPrintForm reportsPrint = new fdms.ui.struts.form.ReportsPrintForm();
+        reportsPrint.setCategory(selectedCategory);
+        request.setAttribute("reportsPrint", reportsPrint);
+        
+        List locations = new ArrayList();
+        List reports = new ArrayList();
+        try {
+            t = (DatabaseTransaction)DatabaseTransaction.getTransaction(sessionUser);
+            logger.debug("ShowReportList. retrieving reports for region:"+sessionUser.getRegion()+"  category:"+category);
+            list = FdmsDb.getInstance().getFormsAvailableForLocale(t,sessionUser.getRegion(), category);
+            // create select list of reports
+            for (int i=0; i<list.length; i++){
+                reports.add( new OptionsList(Integer.toString(list[i].getFormId()) ,list[i].getDescription()));
+            }
+            // create select list of locations
+            chapels = FdmsDb.getInstance().getLocationsForRegion(t, sessionUser.getRegion());
+            for (int i=0; i<chapels.length; i++){
+                locations.add( new OptionsList(Integer.toString(chapels[i].getId()) ,chapels[i].getName()));
+            }
+            
+            if (category == 6) {
+            	ArrayList itemCategories = new ArrayList();
+            	
+                //Populate the Category List Objects
+                DbSpeedData[] dbSpeedData = FdmsDb.getInstance().getSpeedData(sessionUser.getDbLookup(), sessionUser.getRegion(), "PRODLINE");
+                
+                for(int i=0 ; i < dbSpeedData.length ; i++) {
+                    String listLabel = CsvTable.getField(dbSpeedData[i].getData(), 1);
+                    itemCategories.add(new OptionsList(listLabel,listLabel));
+                }
+                
+                if (itemCategories.size() > 0)
+                	request.setAttribute("itemCategories", itemCategories);
+            }            
+            
+            // Populate form dates
+            reportForm.setFromDate(FormatDate.getCurrentDateFormatedMMDDYYYY());
+            reportForm.setToDate(FormatDate.getCurrentDateFormatedMMDDYYYY());
+            reportForm.setCategory(selectedCategory);
+            // Put form beans and collections in request
+            request.setAttribute("printReports",reportForm);
+            request.setAttribute("locations",locations);
+            request.setAttribute("reports",reports);
+            
+        } catch (PersistenceException e){
+            logger.error("ShowReportList Persistence Exception. " + e);
+            errors.add(ActionErrors.GLOBAL_ERROR, new ActionError("error.dbms.exception"));
+            
+            return (new ActionForward(mapping.getInput()));
+        } finally {
+            if (t != null) t.closeConnection();
+        }
+        
+        // Show JSP page with list of reports in this category
+        return mapping.findForward("reportsListPage");
+    }
+}

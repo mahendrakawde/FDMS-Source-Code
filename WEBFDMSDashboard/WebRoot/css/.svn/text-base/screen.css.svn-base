@@ -1,0 +1,517 @@
+html {
+	padding: 0px;
+	margin: 0px;
+}
+
+body {
+	padding: 0px;
+	margin: 0px;
+	background: #485157;
+}
+
+div#container {
+	position: relative;
+	padding: 0px;
+	margin: 0px auto;
+	/*width: 1200px; /* this value was 950 on 10/05/10 */
+	background: #e8e8e8 url(../images/containerBg.jpg) repeat-x;
+}
+
+img.roundTL {
+	padding: 0px;
+	margin: 0px;
+	float: left;
+}
+
+img.roundTR {
+	padding: 0px;
+	margin: 0px;
+	float: right;
+}
+
+div.clear {
+	padding: 0px;
+	margin: 0px;
+	clear: both;
+}
+
+div#header {
+	padding: 4px 0px 0px 0px;
+	margin: 20px 10px 0;
+	height: 31px;
+	background: url(../images/headerBg.jpg) repeat-x;
+}
+
+#header p {
+	float: left;
+	padding: 11px 0px 0px 0px;
+	margin: 0px 20px;
+	font: normal 11px/11px Verdana;
+	color: #487e8b;
+}
+
+#header p .black {
+	color: #000;
+}
+
+#header p .orange {
+	color: #fe7c01;
+}
+
+#header input.field {
+	float: right;
+	padding: 5px;
+	margin: 0px;
+	height: 12px;
+	width: 230px;
+	border-top: 1px solid #aaa;
+	border-right: 1px solid #aaa;
+	border-bottom: 1px solid #aaa;
+	border-left: 1px solid #aaa;
+	font: normal 10px/10px Verdana;
+	color: #fff;
+	background: #5f6a71;
+}
+
+#header input.button {
+	float: right;
+	padding: 0px;
+	margin: 0px 10px 0px 0px;
+	height: 24px;
+	width: 70px;
+	border-top: 1px solid #aaa;
+	border-right: 1px solid #aaa;
+	border-bottom: 1px solid #aaa;
+	border-left: 0px;
+	font: bold 10px/10px Verdana;
+	color: #fff;
+	background: #5f6a71;
+}
+
+div#leftnav {
+	position: relative;
+	padding: 0px 5px;
+	margin: 0px;
+	float: left;
+	width: 206px;
+	background: #e8e8e8 url(../images/leftnavBg.jpg) repeat-y;
+}
+
+#leftnav p#dashboardLogo {
+	padding: 0px;
+	margin: 0px;
+	text-align: center;
+	height: 116px;
+	width: 197px;
+	background: url(../images/dashboardLogo.jpg) no-repeat;
+}
+
+div#leftnav div#leftnavBottom {
+	padding: 0px;
+	margin: 0px 0px 0px -5px;
+	height: 25px;
+	background: #e8e8e8 url(../images/leftnavBottom.jpg) no-repeat;
+}
+
+.notext {
+	display: none;
+}
+
+div#tabnav {
+	float: left;
+	padding: 0px 0px 0px 25px;
+	margin: 0px;
+	width: 975px; /*it was 875*/
+}
+
+#tabnav p {
+	padding: 0px;
+	margin: 0px auto;
+}
+
+div#maintop {
+	padding: 0px;
+	margin: 0px;
+	float: left;
+	width: 100%; /*it was 1000px*/
+	height: 17px;
+	background: #fff url(../images/maintopBg.jpg) repeat-x;
+}
+
+div#maintop img.left {
+	float: left;
+}
+
+div#maintop img.right {
+	float: right;
+}
+
+div#main {
+	position: relative;
+	float: left;
+	padding: 0px;
+	width: 100%; /*it was 1000px*/
+	margin: 0px 0px 20px 0px;
+	background: #fff url(../images/mainBg.jpg) repeat-y;
+	font: normal 10px/10px Verdana;
+	color: #000;
+}
+
+div#main div#content {
+	/*padding: 0px 10px;*/ /*it was padding: 0px 10px;*/
+	margin: 0px;
+	float: left;
+	width: 100%; /*it was 980px*/
+	background: url(../images/contentrightBg.jpg) repeat-y right;
+}
+
+div#content div#text {
+	padding: 0px 25px; /*it was 0px*/
+	margin: 0px;
+	width: 96%; /*it was 880px*/
+}
+
+div.invoiceList {
+	padding: 0px 0px 25px 0px;
+	margin: 0px;
+	width: 975px; /*it was 875*/
+	overflow: auto;
+	overflow-y: hidden;
+}
+
+div#mainbottom {
+	padding: 0px;
+	margin: 0px;
+	float: left;
+	height: 17px;
+	width: 100%; /*it was 1000px*/
+	background: #fff url(../images/mainbottomBg.jpg) repeat-x bottom;
+}
+
+div#mainbottom img.left {
+	float: left;
+}
+
+div#mainbottom img.right {
+	float: right;
+}
+
+h1 {
+	padding: 0px;
+	margin: 10px 0px;
+	font: bold 16px/16px Verdana;
+	color: #fe7c01;
+}
+
+h2 {
+	position: relative;
+	padding: 10px 35px;
+	margin: 10px -6px;
+	font: bold 13px/13px Verdana;
+	color: #01b112;
+	display: block;
+	height: 12px;
+	background: #f2f2f2 url(../images/h2Bg.jpg) repeat-x;
+}
+
+h2 .indent {
+	position: relative;
+	padding: 10px 35px;
+	margin: 10px -6px;
+	font: bold 13px/13px Verdana;
+	color: #01b112;
+	display: block;
+	height: 12px;
+	background: #f2f2f2 url(../images/h2Bg.jpg) repeat-x;
+}
+
+h2 img.icons { /*padding: 0px 10px;
+	margin: -10px 0px -5px 0px;*/
+	padding: 0px;
+	margin: 0px;
+	position: absolute;
+	top: 9px;
+	left: 10px;
+}
+
+h2 img.h2BgArrows {
+	position: absolute;
+	padding: 0px;
+	margin: 0px;
+	top: 0px;
+	right: 0px;
+}
+
+h3 {
+	padding: 0px;
+	margin: 10px 0px;
+	font: normal 10px/10px Verdana;
+	color: #000;
+}
+
+h4 {
+	font: bold 12px/12px Verdana;
+	color: #01b112;
+	padding: 10px 5px;
+	margin: 0px 0px 0px -5px;
+	display: block;
+	height: 9px;
+	width: 180px;
+	background: url(../images/nav_bg.jpg) repeat-y;
+	text-decoration: none;
+	padding-left: 15px;
+}
+
+div#text p {
+	padding: 0px 40px;
+	margin: 10px 0px;
+}
+
+div#footer {
+	padding: 0px;
+	margin: 0px;
+	height: 37px;
+	width: 100%;
+	background: url(../images/footerBg.jpg) repeat-x;
+}
+
+div#subnav {
+	padding: 0px;
+	margin: 0px 5px;
+	width: 186px;
+	height: 30em;
+	/*	background: #027caa url(../images/subnavBg.jpg) no-repeat;*/
+}
+
+div#subnav p {
+	padding: 0px;
+	margin: 0px;
+}
+
+a#aMenuItem {
+	font: bold 12px/12px Verdana;
+	color: #01b112;
+	padding: 10px 5px;
+	margin: 0px 0px 0px -5px;
+	display: block;
+	height: 9px;
+	width: 180px;
+	background: url(../images/nav_bg.jpg) repeat-y;
+	text-decoration: none;
+	padding-left: 15px;
+}
+
+a#aMenuItem :hover,a#aMenuItem :visited {
+	padding: 0px;
+	margin: 0px;
+	display: block;
+	color: #ffa509;
+	font: bold 12px/12px Verdana;
+	text-decoration: none;
+}
+
+a#aSub1MenuItem {
+	font: bold 12px/12px Verdana;
+	color: #fe7c01;
+	padding: 10px 5px;
+	margin: 0px 0px 0px -5px;
+	display: block;
+	height: 9px;
+	width: 170px;
+	background: url(../images/nav_bg.jpg) repeat-y;
+	text-decoration: none;
+	padding-left: 25px;
+}
+
+a#aSub1MenuItem :hover,a#aMenuItem :visited {
+	padding: 0px;
+	margin: 0px;
+	display: block;
+	color: #ffa509;
+	font: bold 12px/12px Verdana;
+	text-decoration: none;
+}
+
+#indent {
+	padding-left: 10px;
+}
+
+a#tabReports {
+	float: left;
+	padding: 0px;
+	margin: 0px;
+	display: block;
+	height: 23px;
+	width: 138px;
+	background: url(../images/tabReports.jpg) no-repeat;
+	text-decoration: none;
+}
+
+a#tabCheck {
+	float: left;
+	padding: 0px;
+	margin: 0px;
+	display: block;
+	height: 23px;
+	width: 138px;
+	background: url(../images/tabCheck.jpg) no-repeat;
+	text-decoration: none;
+}
+
+a#tabVendors {
+	float: left;
+	padding: 0px;
+	margin: 0px;
+	display: block;
+	height: 23px;
+	width: 138px;
+	background: url(../images/tabVendors.jpg) no-repeat;
+	text-decoration: none;
+}
+
+#tabInvoices {
+	float: left;
+	padding: 0px;
+	margin: 0px;
+	display: block;
+	height: 23px;
+	width: 138px;
+	background: url(../images/tabInvoices.jpg) no-repeat;
+	text-decoration: none;
+}
+
+#tabSavedInvoices {
+	float: left;
+	padding: 0px;
+	margin: 0px;
+	display: block;
+	height: 23px;
+	width: 138px;
+	background: url(../images/tabSavedInvoices.jpg) no-repeat;
+	text-decoration: none;
+}
+
+#tabSubmitInvoices {
+	float: left;
+	padding: 0px;
+	margin: 0px;
+	display: block;
+	height: 23px;
+	width: 138px;
+	background: url(../images/tabSubmitInvoices.jpg) no-repeat;
+	text-decoration: none;
+}
+
+#tabInvoicesSubmitted {
+	float: left;
+	padding: 0px;
+	margin: 0px;
+	display: block;
+	height: 23px;
+	width: 138px;
+	background: url(../images/tabInvoicesSubmitted.jpg) no-repeat;
+	text-decoration: none;
+}
+
+#tabApprovedInvoices {
+	float: left;
+	padding: 0px;
+	margin: 0px;
+	display: block;
+	height: 23px;
+	width: 138px;
+	background: url(../images/tabApprovedInvoices.jpg) no-repeat;
+	text-decoration: none;
+}
+
+#tabDeniedInvoices {
+	float: left;
+	padding: 0px;
+	margin: 0px;
+	display: block;
+	height: 23px;
+	width: 138px;
+	background: url(../images/tabVoidedInvoices.jpg) no-repeat;
+	text-decoration: none;
+}
+
+#tabGenerateReport {
+	float: left;
+	padding: 0px;
+	margin: 0px;
+	display: block;
+	height: 23px;
+	width: 138px;
+	background: url(../images/tabGenerateReport.jpg) no-repeat;
+	text-decoration: none;
+}
+
+div#checkTop {
+	margin: 0px;
+	position: relative;
+	width: 510px;
+	text-align: right;
+	background-color: #DADADA;
+	padding: 5px;
+}
+
+div#checkBody {
+	margin: 0px;
+	position: relative;
+	width: 510px;
+	text-align: left;
+	background-color: #EEEEEE;
+	padding: 5px;
+}
+
+div#checkBottom {
+	position: relative;
+	width: 510px;
+	text-align: left;
+	font: monospace;
+	background-color: #DADADA;
+	padding: 5px;
+}
+
+td#checkAmount {
+	clear: both;
+	background-color: #FFFFFF;
+	text-align: right;
+}
+
+div#checkDate {
+	text-align: right;
+	float: right;
+	font-size: 1em;
+}
+
+div#checkAddr {
+	text-align: left;
+	float: left;
+	font-size: 1em;
+}
+
+div#check {
+	padding-top: 5em;
+	text-align: left;
+	float: none;
+}
+
+#normalRight {
+	text-align: right;
+}
+
+#smallFont {
+	font-size: .75em;
+}
+
+#smallFontBottom {
+	font-size: .75em;
+	vertical-align: bottom;
+}
+
+#underline {
+	border-bottom-color: black;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+}

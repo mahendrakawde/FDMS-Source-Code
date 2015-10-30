@@ -1,0 +1,51 @@
+<%@ page language="java" pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://jakarta.apache.org/struts/tags-bean"
+	prefix="bean"%>
+<%@ taglib uri="http://jakarta.apache.org/struts/tags-html"
+	prefix="html"%>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic"%>
+<%@ taglib uri="/WEB-INF/tld/security.tld" prefix="security"%>
+
+
+<html:form action="/acctLocationEmailSave">
+	<html:errors />
+
+	<h1>
+		Edit Email Location
+	</h1>
+	
+	<table>
+
+		<tr>
+			<td>
+				Email Type:
+			</td>
+			<td>
+				<html:select property="emailType">
+					<logic:iterate id="emailTypeC" property="emailTypeOptionCollection"
+						name="acctLocationEditForm">
+						<html:option value="${emailTypeC.value}">${emailTypeC.label}</html:option>
+					</logic:iterate>
+				</html:select>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Email Address:
+			</td>
+			<td>
+				<html:text property="emailAddress" size="50" />
+			</td>
+		</tr>
+
+	</table>
+	
+	<html:hidden property="locationEmailID" />
+	<html:hidden property="companyID" />
+	<html:hidden property="localeID" />
+	<html:hidden property="locationID" />
+
+	<html:submit property="submitButton" value="Submit" />
+	<html:submit property="submitButton" value="Delete" />
+	<html:cancel />
+</html:form>

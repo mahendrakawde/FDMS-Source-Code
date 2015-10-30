@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBSERVICESFDMS/WebRoot/axis2-web/Error
+END
+GenError.html
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBSERVICESFDMS/WebRoot/axis2-web/Error/GenError.html
+END
+error500.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBSERVICESFDMS/WebRoot/axis2-web/Error/error500.jsp
+END
+error404.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBSERVICESFDMS/WebRoot/axis2-web/Error/error404.jsp
+END
+AuthError.html
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBSERVICESFDMS/WebRoot/axis2-web/Error/AuthError.html
+END

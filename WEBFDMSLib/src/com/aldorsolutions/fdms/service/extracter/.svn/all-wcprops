@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/fdms/service/extracter
+END
+SciCashExtracter.java
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/fdms/service/extracter/SciCashExtracter.java
+END
+SciARDetailDataExtracter.java
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/fdms/service/extracter/SciARDetailDataExtracter.java
+END
+SciContractsExtracter.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/fdms/service/extracter/SciContractsExtracter.java
+END
+SciLineItemsExtracter.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/fdms/service/extracter/SciLineItemsExtracter.java
+END
+DataExtracter.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/fdms/service/extracter/DataExtracter.java
+END

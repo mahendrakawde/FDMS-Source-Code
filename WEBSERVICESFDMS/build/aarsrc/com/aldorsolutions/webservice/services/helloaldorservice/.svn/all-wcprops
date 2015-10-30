@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBSERVICESFDMS/build/aarsrc/com/aldorsolutions/webservice/services/helloaldorservice
+END
+HelloAldorServiceMessageReceiverInOut.java
+K 25
+svn:wc:ra_dav:version-url
+V 179
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBSERVICESFDMS/build/aarsrc/com/aldorsolutions/webservice/services/helloaldorservice/HelloAldorServiceMessageReceiverInOut.java
+END
+ExtensionMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 157
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBSERVICESFDMS/build/aarsrc/com/aldorsolutions/webservice/services/helloaldorservice/ExtensionMapper.java
+END
+HelloAldorServiceCallbackHandler.java
+K 25
+svn:wc:ra_dav:version-url
+V 174
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBSERVICESFDMS/build/aarsrc/com/aldorsolutions/webservice/services/helloaldorservice/HelloAldorServiceCallbackHandler.java
+END
+HelloAldorServiceStub.java
+K 25
+svn:wc:ra_dav:version-url
+V 163
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBSERVICESFDMS/build/aarsrc/com/aldorsolutions/webservice/services/helloaldorservice/HelloAldorServiceStub.java
+END
+HelloAldor.java
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBSERVICESFDMS/build/aarsrc/com/aldorsolutions/webservice/services/helloaldorservice/HelloAldor.java
+END
+AldorGreeting.java
+K 25
+svn:wc:ra_dav:version-url
+V 155
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBSERVICESFDMS/build/aarsrc/com/aldorsolutions/webservice/services/helloaldorservice/AldorGreeting.java
+END
+HelloAldorServiceSkeleton.java
+K 25
+svn:wc:ra_dav:version-url
+V 167
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBSERVICESFDMS/build/aarsrc/com/aldorsolutions/webservice/services/helloaldorservice/HelloAldorServiceSkeleton.java
+END

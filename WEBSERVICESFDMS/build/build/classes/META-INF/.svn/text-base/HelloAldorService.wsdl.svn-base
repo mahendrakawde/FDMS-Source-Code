@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://aldorsolutions.com/webservice/services/helloaldorservice" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:this="http://aldorsolutions.com/webservice/services/helloaldorservice" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+  <wsdl:types>
+    <xs:schema targetNamespace="http://aldorsolutions.com/webservice/services/helloaldorservice">
+		<xs:element name="helloAldor" nillable="true" type="xs:string"/>
+		<xs:element name="aldorGreeting" type="xs:string"/>
+	</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="helloAldorResponse">
+    <wsdl:part name="parameters" element="this:aldorGreeting">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="helloAldorRequest">
+    <wsdl:part name="parameters" element="this:helloAldor">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="HelloAldorPortType">
+    <wsdl:operation name="helloAldor">
+      <wsdl:input message="this:helloAldorRequest" wsaw:Action="urn:helloAldorRequest">
+    </wsdl:input>
+      <wsdl:output message="this:helloAldorResponse" wsaw:Action="urn:helloAldorResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="HelloAldorServiceSoap11Binding" type="this:HelloAldorPortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="helloAldor">
+      <soap:operation soapAction="urn:helloAldor" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="HelloAldorServiceSoap12Binding" type="this:HelloAldorPortType">
+    <soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="helloAldor">
+      <soap12:operation soapAction="urn:helloAldor" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="HelloAldorServiceHttpBinding" type="this:HelloAldorPortType">
+    <http:binding verb="POST"/>
+    <wsdl:operation name="helloAldor">
+      <http:operation location="HelloAldorService/helloAldor"/>
+    <mime:content part="helloAldor" type="text/xml"/>
+      <wsdl:input>
+        <mime:content part="helloAldor" type="text/xml"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="helloAldor" type="text/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="HelloAldorService">
+    <wsdl:port name="HelloAldorServiceHttpEndpoint" binding="this:HelloAldorServiceHttpBinding">
+      <http:address location="http://webservices.webfdms.com/webservicesfdms/services/HelloAldorService"/>
+    </wsdl:port>
+    <wsdl:port name="HelloAldorServiceHttpSoap12Endpoint" binding="this:HelloAldorServiceSoap12Binding">
+      <soap12:address location="http://webservices.webfdms.com/webservicesfdms/services/HelloAldorService"/>
+    </wsdl:port>
+    <wsdl:port name="HelloAldorServiceHttpSoap11Endpoint" binding="this:HelloAldorServiceSoap11Binding">
+      <soap:address location="http://webservices.webfdms.com/webservicesfdms/services/HelloAldorService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

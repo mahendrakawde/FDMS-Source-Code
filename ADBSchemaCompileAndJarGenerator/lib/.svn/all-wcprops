@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/ADBSchemaCompileAndJarGenerator/lib
+END
+axiom-api-1.2.7.jar
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/ADBSchemaCompileAndJarGenerator/lib/axiom-api-1.2.7.jar
+END
+axis2-adb-1.4.1.jar
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/ADBSchemaCompileAndJarGenerator/lib/axis2-adb-1.4.1.jar
+END
+axis2-adb-codegen-1.4.1.jar
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/ADBSchemaCompileAndJarGenerator/lib/axis2-adb-codegen-1.4.1.jar
+END
+commons-logging-1.1.1.jar
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/ADBSchemaCompileAndJarGenerator/lib/commons-logging-1.1.1.jar
+END
+axiom-impl-1.2.7.jar
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/ADBSchemaCompileAndJarGenerator/lib/axiom-impl-1.2.7.jar
+END
+XmlSchema-1.4.2.jar
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/ADBSchemaCompileAndJarGenerator/lib/XmlSchema-1.4.2.jar
+END
+axis2-kernel-1.4.1.jar
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/ADBSchemaCompileAndJarGenerator/lib/axis2-kernel-1.4.1.jar
+END

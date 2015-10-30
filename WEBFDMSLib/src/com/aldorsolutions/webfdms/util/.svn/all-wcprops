@@ -1,0 +1,329 @@
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/util
+END
+EmailLogDTO.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/util/EmailLogDTO.java
+END
+TempPnCharges.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/util/TempPnCharges.java
+END
+UtilSingleton.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/util/UtilSingleton.java
+END
+FormatNumber.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/util/FormatNumber.java
+END
+DateUtility.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/util/DateUtility.java
+END
+Sendemail.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/util/Sendemail.java
+END
+WinExec.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/util/WinExec.java
+END
+FormatCurrency.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/util/FormatCurrency.java
+END
+DAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/util/DAO.java
+END
+FormatTime.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/util/FormatTime.java
+END
+LoginLogger.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/util/LoginLogger.java
+END
+FdmsException.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/util/FdmsException.java
+END
+ObituaryTranslator.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/util/ObituaryTranslator.java
+END
+AccountingInterfaceUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/util/AccountingInterfaceUtil.java
+END
+CemCasePrptySet.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/util/CemCasePrptySet.java
+END
+SessionValueKeys.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/util/SessionValueKeys.java
+END
+ReportPreview.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/util/ReportPreview.java
+END
+MailUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/util/MailUtil.java
+END
+JulianDay.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/util/JulianDay.java
+END
+Amortization.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/util/Amortization.java
+END
+CheckPrinter.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/util/CheckPrinter.java
+END
+ServiceLocator.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/util/ServiceLocator.java
+END
+DataSourceManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/util/DataSourceManager.java
+END
+TempFinanceCharges.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/util/TempFinanceCharges.java
+END
+EmailLogger.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/util/EmailLogger.java
+END
+OptionsList.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/util/OptionsList.java
+END
+JMSClient.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/util/JMSClient.java
+END
+ReflectionUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/util/ReflectionUtil.java
+END
+StreamGobbler.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/util/StreamGobbler.java
+END
+CommandException.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/util/CommandException.java
+END
+MyRequest.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/util/MyRequest.java
+END
+TaxType.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/util/TaxType.java
+END
+KFormat.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/util/KFormat.java
+END
+ActionClassLogger.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/util/ActionClassLogger.java
+END
+CsvTable.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/util/CsvTable.java
+END
+DuplicateLoginLogger.java
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/util/DuplicateLoginLogger.java
+END
+CrystalReportManagerBeanScheduling.java
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/util/CrystalReportManagerBeanScheduling.java
+END
+SqlTransaction.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/util/SqlTransaction.java
+END
+VarArgs.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/util/VarArgs.java
+END
+EditChecks.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/util/EditChecks.java
+END
+SessionHelpers.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/util/SessionHelpers.java
+END
+FutureValue.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/util/FutureValue.java
+END
+JNDINames.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/util/JNDINames.java
+END
+ConvertNameString.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/util/ConvertNameString.java
+END
+ExportReport.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/util/ExportReport.java
+END
+PresentValue.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/util/PresentValue.java
+END
+FormatString.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/util/FormatString.java
+END
+BaseDTO.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/util/BaseDTO.java
+END
+NativeCall.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/util/NativeCall.java
+END
+PropertyUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/util/PropertyUtil.java
+END
+FormatDate.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/util/FormatDate.java
+END
+PnCharge.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/util/PnCharge.java
+END
+Translator.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/util/Translator.java
+END
+CrystalReportManagerBean.java
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/util/CrystalReportManagerBean.java
+END

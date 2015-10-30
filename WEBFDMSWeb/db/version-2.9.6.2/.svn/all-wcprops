@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSWeb/db/version-2.9.6.2
+END
+webfdms-v2.9.6.2.sql
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSWeb/db/version-2.9.6.2/webfdms-v2.9.6.2.sql
+END
+user-v2.9.6.2.sql
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSWeb/db/version-2.9.6.2/user-v2.9.6.2.sql
+END

@@ -1,0 +1,89 @@
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBSERVICESFDMS/build/resources
+END
+AR.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBSERVICESFDMS/build/resources/AR.xsd
+END
+FdmsCommon.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBSERVICESFDMS/build/resources/FdmsCommon.xsd
+END
+FddeService.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBSERVICESFDMS/build/resources/FddeService.xsd
+END
+FdmsInfo.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBSERVICESFDMS/build/resources/FdmsInfo.xsd
+END
+FdmsService.wsdl
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBSERVICESFDMS/build/resources/FdmsService.wsdl
+END
+services.xml
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBSERVICESFDMS/build/resources/services.xml
+END
+FdmsServiceInfo.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBSERVICESFDMS/build/resources/FdmsServiceInfo.xsd
+END
+SciCommon.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBSERVICESFDMS/build/resources/SciCommon.xsd
+END
+Common.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBSERVICESFDMS/build/resources/Common.xsd
+END
+FdmsService.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBSERVICESFDMS/build/resources/FdmsService.xsd
+END
+FddeCommon.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBSERVICESFDMS/build/resources/FddeCommon.xsd
+END
+FddeService.wsdl
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBSERVICESFDMS/build/resources/FddeService.wsdl
+END
+FddeServiceInfo.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBSERVICESFDMS/build/resources/FddeServiceInfo.xsd
+END
+HelloAldorService.wsdl
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBSERVICESFDMS/build/resources/HelloAldorService.wsdl
+END

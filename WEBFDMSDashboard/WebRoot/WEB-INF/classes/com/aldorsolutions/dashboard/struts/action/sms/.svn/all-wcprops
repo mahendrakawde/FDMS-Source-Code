@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/src/com/aldorsolutions/dashboard/struts/action/sms
+END
+SMSTTVSaveRecipientAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 149
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/src/com/aldorsolutions/dashboard/struts/action/sms/SMSTTVSaveRecipientAction.java
+END
+SMSTTVRecipientAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/src/com/aldorsolutions/dashboard/struts/action/sms/SMSTTVRecipientAction.java
+END
+ProcessSMSTTVSaveForSchedule.java
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/src/com/aldorsolutions/dashboard/struts/action/sms/ProcessSMSTTVSaveForSchedule.java
+END
+SMSTTVSaveEditAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/src/com/aldorsolutions/dashboard/struts/action/sms/SMSTTVSaveEditAction.java
+END
+SMSTTVManageScheduleAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 150
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/src/com/aldorsolutions/dashboard/struts/action/sms/SMSTTVManageScheduleAction.java
+END
+RecipientEditSaveAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 147
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/src/com/aldorsolutions/dashboard/struts/action/sms/RecipientEditSaveAction.java
+END
+ShowSMSTTVEditAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/src/com/aldorsolutions/dashboard/struts/action/sms/ShowSMSTTVEditAction.java
+END
+RecipientEditAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/src/com/aldorsolutions/dashboard/struts/action/sms/RecipientEditAction.java
+END
+ShowSMSTTVListAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/src/com/aldorsolutions/dashboard/struts/action/sms/ShowSMSTTVListAction.java
+END
+SetSMSTTVforScheduleAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 150
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/src/com/aldorsolutions/dashboard/struts/action/sms/SetSMSTTVforScheduleAction.java
+END

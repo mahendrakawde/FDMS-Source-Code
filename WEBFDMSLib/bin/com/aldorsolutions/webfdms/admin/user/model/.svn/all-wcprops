@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/admin/user/model
+END
+UserDTO.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn_webfdms/!svn/ver/52/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/admin/user/model/UserDTO.java
+END
+UserLocaleDTO.java
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/admin/user/model/UserLocaleDTO.java
+END
+UserLogDTO.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/admin/user/model/UserLogDTO.java
+END
+UserOperationsDTO.java
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/admin/user/model/UserOperationsDTO.java
+END
+UserSessionDTO.java
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/admin/user/model/UserSessionDTO.java
+END
+UserVacationDTO.java
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/admin/user/model/UserVacationDTO.java
+END
+ActionClassLogDTO.java
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/admin/user/model/ActionClassLogDTO.java
+END
+DuplicateLoginLogDTO.java
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/admin/user/model/DuplicateLoginLogDTO.java
+END
+UserLocationDTO.java
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/admin/user/model/UserLocationDTO.java
+END

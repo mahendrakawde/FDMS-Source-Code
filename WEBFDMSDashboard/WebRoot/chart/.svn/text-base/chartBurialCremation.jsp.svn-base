@@ -1,0 +1,797 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%@page import="com.softwarefx.chartfx.gauge.RadialStrip"%>
+
+<%@ taglib uri="http://jakarta.apache.org/struts/tags-bean"
+	prefix="bean"%>
+
+<%@page import="com.softwarefx.chartfx.gauge.Title"%>
+<%@page import="javax.swing.GroupLayout.Alignment"%>
+<%@page import="com.softwarefx.chartfx.gauge.ContentAlignment"%>
+<%@page import="com.softwarefx.chartfx.gauge.LayoutTarget"%>
+<%@page import="com.softwarefx.chartfx.gauge.Palette"%>
+<%@page import="com.softwarefx.chartfx.gauge.RadialBorderStyle"%>
+<%@page import="com.softwarefx.chartfx.gauge.NeedleStyle"%>
+<%@page import="com.softwarefx.chartfx.gauge.TitleCollection"%>
+<%@page	import="com.softwarefx.chartfx.gauge.calculatedvalues.CalculatedValue"%>
+<%@page	import="com.softwarefx.chartfx.gauge.calculatedvalues.CalculatedValueMax"%>
+<%@page import="com.softwarefx.chartfx.gauge.Scale"%>
+<%@page import="com.softwarefx.chartfx.gauge.RadialScale"%>
+<%@page import="com.aldorsolutions.dashboard.struts.form.chart.ChartListForm"%>
+<%@page import="com.softwarefx.chartfx.gauge.Marker"%>
+<%@page import="com.softwarefx.chartfx.gauge.Needle"%>
+<%@page import="java.awt.Color"%>
+<%@page import="com.softwarefx.chartfx.gauge.GaugeFont"%>
+<%@page import="com.softwarefx.chartfx.gauge.GaugeFontSize"%>
+
+<style type="text/css">
+.tdborder {
+	border-right: 3px solid #CDCDCD;
+	text-align: center;
+}
+</style>
+
+<%!
+RadialStrip currentYearStrip=  new RadialStrip();
+RadialStrip lastYearStrip=  new RadialStrip(); 
+RadialStrip otherStrip=  new RadialStrip();
+
+%>
+
+
+<%
+ChartListForm clf = (ChartListForm)request.getAttribute("chartListForm");
+com.softwarefx.chartfx.gauge.RadialGauge.initWeb(pageContext,request,response);
+
+//int radialHeight=300;  //340
+//int radialWidth=280;
+
+int radialHeight=180;
+int radialWidth=270;
+
+// Set Title for the all Guage chart
+Title title = new Title();
+title.setVerticalPosition(2);
+title.getLayout().setTarget(LayoutTarget.BORDER);
+title.getLayout().setAlignment(ContentAlignment.BOTTOM_CENTER);
+title.setFont(new GaugeFont("Verdana",GaugeFontSize.MEDIUM, java.awt.Font.PLAIN));
+//title.setColor(new java.awt.Color(165, 42, 42));
+title.setColor(new java.awt.Color(93, 123, 157));
+
+
+//needle  Arrow of the radial gauge
+com.softwarefx.chartfx.gauge.Needle needle = new com.softwarefx.chartfx.gauge.Needle();
+//needle.setStyle(NeedleStyle.getNeedle13());
+//needle.setColor(new java.awt.Color(8,73,209)); // Color Gold
+	
+// marker second point of the radial gauge
+com.softwarefx.chartfx.gauge.Marker marker11 = new com.softwarefx.chartfx.gauge.Marker();
+
+
+//set scale
+RadialScale scale= new RadialScale();
+
+//set Strip
+ /*RadialStrip currentYearStrip=  new RadialStrip();
+ RadialStrip lastYearStrip=  new RadialStrip(); 
+ RadialStrip otherStrip=  new RadialStrip();*/
+ 
+ lastYearStrip.setColor(Color.RED); //red
+ currentYearStrip.setColor(Color.YELLOW);  //green
+ otherStrip.setColor(new java.awt.Color(0, 255, 0)); // yellow
+ 
+ lastYearStrip.setRadius(1.0f);
+	currentYearStrip.setRadius(1.0f);
+	otherStrip.setRadius(1.0f);
+
+%>
+<table align="center" width="90%" border="0" cellspacing="0">
+	<tr>
+		<td>
+			<h1>
+				Report Dashboard
+			</h1>
+		</td>
+		<td>
+			<span>Selected Dates from <bean:write name="chartListForm"
+					property="fromDate" /> to <bean:write name="chartListForm"
+					property="toDate" /> </span>
+		</td>
+		<td>
+			&nbsp;
+		</td>
+
+	</tr>
+
+	<tr>
+		<td align="center">
+			<h2>
+				Calls #
+			</h2>
+		</td>
+		<td align="center">
+			<h2>
+				Revenue $
+			</h2>
+		</td>
+		<td align="center">
+			<h2>
+				Average
+			</h2>
+		</td>
+	</tr>
+
+
+	<tr>
+		<!-- Tab2 Total Calls # -->
+		<td class="tdborder">
+			<%
+	   com.softwarefx.chartfx.gauge.RadialGauge totalCall11 = new com.softwarefx.chartfx.gauge.RadialGauge();
+	   totalCall11.setID("map11");
+	   		// set hight width and border style	
+			totalCall11.setHeight(radialHeight);
+	   		totalCall11.setWidth(radialWidth);
+	   		//totalCall11.getBorder().setStyle(RadialBorderStyle.getSemiCircularBorder01());
+	   		totalCall11.getBorder().setStyle(RadialBorderStyle.getSemiCircularBorder06());
+	   		totalCall11.setPalette(Palette.getOceanica());	    
+	   		
+	    	// set Title
+	    	title.setText("Total Calls");
+	    	totalCall11.getTitles().add(title);
+	    
+	    	//SET scale
+	    	//scale.setMax(4000);
+	    	System.out.println("chart1 total " + clf.getMaxValue(clf.getCBTCallVolume()[4],0.5));
+	    	scale.setMax(clf.getMaxValue(clf.getCBTCallVolume()[4],0.5));
+			scale.setMin(0);
+	    	totalCall11.getScales().add(scale);
+	    	//set needle value
+	    	 needle.setValue(clf.getCBTCallVolume()[4]);
+	    	 totalCall11.setMainIndicator(needle);
+	    
+	    	 
+	    	 
+	    	//add second Marker value	
+			marker11.setValue(clf.getCBTCallVolume()[5]);
+			marker11.setStyle(com.softwarefx.chartfx.gauge.MarkerStyle.getMarker08());
+			//marker11.setColor(new java.awt.Color(165, 229, 122));
+			//marker11.setColor(Color.RED);
+			marker11.setColor(new java.awt.Color(229,97,5));
+			totalCall11.getMainScale().getIndicators().add(marker11);
+	    	
+			
+
+			currentYearStrip=  new RadialStrip();
+			 lastYearStrip=  new RadialStrip(); 
+			  otherStrip=  new RadialStrip();
+			
+			 lastYearStrip.setColor(Color.RED); //red
+			 currentYearStrip.setColor(Color.YELLOW);  //green
+			 otherStrip.setColor(new java.awt.Color(0, 255, 0)); // yellow
+			 
+			 lastYearStrip.setRadius(1.0f);
+				currentYearStrip.setRadius(1.0f);
+				otherStrip.setRadius(1.0f);
+
+			lastYearStrip.setMin(0);
+	    	lastYearStrip.setMax(173);
+	    	currentYearStrip.setMin(173);
+	    	currentYearStrip.setMax(173);
+	    	otherStrip.setMin(173);
+	    	otherStrip.setMax(220);
+	    			    	
+	    	totalCall11.getMainScale().getStripes().add(lastYearStrip);
+	    	totalCall11.getMainScale().getStripes().add(currentYearStrip);
+	    	totalCall11.getMainScale().getStripes().add(otherStrip);
+			
+			
+	    	//render controll	    	
+		    totalCall11.renderControl(); 
+	
+	    %>
+		</td>
+		<!-- Tab2 Total Revenue $ -->
+		<td class="tdborder">
+			<%
+		 com.softwarefx.chartfx.gauge.RadialGauge totalRevenue12 = new com.softwarefx.chartfx.gauge.RadialGauge();
+		totalRevenue12.setID("map12");
+		   		// set hight width and border style	
+				totalRevenue12.setHeight(radialHeight);
+				totalRevenue12.setWidth(radialWidth);
+				totalRevenue12.getBorder().setStyle(RadialBorderStyle.getSemiCircularBorder06());
+				totalRevenue12.setPalette(Palette.getOceanica());  
+				// set Title
+		    	title.setText("Total Revenue $ in Millions");
+		    	totalRevenue12.getTitles().add(title);
+		    	//SET scale
+		    	scale.setMax(clf.getMaxValue(clf.getCBTRevnueVolume()[4],0.5));
+				scale.setMin(0);
+				totalRevenue12.getScales().add(scale);
+				//set needle value
+		    	 needle.setValue(clf.getCBTRevnueVolume()[4]);
+				needle.getFormat().setFormatType(1);
+		    	 totalRevenue12.setMainIndicator(needle);
+		    
+		    	 
+		    	//add second Marker value	
+		    	Marker marker12 = new Marker();
+		    	marker12.setValue(clf.getCBTRevnueVolume()[5]);
+		    	marker12.setStyle(com.softwarefx.chartfx.gauge.MarkerStyle.getMarker08());
+		    	//marker12.setColor(Color.RED);
+		    	marker12.setColor(new java.awt.Color(229,97,5));
+		    	
+		    	marker12.setStyle(com.softwarefx.chartfx.gauge.MarkerStyle.getMarker08());
+				marker12.getLabel().setColor(new java.awt.Color(165, 229, 122));
+				marker12.getFormat().setFormatType(1);
+				
+				totalRevenue12.getMainScale().getIndicators().remove(marker11);
+				totalRevenue12.getMainScale().getIndicators().add(marker12);
+		    	
+				currentYearStrip=  new RadialStrip();
+				 lastYearStrip=  new RadialStrip(); 
+				  otherStrip=  new RadialStrip();
+				
+				 lastYearStrip.setColor(Color.RED); //red
+				 currentYearStrip.setColor(Color.YELLOW);  //green
+				 otherStrip.setColor(new java.awt.Color(0, 255, 0)); // yellow
+				 
+				 lastYearStrip.setRadius(1.0f);
+					currentYearStrip.setRadius(1.0f);
+					otherStrip.setRadius(1.0f);
+				
+				lastYearStrip.setMin(0);
+		    	lastYearStrip.setMax(0.13);
+		    	currentYearStrip.setMin(0.13);
+		    	currentYearStrip.setMax(0.13);
+		    	otherStrip.setMin(0.13);
+		    	otherStrip.setMax(0.20);
+		    			    	
+		    	totalRevenue12.getMainScale().getStripes().add(lastYearStrip);
+		    	totalRevenue12.getMainScale().getStripes().add(currentYearStrip);
+		    	totalRevenue12.getMainScale().getStripes().add(otherStrip);
+				
+		    	//render controll	
+			    totalRevenue12.renderControl(); 
+		
+		
+		 %>
+		</td>
+		<!-- Tab2 Average Total = ( cremation avg+ burial avg )/2 -->
+		<td align="center">
+			<%
+		 com.softwarefx.chartfx.gauge.RadialGauge totalAvg13 = new com.softwarefx.chartfx.gauge.RadialGauge();
+		totalAvg13.setID("map13");
+		   		// set hight width and border style	
+				totalAvg13.setHeight(radialHeight);
+				totalAvg13.setWidth(radialWidth);
+				totalAvg13.getBorder().setStyle(RadialBorderStyle.getSemiCircularBorder06());
+				totalAvg13.setPalette(Palette.getOceanica());
+				// set Title
+		    	title.setText("Total Avg $ in Thousands");
+		    	totalAvg13.getTitles().add(title);
+		    	//SET scale
+		    	//scale.setMax(20);
+		    	scale.setMax(clf.getMaxValue(clf.getCBTAverageVolume()[4],0.5));
+				scale.setMin(0);
+				totalAvg13.getScales().add(scale);
+				 
+		    	//set needle value
+		    	 needle.setValue(clf.getCBTAverageVolume()[4]);
+		    	 totalAvg13.setMainIndicator(needle);
+		    
+		    	 
+		    	//add second Marker value	
+		    	Marker marker13 = new Marker(); 
+				marker13.setValue(clf.getCBTAverageVolume()[5]);
+				//marker13.setColor(Color.RED);
+				marker13.setColor(new java.awt.Color(229,97,5));
+				marker13.getFormat().setFormatType(1);
+				totalAvg13.getMainScale().getIndicators().remove(marker12);
+				totalAvg13.getMainScale().getIndicators().add(marker13);
+		    	
+				currentYearStrip=  new RadialStrip();
+				 lastYearStrip=  new RadialStrip(); 
+				  otherStrip=  new RadialStrip();
+				
+				 lastYearStrip.setColor(Color.RED); //red
+				 currentYearStrip.setColor(Color.YELLOW);  //green
+				 otherStrip.setColor(new java.awt.Color(0, 255, 0)); // yellow
+				 
+				 lastYearStrip.setRadius(1.0f);
+					currentYearStrip.setRadius(1.0f);
+					otherStrip.setRadius(1.0f);
+				
+				lastYearStrip.setMin(0);
+		    	lastYearStrip.setMax(7.52);
+		    	currentYearStrip.setMin(7.52);
+		    	currentYearStrip.setMax(7.81);
+		    	otherStrip.setMin(7.81);
+		    	otherStrip.setMax(15);
+		    			    	
+		    	totalAvg13.getMainScale().getStripes().add(lastYearStrip);
+		    	totalAvg13.getMainScale().getStripes().add(currentYearStrip);
+		    	totalAvg13.getMainScale().getStripes().add(otherStrip);
+				
+		    	//render controll	
+			    totalAvg13.renderControl(); 
+		
+		
+		 %>
+		</td>
+	</tr>
+	<tr>
+		<td align="center">Total Calls</td>
+		<td align="center">Total Revenue $ in Millions</td>
+		<td align="center">Total Avg $ in Thousands</td>
+	</tr>
+
+	<tr>
+		<!-- Tab2 Cremation Calls # -->
+		<td class="tdborder">
+
+			<%
+	  
+	   com.softwarefx.chartfx.gauge.RadialGauge cremCall21 = new com.softwarefx.chartfx.gauge.RadialGauge();
+	   scale= new RadialScale();
+	   
+	   		cremCall21.setID("map21");
+	   		// set hight width and border style	
+			cremCall21.setHeight(radialHeight);
+	   		cremCall21.setWidth(radialWidth);
+	   		cremCall21.getBorder().setStyle(RadialBorderStyle.getSemiCircularBorder06());
+	   		cremCall21.setPalette(Palette.getOceanica());
+	    	// set Title
+	    	title.setText("Cremation Calls");
+	    	cremCall21.getTitles().add(title);
+	    
+	    	//SET scale
+	    	//scale.setMax(2000);
+	    	scale.setMax(clf.getMaxValue(clf.getCBTCallVolume()[0],0.5));
+			scale.setMin(0);
+			cremCall21.getScales().add(scale);
+			
+			
+			
+	    	//set needle value
+	    	Needle needle21 = new Needle();
+	    	needle21.setValue(clf.getCBTCallVolume()[0]);
+	    	cremCall21.setMainIndicator(needle21);
+	    
+	    
+	    	//add second Marker value
+	    	Marker marker21 = new Marker(); 
+	    	marker21.setStyle(com.softwarefx.chartfx.gauge.MarkerStyle.getMarker08());
+	    	//marker21.setColor(Color.RED);
+	    	marker21.setColor(new java.awt.Color(229,97,5));
+	    	
+			marker21.setValue(clf.getCBTCallVolume()[1]);
+			cremCall21.getMainScale().getIndicators().remove(marker11);
+			cremCall21.getMainScale().getIndicators().add(marker21);
+	    	
+			lastYearStrip.setMin(0);
+	    	lastYearStrip.setMax(83);
+	    	currentYearStrip.setMin(83);
+	    	currentYearStrip.setMax(85);
+	    	otherStrip.setMin(85);
+	    	otherStrip.setMax(140);
+	    			    	
+	    	cremCall21.getMainScale().getStripes().add(lastYearStrip);
+	    	cremCall21.getMainScale().getStripes().add(currentYearStrip);
+	    	cremCall21.getMainScale().getStripes().add(otherStrip);
+			
+	    	//render controll	
+		    cremCall21.renderControl();
+
+	    %>
+		</td>
+		<!-- Tab2 Cremation Revenue in % -->
+		<td class="tdborder">
+			<%
+		
+		 com.softwarefx.chartfx.gauge.RadialGauge creamRevenue22 = new com.softwarefx.chartfx.gauge.RadialGauge();
+		   scale= new RadialScale();
+		   
+		   		creamRevenue22.setID("map22");
+		   		// set hight width and border style	
+				creamRevenue22.setHeight(radialHeight);
+				creamRevenue22.setWidth(radialWidth);
+				creamRevenue22.getBorder().setStyle(RadialBorderStyle.getSemiCircularBorder06());
+				creamRevenue22.setPalette(Palette.getOceanica());
+		    	// set Title
+		    	title.setText("Cremation Revenue %");
+		    	creamRevenue22.getTitles().add(title);
+		    	
+		    	//set needle value
+		    	Needle needle22 = new Needle();
+		    	needle22.setValue(clf.getCBTRevnueVolume()[0]);
+		    	needle22.setToolTip(clf.getCBTRevnueVolume()[0]+"%");
+		    	creamRevenue22.setMainIndicator(needle22);
+
+		    	//add second Marker value
+		    	Marker marker22 = new Marker(); 
+		    	marker22.setStyle(com.softwarefx.chartfx.gauge.MarkerStyle.getMarker08());
+		    	//marker22.setColor(Color.RED);
+		    	marker22.setColor(new java.awt.Color(229,97,5));
+		    	
+				marker22.setValue(clf.getCBTRevnueVolume()[1]);
+				marker22.setToolTip(clf.getCBTRevnueVolume()[1]+"%");
+				creamRevenue22.getMainScale().getIndicators().remove(marker11);
+				creamRevenue22.getMainScale().getIndicators().remove(marker21);
+				creamRevenue22.getMainScale().getIndicators().remove(marker12);
+				creamRevenue22.getMainScale().getIndicators().add(marker22);
+		
+				lastYearStrip.setMin(0);
+		    	lastYearStrip.setMax(47.98);
+		    	currentYearStrip.setMin(47.98);
+		    	currentYearStrip.setMax(57.82);
+		    	otherStrip.setMin(57.82);
+		    	otherStrip.setMax(100);
+		    			    	
+		    	creamRevenue22.getMainScale().getStripes().add(lastYearStrip);
+		    	creamRevenue22.getMainScale().getStripes().add(currentYearStrip);
+		    	creamRevenue22.getMainScale().getStripes().add(otherStrip);
+				
+				creamRevenue22.renderControl();
+		%>
+
+
+		</td>
+		<!-- Tab2 Cremation Average  -->
+		<td align="center">
+			<%
+		 com.softwarefx.chartfx.gauge.RadialGauge cremAvg23 = new com.softwarefx.chartfx.gauge.RadialGauge();
+		cremAvg23.setID("map23");
+		   		// set hight width and border style	
+				cremAvg23.setHeight(radialHeight);
+				cremAvg23.setWidth(radialWidth);
+				cremAvg23.getBorder().setStyle(RadialBorderStyle.getSemiCircularBorder06());
+				cremAvg23.setPalette(Palette.getOceanica());
+				// set Title
+		    	title.setText("Cremation Avg $ in Thousands");
+		    	cremAvg23.getTitles().add(title);
+		    	//SET scale
+		    	//scale.setMax(10);
+		    	scale.setMax(clf.getMaxValue(clf.getCBTAverageVolume()[0],0.5));
+				scale.setMin(0);
+				cremAvg23.getScales().add(scale);
+				
+		    	//set needle value
+		    	 needle.setValue(clf.getCBTAverageVolume()[0]);
+		    	 cremAvg23.setMainIndicator(needle);
+		    
+		    	 
+		    	//add second Marker value	
+		    	Marker marker23 = new Marker(); 
+				marker23.setValue(clf.getCBTAverageVolume()[1]);
+				//marker23.setColor(Color.RED);
+				marker23.setColor(new java.awt.Color(229,97,5));
+				marker23.getFormat().setFormatType(1);
+				cremAvg23.getMainScale().getIndicators().remove(marker12);
+				cremAvg23.getMainScale().getIndicators().add(marker23);
+		    	
+/*
+				
+		    	lastYearStrip.setMin(0);
+		    	lastYearStrip.setMax(clf.getCBTAverageVolume()[1]);
+		    	currentYearStrip.setMin(clf.getCBTAverageVolume()[1]);
+		    				    	
+		    	if(clf.getCBTAverageVolume()[1] >= clf.getCBTAverageVolume()[0]){
+		    		currentYearStrip.setMax(clf.getCBTAverageVolume()[0]);
+		    		otherStrip.setMin(clf.getCBTAverageVolume()[0]);
+		    	} else{
+		    		lastYearStrip.setMax(clf.getCBTAverageVolume()[1]);
+		    		otherStrip.setMin(clf.getCBTAverageVolume()[1]);
+		    	}
+		    	otherStrip.setMax(clf.getMaxValue(clf.getCBTAverageVolume()[0],0.5));
+		    	*/
+		    	lastYearStrip.setMin(0);
+		    	lastYearStrip.setMax(3.91);
+		    	currentYearStrip.setMin(3.91);
+		    	currentYearStrip.setMax(4.14);
+		    	otherStrip.setMin(4.14);
+		    	otherStrip.setMax(7);
+		    	
+		    	
+		    	cremAvg23.getMainScale().getStripes().add(lastYearStrip);
+		    	cremAvg23.getMainScale().getStripes().add(currentYearStrip);
+		    	cremAvg23.getMainScale().getStripes().add(otherStrip);
+				
+			
+				
+		    	//render controll	
+			    cremAvg23.renderControl(); 
+		
+		
+		 %>
+		</td>
+	</tr>
+	<tr>
+		<td align="center">Cremation Calls</td>
+		<td align="center">Cremation Revenue %</td>
+		<td align="center">Cremation Avg $ in Thousands</td>
+	</tr>
+	<tr>
+		<!-- Tab2 Burial Calls # -->
+		<td class="tdborder">
+
+			<%
+	   		com.softwarefx.chartfx.gauge.RadialGauge  burialCall31= new com.softwarefx.chartfx.gauge.RadialGauge();
+	   		scale= new RadialScale();
+	   		// set hight width and border style	
+	   		
+	   		burialCall31.setID("map31");
+	   		
+			burialCall31.setHeight(radialHeight);
+	   		burialCall31.setWidth(radialWidth);
+	   		burialCall31.getBorder().setStyle(RadialBorderStyle.getSemiCircularBorder06());
+	   		burialCall31.setPalette(Palette.getOceanica());
+	    
+	    	// set Title
+	    	title.setText("Burial Calls");
+	    	burialCall31.getTitles().add(title);
+	    
+	    	//SET scale
+	    	//scale.setMax(2000);
+	    	scale.setMax(clf.getMaxValue(clf.getCBTCallVolume()[2],0.5));
+			scale.setMin(0);
+			burialCall31.getScales().add(scale);
+	    	//set needle value
+	    	Needle needle31 = new Needle();
+	    	needle31.setValue(clf.getCBTCallVolume()[2]);
+	    	burialCall31.setMainIndicator(needle31);
+	    
+	    	// burialCall31.getMainScale().getIndicators().remove(marker21);
+	    	//add second Marker value
+	    	
+	    	Marker marker31 = new Marker(); 
+	    	marker31.setStyle(com.softwarefx.chartfx.gauge.MarkerStyle.getMarker08());
+	    	//marker31.setColor(Color.RED);
+	    	marker31.setColor(new java.awt.Color(229,97,5));
+			marker31.setValue(clf.getCBTCallVolume()[3]);
+			burialCall31.getMainScale().getIndicators().add(marker31);
+		/*
+			lastYearStrip.setMin(0);
+	    	lastYearStrip.setMax(clf.getCBTCallVolume()[3]);
+	    	currentYearStrip.setMin(clf.getCBTCallVolume()[3]);
+	    				    	
+	    	if(clf.getCBTAverageVolume()[3] >= clf.getCBTCallVolume()[2]){
+	    		currentYearStrip.setMax(clf.getCBTCallVolume()[2]);
+	    		otherStrip.setMin(clf.getCBTCallVolume()[2]);
+	    	} else{
+	    		lastYearStrip.setMax(clf.getCBTCallVolume()[3]);
+	    		otherStrip.setMin(clf.getCBTCallVolume()[3]);
+	    	}
+	    	otherStrip.setMax(clf.getMaxValue(clf.getCBTCallVolume()[2],0.5));
+	    	*/
+	    	
+	    	lastYearStrip.setMin(0);
+	    	lastYearStrip.setMax(90);
+	    	currentYearStrip.setMin(90);
+	    	currentYearStrip.setMax(90);
+	    	otherStrip.setMin(90);
+	    	otherStrip.setMax(100);
+	    	
+	    	burialCall31.getMainScale().getStripes().add(lastYearStrip);
+	    	burialCall31.getMainScale().getStripes().add(currentYearStrip);
+	    	burialCall31.getMainScale().getStripes().add(otherStrip);
+			
+	    	//render controll	
+		    burialCall31.renderControl();
+	  
+	    %>
+		</td>
+		<!-- Tab2 Burial Revenue in % -->
+		<td class="tdborder">
+			<%
+		
+		 com.softwarefx.chartfx.gauge.RadialGauge burialRevenue32 = new com.softwarefx.chartfx.gauge.RadialGauge();
+		   scale= new RadialScale();
+		   
+		   burialRevenue32.setID("map32");
+		   		// set hight width and border style	
+				burialRevenue32.setHeight(radialHeight);
+				burialRevenue32.setWidth(radialWidth);
+				burialRevenue32.getBorder().setStyle(RadialBorderStyle.getSemiCircularBorder06());
+				burialRevenue32.setPalette(Palette.getOceanica());
+		    	// set Title
+		    	title.setText("Burial Revenue %");
+		    	burialRevenue32.getTitles().add(title);
+		    	
+		    	//set needle value
+		    	Needle needle32 = new Needle();
+		    	
+		    	needle22.setValue(clf.getCBTRevnueVolume()[2]);
+		    	needle22.setToolTip(clf.getCBTRevnueVolume()[2]+"%");
+		    	burialRevenue32.setMainIndicator(needle22);
+
+		    	//add second Marker value
+		    	Marker marker32 = new Marker(); 
+		    	marker32.setStyle(com.softwarefx.chartfx.gauge.MarkerStyle.getMarker08());
+		    	//marker32.setColor(Color.RED);
+		    	marker32.setColor(new java.awt.Color(229,97,5)); 
+		    	
+		    	marker32.setValue(clf.getCBTRevnueVolume()[3]);
+		    	marker32.setToolTip(clf.getCBTRevnueVolume()[3]+"%");
+				burialRevenue32.getMainScale().getIndicators().remove(marker11);
+				burialRevenue32.getMainScale().getIndicators().remove(marker21);
+				burialRevenue32.getMainScale().getIndicators().remove(marker12);
+				burialRevenue32.getMainScale().getIndicators().add(marker32);
+				
+			
+		    	 // last year clf.getCBTRevnueVolume()[3]
+		    	 // current year clf.getCBTRevnueVolume()[2]
+		    	                                         
+		   // clf.getCBTRevnueVolume()[3] = 52;
+		    	   //clf.getCBTRevnueVolume()[2] = 48;
+			   	
+			    	/*lastYearStrip.setMin(0);
+			    	lastYearStrip.setMax(clf.getCBTRevnueVolume()[3]);
+			    	currentYearStrip.setMin(clf.getCBTRevnueVolume()[3]);
+			    				    	
+			    	if(clf.getCBTAverageVolume()[3] >= clf.getCBTRevnueVolume()[2]){
+			    		lastYearStrip.setMax(clf.getCBTRevnueVolume()[2]);
+			    		otherStrip.setMin(clf.getCBTRevnueVolume()[2]);
+			    	} else{
+			    		currentYearStrip.setMax(clf.getCBTRevnueVolume()[3]);
+			    		otherStrip.setMin(clf.getCBTRevnueVolume()[3]);
+			    	}
+			    	otherStrip.setMax(100);
+			    	*/
+
+			    	lastYearStrip.setMin(0);
+			    	lastYearStrip.setMax(52);
+			    	currentYearStrip.setMin(52);
+			    	currentYearStrip.setMax(52);
+			    	otherStrip.setMin(52);
+			    	otherStrip.setMax(100);
+			    	
+			    	burialRevenue32.getMainScale().getStripes().add(lastYearStrip);
+			    	burialRevenue32.getMainScale().getStripes().add(currentYearStrip);
+			    	burialRevenue32.getMainScale().getStripes().add(otherStrip);
+	
+		
+				burialRevenue32.renderControl();
+		%>
+		</td>
+		<!-- Tab2 Burial Average -->
+		<td align="center">
+			<%
+		 com.softwarefx.chartfx.gauge.RadialGauge burAvg33 = new com.softwarefx.chartfx.gauge.RadialGauge();
+		burAvg33.setID("map33");
+		   		// set hight width and border style	
+				burAvg33.setHeight(radialHeight);
+				burAvg33.setWidth(radialWidth);
+				burAvg33.getBorder().setStyle(RadialBorderStyle.getSemiCircularBorder06());
+				burAvg33.setPalette(Palette.getOceanica());
+				// set Title
+		    	title.setText("Burial Avg $ in Thousands");
+		    	burAvg33.getTitles().add(title);
+		    	//SET scale
+		    	//scale.setMax(10);
+		    	scale.setMax(clf.getMaxValue(clf.getCBTAverageVolume()[2],0.5));
+				scale.setMin(0);
+				burAvg33.getScales().add(scale);
+				 
+		    	//set needle value
+		    	 needle.setValue(clf.getCBTAverageVolume()[2]);
+		    	 burAvg33.setMainIndicator(needle);
+		    	 
+		    	 // last year clf.getCBTAverageVolume()[3]
+		    	 // current year clf.getCBTAverageVolume()[2]
+			    	/*
+			    	lastYearStrip.setMin(0);
+			    	lastYearStrip.setMax(clf.getCBTAverageVolume()[3]);
+			    	currentYearStrip.setMin(clf.getCBTAverageVolume()[3]);
+			    				    	
+			    	if(clf.getCBTAverageVolume()[3] >= clf.getCBTAverageVolume()[2]){
+			    		currentYearStrip.setMax(clf.getCBTAverageVolume()[3]);
+			    		otherStrip.setMin(clf.getCBTAverageVolume()[3]);
+			    	} else{
+			    		currentYearStrip.setMax(clf.getCBTAverageVolume()[2]);
+			    		otherStrip.setMin(clf.getCBTAverageVolume()[2]);
+			    	}
+			    	otherStrip.setMax(clf.getMaxValue(clf.getCBTAverageVolume()[2],0.5));
+			    	*/
+			    	
+			    	lastYearStrip.setMin(0);
+			    	lastYearStrip.setMax(11.14);
+			    	currentYearStrip.setMin(11.14);
+			    	currentYearStrip.setMax(11.48);
+			    	otherStrip.setMin(11.48);
+			    	otherStrip.setMax(18);
+			    	
+			    	
+			    	burAvg33.getMainScale().getStripes().add(lastYearStrip);
+					burAvg33.getMainScale().getStripes().add(currentYearStrip);
+					burAvg33.getMainScale().getStripes().add(otherStrip);
+		    	 
+		    
+		    	 
+		    	//add second Marker value	
+		    	Marker marker33 = new Marker(); 
+				marker33.setValue(clf.getCBTAverageVolume()[3]);
+				marker33.setColor(new java.awt.Color(229,97,5));  //orange
+				//marker33.setColor(Color.RED);
+				marker33.getFormat().setFormatType(1);
+				
+				burAvg33.getMainScale().getIndicators().remove(marker12);
+				burAvg33.getMainScale().getIndicators().add(marker33);
+		    	
+		    	//render controll	
+			    burAvg33.renderControl(); 
+		
+		
+		 %>
+		</td>
+	</tr>
+	<tr>
+		<td align="center">Burial Calls</td>
+		<td align="center">Burial Revenue %</td>
+		<td align="center">Burial Avg $ in Thousands</td>
+	</tr>
+	<tr>
+		<td colspan="3">&nbsp;</td>
+	</tr>
+   	<tr>
+		<td colspan="3" width="100%">
+
+			<table width="100%" cellpadding="0"
+				style="border: 2px solid #CDCDCD;">
+				<tr>
+					<td style="border-right: 2px solid #CDCDCD;">
+						<table cellpadding="8" width="70%">
+							<tr>
+								<td rowspan="4" valign="top">
+									<img src="/dashboard/images/marker-1.jpg" />
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<b>Marker: </b>
+								</td>
+							</tr>
+							<tr>
+								<td align="justify">
+									* Display Data for the Last Year (
+									<bean:write name="chartListForm" property="lastYear" />
+									)
+								</td>
+							</tr>
+							<tr>
+								<td align="justify">
+									* Mouse over to see values in all the charts
+								</td>
+							</tr>
+						</table>
+					</td>
+					<td>
+						<table cellpadding="1">
+							<tr>
+								<td rowspan="4">
+									<img src="/dashboard/images/marker-2.jpg" />
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<b>Needle: </b>
+								</td>
+							</tr>
+							<tr>
+								<td align="justify">
+									* Display Data for the Current Year (
+									<bean:write name="chartListForm" property="currentYear" />
+									)
+								</td>
+							</tr>
+							<tr>
+								<td align="justify">
+									* Mouse over to see values in all the charts
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>

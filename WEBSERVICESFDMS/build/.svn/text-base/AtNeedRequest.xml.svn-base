@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<p:getServiceRequest xmlns:p="http://aldorsolutions.com/webservice/services/fdmsservice" xmlns:self="http://aldorsolutions.com/webservice/xsd/fdms/info" xmlns:self1="http://aldorsolutions.com/wsfdms/to/xsd/comm" xmlns:self2="http://aldorsolutions.com/wsfdms/to/xsd/serviceinfo" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="./resources/FdmsService.xsd ">
+  <p:usrName>webservice</p:usrName>
+  <p:passWord>iamnuts</p:passWord>
+  <p:serrviceRequest>
+    <self2:requestType>atNeed</self2:requestType>
+    <self2:requestContext/>
+    <self2:atNeedRequest>
+    	
+      <self2:firstCall>
+        <self2:facility>
+          <self2:sameAsFuneralHome/>
+        </self2:facility>
+      </self2:firstCall>
+      <self2:deceased>
+        <self2:name/>
+        <self2:memorialName>self2:memorialName</self2:memorialName>
+        <self2:serviceDate>2001-01-01</self2:serviceDate>
+      </self2:deceased>
+    </self2:atNeedRequest>
+  </p:serrviceRequest>
+</p:getServiceRequest>

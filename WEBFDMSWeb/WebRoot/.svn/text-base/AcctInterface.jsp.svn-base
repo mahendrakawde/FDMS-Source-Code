@@ -1,0 +1,276 @@
+<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+<%@ taglib uri="/WEB-INF/struts-form.tld" prefix="form" %>
+<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+<%@ taglib uri="http://www.webfdms.com/taglibs/fdms" prefix="fdms" %>
+<%@ taglib uri="/WEB-INF/struts-template.tld" prefix="template" %>
+<%@ taglib uri="http://www.webfdms.com/taglibs/alert-message" prefix="alert"%>
+
+<html>
+	<head>
+		<title>Interface to External GL System</title>
+		<html:base />
+		
+		<script language="JavaScript" src="webfdmslib.js" ></script>
+		<script language="JavaScript" type="text/javascript" src="jsScripts/formSaveWarning.js" ></script>
+		<script language="JavaScript" type="text/javascript" src="jsScripts/CalendarPopup.js"></script>
+		<script language="JavaScript" src="jsScripts/xp_progress.js">
+
+		<SCRIPT LANGUAGE="JavaScript" ID="jscal1x">
+			var calPopUp = new CalendarPopup("calendardiv", "calendardivfrm");
+		</SCRIPT>
+		
+		
+		<SCRIPT LANGUAGE="JavaScript">document.write(getCalendarStyles());</SCRIPT>
+		<script language="JavaScript">
+			isRunning = false;
+			
+			function set(target) {
+				formConfirmOff();
+			   	document.forms[0].submitbutton.value=target;
+			};
+			function removesubmit(target) {
+				formConfirmOff();
+				if (confirm("This will delete this interface file forever.")) {
+					document.getElementsByName("acctIntfForm")[0].submitbutton.value="DeleteFile";
+					document.getElementsByName("acctIntfForm")[0].removeline.value=target;
+					document.getElementsByName("acctIntfForm")[0].submit();
+				}
+			};
+			function checkRunning(){
+				if (isRunning){
+					alert("Please wait for the processing to complete. This page will be redisplayed with the new file name when the interface is finished.");
+					return false;
+				}
+				if (window.confirm("Are you sure you want to create another inteface file?")){
+					isRunning=true;
+					bar1.showBar();
+					return true;
+				}
+				return false;
+			}
+			
+			// This function calls the Quickbooks ActiveX control via JavaScript
+			function OpenXMLFile(xmlFileName) {
+				var fullPathToFileName = location.protocol + "//" + location.hostname;
+				if (location.port != "") 
+					fullPathToFileName += ":" + location.port
+				fullPathToFileName += xmlFileName;
+				document.getElementById("FDMSQXML").XMLFILENAME = fullPathToFileName;
+				document.getElementById("FDMSQXML").ProcessXMLFile();
+			}
+		</script>
+		
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+		<link href="css/fdmsnet.css" rel="stylesheet" type="text/css">
+
+		<style type="text/css">
+			<!--
+				.tableDashes2 {
+					font: 12px/12px Verdana, Arial, sans-serif;
+					color: #000000;
+					text-decoration: none;
+					height: 40px;
+					border-bottom: 1px dotted #CCCCCC;
+				}
+			-->
+		</style>
+	</head>
+
+	<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+		<DIV ID="calendardiv" 
+			STYLE="position:absolute;visibility:hidden;background-color:white;layer-background-color:white;z-index: 700;"></DIV>
+		<iframe id="calendardivfrm" src="javascript:false;" frameBorder="0" scrolling="no" 
+			STYLE="position:absolute; top:0px; left:0px; display:none;z-index: 599;">
+		</iframe>
+		<alert:alertMessage messageType="R"/>
+		<html:errors />
+		<table width="98%" border="0" align="center" cellpadding="0" cellspacing="0">
+			<tr>
+				<td height="30" align="left" valign="middle" class="pageTitle">
+					Interface to External GL System
+				</td>
+			</tr>
+			<tr>
+				<td height="40" valign="top">
+					<table width="100%" border="0" cellspacing="0" cellpadding="0">
+						<tr>
+							<td>&nbsp;</td>
+							<td width="250" height="40" align="right" valign="top">
+								<fieldset>
+									<legend class="tahoma12bMaroon">Actions</legend>
+									<html:link forward="financial">
+										<html:img alt="Exit" src="images-old/buttonexit.gif" border="0"/>
+									</html:link>
+								</fieldset>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td valign="top"><img src="images-old/inviso.gif" width="1" height="10"></td>
+			</tr>
+			<tr>
+				<td valign="top" class="verdana12">
+					<fieldset>
+						<table width="100%" border="0" cellspacing="0" cellpadding="0">
+							<tr>
+								<td height="40" valign="top" class="verdana12">
+									Select a previous interface file to begin downloading or click &quot;Run Interface&quot; button to create another interface file with information since last interface.
+								</td>
+							</tr>
+							<tr>
+								<td valign="top" class="verdana12">
+									<table width="100%" border="0" cellpadding="0" cellspacing="0" bordercolor="#FFFFFF">
+										<logic:iterate name="acctIntfForm" property="fileList" id="lineItem" indexId="currIndex" scope="request">
+											<tr>
+												<td height="40" align="center" bordercolor="#FFFFFF"  class="tableDashes2">
+													<img src="images-old/buttonremove.gif" alt="Delete this interface file" width="100" height="24" 
+														border="0" onclick="removesubmit('<bean:write name="lineItem" property="fileDeleteName" />');"/>      
+														 <%--removesubmit('<bean:write name="currIndex"/>')--%>
+												</td>
+												<td height="40" align="left" bordercolor="#FFFFFF"  class="tableDashes2">
+													<logic:equal name="acctIntfForm" property="fileFormat" value="6">
+														<a href="javascript:none;" onClick="OpenXMLFile('<bean:write name="lineItem" property="fileDownloadName" />');return false;">
+															<bean:write name="lineItem" property="fileDisplayName" />
+														</a>
+													</logic:equal>
+													<logic:notEqual name="acctIntfForm" property="fileFormat" value="6">
+														<a target="JournalEntry" href="<bean:write name="lineItem" property="fileDownloadName" />">
+															<bean:write name="lineItem" property="fileDisplayName" />
+														</a>
+													</logic:notEqual>
+													<%--<bean:write name="lineItem" property="fileDownloadName" />--%>
+												</td>
+												<td height="40" align="center" bordercolor="#FFFFFF"  class="tableDashes2">
+													<bean:write name="lineItem" property="fileDisplayDate" />
+												</td>
+												<td height="40" align="center" bordercolor="#FFFFFF"  class="tableDashes2">
+													<bean:write name="lineItem" property="fileDisplaySize" />
+												</td>
+											</tr>
+										</logic:iterate>
+		    
+										<html:form scope="request" action="/processAcctInterface" name="acctIntfForm" type="fdms.ui.struts.form.AcctIntfForm"  onsubmit="return checkRunning();">
+											<html:hidden property="submitbutton" />
+											<html:hidden property="removeline" />
+											<html:hidden property="showCompanySelectable" />
+											<html:hidden property="interfaceDescription" />
+											<html:hidden property="qwcFileName" />
+											
+											<tr>
+												<logic:greaterThan name="acctIntfForm" property="fileFormat" value="0">
+													<td height="80" colspan="4" align="center" class="verdana12">
+														<logic:equal name="acctIntfForm" property="fileFormat" value="6">
+															<p>
+															<Strong>Please use the <bean:write name="acctIntfForm" property="interfaceDescription"/> rather than generating this file manually</Strong>
+															</p>
+														</logic:equal>
+														
+														<logic:equal name="acctIntfForm" property="showCompanySelectable" value="true">
+															<table cellspacing="0" >
+																<tr>
+																	<td class="verdana12" align="center">Global Generation</td>
+																</tr>
+																<tr>
+																	<td align="right" class="verdana12">
+																		Generate File for All Locales and Locations?: 
+																		<html:checkbox property="genFileForCompany"></html:checkbox>
+																</tr>
+															</table>
+														</logic:equal>
+														
+														<logic:notEqual name="acctIntfForm" property="fileFormat" value="6">
+														
+															<logic:equal name="acctIntfForm" property="showDateRange" value="true">
+																<table cellspacing="0" >
+																	<tr>
+																		<td class="verdana12" align="center">Export Date Range</td>
+																	</tr>
+																	<tr>
+																		<td align="right" class="verdana12">
+																			Date From: 
+																			<html:text property="dateFrom" size="10" />
+																			<fdms:FDMSDate fieldID="dateFrom1" javascriptFormField="document.forms[0].dateFrom"></fdms:FDMSDate>
+																	</tr>
+																	<tr>
+																		<td align="right" class="verdana12">
+																			Date To: 
+																			<html:text property="dateTo" size="10" />
+																			<fdms:FDMSDate fieldID="dateTo1" javascriptFormField="document.forms[0].dateTo"></fdms:FDMSDate>
+																	</tr>
+																</table>
+															</logic:equal>	
+															<logic:equal name="acctIntfForm" property="showMonthEndDate" value="true">
+																<table cellspacing="0" >
+																	<tr>
+																		<td class="verdana12" align="center">Month End Date</td>
+																	</tr>
+																	<tr>
+																		<td align="right" class="verdana12">
+																			<html:text property="monthEndDate" size="10" onfocus="focusDateEdit(this);" />
+																			<fdms:FDMSDate fieldID="monthEndDate1" javascriptFormField="document.forms[0].monthEndDate"></fdms:FDMSDate>
+																	</tr>
+																</table>
+															</logic:equal>	
+														
+															Select location for creating
+															<strong>
+																<bean:write name="acctIntfForm" property="interfaceDescription"/>
+															</strong>interface:
+															<html:select size="1" property="locationSelected" >
+																<html:option value="0">- All Locations -</html:option>
+																<html:options collection="chapelList" property="listValue" labelProperty="listLabel"/>
+															</html:select>
+														
+															<p>
+																<html:image align="absmiddle" alt="Create new interface file" src="images-old/buttonAcctRunIntf.gif" 
+																onclick="set('new');" />&nbsp;
+															</p>
+														</logic:notEqual>
+														
+												        <script type="text/javascript">
+															var bar1= createBar(300,15,'white',1,'black','blue',85,7,3,"");
+															bar1.hideBar();
+														</script>
+														
+														<div align="center">
+															<logic:equal name="acctIntfForm" property="fileFormat" value="6">
+																<b>Cases which do not have a bill to party assigned as the contract signer are not exported</b>
+																<p>
+																You must download the <a href="http://marketplace.intuit.com/webconnector" 
+																	target="top">QuickBooks Webconnector to use this interface</a>
+																</p>
+																
+																<a href="${acctIntfForm.qwcFileName}">Save QWC File for Web Connector</a>	
+																
+																
+															</logic:equal>   
+															<logic:equal name="acctIntfForm" property="fileFormat" value="9">
+																<b>Cases which do not have a bill to party assigned as the contract signer are not exported</b>
+															</logic:equal>   
+														</div>
+													</td>
+												</logic:greaterThan>
+												<logic:equal name="acctIntfForm" property="fileFormat" value="0">
+													<td height="80" colspan="4" align="center" class="verdana12">
+														No accounting interface exports are currently available to this company.
+													</td>
+												</logic:equal>
+											</tr>
+										</html:form>  
+									</table>
+								</td>
+							</tr>
+						</table>
+					</fieldset>
+				</td>
+			</tr>
+		</table>
+		<script language="JavaScript" type="text/javascript">
+		    populateArrays();
+		    formConfirmOn();
+		</script>
+	</body>
+</html>

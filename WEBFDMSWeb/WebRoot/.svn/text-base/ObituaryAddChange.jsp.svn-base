@@ -1,0 +1,219 @@
+<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+<%@ taglib uri="/WEB-INF/struts-form.tld" prefix="form" %>
+
+<%@ taglib uri="/WEB-INF/struts-template.tld" prefix="template" %>
+<%@ taglib uri="http://www.webfdms.com/taglibs/alert-message" prefix="alert" %>
+<%@ taglib uri="http://www.webfdms.com/taglibs/fdms" prefix="fdms" %>
+
+<html><head><title>Obituary Composition Data</title>
+<meta content="text/html; charset=windows-1252" http-equiv="Content-Type" />
+<SCRIPT language="JavaScript" src="webfdmslib.js"></script>
+<script language="JavaScript" type="text/javascript" src="jsScripts/formSaveWarning.js" ></script>
+<script>
+function set(target) {
+	formConfirmOff();
+    document.forms[0].directive.value=target;
+};
+</script>
+
+</head>
+<body>
+<alert:alertMessage messageType="R"/>
+<html:errors/>
+
+<html:form action="/composeObituary">
+
+  <html:hidden property="directive" />
+
+  <div align="center">
+  <table width="1" height="1">
+    <tr>
+      <td width="705" bgcolor="#D7FFFF" bordercolor="#FFFFCC" bordercolorlight="#FFFFCC" bordercolordark="#FFFFCC" height="2" align="right" valign="middle" style="margin-top: 13" colspan="3">
+        <p align="right" style="margin-top: 7" />
+        <b>
+        <font color="#000080" size="6">
+        <img border="0" src="images-old/Obit2.3.gif" align="absmiddle" width="116" height="70" />
+        Compose
+        Obit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <font color="#000080" size="5" face="Times New Roman">
+        <html:image alt="Save" src="images-old/buttonsave.gif" onclick="set('save');" />
+        <html:image alt="Cancel" src="images-old/buttoncancel.gif" onclick="set('cancel');" />
+        <html:image alt="Help" src="images-old/buttonhelp.gif" onclick="set('help');" />
+        &nbsp;
+        </font>
+        </font>
+        </b>
+      </td>
+    </tr>
+    <tr>
+      <td width="781" bordercolor="#FFFFCC" bordercolorlight="#FFFFCC" bordercolordark="#FFFFCC" height="38" align="center">
+        <bean:write name="obituaryCustomData" property="deceasedFullName" />
+  </td></tr>
+    <tr>
+      <td width="781" bordercolor="#FFFFCC" bordercolorlight="#FFFFCC" bordercolordark="#FFFFCC" height="38" align="center">
+        <table border="0" width="715" height="55">
+          <tr>
+            <td width="668" height="1" colspan="2">
+            </td>
+          </tr>
+        <tr>
+            <td width="269" height="1">
+              <p align="left"><font face="Arial">Death Day
+              </font></p>
+            </td>
+            <td width="586" height="1" align="left">
+               <fdms:speedselect maxlength="39" textsize="60" combo="true" size="1" 
+               			name="obituaryCustomData" propererty="deathDay" category="custom03">
+					<fdms:linkoption text="Edit list..." script="tableWindow2('custom03',1,'obituaryCustomData.deathDay')"/>
+					<fdms:targetfield column="1" property="deathDay" />
+			   </fdms:speedselect>
+            </td>
+        </tr>
+        <tr>
+            <td width="221" height="1">
+              <p align="left"><font face="Arial">How long ill?
+              </font></p>
+            </td>
+            <td width="586" height="1" align="left">
+              <html:text size="60" maxlength="39" name="obituaryCustomData" property="howLongIll" />
+            </td>
+        </tr>
+        <tr>
+            <td width="221" height="1">
+              <p align="left"><font face="Arial">Maiden Name
+              </font></p>
+            </td>
+            <td width="586" height="1" align="left">
+              <html:text size="60" maxlength="50" name="obituaryCustomData" property="maidenName" />
+            </td>
+        </tr>
+        <tr>
+            <td width="221" height="1">
+              <p align="left"><font face="Arial">Birth Place
+              </font></p>
+            </td>
+            <td width="586" height="1" align="left">
+              <html:text size="60" maxlength="39" name="obituaryCustomData" property="birthplace" />
+            </td>
+        </tr>
+        <tr>
+            <td width="221" height="1">
+              <p align="left"><font face="Arial">Residences
+              </font></p>
+            </td>
+            <td width="586" height="1" align="left">
+              <html:text size="60" maxlength="39" name="obituaryCustomData" property="residences" />
+            </td>
+        </tr>
+        <tr>
+            <td width="221" height="1">
+              <p align="left"><font face="Arial">Spouse
+              </font></p>
+            </td>
+            <td width="586" height="1" align="left">
+              <html:text size="60" maxlength="39" name="obituaryCustomData" property="spouse" />
+            </td>
+        </tr>
+        <tr>
+            <td width="221" height="1">
+              <p align="left"><font face="Arial">Marriage Date
+              </font></p>
+            </td>
+            <td width="586" height="1" align="left">
+              <html:text size="60" maxlength="39" name="obituaryCustomData" property="dateOfMarriage" onfocus="focusDateEdit(this);"/>
+            </td>
+        </tr>
+        <tr>
+            <td width="221" height="1">
+              <p align="left"><font face="Arial">Marriage Info
+              </font></p>
+            </td>
+            <td width="586" height="1" align="left">
+              <html:text size="60" maxlength="39" name="obituaryCustomData" property="marriageInformation" />
+            </td>
+        </tr>
+        <tr>
+            <td width="221" height="1">
+              <p align="left"><font face="Arial">Retired?
+              </font></p>
+            </td>
+            <td width="586" height="1" align="left">
+              <html:text size="60" maxlength="39" name="obituaryCustomData" property="retired" />
+            </td>
+        </tr>
+        <tr>
+            <td width="221" height="1">
+              <p align="left"><font face="Arial">Clubs 1
+              </font></p>
+            </td>
+            <td width="586" height="1" align="left">
+              <html:text size="60" maxlength="39" name="obituaryCustomData" property="clubs1" />
+            </td>
+        </tr>
+        <tr>
+            <td width="221" height="1">
+              <p align="left"><font face="Arial">Clubs 2
+              </font></p>
+            </td>
+            <td width="586" height="1" align="left">
+              <html:text size="60" maxlength="39" name="obituaryCustomData" property="clubs2" />
+            </td>
+        </tr>
+        <tr>
+            <td width="221" height="1">
+              <p align="left"><font face="Arial"> Preceded?
+              </font></p>
+            </td>
+            <td width="586" height="1" align="left">
+              <html:text size="60" maxlength="39" name="obituaryCustomData" property="preceded" />
+            </td>
+        </tr>
+        <tr>
+            <td width="221" height="1">
+              <p align="left"><font face="Arial">Family Present?
+              </font></p>
+            </td>
+            <td width="586" height="1" align="left">
+              <html:text size="60" maxlength="39" name="obituaryCustomData" property="familyPresent" />
+            </td>
+        </tr>
+        <tr>
+            <td width="221" height="1">
+              <p align="left"><font face="Arial">Days &amp; Times
+              </font></p>
+            </td>
+            <td width="586" height="1" align="left">
+              <html:text size="60" maxlength="39" name="obituaryCustomData" property="daysAndTimes" />
+            </td>
+        </tr>
+        <tr>
+            <td width="221" height="1">
+              <p align="left"><font face="Arial">Employer
+              </font></p>
+            </td>
+            <td width="586" height="1" align="left">
+              <html:text size="60" maxlength="39" name="obituaryCustomData" property="employer" />
+            </td>
+        </tr>
+        <tr>
+            <td width="221" height="1">
+              <p align="left"><font face="Arial">Newspaper
+              </font></p>
+            </td>
+            <td width="586" height="1" align="left">
+              <html:text size="60" maxlength="39" name="obituaryCustomData" property="newspaper" />
+            </td>
+        </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+  </div>
+</html:form>
+<script language="JavaScript" type="text/javascript">
+	document.forms[0].deathDay.focus();
+    populateArrays();
+    formConfirmOn();
+</script>	
+</body></html>

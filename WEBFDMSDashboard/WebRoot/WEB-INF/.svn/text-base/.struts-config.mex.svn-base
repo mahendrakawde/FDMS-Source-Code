@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/dashboardLogin.do" location="345,45" dimension="359,88" />
+  <StrutsActivity path="/showMain.do" location="350,250" dimension="330,88" />
+  <StrutsActivity path="/acctMenu.do" location="50,450" dimension="329,88" />
+  <StrutsActivity path="/adminMenu.do" location="390,450" dimension="346,88" />
+  <StrutsActivity path="/reports.do" location="60,645" dimension="320,88" />
+  <StrutsActivity path="/dashboardMenu.do" location="795,450" dimension="271,88" />
+  <StrutsActivity path="/acctCheckListing.do" location="390,645" dimension="346,88" />
+  <StrutsActivity path="/acctCheckApprovalEdit.do" location="795,645" dimension="271,88" />
+  <StrutsActivity path="/acctCheckApprovalSave.do" location="810,855" dimension="256,88" />
+  <StrutsActivity path="/userEdit.do" location="30,945" dimension="331,88" />
+  <StrutsActivity path="/userList.do" location="45,1155" dimension="331,88" />
+  <StrutsActivity path="/myAccount.do" location="765,45" dimension="226,88" />
+  <StrutsActivity path="/acctLocationList.do" location="390,945" dimension="346,88" />
+  <StrutsActivity path="/acctLocationEdit.do" location="390,1155" dimension="346,88" />
+  <StrutsActivity path="/acctLocationSave.do" location="765,1155" dimension="271,88" />
+  <StrutsActivity path="/acctLocationEmail.do" location="675,1380" dimension="372,88" />
+  <StrutsActivity path="/acctLocationEmailSave.do" location="405,1380" dimension="220,88" />
+  <StrutsActivity path="MainPage;6" location="375,150" dimension="89,75" />
+  <StrutsActivity path="dashboardLogin;6" location="45,225" dimension="119,75" />
+  <StrutsActivity path="/login.jsp" location="75,45" dimension="150,100" />
+  <StrutsActivity path="/main.jsp" location="510,165" dimension="73,49" />
+  <StrutsActivity path="/menu/acctMenu.jsp" location="150,570" dimension="127,49" />
+  <StrutsActivity path="/menu/adminMenu.jsp" location="465,570" dimension="135,49" />
+  <StrutsActivity path="/reports.jsp" location="165,765" dimension="86,49" />
+  <StrutsActivity path="/menu/dashboardMenu.jsp" location="810,570" dimension="158,49" />
+  <StrutsActivity path="/MainPage.do" location="390,795" dimension="105,75" />
+  <StrutsActivity path="acct.checkList" location="510,795" dimension="96,49" />
+  <StrutsActivity path="acct.checkEdit" location="870,780" dimension="98,49" />
+  <StrutsActivity path="user.userEdit" location="30,1080" dimension="93,49" />
+  <StrutsActivity path="user.userList" location="90,1305" dimension="91,49" />
+  <StrutsActivity path="user.myAccount" location="840,225" dimension="107,49" />
+  <StrutsActivity path="acct.locationList" location="540,1080" dimension="106,49" />
+  <StrutsActivity path="acct.locationEdit" location="675,1290" dimension="108,49" />
+  <StrutsActivity path="acct.locationEmail" location="585,1500" dimension="114,49" />
+  <StrutsActivity path="showMain" location="50,350" dimension="76,49" />
+  <StrutsTransition id="/myAccount.do,success,user.myAccount,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="908,133" />
+      <AbsolutePoint location="908,225" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="acct.locationEdit,null,/acctLocationEmail.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="729,1339" />
+      <AbsolutePoint location="729,1380" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/acctCheckApprovalSave.do,failed,acct.checkEdit,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="938,855" />
+      <AbsolutePoint location="938,829" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/acctCheckApprovalEdit.do,success,acct.checkEdit,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="889,733" />
+      <AbsolutePoint location="889,780" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/menu/acctMenu.jsp,null,/acctMenu.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="213,570" />
+      <AbsolutePoint location="213,538" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/showMain.do,failed,/login.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="350,285" />
+      <AbsolutePoint location="179,285" />
+      <AbsolutePoint location="179,145" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/acctCheckApprovalSave.do,success,acct.checkList,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="929,855" />
+      <AbsolutePoint location="1235,865" />
+      <AbsolutePoint location="558,865" />
+      <AbsolutePoint location="558,844" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/userList.do,success,user.userList,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="136,1243" />
+      <AbsolutePoint location="136,1305" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/showMain.do,success,/main.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="525,250" />
+      <AbsolutePoint location="525,214" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/acctLocationEmailSave.do,success,/acctLocationEdit.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="515,1380" />
+      <AbsolutePoint location="515,1243" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="dashboardLogin;6,null,/login.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="104,225" />
+      <AbsolutePoint location="104,145" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="acct.locationList,null,/acctLocationList.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="623,1080" />
+      <AbsolutePoint location="623,1033" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/userEdit.do,success,/userList.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="225,1033" />
+      <AbsolutePoint location="225,1155" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="acct.locationEmail,null,/acctLocationEmailSave.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="610,1500" />
+      <AbsolutePoint location="610,1468" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="acct.checkEdit,null,/acctCheckApprovalSave.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="908,829" />
+      <AbsolutePoint location="908,855" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/menu/adminMenu.jsp,null,/adminMenu.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="532,570" />
+      <AbsolutePoint location="532,538" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/userEdit.do,failed,user.userEdit,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="108,1033" />
+      <AbsolutePoint location="108,1080" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/acctCheckApprovalSave.do,checkList,/acctCheckListing.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="810,899" />
+      <AbsolutePoint location="621,899" />
+      <AbsolutePoint location="621,733" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/acctLocationList.do,failed,acct.locationList,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="563,1033" />
+      <AbsolutePoint location="563,1080" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/menu/dashboardMenu.jsp,null,/dashboardMenu.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="889,570" />
+      <AbsolutePoint location="889,538" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/reports.jsp,null,/reports.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="208,765" />
+      <AbsolutePoint location="208,733" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="acct.locationEdit,null,/acctLocationSave.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="780,1290" />
+      <AbsolutePoint location="780,1243" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/userList.do,failed,user.userList,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="166,1243" />
+      <AbsolutePoint location="166,1305" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="acct.locationEdit,null,/acctLocationEdit.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="721,1290" />
+      <AbsolutePoint location="721,1243" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/userEdit.do,userList,/userList.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="195,1033" />
+      <AbsolutePoint location="195,1155" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="acct.checkList,null,/acctCheckListing.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="533,795" />
+      <AbsolutePoint location="533,733" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/acctCheckListing.do,failed,/MainPage.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="480,733" />
+      <AbsolutePoint location="480,795" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/userList.do,userEdit,/userEdit.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="255,1155" />
+      <AbsolutePoint location="255,1033" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/acctCheckApprovalEdit.do,failed,acct.checkEdit,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="949,733" />
+      <AbsolutePoint location="949,780" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/login.jsp,null,/dashboardLogin.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="225,95" />
+      <AbsolutePoint location="345,95" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/acctLocationEdit.do,success,acct.locationEdit,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="690,1243" />
+      <AbsolutePoint location="690,1290" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/acctLocationList.do,success,acct.locationList,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="593,1033" />
+      <AbsolutePoint location="593,1080" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/acctCheckApprovalEdit.do,checkList,/acctCheckListing.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="795,689" />
+      <AbsolutePoint location="736,689" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="user.userEdit,null,/userEdit.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="76,1080" />
+      <AbsolutePoint location="76,1033" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="MainPage;6,null,/showMain.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="419,225" />
+      <AbsolutePoint location="419,250" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/acctLocationEmail.do,success,acct.locationEmail,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="684,1468" />
+      <AbsolutePoint location="684,1500" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="user.userList,null,/userList.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="106,1305" />
+      <AbsolutePoint location="106,1243" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="user.myAccount,null,/myAccount.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="938,225" />
+      <AbsolutePoint location="938,133" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/acctCheckListing.do,success,acct.checkList,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="563,733" />
+      <AbsolutePoint location="563,795" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="acct.checkEdit,null,/acctCheckApprovalEdit.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="919,780" />
+      <AbsolutePoint location="919,733" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/acctLocationSave.do,success,/acctLocationList.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="900,1155" />
+      <AbsolutePoint location="900,989" />
+      <AbsolutePoint location="736,989" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/acctLocationEdit.do,locationList,/acctLocationList.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="525,1155" />
+      <AbsolutePoint location="525,1033" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/myAccount.do,failed,user.myAccount,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="878,133" />
+      <AbsolutePoint location="878,225" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/src/com/aldorsolutions/dashboard/utils
+END
+ServiceLocator.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/src/com/aldorsolutions/dashboard/utils/ServiceLocator.java
+END
+DataSourceManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/src/com/aldorsolutions/dashboard/utils/DataSourceManager.java
+END
+JNDINames.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/src/com/aldorsolutions/dashboard/utils/JNDINames.java
+END
+FDMSChartFX.java
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/src/com/aldorsolutions/dashboard/utils/FDMSChartFX.java
+END
+Constants.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/src/com/aldorsolutions/dashboard/utils/Constants.java
+END
+CrystalReportManagerBean.java
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/src/com/aldorsolutions/dashboard/utils/CrystalReportManagerBean.java
+END

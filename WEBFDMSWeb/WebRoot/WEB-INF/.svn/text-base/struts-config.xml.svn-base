@@ -1,0 +1,2190 @@
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd" >
+<struts-config>
+	<form-beans>
+		<form-bean name="CheckEditDisplayForm" type="fdms.ui.struts.form.CheckEditDisplayForm" />
+		<form-bean name="CheckEditForm" type="fdms.ui.struts.form.CheckEditForm" />
+		<form-bean name="CheckEditListForm" type="fdms.ui.struts.form.CheckEditListForm" />
+
+
+		<form-bean name="VendorEditListForm" type="fdms.ui.struts.form.VendorEditListForm" />
+		<form-bean name="VendorEditForm" type="fdms.ui.struts.form.VendorEditForm" />
+
+		<form-bean name="VendorLoctEditForm" type="fdms.ui.struts.form.VendorLoctEditForm" />
+		<form-bean name="VendorLoctRemoveForm" type="fdms.ui.struts.form.VendorLoctRemoveForm" />
+
+		<form-bean name="FinanceChargeForm" type="fdms.ui.struts.form.FinanceChargeForm" />
+		<form-bean name="FinanceChargeSelect" type="fdms.ui.struts.form.FinanceChargeSelect" />
+		<form-bean name="GlAcctDefaultEditForm" type="fdms.ui.struts.form.GlAcctDefaultEditForm" />
+		<form-bean name="PnAddMerchandiseForm" type="fdms.ui.struts.form.PnAddMerchandiseForm" />
+		<form-bean name="PnAddServicesForm" type="fdms.ui.struts.form.PnAddServicesForm" />
+		<form-bean name="PnCancellation" type="fdms.ui.struts.form.PnCancellation" />
+		<form-bean name="PnChangeChargeLineForm" type="fdms.ui.struts.form.PnChangeChargeLineForm" />
+		<form-bean name="PnChangePriceListForm" type="fdms.ui.struts.form.ChangePriceListForm" />
+		<form-bean name="PnCharges" type="fdms.ui.struts.form.PnCharges" />
+		<form-bean name="PnFulfillment" type="fdms.ui.struts.form.PnFulfillment" />
+		<form-bean name="PnInstallmentForm" type="fdms.ui.struts.form.PnInstallmentForm" />
+		<form-bean name="PnInstallmentPayment" type="fdms.ui.struts.form.PnInstallmentPayment" />
+		<form-bean name="PnSelectPackageForm" type="fdms.ui.struts.form.PnSelectPackageForm" />
+		<form-bean name="PnSummary" type="fdms.ui.struts.form.PnSummary" />
+		<form-bean name="acctIntfForm" type="fdms.ui.struts.form.AcctIntfForm" />
+		<form-bean name="edenForm" type="fdms.ui.struts.form.EdenForm" />
+		<form-bean name="addSpeedData" type="fdms.ui.struts.form.AddSpeedDataForm" />
+		<form-bean name="apAccountEditForm" type="fdms.ui.struts.form.ApAccountEdit" />
+		<form-bean name="apAccountListForm" type="fdms.ui.struts.form.ApAccountListForm" />
+		<form-bean name="arrangerAdmin" type="fdms.ui.struts.form.ArrangerAdminForm" />
+		<form-bean name="arrangerEdit" type="fdms.ui.struts.form.ArrangerEditForm" />
+		<form-bean name="caseListCase" type="fdms.ui.struts.form.CaseListCaseForm" />
+		<form-bean name="caseListForm" type="fdms.ui.struts.form.CaseListForm" />
+		<form-bean name="movingCaseForm" type="fdms.ui.struts.form.MovingCaseForm" />
+		<form-bean name="eRegisterBookForm" type="fdms.ui.struts.form.ERegisterBookForm" />
+		<form-bean name="creditCardForm" type="fdms.ui.struts.form.CreditCardForm" />
+		<form-bean name="funeralSyncListForm" type="fdms.ui.struts.form.FuneralSyncListForm" />
+		<form-bean name="obituaryFuneralSyncCaseForm"
+			type="fdms.ui.struts.form.ObituaryFuneralSyncCaseForm" />
+		<form-bean name="cemListForm" type="fdms.ui.struts.form.CemListForm" />
+		<form-bean name="cemSpcCaseForm" type="fdms.ui.struts.form.CemSpcCaseForm" />
+		<form-bean name="caseListOptions" type="fdms.ui.struts.form.CaseListOptionsForm" />
+		<form-bean name="caseStatus" type="fdms.ui.struts.form.CaseStatusForm" />
+		<form-bean name="caseStatusOverview" type="fdms.ui.struts.form.CaseStatusOverviewForm" />
+		<form-bean name="caseOverviewObit" type="fdms.ui.struts.form.CaseStatusObitForm" />
+		<form-bean name="checkListForm" type="fdms.ui.struts.form.CheckListForm" />
+		<form-bean name="checkWriterForm" type="fdms.ui.struts.form.CheckWriterForm" />
+		<form-bean name="composeObit" type="fdms.ui.struts.form.PrintForm" />
+		<form-bean name="custom" type="fdms.ui.struts.form.CustomForm" />
+		<form-bean name="customAddChange" type="fdms.ui.struts.form.CustomAddChangeForm" />
+		<form-bean name="donations" type="fdms.ui.struts.form.DonationsForm" />
+		<form-bean name="donationsAddChange" type="fdms.ui.struts.form.DonationsAddChangeForm" />
+		<form-bean name="editVerse" type="fdms.ui.struts.form.EditVerseForm" />
+		<form-bean name="financialAddMerchandise"
+			type="fdms.ui.struts.form.FinancialAddMerchandiseForm" />
+		<form-bean name="financialAddServices"
+			type="fdms.ui.struts.form.FinancialAddServicesForm" />
+		<form-bean name="financialChangePostedDate"
+			type="fdms.ui.struts.form.FinancialChangePostedDateForm" />
+		<form-bean name="financialBillToParties"
+			type="fdms.ui.struts.form.FinancialBillToPartiesForm" />
+		<form-bean name="financialBillToPartiesAddChange"
+			type="fdms.ui.struts.form.FinancialBillToPartiesAddChangeForm" />
+		<form-bean name="financialChangeChargeLine"
+			type="fdms.ui.struts.form.FinancialChangeChargeLineForm" />
+		<form-bean name="financialChangePriceList"
+			type="fdms.ui.struts.form.FinancialChangePriceListForm" />
+		<form-bean name="financialInformation"
+			type="fdms.ui.struts.form.FinancialInformationForm" />
+		<form-bean name="qtyFinancialInformation"
+			type="fdms.ui.struts.form.QtyFinancialInformationForm" />
+		<form-bean name="qtyFinancialMerchandiseInformation"
+			type="fdms.ui.struts.form.QtyFinancialMerchandiseInformationForm" />
+		<form-bean name="qtyFinancialInformationPage"
+			type="fdms.ui.struts.form.QtyFinancialInformationPageForm" />
+		<form-bean name="financialSelectPackages"
+			type="fdms.ui.struts.form.FinancialSelectPackagesForm" />
+		<form-bean name="financialSpecifyComponents"
+			type="fdms.ui.struts.form.FinancialSpecifyComponentsForm" />
+		<form-bean name="firstCallInformation"
+			type="fdms.ui.struts.form.FirstCallInformationForm" />
+		<form-bean name="cemAnStatus" type="fdms.ui.struts.form.CemAnStatus" />
+		<form-bean name="formEdit" type="fdms.ui.struts.form.FormEditForm" />
+		<form-bean name="formsAdmin" type="fdms.ui.struts.form.FormsAdminForm" />
+		<form-bean name="glAcctDefaultListForm" type="fdms.ui.struts.form.GlAcctDefaultListForm" />
+		<form-bean name="help" type="fdms.ui.struts.form.HelpForm" />
+		<form-bean name="inventory" type="fdms.ui.struts.form.InventoryForm" />
+		<form-bean name="inventoryCatalog" type="fdms.ui.struts.form.InventoryCatalogForm" />
+		<form-bean name="inventoryOnHand" type="fdms.ui.struts.form.InventoryOnHandForm" />
+		<form-bean name="inventoryReceive" type="fdms.ui.struts.form.InventoryReceiveForm" />
+		<form-bean name="inventoryTransferRemove"
+			type="fdms.ui.struts.form.InventoryTransferRemoveForm" />
+		<form-bean name="locationEdit" type="fdms.ui.struts.form.LocationEditForm" />
+		<form-bean name="locationList" type="fdms.ui.struts.form.LocationListForm" />
+		<form-bean name="localeEdit" type="fdms.ui.struts.form.LocaleEditForm" />
+		<form-bean name="localeList" type="fdms.ui.struts.form.LocaleListForm" />
+		<form-bean name="marqueeForm" type="fdms.ui.struts.form.MarqueeForm" />
+		<form-bean name="memorialPrint" type="fdms.ui.struts.form.MemorialPrintForm" />
+		<form-bean name="miscCashReceipts" type="fdms.ui.struts.form.MiscCashReceiptsForm" />
+		<form-bean name="obituary" type="fdms.ui.struts.form.ObituaryForm" />
+		<form-bean name="obituaryImage" type="fdms.ui.struts.form.ObituaryImageForm" />
+		<form-bean name="obituaryAddChange" type="fdms.ui.struts.form.ObituaryAddChangeForm" />
+		<form-bean name="obituaryCustomData" type="fdms.ui.struts.form.ObitCustomData" />
+		<form-bean name="openCase" type="fdms.ui.struts.form.OpenCaseForm" />
+		<form-bean name="openCemSpcCase" type="fdms.ui.struts.form.OpenCemSpcCaseForm" />
+		<form-bean name="packageItemAdd" type="fdms.ui.struts.form.PackageItemAdd" />
+		<form-bean name="packagePriceList" type="fdms.ui.struts.form.PackagePriceListForm" />
+		<form-bean name="packagePriceLists" type="fdms.ui.struts.form.PackagePriceListsForm" />
+		<form-bean name="pallBearers" type="fdms.ui.struts.form.PallBearersForm" />
+		<form-bean name="pallbearerform" type="fdms.ui.struts.form.PallBearersForm" />
+		<form-bean name="payment" type="fdms.ui.struts.form.PaymentForm" />
+
+		<form-bean name="verifyFinancialForm" type="fdms.ui.struts.form.VerifyFinancialForm" />
+
+		<form-bean name="bankAccountForm" type="fdms.ui.struts.form.BankAccountForm" />
+		<form-bean name="bankingOperationForm" type="fdms.ui.struts.form.BankingOperationForm" />
+		<form-bean name="bankingTransactionForm" type="fdms.ui.struts.form.BankingTransactionForm" />
+		<form-bean name="paymentAddChange" type="fdms.ui.struts.form.PaymentAddChangeForm" />
+		<form-bean name="pnStatus" type="fdms.ui.struts.form.pnstatus" />
+		<form-bean name="preNeed" type="fdms.ui.struts.form.PreNeedForm" />
+		<form-bean name="preNeedDisbursementForm"
+			type="fdms.ui.struts.form.PreNeedDisbursementForm" />
+		<form-bean name="priceList" type="fdms.ui.struts.form.PriceListForm" />
+		<form-bean name="priceListAdd" type="fdms.ui.struts.form.PriceListAddForm" />
+		<form-bean name="priceLists" type="fdms.ui.struts.form.PriceListsForm" />
+		<form-bean name="printForm" type="fdms.ui.struts.form.PrintForm" />
+		<form-bean name="printReports" type="fdms.ui.struts.form.PrintReports" />
+		<form-bean name="processLogon" type="fdms.ui.struts.form.ProcessLogonForm" />
+		<form-bean name="changePasswordForm"
+			type="fdms.ui.struts.form.LogonChangePasswordForm" />
+		<form-bean name="passwordExpirationForm"
+			type="fdms.ui.struts.form.LogonPasswordExpirationForm" />
+		<form-bean name="reportCategory" type="fdms.ui.struts.form.ReportCategory" />
+		<form-bean name="reportsPrint" type="fdms.ui.struts.form.ReportsPrintForm" />
+		<form-bean name="search" type="fdms.ui.struts.form.searchForm" />
+		<form-bean name="searchSurvivors" type="fdms.ui.struts.form.SearchSurvivorsForm" />
+		<form-bean name="services" type="fdms.ui.struts.form.ServicesForm" />
+		<form-bean name="servicesVisitation" type="fdms.ui.struts.form.ServicesVisitationForm" />
+		<form-bean name="survivors" type="fdms.ui.struts.form.SurvivorsForm" />
+		<form-bean name="survivorsAddChange" type="fdms.ui.struts.form.SurvivorsForm" />
+		<form-bean name="tableContentsForm" type="fdms.ui.struts.form.TableContentsForm" />
+		<form-bean name="tableListForm" type="fdms.ui.struts.form.TableListForm" />
+		<form-bean name="tableRowForm" type="fdms.ui.struts.form.TableRowForm" />
+		<form-bean name="userEditForm" type="fdms.ui.struts.form.UserEditForm" />
+		<form-bean name="userListForm" type="fdms.ui.struts.form.UserListForm" />
+		<form-bean name="reportAdminForm" type="fdms.ui.struts.form.ReportAdminForm" />
+		<form-bean name="reportEditForm" type="fdms.ui.struts.form.ReportEditForm" />
+		<form-bean name="userReportForm" type="fdms.ui.struts.form.UserReportForm" />
+		<form-bean name="userRegistration" type="fdms.ui.struts.form.UserRegistration" />
+		<form-bean name="freetrialRegistration" type="fdms.ui.struts.form.FreeTrialRegistration" />
+		<form-bean name="vaBenefitsForm" type="fdms.ui.struts.form.VaBenefitsForm" />
+		<form-bean name="vaFlagForm" type="fdms.ui.struts.form.VaFlagForm" />
+		<form-bean name="vaStoneForm" type="fdms.ui.struts.form.VaStoneForm" />
+		<form-bean name="vendorChangeForm" type="fdms.ui.struts.form.VendorChange" />
+		<form-bean name="veteran" type="fdms.ui.struts.form.VeteranForm" />
+		<form-bean name="vitals" type="fdms.ui.struts.form.VitalsForm" />
+		<form-bean name="termsOfServiceForm" type="fdms.ui.struts.form.TermsOfServiceForm" />
+
+		<!-- ADMIN SECTION -->
+		<form-bean name="adminLoginForm" type="fdms.admin.login.form.LoginForm" />
+		<form-bean name="alertForm" type="fdms.admin.alert.form.AlertForm" />
+		<form-bean name="userSessionForm" type="fdms.admin.user.form.UserSessionForm" />
+		<form-bean name="userForm" type="fdms.admin.user.form.UserForm" />
+		<form-bean name="securityForm"
+			type="com.aldorsolutions.webfdms.security.form.SecurityConfigForm" />
+		<form-bean name="companyForm"
+			type="com.aldorsolutions.webfdms.company.form.CompanyForm" />
+		<form-bean name="inventoryVersionForm"
+			type="fdms.ui.struts.form.inventory.InventoryVersionForm" />
+		<form-bean name="inventoryVersionAddEditForm"
+			type="fdms.ui.struts.form.inventory.InventoryVersionAddEditForm" />
+		<form-bean name="bookMarkAdminForm" type="fdms.ui.struts.form.BookMarkAdminForm" />
+		<form-bean name="loadDataForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="loadDataDTO"
+				type="com.aldorsolutions.webfdms.beans.LoadDataDTO" />
+			<form-property name="dataBaseList" type="java.util.ArrayList" />
+			<form-property name="tablesList" type="java.util.ArrayList" />
+			<form-property name="colList" type="java.util.ArrayList" />
+			<form-property name="metaArray" type="java.lang.String" />
+			<form-property name="file" type="org.apache.struts.upload.FormFile" />
+		</form-bean>
+		<form-bean name="localeForm"
+			type="com.aldorsolutions.webfdms.locale.form.LocaleForm" />
+		<form-bean name="smsForm"
+			type="com.aldorsolutions.webfdms.sms.form.SMSForm" />
+		<form-bean name="locationForm"
+			type="com.aldorsolutions.webfdms.locations.form.LocationForm" />
+		<form-bean name="obitAsimasForm" type="fdms.ui.struts.form.ObitAsimasForm" />
+		<form-bean name="excelForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="file" type="org.apache.struts.upload.FormFile" />
+			<form-property name="dataBaseList" type="java.util.ArrayList" />
+			<form-property name="identityStart" type="java.lang.String" />
+			<form-property name="identityRequired" type="java.lang.Boolean" />
+			<form-property name="loadDataDTO"
+				type="com.aldorsolutions.webfdms.beans.LoadDataDTO" />
+		</form-bean>
+		<form-bean name="invitemlocationForm" type="fdms.ui.struts.form.InvitemlocationForm" />
+
+		<!-- Entries by Parth -->
+		<form-bean name="uploadForm" type="fdms.ui.struts.form.FileUploadForm" />
+		<form-bean name="eRegisterTheme" type="fdms.ui.struts.form.ERegisterThemeForm" />
+		<form-bean name="presentationImage" type="fdms.ui.struts.form.PresentationImageForm" />
+		<form-bean name="exportToLifeFiles" type="fdms.ui.struts.form.ExportToLifefilesForm" />
+		
+		<!-- Arranger Filed Selection -->
+		<form-bean name="showArrangerFieldsForm" type="fdms.ui.struts.form.ShowArrangerFieldsForm" />
+
+	</form-beans>
+	<global-forwards>
+		<forward name="help" path="/help.do" />
+		<forward name="reports" path="/reports.do" />
+		<forward name="search" path="/search.do" />
+		<forward name="showInventory" path="/showInventory.do" />
+		<forward name="showInventoryVersion" path="/showInventoryVersion.do" />
+		<forward name="webFDMSManagement" path="/webFDMSManagement.do" />
+		<forward name="financial" path="/financial.do" />
+		<forward name="newPreNeed" path="/newPreNeed.do" />
+		<forward name="logout" path="/logout.do" />
+		<forward name="usingHelp" path="/usingHelp.do" />
+		<forward name="index" path="/index.do" />
+		<forward name="cancel" path="/cancel.do" />
+		<forward name="about" path="/about.do" />
+		<forward name="showMiscCashReceiptsGlobal" path="/showMiscCashReceipts.do" />
+		<forward name="financeChargesOneCase" path="/financeChargesOneCase.do" />
+		<forward name="caseStatus" path="/caseStatus.do" />
+		<forward name="main" path="/main.do" />
+		<forward name="newAtNeed" path="/newAtNeed.do" />
+		<forward name="saveFirstCallInformation" path="/saveFirstCallInformation.do" />
+		<forward name="firstCallInformation" path="/firstCallInformation.do" />
+		<forward name="processPreNeed" path="/processPreNeed.do" />
+		<forward name="preNeedReports" path="/preNeedReports.do" />
+		<forward name="miscellaneousCustom" path="/miscellaneousCustom.do" />
+		<forward name="logon" path="/logon.do" />
+		<forward name="globalCancel" path="/processCancelAction.do" />
+		<forward name="showCaseStatusGlobal" path="/showCaseStatus.do" />
+		<forward name="showFirstCallInformation" path="/showFirstCallInformation.do" />
+		<forward name="showVitals" path="/showVitals.do" />
+		<forward name="showServices" path="/showServices.do" />
+		<forward name="showSurvivors" path="/showSurvivors.do" />
+		<forward name="showSurvivorsAddChange" path="/showSurvivorsAddChange.do" />
+		<forward name="showPayment" path="/showPayment.do" />
+		<forward name="showPaymentAddChange" path="/showPaymentAddChange.do" />
+		<forward name="showDonations" path="/showDonations.do" />
+		<forward name="showDonationsAddChange" path="/showDonationsAddChange.do" />
+		<forward name="showPallBearers" path="/showPallBearers.do" />
+		<forward name="showObituary" path="/showObituary.do" />
+		<forward name="showObituaryAddChangeGlobal" path="/showObituaryAddChangeGlobal.do" />
+		<forward name="showCustom" path="/showCustom.do" />
+		<forward name="showVeteran" path="/showVeteran.do" />
+		<forward name="showVAFlag" path="/showVAFlag.do" />
+		<forward name="showVABenefits" path="/showVABenefits.do" />
+		<forward name="showVAHeadstone" path="/showVAHeadstone.do" />
+		<forward name="showCaseList" path="/showCaseList.do" />
+		<forward name="showCemList" path="/showCemList.do" />
+		<forward name="openCase" path="/openCase.do" />
+		<forward name="openCemSpcCase" path="/openCemSpcCase.do" />
+		<forward name="showCaseListBack" path="/showCaseListBack.do" />
+		<forward name="showCaseListLast" path="/showCaseListLast.do" />
+		<forward name="showCaseListFirst" path="/showCaseListFirst.do" />
+		<forward name="showCaseListNext" path="/showCaseListNext.do" />
+		<forward name="showCaseOverview" path="/showCaseOverview.do" />
+		<forward name="showCemListBack" path="/showCemListBack.do" />
+		<forward name="showCemListLast" path="/showCemListLast.do" />
+		<forward name="showCemListFirst" path="/showCemListFirst.do" />
+		<forward name="showCemListNext" path="/showCemListNext.do" />
+		<forward name="cemShowBlockSpaces" path="/showCemOtherSpaceList.do" />
+		<forward name="showCaseOverviewObit" path="/showCaseOverviewObit.do" />
+		<forward name="showFinancialInformation" path="/showFinancialInformation.do" />
+		<forward name="showPreNeed" path="/showPreNeed.do" />
+		<forward name="showPreNeedGlobal" path="/showPreNeed.do" />
+		<forward name="showFinInfGlobal" path="/showFinInf.do" />
+		<forward name="financialBillToParties" path="/financialBillToParties.do" />
+		<forward name="financialChangeChargeLine" path="/financialChangeChargeLine.do" />
+		<forward name="financialChangePriceList" path="/financialChangePriceList.do" />
+		<forward name="financialAddServices" path="/financialAddServices.do" />
+		<forward name="financialChangePostedDate" path="/financialChangePostedDate.do" />
+		<forward name="financialAddMerchandise" path="/financialAddMerchandise.do" />
+		<forward name="financialSpecifyComponents" path="/financialSpecifyComponents.do" />
+		<forward name="financialBillToPartiesAddChange" path="/financialBillToPartiesAddChange.do" />
+		<forward name="processFinancialAddServices" path="/processFinancialAddServices.do" />
+		<forward name="processFinancialChangePostedDate" path="/processFinancialChangePostedDate.do" />
+		<forward name="processQtyFinancialAddServices" path="/processQtyFinancialAddServices.do" />
+		<forward name="processFinancialAddMerchandise" path="/processFinancialAddMerchandise.do" />
+		<forward name="processQtyFinancialAddMerchandise" path="/processQtyFinancialAddMerchandise.do" />
+		<forward name="processFinancialBillToPartiesAddChange" path="/processFinancialBillToPartiesAddChange.do" />
+		<forward name="globalShowTableCategories" path="/showEditTablesList.do" />
+		<forward name="processFinancialChangeChargeLine" path="/processFinancialChangeChargeLine.do" />
+		<forward name="processFinancialInformationLineItemDelete"
+			path="/processFinancialInformationLineItemDelete.do" />
+		<forward name="processFinancialInformationLineItemsDeleteAll"
+			path="/processFinancialInformationLineItemsDeleteAll.do" />
+		<forward name="processSurvivorsAddChange" path="/processSurvivorsAddChange.do" />
+		<forward name="processDonationsAddChange" path="/processDonationsAddChange.do" />
+		<forward name="processServices" path="/processServices.do" />
+		<forward name="voidPayment" path="/voidPayment.do" />
+		<forward name="printPaymentReceipt" path="/printPaymentReceipt.do" />
+		<forward name="printPaymentHistory" path="/printPaymentHistory.do" />
+		<forward name="processPaymentAddChange" path="/processPaymentAddChange.do" />
+		<forward name="showInventoryCatalog" path="/showInventoryCatalog.do" />
+		<forward name="processInventoryCatalog" path="/processInventoryCatalog.do" />
+		<forward name="showInvTransferRemove" path="/showInvTransferRemove.do" />
+		<forward name="showInvReceive" path="/showInvReceive.do" />
+		<forward name="showInvOnHand" path="/showInvOnHand.do" />
+		<forward name="processInvOnHand" path="/processInvOnHand.do" />
+		<forward name="processInvTransferRemove" path="/processInvTransferRemove.do" />
+		<forward name="processInvReceive" path="/processInvReceive.do" />
+		<forward name="showReportList" path="/showReportList.do" />
+		<forward name="showSelectedTableGlobal" path="/showSelectedTable.do" />
+		<forward name="financialBillToExit" path="/FinancialInformation.jsp" />
+		<forward name="closeWindow" path="/closer.jsp" />
+		<forward name="showApCheckWriterGlobal" path="/showApCheckWriter.do" />
+		<forward name="showApCheckWriterJsp" path="/ApCheckWriter.jsp" />
+		<forward name="showApVendorGlobal" path="/showApVendor.do" />
+		<forward name="showApAccountListGlobal" path="/showApAccountList.do" />
+		<forward name="showUserListGlobal" path="/showUserAdmin.do" />
+		<forward name="showBookMarkAdminGlobal" path="/showBookMarkAdmin.do" />
+		<forward name="showPriceListsGlobal" path="/showPriceLists.do" />
+
+		<forward name="showReportAdminDo" path="/showReportAdmin.do" />
+
+		<forward name="showPackageListsGlobal" path="/showPackageLists.do" />
+		<forward name="ProcessLogOut" path="/processLogout.do" />
+		<forward name="showLocationAdminGlobal" path="/showLocationAdmin.do" />
+		<forward name="showLocaleAdminGlobal" path="/showLocaleAdmin.do" />
+		<forward name="showArrangerAdminGlobal" path="/showArrangerAdmin.do" />
+		<forward name="showFormsAdminGlobal" path="/showFormsAdmin.do" />
+		<forward name="ShowIntroductionGlobal" path="/Introduction.jsp" />
+		<forward name="showMemorialPrint" path="/showMemorialPrint.do" />
+		<forward name="showEden" path="/showEden.do" />
+		<forward name="showMovingCase" path="/showMovingCase.do" />
+		<forward name="showCreditCard" path="/showCreditCard.do" />
+		<forward name="showFuneralSyncList" path="/showFuneralSyncList.do" />
+		<forward name="showObituaryFuneralSyncCase" path="/showObituaryFuneralSyncCase.do" />
+		<forward name="showInsertPackages" path="/showInsertPackages.do" />
+		<forward name="showPnStatus" path="/showPnStatus.do" />
+		<forward name="showCemANStatus" path="/showCemANStatus.do" />
+		<forward name="ShowPnChargesJspGlobal" path="/PnCharges.jsp" />
+		<forward name="showAcctInterfaceGlobal" path="/showAcctInterface.do" />
+		<forward name="ShowCheckEditJsp" path="/showCheckEditList.do" />
+
+		<forward name="ShowVendorEditJsp" path="/showVendorEditList.do" />
+		<forward name="ShowVendorEditDisplayJsp" path="/showVendorEditDisplay.do" />
+
+		<forward name="ShowFinanceChargeFromGlobal" path="/showFinanceChargeFrom.do" />
+		<forward name="showGlAcctDefaultList" path="/showGlAcctDefaultList.do" />
+		<forward name="introcemetery" path="/IntroCemetery.jsp" />
+		<forward name="cemShowSecListJsp" path="/showCemOtherSpaceList.do" />
+		<forward name="newCemSectionList" path="/showCemSectionList.do" />
+		<forward name="newCemAtNeedjsp" path="/ShowCemAtNeed.do" />
+		<forward name="showObitAsimasPostDetails" path="/showObitAsimasPostDetails.do" />
+		<forward name="invItemLocation" path="/showInvItemLocation.do" />
+
+		<forward name="verifyFinancial" path="/verifyFinancial.do" />
+		<forward name="repost" path="/repost.do" />
+		<forward name="showBankingTransaction" path="/showBankingOperation.do" />
+		<forward name="showBankAccount" path="/showBankAccount.do" />
+		<forward name="showERegister" path="/showERegisterBook.do" />
+
+		<!-- Added by Parth -->
+		<forward name="showERegisterTheme" path="/admin/showERegisterTheme.do" />
+		<forward name="showThemePresentationImage" path="/admin/showThemePresentationImages.do" />
+	</global-forwards>
+	<action-mappings>
+
+		<action name="chooseReportToEdit" path="/reporting/chooseReportToEdit"
+			scope="session" type="fdms.ui.struts.action.ChooseReportToEdit"
+			unknown="false" validate="false">
+			<forward name="reportChoice" path="/reporting/chooseReport.jsp"
+				redirect="false" />
+		</action>
+
+		<action name="saveReport" path="/reporting/saveReport" scope="session"
+			type="fdms.ui.struts.action.SaveReport" unknown="false" validate="false">
+			<forward name="reportSaved" path="/reporting/chooseReportToEdit.do"
+				redirect="true" />
+		</action>
+
+		<action forward="/Help.jsp" path="/about" scope="request"
+			unknown="false" validate="false" />
+		<action name="addSpeedData" path="/addSpeedDataAction" scope="request"
+			type="fdms.ui.struts.action.AddSpeedDataAction" unknown="false"
+			validate="false">
+			<forward name="redisplayTablePopup" path="/tablepopup2.jsp"
+				redirect="false" />
+		</action>
+		<action forward="/Help.jsp" path="/cancel" scope="request"
+			unknown="false" validate="false" />
+		<action input="/Obituary.jsp" name="composeObit" path="/composeObituary"
+			scope="request" type="fdms.ui.struts.action.ComposeObituary" unknown="false"
+			validate="false">
+			<forward name="showComposedObituary" path="/Obituary.jsp"
+				redirect="false" />
+		</action>
+		<action input="/Custom.jsp" path="/custom" scope="session"
+			type="fdms.ui.struts.action.Custom" unknown="false" validate="false" />
+		<action forward="/Financial.jsp" path="/financeChargesOneCase"
+			scope="request" unknown="false" validate="false" />
+		<action forward="/Financial.jsp" path="/financial" scope="request"
+			unknown="false" validate="false" />
+		<action name="financialAddMerchandise" path="/financialAddMerchandise"
+			scope="request" type="fdms.ui.struts.action.FinancialAddMerchandise"
+			unknown="false" validate="false">
+			<forward name="financialAddMerchandise" path="/FinancialAddMerchandise.jsp"
+				redirect="false" />
+		</action>
+		<action input="/FinancialAddServices.jsp" name="financialAddServices"
+			path="/financialAddServices" scope="request"
+			type="fdms.ui.struts.action.FinancialAddServices" unknown="false"
+			validate="false">
+			<forward name="financialAddServices" path="/FinancialAddServices.jsp"
+				redirect="false" />
+		</action>
+
+		<action input="/FinancialChangePostedDate.jsp" name="financialChangePostedDate"
+			path="/financialChangePostedDate" scope="request"
+			type="fdms.ui.struts.action.FinancialChangePostedDate" unknown="false"
+			validate="false">
+			<forward name="financialChangePostedDate" path="/FinancialChangePostedDate.jsp"
+				redirect="false" />
+		</action>
+		<action input="/FinancialChangePostedDate.jsp" name="financialChangePostedDate"
+			path="/processFinancialChangePostedDate" scope="request"
+			type="fdms.ui.struts.action.ProcessFinancialChangePostedDate"
+			unknown="false" validate="false">
+			<forward name="financialInformation" path="/FinancialInformation.jsp"
+				redirect="false" />
+		</action>
+
+		<action path="/financialBillToParties" scope="request"
+			type="fdms.ui.struts.action.FinancialBillToParties" unknown="false"
+			validate="false">
+			<forward name="financialBillToParties" path="/FinancialBillToParties.jsp"
+				redirect="false" />
+		</action>
+		<action input="/FinancialBillToParties.jsp" name="financialBillToParties"
+			path="/financialBillToPartiesAddChange" scope="session"
+			type="fdms.ui.struts.action.FinancialBillToPartiesAddChange" unknown="false"
+			validate="false">
+			<forward name="financialBillToPartiesAddChange" path="/FinancialBillToPartiesAddChange.jsp"
+				redirect="false" />
+		</action>
+		<action input="/FinancialInformation.jsp" name="financialChangeChargeLine"
+			path="/financialChangeChargeLine" scope="request"
+			type="fdms.ui.struts.action.FinancialChangeChargeLine" unknown="false"
+			validate="false">
+			<forward name="financialChangeChargeLine" path="/FinancialChangeChargeLine.jsp"
+				redirect="false" />
+		</action>
+		<action input="/FinancialChangePriceList.jsp" name="financialChangePriceList"
+			path="/financialChangePriceList" scope="request"
+			type="fdms.ui.struts.action.FinancialChangePriceList" unknown="false"
+			validate="false">
+			<forward name="financialChangePriceList" path="/FinancialChangePriceList.jsp"
+				redirect="false" />
+		</action>
+		<action path="/financialSelectPackages" scope="request"
+			type="fdms.ui.struts.action.FinancialSelectPackages" unknown="false"
+			validate="false" />
+		<action input="/FinancialSpecifyComponents.jsp" name="financialSpecifyComponents"
+			path="/financialSpecifyComponents" scope="session"
+			type="fdms.ui.struts.action.FinancialSpecifyComponents" unknown="false"
+			validate="false">
+			<forward name="financialSpecifyComponents" path="/FinancialSpecifyComponents.jsp"
+				redirect="false" />
+		</action>
+		<action name="firstCallInformation" path="/firstCallInformation"
+			scope="request" type="fdms.ui.struts.action.FirstCallInformation"
+			unknown="false" validate="false">
+			<forward name="updatefirstcall" path="/FirstCallInformation.jsp"
+				redirect="false" />
+		</action>
+		<action forward="/Help.jsp" path="/help" scope="request"
+			unknown="false" validate="false" />
+		<action forward="/Help.jsp" path="/index" scope="request"
+			unknown="false" validate="false" />
+
+		<action forward="/login.jsp" name="processLogon" path="/logon"
+			scope="session" unknown="false" validate="false">
+		</action>
+		<action forward="/Introduction.jsp" path="/main" scope="request"
+			unknown="false" validate="false" />
+		<action forward="/Reports.jsp" path="/miscellaneousCustom"
+			scope="request" unknown="false" validate="false" />
+		<action path="/newAtNeed" scope="request"
+			type="fdms.ui.struts.action.NewAtNeed" unknown="false" validate="false">
+			<forward name="newAtNeedToFirstCallJsp" path="/FirstCallInformation.jsp"
+				redirect="false" />
+		</action>
+		<action path="/newCemAtNeed" scope="request"
+			type="fdms.ui.struts.action.NewCemAtNeed" unknown="false" validate="false">
+			<forward name="newCemSectionList" path="/showCemSectionList.do"
+				redirect="false" />
+			<forward name="newAtNeedToFirstCallJsp" path="/CemAtNeed.jsp"
+				redirect="false" />
+		</action>
+		<action path="/showCemSectionList" name="cemSpcCaseForm" scope="request"
+			input="CemSectionList.jsp" type="fdms.ui.struts.action.ShowCemSectionList"
+			validate="false">
+			<forward name="cemShowSecListJsp" path="/CemSectionList.jsp"
+				redirect="false" />
+		</action>
+		<action path="/showCemOtherSpaceList" name="cemSpcCaseForm"
+			scope="request" input="CemSectionList.jsp" type="fdms.ui.struts.action.ShowCemOtherSpaceList"
+			validate="false">
+			<forward name="cemShowSecListJsp" path="/CemSectionList.jsp"
+				redirect="false" />
+			<forward name="newCemAtNeedjsp" path="/ShowCemAtNeed.do"
+				redirect="true" />
+		</action>
+		<action path="/ShowCemAtNeed" scope="request"
+			type="fdms.ui.struts.action.ShowCemAtNeed" unknown="false" validate="false">
+			<forward name="showCemAtNeedJsp" path="/CemAtNeed.jsp"
+				redirect="true" />
+		</action>
+
+		<action name="cemSpcCaseForm" path="/openCemSpcCase" scope="request"
+			type="fdms.ui.struts.action.OpenCemSpcCase" unknown="false" validate="false">
+			<forward name="cemShowSecListFromSearch" path="/showCemOtherSpaceList.do"
+				redirect="false" />
+		</action>
+
+		<action name="preNeed" path="/newPreNeed" scope="request"
+			type="fdms.ui.struts.action.NewPreNeed" unknown="false" validate="false">
+			<forward name="preNeed" path="/PreNeed.jsp" redirect="false" />
+		</action>
+		<action name="openCase" path="/openCase" scope="request"
+			type="fdms.ui.struts.action.OpenCase" unknown="false" validate="false">
+			<forward name="showCaseStatusFromSearch" path="/showCaseStatus.do"
+				redirect="true" />
+		</action>
+		<action forward="/PreNeed.jsp" path="/preNeedReports" scope="request"
+			unknown="false" validate="false" />
+		<action name="printForm" path="/printFormAction" scope="request"
+			type="fdms.ui.struts.action.PrintFormAction" unknown="false"
+			validate="false">
+			<forward name="showCaseStatusFromPrintForm" path="/showCaseFormsCompleted.do"
+				redirect="false" />
+			<!--
+				<forward name="showCaseStatusFromPrintForm"
+				path="/showCaseStatus.do" redirect="false"/>
+			-->
+		</action>
+		<action input="/ReportsPrint.jsp" name="printReports" path="/printReport"
+			scope="request" type="fdms.ui.struts.action.PrintReportAction"
+			unknown="false" validate="false" />
+		<action input="/AcctInterface.jsp" name="acctIntfForm" path="/processAcctInterface"
+			scope="request" type="fdms.ui.struts.action.ProcessAcctInterface"
+			unknown="false" validate="false" />
+		<action input="/Eden.jsp" name="edenForm" path="/processEden"
+			scope="request" type="fdms.ui.struts.action.ProcessEden" unknown="false"
+			validate="false" />
+		<action input="/MovingCase.jsp" name="movingCaseForm" path="/processMovingCase"
+			scope="session" type="fdms.ui.struts.action.ProcessMovingCase"
+			unknown="false" validate="false" />
+		<action input="/ERegisterBook.jsp" name="eRegisterBookForm"
+			path="/processERegisterBook" scope="session"
+			type="fdms.ui.struts.action.ProcessERegisterBook" unknown="false"
+			validate="false" />
+		<action input="/CreditCard.jsp" name="creditCardForm" path="/processCreditCard"
+			scope="session" type="fdms.ui.struts.action.ProcessCreditCard"
+			unknown="false" validate="false">
+			<forward name="showCreditCardStatus" path="/CreditCardStatus.jsp"
+				redirect="false" />
+		</action>
+		<action input="/ApAccountEdit.jsp" name="apAccountEditForm"
+			path="/processApAccountEdit" scope="session"
+			type="fdms.ui.struts.action.ProcessApAccountEdit" unknown="false"
+			validate="false" />
+		<action input="/ApCheckWriter.jsp" name="checkWriterForm" path="/processApCheckWriter"
+			scope="session" type="fdms.ui.struts.action.ProcessApCheckWriter"
+			unknown="false" validate="false">
+			<forward name="redisplayCheckWriterJsp" path="/ApCheckWriter.jsp"
+				redirect="false" />
+		</action>
+		<action input="/ApVendor.jsp" name="vendorChangeForm" path="/processApVendor"
+			scope="session" type="fdms.ui.struts.action.ProcessApVendor" unknown="false"
+			validate="false">
+			<forward name="showApCheckWriterJsp" path="/ApCheckWriter.jsp"
+				redirect="false" />
+		</action>
+		<action input="/WebFDMSArrangerEdit.jsp" name="arrangerEdit"
+			path="/processArrangerEdit" scope="session"
+			type="fdms.ui.struts.action.ProcessArrangerEdit" unknown="false"
+			validate="false" />
+		<action path="/processCancelAction" scope="request"
+			type="fdms.ui.struts.action.ProcessCancelAction" unknown="false"
+			validate="false">
+			<forward name="introductionShowJsp" path="/Introduction.jsp"
+				redirect="false" />
+		</action>
+
+		<action path="/showCaseListOptions" name="caseListOptions"
+			scope="session" input="CaseListOptions.jsp" type="fdms.ui.struts.action.ShowCaseListOptions"
+			validate="false">
+			<forward name="success" path="/CaseListOptions.jsp" />
+		</action>
+
+		<action input="/CaseListOptions.jsp" name="caseListOptions"
+			path="/processCaseListOptions" scope="session"
+			type="fdms.ui.struts.action.ProcessCaseListOptions" unknown="false"
+			validate="false">
+			<forward name="returnShowCaseList" path="/showCaseList.do"
+				redirect="false" />
+		</action>
+		<action path="/showCemListOptions" name="cemListOptions" scope="session"
+			input="CemListOptions.jsp" type="fdms.ui.struts.action.ShowCemListOptions"
+			validate="false">
+			<forward name="success" path="/CemListOptions.jsp" />
+		</action>
+
+		<action input="/CemListOptions.jsp" name="caseListOptions"
+			path="/processCemListOptions" scope="session"
+			type="fdms.ui.struts.action.ProcessCemListOptions" unknown="false"
+			validate="false">
+			<forward name="returnShowCaseList" path="/showCemList.do"
+				redirect="false" />
+		</action>
+
+		<action input="/CaseStatus.jsp" name="caseStatus" path="/processCaseStatus"
+			scope="request" type="fdms.ui.struts.action.ProcessCaseStatus"
+			unknown="false" validate="false">
+			<forward name="redisplayCaseStatus" path="/CaseStatus.jsp"
+				redirect="false" />
+		</action>
+		<action input="/ApCheckEditDisplay.jsp" name="CheckEditDisplayForm"
+			path="/processCheckEditDisplay" scope="request"
+			type="fdms.ui.struts.action.ProcessCheckEditDisplay" unknown="false"
+			validate="false">
+			<forward name="checkEditDisplay" path="/ApCheckEditDisplay.jsp"
+				redirect="false" />
+
+		</action>
+		<action input="/Custom.jsp" name="custom" path="/processCustom"
+			scope="session" type="fdms.ui.struts.action.ProcessCustom" unknown="false"
+			validate="false" />
+		<action input="/DonationsAddChange.jsp" name="donationsAddChange"
+			path="/processDonationsAddChange" scope="session"
+			type="fdms.ui.struts.action.ProcessDonationsAddChange" unknown="false"
+			validate="false">
+			<forward name="showDonations" path="/showDonations.do"
+				redirect="false" />
+		</action>
+		<action input="/EditVerse.jsp" name="editVerse" path="/processEditVerse"
+			scope="request" type="fdms.ui.struts.action.ProcessEditVerse"
+			unknown="false" validate="false">
+			<forward name="showMemorialPage" path="/showMemorialPrint.do"
+				redirect="false" />
+		</action>
+		<action input="/FinanceChargeSelect.jsp" name="FinanceChargeSelect"
+			path="/processFinanceCharges" scope="session"
+			type="fdms.ui.struts.action.ProcessFinanceCharges" unknown="false"
+			validate="false" />
+
+		<action input="/FinancialAddMerchandise.jsp" name="financialAddMerchandise"
+			path="/processFinancialAddMerchandise" scope="request"
+			type="fdms.ui.struts.action.ProcessFinancialAddMerchandise" unknown="false"
+			validate="false">
+			<forward name="financialInformation" path="/FinancialInformation.jsp"
+				redirect="true" />
+		</action>
+
+		<action input="/FinancialAddMerchandise.jsp" name="financialAddMerchandise"
+			path="/processQtyFinancialAddMerchandise" scope="request"
+			type="fdms.ui.struts.action.ProcessQtyFinancialAddMerchandise"
+			unknown="false" validate="false">
+			<forward name="financialInformation" path="/FinancialInformation.jsp"
+				redirect="true" />
+			<forward name="qtyFinancialMerchandiseInformation" path="/QtyFinancialMerchandiseInformation.jsp"
+				redirect="false" />
+		</action>
+		<action input="/FinancialAddServices.jsp" name="financialAddServices"
+			path="/processFinancialAddServices" scope="request"
+			type="fdms.ui.struts.action.ProcessFinancialAddServices" unknown="false"
+			validate="false">
+			<forward name="financialInformation" path="/FinancialInformation.jsp"
+				redirect="false" />
+		</action>
+
+
+
+		<action input="/FinancialAddServices.jsp" name="financialAddServices"
+			path="/processQtyFinancialAddServices" scope="request"
+			type="fdms.ui.struts.action.ProcessQtyFinancialAddServices" unknown="false"
+			validate="false">
+			<forward name="financialInformation" path="/FinancialInformation.jsp"
+				redirect="false" />
+			<forward name="qtyFinancialInformation" path="/QtyFinancialInformation.jsp"
+				redirect="false" />
+		</action>
+
+		<action input="/FinancialBillToPartiesAddChange.jsp" name="financialBillToPartiesAddChange"
+			path="/processFinancialBillToPartiesAddChange" scope="session"
+			type="fdms.ui.struts.action.ProcessFinancialBillToPartiesAddChange"
+			unknown="false" validate="false">
+			<forward name="financialBillToParties" path="/financialBillToParties.do"
+				redirect="false" />
+		</action>
+		<action input="/FinancialChangeChargeLine.jsp" name="financialChangeChargeLine"
+			path="/processFinancialChangeChargeLine" scope="request"
+			type="fdms.ui.struts.action.ProcessFinancialChangeChargeLine"
+			unknown="false" validate="false">
+			<forward name="financialInformation" path="/FinancialInformation.jsp"
+				redirect="false" />
+		</action>
+		<action input="/FinancialChangePriceList.jsp" name="financialChangePriceList"
+			path="/processFinancialChangePriceList" scope="request"
+			type="fdms.ui.struts.action.ProcessFinancialChangePriceList" unknown="false"
+			validate="false">
+			<forward name="financialInformation" path="/FinancialInformation.jsp"
+				redirect="false" />
+		</action>
+		<action name="financialInformation" path="/processFinancialInformationLineItemDelete"
+			scope="session"
+			type="fdms.ui.struts.action.ProcessFinancialInformationLineItemDelete"
+			unknown="false" validate="false">
+			<forward name="financialInformation" path="/FinancialInformation.jsp"
+				redirect="false" />
+		</action>
+		<action name="financialInformation" path="/processFinancialInformationLineItemsDeleteAll"
+			scope="session"
+			type="fdms.ui.struts.action.ProcessFinancialInformationLineItemsDeleteAll"
+			unknown="false" validate="false">
+			<forward name="financialInformation" path="/FinancialInformation.jsp"
+				redirect="false" />
+		</action>
+		<action input="/FinancialSpecifyComponents.jsp" name="financialSpecifyComponents"
+			path="/processFinancialSpecifyComponents" scope="session"
+			type="fdms.ui.struts.action.ProcessFinancialSpecifyComponents"
+			unknown="false" validate="false">
+			<forward name="financialInformation" path="/FinancialInformation.jsp"
+				redirect="false" />
+		</action>
+		<action input="/FirstCallInformation.jsp" name="firstCallInformation"
+			path="/processFirstCallInformation" scope="session"
+			type="fdms.ui.struts.action.ProcessFirstCallInformation" unknown="false"
+			validate="false">
+			<forward name="showFirstCallInformation" path="/showFirstCallInformation.do"
+				redirect="true" />
+		</action>
+
+
+		<action name="verifyFinancialForm" path="/verifyFinancial"
+			scope="request" type="fdms.ui.struts.action.VerifyFinancial" unknown="false"
+			validate="false">
+			<forward name="repost" path="/VerifyFinancial.jsp" redirect="false" />
+		</action>
+		<action input="/verifyFinancial.jsp" name="verifyFinancialForm"
+			path="/repost" scope="request" type="fdms.ui.struts.action.Repost"
+			unknown="false" validate="false">
+			<forward name="showPayment" path="/showPayment.do" redirect="true" />
+		</action>
+
+		<action name="bankAccountForm" path="/showBankAccount" scope="request"
+			type="fdms.ui.struts.action.ShowBankAccount" unknown="false"
+			validate="false">
+			<forward name="bankAccount" path="/BankAccount.jsp" redirect="false" />
+		</action>
+		<action input="/BankAccount.jsp" name="bankAccountForm" path="/processBankAccount"
+			scope="request" type="fdms.ui.struts.action.ProcessBankAccount"
+			unknown="false" validate="false">
+			<forward name="showAccountMenu" path="/showPayment.do"
+				redirect="true" />
+		</action>
+
+		<action name="bankingOperationForm" path="/showBankingOperation"
+			scope="session" type="fdms.ui.struts.action.ShowBankingOperation"
+			unknown="false" validate="false">
+			<forward name="operate" path="/BankingOperation.jsp"
+				redirect="false" />
+		</action>
+		<action input="/BankingOperation.jsp" name="bankingOperationForm"
+			path="/processBankingOperation" scope="session"
+			type="fdms.ui.struts.action.ProcessBankingOperation" unknown="false"
+			validate="false">
+			<forward name="showAccountMenu" path="/showPayment.do"
+				redirect="true" />
+		</action>
+		<action name="bankingTransactionForm" path="/showBankTransaction"
+			scope="request" type="fdms.ui.struts.action.ShowBankTransaction"
+			unknown="false" validate="false">
+			<forward name="operate" path="/BankTransaction.jsp" redirect="false" />
+		</action>
+		<action input="/BankTransaction.jsp" name="bankingTransactionForm"
+			path="/processBankTransaction" scope="request"
+			type="fdms.ui.struts.action.ProcessBankTransaction" unknown="false"
+			validate="false">
+			<forward name="showTransaction" path="/showBankingOperation.do"
+				redirect="true" />
+		</action>
+
+		<action input="/WebFDMSFormEdit.jsp" name="formEdit" path="/processFormEdit"
+			scope="session" type="fdms.ui.struts.action.ProcessFormEdit" unknown="false"
+			validate="false" />
+		<action input="/glacctdefaultedit.jsp" name="GlAcctDefaultEditForm"
+			path="/processGlAcctDefaultEdit" scope="request"
+			type="fdms.ui.struts.action.ProcessGlAcctDefaultEdit" unknown="false"
+			validate="false" />
+		<action input="/glacctdefaultlist.jsp" name="glAcctDefaultListForm"
+			path="/processGlAcctDefaultList" scope="request"
+			type="fdms.ui.struts.action.ProcessGlAcctDefaultList" unknown="false"
+			validate="false">
+			<forward name="ShowGlAcctDefaultEdit" path="/glacctdefaultedit.jsp"
+				redirect="false" />
+		</action>
+		<action input="/FinancialSelectPackages.jsp" name="financialSelectPackages"
+			path="/processInsertPackage" scope="request"
+			type="fdms.ui.struts.action.ProcessInsertPackage" unknown="false"
+			validate="false">
+			<forward name="financialInformation" path="/FinancialInformation.jsp"
+				redirect="false" />
+		</action>
+		<action input="/InventoryOnHand.jsp" name="inventoryOnHand"
+			path="/processInvOnHand" scope="session"
+			type="fdms.ui.struts.action.ProcessInvOnHand" unknown="false"
+			validate="false">
+			<forward name="showInventoryCatalog" path="/showInventoryCatalog.do"
+				redirect="false" />
+		</action>
+		<action input="/InventoryItemReceive.jsp" name="inventoryReceive"
+			path="/processInvReceive" scope="session"
+			type="fdms.ui.struts.action.ProcessInvReceive" unknown="false"
+			validate="false">
+			<forward name="showInventoryCatalog" path="/showInventoryCatalog.do"
+				redirect="false" />
+		</action>
+		<action input="/InventoryItemTransferRemove.jsp" name="inventoryTransferRemove"
+			path="/processInvTransferRemove" scope="session"
+			type="fdms.ui.struts.action.ProcessInvTransferRemove" unknown="false"
+			validate="false">
+			<forward name="showInventoryCatalog" path="/showInventoryCatalog.do"
+				redirect="false" />
+		</action>
+		<action input="/InventoryCatalog.jsp" name="inventoryCatalog"
+			path="/processInventoryCatalog" scope="session"
+			type="fdms.ui.struts.action.ProcessInventoryCatalog" unknown="false"
+			validate="false">
+			<forward name="showInventory" path="/showInventory.do"
+				redirect="false" />
+		</action>
+
+		<!-- EDIT HERE -->
+		<action name="inventoryVersionForm" path="/showInventoryVersion"
+			scope="request" type="fdms.ui.struts.action.inventory.ShowInventoryVersion"
+			unknown="false" validate="false">
+			<forward name="success" path="/InventoryVersion.jsp"
+				redirect="false" />
+		</action>
+
+		<action input="/InventoryVersion.jsp" name="inventoryVersionForm"
+			path="/processInventoryVersion" scope="request"
+			type="fdms.ui.struts.action.inventory.ProcessInventoryVersion"
+			unknown="false" validate="false">
+			<forward name="success" path="/showInventoryVersionAddEdit.do"
+				redirect="false" />
+		</action>
+
+		<action name="inventoryVersionAddEditForm" path="/showInventoryVersionAddEdit"
+			scope="session" unknown="false"
+			type="fdms.ui.struts.action.inventory.ShowInventoryVersionAddEdit"
+			validate="false">
+			<forward name="success" path="/InventoryVersionAddEdit.jsp"
+				redirect="false" />
+		</action>
+
+		<action input="/InventoryVersionAddEdit.jsp" name="inventoryVersionAddEditForm"
+			path="/processInventoryVersionAddEdit" scope="session" unknown="false"
+			type="fdms.ui.struts.action.inventory.ProcessInventoryVersionAddEdit"
+			validate="true">
+			<forward name="success" path="/showInventoryVersion.do"
+				redirect="false" />
+		</action>
+
+		<!-- END EDIT HERE -->
+
+		<action input="/WebFDMSLocationEdit.jsp" name="locationEdit"
+			path="/processLocationEdit" scope="session"
+			type="fdms.ui.struts.action.ProcessLocationEdit" unknown="false"
+			validate="false" />
+		<action input="/login.jsp" name="processLogon" path="/processLogon"
+			scope="session" type="fdms.ui.struts.action.ProcessLogon" unknown="false"
+			validate="false">
+			<forward name="introduction" path="/Introduction.jsp"
+				redirect="false" />
+			<forward name="introcemetery" path="/IntroCemetery.jsp"
+				redirect="false" />
+			<forward name="logon" path="/login.jsp" redirect="false" />
+			<forward name="showUserRegistration" path="/UserRegistration.jsp"
+				redirect="false" />
+			<forward name="showFreeTrialRegistration" path="/FreeTrialRegistration.jsp"
+				redirect="false" />
+			<forward name="changePassword" redirect="false"
+				path="/showChangePassword.do" />
+			<forward name="passwordExpiration" redirect="false"
+				path="/showPasswordExpiration.do" />
+		</action>
+		<action path="/showChangePassword" type="fdms.ui.struts.action.ShowLogonChangePassword"
+			scope="request" name="changePasswordForm" validate="false">
+			<forward name="changePasswordForm" path="/loginChangePassword.jsp"
+				redirect="false" />
+		</action>
+		<action path="/processChangePassword" type="fdms.ui.struts.action.ProcessLogonChangePassword"
+			scope="request" input="/loginChangePassword.jsp" name="changePasswordForm"
+			validate="true">
+			<forward name="introduction" path="/Introduction.jsp"
+				redirect="false" />
+			<forward name="logon" path="/login.jsp" redirect="false" />
+			<forward name="changePasswordForm" path="/loginChangePassword.jsp"
+				redirect="false" />
+		</action>
+		<action path="/showPasswordExpiration"
+			type="fdms.ui.struts.action.ShowLogonPasswordExpiration" scope="request"
+			name="passwordExpirationForm" validate="false">
+			<forward name="introduction" path="/Introduction.jsp"
+				redirect="false" />
+			<forward name="passwordExpirationForm" path="/loginPasswordExpires.jsp"
+				redirect="false" />
+		</action>
+		<action path="/processPasswordExpiration"
+			type="fdms.ui.struts.action.ProcessLogonPasswordExpiration" scope="request"
+			input="/loginPasswordExpires.jsp" name="passwordExpirationForm"
+			validate="false">
+			<forward name="introduction" path="/Introduction.jsp"
+				redirect="false" />
+			<forward name="logon" path="/login.jsp" redirect="false" />
+			<forward name="changePasswordForm" path="/showChangePassword.do"
+				redirect="false" />
+		</action>
+		<action path="/processLogout" scope="request"
+			type="fdms.ui.struts.action.ProcessLogout" unknown="false" validate="false">
+			<forward name="login" path="/login.jsp" redirect="false" />
+		</action>
+		<action input="/Marquee.jsp" name="marqueeForm" path="/processMarqueeForm"
+			scope="request" type="fdms.ui.struts.action.ProcessMarqueeForm"
+			unknown="false" validate="false" />
+		<action input="/MemorialPrint.jsp" name="memorialPrint" path="/processMemorialPrint"
+			scope="request" type="fdms.ui.struts.action.ProcessMemorialPrint"
+			unknown="false" validate="false">
+			<forward name="editVerse" path="/EditVerse.jsp" redirect="false" />
+		</action>
+		<action input="/FinancialMiscellaneousCashReceipts.jsp" name="miscCashReceipts"
+			path="/processMiscCashReceipts" scope="session"
+			type="fdms.ui.struts.action.ProcessMiscCashReceipts" unknown="false"
+			validate="false">
+			<forward name="showMiscCashReceipts" path="/FinancialMiscellaneousCashReceipts.jsp"
+				redirect="false" />
+		</action>
+		<action input="/WebFDMSManagementPackageAdd.jsp" name="packageItemAdd"
+			path="/processPackageItemAdd" scope="session"
+			type="fdms.ui.struts.action.ProcessPackageItemAdd" unknown="false"
+			validate="false">
+			<forward name="ShowNewPackagePriceList" path="/processPackagePriceList.do"
+				redirect="false" />
+		</action>
+		<action input="/WebFDMSManagementEditPackagePriceList.jsp"
+			name="packagePriceList" path="/processPackagePriceList" scope="session"
+			type="fdms.ui.struts.action.ProcessPackagePriceList" unknown="false"
+			validate="false" />
+		<action input="/WebFDMSManagementEditPackagePriceLists.jsp"
+			name="packagePriceLists" path="/processPackagePriceLists" scope="session"
+			type="fdms.ui.struts.action.ProcessPackagePriceLists" unknown="false"
+			validate="false">
+			<forward name="ShowPackagePriceList" path="/WebFDMSManagementEditPackagePriceList.jsp"
+				redirect="false" />
+		</action>
+		<action input="/PallBearers.jsp" name="pallbearerform" path="/processPallBearers"
+			scope="session" type="fdms.ui.struts.action.ProcessPallBearers"
+			unknown="false" validate="false">
+			<forward name="closeWindow" path="/closer.jsp" redirect="false" />
+		</action>
+		<action input="/PaymentAddChange.jsp" name="paymentAddChange"
+			path="/processPaymentAddChange" scope="session"
+			type="fdms.ui.struts.action.ProcessPaymentAddChange" unknown="false"
+			validate="false">
+			<forward name="processingPayment" path="/ProcessingPayment.jsp"
+				redirect="false" />
+		</action>
+		<action input="/PnAddMerchandise.jsp" name="PnAddMerchandiseForm"
+			path="/processPnAddMerchandise" scope="request"
+			type="fdms.ui.struts.action.ProcessPnAddMerchandise" unknown="false"
+			validate="false" />
+		<action input="/PnAddServices.jsp" name="PnAddServicesForm"
+			path="/processPnAddServices" scope="request"
+			type="fdms.ui.struts.action.ProcessPnAddServices" unknown="false"
+			validate="false" />
+		<action input="/PnCancellation.jsp" name="PnCancellation"
+			path="/processPnCancellation" scope="request"
+			type="fdms.ui.struts.action.ProcessPnCancellation" unknown="false"
+			validate="false" />
+		<action input="/PnChangeChargeLine.jsp" name="PnChangeChargeLineForm"
+			path="/processPnChangeChargeLine" scope="request"
+			type="fdms.ui.struts.action.ProcessPnChangeChargeLine" unknown="false"
+			validate="false" />
+		<action input="/PnChangePriceList.jsp" name="PnChangePriceListForm"
+			path="/processPnChangePriceList" scope="request"
+			type="fdms.ui.struts.action.ProcessPnChangePriceList" unknown="false"
+			validate="false" />
+		<action input="/PnCharges.jsp" name="PnCharges" path="/processPnCharges"
+			scope="request" type="fdms.ui.struts.action.ProcessPnCharges"
+			unknown="false" validate="false">
+			<forward name="showPnAddMerchandiseJsp" path="/PnAddMerchandise.jsp"
+				redirect="false" />
+			<forward name="showPnChangePriceListJsp" path="/PnChangePriceList.jsp"
+				redirect="false" />
+			<forward name="showPnAddServicesJsp" path="/PnAddServices.jsp"
+				redirect="false" />
+			<forward name="showPnSelectPackageJsp" path="/PnSelectPackage.jsp"
+				redirect="false" />
+			<forward name="showPnChangeChargeLineJsp" path="/PnChangeChargeLine.jsp"
+				redirect="false" />
+		</action>
+		<action input="/PnFulfillment.jsp" name="PnFulfillment" path="/processPnFulfillment"
+			scope="request" type="fdms.ui.struts.action.ProcessPnFulfillment"
+			unknown="false" validate="false" />
+		<action input="/PnInstallment.jsp" name="PnInstallmentForm"
+			path="/processPnInstallment" scope="request"
+			type="fdms.ui.struts.action.ProcessPnInstallment" unknown="false"
+			validate="false">
+			<forward name="redisplayPnInstallmentJsp" path="/PnInstallment.jsp"
+				redirect="false" />
+		</action>
+		<action input="/PnInstallmentPayment.jsp" name="PnInstallmentPayment"
+			path="/processPnInstallmentPayment" scope="request"
+			type="fdms.ui.struts.action.ProcessPnInstallmentPayment" unknown="false"
+			validate="false">
+			<forward name="redisplayPnInstallmentPaymentJsp" path="/PnInstallmentPayment.jsp"
+				redirect="false" />
+		</action>
+		<action input="/PnSelectPackage.jsp" name="PnSelectPackageForm"
+			path="/processPnSelectPackage" scope="request"
+			type="fdms.ui.struts.action.ProcessPnSelectPackage" unknown="false"
+			validate="false" />
+		<action input="/CemAtNeed.jsp" name="cemAnStatus" path="/processCemAnStatus"
+			scope="session" type="fdms.ui.struts.action.ProcessCemAnStatus"
+			unknown="false" validate="false">
+			<forward name="showPnSummary" path="/PnSummary.jsp" redirect="false" />
+			<forward name="showPnChargesJsp" path="/PnCharges.jsp"
+				redirect="false" />
+			<forward name="showPnInstallmentJsp" path="/PnInstallment.jsp"
+				redirect="false" />
+			<forward name="showPnInstallmentPaymentJsp" path="/PnInstallmentPayment.jsp"
+				redirect="false" />
+			<forward name="showPnFulfillmentJsp" path="/PnFulfillment.jsp"
+				redirect="false" />
+			<forward name="showPnCancellationJsp" path="/PnCancellation.jsp"
+				redirect="false" />
+			<forward name="redisplayPnStatusJsp" path="/PNstatus.jsp"
+				redirect="false" />
+		</action>
+
+		<action input="/PNstatus.jsp" name="pnStatus" path="/processPnStatus"
+			scope="request" type="fdms.ui.struts.action.ProcessPnStatus" unknown="false"
+			validate="false">
+			<forward name="showPnSummary" path="/PnSummary.jsp" redirect="false" />
+			<forward name="showPnChargesJsp" path="/PnCharges.jsp"
+				redirect="false" />
+			<forward name="showPnInstallmentJsp" path="/PnInstallment.jsp"
+				redirect="false" />
+			<forward name="showPnInstallmentPaymentJsp" path="/PnInstallmentPayment.jsp"
+				redirect="false" />
+			<forward name="showPnFulfillmentJsp" path="/PnFulfillment.jsp"
+				redirect="false" />
+			<forward name="showPnCancellationJsp" path="/PnCancellation.jsp"
+				redirect="false" />
+			<forward name="redisplayPnStatusJsp" path="/PNstatus.jsp"
+				redirect="false" />
+		</action>
+		<action input="/PnSummary.jsp" name="PnSummary" path="/processPnSummary"
+			scope="request" type="fdms.ui.struts.action.ProcessPnSummary"
+			unknown="false" validate="false" />
+		<action input="/PreNeed.jsp" name="preNeed" path="/processPreNeed"
+			scope="session" type="fdms.ui.struts.action.ProcessPreNeed" unknown="false"
+			validate="false">
+			<forward name="showCaseStatus" path="/showCaseStatus.do"
+				redirect="false" />
+			<forward name="showPreNeedDisbursement" path="/showPreNeedDisbursement.do"
+				redirect="false" />
+		</action>
+
+		<action path="/processPreNeedDisbursement" input="/PreNeedDisbursement.jsp"
+			name="preNeedDisbursementForm" scope="request"
+			type="fdms.ui.struts.action.ProcessPreNeedDisbursement" unknown="false"
+			validate="false">
+			<forward name="showPreNeed" path="/showPreNeed.do" redirect="false" />
+		</action>
+
+		<action input="/WebFDMSManagementEditPriceList.jsp" name="priceList"
+			path="/processPriceList" scope="session"
+			type="fdms.ui.struts.action.ProcessPriceList" unknown="false"
+			validate="false" />
+		<action input="/PriceListAdd.jsp" name="priceListAdd" path="/processPriceListAdd"
+			scope="session" type="fdms.ui.struts.action.ProcessPriceListAdd"
+			unknown="false" validate="false">
+			<forward name="returnShowPriceList" path="/showPriceLists.do"
+				redirect="false" />
+		</action>
+		<action input="/WebFDMSManagementEditPriceLists.jsp" name="priceLists"
+			path="/processPriceLists" scope="session"
+			type="fdms.ui.struts.action.ProcessPriceLists" unknown="false"
+			validate="false">
+			<forward name="ShowPriceList" path="/WebFDMSManagementEditPriceList.jsp"
+				redirect="false" />
+			<forward name="ShowPriceListAdd" path="/PriceListAdd.jsp"
+				redirect="false" />
+		</action>
+		<action name="reportsPrint" path="/processReportsPrint" scope="request"
+			type="fdms.ui.struts.action.ProcessReportsPrint" unknown="false"
+			validate="false">
+			<forward name="showInventoryGlobal" path="/Inventory.jsp"
+				redirect="false" />
+			<forward name="showReportsGlobal" path="/Reports.jsp"
+				redirect="false" />
+		</action>
+		<action input="/Services.jsp" name="services" path="/processServices"
+			scope="session" type="fdms.ui.struts.action.ProcessServices" unknown="false"
+			validate="false">
+			<forward name="showServices" path="/showServices.do"
+				redirect="false" />
+			<forward name="servicesVisitation" path="/showServicesVisitationAddChange.do"
+				redirect="false" />
+		</action>
+
+		<!--  *********************************************  -->
+		<action input="/Services.jsp" name="servicesVisitation" path="/showServiceVisitation"
+			scope="session" unknown="false" validate="false"
+			type="fdms.ui.struts.action.ShowServicesVisitation">
+			<forward name="servicesVisitationAddChange" path="/ServicesVisitationAddChange.jsp"
+				redirect="false" />
+			<forward name="showServices" path="/showServices.do"
+				redirect="false" />
+		</action>
+
+		<action input="/ServicesVisitationAddChange.jsp" unknown="false"
+			validate="false" scope="session" name="servicesVisitation" path="/processServicesVisitation"
+			type="fdms.ui.struts.action.ProcessServicesVisitation">
+			<forward name="showServices" path="/showServices.do"
+				redirect="false" />
+		</action>
+
+		<action input="/ServicesVisitationAddChange.jsp" name="servicesVisitation"
+			unknown="false" validate="false" path="/showServicesVisitationAddChange"
+			scope="request" type="fdms.ui.struts.action.ShowServicesVisitation">
+			<forward name="servicesVisitationAddChange" path="/ServicesVisitationAddChange.jsp"
+				redirect="false" />
+		</action>
+		<!--  *********************************************  -->
+
+		<action input="/Survivors.jsp" name="survivors"
+			path="/processSurvivorsAddChange" scope="session"
+			type="fdms.ui.struts.action.ProcessSurvivorsAddChange" unknown="false"
+			validate="false">
+			<forward name="survivors" path="/Survivors.jsp" redirect="false" />
+		</action>
+		<action input="/UserAcceptance.jsp" name="userRegistration"
+			path="/processUserAcceptance" scope="session"
+			type="fdms.ui.struts.action.ProcessUserAcceptance" unknown="false"
+			validate="false">
+			<forward name="introduction" path="/Introduction.jsp"
+				redirect="false" />
+		</action>
+		<action input="/FreeTrialAcceptance.jsp" name="freetrialRegistration"
+			path="/processFreeTrialAcceptance" scope="session"
+			type="fdms.ui.struts.action.ProcessFreeTrialAcceptance" unknown="false"
+			validate="false">
+
+		</action>
+
+		<action input="/WebFDMSManagementUserAdmin2.jsp" name="userEditForm"
+			path="/processUserEdit" scope="session" type="fdms.ui.struts.action.ProcessUserEdit"
+			unknown="false" validate="false" />
+		<action input="/UserRegistration.jsp" name="userRegistration"
+			path="/processUserRegistration" scope="session"
+			type="fdms.ui.struts.action.ProcessUserRegistration" unknown="false"
+			validate="false">
+			<forward name="showUserAcceptance" path="/UserAcceptance.jsp"
+				redirect="false" />
+		</action>
+		<action input="/FreeTrialRegistration.jsp" name="freetrialRegistration"
+			path="/processFreeTrialRegistration" scope="session"
+			type="fdms.ui.struts.action.ProcessFreeTrialRegistration" unknown="false"
+			validate="false">
+			<forward name="showFreeTrialAcceptance" path="/FreeTrialAcceptance.jsp"
+				redirect="false" />
+		</action>
+		<action input="/VABurialBenefitsAPP.jsp" name="vaBenefitsForm"
+			path="/processVaBenefits" scope="request"
+			type="fdms.ui.struts.action.ProcessVABenefits" unknown="false"
+			validate="false" />
+		<action input="/VAFlag_App.jsp" name="vaFlagForm" path="/processVaFlag"
+			scope="request" type="fdms.ui.struts.action.ProcessVaFlag" unknown="false"
+			validate="false" />
+		<action input="/VAHeadstoneAPP.jsp" name="vaStoneForm" path="/processVaHeadstone"
+			scope="request" type="fdms.ui.struts.action.ProcessVAHeadstone"
+			unknown="false" validate="false" />
+		<action input="/Vitalsgen.jsp" name="vitals" path="/processVitalsGen"
+			scope="session" type="fdms.ui.struts.action.ProcessVitals" unknown="false"
+			validate="false">
+			<forward name="redirect" path="/redirect.jsp" redirect="false" />
+		</action>
+		<action input="/Vitals.jsp" name="vitals" path="/processVitals"
+			scope="session" type="fdms.ui.struts.action.ProcessVitals" unknown="false"
+			validate="false">
+			<forward name="redirect" path="/redirect.jsp" redirect="false" />
+		</action>
+		<action forward="/Reports.jsp" path="/reports" scope="request"
+			unknown="false" validate="false" />
+		<action name="checkListForm" path="/saveCheckListAction" scope="request"
+			type="fdms.ui.struts.action.SaveCheckListAction" unknown="false"
+			validate="false">
+			<forward name="showCaseStatus" path="/showCaseStatus.do"
+				redirect="false" />
+		</action>
+		<action name="checkListForm" path="/saveAtNeedChecklistAction"
+			scope="request" type="fdms.ui.struts.action.SaveCheckListAction"
+			unknown="false" validate="false">
+			<forward name="showChecklist" path="/showCaseAtNeedChecklist.do"
+				redirect="false" />
+		</action>
+		<action name="checkListForm" path="/saveAfterCareChecklistAction"
+			scope="request" type="fdms.ui.struts.action.SaveCheckListAction"
+			unknown="false" validate="false">
+			<forward name="showChecklist" path="/showCaseAfterCareChecklist.do"
+				redirect="false" />
+		</action>
+		<action input="/FinancialInformation.jsp" name="financialInformation"
+			path="/saveFinancial" scope="session" type="fdms.ui.struts.action.SaveFinancial"
+			unknown="false" validate="false">
+			<forward name="failure" path="/FinancialInformation.jsp" />
+		</action>
+
+		<action input="/QtyFinancialInformation.jsp" name="qtyFinancialInformation"
+			path="/saveQtyFinancialAddServices" scope="session"
+			type="fdms.ui.struts.action.SaveQtyFinancialAddServices" unknown="false"
+			validate="false">
+			<forward name="failure" path="/QtyFinancialInformation.jsp" />
+			<forward name="financialInformation" path="/FinancialInformation.jsp"
+				redirect="false" />
+		</action>
+		<action input="/QtyFinancialMerchandiseInformation.jsp" name="qtyFinancialMerchandiseInformation"
+			path="/saveQtyFinancialAddMerchandise" scope="session"
+			type="fdms.ui.struts.action.SaveQtyFinancialAddMerchandise" unknown="false"
+			validate="false">
+			<forward name="failure" path="/QtyFinancialMerchandiseInformation.jsp" />
+			<forward name="financialInformation" path="/FinancialInformation.jsp"
+				redirect="false" />
+		</action>
+		<action input="/Obituary.jsp" name="obituary" path="/saveObituary"
+			scope="request" type="fdms.ui.struts.action.SaveObituary" unknown="false"
+			validate="false">
+			<forward name="showObituaryAction" path="/showObituary.do" />
+		</action>
+		<action input="/Obituary.jsp" name="obituaryImage" path="/saveObituaryImage"
+			scope="request" type="fdms.ui.struts.action.SaveObituaryImage"
+			unknown="false" validate="false">
+			<forward name="showObituaryAction" path="/showObituary.do" />
+		</action>
+		<action path="/saveTable" scope="request"
+			type="fdms.ui.struts.action.SaveTable" unknown="false" validate="false" />
+		<action input="/EditTableRow.jsp" name="tableRowForm" path="/saveTableRow"
+			scope="session" type="fdms.ui.struts.action.SaveTableRow" unknown="false"
+			validate="false" />
+		<action input="/search.jsp" path="/search" scope="request"
+			type="fdms.ui.struts.action.Search" unknown="false" validate="false">
+			<forward name="search" path="/search.jsp" redirect="false" />
+		</action>
+		<action input="/search.jsp" name="searchSurvivors" path="/searchSurvivors"
+			scope="request" type="fdms.ui.struts.action.SearchSurvivors" unknown="false"
+			validate="false">
+			<forward name="search" path="/search.jsp" redirect="false" />
+		</action>
+		<action path="/showAcctInterface" scope="request"
+			type="fdms.ui.struts.action.ShowAcctInterface" unknown="false"
+			validate="false">
+			<forward name="showAcctInterfaceJsp" path="/AcctInterface.jsp"
+				redirect="false" />
+		</action>
+		<action input="/ApAccountList.jsp" name="apAccountListForm"
+			path="/showApAccountEdit" scope="session"
+			type="fdms.ui.struts.action.ShowApAccountEdit" unknown="false"
+			validate="false">
+			<forward name="showApAccountEditJsp" path="/ApAccountEdit.jsp"
+				redirect="false" />
+		</action>
+		<action path="/showApAccountList" scope="request"
+			type="fdms.ui.struts.action.ShowApAccountList" unknown="false"
+			validate="false">
+			<forward name="showApAccountListJsp" path="/ApAccountList.jsp"
+				redirect="false" />
+		</action>
+		<action path="/showApCheckWriter" scope="request"
+			type="fdms.ui.struts.action.ShowApCheckWriter" unknown="false"
+			validate="false">
+			<forward name="showApCheckWriterJsp" path="/ApCheckWriter.jsp"
+				redirect="false" />
+		</action>
+		<action path="/showApVendor" scope="request"
+			type="fdms.ui.struts.action.ShowApVendor" unknown="false" validate="false">
+			<forward name="showApVendorJsp" path="/ApVendor.jsp"
+				redirect="false" />
+		</action>
+		<action input="/WebFDMSManagment.jsp" path="/showArrangerAdmin"
+			scope="request" type="fdms.ui.struts.action.ShowArrangerAdmin"
+			unknown="false" validate="false">
+			<forward name="arrangerAdmin" path="/WebFDMSArrangerAdmin.jsp"
+				redirect="false" />
+		</action>
+		<action input="/WebFDMSArrangerAdmin.jsp" name="arrangerAdmin"
+			path="/showArrangerEdit" scope="session"
+			type="fdms.ui.struts.action.ShowArrangerEdit" unknown="false"
+			validate="false">
+			<forward name="arrangerEdit" path="/WebFDMSArrangerEdit.jsp"
+				redirect="false" />
+		</action>
+		<action name="caseListForm" path="/deleteCase" scope="session"
+			type="fdms.ui.struts.action.DeleteCase" unknown="false" validate="false">
+			<forward name="caseListForm" path="/showCaseList.do"
+				redirect="false" />
+		</action>
+		<action name="caseListForm" path="/showCaseList" scope="session"
+			type="fdms.ui.struts.action.ShowCaseList" unknown="false" validate="false">
+			<forward name="caseListForm" path="/CaseList.jsp" redirect="false" />
+			<forward name="caseListOptions" path="/CaseListOptions.jsp"
+				redirect="false" />
+		</action>
+
+		<action name="cemListForm" path="/showCemList" scope="session"
+			type="fdms.ui.struts.action.ShowCemList" unknown="false" validate="false">
+			<forward name="cemDecList" path="/CemDecCaseList.jsp"
+				redirect="false" />
+			<forward name="cemOwnList" path="/CemCaseList.jsp" redirect="false" />
+			<forward name="caseListOptions" path="/CaseListOptions.jsp"
+				redirect="false" />
+		</action>
+		<action input="/caseList.jsp" path="/showCaseListBack" scope="request"
+			type="fdms.ui.struts.action.ShowCaseListBack" unknown="false"
+			validate="false">
+			<forward name="showCaseListFromBack" path="/CaseList.jsp"
+				redirect="false" />
+		</action>
+		<action input="/cemCaseList.jsp" path="/showCemListBack" scope="request"
+			type="fdms.ui.struts.action.ShowCemListBack" unknown="false"
+			validate="false">
+			<forward name="showCemListFromBack" path="/CemCaseList.jsp"
+				redirect="false" />
+		</action>
+		<action input="/CaseList.jsp" path="/showCaseListFirst" scope="request"
+			type="fdms.ui.struts.action.ShowCaseListFirst" unknown="false"
+			validate="false">
+			<forward name="showCaseListFromFirst" path="/CaseList.jsp"
+				redirect="false" />
+		</action>
+		<action input="/cemCaseList.jsp" path="/showCemListFirst"
+			scope="request" type="fdms.ui.struts.action.ShowCemListFirst"
+			unknown="false" validate="false">
+			<forward name="showCemListFromFirst" path="/cemCaseList.jsp"
+				redirect="false" />
+		</action>
+		<action input="/CaseList.jsp" path="/showCaseListLast" scope="request"
+			type="fdms.ui.struts.action.ShowCaseListLast" unknown="false"
+			validate="false">
+			<forward name="showCaseListFromLast" path="/CaseList.jsp"
+				redirect="false" />
+		</action>
+		<action input="/cemCaseList.jsp" path="/showCemListLast" scope="request"
+			type="fdms.ui.struts.action.ShowCemListLast" unknown="false"
+			validate="false">
+			<forward name="showCemListFromLast" path="/cemCaseList.jsp"
+				redirect="false" />
+		</action>
+		<action input="/CaseList.jsp" path="/showCaseListNext" scope="request"
+			type="fdms.ui.struts.action.ShowCaseListNext" unknown="false"
+			validate="false">
+			<forward name="caseListFromNext" path="/CaseList.jsp"
+				redirect="false" />
+		</action>
+		<action input="/cemCaseList.jsp" path="/showCemListNext" scope="request"
+			type="fdms.ui.struts.action.ShowCemListNext" unknown="false"
+			validate="false">
+			<forward name="cemListFromNext" path="/cemCaseList.jsp"
+				redirect="false" />
+		</action>
+		<action name="caseStatus" path="/caseStatus" scope="request"
+			type="fdms.ui.struts.action.CaseStatus" unknown="false" validate="false" />
+		<action path="/showCaseStatus" scope="request"
+			type="fdms.ui.struts.action.ShowCaseStatus" unknown="false" validate="false">
+			<forward name="showCaseStatusJsp" path="/CaseStatus.jsp"
+				redirect="false" />
+			<forward name="showCaseStatusObitJsp" path="/CaseOverviewObit.jsp"
+				redirect="false" />
+		</action>
+		<action path="/showCaseOverview" name="caseStatusOverview"
+			scope="request" type="fdms.ui.struts.action.ShowCaseStatusOverview"
+			unknown="false" validate="false">
+			<forward name="showCaseStatusJsp" path="/CaseOverview.jsp"
+				redirect="false" />
+		</action>
+		<action name="showCaseOverviewObit" path="/showCaseOverviewObit"
+			scope="request" type="fdms.ui.struts.action.ShowCaseStatusObit"
+			unknown="false" validate="false" />
+		<action path="/showCaseFormsCompleted" scope="request"
+			type="fdms.ui.struts.action.ShowCaseStatusForms" unknown="false"
+			validate="false">
+			<forward name="showCaseStatusJsp" path="/CaseFormsCompleted.jsp"
+				redirect="false" />
+		</action>
+		<action path="/showCaseAtNeedChecklist" scope="request"
+			type="fdms.ui.struts.action.ShowCaseStatusCheckList" unknown="false"
+			validate="false">
+			<forward name="showCaseStatusJsp" path="/CaseAtNeedChecklist.jsp"
+				redirect="false" />
+		</action>
+		<action path="/showCaseAfterCareChecklist" scope="request"
+			type="fdms.ui.struts.action.ShowCaseStatusCheckList" unknown="false"
+			validate="false">
+			<forward name="showCaseStatusJsp" path="/CaseAfterCareChecklist.jsp"
+				redirect="false" />
+		</action>
+		<action path="/showBookMarks" scope="request"
+			type="fdms.ui.struts.action.ShowCaseStatusBookmarks" unknown="false"
+			validate="false">
+			<forward name="showBookmarksJSP" path="/BookMarks.jsp"
+				redirect="false" />
+		</action>
+		<action path="/showCaseOverviewObit" scope="request" unknown="false"
+			validate="false" type="fdms.ui.struts.action.ShowCaseStatusObit">
+			<forward name="showCaseStatusObitJsp" path="/CaseOverviewObit.jsp"
+				redirect="false" />
+		</action>
+
+		<action name="CheckEditListForm" path="/showCheckEditList"
+			scope="session" type="fdms.ui.struts.action.ShowCheckList" unknown="false"
+			validate="false">
+			<forward name="ShowCheckListJsp" path="/ApCheckEdit.jsp"
+				redirect="false" />
+			<forward name="ShowCheckEditDisplayJsp" path="/showCheckEditDisplay.do"
+				redirect="false" />
+		</action>
+
+		<action input="/ApCheckEdit.jsp" name="CheckEditForm" path="/showCheckEditDisplay"
+			scope="request" type="fdms.ui.struts.action.ShowCheckEditDisplay"
+			unknown="false" validate="false">
+			<forward name="ShowCheckListJsp" path="/showCheckEditList.do"
+				redirect="false" />
+			<forward name="ShowCheckEditDisplayJsp" path="/ApCheckEditDisplay.jsp"
+				redirect="false" />
+		</action>
+
+
+
+		<action name="VendorEditListForm" path="/showVendorEditList"
+			scope="session" type="fdms.ui.struts.action.ShowVendorList" unknown="false"
+			validate="false">
+			<forward name="ShowVendorListJsp" path="/ApVendorEdit.jsp"
+				redirect="false" />
+			<forward name="ShowVendorEditDisplayJsp" path="/showVendorEditDisplay.do"
+				redirect="false" />
+		</action>
+
+		<action input="/ApVendorEdit.jsp" name="VendorEditForm" path="/showVendorEditDisplay"
+			scope="request" type="fdms.ui.struts.action.ShowVendorEditDisplay"
+			unknown="false" validate="false">
+			<forward name="ShowVendorListJsp" path="/showVendorEditList.do"
+				redirect="false" />
+			<forward name="ShowVendorEditDisplayJsp" path="/ApVendorEditDisplay.jsp"
+				redirect="false" />
+		</action>
+
+		<action attribute="VendorEditForm" input="/ApVendorEditDisplay.jsp"
+			name="VendorEditForm" path="/vendorSaveAction" scope="request"
+			type="fdms.ui.struts.action.VendorSaveAction">
+			<forward name="ShowVendorListJsp" path="/ApVendorEdit.jsp"
+				redirect="false" />
+		</action>
+
+		<action attribute="VendorLoctEditForm" name="VendorLoctEditForm"
+			path="/vendorLoctEdit" scope="request"
+			type="fdms.ui.struts.action.VendorLoctEditAction">
+			<forward name="showLoctEdit" path="/vendorLoctEdit.jsp" />
+		</action>
+		<action attribute="VendorLoctEditForm" input="vendorLoctEdit.jsp"
+			name="VendorLoctEditForm" path="/vendorLoctSave" scope="request"
+			type="fdms.ui.struts.action.VendorLoctSaveAction">
+			<forward name="showVendorEditDisplay" path="/showVendorEditDisplay.do"
+				redirect="true" />
+			<forward name="showLoctEdit" path="/vendorLoctEdit.jsp" />
+		</action>
+		<action attribute="VendorLoctRemoveForm" name="VendorLoctRemoveForm"
+			path="/vendorLoctRemove" scope="request"
+			type="fdms.ui.struts.action.VendorLoctRemoveAction">
+			<forward name="showVendorEditDisplay" path="/showVendorEditDisplay.do"
+				redirect="true" />
+		</action>
+
+
+
+
+		<action name="custom" path="/showCustom" scope="session"
+			type="fdms.ui.struts.action.ShowCustom" unknown="false" validate="false">
+			<forward name="custom" path="/Custom.jsp" redirect="false" />
+		</action>
+		<action input="/CaseStatus.jsp" name="showDonations" path="/showDonations"
+			scope="request" type="fdms.ui.struts.action.ShowDonations" unknown="false"
+			validate="false">
+			<forward name="donations" path="/Donations.jsp" redirect="false" />
+		</action>
+		<action input="/Donations.jsp" name="donations" path="/showDonationsAddChange"
+			scope="session" type="fdms.ui.struts.action.ShowDonationsAddChange"
+			unknown="false" validate="false">
+			<forward name="donationsAddChange" path="/DonationsAddChange.jsp"
+				redirect="false" />
+		</action>
+		<action name="tableListForm" path="/showEditTablesList" scope="session"
+			type="fdms.ui.struts.action.ShowEditTablesList" unknown="false"
+			validate="false">
+			<forward name="editTablesList" path="/WebFDMSManagementEditTables.jsp"
+				redirect="false" />
+		</action>
+		<action path="/showFinInf" scope="request"
+			type="fdms.ui.struts.action.ShowFinInf" unknown="false" validate="false">
+			<forward name="financialInformation" path="/FinancialInformation.jsp"
+				redirect="false" />
+		</action>
+		<action input="/Financial.jsp" path="/showFinanceChargeFrom"
+			scope="request" type="fdms.ui.struts.action.ShowFinanceChargeFrom"
+			unknown="false" validate="false">
+			<forward name="FinanceChargeFromJsp" path="/FinanceChargeFrom.jsp"
+				redirect="false" />
+		</action>
+		<action input="/FinanceChargeFrom.jsp" name="FinanceChargeForm"
+			path="/showFinanceChargeSelect" scope="session"
+			type="fdms.ui.struts.action.ShowFinanceChargeSelect" unknown="false"
+			validate="false">
+			<forward name="FinanceChargeSelectJsp" path="/FinanceChargeSelect.jsp"
+				redirect="false" />
+		</action>
+		<action input="/CaseList.jsp" path="/showFinancialInformation"
+			name="financialInformation" scope="session"
+			type="fdms.ui.struts.action.ShowFinancialInformation" unknown="false"
+			validate="false">
+			<forward name="financialInformation" path="/FinancialInformation.jsp"
+				redirect="false" />
+		</action>
+		<action input="/CaseStatus.jsp" name="showFirstCallInformation"
+			path="/showFirstCallInformation" scope="request"
+			type="fdms.ui.struts.action.ShowFirstCallInformation" unknown="false"
+			validate="false">
+			<forward name="firstCallInformation" path="/FirstCallInformation.jsp"
+				redirect="false" />
+		</action>
+		<action input="/WebFDMSFormsAdmin.jsp" name="formsAdmin" path="/showFormEdit"
+			scope="session" type="fdms.ui.struts.action.ShowFormEdit" unknown="false"
+			validate="false">
+			<forward name="formEdit" path="/WebFDMSFormEdit.jsp"
+				redirect="false" />
+		</action>
+		<action input="/WebFDMSManagment.jsp" path="/showFormsAdmin"
+			scope="request" type="fdms.ui.struts.action.ShowFormsAdmin" unknown="false"
+			validate="false">
+			<forward name="formsAdmin" path="/WebFDMSFormsAdmin.jsp"
+				redirect="false" />
+		</action>
+		<action path="/showGlAcctDefaultList" scope="request"
+			type="fdms.ui.struts.action.ShowGlAcctDefaultList" unknown="false"
+			validate="false">
+			<forward name="showGlAcctDefaultListJsp" path="/glacctdefaultlist.jsp"
+				redirect="false" />
+		</action>
+		<action input="/FinancialInformation.jsp" name="financialSelectPackages"
+			path="/showInsertPackages" scope="request"
+			type="fdms.ui.struts.action.ShowInsertPackages" unknown="false"
+			validate="false">
+			<forward name="showInsertPackages" path="/FinancialSelectPackages.jsp"
+				redirect="false" />
+		</action>
+		<action name="inventoryCatalog" path="/showInvOnHand" scope="request"
+			type="fdms.ui.struts.action.ShowInvOnHand" unknown="false" validate="false">
+			<forward name="inventoryOnHand" path="/InventoryOnHand.jsp"
+				redirect="false" />
+		</action>
+		<action name="inventoryCatalog" path="/showInvReceive" scope="request"
+			type="fdms.ui.struts.action.ShowInvReceive" unknown="false" validate="false">
+			<forward name="inventoryItemReceive" path="/InventoryItemReceive.jsp"
+				redirect="false" />
+		</action>
+		<action name="inventoryCatalog" path="/showInvTransferRemove"
+			scope="request" type="fdms.ui.struts.action.ShowInvTransferRemove"
+			unknown="false" validate="false">
+			<forward name="inventoryItemTransferRemove" path="/InventoryItemTransferRemove.jsp"
+				redirect="false" />
+		</action>
+		<action path="/showInventory" scope="request"
+			type="fdms.ui.struts.action.ShowInventory" unknown="false" validate="false">
+			<forward name="inventory" path="/Inventory.jsp" redirect="false" />
+		</action>
+		<action input="/Inventory.jsp" name="inventory" path="/showInventoryCatalog"
+			scope="session" type="fdms.ui.struts.action.ShowInventoryCatalog"
+			unknown="false" validate="false">
+			<forward name="inventoryCatalog" path="/InventoryCatalog.jsp"
+				redirect="false" />
+		</action>
+		<action input="/WebFDMSManagment.jsp" path="/showLocationAdmin"
+			scope="request" type="fdms.ui.struts.action.ShowLocationAdmin"
+			unknown="false" validate="false">
+			<forward name="locationList" path="/WebFDMSLocationAdmin.jsp"
+				redirect="false" />
+		</action>
+		<action input="/WebFDMSLocationAdmin.jsp" name="locationList"
+			path="/showLocationEdit" scope="session"
+			type="fdms.ui.struts.action.ShowLocationEdit" unknown="false"
+			validate="false">
+			<forward name="locationEdit" path="/WebFDMSLocationEdit.jsp"
+				redirect="false" />
+		</action>
+		<action path="/showLocaleAdmin" input="/WebFDMSManagment.jsp"
+			scope="request" type="fdms.ui.struts.action.ShowLocaleAdmin" unknown="false"
+			validate="false">
+			<forward name="localeList" path="/WebFDMSLocaleAdmin.jsp"
+				redirect="false" />
+		</action>
+		<action path="/showLocaleEdit" input="/WebFDMSLocaleAdmin.jsp"
+			name="localeList" scope="session" validate="false"
+			type="fdms.ui.struts.action.ShowLocaleEdit" unknown="false">
+			<forward name="localeEdit" path="/WebFDMSLocaleEdit.jsp"
+				redirect="false" />
+		</action>
+		<action path="/processLocaleEdit" input="/WebFDMSLocaleEdit.jsp"
+			name="localeEdit" scope="request" validate="false"
+			type="fdms.ui.struts.action.ProcessLocaleEdit" unknown="false">
+			<forward name="ShowLocaleEdit" path="/showLocaleEdit.do"
+				redirect="false" />
+		</action>
+		<action input="/CaseStatus.jsp" path="/showMemorialPrint"
+			scope="request" type="fdms.ui.struts.action.ShowMemorialPrint"
+			unknown="false" validate="false">
+			<forward name="memorialPrint" path="/MemorialPrint.jsp"
+				redirect="false" />
+		</action>
+		<action path="/showEden" scope="request" type="fdms.ui.struts.action.ShowEden"
+			unknown="false" validate="false">
+			<forward name="showEdenJsp" path="/Eden.jsp" redirect="false" />
+		</action>
+		<action name="movingCaseForm" path="/showMovingCase" scope="session"
+			type="fdms.ui.struts.action.ShowMovingCase" unknown="false" validate="false">
+			<forward name="showMovingCaseJsp" path="/MovingCase.jsp"
+				redirect="false" />
+		</action>
+		<action name="eRegisterBookForm" path="/showERegisterBook"
+			scope="session" type="fdms.ui.struts.action.ShowERegisterBook"
+			unknown="false" validate="false">
+			<forward name="showERegisterBookJsp" path="/ERegisterBook.jsp"
+				redirect="false" />
+		</action>
+		<action name="creditCardForm" path="/showCreditCard" scope="session"
+			type="fdms.ui.struts.action.ShowCreditCard" unknown="false" validate="false">
+			<forward name="showCreditCardJsp" path="/CreditCard.jsp"
+				redirect="false" />
+		</action>
+		<action name="funeralSyncListForm" path="/showFuneralSyncList"
+			scope="session" type="fdms.ui.struts.action.ShowFuneralSyncList"
+			unknown="false" validate="false">
+			<forward name="showFuneralSyncListJsp" path="/FuneralSyncList.jsp"
+				redirect="false" />
+		</action>
+		<action input="/FuneralSyncList.jsp" name="funeralSyncListForm"
+			path="/processFuneralSyncList" scope="session"
+			type="fdms.ui.struts.action.ProcessFuneralSyncList" unknown="false"
+			validate="false" />
+		<action name="funeralSyncListForm" path="/processFuneralSyncList"
+			scope="session" type="fdms.ui.struts.action.ProcessFuneralSyncList"
+			unknown="false" validate="false">
+			<forward name="showFuneralSyncListJsp" path="/FuneralSyncList.jsp"
+				redirect="false" />
+		</action>
+		<action name="obituaryFuneralSyncCaseForm" path="/showObituaryFuneralSyncCase"
+			scope="session" type="fdms.ui.struts.action.ShowObituaryFuneralSyncCase"
+			unknown="false" validate="false">
+			<forward name="showObituaryFuneralSyncCaseJsp" path="/ObituaryFuneralSyncCase.jsp"
+				redirect="false" />
+		</action>
+		<action input="/ObituaryFuneralSyncCase.jsp" name="obituaryFuneralSyncCaseForm"
+			path="/processObituaryFuneralSyncCase" scope="session"
+			type="fdms.ui.struts.action.ProcessObituaryFuneralSyncCase" unknown="false"
+			validate="false" />
+		<action name="obituaryFuneralSyncCaseForm" path="/processObituaryFuneralSyncCase"
+			scope="session" type="fdms.ui.struts.action.ProcessObituaryFuneralSyncCase"
+			unknown="false" validate="false">
+			<forward name="showFuneralSyncListJsp" path="/FuneralSyncList.jsp"
+				redirect="false" />
+		</action>
+		<action path="/showMiscCashReceipts" scope="request"
+			type="fdms.ui.struts.action.ShowMiscCashReceipts" unknown="false"
+			validate="false">
+			<forward name="miscCashReceipts" path="/FinancialMiscellaneousCashReceipts.jsp"
+				redirect="false" />
+		</action>
+		<action path="/showObituary" scope="request"
+			type="fdms.ui.struts.action.ShowObituary" unknown="false" validate="false">
+			<forward name="obituary" path="/Obituary.jsp" redirect="false" />
+		</action>
+		<action path="/showObituaryAddChangeGlobal" scope="request"
+			type="fdms.ui.struts.action.ShowObituaryAddChange" unknown="false"
+			validate="false" />
+		<action input="/WebFDMSManagement.jsp" path="/showPackageLists"
+			scope="session" type="fdms.ui.struts.action.ShowPackageLists"
+			unknown="false" validate="false">
+			<forward name="packagePriceLists" path="/WebFDMSManagementEditPackagePriceLists.jsp"
+				redirect="false" />
+		</action>
+		<action name="pallBearers" path="/showPallBearers" scope="request"
+			type="fdms.ui.struts.action.ShowPallBearers" unknown="false"
+			validate="false">
+			<forward name="pallBearers" path="/PallBearers.jsp" redirect="false" />
+		</action>
+		<action name="payment" path="/showPayment" scope="session"
+			type="fdms.ui.struts.action.ShowPayment" unknown="false" validate="false">
+			<forward name="payment" path="/Payment.jsp" redirect="false" />
+			<forward name="errorPayment" path="/ErrorPayment.jsp"
+				redirect="false" />
+		</action>
+		<action input="/Payment.jsp" name="payment" path="/showPaymentAddChange"
+			scope="session" type="fdms.ui.struts.action.ShowPaymentAddChange"
+			unknown="false" validate="false">
+			<forward name="paymentAddChange" path="/PaymentAddChange.jsp"
+				redirect="false" />
+		</action>
+		<action path="/showPnStatus" scope="request"
+			type="fdms.ui.struts.action.ShowPnStatus" unknown="false" validate="false">
+			<forward name="PnStatusJsp" path="/PNstatus.jsp" redirect="false" />
+		</action>
+		<action path="/showCemAnStatus" scope="request"
+			type="fdms.ui.struts.action.ShowCemAnStatus" unknown="false"
+			validate="false">
+			<forward name="CemAtNeedJsp" path="/CemAtNeed.jsp" redirect="false" />
+		</action>
+		<action path="/showPreNeed" scope="request"
+			type="fdms.ui.struts.action.ShowPreNeed" unknown="false" validate="false">
+			<forward name="preNeed" path="/PreNeed.jsp" redirect="false" />
+		</action>
+		<action path="/showPreNeedDisbursement" scope="request"
+			type="fdms.ui.struts.action.ShowPreNeedDisbursement" name="preNeedDisbursementForm"
+			validate="false">
+			<forward name="preNeedDisbursement" path="/PreNeedDisbursement.jsp"
+				redirect="false" />
+		</action>
+		<action input="/WebFDMSManagement.jsp" path="/showPriceLists"
+			scope="session" type="fdms.ui.struts.action.ShowPriceLists" unknown="false"
+			validate="false">
+			<forward name="priceLists" path="/WebFDMSManagementEditPriceLists.jsp"
+				redirect="false" />
+		</action>
+		<action input="/Inventory.jsp" name="reportCategory" path="/showReportList"
+			scope="request" type="fdms.ui.struts.action.ShowReportList" unknown="false"
+			validate="false">
+			<forward name="reportsListPage" path="/ReportsPrint.jsp"
+				redirect="false" />
+		</action>
+		<action input="/WebFDMSManagementEditTables.jsp" name="tableListForm"
+			path="/showSelectedTable" scope="session"
+			type="fdms.ui.struts.action.ShowSelectedTableAction" unknown="false"
+			validate="false">
+			<forward name="displayTableContentsList" path="/TableContentsList.jsp"
+				redirect="false" />
+		</action>
+		<action name="services" path="/showServices" scope="session"
+			type="fdms.ui.struts.action.ShowServices" unknown="false" validate="false">
+			<forward name="services" path="/Services.jsp" redirect="false" />
+		</action>
+		<action name="survivors" path="/showSurvivors" scope="session"
+			type="fdms.ui.struts.action.ShowSurvivors" unknown="false" validate="false">
+			<forward name="survivors" path="/Survivors.jsp" redirect="false" />
+		</action>
+		<action input="/Survivors.jsp" name="survivors" path="/showSurvivorsAddChange"
+			scope="session" type="fdms.ui.struts.action.ShowSurvivorsAddChange"
+			unknown="false" validate="false">
+			<forward name="survivorsAddChange" path="/SurvivorsAddChange.jsp"
+				redirect="false" />
+		</action>
+		<action input="/TableContentsList.jsp" name="tableContentsForm"
+			path="/showTableRow" scope="session" type="fdms.ui.struts.action.ShowTableRow"
+			unknown="false" validate="false">
+			<forward name="displayEditTableRow" path="/EditTableRow.jsp"
+				redirect="false" />
+		</action>
+		<action path="/showUserAdmin" scope="request"
+			type="fdms.ui.struts.action.ShowUserAdmin" unknown="false" validate="false">
+			<forward name="UserAdminList" path="/WebFDMSManagementUserAdmin.jsp"
+				redirect="false" />
+		</action>
+		<action input="/WebFDMSManagementUserAdmin.jsp" name="userListForm"
+			path="/showUserEdit" scope="session" type="fdms.ui.struts.action.ShowUserEdit"
+			unknown="false" validate="false">
+			<forward name="showUserEditJsp" path="/WebFDMSManagementUserAdmin2.jsp"
+				redirect="false" />
+		</action>
+
+		<action path="/showReportAdmin" scope="request"
+			type="fdms.ui.struts.action.ShowReportAdmin" unknown="false"
+			validate="false">
+			<forward name="reportAdminList" path="/WebFDMSManagementReportAdmin.jsp"
+				redirect="false" />
+		</action>
+		<action input="/WebFDMSManagementReportAdmin.jsp" name="reportAdminForm"
+			path="/showReportEdit" scope="request" type="fdms.ui.struts.action.ShowReportEdit"
+			unknown="false" validate="false">
+			<forward name="showReportEditJsp" path="/WebFDMSManagementReportAdmin2.jsp"
+				redirect="false" />
+		</action>
+		<action input="/WebFDMSManagementReportAdmin2.jsp" name="reportEditForm"
+			path="/processReportEdit" scope="request"
+			type="fdms.ui.struts.action.ProcessReportEdit" unknown="false"
+			validate="false" />
+
+		<action path="/showBookMarkAdmin" scope="session" name="bookMarkAdminForm"
+			type="fdms.ui.struts.action.BookMarkAdminAction" unknown="false"
+			validate="false">
+			<forward name="bookMarkAdmin" path="/BookMarkAdmin.jsp"
+				redirect="false" />
+		</action>
+		<action input="/BookMarkAdmin.jsp" name="bookMarkAdminForm"
+			path="/editBookMarkAdmin" scope="session"
+			type="fdms.ui.struts.action.EditBookMarkAdmin" unknown="false"
+			validate="false">
+			<forward name="editBookMarkAdmin" path="/EditBookMarkAdmin.jsp"
+				redirect="false" />
+		</action>
+		<action input="/EditBookMarkAdmin.jsp" name="bookMarkAdminForm"
+			path="/processBookMarkAdminAction" scope="session"
+			type="fdms.ui.struts.action.ProcessBookMarkAdminAction" unknown="false"
+			validate="false" />
+
+		<action name="userReportForm" path="/WebFDMSManagementUserReport.jsp"
+			scope="request" unknown="false" validate="false">
+			<forward name="UserReport" path="/WebFDMSManagementUserReport.jsp"
+				redirect="false" />
+			<forward name="UserAdminList" path="/WebFDMSManagementUserAdmin.jsp"
+				redirect="false" />
+		</action>
+		<action path="/showUserReport" scope="request"
+			type="fdms.ui.struts.action.ShowUserReport" unknown="false" validate="false">
+			<forward name="UserAdminList" path="/WebFDMSManagementUserAdmin.jsp"
+				redirect="false" />
+			<forward name="UserReportGen" path="/WebFDMSManagementUserReportGen.jsp"
+				redirect="false" />
+		</action>
+		<action input="/Veterans.jsp" path="/showVABenefits" scope="request"
+			type="fdms.ui.struts.action.ShowVABenefits" unknown="false" validate="false">
+			<forward name="showVABenefitsApp" path="/VABurialBenefitsAPP.jsp"
+				redirect="false" />
+		</action>
+		<action input="/Veterans.jsp" path="/showVAFlag" scope="request"
+			type="fdms.ui.struts.action.ShowVAFlag" unknown="false" validate="false">
+			<forward name="showVAFlagApp" path="/VAFlag_App.jsp"
+				redirect="false" />
+		</action>
+		<action input="/Veterans.jsp" path="/showVAHeadstone" scope="request"
+			type="fdms.ui.struts.action.ShowVAHeadstone" unknown="false"
+			validate="false">
+			<forward name="showVAHeadstoneApp" path="/VAHeadstoneAPP.jsp"
+				redirect="false" />
+		</action>
+		<action name="showVeteran" path="/showVeteran" scope="request"
+			type="fdms.ui.struts.action.Veteran" unknown="false" validate="false">
+			<forward name="veteran" path="/Veteran.jsp" redirect="false" />
+		</action>
+		<action name="showVitals" path="/showVitals" scope="session"
+			type="fdms.ui.struts.action.ShowVitals" unknown="false" validate="false">
+			<forward name="vitals" path="/vitals.jsp" redirect="false" />
+			<forward name="showVitals" path="/Vitals.jsp" redirect="false" />
+			<forward name="GenericVitalsPage" path="/Vitalsgen.jsp"
+				redirect="false" />
+		</action>
+		<action forward="/Help.jsp" path="/usingHelp" scope="request"
+			unknown="false" validate="false" />
+		<action forward="/WebFDMSManagement.jsp" path="/webFDMSManagement"
+			scope="request" unknown="false" validate="false" />
+		<action name="introduction" path="/introduction"
+			type="fdms.ui.struts.action.ShowIntroduction" validate="false">
+			<forward name="introduction" path="/Introduction.jsp"
+				redirect="true" />
+		</action>
+		<action name="introcemetery" path="/introcemetery"
+			type="fdms.ui.struts.action.ShowIntroCemetery" validate="false">
+			<forward name="introcemetery" path="/IntroCemetery.jsp"
+				redirect="true" />
+		</action>
+
+		<action path="/showTermsOfService" name="termsOfServiceForm"
+			scope="request" validate="false" forward="/termsOfServiceForm.jsp" />
+		<action path="/processTermsOfService" name="termsOfServiceForm"
+			type="fdms.ui.struts.action.ProcessTermsOfService" scope="request"
+			input="/termsOfServiceForm.jsp" validate="false">
+			<forward name="introduction" path="/introduction.do"
+				redirect="false" />
+		</action>
+
+		<!-- ADMIN SECTION -->
+		<action path="/admin/mainFrame" forward="/admin/mainFrame.jsp" />
+		<action path="/admin/includes/topMenu" forward="/admin/includes/topMenu.jsp" />
+		<action path="/admin/includes/footer" forward="/admin/includes/footer.jsp" />
+
+		<action path="/admin/login" forward="/admin/login.jsp" name="adminLoginForm"
+			validate="false" scope="request" />
+
+		<action path="/admin/processLogin" type="fdms.admin.login.action.ProcessLogin"
+			name="adminLoginForm" validate="false" input="/admin/login.jsp"
+			scope="request">
+			<forward name="failure" path="/admin/login.jsp" redirect="false" />
+			<forward name="success" path="/admin/mainFrame.do" redirect="true" />
+		</action>
+
+		<action path="/admin/showAlertForm" type="fdms.admin.alert.action.ShowAlertForm"
+			name="alertForm" validate="false" input="/admin/alertForm.jsp" scope="request">
+			<forward name="alertForm" path="/admin/alertForm.jsp" />
+		</action>
+
+		<action path="/admin/processAlertForm" type="fdms.admin.alert.action.ProcessAlertForm"
+			name="alertForm" input="/admin/alertForm.jsp" validate="false" scope="request">
+			<forward name="alertForm" path="/admin/alertForm.jsp" />
+		</action>
+
+		<action path="/admin/processLogout" type="fdms.admin.login.action.ProcessLogout"
+			scope="request">
+			<forward name="login" path="/admin/login.do" redirect="true" />
+		</action>
+
+		<action path="/admin/main" type="fdms.admin.user.action.ShowMain"
+			scope="session" name="userSessionForm" input="/admin/main.jsp"
+			validate="false">
+			<forward name="main" path="/admin/main.jsp" redirect="false" />
+		</action>
+
+		<action path="/admin/showUsers" type="fdms.admin.user.action.ShowUsers">
+			<forward name="users" path="/admin/users.jsp" redirect="false" />
+		</action>
+
+		<action path="/admin/showUserForm" type="fdms.admin.user.action.ShowUserForm"
+			scope="request" name="userForm" input="/admin/userForm.jsp" validate="false">
+			<forward name="userForm" path="/admin/userForm.jsp" redirect="false" />
+		</action>
+
+		<action path="/admin/processUserForm" type="fdms.admin.user.action.ProcessUserForm"
+			scope="request" name="userForm" validate="true" parameter="method"
+			input="/admin/userForm.jsp">
+			<forward name="users" path="/admin/showUsers.do" redirect="false" />
+			<forward name="userForm" path="/admin/userForm.jsp" redirect="false" />
+		</action>
+
+		<action path="/admin/showSecurityForm"
+			type="com.aldorsolutions.webfdms.security.action.ShowSecurityForm"
+			scope="request" name="securityForm" input="/admin/securityForm.jsp"
+			validate="false">
+			<forward name="securityForm" path="/admin/securityForm.jsp"
+				redirect="false" />
+		</action>
+
+		<action path="/admin/processSecurityForm"
+			type="com.aldorsolutions.webfdms.security.action.ProcessSecurityForm"
+			scope="request" name="securityForm" validate="true" parameter="method"
+			input="/admin/securityForm.jsp">
+			<forward name="companyForm" path="/admin/showCompanyForm.do"
+				redirect="false" />
+			<forward name="securityForm" path="/admin/securityForm.jsp"
+				redirect="false" />
+		</action>
+
+		<action path="/admin/showCompanies"
+			type="com.aldorsolutions.webfdms.company.action.ShowCompanies">
+			<forward name="companies" path="/admin/companies.jsp"
+				redirect="false" />
+		</action>
+
+		<action path="/admin/showCompanyForm"
+			type="com.aldorsolutions.webfdms.company.action.ShowCompanyForm"
+			scope="request" name="companyForm" input="/admin/companyForm.jsp"
+			validate="false">
+			<forward name="companyForm" path="/admin/companyForm.jsp"
+				redirect="false" />
+		</action>
+
+		<action path="/admin/processCompanyForm"
+			type="com.aldorsolutions.webfdms.company.action.ProcessCompanyForm"
+			scope="request" name="companyForm" validate="true" parameter="method"
+			input="/admin/companyForm.jsp">
+			<forward name="companies" path="/admin/showCompanies.do"
+				redirect="false" />
+			<forward name="companyForm" path="/admin/companyForm.jsp"
+				redirect="false" />
+			<forward name="securityForm" path="/admin/showSecurityForm.do"
+				redirect="false" />
+			<forward name="localesForm" path="/admin/showLocales.do"
+				redirect="true" />
+			<forward name="showSMSDo" path="/admin/showSMS.do" redirect="true" />
+		</action>
+		<action path="/admin/showdataLoadForm" type="fdms.ui.struts.action.PreDataLoadAction"
+			scope="session" name="loadDataForm">
+			<forward name="showDataLoad" path="/admin/loaddata.jsp"
+				redirect="false" />
+		</action>
+		<action path="/admin/processloaddata" type="fdms.ui.struts.action.ProcessDataLoadAction"
+			scope="session" name="loadDataForm" input="/admin/loaddata.jsp">
+			<forward name="showDataLoadForm" path="/admin/showdataLoadForm.do"
+				redirect="false" />
+		</action>
+		<action path="/admin/showLocales"
+			type="com.aldorsolutions.webfdms.locale.action.ShowLocales">
+			<forward name="locales" path="/admin/locales.jsp" redirect="false" />
+		</action>
+		<action path="/admin/showSMS" type="com.aldorsolutions.webfdms.sms.action.ShowSMS">
+			<forward name="smsList" path="/admin/sms.jsp" redirect="false" />
+		</action>
+		<action path="/admin/showLocaleForm"
+			type="com.aldorsolutions.webfdms.locale.action.ShowLocaleForm" scope="request"
+			name="localeForm" validate="false">
+			<forward name="localeForm" path="/admin/localeForm.jsp"
+				redirect="false" />
+		</action>
+		<action path="/admin/showSMSForm"
+			type="com.aldorsolutions.webfdms.sms.action.ShowSMSForm" scope="session"
+			input="/admin/smsForm.jsp" name="smsForm" validate="false">
+			<forward name="smsFormJsp" path="/admin/smsForm.jsp"
+				redirect="false" />
+		</action>
+		<action path="/admin/runSMSForm" type="com.aldorsolutions.webfdms.sms.action.RunSMSForm"
+			scope="request" name="smsForm" validate="false">
+			<forward name="showSMSDo" path="/admin/showSMS.do" redirect="false" />
+		</action>
+		<action path="/admin/processLocaleForm"
+			type="com.aldorsolutions.webfdms.locale.action.ProcessLocaleForm"
+			scope="request" name="localeForm" validate="true" parameter="method"
+			input="/admin/localeForm.jsp">
+			<forward name="locales" path="/admin/showLocales.do"
+				redirect="false" />
+			<forward name="localeForm" path="/admin/localeForm.jsp"
+				redirect="false" />
+			<forward name="companyForm" path="/admin/showCompanyForm.do"
+				redirect="false" />
+		</action>
+		<action path="/admin/processSMSForm"
+			type="com.aldorsolutions.webfdms.sms.action.ProcessSMSForm" scope="request"
+			name="smsForm" validate="true" parameter="method" input="/admin/smsForm.jsp">
+			<forward name="showSMSDo" path="/admin/showSMS.do" redirect="false" />
+			<forward name="smsFormJsp" path="/admin/smsForm.jsp"
+				redirect="false" />
+			<forward name="companyForm" path="/admin/showCompanyForm.do"
+				redirect="false" />
+		</action>
+		<action path="/admin/showLocationForm"
+			type="com.aldorsolutions.webfdms.locations.action.ShowLocationForm"
+			scope="request" name="locationForm" validate="false">
+			<forward name="locationForm" path="/admin/locationForm.jsp"
+				redirect="false" />
+		</action>
+
+		<action path="/admin/processLocationForm"
+			type="com.aldorsolutions.webfdms.locations.action.ProcessLocationForm"
+			scope="request" name="locationForm" validate="true" parameter="method"
+			input="/admin/locationForm.jsp">
+			<forward name="localeForm" path="/admin/showLocaleForm.do"
+				redirect="true" />
+			<forward name="locationForm" path="/admin/locationForm.jsp"
+				redirect="false" />
+		</action>
+		<action path="/showObitAsimasPostDetails" scope="session"
+			name="obitAsimasForm" type="fdms.ui.struts.action.ShowObitAsimasPostDetails"
+			validate="false">
+			<forward name="obitasimaspostdetails" path="/obitasimaspostdetails.jsp"
+				redirect="false" />
+		</action>
+		<action input="/obitasimaspostdetails.jsp" name="obitAsimasForm"
+			path="/postObitAsimasDetails" scope="session"
+			type="fdms.ui.struts.action.PostObitAsimasPostDetails" validate="false">
+			<forward name="obitasimaspostdetails" path="/obitasimaspostdetails.jsp"
+				redirect="false" />
+		</action>
+		<action path="/admin/showexcelinventoryDetails" scope="session"
+			name="excelForm" type="fdms.ui.struts.action.ShowExcelInventory"
+			validate="false">
+			<forward name="excelinventorydetails" path="/admin/excelinventorydetails.jsp"
+				redirect="false" />
+		</action>
+		<action input="/admin/excelinventorydetails.jsp" name="excelForm"
+			path="/admin/processexcelinventory" scope="session"
+			type="fdms.ui.struts.action.ProcessExcelInventory" validate="false">
+			<forward name="excelinventorydetails" path="/admin/excelinventorydetails.jsp"
+				redirect="false" />
+		</action>
+
+		<action path="/showInvItemLocation" scope="session" name="invitemlocationForm"
+			type="fdms.ui.struts.action.ShowInvItemLocation" validate="false">
+			<forward name="showinvitemlocation" path="/showinvitemlocation.jsp"
+				redirect="false" />
+		</action>
+		<action input="/showinvitemlocation.jsp" name="invitemlocationForm"
+			path="/processInvItemLocation" scope="session"
+			type="fdms.ui.struts.action.ProcessInvItemLocation" validate="false">
+			<forward name="showinvitemlocation" path="/showinvitemlocation.jsp"
+				redirect="false" />
+		</action>
+
+		<!-- Entries by Parth -->
+		<action input="ERegisterBook.jsp" name="uploadForm" path="/uploadToCrop"
+			scope="request" type="fdms.ui.struts.action.UploadForCropping">
+			<forward name="showImageToCrop" path="/fileUpload/makeCrop.jsp" />
+		</action>
+		<action input="fileUpload/upload.jsp" name="uploadForm" path="/cropUploaded"
+			scope="request" type="fdms.ui.struts.action.CropImageAction" />
+
+		<!-- ERegister Theme -->
+		<action name="eRegisterTheme" path="/admin/showERegisterTheme"
+			scope="request" type="fdms.ui.struts.action.ShowERegisterTheme">
+			<forward name="showERegisterTheme" path="/admin/eRegisterTheme.jsp" />
+		</action>
+		<action input="admin/eRegisterTheme.jsp" name="eRegisterTheme"
+			path="/admin/processERegisterTheme" scope="request"
+			type="fdms.ui.struts.action.ProcessERegisterTheme" />
+		<action name="eRegisterTheme" path="/admin/uploadDefaultPlaceHolder"
+			scope="request" type="fdms.ui.struts.action.ProcessDefaultPlaceHolder" />
+
+		<!-- Display random images from particular theme -->
+		<action name="eRegisterBookForm" path="/changeThemeImages"
+			scope="session" type="fdms.ui.struts.action.ChangeThemeImages">
+			<forward name="showImages" path="/eRegisterBook/changeTheme.jsp" />
+		</action>
+
+		<!-- ERegister Theme Images -->
+		<action name="presentationImage" path="/admin/showThemePresentationImages"
+			scope="request" type="fdms.ui.struts.action.ShowThemePresentationImage">
+			<forward name="showThemePresentationImages" path="/admin/themePresentationImages.jsp" />
+		</action>
+		<action input="admin/themedPresentationImages.jsp" name="presentationImage"
+			path="/admin/processThemePresentationImages" scope="request"
+			type="fdms.ui.struts.action.ProcessThemePresentationImage" />
+
+		<!-- ERegister Background Theme -->
+		<action input="admin/eRegisterTheme.jsp" name="eRegisterTheme"
+			path="/admin/processBackgroundTheme" scope="request"
+			type="fdms.ui.struts.action.ProcessBackgroundTheme" />
+
+		<!-- Service Screen Theme -->
+		<action input="admin/eRegisterTheme.jsp" name="eRegisterTheme"
+			path="/admin/processServiceTheme" scope="request"
+			type="fdms.ui.struts.action.ProcessServiceTheme" />
+
+		<!-- Re order images on eRegister Book page -->
+		<action name="eRegisterBookForm" path="/changeOrder" scope="session"
+			type="fdms.ui.struts.action.ChangeImageOrder">
+			<forward name="reOrder" path="/eRegisterBook/changeOrder.jsp" />
+		</action>
+
+		<!-- Image editor actions -->
+		<action input="fileUpload/makeCrop.jsp" name="uploadForm" path="/imageEditor"
+			scope="request" type="fdms.ui.struts.action.ImageEditorAction">
+			<forward name="displayEdited" path="/fileUpload/makeCrop.jsp" />
+		</action>
+
+		<!-- Export obit to Life files -->
+		<action name="exportToLifeFiles" path="/exportObitToLifefiles"
+			scope="request" type="fdms.ui.struts.action.ExportObitToLifefilesAction">
+		</action>
+
+		<!-- Export image on Life files -->
+		<action name="exportToLifeFiles" path="/exportImageToLifefiles"
+			scope="request" type="fdms.ui.struts.action.ExportImageToLifefilesAction">
+		</action>
+
+		<!--  Arranger Field Selection -->
+		<action path="/showArrangerField" name="showArrangerFieldsForm"
+			scope="session" type="fdms.ui.struts.action.ShowArrangerFieldsAction">
+			<forward name="showArrangerFields" path="/showArrangerFields.jsp" />
+		</action>
+
+
+
+		<action path="/processArrangerField" name="showArrangerFieldsForm"
+			scope="session" type="fdms.ui.struts.action.ProcessArrangerFieldAction"
+			validate="true">
+			<forward name="showArrangerField" path="/showArrangerField.do" />
+		</action>
+
+
+	</action-mappings>
+
+	<plug-in className="fdms.ui.struts.action.CachePlugIn">
+	</plug-in>
+</struts-config>

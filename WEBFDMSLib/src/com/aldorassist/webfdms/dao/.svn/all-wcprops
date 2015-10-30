@@ -1,0 +1,191 @@
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorassist/webfdms/dao
+END
+EdenDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorassist/webfdms/dao/EdenDAO.java
+END
+ERegisterThemeDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorassist/webfdms/dao/ERegisterThemeDAO.java
+END
+PresentationImageDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorassist/webfdms/dao/PresentationImageDAO.java
+END
+CompanyOptionsValueDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorassist/webfdms/dao/CompanyOptionsValueDAO.java
+END
+LocationEmailDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorassist/webfdms/dao/LocationEmailDAO.java
+END
+ComboDataDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorassist/webfdms/dao/ComboDataDAO.java
+END
+SpeedDataDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorassist/webfdms/dao/SpeedDataDAO.java
+END
+ZipLookupDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorassist/webfdms/dao/ZipLookupDAO.java
+END
+InvoiceDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn_webfdms/!svn/ver/56/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorassist/webfdms/dao/InvoiceDAO.java
+END
+UploadedFileDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorassist/webfdms/dao/UploadedFileDAO.java
+END
+AuditDAOFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorassist/webfdms/dao/AuditDAOFactory.java
+END
+SurvivorDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn_webfdms/!svn/ver/52/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorassist/webfdms/dao/SurvivorDAO.java
+END
+InvoiceRecurringHistDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorassist/webfdms/dao/InvoiceRecurringHistDAO.java
+END
+ConfigDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorassist/webfdms/dao/ConfigDAO.java
+END
+ERegisterImageMappingDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorassist/webfdms/dao/ERegisterImageMappingDAO.java
+END
+InvoiceItemDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorassist/webfdms/dao/InvoiceItemDAO.java
+END
+ERegisterBackgroundThemeDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorassist/webfdms/dao/ERegisterBackgroundThemeDAO.java
+END
+CompanyOptionsDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorassist/webfdms/dao/CompanyOptionsDAO.java
+END
+ServiceScreenThemeDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorassist/webfdms/dao/ServiceScreenThemeDAO.java
+END
+InvoiceTransactionHistoryDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorassist/webfdms/dao/InvoiceTransactionHistoryDAO.java
+END
+LocationOptionsDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn_webfdms/!svn/ver/52/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorassist/webfdms/dao/LocationOptionsDAO.java
+END
+ConfigValuesDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorassist/webfdms/dao/ConfigValuesDAO.java
+END
+AuditDAOSQL.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorassist/webfdms/dao/AuditDAOSQL.java
+END
+ImageMappingDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorassist/webfdms/dao/ImageMappingDAO.java
+END
+GlAccountTranslationDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorassist/webfdms/dao/GlAccountTranslationDAO.java
+END
+LocationOptionValueDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn_webfdms/!svn/ver/52/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorassist/webfdms/dao/LocationOptionValueDAO.java
+END
+LocaleDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorassist/webfdms/dao/LocaleDAO.java
+END
+LifeFilesDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorassist/webfdms/dao/LifeFilesDAO.java
+END
+AuditDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorassist/webfdms/dao/AuditDAO.java
+END
+LocationDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn_webfdms/!svn/ver/45/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorassist/webfdms/dao/LocationDAO.java
+END
+ObituaryFuneralSyncDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorassist/webfdms/dao/ObituaryFuneralSyncDAO.java
+END

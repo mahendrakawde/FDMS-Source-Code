@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/fdms/to/vitals
+END
+CertificationInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/fdms/to/vitals/CertificationInfo.java
+END
+DispositionInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/fdms/to/vitals/DispositionInfo.java
+END
+MedicalExaminerReport.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/fdms/to/vitals/MedicalExaminerReport.java
+END
+AtTimeOfDeathInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/fdms/to/vitals/AtTimeOfDeathInfo.java
+END
+CauseOfDeath.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/fdms/to/vitals/CauseOfDeath.java
+END
+CertifyingPhysician.java
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/fdms/to/vitals/CertifyingPhysician.java
+END
+VitalsIdInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/fdms/to/vitals/VitalsIdInfo.java
+END

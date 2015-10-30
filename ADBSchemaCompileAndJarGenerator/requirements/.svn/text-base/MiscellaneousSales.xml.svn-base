@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<this:getDataResponse xmlns:this="http://aldorsolutions.com/webservice/services/fddeservice" xmlns:this1="http://aldorsolutions.com/webservice/xsd/fdde/service" xmlns:this2="http://aldorsolutions.com/webservice/xsd/comm/fdde" xmlns:this3="http://aldorsolutions.com/webservice/xsd/comm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://aldorsolutions.com/webservice/services/fddeservice ../build/FddeService.xsd ">
+  <this1:dataReturned>financialInfoByFuneralHome</this1:dataReturned>
+  <this1:requestedCriteria>
+  	<this1:funeralHomeId>L112FH189</this1:funeralHomeId></this1:requestedCriteria>
+  <this1:results>
+  	<this1:financialInfo>
+  		<this2:miscSale funeralHomeId="L112FH189" tranId="2304">
+  			<this2:description>Flowers</this2:description>
+  			<this2:amount>150.00</this2:amount>
+  			<this2:ARAccount>35060</this2:ARAccount>
+  			<this2:GLAccount>4030</this2:GLAccount>
+  			<this2:taxStatus>TAX</this2:taxStatus>
+  			<this2:transactionDate>2010-04-04</this2:transactionDate>
+  			<this2:transactionType>Miscellaneous</this2:transactionType>
+  			<this2:itemCode>XYZ</this2:itemCode>
+  			<this2:initialSaleflag>false</this2:initialSaleflag>
+  			<this2:costOfItem>150.00</this2:costOfItem>
+  			<this2:payMethod>CC</this2:payMethod>
+  			<this2:receiptNo>187</this2:receiptNo>
+  			<this2:dateStamped>2010-04-04</this2:dateStamped>
+  			<this2:manualReceiptNo>4587</this2:manualReceiptNo>
+  		</this2:miscSale>
+  		<this2:miscSale funeralHomeId="L112FH189" tranId="2305">
+  			<this2:description>Invoices to be Approved</this2:description>
+  			<this2:amount>12.34</this2:amount>
+  			<this2:ARAccount>35010</this2:ARAccount>
+  			<this2:GLAccount>4030</this2:GLAccount>
+  			<this2:taxStatus>TAX</this2:taxStatus>
+  			<this2:transactionDate>2010-04-04</this2:transactionDate>
+  			<this2:transactionType>Miscellaneous</this2:transactionType>
+  			<this2:itemCode>XYZ</this2:itemCode>
+  			<this2:initialSaleflag>false</this2:initialSaleflag>
+  			<this2:costOfItem>150.00</this2:costOfItem>
+  			<this2:payMethod>VA</this2:payMethod>
+  			<this2:receiptNo>188</this2:receiptNo>
+  			<this2:dateStamped>2010-04-04</this2:dateStamped>
+  			<this2:manualReceiptNo>0203</this2:manualReceiptNo>
+  		</this2:miscSale>
+  	</this1:financialInfo>
+  </this1:results>
+</this:getDataResponse>

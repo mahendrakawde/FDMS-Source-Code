@@ -1,0 +1,107 @@
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBSERVICESFDMS/build/build/classes/com/aldorsolutions/webservice/services/fddeservice
+END
+GetDataResponse$1.class
+K 25
+svn:wc:ra_dav:version-url
+V 161
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBSERVICESFDMS/build/build/classes/com/aldorsolutions/webservice/services/fddeservice/GetDataResponse$1.class
+END
+GetDataRequest$Factory.class
+K 25
+svn:wc:ra_dav:version-url
+V 166
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBSERVICESFDMS/build/build/classes/com/aldorsolutions/webservice/services/fddeservice/GetDataRequest$Factory.class
+END
+FddeServiceStub.class
+K 25
+svn:wc:ra_dav:version-url
+V 159
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBSERVICESFDMS/build/build/classes/com/aldorsolutions/webservice/services/fddeservice/FddeServiceStub.class
+END
+ExtensionMapper.class
+K 25
+svn:wc:ra_dav:version-url
+V 159
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBSERVICESFDMS/build/build/classes/com/aldorsolutions/webservice/services/fddeservice/ExtensionMapper.class
+END
+GetDataRequest.class
+K 25
+svn:wc:ra_dav:version-url
+V 158
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBSERVICESFDMS/build/build/classes/com/aldorsolutions/webservice/services/fddeservice/GetDataRequest.class
+END
+FddeFault$1.class
+K 25
+svn:wc:ra_dav:version-url
+V 155
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBSERVICESFDMS/build/build/classes/com/aldorsolutions/webservice/services/fddeservice/FddeFault$1.class
+END
+GetDataResponse$Factory.class
+K 25
+svn:wc:ra_dav:version-url
+V 167
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBSERVICESFDMS/build/build/classes/com/aldorsolutions/webservice/services/fddeservice/GetDataResponse$Factory.class
+END
+FddeServiceSkeleton.class
+K 25
+svn:wc:ra_dav:version-url
+V 163
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBSERVICESFDMS/build/build/classes/com/aldorsolutions/webservice/services/fddeservice/FddeServiceSkeleton.class
+END
+GetDataResponse.class
+K 25
+svn:wc:ra_dav:version-url
+V 159
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBSERVICESFDMS/build/build/classes/com/aldorsolutions/webservice/services/fddeservice/GetDataResponse.class
+END
+FddeFault$Factory.class
+K 25
+svn:wc:ra_dav:version-url
+V 161
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBSERVICESFDMS/build/build/classes/com/aldorsolutions/webservice/services/fddeservice/FddeFault$Factory.class
+END
+FddeServiceMessageReceiverInOut.class
+K 25
+svn:wc:ra_dav:version-url
+V 175
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBSERVICESFDMS/build/build/classes/com/aldorsolutions/webservice/services/fddeservice/FddeServiceMessageReceiverInOut.class
+END
+FddeFaultException0.class
+K 25
+svn:wc:ra_dav:version-url
+V 163
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBSERVICESFDMS/build/build/classes/com/aldorsolutions/webservice/services/fddeservice/FddeFaultException0.class
+END
+FddeServiceCallbackHandler.class
+K 25
+svn:wc:ra_dav:version-url
+V 170
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBSERVICESFDMS/build/build/classes/com/aldorsolutions/webservice/services/fddeservice/FddeServiceCallbackHandler.class
+END
+FddeFaultException1.class
+K 25
+svn:wc:ra_dav:version-url
+V 163
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBSERVICESFDMS/build/build/classes/com/aldorsolutions/webservice/services/fddeservice/FddeFaultException1.class
+END
+FddeFault.class
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBSERVICESFDMS/build/build/classes/com/aldorsolutions/webservice/services/fddeservice/FddeFault.class
+END
+FddeServiceStub$1.class
+K 25
+svn:wc:ra_dav:version-url
+V 161
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBSERVICESFDMS/build/build/classes/com/aldorsolutions/webservice/services/fddeservice/FddeServiceStub$1.class
+END
+GetDataRequest$1.class
+K 25
+svn:wc:ra_dav:version-url
+V 160
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBSERVICESFDMS/build/build/classes/com/aldorsolutions/webservice/services/fddeservice/GetDataRequest$1.class
+END

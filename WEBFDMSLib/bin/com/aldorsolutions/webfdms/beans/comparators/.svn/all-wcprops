@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/beans/comparators
+END
+LocationNameComparator.java
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/beans/comparators/LocationNameComparator.java
+END
+SpeedDataComparator.java
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/beans/comparators/SpeedDataComparator.java
+END
+LocaleNameComparator.java
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/beans/comparators/LocaleNameComparator.java
+END
+LocaleLocationOptionsComparator.java
+K 25
+svn:wc:ra_dav:version-url
+V 147
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/beans/comparators/LocaleLocationOptionsComparator.java
+END

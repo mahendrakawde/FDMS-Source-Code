@@ -1,0 +1,526 @@
+package com.aldorsolutions.webfdms.beans;
+
+import java.sql.Date;
+import java.util.Calendar;
+
+import com.aldorsolutions.webfdms.database.PersistenceException;
+import com.aldorsolutions.webfdms.database.Transaction;
+import com.aldorsolutions.webfdms.util.FormatDate;
+import com.aldorsolutions.webfdms.util.FormatNumber;
+import com.aldorsolutions.webfdms.util.FormatString;
+/**
+ * This class contains one History Transaction record.
+ * Creation date: (12/23/01 3:07:21 PM) modify 030309
+ * @author: R. Davidson
+ */
+public class DbHistory  extends com.aldorsolutions.webfdms.database.Persistent {
+    static private final DbHistoryPeer peer = new DbHistoryPeer();
+    static public final String HIST_SPF_SALE 	= "S";
+    static public final String HIST_SPF_PAYMENT = "P";
+    static public final String HIST_SPF_FINCHRG = "F";
+    static public final String HIST_SPF_COSTSALE = "C";
+    static public final String HIST_SPF_INVASSET = "I";
+    static public final String HIST_SPF_VOIDCNTRT = "V";
+    static public final String HIST_SPF_MISCCASH = "R";
+    static public final String HIST_SPF_PRICEADJ = "D";
+    static public final String HIST_SPF_COMPHIST = "H";
+    static public final String HIST_SPF_BANK	= "B"; // bank deposit = 9901, bank fee = 9902;
+    
+    static public final short BANK_DEPOSIT = 9901;
+	static public final short BANK_FEE = 9902;
+    
+    private int		lMainKey;
+    private int		lHistTransactionNo;
+    private short	iHistType;
+    private String	cHistDesc;	//  Converted from char[40]
+    private int		lHistAmount;
+    private String	cHistARacct;	//  Converted from char[8]
+    private String	cHistGLAcct;	//  Converted from char[8]
+    private int		lHistExempt;
+    private String	cHistTaxCode;	//  Converted from char[5]
+    private Date	cHistDate;	//  Converted from char[8]
+    private String	cHistAcctPeriod;	//  Converted from char[4]
+    private char	cHistSPF;
+    private String	cHistItemType;
+    private int		lHistReceiptNo;
+    private char	cHistPosted;
+    private char	cHistOriginalPosting;
+    private char	cHistDeleteTran;
+    private String	cHistInvItemName;	//  Converted from char[15]
+    private int		lHistInvSeqNo;		// Inventory Master ID
+    private int		lHistCostOfSale;
+    private String	cHistPayMethod;	//  Converted from char[2]
+    private String	cHistPmtComponent;	//  Converted from char[4]
+    private String	cHistUserInit;	//  Converted from char[3]
+    private String	cHistManualReceipt;	//  Converted from char[10]
+    private short	iHistVersion;
+    private int		lInterfaceSeqNo;
+    private int		OrigChargeAmt;
+    private String	OrigChargeDescr;	//  Converted from char[40]
+    private char	Exported;
+    private BTRIEVE_DATE	DateModified;
+    private BTRIEVE_TIME	TimeModified;
+    private Date	cHistDatePaid;	//  Converted from char[8]
+    private String depositBatchNumber;
+    private String claimNumber;
+    public final static int TAXCODE_LENGTH = 4;
+    private int locationId;
+    private int invOnHandID;			// Inventory On-Hand ID if serial# or stocked item
+    private int taxAmount;
+    private int priceListID;
+    private String ServiceDate;
+    private long datetimeOfTrans;
+    private int sequence;
+    private String comment;
+  
+
+	/**
+	 * @return the comment
+	 */
+	public String getComment() {
+		return comment;
+	}
+	/**
+	 * @param comment the comment to set
+	 */
+	public void setComment(String comment) {
+		modify();
+		this.comment = comment;
+	}
+	/**
+	 * @return the sequence
+	 */
+	public int getSequence() {
+		return sequence;
+	}
+	/**
+	 * @param sequence the sequence to set
+	 */
+	public void setSequence(int sequence) {
+		modify();
+		this.sequence = sequence;
+	}
+	/**
+	 * @return the datetimeOfTrans
+	 */
+	public long getDatetimeOfTrans() {
+		return datetimeOfTrans;
+	}
+	/**
+	 * @param datetimeOfTrans the datetimeOfTrans to set
+	 */
+	public void setDatetimeOfTrans(long datetimeOfTrans) {
+		modify();
+		this.datetimeOfTrans = datetimeOfTrans;
+	}
+	/**
+	 * @return the serviceDate
+	 */
+	public String getServiceDate() {
+		return ServiceDate;
+	}
+	/**
+	 * @param serviceDate the serviceDate to set
+	 */
+	public void setServiceDate(String serviceDate) {
+		ServiceDate = serviceDate;
+	}
+	/**
+		 * @return the priceListID
+		 */
+		public int getPriceListID() {
+			return priceListID;
+		}
+		/**
+		 * @param priceListID the priceListID to set
+		 */
+		public void setPriceListID(int priceListID) {
+      modify();
+			this.priceListID = priceListID;
+		}
+		public String getCHistAcctPeriod() {
+        return cHistAcctPeriod;
+    }
+    public String getCHistARacct() {
+        return cHistARacct;
+    }
+    public Date getCHistDate() {
+        return cHistDate;
+    }
+    public Date getCHistDatePaid() {
+        return cHistDatePaid;
+    }
+    public char getCHistDeleteTran() {
+        return cHistDeleteTran;
+    }
+    public String getCHistDesc() {
+        return cHistDesc;
+    }
+    public String getCHistGLAcct() {
+        return cHistGLAcct;
+    }
+    public String getCHistInvItemName() {
+        return cHistInvItemName;
+    }
+    public String getCHistItemType() {
+        return cHistItemType;
+    }
+    public String getCHistManualReceipt() {
+        return cHistManualReceipt;
+    }
+    public char getCHistOriginalPosting() {
+        return cHistOriginalPosting;
+    }
+    public String getCHistPayMethod() {
+        return cHistPayMethod;
+    }
+    public String getCHistPmtComponent() {
+        return cHistPmtComponent;
+    }
+    public char getCHistPosted() {
+        return cHistPosted;
+    }
+    public char getCHistSPF() {
+        return cHistSPF;
+    }
+    public String getCHistTaxCode() {
+        return cHistTaxCode;
+    }
+    public String getCHistUserInit() {
+        return cHistUserInit;
+    }
+    /**
+     * Insert the method's description here.
+     * Creation date: (12/23/2001 8:18:47 PM)
+     * @return String
+     */
+    public String getClaimNumber() {
+        return claimNumber;
+    }
+    public BTRIEVE_DATE getDateModified() {
+        return DateModified;
+    }
+    /**
+     * Insert the method's description here.
+     * Creation date: (12/23/2001 8:18:33 PM)
+     * @return String
+     */
+    public String getDepositBatchNumber() {
+        return depositBatchNumber;
+    }
+    public char getExported() {
+        return Exported;
+    }
+    public short getIHistType() {
+        return iHistType;
+    }
+    public short getIHistVersion() {
+        return iHistVersion;
+    }
+    /**
+     * Insert the method's description here.
+     * Creation date: (11/18/2002 11:50:08 AM)
+     * @return int
+     */
+    public int getInvOnHandID() {
+        return invOnHandID;
+    }
+    public int getLHistAmount() {
+        return lHistAmount;
+    }
+    public int getLHistCostOfSale() {
+        return lHistCostOfSale;
+    }
+    public int getLHistExempt() {
+        return lHistExempt;
+    }
+    public int getLHistInvSeqNo() {
+        return lHistInvSeqNo;
+    }
+    public int getLHistReceiptNo() {
+        return lHistReceiptNo;
+    }
+    public int getLHistTransactionNo() {
+        return lHistTransactionNo;
+    }
+    public int getLInterfaceSeqNo() {
+        return lInterfaceSeqNo;
+    }
+    public int getLMainKey() {
+        return lMainKey;
+    }
+    /**
+     * Insert the method's description here.
+     * Creation date: (8/13/2002 4:53:26 PM)
+     * @return int
+     */
+    public int getLocationId() {
+        return locationId;
+    }
+    public int getOrigChargeAmt() {
+        return OrigChargeAmt;
+    }
+    public String getOrigChargeDescr() {
+        return OrigChargeDescr;
+    }
+    /**
+     * getPersistentPeer method comment.
+     */
+    protected com.aldorsolutions.webfdms.database.PersistentPeer getPersistentPeer() {
+        return peer;
+    }
+    public BTRIEVE_TIME getTimeModified() {
+        return TimeModified;
+    }
+    /**
+     * isLocked method comment.
+     */
+    public boolean isLocked() {
+        return false;
+    }
+    /**
+     * Move data from hashtable and copy into class variables
+     * Peer object restores from database to hashtable.
+     */
+    public void restore(Transaction t, java.util.Hashtable data) throws PersistenceException {
+    	
+        setId(				FormatNumber.parseInteger(data.get(DbHistoryPeer.IDENTITY).toString()));
+        setLHistTransactionNo(		FormatNumber.parseInteger(data.get(DbHistoryPeer.TRANNUMBER).toString()));
+        setLMainKey(		FormatNumber.parseInteger(data.get(DbHistoryPeer.VITALSID).toString()));
+        setIHistType(		FormatNumber.parseShort(data.get(DbHistoryPeer.CHARGETYPE).toString()));
+        setCHistDesc(		(String)data.get(DbHistoryPeer.DESCRIPTION));
+        setLHistAmount(		FormatNumber.parseInteger(data.get(DbHistoryPeer.AMOUNT).toString()));
+        setCHistARacct(		(String)data.get(DbHistoryPeer.ARACCT));
+        setCHistGLAcct(			(String)data.get(DbHistoryPeer.GLACCT));
+        setLHistExempt(		FormatNumber.parseInteger(data.get(DbHistoryPeer.TAXEXEMPTAMT).toString()));
+        setCHistTaxCode(	(String)data.get(DbHistoryPeer.TAXCODE));
+        setCHistDate(		FormatDate.parseDate(data.get(DbHistoryPeer.DATEOFTRAN)) );
+        setCHistSPF(		FormatString.getFirstChar(data.get(DbHistoryPeer.SPFCODE).toString()));
+        setCHistItemType(	data.get(DbHistoryPeer.ITEMCATEGORY).toString());
+        setLHistReceiptNo(	FormatNumber.parseInteger(data.get(DbHistoryPeer.RECEIPTNO).toString()));
+        setCHistPosted(		FormatString.getFirstChar(data.get(DbHistoryPeer.POSTED).toString()));
+        setCHistOriginalPosting(	FormatString.getFirstChar(data.get(DbHistoryPeer.ORIGINALPOST).toString()));
+        setCHistDeleteTran(	FormatString.getFirstChar(data.get(DbHistoryPeer.DELETECODE).toString()));
+        setCHistInvItemName( 	(String)data.get(DbHistoryPeer.INVITEMNAME));
+        setLHistInvSeqNo(		FormatNumber.parseInteger(data.get(DbHistoryPeer.INVMASTERKEY).toString()));
+        setLHistCostOfSale(		FormatNumber.parseInteger(data.get(DbHistoryPeer.INVCOSTSALE).toString()));
+        setCHistPayMethod(		(String)data.get(DbHistoryPeer.PMTMETHOD));
+        setCHistPmtComponent(	(String)data.get(DbHistoryPeer.PMTCOMPONENT));
+        setCHistUserInit(		(String)data.get(DbHistoryPeer.USERINITIALS));
+        setCHistManualReceipt(	(String)data.get(DbHistoryPeer.MANUALRECPT));
+        setIHistVersion(		FormatNumber.parseShort(data.get(DbHistoryPeer.RECORDVER).toString()));
+        setLInterfaceSeqNo(		FormatNumber.parseInteger(data.get(DbHistoryPeer.INTERFACENO).toString()));
+        setOrigChargeAmt(		FormatNumber.parseInteger(data.get(DbHistoryPeer.ORIGCHRGAMT).toString()));
+        setOrigChargeDescr(		(String)data.get(DbHistoryPeer.ORIGCHRGDESC));
+        setExported(			FormatString.getFirstChar(data.get(DbHistoryPeer.EXPORTED).toString()));
+        setCHistDatePaid(		FormatDate.parseDate(data.get(DbHistoryPeer.DATEPAID)));
+        setDepositBatchNumber(	(String)data.get(DbHistoryPeer.DEPOSITBATCH));
+        setClaimNumber(			(String)data.get(DbHistoryPeer.CLAIMNUMBER));
+        locationId			= FormatNumber.parseInteger(data.get(DbHistoryPeer.LOCATIONID).toString());
+        invOnHandID			= FormatNumber.parseInteger(data.get(DbHistoryPeer.INVONHANDID).toString());
+        taxAmount			= FormatNumber.parseInteger(data.get(DbHistoryPeer.TAXAMOUNT).toString());
+        priceListID = FormatNumber.parseInteger(data.get(DbHistoryPeer.PRICELISTID).toString());
+        setServiceDate(		(String)data.get(DbHistoryPeer.SERVICEDATE) );
+        /* Code added by Haranesh for Ticket# 5572 -Date Time Stamp issue / bug  on Payment Screen*/
+        //setDatetimeOfTrans (FormatNumber.parseLong(data.get(DbHistoryPeer.DATETIMEOFTRANS).toString()));
+         setDatetimeOfTrans (java.sql.Timestamp.valueOf(data.get(DbHistoryPeer.DATETIMEOFTRANS).toString()).getTime());
+        /*code complete */
+        
+        setSequence(FormatNumber.parseInteger(data.get(DbHistoryPeer.SEQUENCE).toString()));
+        setComment((String)data.get(DbHistoryPeer.COMMENT).toString());
+        //long a = FormatNumber.parseLong((FormatDate.parseTimestamp(data.get(DbHistoryPeer.DATETIMEOFTRANS))).toString());
+
+    }
+    
+    public void setCHistAcctPeriod(String lcl_arg0) {
+        cHistAcctPeriod = lcl_arg0;
+        modify();
+    }
+    public void setCHistARacct(String lcl_arg0) {
+        modify();
+        cHistARacct = lcl_arg0;
+    }
+    public void setCHistDate(Date lcl_arg0) {
+        modify();
+        cHistDate = lcl_arg0;
+    }
+    public void setCHistDatePaid(Date lcl_arg0) {
+        modify();
+        cHistDatePaid = lcl_arg0;
+    }
+    public void setCHistDeleteTran(char lcl_arg0) {
+        modify();
+        cHistDeleteTran = lcl_arg0;
+    }
+    public void setCHistDesc(String lcl_arg0) {
+        modify();
+        cHistDesc = lcl_arg0;
+    }
+    public void setCHistGLAcct(String lcl_arg0) {
+        modify();
+        cHistGLAcct = lcl_arg0;
+    }
+    public void setCHistInvItemName(String lcl_arg0) {
+        modify();
+        cHistInvItemName = lcl_arg0;
+    }
+    public void setCHistItemType(String lcl_arg0) {
+        modify();
+        cHistItemType = lcl_arg0;
+    }
+    public void setCHistManualReceipt(String lcl_arg0) {
+        modify();
+        cHistManualReceipt = lcl_arg0;
+    }
+    public void setCHistOriginalPosting(char lcl_arg0) {
+        modify();
+        cHistOriginalPosting = lcl_arg0;
+    }
+    public void setCHistPayMethod(String lcl_arg0) {
+        modify();
+        cHistPayMethod = lcl_arg0;
+    }
+    public void setCHistPmtComponent(String lcl_arg0) {
+        modify();
+        cHistPmtComponent = lcl_arg0;
+    }
+    public void setCHistPosted(char lcl_arg0) {
+        modify();
+        cHistPosted = lcl_arg0;
+    }
+    public void setCHistSPF(char lcl_arg0) {
+        modify();
+        cHistSPF = lcl_arg0;
+    }
+    public void setCHistTaxCode(String lcl_arg0) {
+        modify();
+        if (lcl_arg0.length() > TAXCODE_LENGTH){
+            cHistTaxCode = lcl_arg0.substring(0,3);
+            //AppLog.trace("setCHistTaxCode length:"+lcl_arg0.length()+"was:"+lcl_arg0+":"+lcl_arg0.substring(0,3));
+        } else {
+            cHistTaxCode = lcl_arg0;
+        }
+    }
+    public void setCHistUserInit(String lcl_arg0) {
+        modify();
+        cHistUserInit = lcl_arg0;
+    }
+    /**
+     * Insert the method's description here.
+     * Creation date: (12/23/2001 8:18:47 PM)
+     * @param newClaimNumber String
+     */
+    public void setClaimNumber(String newClaimNumber) {
+        modify();
+        claimNumber = newClaimNumber;
+    }
+    public void setDateModified(BTRIEVE_DATE lcl_arg0) {
+        DateModified = lcl_arg0;
+    }
+    /**
+     * Insert the method's description here.
+     * Creation date: (12/23/2001 8:18:33 PM)
+     * @param newDepositBatchNumber String
+     */
+    public void setDepositBatchNumber(String newDepositBatchNumber) {
+        modify();
+        depositBatchNumber = newDepositBatchNumber;
+    }
+    public void setExported(char lcl_arg0) {
+        modify();
+        Exported = lcl_arg0;
+    }
+    /**
+     * Get the ID key for this object from the hashtable.
+     * DbUser objects can be accessed by "Name"
+     * So, first see if "Name" is being used for restoring
+     * or if ID# is being used.
+     */
+    public void setId(java.util.Hashtable h) {
+        //if (h.containsKey(peer.NAME)){
+        //	getPersistentPeer().restore(this, t);
+        //}
+        setId(((Integer)h.get(DbHistoryPeer.IDENTITY)).intValue());
+    }
+    public void setIHistType(short lcl_arg0) {
+        modify();
+        iHistType = lcl_arg0;
+    }
+    public void setIHistVersion(short lcl_arg0) {
+        modify();
+        iHistVersion = lcl_arg0;
+    }
+    /**
+     * Insert the method's description here.
+     * Creation date: (11/18/2002 11:50:08 AM)
+     * @param newInvOnHandID int
+     */
+    public void setInvOnHandID(int newInvOnHandID) {
+        invOnHandID = newInvOnHandID;
+        modify();
+    }
+    public void setLHistAmount(int lcl_arg0) {
+        modify();
+        lHistAmount = lcl_arg0;
+    }
+    public void setLHistCostOfSale(int lcl_arg0) {
+        modify();
+        lHistCostOfSale = lcl_arg0;
+    }
+    public void setLHistExempt(int lcl_arg0) {
+        modify();
+        lHistExempt = lcl_arg0;
+    }
+    public void setLHistInvSeqNo(int lcl_arg0) {
+        modify();
+        lHistInvSeqNo = lcl_arg0;
+    }
+    public void setLHistReceiptNo(int lcl_arg0) {
+        modify();
+        lHistReceiptNo = lcl_arg0;
+    }
+    public void setLHistTransactionNo(int lcl_arg0) {
+        modify();
+        lHistTransactionNo = lcl_arg0;
+    }
+    public void setLInterfaceSeqNo(int lcl_arg0) {
+        modify();
+        lInterfaceSeqNo = lcl_arg0;
+    }
+    public void setLMainKey(int lcl_arg0) {
+        modify();
+        lMainKey = lcl_arg0;
+    }
+    /**
+     * Insert the method's description here.
+     * Creation date: (8/13/2002 4:53:26 PM)
+     * @param newLocationId int
+     */
+    public void setLocationId(int newLocationId) {
+        locationId = newLocationId;
+        modify();
+    }
+    public void setOrigChargeAmt(int lcl_arg0) {
+        modify();
+        OrigChargeAmt = lcl_arg0;
+    }
+    public void setOrigChargeDescr(String lcl_arg0) {
+        modify();
+        OrigChargeDescr = lcl_arg0;
+    }
+    public void setTimeModified(BTRIEVE_TIME lcl_arg0) {
+        TimeModified = lcl_arg0;
+    }
+	/**
+	 * @return Returns the taxAmount.
+	 */
+	public int getTaxAmount() {
+		return taxAmount;
+	}
+	/**
+	 * @param taxAmount The taxAmount to set.
+	 */
+	public void setTaxAmount(int taxAmount) {
+		this.taxAmount = taxAmount;
+	}
+}

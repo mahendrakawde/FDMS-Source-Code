@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSWeb/db/version-3.0
+END
+shared-v3.0.sql
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSWeb/db/version-3.0/shared-v3.0.sql
+END
+webfdms-v3.0.sql
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSWeb/db/version-3.0/webfdms-v3.0.sql
+END
+user-3.0.sql
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSWeb/db/version-3.0/user-3.0.sql
+END
+commondata-3.0.sql
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSWeb/db/version-3.0/commondata-3.0.sql
+END

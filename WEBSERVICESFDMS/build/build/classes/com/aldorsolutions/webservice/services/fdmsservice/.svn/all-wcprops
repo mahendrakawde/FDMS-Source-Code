@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBSERVICESFDMS/build/build/classes/com/aldorsolutions/webservice/services/fdmsservice
+END
+FdmsServiceStub$1.class
+K 25
+svn:wc:ra_dav:version-url
+V 161
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBSERVICESFDMS/build/build/classes/com/aldorsolutions/webservice/services/fdmsservice/FdmsServiceStub$1.class
+END
+FdmsServiceStub$2.class
+K 25
+svn:wc:ra_dav:version-url
+V 161
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBSERVICESFDMS/build/build/classes/com/aldorsolutions/webservice/services/fdmsservice/FdmsServiceStub$2.class
+END
+FdmsServiceSkeleton.class
+K 25
+svn:wc:ra_dav:version-url
+V 163
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBSERVICESFDMS/build/build/classes/com/aldorsolutions/webservice/services/fdmsservice/FdmsServiceSkeleton.class
+END
+ExtensionMapper.class
+K 25
+svn:wc:ra_dav:version-url
+V 159
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBSERVICESFDMS/build/build/classes/com/aldorsolutions/webservice/services/fdmsservice/ExtensionMapper.class
+END
+FdmsServiceMessageReceiverInOut.class
+K 25
+svn:wc:ra_dav:version-url
+V 175
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBSERVICESFDMS/build/build/classes/com/aldorsolutions/webservice/services/fdmsservice/FdmsServiceMessageReceiverInOut.class
+END
+FdmsFaultException0.class
+K 25
+svn:wc:ra_dav:version-url
+V 163
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBSERVICESFDMS/build/build/classes/com/aldorsolutions/webservice/services/fdmsservice/FdmsFaultException0.class
+END
+GetFdmsFaultException0.class
+K 25
+svn:wc:ra_dav:version-url
+V 166
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBSERVICESFDMS/build/build/classes/com/aldorsolutions/webservice/services/fdmsservice/GetFdmsFaultException0.class
+END
+FdmsFaultException1.class
+K 25
+svn:wc:ra_dav:version-url
+V 163
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBSERVICESFDMS/build/build/classes/com/aldorsolutions/webservice/services/fdmsservice/FdmsFaultException1.class
+END
+FdmsServiceCallbackHandler.class
+K 25
+svn:wc:ra_dav:version-url
+V 170
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBSERVICESFDMS/build/build/classes/com/aldorsolutions/webservice/services/fdmsservice/FdmsServiceCallbackHandler.class
+END
+FdmsServiceStub.class
+K 25
+svn:wc:ra_dav:version-url
+V 159
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBSERVICESFDMS/build/build/classes/com/aldorsolutions/webservice/services/fdmsservice/FdmsServiceStub.class
+END

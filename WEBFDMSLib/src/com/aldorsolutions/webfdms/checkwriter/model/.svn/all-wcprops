@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/checkwriter/model
+END
+BankAccountDTO.java
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/checkwriter/model/BankAccountDTO.java
+END
+ApMasterDTO.java
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/checkwriter/model/ApMasterDTO.java
+END
+ApVendorLocationDisplayDTO.java
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/checkwriter/model/ApVendorLocationDisplayDTO.java
+END
+ApVendorDTO.java
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/checkwriter/model/ApVendorDTO.java
+END
+CheckListDisplayDTO.java
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/checkwriter/model/CheckListDisplayDTO.java
+END
+ApDistributionHistoryDTO.java
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/checkwriter/model/ApDistributionHistoryDTO.java
+END
+ApVendorLocationDTO.java
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/checkwriter/model/ApVendorLocationDTO.java
+END

@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSEJB/src/META-INF
+END
+jboss.xml
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSEJB/src/META-INF/jboss.xml
+END
+MANIFEST.MF
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSEJB/src/META-INF/MANIFEST.MF
+END
+ejb-jar.xml
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSEJB/src/META-INF/ejb-jar.xml
+END

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Request for getting SCI contracts -->
+<this:getDataRequest xmlns:this="http://aldorsolutions.com/webservice/services/fddeservice" 
+xmlns:this1="http://aldorsolutions.com/webservice/xsd/fdde/service" 
+xmlns:this2="http://aldorsolutions.com/webservice/xsd/comm/fdde" 
+xmlns:this3="http://aldorsolutions.com/webservice/xsd/comm" 
+xmlns:this4="http://aldorsolutions.com/webservice/xsd/comm/fdde/sci" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://aldorsolutions.com/webservice/services/fddeservice ../build/FddeService.xsd ">
+  <this:userName>this:userName</this:userName>
+  <this:passWord>this:passWord</this:passWord>
+  <this:dataRequest>
+    <this1:dataInterest>sciContracts</this1:dataInterest>
+    <this1:criteria>
+    	<this1:state>OH</this1:state>
+    </this1:criteria>
+  </this:dataRequest>
+</this:getDataRequest>
+
+<!-- Request for getting SCI cash -->
+<this:getDataRequest xmlns:this="http://aldorsolutions.com/webservice/services/fddeservice" 
+xmlns:this1="http://aldorsolutions.com/webservice/xsd/fdde/service" 
+xmlns:this2="http://aldorsolutions.com/webservice/xsd/comm/fdde" 
+xmlns:this3="http://aldorsolutions.com/webservice/xsd/comm" 
+xmlns:this4="http://aldorsolutions.com/webservice/xsd/comm/fdde/sci" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://aldorsolutions.com/webservice/services/fddeservice ../build/FddeService.xsd ">
+  <this:userName>this:userName</this:userName>
+  <this:passWord>this:passWord</this:passWord>
+  <this:dataRequest>
+    <this1:dataInterest>sciCash</this1:dataInterest>
+    <this1:criteria>
+    	<this1:state>OH</this1:state>
+    </this1:criteria>
+  </this:dataRequest>
+</this:getDataRequest>
+
+<!-- Request for getting SCI Contract Line Items -->
+<this:getDataRequest xmlns:this="http://aldorsolutions.com/webservice/services/fddeservice" 
+xmlns:this1="http://aldorsolutions.com/webservice/xsd/fdde/service" 
+xmlns:this2="http://aldorsolutions.com/webservice/xsd/comm/fdde" 
+xmlns:this3="http://aldorsolutions.com/webservice/xsd/comm" 
+xmlns:this4="http://aldorsolutions.com/webservice/xsd/comm/fdde/sci" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://aldorsolutions.com/webservice/services/fddeservice ../build/FddeService.xsd ">
+  <this:userName>this:userName</this:userName>
+  <this:passWord>this:passWord</this:passWord>
+  <this:dataRequest>
+    <this1:dataInterest>sciLineItem</this1:dataInterest>
+    <this1:criteria>
+    	<this1:state>OH</this1:state>
+    </this1:criteria>
+  </this:dataRequest>
+</this:getDataRequest>

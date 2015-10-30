@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/reporting/crystal/model
+END
+FormAvailableFilterDTO.java
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/reporting/crystal/model/FormAvailableFilterDTO.java
+END
+FormAvailableFilterTypeDTO.java
+K 25
+svn:wc:ra_dav:version-url
+V 148
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/reporting/crystal/model/FormAvailableFilterTypeDTO.java
+END
+CrystalReportCustomColDTO.java
+K 25
+svn:wc:ra_dav:version-url
+V 147
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/reporting/crystal/model/CrystalReportCustomColDTO.java
+END

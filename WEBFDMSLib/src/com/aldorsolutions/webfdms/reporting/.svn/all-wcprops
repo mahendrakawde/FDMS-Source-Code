@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/reporting
+END
+TTVSchedulerTask.java
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/reporting/TTVSchedulerTask.java
+END
+SMSCommonNoTimerGenerator.java
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/reporting/SMSCommonNoTimerGenerator.java
+END
+ReportGenerator.java
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/reporting/ReportGenerator.java
+END
+SMSCommonGenerator.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/reporting/SMSCommonGenerator.java
+END
+SMSSchedulerTask.java
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/reporting/SMSSchedulerTask.java
+END
+TTVGenerator.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn_webfdms/!svn/ver/52/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/reporting/TTVGenerator.java
+END
+SMSGenerator.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/reporting/SMSGenerator.java
+END
+ReportSchedulerTask.java
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSLib/src/com/aldorsolutions/webfdms/reporting/ReportSchedulerTask.java
+END

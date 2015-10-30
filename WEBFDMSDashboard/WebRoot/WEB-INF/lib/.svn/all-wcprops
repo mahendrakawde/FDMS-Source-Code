@@ -1,0 +1,203 @@
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/WebRoot/WEB-INF/lib
+END
+axis.jar
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/WebRoot/WEB-INF/lib/axis.jar
+END
+jakarta-oro.jar
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/WebRoot/WEB-INF/lib/jakarta-oro.jar
+END
+jai_core.jar
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/WebRoot/WEB-INF/lib/jai_core.jar
+END
+jstl.jar
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/WebRoot/WEB-INF/lib/jstl.jar
+END
+dom4j-1.6.1.jar
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/WebRoot/WEB-INF/lib/dom4j-1.6.1.jar
+END
+commons-discovery-0.4.jar
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/WebRoot/WEB-INF/lib/commons-discovery-0.4.jar
+END
+chartfx70.server.design.jar
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/WebRoot/WEB-INF/lib/chartfx70.server.design.jar
+END
+displaytag-portlet-1.1.jar
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/WebRoot/WEB-INF/lib/displaytag-portlet-1.1.jar
+END
+softwarefx.designer.jar
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/WebRoot/WEB-INF/lib/softwarefx.designer.jar
+END
+servlet-api.jar
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/WebRoot/WEB-INF/lib/servlet-api.jar
+END
+commons-fileupload.jar
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/WebRoot/WEB-INF/lib/commons-fileupload.jar
+END
+commons-validator.jar
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/WebRoot/WEB-INF/lib/commons-validator.jar
+END
+standard.jar
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/WebRoot/WEB-INF/lib/standard.jar
+END
+jai_codec.jar
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/WebRoot/WEB-INF/lib/jai_codec.jar
+END
+displaytag-export-poi-1.1.jar
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/WebRoot/WEB-INF/lib/displaytag-export-poi-1.1.jar
+END
+struts.jar
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/WebRoot/WEB-INF/lib/struts.jar
+END
+chartfx70.server.jar
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/WebRoot/WEB-INF/lib/chartfx70.server.jar
+END
+hsqldb.jar
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/WebRoot/WEB-INF/lib/hsqldb.jar
+END
+softwarefx.beans.jar
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/WebRoot/WEB-INF/lib/softwarefx.beans.jar
+END
+commons-digester.jar
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/WebRoot/WEB-INF/lib/commons-digester.jar
+END
+antlr.jar
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/WebRoot/WEB-INF/lib/antlr.jar
+END
+chartfx70.server.cfx6wrapper.jar
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/WebRoot/WEB-INF/lib/chartfx70.server.cfx6wrapper.jar
+END
+commons-collections-testframework-3.2.jar
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/WebRoot/WEB-INF/lib/commons-collections-testframework-3.2.jar
+END
+commons-httpclient-3.0.1.jar
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/WebRoot/WEB-INF/lib/commons-httpclient-3.0.1.jar
+END
+chartfx.gauge.jar
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/WebRoot/WEB-INF/lib/chartfx.gauge.jar
+END
+commons-collections-3.2.jar
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/WebRoot/WEB-INF/lib/commons-collections-3.2.jar
+END
+commons-lang-2.3.jar
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/WebRoot/WEB-INF/lib/commons-lang-2.3.jar
+END
+softwarefx.sfxnet.jar
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/WebRoot/WEB-INF/lib/softwarefx.sfxnet.jar
+END
+displaytag-1.1.jar
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/WebRoot/WEB-INF/lib/displaytag-1.1.jar
+END
+chartfx.gauge.design.jar
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/WebRoot/WEB-INF/lib/chartfx.gauge.design.jar
+END
+commons-beanutils.jar
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/WebRoot/WEB-INF/lib/commons-beanutils.jar
+END
+commons-logging.jar
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/WebRoot/WEB-INF/lib/commons-logging.jar
+END
+jsp-api.jar
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBFDMSDashboard/WebRoot/WEB-INF/lib/jsp-api.jar
+END

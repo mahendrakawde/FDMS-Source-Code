@@ -1,0 +1,98 @@
+package com.aldorsolutions.dashboard.struts.form.chart;
+
+import org.apache.struts.action.ActionForm;
+
+import com.aldorsolutions.dashboard.utils.FDMSChartFX;
+import com.sun.org.apache.bcel.internal.generic.NEW;
+
+public class ChartListForm extends ActionForm {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4136082895143614232L;
+
+	private String saleType;
+	private String fromDate;
+	private String toDate;
+	
+	private FDMSChartFX callVolumeChart = new FDMSChartFX();
+	private FDMSChartFX totalRevenuChart = new FDMSChartFX();
+	private FDMSChartFX averageRevenuChart = new FDMSChartFX();
+	
+
+	/**
+	 * @return the saleType
+	 */
+	public String getSaleType() {
+		return saleType;
+	}
+	/**
+	 * @param saleType the saleType to set
+	 */
+	public void setSaleType(String saleType) {
+		this.saleType = saleType;
+	}
+	/**
+	 * @return the fromDate
+	 */
+	public String getFromDate() {
+		return fromDate;
+	}
+	/**
+	 * @param fromDate the fromDate to set
+	 */
+	public void setFromDate(String fromDate) {
+		this.fromDate = fromDate;
+	}
+	/**
+	 * @return the toDate
+	 */
+	public String getToDate() {
+		return toDate;
+	}
+	/**
+	 * @param toDate the toDate to set
+	 */
+	public void setToDate(String toDate) {
+		this.toDate = toDate;
+	}
+	/**
+	 * @return the callVolumeChart
+	 */
+	public FDMSChartFX getCallVolumeChart() {
+		return callVolumeChart;
+	}
+	/**
+	 * @param callVolumeChart the callVolumeChart to set
+	 */
+	public void setCallVolumeChart(FDMSChartFX callVolumeChart) {
+		this.callVolumeChart = callVolumeChart;
+	}
+	/**
+	 * @return the totalRevenuChart
+	 */
+	public FDMSChartFX getTotalRevenuChart() {
+		return totalRevenuChart;
+	}
+	/**
+	 * @param totalRevenuChart the totalRevenuChart to set
+	 */
+	public void setTotalRevenuChart(FDMSChartFX totalRevenuChart) {
+		this.totalRevenuChart = totalRevenuChart;
+	}
+	/**
+	 * @return the averageRevenuChart
+	 */
+	public FDMSChartFX getAverageRevenuChart() {
+		return averageRevenuChart;
+	}
+	/**
+	 * @param averageRevenuChart the averageRevenuChart to set
+	 */
+	public void setAverageRevenuChart(FDMSChartFX averageRevenuChart) {
+		this.averageRevenuChart = averageRevenuChart;
+	}
+	
+
+}

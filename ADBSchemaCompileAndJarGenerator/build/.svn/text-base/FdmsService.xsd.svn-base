@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://aldorsolutions.com/webservice/services/fdmsservice" xmlns:info="http://aldorsolutions.com/webservice/xsd/fdms/info" xmlns:serv="http://aldorsolutions.com/webservice/xsd/fdms/service" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://aldorsolutions.com/webservice/services/fdmsservice">
+    <xs:import namespace="http://aldorsolutions.com/webservice/xsd/fdms/info" schemaLocation="FdmsInfo.xsd"/>
+    <xs:import namespace="http://aldorsolutions.com/webservice/xsd/fdms/service" schemaLocation="FdmsServiceInfo.xsd"/>
+    <xs:element name="getFdmsInfoRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="userName" nillable="true" type="xs:string"/>
+                <xs:element name="passWord" nillable="true" type="xs:string"/>
+                <xs:element name="infoInterested" type="info:infoType"/>
+                <xs:element minOccurs="0" name="requestContext" type="info:InfoContextType"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="getFdmsInfoResponse" type="info:FdmsInfo"/>
+    <xs:element name="getServiceRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="userName" nillable="true" type="xs:string"/>
+                <xs:element name="passWord" nillable="true" type="xs:string"/>
+                <xs:element name="serviceRequest" nillable="true" type="serv:FdmsRequest"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="getServiceResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="serviceResponse" nillable="true" type="serv:FdmsResponse"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="fdmsFault">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="faultCode" nillable="true" type="xs:string"/>
+                <xs:element minOccurs="0" name="faultReason" nillable="true" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

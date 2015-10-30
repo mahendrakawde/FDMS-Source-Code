@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBSERVICESFDMS/build/build/classes/com/aldorsolutions/wsfdms/services/fdmsservice
+END
+FdmsServiceSkeleton.class
+K 25
+svn:wc:ra_dav:version-url
+V 159
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBSERVICESFDMS/build/build/classes/com/aldorsolutions/wsfdms/services/fdmsservice/FdmsServiceSkeleton.class
+END
+FdmsServiceMessageReceiverInOut.class
+K 25
+svn:wc:ra_dav:version-url
+V 171
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBSERVICESFDMS/build/build/classes/com/aldorsolutions/wsfdms/services/fdmsservice/FdmsServiceMessageReceiverInOut.class
+END
+GetFdmsFaultException0.class
+K 25
+svn:wc:ra_dav:version-url
+V 162
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/WEBSERVICESFDMS/build/build/classes/com/aldorsolutions/wsfdms/services/fdmsservice/GetFdmsFaultException0.class
+END

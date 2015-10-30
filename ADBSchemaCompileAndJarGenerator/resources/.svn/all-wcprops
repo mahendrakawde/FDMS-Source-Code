@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/ADBSchemaCompileAndJarGenerator/resources
+END
+FddeService.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/ADBSchemaCompileAndJarGenerator/resources/FddeService.xsd
+END
+FdmsInfo.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/ADBSchemaCompileAndJarGenerator/resources/FdmsInfo.xsd
+END
+FdmsService.wsdl
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/ADBSchemaCompileAndJarGenerator/resources/FdmsService.wsdl
+END
+services.xml
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/ADBSchemaCompileAndJarGenerator/resources/services.xml
+END
+Common.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/ADBSchemaCompileAndJarGenerator/resources/Common.xsd
+END
+FdmsService.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/ADBSchemaCompileAndJarGenerator/resources/FdmsService.xsd
+END
+FddeCommon.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/ADBSchemaCompileAndJarGenerator/resources/FddeCommon.xsd
+END
+ServiceInfo.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/ADBSchemaCompileAndJarGenerator/resources/ServiceInfo.xsd
+END
+FddeServiceInfo.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn_webfdms/!svn/ver/36/Source%20Code/FDMS%20v3.1/ADBSchemaCompileAndJarGenerator/resources/FddeServiceInfo.xsd
+END

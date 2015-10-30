@@ -1,0 +1,43 @@
+# Resources for parameter 'com.aldorsolutions.dashboard.struts.DashboardResources'
+# Project WEBFDMSDashboard
+error.required={0} is required.
+error.int={0} must be an integer value greater than 0.
+error.double={0} must be an value greater than 0.
+error.date={0} is an invalid date format.
+error.dateMMDDYYYY={0} must be in date format MM/DD/YYYY.
+error.decimalFormat={0} is in an invalid format.
+error.exception=General Exception: {0}
+
+errors.header=<ul><font color="red">
+errors.footer=</font></ul>
+errors.prefix=<li>
+errors.suffix=</li>
+
+user.username=Username
+user.password=Password
+
+error.acct.checknumber.missing=No check number specified.
+error.acct.checknumber.exist=Check number {0} already exists.
+error.acct.checknumber.lessthandefault=Check number less than default.
+error.acct.checknumber.lessthanone=Check number less than one.
+error.acct.checknumber.notSequence=Check number is not sequential. 
+error.acct.location.missingLoc=No LocationID specified.
+error.acct.locationEmail.missingID=No LocationEmailID specified.
+error.acct.vendor.missingVendor=No VendorID specified.
+error.acct.vendor.DuplicateLocation= The Locale and Location have already been set.
+error.acct.vendor.DuplicateCode= The vendorCode has already been in the system.
+error.acct.vendor.Name= Vendor name cannot have single or double quote.
+error.acct.vendor.RemoveLastLocation= The location cannot be removed due to the last location.
+error.acct.invoicePaid=Invoice {0} has already been paid and cannot be paid again.
+error.acct.invoice.dulicate= Invoice {0} has already been created for this Vendor.
+
+error.password.mismatch=Username and/or password invalid.
+error.username.invalid=Username invalid.
+error.userinfo.require.locallocation=User must have locale, location for operating.
+
+mail.message.sent=Email has been sent to: {0}.
+mail.email.invalid=Email address is invalid.
+
+
+invoice.delete.error=Unable to delete the invoice at this time.  Please retry.
+error.userinfo.nopermission=The user does not have permission.

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns0:getServiceRequest xmlns:ns1="http://aldorsolutions.com/wsfdms/to/xsd/serviceinfo" xmlns:ns2="http://aldorsolutions.com/wsfdms/to/xsd/comm" xmlns:ns0="http://aldorsolutions.com/wsfdms/services/fdmsservice" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://aldorsolutions.com/wsfdms/services/fdmsservice build/FdmsService.xsd ">
+  <ns0:usrName>p:usrName</ns0:usrName>
+  <ns0:passWord>p:passWord</ns0:passWord>
+  <ns0:serrviceRequest>
+    <ns1:requestType>atNeedFinance</ns1:requestType>
+    <ns1:atNeedFinanceRequest>
+    	<ns1:caseInfo>
+    		<ns1:decedentVitalsId>0</ns1:decedentVitalsId></ns1:caseInfo>
+    	<ns1:charges>
+    		<ns1:charge>
+    			<ns1:contractLineNo>0</ns1:contractLineNo>
+    			<ns1:description>Str Max50Len</ns1:description>
+    			<ns1:amount>111.23</ns1:amount>
+    			<ns1:taxCode>S Max10Len</ns1:taxCode>
+    			<ns1:sequenceNo>0</ns1:sequenceNo>
+    			<ns1:fromPackage>true</ns1:fromPackage>
+    			<ns1:item>
+    				<ns1:merchandiseItem>
+    					<ns1:invMasterKey>0</ns1:invMasterKey>
+    					<ns1:invOnHandId>0</ns1:invOnHandId>
+    					<ns1:serialNo>Str Max25Len</ns1:serialNo>
+    				</ns1:merchandiseItem>
+    			</ns1:item>
+    		</ns1:charge>
+    		<ns1:charge>
+    			<ns1:contractLineNo>0</ns1:contractLineNo>
+    			<ns1:description>Str Max50Len</ns1:description>
+    			<ns1:amount>1523.8</ns1:amount>
+    			<ns1:taxCode>S Max10Len</ns1:taxCode>
+    			<ns1:sequenceNo>0</ns1:sequenceNo>
+    			<ns1:fromPackage>true</ns1:fromPackage>
+    			<ns1:item>
+    				<ns1:serviceItem ns1:id="0" />
+    				
+    			</ns1:item>
+    		</ns1:charge>
+    		<ns1:charge>
+    			<ns1:contractLineNo>0</ns1:contractLineNo>
+    			<ns1:description>Str Max50Len</ns1:description>
+    			<ns1:amount>1235</ns1:amount>
+    			<ns1:taxCode>S Max10Len</ns1:taxCode>
+    			<ns1:sequenceNo>0</ns1:sequenceNo>
+    			<ns1:fromPackage>true</ns1:fromPackage>
+    			<ns1:item>
+    				<ns1:serviceItem ns1:id="0" />
+    				
+    			</ns1:item>
+    		</ns1:charge>
+    	</ns1:charges>
+    	<ns1:financialInfo>
+    		<ns1:invoiceDate>2001-01-01</ns1:invoiceDate>
+    		<ns1:dueDate>2001-01-01</ns1:dueDate>
+    		<ns1:lastStatementDate>2001-01-01</ns1:lastStatementDate>
+    		<ns1:salesType>1</ns1:salesType>
+    		<ns1:serviceType>String</ns1:serviceType>
+    		<ns1:source>Str Max20Len</ns1:source>
+    		<ns1:disposition>String</ns1:disposition>
+    		<ns1:servicePlan>String</ns1:servicePlan>
+    		<ns1:HaveWeEverProvidedServicesForThisFamily>true</ns1:HaveWeEverProvidedServicesForThisFamily>
+    		<ns1:WhatFuneralHomeDidFamilyPreviouslyUse>Str Max25Len</ns1:WhatFuneralHomeDidFamilyPreviouslyUse>
+    		<ns1:HowDidFamilyHearAboutUs>Str Max25Len</ns1:HowDidFamilyHearAboutUs>
+    		<ns1:miscNotes>String</ns1:miscNotes>
+    	</ns1:financialInfo>
+    	<ns1:depositInfo>
+    		<ns1:depositAmount>1235.26</ns1:depositAmount>
+    		<ns1:datePaid>2001-01-01</ns1:datePaid>
+    		<ns1:adjustmentType>String</ns1:adjustmentType>
+    		<ns1:paymentSource>Str Max30Len</ns1:paymentSource>
+    		<ns1:depositDate>2001-01-01</ns1:depositDate>
+    		<ns1:manualReceiptno>Str Max15Len</ns1:manualReceiptno>
+    		<ns1:paymentMethod>String</ns1:paymentMethod>
+    	</ns1:depositInfo>
+    	<ns1:financeChargeOption>
+    		<ns1:applyFinanceCharge>
+    			<ns1:monthlyInterestRate>1.25</ns1:monthlyInterestRate>
+    			<ns1:interestFromDate>2001-01-01</ns1:interestFromDate>
+    		</ns1:applyFinanceCharge>
+    	</ns1:financeChargeOption>
+    	<ns1:sendChargesToAccounting>false</ns1:sendChargesToAccounting>
+    </ns1:atNeedFinanceRequest>
+    
+  </ns0:serrviceRequest>
+</ns0:getServiceRequest>

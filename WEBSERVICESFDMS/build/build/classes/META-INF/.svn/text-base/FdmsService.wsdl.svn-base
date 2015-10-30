@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://aldorsolutions.com/webservice/services/fdmsservice" xmlns:comm="http://aldorsolutions.com/webservice/xsd/comm" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fdmscomm="http://aldorsolutions.com/webservice/xsd/comm/fdms" xmlns:fdmsinfo="http://aldorsolutions.com/webservice/xsd/fdms/info" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:serv="http://aldorsolutions.com/webservice/xsd/fdms/service" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:this="http://aldorsolutions.com/webservice/services/fdmsservice" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+  <wsdl:types>
+    <xs:schema>
+			<xs:import namespace="http://aldorsolutions.com/webservice/services/fdmsservice" schemaLocation="FdmsService.xsd"/>
+	</xs:schema>
+    <xs:schema>
+			<xs:import namespace="http://aldorsolutions.com/webservice/xsd/fdms/info" schemaLocation="FdmsInfo.xsd"/>
+	</xs:schema>
+    <xs:schema>
+			<xs:import namespace="http://aldorsolutions.com/webservice/xsd/fdms/service" schemaLocation="FdmsServiceInfo.xsd"/>
+	</xs:schema>
+    <xs:schema>
+			<xs:import namespace="http://aldorsolutions.com/webservice/xsd/comm/fdms" schemaLocation="FdmsCommon.xsd"/>
+	</xs:schema>
+    <xs:schema>
+			<xs:import namespace="http://aldorsolutions.com/webservice/xsd/comm" schemaLocation="Common.xsd"/>
+	</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getFdmsInfoResponse">
+    <wsdl:part name="parameters" element="this:getFdmsInfoResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getServiceRequest">
+    <wsdl:part name="parameters" element="this:getServiceRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="fdmsFault">
+    <wsdl:part name="parameters" element="this:fdmsFault">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getServiceResponse">
+    <wsdl:part name="parameters" element="this:getServiceResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getFdmsInfoRequest">
+    <wsdl:part name="parameters" element="this:getFdmsInfoRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="FdmsServicePortType">
+    <wsdl:operation name="getFdmsInfo">
+      <wsdl:input message="this:getFdmsInfoRequest" wsaw:Action="urn:getFdmsInfoRequest">
+    </wsdl:input>
+      <wsdl:output message="this:getFdmsInfoResponse" wsaw:Action="urn:getFdmsInfoResponse">
+    </wsdl:output>
+      <wsdl:fault name="fdmsFault" message="this:fdmsFault" wsaw:Action="urn:fdmsFault">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getService">
+      <wsdl:input message="this:getServiceRequest" wsaw:Action="urn:getServiceRequest">
+    </wsdl:input>
+      <wsdl:output message="this:getServiceResponse" wsaw:Action="urn:getServiceResponse">
+    </wsdl:output>
+      <wsdl:fault name="fdmsFault" message="this:fdmsFault" wsaw:Action="urn:fdmsFault">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="FdmsServiceHttpBinding" type="this:FdmsServicePortType">
+    <http:binding verb="POST"/>
+    <wsdl:operation name="getFdmsInfo">
+      <http:operation location="FdmsService/getFdmsInfo"/>
+      <wsdl:input>
+        <mime:content part="getFdmsInfo" type="text/xml"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="getFdmsInfo" type="text/xml"/>
+      </wsdl:output>
+      <wsdl:fault name="fdmsFault">
+    <mime:content part="getFdmsInfo" type="text/xml"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getService">
+      <http:operation location="FdmsService/getService"/>
+      <wsdl:input>
+        <mime:content part="getService" type="text/xml"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="getService" type="text/xml"/>
+      </wsdl:output>
+      <wsdl:fault name="fdmsFault">
+    <mime:content part="getService" type="text/xml"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="FdmsServiceSoap11Binding" type="this:FdmsServicePortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getFdmsInfo">
+      <soap:operation soapAction="urn:getFdmsInfo" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fdmsFault">
+        <soap:fault name="fdmsFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getService">
+      <soap:operation soapAction="urn:getService" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fdmsFault">
+        <soap:fault name="fdmsFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="FdmsServiceSoap12Binding" type="this:FdmsServicePortType">
+    <soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getFdmsInfo">
+      <soap12:operation soapAction="urn:getFdmsInfo" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fdmsFault">
+    <soap12:body use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getService">
+      <soap12:operation soapAction="urn:getService" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fdmsFault">
+    <soap12:body use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="FdmsService">
+    <wsdl:port name="FdmsServiceHttpEndpoint" binding="this:FdmsServiceHttpBinding">
+      <http:address location="http://webservices.webfdms.com/webservicesfdms/services/FdmsService"/>
+    </wsdl:port>
+    <wsdl:port name="FdmsServiceHttpSoap11Endpoint" binding="this:FdmsServiceSoap11Binding">
+      <soap:address location="http://webservices.webfdms.com/webservicesfdms/services/FdmsService"/>
+    </wsdl:port>
+    <wsdl:port name="FdmsServiceHttpSoap12Endpoint" binding="this:FdmsServiceSoap12Binding">
+      <soap12:address location="http://webservices.webfdms.com/webservicesfdms/services/FdmsService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

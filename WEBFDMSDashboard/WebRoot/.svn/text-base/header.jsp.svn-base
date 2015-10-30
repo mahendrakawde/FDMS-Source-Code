@@ -1,0 +1,2 @@
+<input type="submit" name="submit" value="Sign Out" class="button" onclick="javascript:document.location.href='userLogout.do'" />
+<input type="text" name="text" value="${sessionScope['User'].userName}" class="field" />
